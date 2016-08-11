@@ -1,0 +1,27 @@
+{
+  "name": "fankick_chatbot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sravankumar143/FanKick_Chatbot.git"
+  },
+  "keywords": [
+    "node.js"
+  ],
+  "author": "sravan kumar",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/sravankumar143/FanKick_Chatbot/issues"
+  },
+  "homepage": "https://github.com/sravankumar143/FanKick_Chatbot#readme",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0",
+    "request": "^2.74.0"
+  }
+}
