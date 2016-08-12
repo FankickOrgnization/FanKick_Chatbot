@@ -111,7 +111,8 @@ function receivedMessage(event) {
       id: recipientId
     },
     message: {
-      text: messageText
+      "attachments":[{"type":"image","payload":{"url":"https://fankickdev.blob.core.windows.net/images/0C534ECC-3239-467E-A7AF-2B7926CA8588"}}]
+      //text: messageText
     }
   };
 
