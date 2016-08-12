@@ -57,7 +57,7 @@ app.post('/webhook', function (req, res) {
 });
 
 function receivedDeliveryConfirmation(event) {
-  console.log("receivedDeliveryConfirmation",JSON.stringify(event.message));
+  console.log("receivedDeliveryConfirmatio",JSON.stringify(event.message));
 }
 
 function receivedMessage(event) {
