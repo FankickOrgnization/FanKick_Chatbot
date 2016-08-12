@@ -107,12 +107,12 @@ function receivedMessage(event) {
 
   function sendTextMessage(recipientId, messageText) {
   var messageData = {
-    recipient: {
-      id: recipientId
+    "recipient": {
+      "id": "recipientId"
     },
-    message: {
-      "attachments":[{"type":"image","payload":{"url":"https://fankickdev.blob.core.windows.net/images/0C534ECC-3239-467E-A7AF-2B7926CA8588"}}]
-      //text: messageText
+    "message": {
+      //"attachment":[{"type":"image","payload":{"url":"https://www.google.co.in/search?q=png+images&biw=1280&bih=721&source=lnms&tbm=isch&sa=X&ved=0ahUKEwjW9ODbgLzOAhXEs48KHWe6BjsQ_AUIBigB#imgrc=eaUSyC6HzOGICM%3A"}}]
+      "text": "messageText"
     }
   };
 
