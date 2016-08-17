@@ -71,25 +71,27 @@ function receivedMessage(event) {
     // keywords and send back the corresponding example. Otherwise, just echo
     // the text we received.
     switch (messageText) {
-      case 'image':
-        sendImageMessage(event);
-        break;
-        case 'button':
-                sendButtonMessage(senderID);
-                break;
+        case 'image':
+              sendImageMessage(event);
+              break;
 
-              case 'generic':
+        case 'button':
+              sendButtonMessage(senderID);
+              break;
+
+        case 'generic':
                 sendGenericMessage(senderID);
                 break;
 
-              case 'receipt':
+        case 'receipt':
                 sendReceiptMessage(senderID);
                 break;
 
-              default:
+        default:
                 sendTextMessage(senderID, messageText);
             }
-          } else if (messageAttachments) {
+          }
+          else if (messageAttachments) {
             var attachementType = messageAttachments[0]
             console.log("Attachment Type:", attachementType);
             switch (attachementType.type) {
@@ -113,7 +115,8 @@ function receivedMessage(event) {
       },
       "message": {
         "attachment":{"type":image,"payload":{"url":imageUrl}}
-      }
+      },
+      "sender_action":"typing_on"
     };
     callSendAPI(messageData);
   }
@@ -125,7 +128,8 @@ function receivedMessage(event) {
       },
       "message": {
         "text": messageText
-      }
+      },
+      "sender_action":"typing_on"
   };
 
   callSendAPI(messageData);
