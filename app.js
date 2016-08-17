@@ -1,7 +1,6 @@
 var express = require('express');
 var app = express();
 var request = require('request');
-var request = require('request');
 var bodyParser = require('body-parser');
 
 app.use(bodyParser.json());
@@ -106,13 +105,15 @@ function receivedMessage(event) {
   }
 
   function sendTextMessage(recipientId, messageText) {
+    var image = "image"
+    var imageUrl = "https://www.google.co.in/search?q=png+images&biw=1280&bih=721&source=lnms&tbm=isch&sa=X&ved=0ahUKEwjW9ODbgLzOAhXEs48KHWe6BjsQ_AUIBigB#imgrc=eaUSyC6HzOGICM%3A"
   var messageData = {
     "recipient": {
-      "id": "recipientId"
+      "id": recipientId
     },
     "message": {
-      //"attachment":[{"type":"image","payload":{"url":"https://www.google.co.in/search?q=png+images&biw=1280&bih=721&source=lnms&tbm=isch&sa=X&ved=0ahUKEwjW9ODbgLzOAhXEs48KHWe6BjsQ_AUIBigB#imgrc=eaUSyC6HzOGICM%3A"}}]
-      "text": "messageText"
+      //"attachment":[{"type":image,"payload":{"url":imageUrl}}]
+      "text": messageText
     }
   };
 
