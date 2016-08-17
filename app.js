@@ -63,7 +63,6 @@ function receivedMessage(event) {
   // You may get a text or attachment but not both
   var messageText = message.text;
   var messageAttachments = message.attachments;
-  console.log("Message Text",messageText);
 
   if (messageText) {
 
@@ -87,8 +86,15 @@ function receivedMessage(event) {
                 sendReceiptMessage(senderID);
                 break;
 
-        default:
-                sendTextMessage(senderID, messageText);
+                default:
+                  sendGenericMessage(event);
+                  /*if (messageText == 'Top News') {
+                    console.log("Top News");
+                    sendGenericMessage(event);
+                  }else {
+                    sendTextMessage(senderID, messageText);
+                  }*/
+
             }
           }
           else if (messageAttachments) {
@@ -98,9 +104,43 @@ function receivedMessage(event) {
               case 'image':
                 sendImageMessage(event)
                 break;
+
               default:
             }
           }
+  }
+
+  function sendGenericMessage(event) {
+    var senderID = event.sender.id;
+    var imageUrl = "https://fankickdev.blob.core.windows.net/images/0C534ECC-3239-467E-A7AF-2B7926CA8588";
+    var messageData = {
+      "recipient": {
+        "id": senderID
+      },
+      "message": {
+        "attachment": {
+          "type": "template",
+          "payload": {
+            "template_type":"generic",
+            "elements": [
+              {
+                "title": "This is the sample template-1",
+                "image_url":imageUrl
+              },
+              {
+                "title": "This is the sample template-2",
+                "image_url":imageUrl
+              },
+              {
+                "title": "This is the sample template-3",
+                "image_url":imageUrl
+              }
+            ]
+          }
+        }
+      }
+    }
+    callSendAPI(messageData);
   }
 
   function sendImageMessage(event) {
@@ -108,15 +148,14 @@ function receivedMessage(event) {
     var image = "image"
     var attachments = event.message.attachments[0]//"https://fankickdev.blob.core.windows.net/images/0C534ECC-3239-467E-A7AF-2B7926CA8588"
     var imageUrl = attachments.payload.url;
-    console.log("Image URL:", imageUrl);
+
     var messageData = {
       "recipient": {
         "id": senderID
       },
       "message": {
         "attachment":{"type":image,"payload":{"url":imageUrl}}
-      },
-      "sender_action":"typing_on"
+      }
     };
     callSendAPI(messageData);
   }
@@ -128,8 +167,7 @@ function receivedMessage(event) {
       },
       "message": {
         "text": messageText
-      },
-      "sender_action":"typing_on"
+      }
   };
 
   callSendAPI(messageData);
