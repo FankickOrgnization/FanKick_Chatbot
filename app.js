@@ -2,6 +2,22 @@ var express = require('express');
 var app = express();
 var request = require('request');
 var bodyParser = require('body-parser');
+var mysql      = require('mysql');
+
+var connection = mysql.createConnection({
+  host     : 'ap-cdbr-azure-southeast-a.cloudapp.net',
+  user     : 'bb603e8108da6e',
+  password : '3e384329',
+  database : 'rankworlddev'
+});
+
+connection.connect(function(error) {
+  if (error) {
+    console.log("Error conecting to db", error);
+  }
+  console.log("connection successfully");
+});
+
 
 app.use(bodyParser.json());
 
@@ -87,19 +103,15 @@ function receivedMessage(event) {
                 break;
 
                 default:
-                  sendGenericMessage(event);
-                  /*if (messageText == 'Top News') {
-                    console.log("Top News");
+                  if (messageText == 'Top News') {
                     sendGenericMessage(event);
                   }else {
                     sendTextMessage(senderID, messageText);
-                  }*/
-
+                  }
             }
           }
           else if (messageAttachments) {
             var attachementType = messageAttachments[0]
-            console.log("Attachment Type:", attachementType);
             switch (attachementType.type) {
               case 'image':
                 sendImageMessage(event)
@@ -111,36 +123,45 @@ function receivedMessage(event) {
   }
 
   function sendGenericMessage(event) {
-    var senderID = event.sender.id;
-    var imageUrl = "https://fankickdev.blob.core.windows.net/images/0C534ECC-3239-467E-A7AF-2B7926CA8588";
-    var messageData = {
-      "recipient": {
-        "id": senderID
-      },
-      "message": {
-        "attachment": {
-          "type": "template",
-          "payload": {
-            "template_type":"generic",
-            "elements": [
-              {
-                "title": "This is the sample template-1",
-                "image_url":imageUrl
-              },
-              {
-                "title": "This is the sample template-2",
-                "image_url":imageUrl
-              },
-              {
-                "title": "This is the sample template-3",
-                "image_url":imageUrl
+
+    connection.query('SELECT * FROM fk_content_pack', function(err, rows)
+    {
+      if (err) {
+        console.log("Error While retriving content pack data from database:", err);
+      }else if (rows.length){
+        var senderID = event.sender.id;
+        var imageUrl = "https://fankickdev.blob.core.windows.net/images/0C534ECC-3239-467E-A7AF-2B7926CA8588";
+
+        console.log("Content Pack data:",rows);
+        var contentList = [];
+        for (var i = 0; i < rows.length; i++) { //Construct request body 
+          console.log("First Object:",rows[i].image_url);
+          var keyMap = {
+            "title": rows[i].name,
+            "image_url": rows[i].image_url
+          };
+          contentList.push(keyMap);
+        }
+        console.log("Content List:", contentList);
+        var messageData = {
+          "recipient": {
+            "id": senderID
+          },
+          "message": {
+            "attachment": {
+              "type": "template",
+              "payload": {
+                "template_type":"generic",
+                "elements": contentList
               }
-            ]
+            }
           }
         }
+        callSendAPI(messageData);
       }
-    }
-    callSendAPI(messageData);
+      connection.end();
+
+    });
   }
 
   function sendImageMessage(event) {
