@@ -8,7 +8,8 @@ var connection = mysql.createConnection({
   host     : 'ap-cdbr-azure-southeast-a.cloudapp.net',
   user     : 'bb603e8108da6e',
   password : '3e384329',
-  database : 'rankworlddev'
+  database : 'rankworlddev',
+  multipleStatements: true
 });
 
 connection.connect(function(error) {
@@ -41,19 +42,19 @@ app.post('/webhook', function (req, res) {
     data.entry.forEach(function(pageEntry) {
       var pageID = pageEntry.id;
       var timeOfEvent = pageEntry.time;
+      console.log("Page Entry Details:",JSON.stringify(pageEntry));
 
       // Iterate over each messaging event
       pageEntry.messaging.forEach(function(messagingEvent) {
-        console.log("messaging event:",JSON.stringify(messagingEvent));
 
         if (messagingEvent.optin) {
           //receivedAuthentication(messagingEvent);
         } else if (messagingEvent.message) {
-          receivedMessage(messagingEvent);
+            receivedMessage(messagingEvent);
         } else if (messagingEvent.delivery) {
           //receivedDeliveryConfirmation(messagingEvent);
         } else if (messagingEvent.postback) {
-          //receivedPostback(messagingEvent);
+            sendGenericMessage(messagingEvent);
         } else if (messagingEvent.read) {
           //console.log("Webhook received unknown messagingEvent: ", messagingEvent);
         } else {
@@ -95,19 +96,15 @@ function receivedMessage(event) {
               break;
 
         case 'generic':
-                sendGenericMessage(senderID);
-                break;
+              sendGenericMessage(senderID);
+              break;
 
         case 'receipt':
-                sendReceiptMessage(senderID);
-                break;
+              sendReceiptMessage(senderID);
+              break;
 
-                default:
-                  if (messageText == 'Top News') {
-                    sendGenericMessage(event);
-                  }else {
-                    sendTextMessage(senderID, messageText);
-                  }
+              default:
+              sendGenericMessage(event);
             }
           }
           else if (messageAttachments) {
@@ -124,25 +121,22 @@ function receivedMessage(event) {
 
   function sendGenericMessage(event) {
 
-    connection.query('SELECT * FROM fk_content_pack', function(err, rows)
+    var messageText = event.hasOwnProperty('message') ? event.message.text : event.postback.payload;
+    connection.query('SELECT * FROM fk_content_pack where category_id = (SELECT id FROM fk_category where name = ?)',[messageText],function(err, rows)
     {
       if (err) {
         console.log("Error While retriving content pack data from database:", err);
-      }else if (rows.length){
+      }else if (rows.length) {
         var senderID = event.sender.id;
-        var imageUrl = "https://fankickdev.blob.core.windows.net/images/0C534ECC-3239-467E-A7AF-2B7926CA8588";
-
-        console.log("Content Pack data:",rows);
         var contentList = [];
-        for (var i = 0; i < rows.length; i++) { //Construct request body 
-          console.log("First Object:",rows[i].image_url);
+
+        for (var i = 0; i < rows.length; i++) { //Construct request body
           var keyMap = {
             "title": rows[i].name,
             "image_url": rows[i].image_url
           };
           contentList.push(keyMap);
         }
-        console.log("Content List:", contentList);
         var messageData = {
           "recipient": {
             "id": senderID
@@ -158,10 +152,47 @@ function receivedMessage(event) {
           }
         }
         callSendAPI(messageData);
+      }else {
+        console.log("No Data Found From Database");
+        sendHelpMessage(event);
       }
-      connection.end();
-
     });
+  }
+
+  function sendHelpMessage(event) {
+    var senderID = event.sender.id;
+    var messageData = {
+      "recipient": {
+        "id": senderID
+      },
+      "message": {
+        "attachment": {
+          "type": "template",
+          "payload": {
+            "template_type":"button",
+            "text": "What do you want to do next?",
+            "buttons":[
+              {
+                "type":"postback",
+                "title":"Movies",
+                "payload":"Movies"
+              },
+              {
+                "type":"postback",
+                "title":"Sports",
+                "payload":"Sports"
+              },
+              {
+                "type":"postback",
+                "title":"Celebrities",
+                "payload":"Sports"
+              }
+            ]
+          }
+        }
+      }
+    }
+    callSendAPI(messageData);
   }
 
   function sendImageMessage(event) {
@@ -202,7 +233,7 @@ function callSendAPI(messageData) {
     json: messageData
 
   }, function (error, response, body) {
-    console.log("Response data: ",JSON.stringify(body));
+    //console.log("Response data: ",JSON.stringify(body));
     if (!error && response.statusCode == 200) {
       var recipientId = body.recipient_id;
       var messageId = body.message_id;
