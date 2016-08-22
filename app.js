@@ -23,9 +23,9 @@ connection.connect(function(error) {
 app.use(bodyParser.json());
 
 app.get('/webhook', function(req, res) {
+  console.log("Validating webhook",console.log(JSON.stringify(req.body)););
   if (req.query['hub.mode'] === 'subscribe' &&
       req.query['hub.verify_token'] === 'login_type') {
-    console.log("Validating webhook");
     res.status(200).send(req.query['hub.challenge']);
   } else {
     console.error("Failed validation. Make sure the validation tokens match.");
@@ -170,7 +170,7 @@ function receivedMessage(event) {
           "type": "template",
           "payload": {
             "template_type":"button",
-            "text": "What do you want to do next?",
+            "text": "What do you want to looking for?",
             "buttons":[
               {
                 "type":"postback",
