@@ -23,7 +23,7 @@ connection.connect(function(error) {
 app.use(bodyParser.json());
 
 app.get('/webhook', function(req, res) {
-  console.log("Validating webhook",console.log(JSON.stringify(req.body)););
+  console.log("Validating webhook",console.log(JSON.stringify(req.body)));
   if (req.query['hub.mode'] === 'subscribe' &&
       req.query['hub.verify_token'] === 'login_type') {
     res.status(200).send(req.query['hub.challenge']);
