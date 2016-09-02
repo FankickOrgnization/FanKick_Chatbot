@@ -8,8 +8,8 @@ var connection = mysql.createConnection({
   host     : 'ap-cdbr-azure-southeast-a.cloudapp.net',
   user     : 'bb603e8108da6e',
   password : '3e384329',
-  database : 'rankworlddev',
-  multipleStatements: true
+  database : 'rankworlddev'
+
 });
 
 connection.connect(function(error) {
@@ -120,46 +120,6 @@ function receivedMessage(event) {
           }
   }
 
-  function sendGenericMessage(event) {
-
-    var messageText = event.hasOwnProperty('message') ? event.message.text : event.postback.payload;
-    connection.query('SELECT * FROM fk_content_pack where category_id = (SELECT id FROM fk_category where name = ?)',[messageText],function(err, rows)
-    {
-      if (err) {
-        console.log("Error While retriving content pack data from database:", err);
-      }else if (rows.length) {
-        var senderID = event.sender.id;
-        var contentList = [];
-
-        for (var i = 0; i < rows.length; i++) { //Construct request body
-          var keyMap = {
-            "title": rows[i].name,
-            "image_url": rows[i].image_url
-          };
-          contentList.push(keyMap);
-        }
-        var messageData = {
-          "recipient": {
-            "id": senderID
-          },
-          "message": {
-            "attachment": {
-              "type": "template",
-              "payload": {
-                "template_type":"generic",
-                "elements": contentList
-              }
-            }
-          }
-        }
-        callSendAPI(messageData);
-      }else {
-        console.log("No Data Found From Database");
-        sendHelpMessage(event);
-      }
-    });
-  }
-
   function sendHelpMessage(event) {
     var senderID = event.sender.id;
     var messageData = {
@@ -186,7 +146,7 @@ function receivedMessage(event) {
               {
                 "type":"postback",
                 "title":"Celebrities",
-                "payload":"Sports"
+                "payload":"Celebrities"
               }
             ]
           }
@@ -195,6 +155,62 @@ function receivedMessage(event) {
     }
     callSendAPI(messageData);
   }
+
+
+
+  function sendGenericMessage(event) {
+    var messageText = event.hasOwnProperty('message') ? event.message.text : event.postback.payload;
+    connection.query('SELECT * FROM fk_content_pack where category_id = (SELECT id FROM fk_category where name = ?)',[messageText],function(err, rows)
+    {
+      if (err) {
+        console.log("Error While retriving content pack data from database:", err);
+      }else if (rows.length) {
+        var senderID = event.sender.id;
+        var contentList = [];
+
+        for (var i = 0; i < rows.length; i++) { //Construct request body
+          var keyMap = {
+            "title": rows[i].name,
+            "image_url": rows[i].image_url,
+            "subtitle":rows[i].name,
+            "buttons":[
+              {
+                "type":"postback",
+                "title":"Read More",
+                "payload":"Celebrities"
+              },
+              {
+                "type":"postback",
+                "title":"Ask FanKick",
+                "payload":"USER_DEFINED_PAYLOAD"
+              }
+            ]
+          };
+          contentList.push(keyMap);
+        }
+        var messageData = {
+          "recipient": {
+            "id": senderID
+          },
+          "message": {
+            "attachment": {
+              "type": "template",
+              "payload": {
+                "template_type":"generic",
+                "elements": contentList
+              }
+            }
+          }
+        }
+        callSendAPI(messageData);
+      }else {
+        console.log("No Data Found From Database");
+        sendHelpMessage(event);
+        //sendImageMessage(event);
+      }
+    });
+  }
+
 
   function sendImageMessage(event) {
     var senderID = event.sender.id;
@@ -226,6 +242,39 @@ function receivedMessage(event) {
   callSendAPI(messageData);
 }
 
+// function sendButtonMessage(recipientId) {
+//   var messageData = {
+//     recipient: {
+//       id: recipientId
+//     },
+//     message: {
+//       attachment: {
+//         type: "template",
+//         payload: {
+//           template_type: "button",
+//           text: "This is test text",
+//           buttons:[{
+//             type: "web_url",
+//             url: "https://www.oculus.com/en-us/rift/",
+//             title: "Open Web URL"
+//           }, {
+//             type: "postback",
+//             title: "Trigger Postback",
+//             payload: "DEVELOPED_DEFINED_PAYLOAD"
+//           }, {
+//             type: "phone_number",
+//             title: "Call Phone Number",
+//             payload: "+16505551234"
+//           }]
+//         }
+//       }
+//     }
+//   };
+//
+//   callSendAPI(messageData);
+// }
+
+
 function callSendAPI(messageData) {
   request({
     uri: 'https://graph.facebook.com/v2.6/592208327626213/messages',
@@ -238,9 +287,7 @@ function callSendAPI(messageData) {
     if (!error && response.statusCode == 200) {
       var recipientId = body.recipient_id;
       var messageId = body.message_id;
-
-      console.log("Successfully sent generic message with id %s to recipient %s",
-        messageId, recipientId);
+      console.log("Successfully sent generic message with id %s to recipient %s", messageId, recipientId);
     } else {
       console.error("Unable to send message.");
       //console.error(response);
@@ -250,3 +297,8 @@ function callSendAPI(messageData) {
 }
 
 app.listen(process.env.PORT);
+// app.listen(app.get('port'), function() {
+//   console.log('Node app is running on port', app.get('port'));
+// });
+
+//module.exports = app;
