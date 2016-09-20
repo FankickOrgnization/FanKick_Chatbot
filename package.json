@@ -21,9 +21,12 @@
   "homepage": "https://github.com/sravankumar143/FanKick_Chatbot#readme",
   "dependencies": {
     "body-parser": "^1.15.2",
+    "crypto": "0.0.3",
     "express": "^4.14.0",
     "modulus": "^6.3.1",
     "mysql": "^2.11.1",
+    "node-fetch": "^1.6.1",
+    "node-wit": "^4.1.0",
     "request": "^2.74.0"
   }
 }
