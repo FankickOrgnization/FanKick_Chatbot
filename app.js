@@ -56,6 +56,9 @@ connection.connect(function(error) {
 app.use(bodyParser.json());
 
 app.get('/webhook', function(req, res) {
+  app.get("/hello", function(req, res) {
+    console.log("Hello World");
+});
     console.log("Validating webhook", console.log(JSON.stringify(req.body)));
     if (req.query['hub.mode'] === 'subscribe' &&
         req.query['hub.verify_token'] === 'login_type') {
