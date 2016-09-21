@@ -55,16 +55,16 @@ const getwitmessageText = (msgwit) => {
             var td2=wit_res_data_intent[i]["type"];
             var td3=wit_res_data_intent[i]["value"];
           }
-          console.log("confidence************wit5",td1);
-          console.log("type************wit5",td2);
-          console.log("value************wit5", td3);
+          // console.log("confidence************wit5",td1);
+          // console.log("type************wit5",td2);
+          // console.log("value************wit5", td3);
         msgwit_value = td3;
-        console.log('******msgwit_valuewit', msgwit_value);
+        // console.log('******msgwit_valuewit', msgwit_value);
         getwitconverse(wit_res_msg_id,msgwit_value,msgwit);
         //return msgwit_value;
         witvalue = msgwit_value;
         exports.witvalue = witvalue;
-        console.log('******msgwit_valuewit2', witvalue);
+        //console.log('******msgwit_valuewit2', witvalue);
       }
     //  witvalue = msgwit_value;
   });
@@ -72,9 +72,9 @@ const getwitmessageText = (msgwit) => {
 };
 
 const getwitmsg = (msg_id,msg_value,msg_text)=> {
-console.log("msg_id***********Wit", msg_id);
-console.log("msg_value***********Wit", msg_value);
-console.log("msg_value***********Wit", msg_text);
+// console.log("msg_id***********Wit", msg_id);
+// console.log("msg_value***********Wit", msg_value);
+// console.log("msg_value***********Wit", msg_text);
 var myJSONObject = {
   "intent": msg_value
 };
@@ -100,8 +100,8 @@ request({
       headers:hederReq,
       body: myJSONObject
       },function(error, response, body) {
-        console.log("Wit Ai error",error);
-        console.log("Wit Ai body*************jkhjkhjkhjkhjkh",body);
+        // console.log("Wit Ai error",error);
+        // console.log("Wit Ai body*************jkhjkhjkhjkhjkh",body);
         //console.log("Wit Ai body1",body.msg);
         if (!error && response.statusCode == 200) {
          console.log("Successfully received Wit Message");
@@ -123,9 +123,9 @@ request({
 }
 // End Geting the Wit cenversion Message ************************
 function getwitconverse(wit_res_msg_id,msgwit_value,msgwit){
-console.log("getwitconverse***********wit_res_msg_id", wit_res_msg_id);
-console.log("getwitconverse***********msgwit_value", msgwit_value);
-console.log("getwitconverse***********msgwit", msgwit);
+// console.log("getwitconverse***********wit_res_msg_id", wit_res_msg_id);
+// console.log("getwitconverse***********msgwit_value", msgwit_value);
+// console.log("getwitconverse***********msgwit", msgwit);
 var myJSONObject = {
   "intent": msgwit_value
 };
@@ -151,24 +151,24 @@ request({
       headers:hederReq,
       body: myJSONObject
       },function(error, response, body) {
-        console.log("Wit Ai error",error);
-        console.log("Wit Ai body*************jkhjkhjkhjkhjkh",body);
+        // console.log("Wit Ai error",error);
+        // console.log("Wit Ai body*************jkhjkhjkhjkhjkh",body);
         //console.log("Wit Ai body1",body.msg);
         if (!error && response.statusCode == 200) {
-         console.log("Successfully received Wit Message");
+        // console.log("Successfully received Wit Message");
         } else {
-            console.error("Unable to send message.");
+            //console.error("Unable to send message.");
             //console.error(response);
-            console.error("Error while sending message:", error);
+            //console.error("Error while sending message:", error);
         }
     });
     //console.log("Wit Ai body1",body.msg);
     if (!error && response.statusCode == 200) {
      console.log("Successfully received Wit Message");
     } else {
-        console.error("Unable to send message.");
-        //console.error(response);
-        console.error("Error while sending message:", error);
+        // console.error("Unable to send message.");
+        // //console.error(response);
+        // console.error("Error while sending message:", error);
     }
 });
 }

@@ -14,8 +14,8 @@ bot.test();
 var name = bot.name;
 var name123 = bot.witvalue;
 //var value_1232 = bot.value_123;
-console.log("#############namenamenamenamename#############",name);
-console.log("#############namenamenamenamename#############",name123);
+//console.log("#############namenamenamenamename#############",name);
+//console.log("#############namenamenamenamename#############",name123);
 //console.log("#############namenamenamenamename#############",value_1232);
 //const witbot = wit.getWit();
 var wit_text;
@@ -28,16 +28,14 @@ const WIT_TOKEN = process.env.WIT_TOKEN;
 // bot.displayName() {
 //
 // };
-var initValue = 0;
+//var initValue = 0;
 
 // It has functions
-console.log("==================================",a);
-console.log("************************",initValue);
+//console.log("==================================",a);
+//console.log("************************",initValue);
 // Call them
 //console.log(a.addOne());
 //console.log(a.subtractOne());
-
-
 
 var connection = mysql.createConnection({
     host: 'ap-cdbr-azure-southeast-a.cloudapp.net',
@@ -93,10 +91,20 @@ app.post('/webhook', function(req, res) {
                     if (!messagingEvent.message.hasOwnProperty('is_echo')) { // Avoiding multiple database fetches
                         receivedMessage(messagingEvent);
                     }
+                    //var msgText = messagingEvent.message.text;
+                    console.log("messaging:------",messagingEvent);
+
+                    textmessage(messagingEvent);
+
+
                 } else if (messagingEvent.delivery) {
                     //receivedDeliveryConfirmation(messagingEvent);
                 } else if (messagingEvent.postback) {
-                    sendGenericMessage(messagingEvent);
+                    //sendGenericMessage(messagingEvent);
+                  //  var payloadText = messagingEvent.postback.payload;
+                     textpayload(messagingEvent);
+
+
                 } else if (messagingEvent.read) {
                     //console.log("Webhook received unknown messagingEvent: ", messagingEvent);
                 } else {
@@ -112,6 +120,253 @@ app.post('/webhook', function(req, res) {
         res.sendStatus(200);
     }
 });
+
+function textmessage(messagingEvent){
+  var msgText = messagingEvent.message.text;
+  console.log("messaging_message:------",messagingEvent.message);
+  console.log("messaging_message_text:------",messagingEvent.message.text);
+  console.log("messaging_msgText:------",msgText);
+};
+// postback payload section Start ********************************************
+function textpayload(messagingEvent){
+  var categoryName = messagingEvent.postback.payload;
+  console.log("postback_sender_id:------",messagingEvent.sender.id);
+  console.log("postback_postback:------",messagingEvent.postback);
+  console.log("postback_postback_payload:------",messagingEvent.postback.payload);
+  console.log("postback_payloadText:------",categoryName);
+  //console.log("$$$$$----messageText", messageText);
+  var packId = parseInt(categoryName);
+  // var packId = parseInt(messageText);
+  console.log("$$$$$---packId", packId );
+  if (isNaN(packId)) {
+    console.log("packId*************Text", packId );
+    //sendContentPacks(msg, event);
+    //  sendContentPacks(messageText, event);
+
+  } else {
+    console.log("packId*************Number", packId );
+    console.log("packId*************Number1", messagingEvent );
+      sendContentPackItems(packId, messagingEvent);
+  }
+
+
+  console.log("*************---categoryName----*******", categoryName );
+      if (categoryName == "Categories") {
+          var senderID = messagingEvent.sender.id;
+          var messageData = {
+              "recipient": {
+                  "id": senderID
+              },
+              "message": {
+                  "attachment": {
+                      "type": "template",
+                      "payload": {
+                          "template_type": "button",
+                          "text": "We have Fankick content on the following, why not try them out?",
+                          "buttons": [{
+                              "type": "postback",
+                              "title": "Movies",
+                              "payload": "Movies"
+                          }, {
+                              "type": "postback",
+                              "title": "Sports",
+                              "payload": "Sports"
+                          }, {
+                              "type": "postback",
+                              "title": "Celebrities",
+                              "payload": "Celebrities"
+                          }]
+                      }
+                  }
+              }
+          }
+          callSendAPI(messageData);
+      } else if (categoryName == "Fan Clubs") {
+          connection.query('SELECT * FROM fk_pack_fanclub', function(err, rows) {
+              if (err) {
+                  console.log("Error While retriving content pack data from database:", err);
+              } else if (rows.length) {
+                  var senderID = messagingEvent.sender.id;
+                  var contentList = [];
+
+                  for (var i = 0; i < rows.length; i++) { //Construct request body
+                      var keyMap = {
+                          "title": rows[i].name,
+                          "image_url": rows[i].imageurl,
+                          "item_url": rows[i].imageurl,
+                          "buttons": [{
+                              "type": "web_url",
+                              "url": rows[i].wiki_url,
+                              "title": "Read More"
+                          }]
+                      };
+                      contentList.push(keyMap);
+                  }
+                  var messageData = {
+                      "recipient": {
+                          "id": senderID
+                      },
+                      "message": {
+                          "attachment": {
+                              "type": "template",
+                              "payload": {
+                                  "template_type": "generic",
+                                  "elements": contentList
+                              }
+                          }
+                      }
+                  }
+                  callSendAPI(messageData);
+              } else {
+                  console.log("No Data Found From Database");
+                  sendHelpMessage(messagingEvent);
+              }
+          });
+      } else if (categoryName == "Fan Magazine") {
+          //console.log("***************************", categoryName);
+          connection.query('SELECT * FROM fk_pack_fan_magazines', function(err, rows) {
+              //console.log("*************************-after", categoryName);
+              //console.log("*************************-after", rows);
+              if (err) {
+                  console.log("Error While retriving content pack data from database:", err);
+              } else if (rows.length) {
+                  var senderID = event.sender.id;
+                  var contentList = [];
+                  for (var i = 0; i < 5; i++) { //Construct request body
+                      var keyMap = {
+                          "title": rows[i].name,
+                          "image_url": rows[i].imageurl,
+                          "item_url": rows[i].imageurl,
+                          "buttons": [{
+
+                              "type": "postback",
+                              "title": "Read More",
+                              "payload": "USER_DEFINED_PAYLOAD"
+                          }]
+                      };
+                      contentList.push(keyMap);
+                  }
+                  var messageData = {
+                      "recipient": {
+                          "id": senderID
+                      },
+                      "message": {
+                          "attachment": {
+                              "type": "template",
+                              "payload": {
+                                  "template_type": "generic",
+                                  "elements": contentList
+                              }
+                          }
+                      }
+                  }
+                  callSendAPI(messageData);
+              } else {
+                  console.log("No Data Found From Database");
+                  sendHelpMessage(messagingEvent);
+              }
+          });
+      } else if (categoryName == "Yes") {
+          var senderID = messagingEvent.sender.id;
+          var messageData = {
+              "recipient": {
+                  "id": senderID
+              },
+              "message": {
+                  "attachment": {
+                      "type": "template",
+                      "payload": {
+                          "template_type": "generic",
+                          "elements": [{
+                              //  "title": "Please Login into FanKick",
+                              //  "image_url": "https://scontent.fbom1-2.fna.fbcdn.net/v/t1.0-1/p32x32/13627105_592208684292844_1737491960574535764_n.png?oh=ce8c86c4f7ba7348e003ef264f47a310&oe=587D2B8C",
+                              "buttons": [{
+                                  "type": "postback",
+                                  "title": "Magazine",
+                                  "payload": "USER_DEFINED_PAYLOAD"
+                              }]
+                          }]
+                      }
+                  }
+              }
+          }
+          callSendAPI(messageData);
+      } else if (categoryName == "No") {
+          var senderID = messagingEvent.sender.id;
+          var messageData = {
+              "recipient": {
+                  "id": senderID
+              },
+              "message": {
+                  "attachment": {
+                      "type": "template",
+                      "payload": {
+                          "template_type": "generic",
+                          "elements": [{
+                              //  "title": "Welcome to FanKick",
+                              //  "image_url": "https://scontent.fbom1-2.fna.fbcdn.net/v/t1.0-1/p32x32/13627105_592208684292844_1737491960574535764_n.png?oh=ce8c86c4f7ba7348e003ef264f47a310&oe=587D2B8C",
+                              "buttons": [{
+                                  "type": "postback",
+                                  "title": "Magazine",
+                                  "payload": "USER_DEFINED_PAYLOAD"
+                              }]
+                          }]
+                      }
+                  }
+              }
+          }
+          callSendAPI(messageData);
+      } else {
+          connection.query('SELECT * FROM fk_content_pack where category_id = (SELECT id FROM fk_category where name = ?)', [categoryName], function(err, rows) {
+              if (err) {
+                  console.log("Error While retriving content pack data from database:", err);
+              } else if (rows.length) {
+                  var senderID = messagingEvent.sender.id;
+                  var contentList = [];
+
+                  for (var i = 0; i < rows.length; i++) { //Construct request body
+                      var keyMap = {
+                          "title": rows[i].name,
+                          "image_url": rows[i].image_url,
+                          "item_url": rows[i].image_url,
+                          "buttons": [{
+                              "type": "postback",
+                              "title": "View",
+                              "payload": rows[i].id
+                          }, {
+                              "type": "postback",
+                              "title": "Magazine",
+                              "payload": "USER_DEFINED_PAYLOAD"
+                          }]
+                      };
+                      contentList.push(keyMap);
+                  }
+                  var messageData = {
+                      "recipient": {
+                          "id": senderID
+                      },
+                      "message": {
+                          "attachment": {
+                              "type": "template",
+                              "payload": {
+                                  "template_type": "generic",
+                                  "elements": contentList
+                              }
+                          }
+                      }
+                  }
+                  callSendAPI(messageData);
+              } else {
+                  console.log("No Data Found From Database");
+                  sendHelpMessage(messagingEvent);
+                  //sendImageMessage(event);
+              }
+          });
+      }
+
+};
+
+// postback payload section End ********************************************
 
 function receivedMessage(event) {
     var senderID = event.sender.id;
@@ -261,8 +516,6 @@ function sendHelpMessage(event) {
     callSendAPI(messageData);
 }
 
-
-
 function sendGenericMessage(event, msg) {
      console.log("$$$$$----event", event);
      console.log("$$$$$----event111", event.hasOwnProperty('message'));
@@ -277,10 +530,10 @@ function sendGenericMessage(event, msg) {
     // var packId = parseInt(messageText);
     console.log("$$$$$---packId", packId );
     if (isNaN(packId)) {
-        sendContentPacks(msg, event);
-        //sendContentPacks(messageText, event);
+      sendContentPacks(msg, event);
+      //  sendContentPacks(messageText, event);
     } else {
-        sendContentPackItems(packId, event);
+        //sendContentPackItems(packId, event);
     }
 }
 
@@ -500,13 +753,13 @@ function sendContentPacks(categoryName, event) {
     }
 }
 
-function sendContentPackItems(packId, event) {
+function sendContentPackItems(packId, messagingEvent) {
     //connection.query('select distinct item_id,item_name,item_type,item_image_url from fk_pack_multiple_item where pack_id = ? union all select distinct item_id,item_name,item_type,iteam_image_url from fk_pack_poll_item where pack_id = ?', [packId,packId], function(error, rows) {
     connection.query('Select poll.item_name,poll.item_type,poll.iteam_image_url,poll.left_text,poll.right_text from rankworlddev.fk_pack_poll_item As poll Inner Join rankworlddev.fk_pack_content_items On rankworlddev.fk_pack_content_items.id = poll.item_id where rankworlddev.fk_pack_content_items.pack_id = ?', [packId], function(error, rows) {
         if (error) {
             console.log('error while retriving content pack items from database', error);
         } else if (rows.length > 0) {
-            var senderID = event.sender.id;
+            var senderID = messagingEvent.sender.id;
             var contentList = [];
             for (var i = 0; i < rows.length; i++) { //Construct request body
                 if (rows[i].item_type == 'Poll') {
