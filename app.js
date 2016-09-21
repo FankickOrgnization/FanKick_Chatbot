@@ -122,7 +122,7 @@ app.post('/webhook', function(req, res) {
 });
 
 function textmessage(messagingEvent){
-  var msgText = messagingEvent.message.text;
+    var msgText = messagingEvent.message.text;
   console.log("messaging_message:------",messagingEvent.message);
   console.log("messaging_message_text:------",messagingEvent.message.text);
   console.log("messaging_msgText:------",msgText);
@@ -522,22 +522,22 @@ function sendGenericMessage(event, msg) {
      //console.log("$$$$$----event111", event.message.text);
      console.log("$$$$$----event111", msg);
      //console.log("$$$$$----event111", event.postback.payload);
-     sendContentPacks(event, msg);
- //    var messageText = event.hasOwnProperty('message') ? event.msg : event.postback.payload;
- //  //   var messageText = event.hasOwnProperty('message') ? event.message.text : event.postback.payload;
- //    console.log("$$$$$----messageText", messageText);
- // var packId = parseInt(msg);
- //    // var packId = parseInt(messageText);
- //    console.log("$$$$$---packId", packId );
- //    if (isNaN(packId)) {
- //      sendContentPacks(msg, event);
- //      //  sendContentPacks(messageText, event);
- //    } else {
- //        //sendContentPackItems(packId, event);
- //    }
+
+    var messageText = event.hasOwnProperty('message') ? event.msg : event.postback.payload;
+  //   var messageText = event.hasOwnProperty('message') ? event.message.text : event.postback.payload;
+    console.log("$$$$$----messageText", messageText);
+ var packId = parseInt(msg);
+    // var packId = parseInt(messageText);
+    console.log("$$$$$---packId", packId );
+    if (isNaN(packId)) {
+      sendContentPacks(msg, event);
+      //  sendContentPacks(messageText, event);
+    } else {
+        //sendContentPackItems(packId, event);
+    }
 }
 
-function sendContentPacks(event, categoryName) {
+function sendContentPacks(categoryName, event) {
   console.log("*************---categoryName----*******", categoryName );
     if (categoryName == "Categories") {
         var senderID = event.sender.id;
