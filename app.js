@@ -406,7 +406,7 @@ function receivedMessage(event) {
                 console.log("Response from Wit************1", wit_res_data.entities);
                 console.log("Response from Wit************2", wit_res_data_ent.intent);
                 console.log("Response from Wit************3", wit_res_data_ent.location);
-                console.log("Response from Wit************4", wit_res_data_intent);
+                console.log("Response from Wit************4", wit_res_data_intent.length);
                 console.log("Response from Wit************5", wit_res_data_location);
                 //console.log("Response from Wit************6", wit_res_data_intent.value);
  if(wit_res_data_intent.length == 0){
