@@ -401,6 +401,7 @@ function receivedMessage(event) {
               var wit_res_msg_id = wit_res_data.msg_id;
 
                 console.log("Response from Wit--Res", res);
+                console.log("Response from Wit--response", response);
                 console.log("Response from Wit--msg_id", wit_res_data.msg_id);
                 console.log("Response from Wit************1", wit_res_data.entities);
                 console.log("Response from Wit************2", wit_res_data_ent.intent);
