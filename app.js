@@ -93,9 +93,7 @@ app.post('/webhook', function(req, res) {
                     }
                     //var msgText = messagingEvent.message.text;
                     console.log("messaging:------",messagingEvent);
-
                     textmessage(messagingEvent);
-
 
                 } else if (messagingEvent.delivery) {
                     //receivedDeliveryConfirmation(messagingEvent);
@@ -142,7 +140,6 @@ function textpayload(messagingEvent){
     console.log("packId*************Text", packId );
     //sendContentPacks(msg, event);
     //  sendContentPacks(messageText, event);
-
   } else {
     console.log("packId*************Number", packId );
     console.log("packId*************Number1", messagingEvent );
@@ -411,7 +408,10 @@ function receivedMessage(event) {
                 console.log("Response from Wit************4", wit_res_data_intent);
                 console.log("Response from Wit************5", wit_res_data_location);
                 //console.log("Response from Wit************6", wit_res_data_intent.value);
+ if(wit_res_data_intent.length == 0){
+   console.log("wit_res_data_intent.length is Zero", wit_res_data_intent.length);
 
+ }else{
                 for(var i=0;i<wit_res_data_intent.length;i++)
                 {
                   var td1=wit_res_data_intent[i]["confidence"];
@@ -429,6 +429,7 @@ function receivedMessage(event) {
             }
           //  msgwit_value = td3;
             //console.log('msgwit_value******', msgwit_value);
+            }
         });
         //msgwit_value = td3;
         //console.log('msgwit_value******msgwit_value', msgwit_value);
