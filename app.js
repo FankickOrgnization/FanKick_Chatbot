@@ -455,7 +455,7 @@ function getwitmsgifcondition(msgwit_value) {
               break;
 
           case 'generic':
-              sendGenericMessage(senderID);
+              //sendGenericMessage(senderID);
               break;
 
               //  case 'account linking':
