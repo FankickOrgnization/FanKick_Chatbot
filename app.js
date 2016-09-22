@@ -411,7 +411,8 @@ function receivedMessage(event) {
                 //console.log("Response from Wit************6", wit_res_data_intent.value);
                 //var intentlength = wit_res_data_intent.length;
                 if(JSON.stringify(wit_res_data_ent) === '{}') { //This will check if the object is empty
-                  sendHelpMessage(event);
+                  //sendHelpMessage(event);
+                  sendContentPacks(msgwit, event)
                   console.log("wit_res_data_intent.length is Zero", wit_res_data_ent);
                   console.log("wit_res_data_intent.length is Zero", event);
                 }else{
@@ -432,7 +433,7 @@ function receivedMessage(event) {
             }
 
             }
-        });  
+        });
 
 function getwitmsgifcondition(msgwit_value) {
   if (msgwit_value) {
