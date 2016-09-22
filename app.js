@@ -414,10 +414,10 @@ function receivedMessage(event) {
                 // if(wit_res_data_intent == {}){
                 //   console.log("wit_res_data_intent.length is Zero", wit_res_data_intent.length);
                 // }else{
-                if(JSON.stringify(wit_res_data_intent) === '{}') { //This will check if the object is empty
-                  console.log("wit_res_data_intent.length is Zero", wit_res_data_intent);
+                if(JSON.stringify(wit_res_data_ent) === '{}') { //This will check if the object is empty
+                  console.log("wit_res_data_intent.length is Zero", wit_res_data_ent);
                   }
-                  
+
                 for(var i=0;i<wit_res_data_intent.length;i++)
                 {
                   var td1=wit_res_data_intent[i]["confidence"];
