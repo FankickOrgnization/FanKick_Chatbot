@@ -974,6 +974,7 @@ app.listen(process.env.PORT);
 // });
 
 //module.exports = app;
+connection.end();
 module.exports = {
   // test1: function() {
   //     console.log('var is', this.myvar);
