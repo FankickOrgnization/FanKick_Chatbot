@@ -432,8 +432,8 @@ function receivedMessage(event) {
             }
 
             }
-        });
-}
+        });  
+
 function getwitmsgifcondition(msgwit_value) {
   if (msgwit_value) {
     console.log('msgwit_value******msgwit_value', msgwit_value);
@@ -476,7 +476,7 @@ function getwitmsgifcondition(msgwit_value) {
   }
 }
 
-
+}
 
 
 function sendHelpMessage(event) {
