@@ -316,52 +316,48 @@ function textpayload(messagingEvent){
       }else if (categoryName == "Virat Kohli") {
         request({
             uri: 'https://webhose.io/search?token=a5010355-3c38-4a95-854f-85b4bd499882&format=json&q='+categoryName,
-            headers: {
-                "Accept": "text/plain"
+        },function(error, response) {
+            console.log("Webhose_response data:", response);
+            console.log("Webhose_error data::", error);
+            if (error) {
+                console.log("Error While retriving content pack data from database:", error);
+            } else if (response.length) {
+              console.log("Error While retriving content pack data from database:", response);
+                var senderID = messagingEvent.sender.id;
+                var contentList = [];
+                for (var i = 0; i < 5; i++) { //Construct request body
+                    var keyMap = {
+                        "title": rows[i].name,
+                        "image_url": rows[i].imageurl,
+                        "item_url": rows[i].imageurl,
+                        "buttons": [{
+
+                            "type": "postback",
+                            "title": "Read More",
+                            "payload": "USER_DEFINED_PAYLOAD"
+                        }]
+                    };
+                    contentList.push(keyMap);
+                }
+                var messageData = {
+                    "recipient": {
+                        "id": senderID
+                    },
+                    "message": {
+                        "attachment": {
+                            "type": "template",
+                            "payload": {
+                                "template_type": "generic",
+                                "elements": contentList
+                            }
+                        }
+                    }
+                }
+                callSendAPI(messageData);
+            } else {
+                console.log("No Data Found From Database");
+                sendHelpMessage(messagingEvent);
             }
-        },function (result) {
-      console.log(result.status, result.headers, result.body);
-        // },function(error, response) {
-        //     console.log("Webhose_response data:", response);
-        //     console.log("Webhose_error data::", error);
-        //     if (error) {
-        //         console.log("Error While retriving content pack data from database:", error);
-        //     } else if (response.length) {
-        //       console.log("Error While retriving content pack data from database:", response);
-        //         var senderID = messagingEvent.sender.id;
-        //         var contentList = [];
-        //         for (var i = 0; i < 5; i++) { //Construct request body
-        //             var keyMap = {
-        //               "title": response[i].title,
-        //               "image_url": response[i].main_image,
-        //               "item_url": response[i].main_image,
-        //               "buttons": [{
-        //                 "type": "web_url",
-        //                 "url": response[i].url,
-        //                 "title": "Read More"
-        //               }]
-        //             };
-        //             contentList.push(keyMap);
-        //         }
-        //         var messageData = {
-        //             "recipient": {
-        //                 "id": senderID
-        //             },
-        //             "message": {
-        //                 "attachment": {
-        //                     "type": "template",
-        //                     "payload": {
-        //                         "template_type": "generic",
-        //                         "elements": contentList
-        //                     }
-        //                 }
-        //             }
-        //         }
-        //         callSendAPI(messageData);
-        //     } else {
-        //         console.log("No Data Found From Database");
-        //         sendHelpMessage(messagingEvent);
-        //     }
         });
       } else {
           connection.query('SELECT * FROM fk_content_pack where category_id = (SELECT id FROM fk_category where name = ?)', [categoryName], function(err, rows) {
@@ -753,54 +749,51 @@ function sendContentPacks(categoryName, event) {
     }else if (categoryName == "Virat Kohli") {
       request({
           uri: 'https://webhose.io/search?token=a5010355-3c38-4a95-854f-85b4bd499882&format=json&q='+categoryName,
-          headers: {
-              "Accept": "text/plain"
-          }
-      },function (result) {
-    console.log(result.status, result.headers, result.body);
+          // headers: {
+          //     "Authorization": "Bearer USTWU2HGSIYGK3JBQX6EM2UGEQOS26ZX"
+          // }
+      },function(error, response) {
+        console.log("Webhose_response data:", response);
+        console.log("Webhose_error data::", error);
+          if (error) {
+              console.log("Error While retriving content pack data from database:", error);
+          } else if (response.length) {
+            console.log("Error While retriving content pack data from database:", response);
+              var senderID = messagingEvent.sender.id;
+              var contentList = [];
+              for (var i = 0; i < 5; i++) { //Construct request body
+                  var keyMap = {
+                      "title": rows[i].name,
+                      "image_url": rows[i].imageurl,
+                      "item_url": rows[i].imageurl,
+                      "buttons": [{
 
-      // function(response) {
-      //   console.log(result.status, result.headers, result.body);
-      //   console.log("Webhose_response data:", response);
-      //   console.log("Webhose_error data::", error);
-      //     if (error) {
-      //         console.log("Error While retriving content pack data from database:", error);
-      //     } else if (response.length) {
-      //       console.log("Error While retriving content pack data from database:", response);
-      //         var senderID = messagingEvent.sender.id;
-      //         var contentList = [];
-      //         for (var i = 0; i < 5; i++) { //Construct request body
-      //             var keyMap = {
-      //                 "title": response[i].title,
-      //                 "image_url": response[i].main_image,
-      //                 "item_url": response[i].main_image,
-      //                 "buttons": [{
-      //                   "type": "web_url",
-      //                   "url": response[i].url,
-      //                   "title": "Read More"
-      //                 }]
-      //             };
-      //             contentList.push(keyMap);
-      //         }
-      //         var messageData = {
-      //             "recipient": {
-      //                 "id": senderID
-      //             },
-      //             "message": {
-      //                 "attachment": {
-      //                     "type": "template",
-      //                     "payload": {
-      //                         "template_type": "generic",
-      //                         "elements": contentList
-      //                     }
-      //                 }
-      //             }
-      //         }
-      //         callSendAPI(messageData);
-      //     } else {
-      //         console.log("No Data Found From Database");
-      //         sendHelpMessage(messagingEvent);
-      //     }
+                          "type": "postback",
+                          "title": "Read More",
+                          "payload": "USER_DEFINED_PAYLOAD"
+                      }]
+                  };
+                  contentList.push(keyMap);
+              }
+              var messageData = {
+                  "recipient": {
+                      "id": senderID
+                  },
+                  "message": {
+                      "attachment": {
+                          "type": "template",
+                          "payload": {
+                              "template_type": "generic",
+                              "elements": contentList
+                          }
+                      }
+                  }
+              }
+              callSendAPI(messageData);
+          } else {
+              console.log("No Data Found From Database");
+              sendHelpMessage(messagingEvent);
+          }
       });
     } else {
         connection.query('SELECT * FROM fk_content_pack where category_id = (SELECT id FROM fk_category where name = ?)', [categoryName], function(err, rows) {
