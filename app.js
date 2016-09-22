@@ -227,7 +227,7 @@ function textpayload(messagingEvent){
               if (err) {
                   console.log("Error While retriving content pack data from database:", err);
               } else if (rows.length) {
-                  var senderID = event.sender.id;
+                  var senderID = messagingEvent.sender.id;
                   var contentList = [];
                   for (var i = 0; i < 5; i++) { //Construct request body
                       var keyMap = {
