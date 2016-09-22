@@ -414,13 +414,11 @@ function receivedMessage(event) {
                 // if(wit_res_data_intent == {}){
                 //   console.log("wit_res_data_intent.length is Zero", wit_res_data_intent.length);
                 // }else{
-                if(JSON.stringify(wit_res_data_ent) === '{}') { //This will check if the object is empty
+                if(JSON.stringify(wit_res_data_ent.intent) === '{}') { //This will check if the object is empty
                   sendHelpMessage(event);
                   console.log("wit_res_data_intent.length is Zero", wit_res_data_ent);
                   console.log("wit_res_data_intent.length is Zero", event);
-
-                };
-
+                }else{
                 for(var i=0;i<wit_res_data_intent.length;i++)
                 {
                   var td1=wit_res_data_intent[i]["confidence"];
@@ -435,7 +433,7 @@ function receivedMessage(event) {
             //  bot.getwitmsg(wit_res_msg_id,msgwit_value,msgwit);
               getwitmsgifcondition(msgwit_value);
             //  bot.wittest(msgwit_value);
-            //}
+            }
           //  msgwit_value = td3;
             //console.log('msgwit_value******', msgwit_value);
             }
