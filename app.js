@@ -410,11 +410,7 @@ function receivedMessage(event) {
                 console.log("Response from Wit************5", wit_res_data_location);
                 //console.log("Response from Wit************6", wit_res_data_intent.value);
                 //var intentlength = wit_res_data_intent.length;
-
-                // if(wit_res_data_intent == {}){
-                //   console.log("wit_res_data_intent.length is Zero", wit_res_data_intent.length);
-                // }else{
-                if(JSON.stringify(wit_res_data_ent.intent) === '{}') { //This will check if the object is empty
+                if(JSON.stringify(wit_res_data_ent) === '{}') { //This will check if the object is empty
                   sendHelpMessage(event);
                   console.log("wit_res_data_intent.length is Zero", wit_res_data_ent);
                   console.log("wit_res_data_intent.length is Zero", event);
@@ -434,19 +430,10 @@ function receivedMessage(event) {
               getwitmsgifcondition(msgwit_value);
             //  bot.wittest(msgwit_value);
             }
-          //  msgwit_value = td3;
-            //console.log('msgwit_value******', msgwit_value);
+
             }
         });
-        //msgwit_value = td3;
-        //console.log('msgwit_value******msgwit_value', msgwit_value);
-        //console.log('msgwit_value******', msgwit_value);
-    //}
-
-
-    //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-
-
+}
 function getwitmsgifcondition(msgwit_value) {
   if (msgwit_value) {
     console.log('msgwit_value******msgwit_value', msgwit_value);
@@ -489,7 +476,7 @@ function getwitmsgifcondition(msgwit_value) {
   }
 }
 
-}
+
 
 
 function sendHelpMessage(event) {
