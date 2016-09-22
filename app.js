@@ -5,14 +5,14 @@ var bodyParser = require('body-parser');
 var mysql = require('mysql');
 //let wit = require('node-wit').Wit;
 //let log = require('node-wit').log;
-const bot = require('./wit.js');
+//const bot = require('./wit.js');
 const fetch = require('node-fetch');
 const crypto = require('crypto');
-var a = require('./wit.js').initValue;
-bot.myvar = 'Hello world**********Hello world';
-bot.test();
-var name = bot.name;
-var name123 = bot.witvalue;
+//var a = require('./wit.js').initValue;
+//bot.myvar = 'Hello world**********Hello world';
+//bot.test();
+//var name = bot.name;
+//var name123 = bot.witvalue;
 //var value_1232 = bot.value_123;
 //console.log("#############namenamenamenamename#############",name);
 //console.log("#############namenamenamenamename#############",name123);
@@ -380,7 +380,7 @@ function receivedMessage(event) {
     //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
     //function getMessageFromWitAPI(message) {
       var msgwit = messageText;
-      bot.getwitmessageText(msgwit);
+      //bot.getwitmessageText(msgwit);
 
       //var tb3;
         request({
@@ -423,9 +423,9 @@ function receivedMessage(event) {
               console.log("value************5", td3);
               msgwit_value = td3;
               console.log('******msgwit_value', msgwit_value);
-              bot.getwitmsg(wit_res_msg_id,msgwit_value,msgwit);
+            //  bot.getwitmsg(wit_res_msg_id,msgwit_value,msgwit);
               getwitmsgifcondition(msgwit_value);
-              bot.wittest(msgwit_value);
+            //  bot.wittest(msgwit_value);
             }
           //  msgwit_value = td3;
             //console.log('msgwit_value******', msgwit_value);

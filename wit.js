@@ -184,12 +184,12 @@ request({
 //   }
 // }
 
-var value_123 = witvalue;
-console.log("Unable to send message value_123.",value_123 );
-module.exports = {
-    test: function() {
-        console.log('var is', this.myvar);
-    },
+// var value_123 = witvalue;
+// console.log("Unable to send message value_123.",value_123 );
+// module.exports = {
+//     test: function() {
+//         console.log('var is', this.myvar);
+//     },
 // function(initValue) {
 //   console.log("initValue",initValue);
 //   // return {
@@ -202,11 +202,11 @@ module.exports = {
 //   // }
 //   return "initValue";
 // },
-  wittest: wittest,
-  name : name,
+  //wittest: wittest,
+  //name : name,
   //value_123 : value_123,
   //witvalue : witvalue,
   //getWit: getWit,
-  getwitmsg: getwitmsg,
-  getwitmessageText: getwitmessageText
+  //getwitmsg: getwitmsg,
+  //getwitmessageText: getwitmessageText
 };
