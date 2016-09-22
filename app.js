@@ -315,11 +315,8 @@ function textpayload(messagingEvent){
           callSendAPI(messageData);
       }else if (categoryName == "Virat Kohli") {
         request({
-            uri: 'https://webhose.io/search?token=a5010355-3c38-4a95-854f-85b4bd499882&format=json&q=Virat Kohli',
-            // headers: {
-            //     "Authorization": "Bearer USTWU2HGSIYGK3JBQX6EM2UGEQOS26ZX"
-            // }
-        }function(error, response) {
+            uri: 'https://webhose.io/search?token=a5010355-3c38-4a95-854f-85b4bd499882&format=json&q='+categoryName,
+        },function(error, response) {
             console.log("Webhose_response data:", response);
             console.log("Webhose_error data::", error);
             if (error) {
@@ -755,7 +752,7 @@ function sendContentPacks(categoryName, event) {
           // headers: {
           //     "Authorization": "Bearer USTWU2HGSIYGK3JBQX6EM2UGEQOS26ZX"
           // }
-      }function(error, response) {
+      },function(error, response) {
         console.log("Webhose_response data:", response);
         console.log("Webhose_error data::", error);
           if (error) {
