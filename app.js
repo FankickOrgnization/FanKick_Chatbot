@@ -327,15 +327,14 @@ function textpayload(messagingEvent){
                 var contentList = [];
                 for (var i = 0; i < 5; i++) { //Construct request body
                     var keyMap = {
-                        "title": rows[i].name,
-                        "image_url": rows[i].imageurl,
-                        "item_url": rows[i].imageurl,
-                        "buttons": [{
-
-                            "type": "postback",
-                            "title": "Read More",
-                            "payload": "USER_DEFINED_PAYLOAD"
-                        }]
+                      "title": response[i].title,
+                      "image_url": response[i].main_image,
+                      "item_url": response[i].main_image,
+                      "buttons": [{
+                        "type": "web_url",
+                        "url": response[i].url,
+                        "title": "Read More"
+                      }]
                     };
                     contentList.push(keyMap);
                 }
@@ -763,14 +762,13 @@ function sendContentPacks(categoryName, event) {
               var contentList = [];
               for (var i = 0; i < 5; i++) { //Construct request body
                   var keyMap = {
-                      "title": rows[i].name,
-                      "image_url": rows[i].imageurl,
-                      "item_url": rows[i].imageurl,
+                      "title": response[i].title,
+                      "image_url": response[i].main_image,
+                      "item_url": response[i].main_image,
                       "buttons": [{
-
-                          "type": "postback",
-                          "title": "Read More",
-                          "payload": "USER_DEFINED_PAYLOAD"
+                        "type": "web_url",
+                        "url": response[i].url,
+                        "title": "Read More"
                       }]
                   };
                   contentList.push(keyMap);
