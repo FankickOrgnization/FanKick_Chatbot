@@ -748,7 +748,7 @@ function sendContentPacks(categoryName, event) {
         callSendAPI(messageData);
     }else if (categoryName == "Virat Kohli") {
       request({
-          uri: 'https://webhose.io/search?token=a5010355-3c38-4a95-854f-85b4bd499882&format=json&q=Virat Kohli',
+          uri: 'https://webhose.io/search?token=a5010355-3c38-4a95-854f-85b4bd499882&format=json&q='+categoryName,
           // headers: {
           //     "Authorization": "Bearer USTWU2HGSIYGK3JBQX6EM2UGEQOS26ZX"
           // }
