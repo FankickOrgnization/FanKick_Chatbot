@@ -118,6 +118,7 @@ function textmessage(msgwit, messagingEvent){
   console.log("messaging_message_text:------",messagingEvent.message.text);
   console.log("messaging_msgText:------",msgText);
   console.log("messaging_msgText:------:------",msgwit);
+  sendContentPacks(msgwit, messagingEvent);
 };
 // message text section Start ********************************************
 
@@ -409,7 +410,7 @@ function receivedMessage(event) {
                 if(JSON.stringify(wit_res_data_ent) === '{}') { //This will check if the object is empty
                   //sendHelpMessage(event);
                   textmessage(msgwit, event)
-                  sendContentPacks(msgwit, event)
+                  //sendContentPacks(msgwit, event)
                   console.log("wit_res_data_intent.length is Zero", wit_res_data_ent);
                   console.log("wit_res_data_intent.length is Zero", event);
                 }else{
