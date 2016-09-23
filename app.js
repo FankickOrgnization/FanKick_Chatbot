@@ -8,7 +8,8 @@ var mysql = require('mysql');
 //const bot = require('./wit.js');
 const fetch = require('node-fetch');
 const crypto = require('crypto');
-var connection = mysql.createConnection({
+var pool = mysql.createPool({
+    connectionLimit : 10,
     host: 'ap-cdbr-azure-southeast-a.cloudapp.net',
     user: 'bb603e8108da6e',
     password: '3e384329',
@@ -42,13 +43,13 @@ const WIT_TOKEN = process.env.WIT_TOKEN;
 // Call them
 //console.log(a.addOne());
 //console.log(a.subtractOne());
-connection.connect(function(error) {
-    if (error) {
-        console.log("Error conecting to db", error);
-    }
-    console.log("connection successfully");
-});
-//connection.end();
+// connection.connect(function(error) {
+//     if (error) {
+//         console.log("Error conecting to db", error);
+//     }
+//     console.log("connection successfully");
+// });
+
 app.use(bodyParser.json());
 
 app.get("/hello", function(req, res) {
@@ -143,6 +144,7 @@ function textpayload(messagingEvent){
       sendContentPackItems(packId, messagingEvent);
   }
 };
+
 // postback payload section End ********************************************
 
 function receivedMessage(event) {
@@ -347,7 +349,7 @@ function sendContentPacks(categoryName, event) {
         }
         callSendAPI(messageData);
     } else if (categoryName == "Fan Clubs") {
-       connection.connect();
+      pool.getConnection(function(err, connection) {
         connection.query('SELECT * FROM fk_pack_fanclub', function(err, rows) {
             if (err) {
                 console.log("Error While retriving content pack data from database:", err);
@@ -383,15 +385,16 @@ function sendContentPacks(categoryName, event) {
                     }
                 }
                 callSendAPI(messageData);
-                connection.end();
             } else {
                 console.log("No Data Found From Database");
                 sendHelpMessage(event);
             }
+            connection.release();
+        });
         });
     } else if (categoryName == "Fan Magazine") {
         //console.log("***************************", categoryName);
-        connection.connect();
+        pool.getConnection(function(err, connection) {
         connection.query('SELECT * FROM fk_pack_fan_magazines', function(err, rows) {
             //console.log("*************************-after", categoryName);
             //console.log("*************************-after", rows);
@@ -429,11 +432,12 @@ function sendContentPacks(categoryName, event) {
                     }
                 }
                 callSendAPI(messageData);
-                connection.end();
             } else {
                 console.log("No Data Found From Database");
                 sendHelpMessage(event);
             }
+            connection.release();
+        });
         });
     } else if (categoryName == "Yes") {
         var senderID = event.sender.id;
@@ -486,7 +490,7 @@ function sendContentPacks(categoryName, event) {
         }
         callSendAPI(messageData);
     } else {
-       connection.connect();
+      pool.getConnection(function(err, connection) {
         connection.query('SELECT * FROM fk_content_pack where category_id = (SELECT id FROM fk_category where name = ?)', [categoryName], function(err, rows) {
             if (err) {
                 console.log("Error While retriving content pack data from database:", err);
@@ -526,19 +530,20 @@ function sendContentPacks(categoryName, event) {
                     }
                 }
                 callSendAPI(messageData);
-                connection.end();
             } else {
                 console.log("No Data Found From Database");
                 sendHelpMessage(event);
                 //sendImageMessage(event);
             }
+            connection.release();
+        });
         });
     }
 }
 
 function sendContentPackItems(packId, messagingEvent) {
     //connection.query('select distinct item_id,item_name,item_type,item_image_url from fk_pack_multiple_item where pack_id = ? union all select distinct item_id,item_name,item_type,iteam_image_url from fk_pack_poll_item where pack_id = ?', [packId,packId], function(error, rows) {
-   connection.connect();
+pool.getConnection(function(err, connection) {
     connection.query('Select poll.item_name,poll.item_type,poll.iteam_image_url,poll.left_text,poll.right_text from rankworlddev.fk_pack_poll_item As poll Inner Join rankworlddev.fk_pack_content_items On rankworlddev.fk_pack_content_items.id = poll.item_id where rankworlddev.fk_pack_content_items.pack_id = ?', [packId], function(error, rows) {
         if (error) {
             console.log('error while retriving content pack items from database', error);
@@ -591,8 +596,9 @@ function sendContentPackItems(packId, messagingEvent) {
                 }
             }
             callSendAPI(messageData);
-            connection.end();
         }
+        connection.release();
+    });
     });
 }
 
