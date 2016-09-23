@@ -8,6 +8,12 @@ var mysql = require('mysql');
 //const bot = require('./wit.js');
 const fetch = require('node-fetch');
 const crypto = require('crypto');
+var connection = mysql.createConnection({
+    host: 'ap-cdbr-azure-southeast-a.cloudapp.net',
+    user: 'bb603e8108da6e',
+    password: '3e384329',
+    database: 'rankworlddev'
+});
 //var a = require('./wit.js').initValue;
 //bot.myvar = 'Hello world**********Hello world';
 //bot.test();
@@ -36,14 +42,6 @@ const WIT_TOKEN = process.env.WIT_TOKEN;
 // Call them
 //console.log(a.addOne());
 //console.log(a.subtractOne());
-
-var connection = mysql.createConnection({
-    host: 'ap-cdbr-azure-southeast-a.cloudapp.net',
-    user: 'bb603e8108da6e',
-    password: '3e384329',
-    database: 'rankworlddev'
-});
-
 connection.connect(function(error) {
     if (error) {
         console.log("Error conecting to db", error);
@@ -52,7 +50,6 @@ connection.connect(function(error) {
 });
 
 app.use(bodyParser.json());
-
 
 app.get("/hello", function(req, res) {
   res.send('welcome to chat bot');
@@ -81,10 +78,8 @@ app.post('/webhook', function(req, res) {
             var pageID = pageEntry.id;
             var timeOfEvent = pageEntry.time;
             console.log("Page Entry Details:", JSON.stringify(pageEntry));
-
             // Iterate over each messaging event
             pageEntry.messaging.forEach(function(messagingEvent) {
-
                 if (messagingEvent.optin) {
                     //receivedAuthentication(messagingEvent);
                 } else if (messagingEvent.message) {
@@ -93,16 +88,13 @@ app.post('/webhook', function(req, res) {
                     }
                     //var msgText = messagingEvent.message.text;
                     console.log("messaging:------",messagingEvent);
-                    textmessage(messagingEvent);
-
+                    //textmessage(messagingEvent);
                 } else if (messagingEvent.delivery) {
                     //receivedDeliveryConfirmation(messagingEvent);
                 } else if (messagingEvent.postback) {
                     //sendGenericMessage(messagingEvent);
                   //  var payloadText = messagingEvent.postback.payload;
                      textpayload(messagingEvent);
-
-
                 } else if (messagingEvent.read) {
                     //console.log("Webhook received unknown messagingEvent: ", messagingEvent);
                 } else {
@@ -119,12 +111,16 @@ app.post('/webhook', function(req, res) {
     }
 });
 
-function textmessage(messagingEvent){
+// message text section Start ********************************************
+function textmessage(msgwit, messagingEvent){
     var msgText = messagingEvent.message.text;
   console.log("messaging_message:------",messagingEvent.message);
   console.log("messaging_message_text:------",messagingEvent.message.text);
   console.log("messaging_msgText:------",msgText);
+  console.log("messaging_msgText:------:------",msgwit);
 };
+// message text section Start ********************************************
+
 // postback payload section Start ********************************************
 function textpayload(messagingEvent){
   var categoryName = messagingEvent.postback.payload;
@@ -412,6 +408,7 @@ function receivedMessage(event) {
                 //var intentlength = wit_res_data_intent.length;
                 if(JSON.stringify(wit_res_data_ent) === '{}') { //This will check if the object is empty
                   //sendHelpMessage(event);
+                  textmessage(msgwit, event)
                   sendContentPacks(msgwit, event)
                   console.log("wit_res_data_intent.length is Zero", wit_res_data_ent);
                   console.log("wit_res_data_intent.length is Zero", event);
