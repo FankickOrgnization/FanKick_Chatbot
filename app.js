@@ -875,6 +875,7 @@ app.listen(process.env.PORT);
 // });
 
 //module.exports = app;
+
 module.exports = {
   // test1: function() {
   //     console.log('var is', this.myvar);
@@ -882,3 +883,4 @@ module.exports = {
   //fbwittest: fbwittest
   // getWit:getWit
 };
+connection.end();
