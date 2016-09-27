@@ -507,7 +507,7 @@ function sendContentPacks(categoryName, event) {
                     var keyMap = {
                         "title": response.thread[i].title,
                         "image_url": response.thread[i].main_image,
-                        "item_url": response.thread[i].imageurl,
+                        "item_url": response.thread[i].main_image,
                         "buttons": [{
                             "type": "postback",
                             "title": "Read More",
@@ -515,11 +515,12 @@ function sendContentPacks(categoryName, event) {
                         }]
                     };
                     contentList.push(keyMap);
+                    console.log("#######################contentList",contentList);
                 }
               }
             else {
                 console.log("No Data Found From Database");
-                sendHelpMessage(messagingEvent);
+                sendHelpMessage(event);
             }
         });
       } else {
