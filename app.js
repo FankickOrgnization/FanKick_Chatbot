@@ -495,8 +495,8 @@ function sendContentPacks(categoryName, event) {
             uri: 'https://webhose.io/search?token=a5010355-3c38-4a95-854f-85b4bd499882&format=json&q='+categoryName,
         },function(error, response) {
             //console.log("Webhose_response data:", response);
-            //console.log("Webhose_response data:", response);
-            console.log("Webhose_response data:", response.thread);
+          console.log("Webhose_response data:", response.posts);
+            console.log("Webhose_response data:", response.posts.thread);
             console.log("Webhose_error data::", error);
             if (error) {
                 console.log("Error While retriving content pack data from database:", error);
@@ -505,9 +505,9 @@ function sendContentPacks(categoryName, event) {
                 var contentList = [];
                 for (var i = 0; i < 5; i++) { //Construct request body
                     var keyMap = {
-                        "title": response.thread[i].title,
-                        "image_url": response.thread[i].main_image,
-                        "item_url": response.thread[i].main_image,
+                        "title": response.posts.thread[i].title,
+                        "image_url": response.posts.thread[i].main_image,
+                        "item_url": response.posts.thread[i].main_image,
                         "buttons": [{
                             "type": "postback",
                             "title": "Read More",
