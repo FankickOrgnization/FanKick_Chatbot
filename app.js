@@ -495,10 +495,27 @@ function sendContentPacks(categoryName, event) {
             uri: 'https://webhose.io/search?token=a5010355-3c38-4a95-854f-85b4bd499882&format=json&q='+categoryName,
         },function(error, response) {
             console.log("Webhose_response data:", response);
+            console.log("Webhose_response data:", response);
+            console.log("Webhose_response data:", response);
             console.log("Webhose_error data::", error);
             if (error) {
                 console.log("Error While retriving content pack data from database:", error);
-            }
+            }else if (response.length) {
+                var senderID = event.sender.id;
+                var contentList = [];
+                for (var i = 0; i < 5; i++) { //Construct request body
+                    var keyMap = {
+                        "title": response.thread[i].title,
+                        "image_url": response.thread[i].main_image,
+                        "item_url": response.thread[i].imageurl,
+                        "buttons": [{
+                            "type": "postback",
+                            "title": "Read More",
+                            "payload": "USER_DEFINED_PAYLOAD"
+                        }]
+                    };
+                    contentList.push(keyMap);
+                }
             else {
                 console.log("No Data Found From Database");
                 sendHelpMessage(messagingEvent);
