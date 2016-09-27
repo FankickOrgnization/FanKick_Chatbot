@@ -7,6 +7,7 @@ var mysql = require('mysql');
 //let log = require('node-wit').log;
 //const bot = require('./wit.js');
 const fetch = require('node-fetch');
+
 const crypto = require('crypto');
 var pool = mysql.createPool({
     connectionLimit : 10,
