@@ -489,7 +489,7 @@ function sendContentPacks(categoryName, event) {
             }
         }
         callSendAPI(messageData);
-    } else if (categoryName == "Virat Kohli") {
+    } else if (categoryName == "virat kohli") {
         console.log("Virat Kohli:", categoryName);
         request({
             uri: 'https://webhose.io/search?token=a5010355-3c38-4a95-854f-85b4bd499882&format=json&q='+categoryName,
@@ -498,7 +498,7 @@ function sendContentPacks(categoryName, event) {
             console.log("Webhose_error data::", error);
             if (error) {
                 console.log("Error While retriving content pack data from database:", error);
-            }           
+            }
             else {
                 console.log("No Data Found From Database");
                 sendHelpMessage(messagingEvent);
