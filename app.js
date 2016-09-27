@@ -494,9 +494,9 @@ function sendContentPacks(categoryName, event) {
         request({
             uri: 'https://webhose.io/search?token=a5010355-3c38-4a95-854f-85b4bd499882&format=json&q='+categoryName,
         },function(error, response) {
-            console.log("Webhose_response data:", response);
-            console.log("Webhose_response data:", response);
-            console.log("Webhose_response data:", response);
+            //console.log("Webhose_response data:", response);
+            //console.log("Webhose_response data:", response);
+            console.log("Webhose_response data:", response.thread);
             console.log("Webhose_error data::", error);
             if (error) {
                 console.log("Error While retriving content pack data from database:", error);
