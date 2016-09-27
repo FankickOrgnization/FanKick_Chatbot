@@ -516,6 +516,7 @@ function sendContentPacks(categoryName, event) {
                     };
                     contentList.push(keyMap);
                 }
+              }
             else {
                 console.log("No Data Found From Database");
                 sendHelpMessage(messagingEvent);
