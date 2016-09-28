@@ -9,7 +9,7 @@ var mysql = require('mysql');
 const fetch = require('node-fetch');
 const crypto = require('crypto');
 var pool = mysql.createPool({
-    connectionLimit : 4,
+    connectionLimit : 2,
     host: 'ap-cdbr-azure-southeast-a.cloudapp.net',
     user: 'bb603e8108da6e',
     password: '3e384329',
