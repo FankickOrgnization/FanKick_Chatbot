@@ -492,19 +492,19 @@ function sendContentPacks(categoryName, event) {
     } else if (categoryName == "virat kohli") {
         console.log("Virat Kohli:", categoryName);
         request({
-            //uri:'https://webhose.io/search?token=a5010355-3c38-4a95-854f-85b4bd499882&format=json&q=aamir%20khan%20language%3A(english)%20thread.country%3AIN%20site_category%3Aentertainment&ts=1474965527596',
-            uri:'  https://webhose.io/search?token=a5010355-3c38-4a95-854f-85b4bd499882&format=json&q=virat%20kohli%20thread.country%3AIN%20site_category%3Asports',
+            uri:'https://webhose.io/search?token=a5010355-3c38-4a95-854f-85b4bd499882&format=json&q=aamir%20khan%20language%3A(english)%20thread.country%3AIN%20site_category%3Aentertainment&ts=1474965527596',
+          //  uri:'  https://webhose.io/search?token=a5010355-3c38-4a95-854f-85b4bd499882&format=json&q=virat%20kohli%20thread.country%3AIN%20site_category%3Asports',
         },function(error, response) {
           var webhousedata = JSON.stringify(response.body);
             console.log("Webhose_data:", webhousedata.posts);
           var webhouseres = JSON.parse(response.body);
             console.log("Webhose_response:", webhouseres.posts);
-            //console.log("#####Webhose_response:#######", webhouseres.posts[0].thread);
-            //console.log("#####Webhose_response:#######", webhouseres.posts[0].thread.title);
-            //console.log("#####Webhose_response:#######", webhouseres.posts[0].thread.social);
-            //console.log("#####Webhose_response:#######", webhouseres.posts[0].thread.social.facebook);
-            //console.log("#####Webhose_response:#######", webhouseres.posts[0].thread.social.facebook.likes);
-          // webhouseres.forEach(function (thread) {
+            console.log("#####Webhose_response:#######", webhouseres.posts[0].thread);
+            console.log("#####Webhose_response:#######", webhouseres.posts[0].thread.title);
+            console.log("#####Webhose_response:#######", webhouseres.posts[0].thread.social);
+            console.log("#####Webhose_response:#######", webhouseres.posts[0].thread.social.facebook);
+            console.log("#####Webhose_response:#######", webhouseres.posts[0].thread.social.facebook.likes);
+          //webhouseres.forEach(function (thread) {
           //   console.log("Webhose_response data:",thread);
           // });
           // //  console.log("Webhose_response data:", response.posts.thread);
