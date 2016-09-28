@@ -500,6 +500,9 @@ function sendContentPacks(categoryName, event) {
             console.log("Webhose_response:", webhouseres.posts);
             console.log("#####Webhose_response:#######", webhouseres.posts[0].thread);
             console.log("#####Webhose_response:#######", webhouseres.posts[0].thread.title);
+            console.log("#####Webhose_response:#######", webhouseres.posts[0].thread.social);
+            console.log("#####Webhose_response:#######", webhouseres.posts[0].thread.social.facebook);
+            console.log("#####Webhose_response:#######", webhouseres.posts[0].thread.social.facebook.likes);
           // webhouseres.forEach(function (thread) {
           //   console.log("Webhose_response data:",thread);
           // });
