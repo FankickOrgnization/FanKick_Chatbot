@@ -470,23 +470,38 @@ function sendContentPacks(categoryName, event) {
             "recipient": {
                 "id": senderID
             },
-            "message": {
-                "attachment": {
-                    "type": "template",
-                    "payload": {
-                        "template_type": "generic",
-                        "elements": [{
-                            //  "title": "Welcome to FanKick",
-                            //  "image_url": "https://scontent.fbom1-2.fna.fbcdn.net/v/t1.0-1/p32x32/13627105_592208684292844_1737491960574535764_n.png?oh=ce8c86c4f7ba7348e003ef264f47a310&oe=587D2B8C",
-                            "buttons": [{
-                                "type": "postback",
-                                "title": "Magazine",
-                                "payload": "USER_DEFINED_PAYLOAD"
-                            }]
-                        }]
-                    }
-                }
-            }
+            // "message": {
+            //     "attachment": {
+            //         "type": "template",
+            //         "payload": {
+            //             "template_type": "generic",
+            //             "elements": [{
+            //                 //  "title": "Welcome to FanKick",
+            //                 //  "image_url": "https://scontent.fbom1-2.fna.fbcdn.net/v/t1.0-1/p32x32/13627105_592208684292844_1737491960574535764_n.png?oh=ce8c86c4f7ba7348e003ef264f47a310&oe=587D2B8C",
+            //                 "buttons": [{
+            //                     "type": "postback",
+            //                     "title": "Magazine",
+            //                     "payload": "USER_DEFINED_PAYLOAD"
+            //                 }]
+            //             }]
+            //         }
+            //     }
+            // }
+            "message":{
+    "text":"Pick a color:",
+    "quick_replies":[
+      {
+        "content_type":"text",
+        "title":"Red",
+        "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
+      },
+      {
+        "content_type":"text",
+        "title":"Green",
+        "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_GREEN"
+      }
+    ]
+  }
         }
         callSendAPI(messageData);
     } else if (categoryName == "virat kohli") {
