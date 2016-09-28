@@ -495,11 +495,11 @@ function sendContentPacks(categoryName, event) {
             uri:'https://webhose.io/search?token=a5010355-3c38-4a95-854f-85b4bd499882&format=json&q=aamir%20khan%20language%3A(english)%20thread.country%3AIN%20site_category%3Aentertainment&ts=1474965527596',
         },function(error, response) {
           var webhousedata = response.body;
-            console.log("Webhose_response data:", webhousedata);
+            console.log("Webhose_response data:", webhousedata.posts[0]);
           // var webhouseres = JSON.parse(response.body.posts);
-          webhousedata.forEach(function (posts) {
-            console.log("Webhose_response data:",posts);
-          });
+          // webhousedata.forEach(function (posts) {
+          //   console.log("Webhose_response data:",posts);
+          // });
           // //  console.log("Webhose_response data:", response.posts.thread);
             console.log("Webhose_error data:", error);
             if (error) {
