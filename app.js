@@ -488,41 +488,41 @@ function sendContentPacks(categoryName, event) {
             //     }
             // }
             "message":{
-    "text":"Pick a color:",
+    "text":"Please click Yes/No:",
     "quick_replies":[
       {
         "content_type":"text",
-        "title":"Red",
+        "title":"Yes",
         "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
       },
       {
         "content_type":"text",
-        "title":"Red",
+        "title":"No",
         "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
       },
       {
         "content_type":"text",
-        "title":"Red1",
+        "title":"Yes",
         "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
       },
       {
         "content_type":"text",
-        "title":"Red2",
+        "title":"No",
         "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
       },
       {
         "content_type":"text",
-        "title":"Red3",
+        "title":"Yes",
         "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
       },
       {
         "content_type":"text",
-        "title":"Red4",
+        "title":"No",
         "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
       },
       {
         "content_type":"text",
-        "title":"Green5",
+        "title":"Yes",
         "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_GREEN"
       }
     ]
