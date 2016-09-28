@@ -496,9 +496,9 @@ function sendContentPacks(categoryName, event) {
         },function(error, response) {
             //console.log("Webhose_response data:", response);
           var webhouseres = JSON.stringify(response.posts);
-          response.posts.forEach(thread){
+          response.posts.forEach(function (thread) {
             console.log("Webhose_response data:",thread);
-          }
+          });
           //  console.log("Webhose_response data:", response.posts.thread);
             console.log("Webhose_error data:", error);
             if (error) {
