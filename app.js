@@ -492,13 +492,13 @@ function sendContentPacks(categoryName, event) {
     } else if (categoryName == "virat kohli") {
         console.log("Virat Kohli:", categoryName);
         request({
-            uri: 'https://webhose.io/search?token=a5010355-3c38-4a95-854f-85b4bd499882&format=json&q='+categoryName,
+            uri:'https://webhose.io/search?token=a5010355-3c38-4a95-854f-85b4bd499882&format=json&q='+categoryName,
         },function(error, response) {
             //console.log("Webhose_response data:", response);
           var webhouseres = JSON.stringify(response);
-          console.log("Webhose_response data:", webhouseres);
+          console.log("Webhose_response data:", webhouseres.posts.thread);
           //  console.log("Webhose_response data:", response.posts.thread);
-            console.log("Webhose_error data::", error);
+            console.log("Webhose_error data:", error);
             if (error) {
                 console.log("Error While retriving content pack data from database:", error);
             }else if (response.length) {
@@ -677,7 +677,7 @@ function callSendAPI(messageData) {
     request({
         uri: 'https://graph.facebook.com/v2.6/592208327626213/messages',
         qs: {
-            access_token: 'EAAXcJew5yNkBAAvFD3wX3RZACdvA4lZB6XStBzliKI9y4m7I1taAnWUWBezVarL8FjteZCztMBjXZCs35lAweqmc2XZARIf378LZA5lTg5xIebmBmFL4MmJGU4JrowfdkkKDbjqwuzBkCWPxQjgddrW4EZBnv6LiccAHdqoLUNcsgZDZD'
+            access_token:'EAAXcJew5yNkBAAvFD3wX3RZACdvA4lZB6XStBzliKI9y4m7I1taAnWUWBezVarL8FjteZCztMBjXZCs35lAweqmc2XZARIf378LZA5lTg5xIebmBmFL4MmJGU4JrowfdkkKDbjqwuzBkCWPxQjgddrW4EZBnv6LiccAHdqoLUNcsgZDZD'
         },
         method: 'POST',
         json: messageData
