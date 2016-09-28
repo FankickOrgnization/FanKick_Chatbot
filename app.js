@@ -495,8 +495,8 @@ function sendContentPacks(categoryName, event) {
             uri:'https://webhose.io/search?token=a5010355-3c38-4a95-854f-85b4bd499882&format=json&q=virat%20kohli&ts=1474959657821',
         },function(error, response) {
             //console.log("Webhose_response data:", response);
-          var webhouseres = JSON.stringify(response.posts);
-          response.posts.forEach(function (thread) {
+          var webhouseres = JSON.parse(response.posts);
+          webhouseres.forEach(function (thread) {
             console.log("Webhose_response data:",thread);
           });
           //  console.log("Webhose_response data:", response.posts.thread);
