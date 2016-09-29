@@ -66,54 +66,27 @@ function receivedpostback(messagingEvent){
   var categoryName = messagingEvent.postback.payload;
   var userid = messagingEvent.sender.id;
   console.log("postback_sender_id:------",userid);
-  if(messagingEvent.postback.payload == "Get Started"){
+  if(categoryName == "Get Started"){
     //greetingtext(messagingEvent,Get Started);
-    fbuserdetails(userid);
-  }
-  // console.log("postback_sender_id:------",messagingEvent.sender.id);
-  // console.log("postback_postback:------",messagingEvent.postback);
-  // console.log("postback_postback_payload:------",messagingEvent.postback.payload);
-  // console.log("postback_payloadText:------",categoryName);
-  //console.log("$$$$$----messageText", messageText);
-  var packId = parseInt(categoryName);
-  // var packId = parseInt(messageText);
-  console.log("$$$$$---packId", packId );
-  if (isNaN(packId)) {
-    console.log("packId*************Text", packId );
-    sendContentPacks(categoryName, messagingEvent);
-    //  sendContentPacks(messageText, event);
-  } else {
-    console.log("packId*************Number", packId );
-    console.log("packId*************Number1", messagingEvent );
-      sendContentPackItems(packId, messagingEvent);
+    //fbuserdetails(userid);
+    sendTextMessage(userid,'Get Started');
   }
 }
 
-
-function sendImageMessage(event) {
-    var senderID = event.sender.id;
-    var image = "image"
-    var attachments = event.message.attachments[0] //"https://fankickdev.blob.core.windows.net/images/0C534ECC-3239-467E-A7AF-2B7926CA8588"
-    var imageUrl = attachments.payload.url;
-
+function sendTextMessage(recipientId, messageText) {
     var messageData = {
         "recipient": {
-            "id": senderID
+            "id": recipientId
         },
         "message": {
-            "attachment": {
-                "type": image,
-                "payload": {
-                    "url": imageUrl
-                }
-            }
+            "text": messageText
         }
     };
-    callSendAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
+    callSendAPI(messageData,'https://graph.facebook.com/v2.6/me/messages');
 }
 
 function fbuserdetails(userid) {
-  var url = 'https://graph.facebook.com/v2.6/'+userid+'?fields=first_name,last_name,profile_pic,locale,timezone,gender&access_token='+fbpage_access_token+'';
+  var url = 'https://graph.facebook.com/v2.6/'+userid+'?fields=first_name,last_name,locale,timezone,gender&access_token='+fbpage_access_token+'';
   console.log("url", url);
     request({
         "uri": url,
@@ -139,7 +112,7 @@ function callSendAPI(body,url) {
     request({
         uri: url,
         qs: {
-            access_token:'EAAXcJew5yNkBAAvFD3wX3RZACdvA4lZB6XStBzliKI9y4m7I1taAnWUWBezVarL8FjteZCztMBjXZCs35lAweqmc2XZARIf378LZA5lTg5xIebmBmFL4MmJGU4JrowfdkkKDbjqwuzBkCWPxQjgddrW4EZBnv6LiccAHdqoLUNcsgZDZD'
+            access_token:fbpage_access_token
         },
         method: 'POST',
         json: body
