@@ -44,7 +44,6 @@ app.post('/webhook', function(req, res) {
                     //receivedDeliveryConfirmation(messagingEvent);
                 } else if (messagingEvent.postback) {
                     receivedpostback(messagingEvent);
-                    console.log("postback :------", messagingEvent);
                 } else if (messagingEvent.read) {
                     //console.log("Webhook received unknown messagingEvent: ", messagingEvent);
                 } else {
@@ -142,7 +141,7 @@ function callSendAPI(body, url) {
         }
 
     }, function(error, response, body) {
-        //console.log("Response data: ",JSON.stringify(body));
+        console.log("Response data: ", JSON.stringify(body));
         if (!error && response.statusCode == 200) {
             var recipientId = body.recipient_id;
             var messageId = body.message_id;
@@ -156,3 +155,4 @@ function callSendAPI(body, url) {
 }
 
 app.listen(process.env.PORT);
+T);
