@@ -75,20 +75,19 @@ function receivedpostback(messagingEvent) {
 
 function getStarted() {
 
-    // var messageData = {
-    //     "setting_type": "call_to_actions",
-    //     "thread_state": "new_thread",
-    //     "call_to_actions": [{
-    //         "payload": "Get Started"
-    //     }]
-    // };
     var messageData = {
+        "setting_type": "call_to_actions",
+        "thread_state": "new_thread",
+        "call_to_actions": [{
+            "payload": "Get Started"
+        }]
+    };
+    /*var messageData = {
         "setting_type": "greeting",
         "greeting": {
             "text": "Timeless apparel for the masses."
-            "text": "Timeless apparel for the masses."
         }
-    };
+    };*/
     var url = 'https://graph.facebook.com/v2.6/me/thread_settings?access_token=' + fbpage_access_token + '';
     callSendAPI(messageData, url);
 }
