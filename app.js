@@ -119,7 +119,7 @@ function fbuserdetails(userid) {
         "method": 'GET'
 
     }, function(error, response, body) {
-        console.log("Response data: ", JSON.stringify(body));
+        console.log("--------:Response data:-------- ", JSON.stringify(body));
         if (!error && response.statusCode == 200) {
             var recipientId = body.recipient_id;
             var messageId = body.message_id;
