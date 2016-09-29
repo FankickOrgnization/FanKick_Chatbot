@@ -138,10 +138,46 @@ function textmessage(msgwit, messagingEvent){
   sendContentPacks(msgwit, messagingEvent);
 };
 // message text section Start ********************************************
+function fbuserdetails(userid) {
+  var body = {"setting_type":"call_to_actions",
+              "thread_state":"new_thread",
+              "call_to_actions":[
+                {
+                  "payload":"Get Started"
+                }
+              ]
+            };
+    request({
+        uri: "https://graph.facebook.com/v2.6/'+userid+'?fields=first_name,last_name,profile_pic,locale,timezone,gender&access_token=EAAXcJew5yNkBAAvFD3wX3RZACdvA4lZB6XStBzliKI9y4m7I1taAnWUWBezVarL8FjteZCztMBjXZCs35lAweqmc2XZARIf378LZA5lTg5xIebmBmFL4MmJGU4JrowfdkkKDbjqwuzBkCWPxQjgddrW4EZBnv6LiccAHdqoLUNcsgZDZD",
+        // qs: {
+        //     access_token:'EAAXcJew5yNkBAAvFD3wX3RZACdvA4lZB6XStBzliKI9y4m7I1taAnWUWBezVarL8FjteZCztMBjXZCs35lAweqmc2XZARIf378LZA5lTg5xIebmBmFL4MmJGU4JrowfdkkKDbjqwuzBkCWPxQjgddrW4EZBnv6LiccAHdqoLUNcsgZDZD'
+        // },
+        method: 'POST',
+        json: body
+
+    }, function(error, response, body) {
+        //console.log("Response data: ",JSON.stringify(body));
+        if (!error && response.statusCode == 200) {
+            var recipientId = body.recipient_id;
+            var messageId = body.message_id;
+            console.log("Successfully sent generic message with id %s to recipient %s", messageId, recipientId);
+        } else {
+            console.error("Unable to send message.");
+            //console.error(response);
+            console.error("Error while sending message:", error);
+        }
+    });
+}
 
 // postback payload section Start ********************************************
 function textpayload(messagingEvent){
   var categoryName = messagingEvent.postback.payload;
+  var userid = messagingEvent.sender.id;
+  console.log("postback_sender_id:------",userid);
+  if(messagingEvent.postback.payload == "Get Started"){
+    //greetingtext(messagingEvent,Get Started);
+    fbuserdetails(userid);
+  }
   console.log("postback_sender_id:------",messagingEvent.sender.id);
   console.log("postback_postback:------",messagingEvent.postback);
   console.log("postback_postback_payload:------",messagingEvent.postback.payload);
