@@ -74,6 +74,7 @@ function receivedpostback(messagingEvent) {
 }
 
 function getStarted() {
+
     /*var messageData = {
         "setting_type": "call_to_actions",
         "thread_state": "new_thread",
@@ -139,7 +140,6 @@ function callSendAPI(body, url) {
         headers: {
             "Content-Type": "application/json"
         }
-
     }, function(error, response, body) {
         console.log("Response data: ", JSON.stringify(body));
         if (!error && response.statusCode == 200) {
@@ -155,4 +155,3 @@ function callSendAPI(body, url) {
 }
 
 app.listen(process.env.PORT);
-T);
