@@ -15,6 +15,7 @@ var pool = mysql.createPool({
     password: '3e384329',
     database: 'rankworlddev'
 });
+var fbpage_access_token ='EAAXcJew5yNkBAAvFD3wX3RZACdvA4lZB6XStBzliKI9y4m7I1taAnWUWBezVarL8FjteZCztMBjXZCs35lAweqmc2XZARIf378LZA5lTg5xIebmBmFL4MmJGU4JrowfdkkKDbjqwuzBkCWPxQjgddrW4EZBnv6LiccAHdqoLUNcsgZDZD';
 //var a = require('./wit.js').initValue;
 //bot.myvar = 'Hello world**********Hello world';
 //bot.test();
@@ -56,20 +57,20 @@ app.get("/hello", function(req, res) {
   res.send('welcome to chat bot');
 });
 
-// app.get('/webhook', function(req, res) {
-//     console.log("Validating webhook", console.log(JSON.stringify(req.body)));
-//     if (req.query['hub.mode'] === 'subscribe' &&
-//         req.query['hub.verify_token'] === 'login_type') {
-//         res.status(200).send(req.query['hub.challenge']);
-//
-//
-//         console.log("Validating webhook", console.log(JSON.stringify(req.body)));
-//     } else {
-//         console.error("Failed validation. Make sure the validation tokens match.");
-//         res.sendStatus(403);
-//     }
-//     // getStartedThread();
-// });
+app.get('/webhook', function(req, res) {
+    console.log("Validating webhook", console.log(JSON.stringify(req.body)));
+    if (req.query['hub.mode'] === 'subscribe' &&
+        req.query['hub.verify_token'] === 'login_type') {
+        res.status(200).send(req.query['hub.challenge']);
+
+
+        console.log("Validating webhook", console.log(JSON.stringify(req.body)));
+    } else {
+        console.error("Failed validation. Make sure the validation tokens match.");
+        res.sendStatus(403);
+    }
+    // getStartedThread();
+});
 
 // function getStartedThread() {
 //     var messageData = {
@@ -84,49 +85,49 @@ app.get("/hello", function(req, res) {
 //     console.log("Thread Message",messageData);
 //     callSendAPI(messageData,'https://graph.facebook.com/v2.6/me/thread_settings');
 // }
-// app.post('/webhook', function(req, res) {
-//     var data = req.body;
-//     console.log("WIT_TOKEN=", data);
-//     // Make sure this is a page subscription
-//     if (data.object == 'page') {
-//         // Iterate over each entry
-//         // There may be multiple if batched
-//         data.entry.forEach(function(pageEntry) {
-//             var pageID = pageEntry.id;
-//             var timeOfEvent = pageEntry.time;
-//             console.log("Page Entry Details:", JSON.stringify(pageEntry));
-//             // Iterate over each messaging event
-//             pageEntry.messaging.forEach(function(messagingEvent) {
-//                 if (messagingEvent.optin) {
-//                     //receivedAuthentication(messagingEvent);
-//                 } else if (messagingEvent.message) {
-//                     if (!messagingEvent.message.hasOwnProperty('is_echo')) { // Avoiding multiple database fetches
-//                         receivedMessage(messagingEvent);
-//                     }
-//                     //var msgText = messagingEvent.message.text;
-//                     console.log("messaging:------",messagingEvent);
-//                     //textmessage(messagingEvent);
-//                 } else if (messagingEvent.delivery) {
-//                     //receivedDeliveryConfirmation(messagingEvent);
-//                 } else if (messagingEvent.postback) {
-//                     //sendGenericMessage(messagingEvent);
-//                   //  var payloadText = messagingEvent.postback.payload;
-//                      textpayload(messagingEvent);
-//                 } else if (messagingEvent.read) {
-//                     //console.log("Webhook received unknown messagingEvent: ", messagingEvent);
-//                 } else {
-//                     console.log("Webhook received unknown messagingEvent: ", messagingEvent);
-//                     console.log("sample");
-//                 }
-//             });
-//         });
-//         // Assume all went well.
-//         //
-//         // You must send back a 200, within 20 seconds, to let us know you've
-//         // successfully received the callback. Otherwise, the request will time out.
-//         res.sendStatus(200);
-//     }
-// });
+app.post('/webhook', function(req, res) {
+    var data = req.body;
+    console.log("WIT_TOKEN=", data);
+    // Make sure this is a page subscription
+    if (data.object == 'page') {
+        // Iterate over each entry
+        // There may be multiple if batched
+        data.entry.forEach(function(pageEntry) {
+            var pageID = pageEntry.id;
+            var timeOfEvent = pageEntry.time;
+            console.log("Page Entry Details:", JSON.stringify(pageEntry));
+            // Iterate over each messaging event
+            pageEntry.messaging.forEach(function(messagingEvent) {
+                if (messagingEvent.optin) {
+                    //receivedAuthentication(messagingEvent);
+                } else if (messagingEvent.message) {
+                    if (!messagingEvent.message.hasOwnProperty('is_echo')) { // Avoiding multiple database fetches
+                        receivedMessage(messagingEvent);
+                    }
+                    //var msgText = messagingEvent.message.text;
+                    console.log("messaging:------",messagingEvent);
+                    //textmessage(messagingEvent);
+                } else if (messagingEvent.delivery) {
+                    //receivedDeliveryConfirmation(messagingEvent);
+                } else if (messagingEvent.postback) {
+                    //sendGenericMessage(messagingEvent);
+                  //  var payloadText = messagingEvent.postback.payload;
+                     textpayload(messagingEvent);
+                } else if (messagingEvent.read) {
+                    //console.log("Webhook received unknown messagingEvent: ", messagingEvent);
+                } else {
+                    console.log("Webhook received unknown messagingEvent: ", messagingEvent);
+                    console.log("sample");
+                }
+            });
+        });
+        // Assume all went well.
+        //
+        // You must send back a 200, within 20 seconds, to let us know you've
+        // successfully received the callback. Otherwise, the request will time out.
+        res.sendStatus(200);
+    }
+});
 
 // message text section Start ********************************************
 function textmessage(msgwit, messagingEvent){
@@ -139,15 +140,13 @@ function textmessage(msgwit, messagingEvent){
 };
 // message text section Start ********************************************
 function fbuserdetails(userid) {
+  var url = 'https://graph.facebook.com/v2.6/'+userid+'?fields=first_name,last_name,profile_pic,locale,timezone,gender&access_token='+fbpage_access_token+'';
+  console.log("url", url);
+    request({
+        "uri": url,
+        "method": 'GET'
+
   console.log("------:userid:------",userid);
-  var body = {"setting_type":"call_to_actions",
-              "thread_state":"new_thread",
-              "call_to_actions":[
-                {
-                  "payload":"Get Started"
-                }
-              ]
-            };
     request({
         uri: "https://graph.facebook.com/v2.6/'+userid+'?fields=first_name,last_name,profile_pic,locale,timezone,gender&access_token=EAAXcJew5yNkBAAvFD3wX3RZACdvA4lZB6XStBzliKI9y4m7I1taAnWUWBezVarL8FjteZCztMBjXZCs35lAweqmc2XZARIf378LZA5lTg5xIebmBmFL4MmJGU4JrowfdkkKDbjqwuzBkCWPxQjgddrW4EZBnv6LiccAHdqoLUNcsgZDZD",
         // qs: {
