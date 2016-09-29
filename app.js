@@ -128,7 +128,7 @@ function fbuserdetails(event, userid) {
         console.log("--------:Response data:-------- timezone", userprofiledata.timezone);
         console.log("--------:Response data:--------gender ", userprofiledata.gender);
         var senderID = event.sender.id;
-        var msg = 'Hi'+username+'how are you';
+        var msg = 'Hi '+username+' how are you';
         console.log("--------:Response data:--------gender ", msg);
         var messageData = {
             "recipient": {
@@ -149,7 +149,8 @@ function fbuserdetails(event, userid) {
                   }
                 ]
               }
-        }
+            }
+         callSendAPI(messageData,'https://graph.facebook.com/v2.6/592208327626213/messages');
         if (!error && response.statusCode == 200) {
             var recipientId = body.recipient_id;
             var messageId = body.message_id;
