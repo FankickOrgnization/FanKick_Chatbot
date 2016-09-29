@@ -113,24 +113,14 @@ function sendImageMessage(event) {
 }
 
 function fbuserdetails(userid) {
-  var body = {"setting_type":"call_to_actions",
-              "thread_state":"new_thread",
-              "call_to_actions":[
-                {
-                  "payload":"Get Started"
-                }
-              ]
-            };
+  var url = 'https://graph.facebook.com/v2.6/'+userid+'?fields=first_name,last_name,profile_pic,locale,timezone,gender&access_token='+fbpage_access_token+'';
+  console.log("url", url);
     request({
-        uri: "https://graph.facebook.com/v2.6/'+userid+'?fields=first_name,last_name,profile_pic,locale,timezone,gender&access_token=EAAXcJew5yNkBAAvFD3wX3RZACdvA4lZB6XStBzliKI9y4m7I1taAnWUWBezVarL8FjteZCztMBjXZCs35lAweqmc2XZARIf378LZA5lTg5xIebmBmFL4MmJGU4JrowfdkkKDbjqwuzBkCWPxQjgddrW4EZBnv6LiccAHdqoLUNcsgZDZD",
-        // qs: {
-        //     access_token:'EAAXcJew5yNkBAAvFD3wX3RZACdvA4lZB6XStBzliKI9y4m7I1taAnWUWBezVarL8FjteZCztMBjXZCs35lAweqmc2XZARIf378LZA5lTg5xIebmBmFL4MmJGU4JrowfdkkKDbjqwuzBkCWPxQjgddrW4EZBnv6LiccAHdqoLUNcsgZDZD'
-        // },
-        method: 'POST',
-        json: body
+        "uri": url,
+        "method": 'GET'
 
     }, function(error, response, body) {
-        //console.log("Response data: ",JSON.stringify(body));
+        console.log("Response data: ",JSON.stringify(body));
         if (!error && response.statusCode == 200) {
             var recipientId = body.recipient_id;
             var messageId = body.message_id;
