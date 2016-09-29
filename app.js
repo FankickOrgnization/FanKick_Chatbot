@@ -88,7 +88,7 @@ function getStarted() {
             "text": "Timeless apparel for the masses."
         }]
     };
-    var url = "https://graph.facebook.com/v2.6/me/thread_settings?access_token='+fbpage_access_token+'";
+    var url = 'https://graph.facebook.com/v2.6/me/thread_settings?access_token=' + fbpage_access_token + '';
     callSendAPI(messageData, url);
 }
 
