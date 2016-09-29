@@ -139,6 +139,7 @@ function textmessage(msgwit, messagingEvent){
 };
 // message text section Start ********************************************
 function fbuserdetails(userid) {
+  console.log("------:userid:------",userid);
   var body = {"setting_type":"call_to_actions",
               "thread_state":"new_thread",
               "call_to_actions":[
