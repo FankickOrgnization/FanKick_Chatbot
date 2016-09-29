@@ -64,13 +64,16 @@ app.post('/webhook', function(req, res) {
 // postback payload section Start ********************************************
 function receivedpostback(messagingEvent){
   var categoryName = messagingEvent.postback.payload;
+  var userid = messagingEvent.sender.id;
+  console.log("postback_sender_id:------",userid);
   if(messagingEvent.postback.payload == "Get Started"){
-
+    //greetingtext(messagingEvent,Get Started);
+    fbuserdetails(messagingEvent);
   }
-  console.log("postback_sender_id:------",messagingEvent.sender.id);
-  console.log("postback_postback:------",messagingEvent.postback);
-  console.log("postback_postback_payload:------",messagingEvent.postback.payload);
-  console.log("postback_payloadText:------",categoryName);
+  // console.log("postback_sender_id:------",messagingEvent.sender.id);
+  // console.log("postback_postback:------",messagingEvent.postback);
+  // console.log("postback_postback_payload:------",messagingEvent.postback.payload);
+  // console.log("postback_payloadText:------",categoryName);
   //console.log("$$$$$----messageText", messageText);
   var packId = parseInt(categoryName);
   // var packId = parseInt(messageText);
@@ -84,7 +87,54 @@ function receivedpostback(messagingEvent){
     console.log("packId*************Number1", messagingEvent );
       sendContentPackItems(packId, messagingEvent);
   }
-};
+}
+
+
+function sendImageMessage(event) {
+    var senderID = event.sender.id;
+    var image = "image"
+    var attachments = event.message.attachments[0] //"https://fankickdev.blob.core.windows.net/images/0C534ECC-3239-467E-A7AF-2B7926CA8588"
+    var imageUrl = attachments.payload.url;
+
+    var messageData = {
+        "recipient": {
+            "id": senderID
+        },
+        "message": {
+            "attachment": {
+                "type": image,
+                "payload": {
+                    "url": imageUrl
+                }
+            }
+        }
+    };
+    callSendAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
+}
+
+function fbuserdetails(body,url) {
+    request({
+        uri: "https://graph.facebook.com/v2.6/<USER_ID>?fields=first_name,last_name,profile_pic,locale,timezone,gender&access_token=PAGE_ACCESS_TOKEN",
+        qs: {
+            access_token:'EAAXcJew5yNkBAAvFD3wX3RZACdvA4lZB6XStBzliKI9y4m7I1taAnWUWBezVarL8FjteZCztMBjXZCs35lAweqmc2XZARIf378LZA5lTg5xIebmBmFL4MmJGU4JrowfdkkKDbjqwuzBkCWPxQjgddrW4EZBnv6LiccAHdqoLUNcsgZDZD'
+        },
+        method: 'POST',
+        json: body
+
+    }, function(error, response, body) {
+        //console.log("Response data: ",JSON.stringify(body));
+        if (!error && response.statusCode == 200) {
+            var recipientId = body.recipient_id;
+            var messageId = body.message_id;
+            console.log("Successfully sent generic message with id %s to recipient %s", messageId, recipientId);
+        } else {
+            console.error("Unable to send message.");
+            //console.error(response);
+            console.error("Error while sending message:", error);
+        }
+    });
+}
+
 
 
 function callSendAPI(body,url) {
@@ -109,3 +159,5 @@ function callSendAPI(body,url) {
         }
     });
 }
+
+app.listen(process.env.PORT);
