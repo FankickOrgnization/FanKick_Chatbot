@@ -139,12 +139,37 @@ function fbuserdetails(event, userid) {
                 "quick_replies":[
                   {
                     "content_type":"text",
-                    "title":"Yes",
+                    "title":"Categories",
                     "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
                   },
                   {
                     "content_type":"text",
-                    "title":"No",
+                    "title":"Fan Clubs",
+                    "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
+                  },
+                  {
+                    "content_type":"text",
+                    "title":"Fan Magazine",
+                    "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
+                  },
+                  {
+                    "content_type":"text",
+                    "title":"Movies",
+                    "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
+                  },
+                  {
+                    "content_type":"text",
+                    "title":"Sports",
+                    "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
+                  },
+                  {
+                    "content_type":"text",
+                    "title":"Celebrities",
+                    "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
+                  },
+                  {
+                    "content_type":"text",
+                    "title":"What can you do?",
                     "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
                   }
                 ]
