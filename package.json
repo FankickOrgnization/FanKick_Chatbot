@@ -25,7 +25,7 @@
     "express": "^4.14.0",
     "modulus": "^6.3.1",
     "mysql": "^2.11.1",
-    "node-fetch": "^1.6.1",
+    "node-fetch": "^1.6.3",
     "node-wit": "^4.1.0",
     "request": "^2.74.0"
   }
