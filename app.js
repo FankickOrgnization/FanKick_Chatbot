@@ -84,9 +84,9 @@ function getStarted() {
     };*/
     var messageData = {
         "setting_type": "greeting",
-        "greeting": [{
+        "greeting": {
             "text": "Timeless apparel for the masses."
-        }]
+        }
     };
     var url = 'https://graph.facebook.com/v2.6/me/thread_settings?access_token=' + fbpage_access_token + '';
     callSendAPI(messageData, url);
