@@ -35,7 +35,7 @@ app.post('/webhook', function(req, res) {
                     //receivedAuthentication(messagingEvent);
                 } else if (messagingEvent.message) {
                     if (!messagingEvent.message.hasOwnProperty('is_echo')) { // Avoiding multiple database fetches
-                        receivedMessage(messagingEvent);
+                        //receivedMessage(messagingEvent);
                     }
                     //var msgText = messagingEvent.message.text;
                     console.log("messaging :------", messagingEvent);
@@ -49,7 +49,6 @@ app.post('/webhook', function(req, res) {
                     //console.log("Webhook received unknown messagingEvent: ", messagingEvent);
                 } else {
                     console.log("Webhook received unknown messagingEvent: ", messagingEvent);
-                    console.log("sample");
                 }
             });
         });
