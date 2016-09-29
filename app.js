@@ -128,7 +128,10 @@ function callSendAPI(body, url) {
             access_token: fbpage_access_token
         },
         method: 'POST',
-        json: body
+        json: body,
+        headers: {
+            "Content-Type": "application/json"
+        }
 
     }, function(error, response, body) {
         //console.log("Response data: ",JSON.stringify(body));
