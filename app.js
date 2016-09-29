@@ -56,20 +56,20 @@ app.get("/hello", function(req, res) {
   res.send('welcome to chat bot');
 });
 
-app.get('/webhook', function(req, res) {
-    console.log("Validating webhook", console.log(JSON.stringify(req.body)));
-    if (req.query['hub.mode'] === 'subscribe' &&
-        req.query['hub.verify_token'] === 'login_type') {
-        res.status(200).send(req.query['hub.challenge']);
-
-
-        console.log("Validating webhook", console.log(JSON.stringify(req.body)));
-    } else {
-        console.error("Failed validation. Make sure the validation tokens match.");
-        res.sendStatus(403);
-    }
-    // getStartedThread();
-});
+// app.get('/webhook', function(req, res) {
+//     console.log("Validating webhook", console.log(JSON.stringify(req.body)));
+//     if (req.query['hub.mode'] === 'subscribe' &&
+//         req.query['hub.verify_token'] === 'login_type') {
+//         res.status(200).send(req.query['hub.challenge']);
+//
+//
+//         console.log("Validating webhook", console.log(JSON.stringify(req.body)));
+//     } else {
+//         console.error("Failed validation. Make sure the validation tokens match.");
+//         res.sendStatus(403);
+//     }
+//     // getStartedThread();
+// });
 
 // function getStartedThread() {
 //     var messageData = {
