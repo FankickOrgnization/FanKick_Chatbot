@@ -119,7 +119,14 @@ function fbuserdetails(userid) {
         "method": 'GET'
 
     }, function(error, response, body) {
-        console.log("--------:Response data:-------- ", JSON.stringify(body));
+        var userprofiledata = JSON.stringify(body);
+        //console.log("--------:Response data:-------- ", JSON.stringify(body));
+        console.log("--------:Response data:--------first_name ", userprofiledata.first_name);
+        console.log("--------:Response data:--------last_name ", userprofiledata.last_name);
+        console.log("--------:Response data:--------locale ", userprofiledata.locale);
+        console.log("--------:Response data:-------- timezone", userprofiledata.timezone);
+        console.log("--------:Response data:--------gender ", userprofiledata.gender);
+
         if (!error && response.statusCode == 200) {
             var recipientId = body.recipient_id;
             var messageId = body.message_id;
