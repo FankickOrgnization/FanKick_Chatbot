@@ -79,8 +79,15 @@ function sendTextMessage(recipientId, messageText) {
             "id": recipientId
         },
         "message": {
-            "text": messageText
-        }
+                    "attachment": {
+                        "type": "template",
+                        "payload": {
+                            "template_type": "generic",
+                            "elements": contentList
+                        }
+                    }
+                }
+        
     };
     callSendAPI(messageData,'https://graph.facebook.com/v2.6/me/messages');
 }
