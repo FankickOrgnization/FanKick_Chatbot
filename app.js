@@ -120,12 +120,14 @@ function fbuserdetails(userid) {
 
     }, function(error, response, body) {
         var userprofiledata = JSON.stringify(body);
+        var userprofiledata1 = JSON.parse(response.body)
+
         //console.log("--------:Response data:-------- ", JSON.stringify(body));
-        console.log("--------:Response data:--------first_name ", userprofiledata.first_name);
-        console.log("--------:Response data:--------last_name ", userprofiledata.last_name);
-        console.log("--------:Response data:--------locale ", userprofiledata.locale);
-        console.log("--------:Response data:-------- timezone", userprofiledata.timezone);
-        console.log("--------:Response data:--------gender ", userprofiledata.gender);
+        console.log("--------:Response data:--------first_name ", userprofiledata);
+        console.log("--------:Response data:--------last_name ", userprofiledata1);
+        // console.log("--------:Response data:--------locale ", userprofiledata.locale);
+        // console.log("--------:Response data:-------- timezone", userprofiledata.timezone);
+        // console.log("--------:Response data:--------gender ", userprofiledata.gender);
 
         if (!error && response.statusCode == 200) {
             var recipientId = body.recipient_id;
