@@ -66,31 +66,31 @@ function receivedpostback(messagingEvent) {
     console.log("postback_sender_id:------", userid);
     if (categoryName == "Get Started") {
         //greetingtext(messagingEvent,Get Started);
-        //fbuserdetails(userid);
+        fbuserdetails(userid);
         //sendTextMessage(userid, 'Get Started');
         console.log("categoryName", categoryName);
-        getStarted();
+        //getStarted();
     }
 }
 
-function getStarted() {
-
-    var messageData = {
-        "setting_type": "call_to_actions",
-        "thread_state": "new_thread",
-        "call_to_actions": [{
-            "payload": "Get Started"
-        }]
-    };
-    /*var messageData = {
-        "setting_type": "greeting",
-        "greeting": {
-            "text": "Timeless apparel for the masses."
-        }
-    };*/
-    var url = 'https://graph.facebook.com/v2.6/me/thread_settings?access_token=' + fbpage_access_token + '';
-    callSendAPI(messageData, url);
-}
+// function getStarted() {
+//
+//     var messageData = {
+//         "setting_type": "call_to_actions",
+//         "thread_state": "new_thread",
+//         "call_to_actions": [{
+//             "payload": "Get Started"
+//         }]
+//     };
+//     /*var messageData = {
+//         "setting_type": "greeting",
+//         "greeting": {
+//             "text": "Timeless apparel for the masses."
+//         }
+//     };*/
+//     var url = 'https://graph.facebook.com/v2.6/me/thread_settings?access_token=' + fbpage_access_token + '';
+//     callSendAPI(messageData, url);
+// }
 
 function sendTextMessage(recipientId, messageText) {
     var messageData = {
