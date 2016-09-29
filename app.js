@@ -61,13 +61,29 @@ app.get('/webhook', function(req, res) {
     if (req.query['hub.mode'] === 'subscribe' &&
         req.query['hub.verify_token'] === 'login_type') {
         res.status(200).send(req.query['hub.challenge']);
+
+
         console.log("Validating webhook", console.log(JSON.stringify(req.body)));
     } else {
         console.error("Failed validation. Make sure the validation tokens match.");
         res.sendStatus(403);
     }
+    getStartedThread();
 });
 
+function getStartedThread() {
+    var messageData = {
+        "setting_type": "call_to_actions",
+        "thread_state": "new_thread",
+        "call_to_actions":[
+        {
+        "payload":"USER_DEFINED_PAYLOAD"
+        }
+        ]
+    };
+    console.log("Thread Message",messageData);
+    callSendAPI(messageData,'https://graph.facebook.com/v2.6/me/thread_settings');
+}
 app.post('/webhook', function(req, res) {
     var data = req.body;
     console.log("WIT_TOKEN=", data);
@@ -292,7 +308,7 @@ function sendHelpMessage(event) {
             }
         }
     }
-    callSendAPI(messageData);
+    callSendAPI(messageData,'https://graph.facebook.com/v2.6/592208327626213/messages');
 }
 
 function sendGenericMessage(event, msg) {
@@ -347,7 +363,7 @@ function sendContentPacks(categoryName, event) {
                 }
             }
         }
-        callSendAPI(messageData);
+        callSendAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
     } else if (categoryName == "Fan Clubs") {
       pool.getConnection(function(err, connection) {
         connection.query('SELECT * FROM fk_pack_fanclub', function(err, rows) {
@@ -384,7 +400,7 @@ function sendContentPacks(categoryName, event) {
                         }
                     }
                 }
-                callSendAPI(messageData);
+                callSendAPI(messageData,'https://graph.facebook.com/v2.6/592208327626213/messages');
             } else {
                 console.log("No Data Found From Database");
                 sendHelpMessage(event);
@@ -431,7 +447,7 @@ function sendContentPacks(categoryName, event) {
                         }
                     }
                 }
-                callSendAPI(messageData);
+                callSendAPI(messageData,'https://graph.facebook.com/v2.6/592208327626213/messages');
             } else {
                 console.log("No Data Found From Database");
                 sendHelpMessage(event);
@@ -463,7 +479,7 @@ function sendContentPacks(categoryName, event) {
                 }
             }
         }
-        callSendAPI(messageData);
+        callSendAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
     } else if (categoryName == "No") {
         var senderID = event.sender.id;
         var messageData = {
@@ -488,53 +504,22 @@ function sendContentPacks(categoryName, event) {
             //     }
             // }
             "message":{
-    "text":"Please click Yes/No:",
-    "quick_replies":[
-      {
-        "content_type":"text",
-        "title":"Yes",
-        "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
-      },
-      {
-        "content_type":"text",
-        "title":"No",
-        "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
-      },
-      {
-        "content_type":"text",
-        "title":"Yes",
-        "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
-      },
-      {
-        "content_type":"text",
-        "title":"No",
-        "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
-      },
-      {
-        "content_type":"text",
-        "title":"Yes",
-        "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
-      },
-      {
-        "content_type":"text",
-        "title":"No",
-        "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
-      },
-      {
-        "content_type":"text",
-        "title":"No",
-        "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
-      },
-      
-      {
-        "content_type":"text",
-        "title":"Yes",
-        "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_GREEN"
-      }
-    ]
-  }
+                "text":"Please click Yes/No:",
+                "quick_replies":[
+                  {
+                    "content_type":"text",
+                    "title":"Yes",
+                    "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
+                  },
+                  {
+                    "content_type":"text",
+                    "title":"No",
+                    "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
+                  }
+                ]
+              }
         }
-        callSendAPI(messageData);
+        callSendAPI(messageData,'https://graph.facebook.com/v2.6/592208327626213/messages');
     } else if (categoryName == "virat kohli") {
         console.log("Virat Kohli:", categoryName);
         request({
@@ -620,7 +605,7 @@ function sendContentPacks(categoryName, event) {
                         }
                     }
                 }
-                callSendAPI(messageData);
+                callSendAPI(messageData,'https://graph.facebook.com/v2.6/592208327626213/messages');
             } else {
                 console.log("No Data Found From Database");
                 sendHelpMessage(event);
@@ -686,7 +671,7 @@ pool.getConnection(function(err, connection) {
                     }
                 }
             }
-            callSendAPI(messageData);
+            callSendAPI(messageData,'https://graph.facebook.com/v2.6/592208327626213/messages');
         }
         connection.release();
     });
@@ -714,7 +699,7 @@ function sendImageMessage(event) {
             }
         }
     };
-    callSendAPI(messageData);
+    callSendAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
 }
 
 function sendTextMessage(recipientId, messageText) {
@@ -726,17 +711,17 @@ function sendTextMessage(recipientId, messageText) {
             "text": messageText
         }
     };
-    callSendAPI(messageData);
+    callSendAPI(messageData,'https://graph.facebook.com/v2.6/592208327626213/messages');
 }
 
-function callSendAPI(messageData) {
+function callSendAPI(body,url) {
     request({
-        uri: 'https://graph.facebook.com/v2.6/592208327626213/messages',
+        uri: url,
         qs: {
             access_token:'EAAXcJew5yNkBAAvFD3wX3RZACdvA4lZB6XStBzliKI9y4m7I1taAnWUWBezVarL8FjteZCztMBjXZCs35lAweqmc2XZARIf378LZA5lTg5xIebmBmFL4MmJGU4JrowfdkkKDbjqwuzBkCWPxQjgddrW4EZBnv6LiccAHdqoLUNcsgZDZD'
         },
         method: 'POST',
-        json: messageData
+        json: body
 
     }, function(error, response, body) {
         //console.log("Response data: ",JSON.stringify(body));
