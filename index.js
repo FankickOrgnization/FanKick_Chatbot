@@ -38,12 +38,13 @@ app.post('/webhook', function(req, res) {
                         receivedMessage(messagingEvent);
                     }
                     //var msgText = messagingEvent.message.text;
-                    console.log("messaging:------",messagingEvent);
+                    console.log("messaging :------",messagingEvent);
                     //textmessage(messagingEvent);
                 } else if (messagingEvent.delivery) {
                     //receivedDeliveryConfirmation(messagingEvent);
                 } else if (messagingEvent.postback) {
                      receivedpostback(messagingEvent);
+                     console.log("postback :------",messagingEvent);
                 } else if (messagingEvent.read) {
                     //console.log("Webhook received unknown messagingEvent: ", messagingEvent);
                 } else {
