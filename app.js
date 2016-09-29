@@ -69,6 +69,7 @@ function receivedpostback(messagingEvent) {
         //greetingtext(messagingEvent,Get Started);
         //fbuserdetails(userid);
         //sendTextMessage(userid, 'Get Started');
+        console.log("categoryName", categoryName);
         getStarted();
     }
 }
