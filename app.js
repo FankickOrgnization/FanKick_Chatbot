@@ -142,18 +142,19 @@ function textmessage(msgwit, messagingEvent){
 function fbuserdetails(userid) {
   var url = 'https://graph.facebook.com/v2.6/'+userid+'?fields=first_name,last_name,profile_pic,locale,timezone,gender&access_token='+fbpage_access_token+'';
   console.log("url", url);
+  console.log("------:userid:------",userid);
     request({
         "uri": url,
         "method": 'GET'
-
-  console.log("------:userid:------",userid);
-    request({
-        uri: "https://graph.facebook.com/v2.6/'+userid+'?fields=first_name,last_name,profile_pic,locale,timezone,gender&access_token=EAAXcJew5yNkBAAvFD3wX3RZACdvA4lZB6XStBzliKI9y4m7I1taAnWUWBezVarL8FjteZCztMBjXZCs35lAweqmc2XZARIf378LZA5lTg5xIebmBmFL4MmJGU4JrowfdkkKDbjqwuzBkCWPxQjgddrW4EZBnv6LiccAHdqoLUNcsgZDZD",
-        // qs: {
-        //     access_token:'EAAXcJew5yNkBAAvFD3wX3RZACdvA4lZB6XStBzliKI9y4m7I1taAnWUWBezVarL8FjteZCztMBjXZCs35lAweqmc2XZARIf378LZA5lTg5xIebmBmFL4MmJGU4JrowfdkkKDbjqwuzBkCWPxQjgddrW4EZBnv6LiccAHdqoLUNcsgZDZD'
-        // },
-        method: 'POST',
-        json: body
+    // 
+    //
+    // request({
+    //     uri: "https://graph.facebook.com/v2.6/'+userid+'?fields=first_name,last_name,profile_pic,locale,timezone,gender&access_token=EAAXcJew5yNkBAAvFD3wX3RZACdvA4lZB6XStBzliKI9y4m7I1taAnWUWBezVarL8FjteZCztMBjXZCs35lAweqmc2XZARIf378LZA5lTg5xIebmBmFL4MmJGU4JrowfdkkKDbjqwuzBkCWPxQjgddrW4EZBnv6LiccAHdqoLUNcsgZDZD",
+    //     // qs: {
+    //     //     access_token:'EAAXcJew5yNkBAAvFD3wX3RZACdvA4lZB6XStBzliKI9y4m7I1taAnWUWBezVarL8FjteZCztMBjXZCs35lAweqmc2XZARIf378LZA5lTg5xIebmBmFL4MmJGU4JrowfdkkKDbjqwuzBkCWPxQjgddrW4EZBnv6LiccAHdqoLUNcsgZDZD'
+    //     // },
+    //     method: 'POST',
+    //     json: body
 
     }, function(error, response, body) {
         //console.log("Response data: ",JSON.stringify(body));
