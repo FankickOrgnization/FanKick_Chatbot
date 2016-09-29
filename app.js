@@ -68,22 +68,22 @@ app.get('/webhook', function(req, res) {
         console.error("Failed validation. Make sure the validation tokens match.");
         res.sendStatus(403);
     }
-    getStartedThread();
+    // getStartedThread();
 });
 
-function getStartedThread() {
-    var messageData = {
-        "setting_type": "call_to_actions",
-        "thread_state": "new_thread",
-        "call_to_actions":[
-        {
-        "payload":"USER_DEFINED_PAYLOAD"
-        }
-        ]
-    };
-    console.log("Thread Message",messageData);
-    callSendAPI(messageData,'https://graph.facebook.com/v2.6/me/thread_settings');
-}
+// function getStartedThread() {
+//     var messageData = {
+//         "setting_type": "call_to_actions",
+//         "thread_state": "new_thread",
+//         "call_to_actions":[
+//         {
+//         "payload":"USER_DEFINED_PAYLOAD"
+//         }
+//         ]
+//     };
+//     console.log("Thread Message",messageData);
+//     callSendAPI(messageData,'https://graph.facebook.com/v2.6/me/thread_settings');
+// }
 app.post('/webhook', function(req, res) {
     var data = req.body;
     console.log("WIT_TOKEN=", data);
