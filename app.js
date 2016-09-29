@@ -128,6 +128,8 @@ function fbuserdetails(userid) {
 
 
 function callSendAPI(body, url) {
+    console.log("url", url);
+    console.log("Body", body);
     request({
         uri: url,
         qs: {
