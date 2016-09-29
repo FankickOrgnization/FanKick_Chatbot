@@ -173,14 +173,14 @@ function fbuserdetails(userid) {
 function textpayload(messagingEvent){
   var categoryName = messagingEvent.postback.payload;
   var userid = messagingEvent.sender.id;
-  console.log("postback_sender_id:------",userid);
+  console.log("-----------:postback_sender_id:------",userid);
   if(messagingEvent.postback.payload == "Get Started"){
     //greetingtext(messagingEvent,Get Started);
     fbuserdetails(userid);
   }
-  console.log("postback_sender_id:------",messagingEvent.sender.id);
-  console.log("postback_postback:------",messagingEvent.postback);
-  console.log("postback_postback_payload:------",messagingEvent.postback.payload);
+  // console.log("postback_sender_id:------",messagingEvent.sender.id);
+  // console.log("postback_postback:------",messagingEvent.postback);
+  // console.log("postback_postback_payload:------",messagingEvent.postback.payload);
   console.log("postback_payloadText:------",categoryName);
   //console.log("$$$$$----messageText", messageText);
   var packId = parseInt(categoryName);
