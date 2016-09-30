@@ -5,6 +5,7 @@ var bodyParser = require('body-parser');
 var mysql = require('mysql');
 const fetch = require('node-fetch');
 const crypto = require('crypto');
+const thread = require('./thread.js');
 app.use(bodyParser.json());
 var fbpage_access_token = 'EAAXcJew5yNkBAAvFD3wX3RZACdvA4lZB6XStBzliKI9y4m7I1taAnWUWBezVarL8FjteZCztMBjXZCs35lAweqmc2XZARIf378LZA5lTg5xIebmBmFL4MmJGU4JrowfdkkKDbjqwuzBkCWPxQjgddrW4EZBnv6LiccAHdqoLUNcsgZDZD';
 
@@ -66,6 +67,7 @@ function receivedpostback(messagingEvent) {
     console.log("postback_sender_id:------", userid);
     if (categoryName == "Get Started") {
         //greetingtext(messagingEvent,Get Started);
+        persistentMenu(fbpage_access_token);
         fbuserdetails(messagingEvent, userid);
         //sendTextMessage(userid, 'Get Started');
         console.log("categoryName", categoryName);
