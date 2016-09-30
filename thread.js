@@ -1,8 +1,9 @@
 'use strict';
 var request = require('request');
+console.log("------:thread:-----");
 
 const persistentMenu = (accessToken) => {
-  console.log("Error While geting response from thread:", accessToken);
+  console.log("accessToken for thread:-----", accessToken);
   var body = {
               "setting_type" : "call_to_actions",
               "thread_state" : "existing_thread",
@@ -36,4 +37,9 @@ const persistentMenu = (accessToken) => {
         console.log("Success While geting response from facebook thread:", response);
       }
   });
+};
+
+
+module.exports = {
+  persistentMenu: persistentMenu
 };

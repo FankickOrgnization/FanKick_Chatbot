@@ -130,7 +130,7 @@ function fbuserdetails(event, userid) {
         console.log("--------:Response data:-------- timezone", userprofiledata.timezone);
         console.log("--------:Response data:--------gender ", userprofiledata.gender);
         var senderID = event.sender.id;
-        var msg = 'Hi '+username+' how are you';
+        var msg = 'Hi '+username+' \n how can i help you? \n A lot of exciting things are awaiting for you! Get kicking!';
         console.log("--------:Response data:--------gender ", msg);
         var messageData = {
             "recipient": {
