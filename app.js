@@ -67,7 +67,7 @@ function receivedpostback(messagingEvent) {
     console.log("postback_sender_id:------", userid);
     if (categoryName == "Get Started") {
         //greetingtext(messagingEvent,Get Started);
-        persistentMenu(fbpage_access_token);
+        thread.persistentMenu(fbpage_access_token);
         fbuserdetails(messagingEvent, userid);
         //sendTextMessage(userid, 'Get Started');
         console.log("categoryName", categoryName);
