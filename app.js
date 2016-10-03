@@ -139,50 +139,57 @@ function fbuserdetails(event, userid) {
             },
             "message":{
                 "text":msg,
-                // "buttons": [{
-                //             "type": "postback",
-                //             "title": "What can you do?",
-                //             "payload": "DEVELOPER_DEFINED_PAYLOAD"
-                //         }],
-              "payload": {
-                          "template_type": "generic",
-                          "buttons": [{
-                                      "type": "postback",
-                                      "title": "What can you do?",
-                                      "payload": "USER_DEFINED_PAYLOAD"
-                                    }],
-                         "quick_replies":[{
-                                        "content_type":"text",
-                                        "title":"Categories",
-                                        "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
-                                      },
-                                      {
-                                        "content_type":"text",
-                                        "title":"Fan Clubs",
-                                        "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
-                                      },
-                                      {
-                                        "content_type":"text",
-                                        "title":"Fan Magazine",
-                                        "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
-                                      },
-                                      {
-                                        "content_type":"text",
-                                        "title":"Movies",
-                                        "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
-                                      },
-                                      {
-                                        "content_type":"text",
-                                        "title":"Sports",
-                                        "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
-                                      },
-                                      {
-                                        "content_type":"text",
-                                        "title":"Celebrities",
-                                        "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
-                                      }
-                                    ]}
-
+                "attachment": {
+                    "type": "template",
+                    "payload": {
+                        "template_type": "generic",
+                        "elements": [{
+                            "title": "Please Login into FanKick",
+                            "buttons": [{
+                                "type": "postback",
+                                "title": "Magazine",
+                                "payload": "USER_DEFINED_PAYLOAD"
+                            }]
+                        }]
+                    }
+                },
+                "quick_replies":[
+                  {
+                    "content_type":"text",
+                    "title":"Categories",
+                    "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
+                  },
+                  {
+                    "content_type":"text",
+                    "title":"Fan Clubs",
+                    "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
+                  },
+                  {
+                    "content_type":"text",
+                    "title":"Fan Magazine",
+                    "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
+                  },
+                  {
+                    "content_type":"text",
+                    "title":"Movies",
+                    "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
+                  },
+                  {
+                    "content_type":"text",
+                    "title":"Sports",
+                    "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
+                  },
+                  {
+                    "content_type":"text",
+                    "title":"Celebrities",
+                    "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
+                  },
+                  {
+                    "content_type":"text",
+                    "title":"What can you do?",
+                    "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
+                  }
+                ]
               }
             }
          callSendAPI(messageData,'https://graph.facebook.com/v2.6/592208327626213/messages');
