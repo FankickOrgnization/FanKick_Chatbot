@@ -7,6 +7,13 @@ const fetch = require('node-fetch');
 const crypto = require('crypto');
 const thread = require('./thread.js');
 const payloadText = require('./payload.js');
+var pool = mysql.createPool({
+    connectionLimit : 2,
+    host: 'ap-cdbr-azure-southeast-a.cloudapp.net',
+    user: 'bb603e8108da6e',
+    password: '3e384329',
+    database: 'rankworlddev'
+});
 
 app.use(bodyParser.json());
 var fbpage_access_token = 'EAAXcJew5yNkBAAvFD3wX3RZACdvA4lZB6XStBzliKI9y4m7I1taAnWUWBezVarL8FjteZCztMBjXZCs35lAweqmc2XZARIf378LZA5lTg5xIebmBmFL4MmJGU4JrowfdkkKDbjqwuzBkCWPxQjgddrW4EZBnv6LiccAHdqoLUNcsgZDZD';
