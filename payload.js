@@ -307,6 +307,6 @@ const output = (categoryName,event) => {
 
 }
 
-module.exports = {
-  output: output
-};
+// module.exports = {
+//   output: output
+// };

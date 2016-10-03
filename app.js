@@ -105,7 +105,7 @@ function receivedmessage(messagingEvent) {
     var quickButton =
       console.log("quickButton_postback:------", categoryName);
       console.log("postback_sender_id:------", userid);
-      payloadText.output(categoryName,messagingEvent);
+      //payloadText.output(categoryName,messagingEvent);
 
     // if (categoryName == "Get Started") {
     //     //greetingtext(messagingEvent,Get Started);
