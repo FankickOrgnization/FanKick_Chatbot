@@ -76,7 +76,7 @@ function receivedpostback(messagingEvent) {
         //sendTextMessage(userid, 'Get Started');
         console.log("categoryName", categoryName);
         //getStarted();
-    }else if (categoryName == "Categories") {
+    }else if (quickButton == "Categories") {
         var senderID = event.sender.id;
         var messageData = {
             "recipient": {
