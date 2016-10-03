@@ -146,12 +146,10 @@ function fbuserdetails(event, userid) {
                 //         }],
               "payload": {
                           "template_type": "generic",
-                          "elements": [{
                           "buttons": [{
                                       "type": "postback",
                                       "title": "What can you do?",
                                       "payload": "USER_DEFINED_PAYLOAD"
-                                    }]
                                     }]
                                 },
                 "quick_replies":[
