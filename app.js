@@ -10,7 +10,8 @@ app.use(bodyParser.json());
 var fbpage_access_token = 'EAAXcJew5yNkBAAvFD3wX3RZACdvA4lZB6XStBzliKI9y4m7I1taAnWUWBezVarL8FjteZCztMBjXZCs35lAweqmc2XZARIf378LZA5lTg5xIebmBmFL4MmJGU4JrowfdkkKDbjqwuzBkCWPxQjgddrW4EZBnv6LiccAHdqoLUNcsgZDZD';
 
 app.get('/webhook', function(req, res) {
-    console.log("Validating webhook", console.log(JSON.stringify(req.body)));
+    //console.log("Validating webhook", console.log(JSON.stringify(req.body)));
+    console.log("######################################", res);
     if (req.query['hub.mode'] === 'subscribe' &&
         req.query['hub.verify_token'] === 'login_type') {
         res.status(200).send(req.query['hub.challenge']);
@@ -138,6 +139,11 @@ function fbuserdetails(event, userid) {
             },
             "message":{
                 "text":msg,
+                "buttons": [{
+                            "type": "postback",
+                            "title": "What can you do?",
+                            "payload": "DEVELOPER_DEFINED_PAYLOAD"
+                        }],
                 "quick_replies":[
                   {
                     "content_type":"text",
@@ -167,11 +173,6 @@ function fbuserdetails(event, userid) {
                   {
                     "content_type":"text",
                     "title":"Celebrities",
-                    "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
-                  },
-                  {
-                    "content_type":"text",
-                    "title":"What can you do?",
                     "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
                   }
                 ]
