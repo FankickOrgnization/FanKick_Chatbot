@@ -42,6 +42,12 @@ const persistentMenu = (accessToken) => {
 };
 
 
+// const fbuserdetails = (event, userid) => {
+//
+//
+// };
+
+
 module.exports = {
   persistentMenu: persistentMenu
 };
