@@ -138,13 +138,13 @@ function fbuserdetails(event, userid) {
                 "id": senderID
             },
             "message":{
-                "text":msg,
+                //"text":msg,
                 "attachment": {
                     "type": "template",
                     "payload": {
                         "template_type": "generic",
                         "elements": [{
-                            "title": "Please Login into FanKick",
+                            "title": msg,
                             "buttons": [{
                                 "type": "postback",
                                 "title": "Magazine",
