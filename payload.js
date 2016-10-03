@@ -1,6 +1,6 @@
 'use strict';
 var request = require('request');
-var app = express();
+//var app = express();
 var mysql = require('mysql');
 var pool = mysql.createPool({
     connectionLimit : 2,
@@ -9,7 +9,7 @@ var pool = mysql.createPool({
     password: '3e384329',
     database: 'rankworlddev'
 });
-app.use(bodyParser.json());
+//app.use(bodyParser.json());
 console.log("------:thread:-----");
 
 const output = (categoryName,event) => {
