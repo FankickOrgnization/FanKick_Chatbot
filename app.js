@@ -18,6 +18,45 @@ var pool = mysql.createPool({
 app.use(bodyParser.json());
 var fbpage_access_token = 'EAAXcJew5yNkBAAvFD3wX3RZACdvA4lZB6XStBzliKI9y4m7I1taAnWUWBezVarL8FjteZCztMBjXZCs35lAweqmc2XZARIf378LZA5lTg5xIebmBmFL4MmJGU4JrowfdkkKDbjqwuzBkCWPxQjgddrW4EZBnv6LiccAHdqoLUNcsgZDZD';
 
+var slidemenu = [
+  {
+    "content_type":"text",
+    "title":"Categories",
+    "payload":"Categories"
+  },
+  {
+    "content_type":"text",
+    "title":"Fan Clubs",
+    "payload":"Fan Clubs"
+  },
+  {
+    "content_type":"text",
+    "title":"Fan Magazine",
+    "payload":"Fan Magazine"
+  },
+  {
+    "content_type":"text",
+    "title":"Movies",
+    "payload":"Movies"
+  },
+  {
+    "content_type":"text",
+    "title":"Sports",
+    "payload":"Sports"
+  },
+  {
+    "content_type":"text",
+    "title":"Celebrities",
+    "payload":"Celebrities"
+  },
+  {
+    "content_type":"text",
+    "title":"What can you do?",
+    "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
+  }
+];
+
+
 app.get('/webhook', function(req, res) {
     //console.log("Validating webhook", console.log(JSON.stringify(req.body)));
     console.log("######################################", res);
@@ -185,43 +224,44 @@ function fbuserdetails(event, userid) {
                         }]
                     }
                 },
-                "quick_replies":[
-                  {
-                    "content_type":"text",
-                    "title":"Categories",
-                    "payload":"Categories"
-                  },
-                  {
-                    "content_type":"text",
-                    "title":"Fan Clubs",
-                    "payload":"Fan Clubs"
-                  },
-                  {
-                    "content_type":"text",
-                    "title":"Fan Magazine",
-                    "payload":"Fan Magazine"
-                  },
-                  {
-                    "content_type":"text",
-                    "title":"Movies",
-                    "payload":"Movies"
-                  },
-                  {
-                    "content_type":"text",
-                    "title":"Sports",
-                    "payload":"Sports"
-                  },
-                  {
-                    "content_type":"text",
-                    "title":"Celebrities",
-                    "payload":"Celebrities"
-                  },
-                  {
-                    "content_type":"text",
-                    "title":"What can you do?",
-                    "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
-                  }
-                ]
+                "quick_replies": slidemenu
+                // [
+                //   {
+                //     "content_type":"text",
+                //     "title":"Categories",
+                //     "payload":"Categories"
+                //   },
+                //   {
+                //     "content_type":"text",
+                //     "title":"Fan Clubs",
+                //     "payload":"Fan Clubs"
+                //   },
+                //   {
+                //     "content_type":"text",
+                //     "title":"Fan Magazine",
+                //     "payload":"Fan Magazine"
+                //   },
+                //   {
+                //     "content_type":"text",
+                //     "title":"Movies",
+                //     "payload":"Movies"
+                //   },
+                //   {
+                //     "content_type":"text",
+                //     "title":"Sports",
+                //     "payload":"Sports"
+                //   },
+                //   {
+                //     "content_type":"text",
+                //     "title":"Celebrities",
+                //     "payload":"Celebrities"
+                //   },
+                //   {
+                //     "content_type":"text",
+                //     "title":"What can you do?",
+                //     "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
+                //   }
+                // ]
               }
             }
          callSendAPI(messageData,'https://graph.facebook.com/v2.6/592208327626213/messages');
@@ -368,7 +408,6 @@ function sendContentPacks(categoryName, event) {
                         "image_url": rows[i].imageurl,
                         "item_url": rows[i].imageurl,
                         "buttons": [{
-
                             "type": "postback",
                             "title": "Read More",
                             "payload": "USER_DEFINED_PAYLOAD"
@@ -546,11 +585,13 @@ function sendContentPacks(categoryName, event) {
                             "type": "postback",
                             "title": "View",
                             "payload": rows[i].id
-                        }, {
-                            "type": "postback",
-                            "title": "Magazine",
-                            "payload": "USER_DEFINED_PAYLOAD"
-                        }]
+                        }
+                        // , {
+                        //     "type": "postback",
+                        //     "title": "Magazine",
+                        //     "payload": "USER_DEFINED_PAYLOAD"
+                        // }
+                      ]
                     };
                     contentList.push(keyMap);
                 }
