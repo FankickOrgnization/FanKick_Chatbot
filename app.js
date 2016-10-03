@@ -74,9 +74,7 @@ app.post('/webhook', function(req, res) {
 function receivedpostback(messagingEvent) {
     var categoryName = messagingEvent.postback.payload;
     var userid = messagingEvent.sender.id;
-
     console.log("postback_sender_id:------", userid);
-
     if (categoryName == "Get Started") {
         //greetingtext(messagingEvent,Get Started);
         thread.persistentMenu(fbpage_access_token);
@@ -84,6 +82,8 @@ function receivedpostback(messagingEvent) {
         //sendTextMessage(userid, 'Get Started');
         console.log("categoryName", categoryName);
         //getStarted();
+    }else{
+      sendContentPacks(categoryName, messagingEvent);
     }
 }
 
