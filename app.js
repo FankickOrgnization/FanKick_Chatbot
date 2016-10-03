@@ -131,7 +131,8 @@ function fbuserdetails(event, userid) {
         console.log("--------:Response data:-------- timezone", userprofiledata.timezone);
         console.log("--------:Response data:--------gender ", userprofiledata.gender);
         var senderID = event.sender.id;
-        var msg = 'Hi '+username+', A lot of exciting things are awaiting for you! Get kicking!';
+        var img ='https://static.xx.fbcdn.net/images/emoji.php/v5/z4f/1/16/1f447.png';
+        var msg = 'Hi '+username+', A lot of exciting things are awaiting for you! Get kicking!'+img+'';
         console.log("--------:Response data:--------gender ", msg);
         var messageData = {
             "recipient": {
