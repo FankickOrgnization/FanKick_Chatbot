@@ -50,15 +50,10 @@ app.post('/webhook', function(req, res) {
                     //var msgText = messagingEvent.message.text;
                     console.log("messaging :------", messagingEvent);
                   //  console.log("messaging :------", messagingEvent.message.quick_reply.payload);
-                    //receivedmessage(messagingEvent);
-                } else if (messagingEvent.message.quick_reply) {
-                    //receivedDeliveryConfirmation(messagingEvent);
-                    console.log("quick_reply :------", messagingEvent);
                     receivedmessage(messagingEvent);
-                    //receivedmessage(messagingEvent)
                 } else if (messagingEvent.delivery) {
                     //receivedDeliveryConfirmation(messagingEvent);
-                }else if (messagingEvent.postback) {
+                } else if (messagingEvent.postback) {
                     receivedpostback(messagingEvent);
                 } else if (messagingEvent.read) {
                     //console.log("Webhook received unknown messagingEvent: ", messagingEvent);
@@ -75,48 +70,13 @@ app.post('/webhook', function(req, res) {
     }
 });
 
-function sendHelpMessage(event) {
-    var senderID = event.sender.id;
-    var messageData = {
-        "recipient": {
-            "id": senderID
-        },
-        "message": {
-            "attachment": {
-                "type": "template",
-                "payload": {
-                    "template_type": "button",
-                    "text": "A lot of exciting things are awaiting for you! Get kicking!",
-                    "buttons": [{
-                        "type": "postback",
-                        "title": "Categories",
-                        "payload": "Categories"
-                    }, {
-                        "type": "postback",
-                        "title": "Fan Clubs",
-                        "payload": "Fan Clubs"
-                    }, {
-                        "type": "postback",
-                        "title": "Fan Magazine",
-                        "payload": "Fan Magazine"
-                    }]
-                }
-            }
-        }
-    }
-    callSendAPI(messageData,'https://graph.facebook.com/v2.6/592208327626213/messages');
-}
-
-
-
-
-
-
 // postback payload section Start ********************************************
 function receivedpostback(messagingEvent) {
     var categoryName = messagingEvent.postback.payload;
     var userid = messagingEvent.sender.id;
+
     console.log("postback_sender_id:------", userid);
+
     if (categoryName == "Get Started") {
         //greetingtext(messagingEvent,Get Started);
         thread.persistentMenu(fbpage_access_token);
@@ -124,8 +84,6 @@ function receivedpostback(messagingEvent) {
         //sendTextMessage(userid, 'Get Started');
         console.log("categoryName", categoryName);
         //getStarted();
-    }else{
-      sendContentPacks(categoryName, messagingEvent);
     }
 }
 
@@ -154,7 +112,7 @@ function receivedmessage(messagingEvent) {
     var quickButton =
       console.log("quickButton_postback:------", categoryName);
       console.log("postback_sender_id:------", userid);
-      sendContentPacks(categoryName, messagingEvent);
+      sendContentPacks(categoryName, messagingEvent,);
       //payloadText.output(categoryName,messagingEvent);
 
     // if (categoryName == "Get Started") {
