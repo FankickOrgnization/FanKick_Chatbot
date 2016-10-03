@@ -34,7 +34,7 @@ const persistentMenu = (accessToken) => {
       if (error) {
           console.log("Error While geting response from Wit:", error);
       } else {
-        console.log("Success While geting response from facebook thread:", body);
+        console.log("Success While geting response from facebook thread:",response.body);
       }
   });
 };
