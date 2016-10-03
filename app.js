@@ -70,6 +70,43 @@ app.post('/webhook', function(req, res) {
     }
 });
 
+function sendHelpMessage(event) {
+    var senderID = event.sender.id;
+    var messageData = {
+        "recipient": {
+            "id": senderID
+        },
+        "message": {
+            "attachment": {
+                "type": "template",
+                "payload": {
+                    "template_type": "button",
+                    "text": "A lot of exciting things are awaiting for you! Get kicking!",
+                    "buttons": [{
+                        "type": "postback",
+                        "title": "Categories",
+                        "payload": "Categories"
+                    }, {
+                        "type": "postback",
+                        "title": "Fan Clubs",
+                        "payload": "Fan Clubs"
+                    }, {
+                        "type": "postback",
+                        "title": "Fan Magazine",
+                        "payload": "Fan Magazine"
+                    }]
+                }
+            }
+        }
+    }
+    callSendAPI(messageData,'https://graph.facebook.com/v2.6/592208327626213/messages');
+}
+
+
+
+
+
+
 // postback payload section Start ********************************************
 function receivedpostback(messagingEvent) {
     var categoryName = messagingEvent.postback.payload;
@@ -249,7 +286,7 @@ function sendContentPacks(categoryName, event) {
                     "type": "template",
                     "payload": {
                         "template_type": "button",
-                        //"text": "We have Fankick content on the following, why not try them out?",
+                        "text": "We have Fankick content on the following, why not try them out?",
                         "buttons": [{
                             "type": "postback",
                             "title": "Movies",
