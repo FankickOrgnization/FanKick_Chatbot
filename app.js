@@ -66,9 +66,9 @@ app.post('/webhook', function(req, res) {
 function receivedpostback(messagingEvent) {
     var categoryName = messagingEvent.postback.payload;
     var userid = messagingEvent.sender.id;
-    var quickButton = messagingEvent.message.quick_reply.payload;
+
     console.log("postback_sender_id:------", userid);
-    console.log("quickButton_postback:------", quickButton);
+
     if (categoryName == "Get Started") {
         //greetingtext(messagingEvent,Get Started);
         thread.persistentMenu(fbpage_access_token);
@@ -76,80 +76,9 @@ function receivedpostback(messagingEvent) {
         //sendTextMessage(userid, 'Get Started');
         console.log("categoryName", categoryName);
         //getStarted();
-    }else if (quickButton == "Categories") {
-        var senderID = event.sender.id;
-        var messageData = {
-            "recipient": {
-                "id": senderID
-            },
-            "message": {
-                "attachment": {
-                    "type": "template",
-                    "payload": {
-                        "template_type": "button",
-                        "text": "We have Fankick content on the following, why not try them out?",
-                        "buttons": [{
-                            "type": "postback",
-                            "title": "Movies",
-                            "payload": "Movies"
-                        }, {
-                            "type": "postback",
-                            "title": "Sports",
-                            "payload": "Sports"
-                        }, {
-                            "type": "postback",
-                            "title": "Celebrities",
-                            "payload": "Celebrities"
-                        }]
-                    }
-                }
-            }
-        }
-        callSendAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
-    }else if (categoryName == "Fan Clubs") {
-      pool.getConnection(function(err, connection) {
-        connection.query('SELECT * FROM fk_pack_fanclub', function(err, rows) {
-            if (err) {
-                console.log("Error While retriving content pack data from database:", err);
-            } else if (rows.length) {
-                var senderID = event.sender.id;
-                var contentList = [];
-
-                for (var i = 0; i < rows.length; i++) { //Construct request body
-                    var keyMap = {
-                        "title": rows[i].name,
-                        "image_url": rows[i].imageurl,
-                        "item_url": rows[i].imageurl,
-                        "buttons": [{
-                            "type": "web_url",
-                            "url": rows[i].wiki_url,
-                            "title": "Read More"
-                        }]
-                    };
-                    contentList.push(keyMap);
-                }
-                var messageData = {
-                    "recipient": {
-                        "id": senderID
-                    },
-                    "message": {
-                        "attachment": {
-                            "type": "template",
-                            "payload": {
-                                "template_type": "generic",
-                                "elements": contentList
-                            }
-                        }
-                    }
-                }
-                callSendAPI(messageData,'https://graph.facebook.com/v2.6/592208327626213/messages');
-            } else {
-                console.log("No Data Found From Database");
-                sendHelpMessage(event);
-            }
-            connection.release();
-        });
-        });
+    }else{
+      var quickButton = messagingEvent.message.quick_reply.payload;
+      console.log("quickButton_postback:------", quickButton);
     }
 }
 
