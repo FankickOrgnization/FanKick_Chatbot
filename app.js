@@ -41,7 +41,7 @@ app.post('/webhook', function(req, res) {
                     }
                     //var msgText = messagingEvent.message.text;
                     console.log("messaging :------", messagingEvent);
-                    console.log("messaging :------", messagingEvent.message.quick_reply);
+                    console.log("messaging :------", messagingEvent.message.quick_reply.payload);
                     //textmessage(messagingEvent);
                 } else if (messagingEvent.delivery) {
                     //receivedDeliveryConfirmation(messagingEvent);
@@ -66,7 +66,9 @@ app.post('/webhook', function(req, res) {
 function receivedpostback(messagingEvent) {
     var categoryName = messagingEvent.postback.payload;
     var userid = messagingEvent.sender.id;
+    var quickButton = messagingEvent.message.quick_reply.payload;
     console.log("postback_sender_id:------", userid);
+    console.log("quickButton_postback:------", quickButton);
     if (categoryName == "Get Started") {
         //greetingtext(messagingEvent,Get Started);
         thread.persistentMenu(fbpage_access_token);
