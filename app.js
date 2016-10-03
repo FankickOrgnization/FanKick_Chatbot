@@ -41,7 +41,7 @@ app.post('/webhook', function(req, res) {
                     }
                     //var msgText = messagingEvent.message.text;
                     console.log("messaging :------", messagingEvent);
-                    console.log("messaging :------", messagingEvent.message.quick_reply.payload);
+                  //  console.log("messaging :------", messagingEvent.message.quick_reply.payload);
                     //textmessage(messagingEvent);
                 } else if (messagingEvent.delivery) {
                     //receivedDeliveryConfirmation(messagingEvent);
