@@ -73,6 +73,50 @@ function receivedpostback(messagingEvent) {
         //sendTextMessage(userid, 'Get Started');
         console.log("categoryName", categoryName);
         //getStarted();
+    }else if (categoryName == "Fan Clubs") {
+      pool.getConnection(function(err, connection) {
+        connection.query('SELECT * FROM fk_pack_fanclub', function(err, rows) {
+            if (err) {
+                console.log("Error While retriving content pack data from database:", err);
+            } else if (rows.length) {
+                var senderID = event.sender.id;
+                var contentList = [];
+
+                for (var i = 0; i < rows.length; i++) { //Construct request body
+                    var keyMap = {
+                        "title": rows[i].name,
+                        "image_url": rows[i].imageurl,
+                        "item_url": rows[i].imageurl,
+                        "buttons": [{
+                            "type": "web_url",
+                            "url": rows[i].wiki_url,
+                            "title": "Read More"
+                        }]
+                    };
+                    contentList.push(keyMap);
+                }
+                var messageData = {
+                    "recipient": {
+                        "id": senderID
+                    },
+                    "message": {
+                        "attachment": {
+                            "type": "template",
+                            "payload": {
+                                "template_type": "generic",
+                                "elements": contentList
+                            }
+                        }
+                    }
+                }
+                callSendAPI(messageData,'https://graph.facebook.com/v2.6/592208327626213/messages');
+            } else {
+                console.log("No Data Found From Database");
+                sendHelpMessage(event);
+            }
+            connection.release();
+        });
+        });
     }
 }
 
@@ -131,8 +175,7 @@ function fbuserdetails(event, userid) {
         console.log("--------:Response data:-------- timezone", userprofiledata.timezone);
         console.log("--------:Response data:--------gender ", userprofiledata.gender);
         var senderID = event.sender.id;
-        var img ='https://static.xx.fbcdn.net/images/emoji.php/v5/z4f/1/16/1f447.png';
-        var msg = 'Hi '+username+', A lot of exciting things are awaiting for you! Get kicking!'+img+'';
+        var msg = 'Hi '+username+', A lot of exciting things are awaiting for you! Get kicking!';
         console.log("--------:Response data:--------gender ", msg);
         var messageData = {
             "recipient": {
