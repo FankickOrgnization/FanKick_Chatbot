@@ -73,6 +73,36 @@ function receivedpostback(messagingEvent) {
         //sendTextMessage(userid, 'Get Started');
         console.log("categoryName", categoryName);
         //getStarted();
+    }else if (categoryName == "Categories") {
+        var senderID = event.sender.id;
+        var messageData = {
+            "recipient": {
+                "id": senderID
+            },
+            "message": {
+                "attachment": {
+                    "type": "template",
+                    "payload": {
+                        "template_type": "button",
+                        "text": "We have Fankick content on the following, why not try them out?",
+                        "buttons": [{
+                            "type": "postback",
+                            "title": "Movies",
+                            "payload": "Movies"
+                        }, {
+                            "type": "postback",
+                            "title": "Sports",
+                            "payload": "Sports"
+                        }, {
+                            "type": "postback",
+                            "title": "Celebrities",
+                            "payload": "Celebrities"
+                        }]
+                    }
+                }
+            }
+        }
+        callSendAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
     }else if (categoryName == "Fan Clubs") {
       pool.getConnection(function(err, connection) {
         connection.query('SELECT * FROM fk_pack_fanclub', function(err, rows) {
@@ -201,32 +231,32 @@ function fbuserdetails(event, userid) {
                   {
                     "content_type":"text",
                     "title":"Categories",
-                    "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
+                    "payload":"Categories"
                   },
                   {
                     "content_type":"text",
                     "title":"Fan Clubs",
-                    "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
+                    "payload":"Fan Clubs"
                   },
                   {
                     "content_type":"text",
                     "title":"Fan Magazine",
-                    "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
+                    "payload":"Fan Magazine"
                   },
                   {
                     "content_type":"text",
                     "title":"Movies",
-                    "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
+                    "payload":"Movies"
                   },
                   {
                     "content_type":"text",
                     "title":"Sports",
-                    "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
+                    "payload":"Sports"
                   },
                   {
                     "content_type":"text",
                     "title":"Celebrities",
-                    "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
+                    "payload":"Celebrities"
                   },
                   {
                     "content_type":"text",
