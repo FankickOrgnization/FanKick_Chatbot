@@ -151,8 +151,7 @@ function fbuserdetails(event, userid) {
                                       "title": "What can you do?",
                                       "payload": "USER_DEFINED_PAYLOAD"
                                     }],
-                                    "quick_replies":[
-                                      {
+                         "quick_replies":[{
                                         "content_type":"text",
                                         "title":"Categories",
                                         "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
@@ -182,8 +181,7 @@ function fbuserdetails(event, userid) {
                                         "title":"Celebrities",
                                         "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
                                       }
-                                    ]
-                                }
+                                    ]}
 
               }
             }
