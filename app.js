@@ -131,7 +131,7 @@ function fbuserdetails(event, userid) {
         console.log("--------:Response data:-------- timezone", userprofiledata.timezone);
         console.log("--------:Response data:--------gender ", userprofiledata.gender);
         var senderID = event.sender.id;
-        var msg = 'Hi '+username+' \n how can i help you? \n A lot of exciting things are awaiting for you! Get kicking!';
+        var msg = 'Hi '+username+', A lot of exciting things are awaiting for you! Get kicking!';
         console.log("--------:Response data:--------gender ", msg);
         var messageData = {
             "recipient": {
@@ -147,7 +147,7 @@ function fbuserdetails(event, userid) {
                             "title": msg,
                             "buttons": [{
                                 "type": "postback",
-                                "title": "Magazine",
+                                "title": "What can you do?",
                                 "payload": "USER_DEFINED_PAYLOAD"
                             }]
                         }]
