@@ -75,9 +75,7 @@ app.post('/webhook', function(req, res) {
 function receivedpostback(messagingEvent) {
     var categoryName = messagingEvent.postback.payload;
     var userid = messagingEvent.sender.id;
-
     console.log("postback_sender_id:------", userid);
-
     if (categoryName == "Get Started") {
         //greetingtext(messagingEvent,Get Started);
         thread.persistentMenu(fbpage_access_token);
@@ -85,6 +83,8 @@ function receivedpostback(messagingEvent) {
         //sendTextMessage(userid, 'Get Started');
         console.log("categoryName", categoryName);
         //getStarted();
+    }else{
+      sendContentPacks(categoryName, messagingEvent);
     }
 }
 
@@ -465,23 +465,6 @@ function sendContentPacks(categoryName, event) {
             "recipient": {
                 "id": senderID
             },
-            // "message": {
-            //     "attachment": {
-            //         "type": "template",
-            //         "payload": {
-            //             "template_type": "generic",
-            //             "elements": [{
-            //                 //  "title": "Welcome to FanKick",
-            //                 //  "image_url": "https://scontent.fbom1-2.fna.fbcdn.net/v/t1.0-1/p32x32/13627105_592208684292844_1737491960574535764_n.png?oh=ce8c86c4f7ba7348e003ef264f47a310&oe=587D2B8C",
-            //                 "buttons": [{
-            //                     "type": "postback",
-            //                     "title": "Magazine",
-            //                     "payload": "USER_DEFINED_PAYLOAD"
-            //                 }]
-            //             }]
-            //         }
-            //     }
-            // }
             "message":{
                 "text":"Please click Yes/No:",
                 "quick_replies":[
