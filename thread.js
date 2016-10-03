@@ -21,7 +21,7 @@ const persistentMenu = (accessToken) => {
                 {
                   "type":"web_url",
                   "title":"Download Fankick App",
-                  "url":"http://petersapparel.parseapp.com/"
+                  "url":"http://google.com/"
                 }
               ]
             };
@@ -29,7 +29,9 @@ const persistentMenu = (accessToken) => {
       uri: 'https://graph.facebook.com/v2.6/me/thread_settings?access_token='+ accessToken,
       headers: {
           "Content-Type": "application/json"
-      }
+      },
+      method: 'POST',
+      json: body
   }, function(error, response) {
       if (error) {
           console.log("Error While geting response from Wit:", error);
