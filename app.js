@@ -139,11 +139,21 @@ function fbuserdetails(event, userid) {
             },
             "message":{
                 "text":msg,
-                "buttons": [{
-                            "type": "postback",
-                            "title": "What can you do?",
-                            "payload": "DEVELOPER_DEFINED_PAYLOAD"
-                        }],
+                // "buttons": [{
+                //             "type": "postback",
+                //             "title": "What can you do?",
+                //             "payload": "DEVELOPER_DEFINED_PAYLOAD"
+                //         }],
+              "payload": {
+                          "template_type": "generic",
+                          "elements": [{
+                          "buttons": [{
+                                      "type": "postback",
+                                      "title": "What can you do?",
+                                      "payload": "USER_DEFINED_PAYLOAD"
+                                    }]
+                                    }]
+                                },
                 "quick_replies":[
                   {
                     "content_type":"text",
