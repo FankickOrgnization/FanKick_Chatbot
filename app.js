@@ -6,6 +6,7 @@ var mysql = require('mysql');
 const fetch = require('node-fetch');
 const crypto = require('crypto');
 const thread = require('./thread.js');
+const payloadText = require('./payload.js');
 app.use(bodyParser.json());
 var fbpage_access_token = 'EAAXcJew5yNkBAAvFD3wX3RZACdvA4lZB6XStBzliKI9y4m7I1taAnWUWBezVarL8FjteZCztMBjXZCs35lAweqmc2XZARIf378LZA5lTg5xIebmBmFL4MmJGU4JrowfdkkKDbjqwuzBkCWPxQjgddrW4EZBnv6LiccAHdqoLUNcsgZDZD';
 
@@ -42,7 +43,7 @@ app.post('/webhook', function(req, res) {
                     //var msgText = messagingEvent.message.text;
                     console.log("messaging :------", messagingEvent);
                   //  console.log("messaging :------", messagingEvent.message.quick_reply.payload);
-                    //textmessage(messagingEvent);
+                    receivedmessage(messagingEvent);
                 } else if (messagingEvent.delivery) {
                     //receivedDeliveryConfirmation(messagingEvent);
                 } else if (messagingEvent.postback) {
@@ -76,9 +77,6 @@ function receivedpostback(messagingEvent) {
         //sendTextMessage(userid, 'Get Started');
         console.log("categoryName", categoryName);
         //getStarted();
-    }else{
-      var quickButton = messagingEvent.message.quick_reply.payload;
-      console.log("quickButton_postback:------", quickButton);
     }
 }
 
@@ -100,6 +98,25 @@ function receivedpostback(messagingEvent) {
 //     var url = 'https://graph.facebook.com/v2.6/me/thread_settings?access_token=' + fbpage_access_token + '';
 //     callSendAPI(messageData, url);
 // }
+// Quick_reply payload section Start ********************************************
+function receivedmessage(messagingEvent) {
+    var categoryName = messagingEvent.message.quick_reply.payload;
+    var userid = messagingEvent.sender.id;
+    var quickButton =
+      console.log("quickButton_postback:------", categoryName);
+      console.log("postback_sender_id:------", userid);
+      payloadText.output(fbpage_access_token,categoryName,userid);
+
+    // if (categoryName == "Get Started") {
+    //     //greetingtext(messagingEvent,Get Started);
+    //     thread.persistentMenu(fbpage_access_token);
+    //     fbuserdetails(messagingEvent, userid);
+    //     //sendTextMessage(userid, 'Get Started');
+    //     console.log("categoryName", categoryName);
+    //     //getStarted();
+    // }
+}
+// Quick_reply payload section End ********************************************
 
 function sendTextMessage(recipientId, messageText) {
     var messageData = {
