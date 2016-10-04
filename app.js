@@ -18,7 +18,7 @@ var pool = mysql.createPool({
 app.use(bodyParser.json());
 var fbpage_access_token = 'EAAXcJew5yNkBAAvFD3wX3RZACdvA4lZB6XStBzliKI9y4m7I1taAnWUWBezVarL8FjteZCztMBjXZCs35lAweqmc2XZARIf378LZA5lTg5xIebmBmFL4MmJGU4JrowfdkkKDbjqwuzBkCWPxQjgddrW4EZBnv6LiccAHdqoLUNcsgZDZD';
 
-var slidemenu = [
+var quickMenu = [
   {
     "content_type":"text",
     "title":"Categories",
@@ -224,44 +224,7 @@ function fbuserdetails(event, userid) {
                         }]
                     }
                 },
-                "quick_replies": slidemenu
-                // [
-                //   {
-                //     "content_type":"text",
-                //     "title":"Categories",
-                //     "payload":"Categories"
-                //   },
-                //   {
-                //     "content_type":"text",
-                //     "title":"Fan Clubs",
-                //     "payload":"Fan Clubs"
-                //   },
-                //   {
-                //     "content_type":"text",
-                //     "title":"Fan Magazine",
-                //     "payload":"Fan Magazine"
-                //   },
-                //   {
-                //     "content_type":"text",
-                //     "title":"Movies",
-                //     "payload":"Movies"
-                //   },
-                //   {
-                //     "content_type":"text",
-                //     "title":"Sports",
-                //     "payload":"Sports"
-                //   },
-                //   {
-                //     "content_type":"text",
-                //     "title":"Celebrities",
-                //     "payload":"Celebrities"
-                //   },
-                //   {
-                //     "content_type":"text",
-                //     "title":"What can you do?",
-                //     "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
-                //   }
-                // ]
+                "quick_replies": quickMenu
               }
             }
          callSendAPI(messageData,'https://graph.facebook.com/v2.6/592208327626213/messages');
@@ -344,7 +307,7 @@ function sendContentPacks(categoryName, event) {
                                 "elements": contentList
                             }
                         },
-                        "quick_replies": slidemenu
+                        "quick_replies": quickMenu
                     }
                 }
                 callSendAPI(messageData,'https://graph.facebook.com/v2.6/592208327626213/messages');
@@ -391,7 +354,7 @@ function sendContentPacks(categoryName, event) {
                                 "elements": contentList
                             }
                         },
-                        "quick_replies": slidemenu
+                        "quick_replies": quickMenu
                     }
                 }
                 callSendAPI(messageData,'https://graph.facebook.com/v2.6/592208327626213/messages');
@@ -450,52 +413,7 @@ function sendContentPacks(categoryName, event) {
               }
         }
         callSendAPI(messageData,'https://graph.facebook.com/v2.6/592208327626213/messages');
-    } else if (categoryName == "virat kohli") {
-        console.log("Virat Kohli:", categoryName);
-        request({
-            uri:'https://webhose.io/search?token=a5010355-3c38-4a95-854f-85b4bd499882&format=json&q=aamir%20khan%20language%3A(english)%20thread.country%3AIN%20site_category%3Aentertainment&ts=1474965527596',
-          //  uri:'  https://webhose.io/search?token=a5010355-3c38-4a95-854f-85b4bd499882&format=json&q=virat%20kohli%20thread.country%3AIN%20site_category%3Asports',
-        },function(error, response) {
-          var webhousedata = JSON.stringify(response.body);
-            console.log("Webhose_data:", webhousedata.posts);
-          var webhouseres = JSON.parse(response.body);
-            console.log("Webhose_response:", webhouseres.posts);
-            console.log("#####Webhose_response:#######", webhouseres.posts[0].thread);
-            console.log("#####Webhose_response:#######", webhouseres.posts[0].thread.title);
-            console.log("#####Webhose_response:#######", webhouseres.posts[0].thread.social);
-            console.log("#####Webhose_response:#######", webhouseres.posts[0].thread.social.facebook);
-            console.log("#####Webhose_response:#######", webhouseres.posts[0].thread.social.facebook.likes);
-          //webhouseres.forEach(function (thread) {
-          //   console.log("Webhose_response data:",thread);
-          // });
-          // //  console.log("Webhose_response data:", response.posts.thread);
-            console.log("Webhose_error data:", error);
-            if (error) {
-                console.log("Error While retriving content pack data from database:", error);
-            }else if (response.length) {
-                var senderID = event.sender.id;
-                var contentList = [];
-                for (var i = 0; i < 5; i++) { //Construct request body
-                    var keyMap = {
-                        "title": response.posts.thread[i].title,
-                        "image_url": response.posts.thread[i].main_image,
-                        "item_url": response.posts.thread[i].main_image
-                        // "buttons": [{
-                        //     "type": "postback",
-                        //     "title": "Read More",
-                        //     "payload": "USER_DEFINED_PAYLOAD"
-                        // }]
-                    };
-                    contentList.push(keyMap);
-                    console.log("#######################contentList",contentList);
-                }
-              }
-            else {
-                console.log("No Data Found From Database");
-                sendHelpMessage(event);
-            }
-        });
-      } else {
+    } else {
       pool.getConnection(function(err, connection) {
         connection.query('SELECT * FROM fk_content_pack where category_id = (SELECT id FROM fk_category where name = ?)', [categoryName], function(err, rows) {
             if (err) {
@@ -535,7 +453,7 @@ function sendContentPacks(categoryName, event) {
                                 "elements": contentList
                             }
                         },
-                        "quick_replies":slidemenu
+                        "quick_replies":quickMenu
                     }
                 }
                 callSendAPI(messageData,'https://graph.facebook.com/v2.6/592208327626213/messages');
