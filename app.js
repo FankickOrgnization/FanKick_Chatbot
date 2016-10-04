@@ -258,21 +258,35 @@ function fbuserdetails(event, userid) {
             "message":{
                 //"text":msg,
                 //"text":"hello, world!"
-                "attachment": {
-                    "type": "template",
-                    "payload": {
-                        "template_type": "generic",
-                        "elements": [{
-                           "title": msg,
-                          //  "text":msg,
-                            "buttons": [{
-                                "type": "postback",
-                                "title": "Ok Goon",
-                                "payload": "Ok Goon"
-                            }]
-                        }],
-                    }
-                }
+                // "attachment": {
+                //     "type": "template",
+                //     "payload": {
+                //         "template_type": "generic",
+                //         "elements": [{
+                //            "title": msg,
+                //           //  "text":msg,
+                //             "buttons": [{
+                //                 "type": "postback",
+                //                 "title": "Ok Goon",
+                //                 "payload": "Ok Goon"
+                //             }]
+                //         }],
+                //     }
+                // }
+
+                "attachment":{
+                   "type": "template",
+                   "payload": {
+                       "template_type": "button",
+                       "text": msg,
+                       "buttons": [{
+                           "type": "postback",
+                           "title": "Ok Goon",
+                           "payload": "Ok Goon"
+                       }]
+                   }
+               }
+
                 // "quick_replies": quickMenu
               }
             }
