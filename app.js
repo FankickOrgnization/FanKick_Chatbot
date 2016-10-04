@@ -153,16 +153,6 @@ function receivedmessage(messagingEvent) {
       console.log("quickButton_postback:------", categoryName);
       console.log("postback_sender_id:------", userid);
       sendContentPacks(categoryName, messagingEvent);
-      //payloadText.output(categoryName,messagingEvent);
-
-    // if (categoryName == "Get Started") {
-    //     //greetingtext(messagingEvent,Get Started);
-    //     thread.persistentMenu(fbpage_access_token);
-    //     fbuserdetails(messagingEvent, userid);
-    //     //sendTextMessage(userid, 'Get Started');
-    //     console.log("categoryName", categoryName);
-    //     //getStarted();
-    // }
 }
 // Quick_reply payload section End ********************************************
 
@@ -202,7 +192,9 @@ function fbuserdetails(event, userid) {
         console.log("--------:Response data:-------- timezone", userprofiledata.timezone);
         console.log("--------:Response data:--------gender ", userprofiledata.gender);
         var senderID = event.sender.id;
-        var msg = 'Hi '+username+', A lot of exciting things are awaiting for you! Get kicking!';
+        //var msg = 'Hi '+username+', A lot of exciting things are awaiting for you! Get kicking!';
+        var msg = 'Hi '+username+'! My name is Kicker. How may I come of any help to you today?';
+
         console.log("--------:Response data:--------gender ", msg);
         var messageData = {
             "recipient": {
