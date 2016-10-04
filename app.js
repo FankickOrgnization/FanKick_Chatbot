@@ -246,8 +246,7 @@ function fbuserdetails(event, userid) {
         console.log("--------:Response data:--------gender ", userprofiledata.gender);
         var senderID = event.sender.id;
         //var msg = 'Hi '+username+', A lot of exciting things are awaiting for you! Get kicking!';
-        var msg = 'Hi '+username+'! My name is Kicker.\n I can help you get closer to your favorite celebrity with a lot of exciting things about them.';
-        //var msg1 =
+        var msg = 'Hi '+username+'! My name is Kicker.\n How may I come of any help to you today?';
 
         console.log("--------:Response data:--------gender ", msg);
         var messageData = {
@@ -256,13 +255,13 @@ function fbuserdetails(event, userid) {
             },
             "message":{
                 //"text":msg,
-                "text": msg,
+                "text":"hello, world!"
                 "attachment": {
                     "type": "template",
                     "payload": {
                         "template_type": "generic",
                         "elements": [{
-                            //"title": msg1,
+                            "title": msg,
                             "buttons": [{
                                 "type": "postback",
                                 "title": "Ok Goon",
