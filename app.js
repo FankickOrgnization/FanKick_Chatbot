@@ -126,8 +126,8 @@ function receivedpostback(messagingEvent) {
         //greetingtext(messagingEvent,Get Started);
         //thread.persistentMenu(fbpage_access_token);
       //  fbuserdetails(messagingEvent, userid);
+      var Categories = categoryName;
         sendContentPacks(Categories, messagingEvent);
-
         //sendTextMessage(userid, 'Get Started');
         console.log("categoryName", categoryName);
         //getStarted();
