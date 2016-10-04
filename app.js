@@ -263,8 +263,8 @@ function fbuserdetails(event, userid) {
                     "payload": {
                         "template_type": "generic",
                         "elements": [{
-                          //  "title": msg,
-                            "text":msg,
+                           "title": msg,
+                          //  "text":msg,
                             "buttons": [{
                                 "type": "postback",
                                 "title": "Ok Goon",
