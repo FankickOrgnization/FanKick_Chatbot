@@ -126,8 +126,8 @@ function receivedpostback(messagingEvent) {
         //greetingtext(messagingEvent,Get Started);
         //thread.persistentMenu(fbpage_access_token);
       //  fbuserdetails(messagingEvent, userid);
-      var Categories = categoryName;
-        sendContentPacks(Categories, messagingEvent);
+    //  var Categories = categoryName;
+        mainPacks(categoryName, messagingEvent);
         //sendTextMessage(userid, 'Get Started');
         console.log("categoryName", categoryName);
         //getStarted();
@@ -135,6 +135,45 @@ function receivedpostback(messagingEvent) {
       sendContentPacks(categoryName, messagingEvent);
     }
 }
+
+
+function mainPacks(categoryName, event){
+  var senderID = event.sender.id;
+  var messageData = {
+      "recipient": {
+          "id": senderID
+      },
+      "message": {
+          "attachment": {
+              "type": "template",
+              "payload": {
+                  "template_type": "button",
+                  "text": "We have Fankick content on the following, why not try them out?",
+                  "buttons": [{
+                      "type": "postback",
+                      "title": "Movies",
+                      "payload": "Movies"
+                  }, {
+                      "type": "postback",
+                      "title": "Sports",
+                      "payload": "Sports"
+                  }, {
+                      "type": "postback",
+                      "title": "Celebrities",
+                      "payload": "Celebrities"
+                  }]
+              }
+          }
+
+      }
+  }
+  callSendAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
+
+
+
+}
+
+
 
 // function getStarted() {
 //
@@ -164,6 +203,11 @@ function receivedmessage(messagingEvent) {
       sendContentPacks(categoryName, messagingEvent);
 }
 // Quick_reply payload section End ********************************************
+
+
+
+
+
 
 function sendTextMessage(recipientId, messageText) {
     var messageData = {
