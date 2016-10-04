@@ -193,8 +193,8 @@ function fbuserdetails(event, userid) {
         console.log("--------:Response data:--------gender ", userprofiledata.gender);
         var senderID = event.sender.id;
         //var msg = 'Hi '+username+', A lot of exciting things are awaiting for you! Get kicking!';
-        var msg = 'Hi '+username+'! My name is Kicker.';
-        var msg1 = 'How may I come of any help to you today?';
+        var msg = 'Hi '+username+'! My name is Kicker. \n How may I come of any help to you today?';
+        //var msg1 = 'How may I come of any help to you today?';
 
         console.log("--------:Response data:--------gender ", msg);
         var messageData = {
@@ -207,22 +207,23 @@ function fbuserdetails(event, userid) {
                     "type": "template",
                     "payload": {
                         "template_type": "generic",
+                        "text": msg,
                         "elements": [{
-                            "title": msg,
-                            // "buttons": [{
-                            //     "type": "postback",
-                            //     "title": "What can you do?",
-                            //     "payload": "USER_DEFINED_PAYLOAD"
-                            // }]
-                        }],
-                        "elements": [{
-                            "title": msg1,
+                            //"title": msg,
                             "buttons": [{
                                 "type": "postback",
-                                "title": "What can you do?",
+                                "title": "Ok goon",
                                 "payload": "USER_DEFINED_PAYLOAD"
                             }]
                         }]
+                        // "elements": [{
+                        //     "title": msg1,
+                        //     // "buttons": [{
+                        //     //     "type": "postback",
+                        //     //     "title": "What can you do?",
+                        //     //     "payload": "USER_DEFINED_PAYLOAD"
+                        //     // }]
+                        // }]
                     }
                 },
                 "quick_replies": quickMenu
