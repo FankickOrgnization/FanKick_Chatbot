@@ -193,7 +193,7 @@ function fbuserdetails(event, userid) {
         console.log("--------:Response data:--------gender ", userprofiledata.gender);
         var senderID = event.sender.id;
         //var msg = 'Hi '+username+', A lot of exciting things are awaiting for you! Get kicking!';
-        var msg = 'Hi '+username+'! My name is Kicker. How may I come of any help to you today?';
+        var msg = 'Hi '+username+'! My name is Kicker.\n How may I come of any help to you today?';
 
         console.log("--------:Response data:--------gender ", msg);
         var messageData = {
