@@ -323,12 +323,12 @@ function sendContentPacks(categoryName, event) {
                     var keyMap = {
                         "title": rows[i].name,
                         "image_url": rows[i].imageurl,
-                        "item_url": rows[i].imageurl,
-                        "buttons": [{
-                            "type": "web_url",
-                            "url": rows[i].wiki_url,
-                            "title": "Read More"
-                        }]
+                        "item_url": rows[i].imageurl
+                        // "buttons": [{
+                        //     "type": "web_url",
+                        //     "url": rows[i].wiki_url,
+                        //     "title": "Read More"
+                        // }]
                     };
                     contentList.push(keyMap);
                 }
@@ -370,12 +370,12 @@ function sendContentPacks(categoryName, event) {
                     var keyMap = {
                         "title": rows[i].name,
                         "image_url": rows[i].imageurl,
-                        "item_url": rows[i].imageurl,
-                        "buttons": [{
-                            "type": "postback",
-                            "title": "Read More",
-                            "payload": "USER_DEFINED_PAYLOAD"
-                        }]
+                        "item_url": rows[i].imageurl
+                        // "buttons": [{
+                        //     "type": "postback",
+                        //     "title": "Read More",
+                        //     "payload": "USER_DEFINED_PAYLOAD"
+                        // }]
                     };
                     contentList.push(keyMap);
                 }
@@ -412,16 +412,16 @@ function sendContentPacks(categoryName, event) {
                 "attachment": {
                     "type": "template",
                     "payload": {
-                        "template_type": "generic",
-                        "elements": [{
-                            //  "title": "Please Login into FanKick",
-                            //  "image_url": "https://scontent.fbom1-2.fna.fbcdn.net/v/t1.0-1/p32x32/13627105_592208684292844_1737491960574535764_n.png?oh=ce8c86c4f7ba7348e003ef264f47a310&oe=587D2B8C",
-                            "buttons": [{
-                                "type": "postback",
-                                "title": "Magazine",
-                                "payload": "USER_DEFINED_PAYLOAD"
-                            }]
-                        }]
+                        "template_type": "generic"
+                        // "elements": [{
+                        //     //  "title": "Please Login into FanKick",
+                        //     //  "image_url": "https://scontent.fbom1-2.fna.fbcdn.net/v/t1.0-1/p32x32/13627105_592208684292844_1737491960574535764_n.png?oh=ce8c86c4f7ba7348e003ef264f47a310&oe=587D2B8C",
+                        //     // "buttons": [{
+                        //     //     "type": "postback",
+                        //     //     "title": "Magazine",
+                        //     //     "payload": "USER_DEFINED_PAYLOAD"
+                        //     // }]
+                        // }]
                     }
                 }
             }
