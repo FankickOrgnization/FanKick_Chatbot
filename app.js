@@ -281,8 +281,7 @@ function fbuserdetails(event, userid) {
                            "payload": "Ok Goon"
                        }]
                    }
-               },
-                 "quick_replies": quickMenu
+               }
               }
             }
          callSendAPI(messageData,'https://graph.facebook.com/v2.6/592208327626213/messages');
