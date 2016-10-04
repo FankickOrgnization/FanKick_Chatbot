@@ -148,7 +148,7 @@ function mainPacks(categoryName, event){
               "type": "template",
               "payload": {
                   "template_type": "button",
-                  "text": "We have Fankick content on the following, why not try them out?",
+                  "text": "Hey..tap what excites you more",
                   "buttons": [{
                       "type": "postback",
                       "title": "Movies",
@@ -168,9 +168,6 @@ function mainPacks(categoryName, event){
       }
   }
   callSendAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
-
-
-
 }
 
 
@@ -247,7 +244,7 @@ function fbuserdetails(event, userid) {
         var senderID = event.sender.id;
         //var msg = 'Hi '+username+', A lot of exciting things are awaiting for you! Get kicking!';
         //var msg = 'Hi '+username+'! My name is Kicker.\n How may I come of any help to you today?';
-        var msg = 'Hi '+username+'! My name is Kicker.\n I can help you get closer to your favorite celebrity with a lot of exciting things about them.';
+        var msg = 'Hi '+username+'! My name is Kicker.\n \n I can help you get closer to your favorite celebrity with a lot of exciting things about them.';
 
 
         console.log("--------:Response data:--------gender ", msg);
@@ -256,24 +253,6 @@ function fbuserdetails(event, userid) {
                 "id": senderID
             },
             "message":{
-                //"text":msg,
-                //"text":"hello, world!"
-                // "attachment": {
-                //     "type": "template",
-                //     "payload": {
-                //         "template_type": "generic",
-                //         "elements": [{
-                //            "title": msg,
-                //           //  "text":msg,
-                //             "buttons": [{
-                //                 "type": "postback",
-                //                 "title": "Ok Goon",
-                //                 "payload": "Ok Goon"
-                //             }]
-                //         }],
-                //     }
-                // }
-
                 "attachment":{
                    "type": "template",
                    "payload": {
@@ -286,8 +265,6 @@ function fbuserdetails(event, userid) {
                        }]
                    }
                }
-
-                // "quick_replies": quickMenu
               }
             }
          callSendAPI(messageData,'https://graph.facebook.com/v2.6/592208327626213/messages');
@@ -428,7 +405,7 @@ function sendContentPacks(categoryName, event) {
             connection.release();
         });
         });
-    } else if (categoryName == "Yes") {
+    } else if (categoryName == "Movies") {
         var senderID = event.sender.id;
         var messageData = {
             "recipient": {
