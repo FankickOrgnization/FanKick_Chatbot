@@ -205,16 +205,15 @@ function fbuserdetails(event, userid) {
                 "attachment": {
                     "type": "template",
                     "payload": {
-                      "text": msg
-                        // "template_type": "generic",
-                        // "elements": [{
-                        //     "title": msg,
-                        //     // "buttons": [{
-                        //     //     "type": "postback",
-                        //     //     "title": "What can you do?",
-                        //     //     "payload": "USER_DEFINED_PAYLOAD"
-                        //     // }]
-                        // }]
+                        "template_type": "generic",
+                        "elements": [{
+                            "title": msg,
+                            "buttons": [{
+                                "type": "postback",
+                                "title": "What can you do?",
+                                "payload": "USER_DEFINED_PAYLOAD"
+                            }]
+                        }]
                     }
                 },
                 "quick_replies": quickMenu
