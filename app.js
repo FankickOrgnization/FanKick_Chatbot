@@ -208,11 +208,11 @@ function fbuserdetails(event, userid) {
                         "template_type": "generic",
                         "elements": [{
                             "title": msg,
-                            "buttons": [{
-                                "type": "postback",
-                                "title": "What can you do?",
-                                "payload": "USER_DEFINED_PAYLOAD"
-                            }]
+                            // "buttons": [{
+                            //     "type": "postback",
+                            //     "title": "What can you do?",
+                            //     "payload": "USER_DEFINED_PAYLOAD"
+                            // }]
                         }]
                     }
                 },
