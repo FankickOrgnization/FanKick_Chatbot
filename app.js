@@ -15,6 +15,23 @@ var pool = mysql.createPool({
     database: 'rankworlddev'
 });
 
+ var moviesObj =  {"body":[{
+     "title": "Quizzes",
+     "payload": "Name the director of PK?"
+ }, {
+     "title": "Fan Clubs",
+     "payload": "Join Pretty Alia Club"
+ }, {
+     "title": "Gossip Corner",
+     "payload": "Anupam Kher slams Om Puri???"
+ }, {
+     "title": "Fan Magazines",
+     "payload": "Johnny Depp"
+
+ }
+]
+};
+
 app.use(bodyParser.json());
 var fbpage_access_token = 'EAAXcJew5yNkBAAvFD3wX3RZACdvA4lZB6XStBzliKI9y4m7I1taAnWUWBezVarL8FjteZCztMBjXZCs35lAweqmc2XZARIf378LZA5lTg5xIebmBmFL4MmJGU4JrowfdkkKDbjqwuzBkCWPxQjgddrW4EZBnv6LiccAHdqoLUNcsgZDZD';
 
@@ -264,7 +281,8 @@ function fbuserdetails(event, userid) {
                            "payload": "Ok Goon"
                        }]
                    }
-               }
+               },
+                 "quick_replies": quickMenu
               }
             }
          callSendAPI(messageData,'https://graph.facebook.com/v2.6/592208327626213/messages');
@@ -406,7 +424,22 @@ function sendContentPacks(categoryName, event) {
         });
         });
     } else if (categoryName == "Movies") {
+      if (moviesObj.length){
         var senderID = event.sender.id;
+        var contentList = [];
+        for (var i = 0; i < 5; i++) { //Construct request body
+            var keyMap = {
+                "title": rows[i].name,
+                "image_url": rows[i].imageurl,
+                "item_url": rows[i].imageurl
+                // "buttons": [{
+                //     "type": "postback",
+                //     "title": "Read More",
+                //     "payload": "USER_DEFINED_PAYLOAD"
+                // }]
+            };
+            contentList.push(keyMap);
+        }
         var messageData = {
             "recipient": {
                 "id": senderID
@@ -415,21 +448,18 @@ function sendContentPacks(categoryName, event) {
                 "attachment": {
                     "type": "template",
                     "payload": {
-                        "template_type": "generic"
-                        // "elements": [{
-                        //     //  "title": "Please Login into FanKick",
-                        //     //  "image_url": "https://scontent.fbom1-2.fna.fbcdn.net/v/t1.0-1/p32x32/13627105_592208684292844_1737491960574535764_n.png?oh=ce8c86c4f7ba7348e003ef264f47a310&oe=587D2B8C",
-                        //     // "buttons": [{
-                        //     //     "type": "postback",
-                        //     //     "title": "Magazine",
-                        //     //     "payload": "USER_DEFINED_PAYLOAD"
-                        //     // }]
-                        // }]
+                        "template_type": "generic",
+                        "elements": contentList
                     }
-                }
+                },
+                "quick_replies": quickMenu
             }
         }
-        callSendAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
+        callSendAPI(messageData,'https://graph.facebook.com/v2.6/592208327626213/messages');
+    }else {
+        console.log("No Data Found From Database");
+        sendHelpMessage(event);
+    }
     } else if (categoryName == "No") {
         var senderID = event.sender.id;
         var messageData = {
