@@ -122,6 +122,15 @@ function receivedpostback(messagingEvent) {
         //sendTextMessage(userid, 'Get Started');
         console.log("categoryName", categoryName);
         //getStarted();
+    }else if (categoryName == "Ok Goon") {
+        //greetingtext(messagingEvent,Get Started);
+        //thread.persistentMenu(fbpage_access_token);
+      //  fbuserdetails(messagingEvent, userid);
+        sendContentPacks(Categories, messagingEvent);
+
+        //sendTextMessage(userid, 'Get Started');
+        console.log("categoryName", categoryName);
+        //getStarted();
     }else{
       sendContentPacks(categoryName, messagingEvent);
     }
@@ -211,7 +220,7 @@ function fbuserdetails(event, userid) {
                             "buttons": [{
                                 "type": "postback",
                                 "title": "Ok Goon",
-                                "payload": "USER_DEFINED_PAYLOAD"
+                                "payload": "Ok Goon"
                             }]
                         }],
                     }
