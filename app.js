@@ -479,12 +479,12 @@ function sendContentPacks(categoryName, event) {
                     var keyMap = {
                         "title": response.posts.thread[i].title,
                         "image_url": response.posts.thread[i].main_image,
-                        "item_url": response.posts.thread[i].main_image,
-                        "buttons": [{
-                            "type": "postback",
-                            "title": "Read More",
-                            "payload": "USER_DEFINED_PAYLOAD"
-                        }]
+                        "item_url": response.posts.thread[i].main_image
+                        // "buttons": [{
+                        //     "type": "postback",
+                        //     "title": "Read More",
+                        //     "payload": "USER_DEFINED_PAYLOAD"
+                        // }]
                     };
                     contentList.push(keyMap);
                     console.log("#######################contentList",contentList);
@@ -508,18 +508,18 @@ function sendContentPacks(categoryName, event) {
                     var keyMap = {
                         "title": rows[i].name,
                         "image_url": rows[i].image_url,
-                        "item_url": rows[i].image_url,
-                        "buttons": [{
-                            "type": "postback",
-                            "title": "View",
-                            "payload": rows[i].id
-                        }
-                        // , {
-                        //     "type": "postback",
-                        //     "title": "Magazine",
-                        //     "payload": "USER_DEFINED_PAYLOAD"
-                        // }
-                      ]
+                        "item_url": rows[i].image_url
+                      //   "buttons": [{
+                      //       "type": "postback",
+                      //       "title": "View",
+                      //       "payload": rows[i].id
+                      //   }
+                      //   // , {
+                      //   //     "type": "postback",
+                      //   //     "title": "Magazine",
+                      //   //     "payload": "USER_DEFINED_PAYLOAD"
+                      //   // }
+                      // ]
                     };
                     contentList.push(keyMap);
                 }
