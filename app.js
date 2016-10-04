@@ -364,8 +364,8 @@ function sendContentPacks(categoryName, event) {
                                 "template_type": "generic",
                                 "elements": contentList
                             }
-                        },
-                        "quick_replies": quickMenu
+                        }
+
                     }
                 }
                 callSendAPI(messageData,'https://graph.facebook.com/v2.6/592208327626213/messages');
