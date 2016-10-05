@@ -288,7 +288,7 @@ function fbuserdetails(event, userid) {
         var senderID = event.sender.id;
         //var msg = 'Hi '+username+', A lot of exciting things are awaiting for you! Get kicking!';
         //var msg = 'Hi '+username+'! My name is Kicker.\n How may I come of any help to you today?';
-        var msg = 'Hi '+username+'! My name is Kicker.\n \n I can help you get closer to your favorite celebrity with a lot of exciting things about them.\n\n Hey.. tap what excites you more';
+        var msg = 'Hi '+username+'! My name is Kicker.\n \n I can help you get closer to your favorite celebrity with a lot of exciting things about them.\n\n Tap what excites you more';
 
 
         console.log("--------:Response data:--------gender ", msg);
@@ -553,7 +553,7 @@ function sendContentPacks(categoryName, event) {
             //     "quick_replies": quickMenu
             // }
             "message":{
-                "text":"We have some cool stuff waiting for you..",
+                "text":"Here is some cool and interesting stuff on movies",
                 "quick_replies":[
                   {
                     "content_type":"text",
