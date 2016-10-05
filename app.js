@@ -15,20 +15,20 @@ var pool = mysql.createPool({
     database: 'rankworlddev'
 });
 
- var moviesObj =  [data{
-     "title": "Quizzes",
-     "payload": "Name the director of PK?"
- }, data{
-     "title": "Fan Clubs",
-     "payload": "Join Pretty Alia Club"
- }, data{
-     "title": "Gossip Corner",
-     "payload": "Anupam Kher slams Om Puri???"
- }, data{
-     "title": "Fan Magazines",
-     "payload": "Johnny Depp"
- }
-];
+//  var moviesObj =  [data{
+//      "title": "Quizzes",
+//      "payload": "Name the director of PK?"
+//  }, data{
+//      "title": "Fan Clubs",
+//      "payload": "Join Pretty Alia Club"
+//  }, data{
+//      "title": "Gossip Corner",
+//      "payload": "Anupam Kher slams Om Puri???"
+//  }, data{
+//      "title": "Fan Magazines",
+//      "payload": "Johnny Depp"
+//  }
+// ];
 
 app.use(bodyParser.json());
 var fbpage_access_token = 'EAAXcJew5yNkBAAvFD3wX3RZACdvA4lZB6XStBzliKI9y4m7I1taAnWUWBezVarL8FjteZCztMBjXZCs35lAweqmc2XZARIf378LZA5lTg5xIebmBmFL4MmJGU4JrowfdkkKDbjqwuzBkCWPxQjgddrW4EZBnv6LiccAHdqoLUNcsgZDZD';
