@@ -522,7 +522,6 @@ function sendContentPacks(categoryName, event) {
         for (var i = 0; i < moviesObj.length; i++) { //Construct request body
             var keyMap = {
                 "title":"We have some cool stuff waiting for you..",
-                "title": ,
                 // "image_url": moviesObj[i].qus,
                 // "item_url": moviesObj[i].qus
                 "buttons": [{
