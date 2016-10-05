@@ -237,7 +237,6 @@ function sendTextMessage(recipientId, messageText) {
                         }
                     }
                 }
-
     };
     callSendAPI(messageData, 'https://graph.facebook.com/v2.6/me/messages');
 }
