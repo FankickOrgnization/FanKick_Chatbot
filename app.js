@@ -278,6 +278,14 @@ function fbuserdetails(event, userid) {
                            "type": "postback",
                            "title": "Ok Goon",
                            "payload": "Ok Goon"
+                       },{
+                           "type": "postback",
+                           "title": "Ok Goon",
+                           "payload": "Ok Goon"
+                       },{
+                           "type": "postback",
+                           "title": "Ok Goon",
+                           "payload": "Ok Goon"
                        }]
                    }
                }
