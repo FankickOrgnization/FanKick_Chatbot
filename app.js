@@ -453,14 +453,16 @@ function sendContentPacks(categoryName, event) {
         });
     } else if (categoryName == "Movies") {
       console.log("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%",moviesObj);
+      console.log("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%",moviesObj.body);
+      //console.log("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%",moviesObj.body);
       if (moviesObj.length){
         var senderID = event.sender.id;
         var contentList = [];
         for (var i = 0; i < 5; i++) { //Construct request body
             var keyMap = {
-                "title": rows[i].name,
-                "image_url": rows[i].imageurl,
-                "item_url": rows[i].imageurl
+                "title": body[i].title,
+                "image_url": body[i].payload,
+                "item_url": body[i].payload
                 // "buttons": [{
                 //     "type": "postback",
                 //     "title": "Read More",
