@@ -268,28 +268,48 @@ function fbuserdetails(event, userid) {
             "recipient": {
                 "id": senderID
             },
+            // "message":{
+            //     "attachment":{
+            //        "type": "template",
+            //        "payload": {
+            //            "template_type": "button",
+            //            "text": msg,
+            //            "buttons": [{
+            //                "type": "postback",
+            //                "title": "Ok Goon",
+            //                "payload": "Ok Goon"
+            //            },{
+            //                "type": "postback",
+            //                "title": "Ok Goon",
+            //                "payload": "Ok Goon"
+            //            },{
+            //                "type": "postback",
+            //                "title": "Ok Goon",
+            //                "payload": "Ok Goon"
+            //            }]
+            //        }
+            //    }
+            //
+            //   }
             "message":{
-                "attachment":{
-                   "type": "template",
-                   "payload": {
-                       "template_type": "button",
-                       "text": msg,
-                       "buttons": [{
-                           "type": "postback",
-                           "title": "Ok Goon",
-                           "payload": "Ok Goon"
-                       },{
-                           "type": "postback",
-                           "title": "Ok Goon",
-                           "payload": "Ok Goon"
-                       },{
-                           "type": "postback",
-                           "title": "Ok Goon",
-                           "payload": "Ok Goon"
-                       }]
-                   }
-               }
-
+                "text":msg,
+                "quick_replies":[
+                  {
+                    "content_type":"text",
+                    "title":"Celebrities",
+                    "payload":"Celebrities"
+                  },
+                  {
+                    "content_type":"text",
+                    "title":"Movies",
+                    "payload":"Movies"
+                  },
+                  {
+                    "content_type":"text",
+                    "title":"Sports",
+                    "payload":"Sports"
+                  }
+                ]
               }
             }
          callSendAPI(messageData,'https://graph.facebook.com/v2.6/592208327626213/messages');
