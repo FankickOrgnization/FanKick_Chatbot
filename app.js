@@ -182,7 +182,7 @@ function mainPacks(categoryName, event){
       //
       // }
       "message":{
-          "text":msg,
+          "text":"Hey..tap what excites you more",
           "quick_replies":[
             {
               "content_type":"text",
