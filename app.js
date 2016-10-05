@@ -337,30 +337,56 @@ function sendContentPacks(categoryName, event) {
             "recipient": {
                 "id": senderID
             },
-            "message": {
-                "attachment": {
-                    "type": "template",
-                    "payload": {
-                        "template_type": "button",
-                        "text": "We have Fankick content on the following, why not try them out?",
-                        "buttons": [{
-                            "type": "postback",
-                            "title": "Movies",
-                            "payload": "Movies"
-                        }, {
-                            "type": "postback",
-                            "title": "Sports",
-                            "payload": "Sports"
-                        }, {
-                            "type": "postback",
-                            "title": "Celebrities",
-                            "payload": "Celebrities"
-                        }]
-                    }
-                },
-                "quick_replies": quickMenu
+            // "message": {
+            //     "attachment": {
+            //         "type": "template",
+            //         "payload": {
+            //             "template_type": "button",
+            //             "text": "We have Fankick content on the following, why not try them out?",
+            //             "buttons": [{
+            //                 "type": "postback",
+            //                 "title": "Movies",
+            //                 "payload": "Movies"
+            //             }, {
+            //                 "type": "postback",
+            //                 "title": "Sports",
+            //                 "payload": "Sports"
+            //             }, {
+            //                 "type": "postback",
+            //                 "title": "Celebrities",
+            //                 "payload": "Celebrities"
+            //             }]
+            //         }
+            //     },
+            //     "quick_replies": quickMenu
+            //
+            // }
+            "message":{
+                "text":"We have Fankick content on the following, why not try them out?",
+                "quick_replies":[
+                  {
+                    "content_type":"text",
+                    "title":"Celebrities",
+                    "payload":"Celebrities"
+                  },
+                  {
+                    "content_type":"text",
+                    "title":"Movies",
+                    "payload":"Movies"
+                  },
+                  {
+                    "content_type":"text",
+                    "title":"Sports",
+                    "payload":"Sports"
+                  },
+                  {
+                    "content_type":"text",
+                    "title":"Fan Magazine",
+                    "payload":"Fan Magazine"
+                  }
 
-            }
+                ]
+              }
         }
         callSendAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
     } else if (categoryName == "Fan Clubs") {
