@@ -311,7 +311,7 @@ function sendContentPacks(categoryName, event) {
                     "type": "template",
                     "payload": {
                         "template_type": "button",
-                        "title": "We have Fankick content on the following, why not try them out?",
+                        "text": "We have Fankick content on the following, why not try them out?",
                         "buttons": [{
                             "type": "postback",
                             "title": "Movies",
@@ -551,7 +551,7 @@ function sendHelpMessage(event) {
                 "type": "template",
                 "payload": {
                     "template_type": "button",
-                    "title": "A lot of exciting things are awaiting for you! Get kicking!",
+                    "text": "A lot of exciting things are awaiting for you! Get kicking!",
                     "buttons": [{
                         "type": "postback",
                         "title": "Categories",
