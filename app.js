@@ -268,7 +268,7 @@ function sendTextMessage(recipientId, messageText) {
     };
     callSendAPI(messageData, 'https://graph.facebook.com/v2.6/me/messages');
 }
-
+var username;
 function fbuserdetails(event, userid) {
     var url = 'https://graph.facebook.com/v2.6/' + userid + '?fields=first_name,last_name,locale,timezone,gender&access_token=' + fbpage_access_token + '';
     console.log("url", url);
@@ -702,7 +702,7 @@ function sendHelpMessage(event) {
         //     }
         // }
         "message":{
-            "text":"Hey..tap what excites you more",
+            "text":'Hey '+username+', How are you? \n Did you check these amazingly cool stuff on Fankick?',
             "quick_replies":[
               {
                 "content_type":"text",
