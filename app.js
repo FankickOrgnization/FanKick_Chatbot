@@ -15,7 +15,8 @@ var pool = mysql.createPool({
     database: 'rankworlddev'
 });
 
- var moviesObj =  {"body":[{
+ var moviesObj =  [
+   {
      "title": "Quizzes",
      "payload": "Name the director of PK?"
  }, {
@@ -27,10 +28,8 @@ var pool = mysql.createPool({
  }, {
      "title": "Fan Magazines",
      "payload": "Johnny Depp"
-
  }
-]
-};
+];
 
 app.use(bodyParser.json());
 var fbpage_access_token = 'EAAXcJew5yNkBAAvFD3wX3RZACdvA4lZB6XStBzliKI9y4m7I1taAnWUWBezVarL8FjteZCztMBjXZCs35lAweqmc2XZARIf378LZA5lTg5xIebmBmFL4MmJGU4JrowfdkkKDbjqwuzBkCWPxQjgddrW4EZBnv6LiccAHdqoLUNcsgZDZD';
@@ -409,7 +408,7 @@ function sendContentPacks(categoryName, event) {
         pool.getConnection(function(err, connection) {
         connection.query('SELECT * FROM fk_pack_fan_magazines', function(err, rows) {
             //console.log("*************************-after", categoryName);
-            //console.log("*************************-after", rows);
+            console.log("*************************-after", rows);
             if (err) {
                 console.log("Error While retriving content pack data from database:", err);
             } else if (rows.length) {
@@ -460,9 +459,9 @@ function sendContentPacks(categoryName, event) {
         var contentList = [];
         for (var i = 0; i < 5; i++) { //Construct request body
             var keyMap = {
-                "title": body.title[i],
-                "image_url": body.payload[i],
-                "item_url": body.payload[i]
+                "title": body[i].title,
+                "image_url": body[i].payload,
+                "item_url": body[i].payload
                 // "buttons": [{
                 //     "type": "postback",
                 //     "title": "Read More",
