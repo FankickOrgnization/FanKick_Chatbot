@@ -516,6 +516,7 @@ function sendContentPacks(categoryName, event) {
       //console.log("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%",moviesObj.body);
       //console.log("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%",moviesObj.body);
       if (moviesObj.length){
+        console.log("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%",moviesObj.length);
         var senderID = event.sender.id;
         var contentList = [];
         for (var i = 0; i < 5; i++) { //Construct request body
