@@ -273,14 +273,15 @@ function fbuserdetails(event, userid) {
                    "type": "template",
                    "payload": {
                        "template_type": "button",
-                       "text": msg,
-                       "buttons": [{
-                           "type": "postback",
-                           "title": "Ok Goon",
-                           "payload": "Ok Goon"
-                       }]
+                       "title": msg,
+                      //  "buttons": [{
+                      //      "type": "postback",
+                      //      "title": "Ok Goon",
+                      //      "payload": "Ok Goon"
+                      //  }]
                    }
-               }
+               },
+               "quick_replies": quickMenu
 
               }
             }
@@ -364,8 +365,8 @@ function sendContentPacks(categoryName, event) {
                                 "template_type": "generic",
                                 "elements": contentList
                             }
-                        }
-
+                        },
+                          "quick_replies": quickMenu
                     }
                 }
                 callSendAPI(messageData,'https://graph.facebook.com/v2.6/592208327626213/messages');
