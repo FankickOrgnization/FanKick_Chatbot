@@ -288,7 +288,7 @@ function fbuserdetails(event, userid) {
         var senderID = event.sender.id;
         //var msg = 'Hi '+username+', A lot of exciting things are awaiting for you! Get kicking!';
         //var msg = 'Hi '+username+'! My name is Kicker.\n How may I come of any help to you today?';
-        var msg = 'Hi '+username+'! My name is Kicker.\n \n I can help you get closer to your favorite celebrity with a lot of exciting things about them.';
+        var msg = 'Hi '+username+'! My name is Kicker.\n \n I can help you get closer to your favorite celebrity with a lot of exciting things about them.\n\n Hey.. tap what excites you more';
 
 
         console.log("--------:Response data:--------gender ", msg);
@@ -521,10 +521,16 @@ function sendContentPacks(categoryName, event) {
         var contentList = [];
         for (var i = 0; i < moviesObj.length; i++) { //Construct request body
             var keyMap = {
-                "title": moviesObj[i].name,
+                "title":"We have some cool stuff waiting for you..",
+                "title": ,
                 // "image_url": moviesObj[i].qus,
                 // "item_url": moviesObj[i].qus
                 "buttons": [{
+                    "type": "postback",
+                    "title": moviesObj[i].name,
+                    "payload": "USER_DEFINED_PAYLOAD"
+                },
+                {
                     "type": "postback",
                     "title": moviesObj[i].qus,
                     "payload": "USER_DEFINED_PAYLOAD"
@@ -536,17 +542,43 @@ function sendContentPacks(categoryName, event) {
             "recipient": {
                 "id": senderID
             },
-            "message": {
-                "attachment": {
-                    "type": "template",
-                    "text":"We have some cool stuff waiting for you..",
-                    "payload": {
-                        "template_type": "generic",
-                        "elements": contentList
-                    }
-                },
-                "quick_replies": quickMenu
-            }
+            // "message": {
+            //     "attachment": {
+            //         "type": "template",
+            //         "text":"We have some cool stuff waiting for you..",
+            //         "payload": {
+            //             "template_type": "generic",
+            //             "elements": contentList
+            //         }
+            //     },
+            //     "quick_replies": quickMenu
+            // }
+            "message":{
+                "text":"We have some cool stuff waiting for you..",
+                "quick_replies":[
+                  {
+                    "content_type":"text",
+                    "title":"Quizzes",
+                    "payload":"Quizzes"
+                  },
+                  {
+                    "content_type":"text",
+                    "title":"Fan Clubs",
+                    "payload":"Fan Clubs"
+                  },
+                  {
+                    "content_type":"text",
+                    "title":"Gossip Corner",
+                    "payload":"Gossip Corner"
+                  },
+                  {
+                    "content_type":"text",
+                    "title":"Fan Magazine",
+                    "payload":"Fan Magazine"
+                  }
+
+                ]
+              }
         }
         callSendAPI(messageData,'https://graph.facebook.com/v2.6/592208327626213/messages');
     }else {
