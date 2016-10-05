@@ -158,29 +158,55 @@ function mainPacks(categoryName, event){
       "recipient": {
           "id": senderID
       },
-      "message": {
-          "attachment": {
-              "type": "template",
-              "payload": {
-                  "template_type": "button",
-                  "text": "Hey..tap what excites you more",
-                  "buttons": [{
-                      "type": "postback",
-                      "title": "Movies",
-                      "payload": "Movies"
-                  }, {
-                      "type": "postback",
-                      "title": "Sports",
-                      "payload": "Sports"
-                  }, {
-                      "type": "postback",
-                      "title": "Celebrities",
-                      "payload": "Celebrities"
-                  }]
-              }
-          }
+      // "message": {
+      //     "attachment": {
+      //         "type": "template",
+      //         "payload": {
+      //             "template_type": "button",
+      //             "text": "Hey..tap what excites you more",
+      //             "buttons": [{
+      //                 "type": "postback",
+      //                 "title": "Movies",
+      //                 "payload": "Movies"
+      //             }, {
+      //                 "type": "postback",
+      //                 "title": "Sports",
+      //                 "payload": "Sports"
+      //             }, {
+      //                 "type": "postback",
+      //                 "title": "Celebrities",
+      //                 "payload": "Celebrities"
+      //             }]
+      //         }
+      //     }
+      //
+      // }
+      "message":{
+          "text":msg,
+          "quick_replies":[
+            {
+              "content_type":"text",
+              "title":"Celebrities",
+              "payload":"Celebrities"
+            },
+            {
+              "content_type":"text",
+              "title":"Movies",
+              "payload":"Movies"
+            },
+            {
+              "content_type":"text",
+              "title":"Sports",
+              "payload":"Sports"
+            },
+            {
+              "content_type":"text",
+              "title":"Fan Magazine",
+              "payload":"Fan Magazine"
+            }
 
-      }
+          ]
+        }
   }
   callSendAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
 }
