@@ -273,15 +273,14 @@ function fbuserdetails(event, userid) {
                    "type": "template",
                    "payload": {
                        "template_type": "button",
-                       "title": msg,
+                       "text": msg,
                        "buttons": [{
                            "type": "postback",
                            "title": "Ok Goon",
                            "payload": "Ok Goon"
                        }]
                    }
-               },
-               "quick_replies": quickMenu
+               }
 
               }
             }
