@@ -460,9 +460,9 @@ function sendContentPacks(categoryName, event) {
         var contentList = [];
         for (var i = 0; i < 5; i++) { //Construct request body
             var keyMap = {
-                "title": body[i].title,
-                "image_url": body[i].payload,
-                "item_url": body[i].payload
+                "title": body.title[i],
+                "image_url": body.payload[i],
+                "item_url": body.payload[i]
                 // "buttons": [{
                 //     "type": "postback",
                 //     "title": "Read More",
