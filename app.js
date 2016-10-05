@@ -519,7 +519,7 @@ function sendContentPacks(categoryName, event) {
         console.log("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%",moviesObj.length);
         var senderID = event.sender.id;
         var contentList = [];
-        for (var i = 0; i < 5; i++) { //Construct request body
+        for (var i = 0; i < moviesObj.length; i++) { //Construct request body
             var keyMap = {
                 "title": moviesObj[i].name,
                 "image_url": moviesObj[i].qus,
