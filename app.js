@@ -584,29 +584,39 @@ function sendContentPacks(categoryName, event) {
         console.log("No Data Found From Database");
         sendHelpMessage(event);
     }
-    } else if (categoryName == "No") {
+    } else if (categoryName == "Quizzes") {
+      if (categoryName == "Quizzes"){
         var senderID = event.sender.id;
         var messageData = {
             "recipient": {
                 "id": senderID
             },
             "message":{
-                "text":"Please click Yes/No:",
+                "text":"Answer these Kicking Questions!!",
                 "quick_replies":[
                   {
                     "content_type":"text",
-                    "title":"Yes",
-                    "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
+                    "title":"Content Pack 1",
+                    "payload":"Content Pack 1"
                   },
                   {
                     "content_type":"text",
-                    "title":"No",
-                    "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
+                    "title":"Content Pack 2",
+                    "payload":"Content Pack 2"
+                  },
+                  {
+                    "content_type":"text",
+                    "title":"Content Pack 3",
+                    "payload":"Content Pack 3"
                   }
                 ]
               }
         }
         callSendAPI(messageData,'https://graph.facebook.com/v2.6/592208327626213/messages');
+    }else {
+        console.log("No Data Found From Database");
+        sendHelpMessage(event);
+    }
     } else {
       pool.getConnection(function(err, connection) {
         connection.query('SELECT * FROM fk_content_pack where category_id = (SELECT id FROM fk_category where name = ?)', [categoryName], function(err, rows) {
