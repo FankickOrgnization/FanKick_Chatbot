@@ -15,17 +15,17 @@ var pool = mysql.createPool({
     database: 'rankworlddev'
 });
 
- var moviesObj =  [
+ var moviesObj =  [data
    {
      "title": "Quizzes",
      "payload": "Name the director of PK?"
- }, {
+ }, data{
      "title": "Fan Clubs",
      "payload": "Join Pretty Alia Club"
- }, {
+ }, data{
      "title": "Gossip Corner",
      "payload": "Anupam Kher slams Om Puri???"
- }, {
+ }, data{
      "title": "Fan Magazines",
      "payload": "Johnny Depp"
  }
@@ -465,9 +465,9 @@ function sendContentPacks(categoryName, event) {
         var contentList = [];
         for (var i = 0; i < 5; i++) { //Construct request body
             var keyMap = {
-                // "title": moviesObj.[i]title,
-                // "image_url": moviesObj.[i]payload,
-                // "item_url": moviesObj.[i]payload
+                "title": moviesObj.data[i].title,
+                "image_url": moviesObj.data[i].payload,
+                "item_url": moviesObj.data[i].payload
                 // "buttons": [{
                 //     "type": "postback",
                 //     "title": "Read More",
