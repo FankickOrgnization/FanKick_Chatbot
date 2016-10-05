@@ -15,20 +15,24 @@ var pool = mysql.createPool({
     database: 'rankworlddev'
 });
 
-//  var moviesObj =  [data{
-//      "title": "Quizzes",
-//      "payload": "Name the director of PK?"
-//  }, data{
-//      "title": "Fan Clubs",
-//      "payload": "Join Pretty Alia Club"
-//  }, data{
-//      "title": "Gossip Corner",
-//      "payload": "Anupam Kher slams Om Puri???"
-//  }, data{
-//      "title": "Fan Magazines",
-//      "payload": "Johnny Depp"
-//  }
-// ];
+ var moviesObj =  [
+   {
+     "name": "Quizzes",
+     "qus": "Name the director of PK?"
+ },
+ {
+     "name": "Fan Clubs",
+     "qus": "Join Pretty Alia Club"
+ },
+ {
+     "name": "Gossip Corner",
+     "qus": "Anupam Kher slams Om Puri???"
+ },
+ {
+     "name": "Fan Magazines",
+     "qus": "Johnny Depp"
+ }
+];
 
 app.use(bodyParser.json());
 var fbpage_access_token = 'EAAXcJew5yNkBAAvFD3wX3RZACdvA4lZB6XStBzliKI9y4m7I1taAnWUWBezVarL8FjteZCztMBjXZCs35lAweqmc2XZARIf378LZA5lTg5xIebmBmFL4MmJGU4JrowfdkkKDbjqwuzBkCWPxQjgddrW4EZBnv6LiccAHdqoLUNcsgZDZD';
@@ -516,9 +520,9 @@ function sendContentPacks(categoryName, event) {
         var contentList = [];
         for (var i = 0; i < 5; i++) { //Construct request body
             var keyMap = {
-                // "title": moviesObj.data[i].title,
-                // "image_url": moviesObj.data[i].payload,
-                // "item_url": moviesObj.data[i].payload
+                "title": moviesObj[i].name,
+                "image_url": moviesObj[i].qus,
+                "item_url": moviesObj[i].qus
                 // "buttons": [{
                 //     "type": "postback",
                 //     "title": "Read More",
