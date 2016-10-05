@@ -767,7 +767,7 @@ function sendHelpMessage(event){
 
             "message":{
                 "text":msg,
-                "text":msg,
+                "text":"msg",
                 "quick_replies":[
                   {
                     "content_type":"text",
