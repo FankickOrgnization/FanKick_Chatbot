@@ -282,7 +282,7 @@ function fbuserdetails(event, userid) {
                        }]
                    }
                }
-               
+
               }
             }
          callSendAPI(messageData,'https://graph.facebook.com/v2.6/592208327626213/messages');
@@ -311,7 +311,7 @@ function sendContentPacks(categoryName, event) {
                     "type": "template",
                     "payload": {
                         "template_type": "button",
-                        "text": "We have Fankick content on the following, why not try them out?",
+                        "title": "We have Fankick content on the following, why not try them out?",
                         "buttons": [{
                             "type": "postback",
                             "title": "Movies",
@@ -326,7 +326,8 @@ function sendContentPacks(categoryName, event) {
                             "payload": "Celebrities"
                         }]
                     }
-                }
+                },
+                "quick_replies": quickMenu
 
             }
         }
@@ -550,7 +551,7 @@ function sendHelpMessage(event) {
                 "type": "template",
                 "payload": {
                     "template_type": "button",
-                    "text": "A lot of exciting things are awaiting for you! Get kicking!",
+                    "title": "A lot of exciting things are awaiting for you! Get kicking!",
                     "buttons": [{
                         "type": "postback",
                         "title": "Categories",
