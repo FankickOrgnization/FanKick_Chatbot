@@ -632,28 +632,54 @@ function sendHelpMessage(event) {
         "recipient": {
             "id": senderID
         },
-        "message": {
-            "attachment": {
-                "type": "template",
-                "payload": {
-                    "template_type": "button",
-                    "text": "A lot of exciting things are awaiting for you! Get kicking!",
-                    "buttons": [{
-                        "type": "postback",
-                        "title": "Categories",
-                        "payload": "Categories"
-                    }, {
-                        "type": "postback",
-                        "title": "Fan Clubs",
-                        "payload": "Fan Clubs"
-                    }, {
-                        "type": "postback",
-                        "title": "Fan Magazine",
-                        "payload": "Fan Magazine"
-                    }]
-                }
-            }
-        }
+        // "message": {
+        //     "attachment": {
+        //         "type": "template",
+        //         "payload": {
+        //             "template_type": "button",
+        //             "text": "A lot of exciting things are awaiting for you! Get kicking!",
+        //             "buttons": [{
+        //                 "type": "postback",
+        //                 "title": "Categories",
+        //                 "payload": "Categories"
+        //             }, {
+        //                 "type": "postback",
+        //                 "title": "Fan Clubs",
+        //                 "payload": "Fan Clubs"
+        //             }, {
+        //                 "type": "postback",
+        //                 "title": "Fan Magazine",
+        //                 "payload": "Fan Magazine"
+        //             }]
+        //         }
+        //     }
+        // }
+        "message":{
+            "text":"Hey..tap what excites you more",
+            "quick_replies":[
+              {
+                "content_type":"text",
+                "title":"Celebrities",
+                "payload":"Celebrities"
+              },
+              {
+                "content_type":"text",
+                "title":"Movies",
+                "payload":"Movies"
+              },
+              {
+                "content_type":"text",
+                "title":"Sports",
+                "payload":"Sports"
+              },
+              {
+                "content_type":"text",
+                "title":"Fan Magazine",
+                "payload":"Fan Magazine"
+              }
+
+            ]
+          }
     }
     callSendAPI(messageData,'https://graph.facebook.com/v2.6/592208327626213/messages');
 }
