@@ -274,11 +274,11 @@ function fbuserdetails(event, userid) {
                    "payload": {
                        "template_type": "button",
                        "title": msg,
-                      //  "buttons": [{
-                      //      "type": "postback",
-                      //      "title": "Ok Goon",
-                      //      "payload": "Ok Goon"
-                      //  }]
+                       "buttons": [{
+                           "type": "postback",
+                           "title": "Ok Goon",
+                           "payload": "Ok Goon"
+                       }]
                    }
                },
                "quick_replies": quickMenu
