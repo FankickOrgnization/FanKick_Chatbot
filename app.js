@@ -307,7 +307,13 @@ function fbuserdetails(event, userid) {
                     "content_type":"text",
                     "title":"Sports",
                     "payload":"Sports"
+                  },
+                  {
+                    "content_type":"text",
+                    "title":"Fan Magazine",
+                    "payload":"Fan Magazine"
                   }
+
                 ]
               }
             }
@@ -452,16 +458,16 @@ function sendContentPacks(categoryName, event) {
         });
     } else if (categoryName == "Movies") {
       console.log("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%",moviesObj);
-      console.log("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%",moviesObj.body);
+      //console.log("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%",moviesObj.body);
       //console.log("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%",moviesObj.body);
       if (moviesObj.length){
         var senderID = event.sender.id;
         var contentList = [];
         for (var i = 0; i < 5; i++) { //Construct request body
             var keyMap = {
-                "title": body[i].title,
-                "image_url": body[i].payload,
-                "item_url": body[i].payload
+                "title": moviesObj[i].title,
+                "image_url": moviesObj[i].payload,
+                "item_url": moviesObj[i].payload
                 // "buttons": [{
                 //     "type": "postback",
                 //     "title": "Read More",
