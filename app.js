@@ -278,7 +278,7 @@ function fbuserdetails(event, userid) {
 
     }, function(error, response, body) {
         var userprofiledata = JSON.parse(response.body);
-        var username = userprofiledata.first_name;
+        username = userprofiledata.first_name;
         //console.log("--------:Response data:-------- ", JSON.stringify(body));
         console.log("--------:Response data:--------first_name ", userprofiledata.first_name);
         console.log("--------:Response data:--------last_name ", userprofiledata.last_name);
