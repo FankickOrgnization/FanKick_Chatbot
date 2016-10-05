@@ -15,8 +15,7 @@ var pool = mysql.createPool({
     database: 'rankworlddev'
 });
 
- var moviesObj =  [data
-   {
+ var moviesObj =  [data{
      "title": "Quizzes",
      "payload": "Name the director of PK?"
  }, data{
@@ -465,9 +464,9 @@ function sendContentPacks(categoryName, event) {
         var contentList = [];
         for (var i = 0; i < 5; i++) { //Construct request body
             var keyMap = {
-                "title": moviesObj.data[i].title,
-                "image_url": moviesObj.data[i].payload,
-                "item_url": moviesObj.data[i].payload
+                // "title": moviesObj.data[i].title,
+                // "image_url": moviesObj.data[i].payload,
+                // "item_url": moviesObj.data[i].payload
                 // "buttons": [{
                 //     "type": "postback",
                 //     "title": "Read More",
