@@ -452,6 +452,7 @@ function sendContentPacks(categoryName, event) {
         });
         });
     } else if (categoryName == "Movies") {
+      console.log("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%",moviesObj);
       if (moviesObj.length){
         var senderID = event.sender.id;
         var contentList = [];
