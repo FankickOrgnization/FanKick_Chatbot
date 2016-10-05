@@ -522,13 +522,13 @@ function sendContentPacks(categoryName, event) {
         for (var i = 0; i < moviesObj.length; i++) { //Construct request body
             var keyMap = {
                 "title": moviesObj[i].name,
-                "image_url": moviesObj[i].qus,
-                "item_url": moviesObj[i].qus
-                // "buttons": [{
-                //     "type": "postback",
-                //     "title": "Read More",
-                //     "payload": "USER_DEFINED_PAYLOAD"
-                // }]
+                // "image_url": moviesObj[i].qus,
+                // "item_url": moviesObj[i].qus
+                "buttons": [{
+                    "type": "postback",
+                    "title": moviesObj[i].qus,
+                    "payload": "USER_DEFINED_PAYLOAD"
+                }]
             };
             contentList.push(keyMap);
         }
