@@ -207,6 +207,11 @@ function mainPacks(categoryName, event){
               "content_type":"text",
               "title":"Fan Magazine",
               "payload":"Fan Magazine"
+            },
+            {
+              "content_type":"text",
+              "title":"What can you do?",
+              "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
             }
 
           ]
@@ -333,6 +338,11 @@ function fbuserdetails(event, userid) {
                     "content_type":"text",
                     "title":"Sports",
                     "payload":"Sports"
+                  },
+                  {
+                    "content_type":"text",
+                    "title":"What can you do?",
+                    "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
                   }
                 ]
               }
@@ -404,6 +414,11 @@ function sendContentPacks(categoryName, event) {
                     "content_type":"text",
                     "title":"Fan Magazine",
                     "payload":"Fan Magazine"
+                  },
+                  {
+                    "content_type":"text",
+                    "title":"What can you do?",
+                    "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
                   }
 
                 ]
@@ -565,6 +580,11 @@ function sendContentPacks(categoryName, event) {
                       "content_type":"text",
                       "title":"Fan Magazine",
                       "payload":"Fan Magazine"
+                    },
+                    {
+                      "content_type":"text",
+                      "title":"What can you do?",
+                      "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
                     }
 
                   ]
@@ -599,6 +619,11 @@ function sendContentPacks(categoryName, event) {
                     "content_type":"text",
                     "title":"Content Pack 3",
                     "payload":"Content Pack 3"
+                  },
+                  {
+                    "content_type":"text",
+                    "title":"What can you do?",
+                    "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
                   }
                 ]
               }
@@ -642,6 +667,11 @@ function sendContentPacks(categoryName, event) {
                     "content_type":"text",
                     "title":"Basketball",
                     "payload":"Basketball"
+                  },
+                  {
+                    "content_type":"text",
+                    "title":"What can you do?",
+                    "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
                   }
 
                 ]
@@ -686,6 +716,11 @@ function sendContentPacks(categoryName, event) {
                     "content_type":"text",
                     "title":"News",
                     "payload":"News"
+                  },
+                  {
+                    "content_type":"text",
+                    "title":"What can you do?",
+                    "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
                   }
 
                 ]
