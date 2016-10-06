@@ -147,7 +147,7 @@ function receivedpostback(messagingEvent) {
     }
     else if (categoryName == "Quizzes") {
         quizzesPacks(categoryName, messagingEvent);
-        console.log("categoryName", categoryName);
+        console.log("categoryName########", categoryName);
     }else{
       sendContentPacks(categoryName, messagingEvent);
     }
@@ -240,7 +240,12 @@ function receivedmessage(messagingEvent) {
     //var quickButton =
       console.log("quickButton_postback:------", categoryName);
       console.log("postback_sender_id:------", userid);
-      sendContentPacks(categoryName, messagingEvent);
+      if (categoryName == "Quizzes") {
+         quizzesPacks(categoryName, messagingEvent);
+         console.log("categoryName########", categoryName);
+     }else{
+       sendContentPacks(categoryName, messagingEvent);
+     }
 }
 // Quick_reply payload section End ********************************************
 
