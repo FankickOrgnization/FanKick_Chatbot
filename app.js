@@ -544,8 +544,7 @@ function sendContentPacks(categoryName, event) {
                         "template_type": "generic",
                         "elements": contentList
                     }
-                },
-                "quick_replies": quickMenu
+                }
             }
               // "message":{
               //     "text":"Here is some cool and interesting stuff on movies",
