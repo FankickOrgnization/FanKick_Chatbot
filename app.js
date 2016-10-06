@@ -652,6 +652,50 @@ function sendContentPacks(categoryName, event) {
         console.log("No Data Found From Database");
         sendHelpMessage(event);
     }
+    }else if (categoryName == "Politics") {
+      if (categoryName == "Politics"){
+        var senderID = event.sender.id;
+        var messageData = {
+            "recipient": {
+                "id": senderID
+            },
+            "message":{
+                "text":"Here is some cool and interesting stuff on sports",
+                "quick_replies":[
+                  {
+                    "content_type":"text",
+                    "title":"Quizzes",
+                    "payload":"Quizzes"
+                  },
+                  {
+                    "content_type":"text",
+                    "title":"News",
+                    "payload":"News"
+                  },
+                  {
+                    "content_type":"text",
+                    "title":"News",
+                    "payload":"News"
+                  },
+                  {
+                    "content_type":"text",
+                    "title":"News",
+                    "payload":"News"
+                  },
+                  {
+                    "content_type":"text",
+                    "title":"News",
+                    "payload":"News"
+                  }
+
+                ]
+              }
+        }
+        callSendAPI(messageData,'https://graph.facebook.com/v2.6/592208327626213/messages');
+    }else {
+        console.log("No Data Found From Database");
+        sendHelpMessage(event);
+    }
     } else {
       pool.getConnection(function(err, connection) {
         connection.query('SELECT * FROM fk_content_pack where category_id = (SELECT id FROM fk_category where name = ?)', [categoryName], function(err, rows) {
