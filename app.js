@@ -326,8 +326,8 @@ function fbuserdetails(event, userid) {
                 "quick_replies":[
                   {
                     "content_type":"text",
-                    "title":"Celebrities",
-                    "payload":"Celebrities"
+                    "title":"Politics",
+                    "payload":"Politics"
                   },
                   {
                     "content_type":"text",
@@ -338,13 +338,7 @@ function fbuserdetails(event, userid) {
                     "content_type":"text",
                     "title":"Sports",
                     "payload":"Sports"
-                  },
-                  {
-                    "content_type":"text",
-                    "title":"Fan Magazine",
-                    "payload":"Fan Magazine"
                   }
-
                 ]
               }
             }
