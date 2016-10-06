@@ -255,37 +255,59 @@ function quizzesPacks(categoryName, event) {
 function questionsPacks(categoryName, event) {
   var qusCategories = categoryName;
   var senderID = event.sender.id;
-  var messageData = {
-      "recipient": {
-          "id": senderID
-      },
-      "message":{
-          "text":"Answer these Kicking Questions!!",
-          "quick_replies":[
-            {
-              "content_type":"text",
-              "title":"Question number 1",
-              "payload":"Question number 1"
-            },
-            {
-              "content_type":"text",
-              "title":"Question number 2",
-              "payload":"Question number 2"
-            },
-            {
-              "content_type":"text",
-              "title":"Question number 3",
-              "payload":"Question number 3"
-            },
-            {
-              "content_type":"text",
-              "title":"What can you do?",
-              "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
-            }
-          ]
-        }
-  }
-  callSendAPI(messageData,'https://graph.facebook.com/v2.6/592208327626213/messages');
+  // if(categoryName == "Content Pack 1"){
+  //   categoryName = 1;
+  // } else if (categoryName == "Content Pack 2"){
+  //   categoryName = 2;
+  // } else (categoryName == "Content Pack 3"){
+  //   categoryName = 3;
+  // }
+
+  pool.getConnection(function(err, connection) {
+  connection.query('SELECT * FROM fk_pack_multiple_item where type=? and pack_id in (select id from fk_content_pack where category_id=2)', ['Question'], function(err, rows) {
+      //console.log("*************************-after", categoryName);
+      console.log("*************************questionsPacks", rows);
+      if (err) {
+          console.log("Error While retriving content pack data from database:", err);
+      } else if (rows.length) {
+          var senderID = event.sender.id;
+          var contentList = [];
+          for (var i = 0; i < 5; i++) { //Construct request body
+              var keyMap = {
+                  "title": rows[i].name,
+                  "image_url": rows[i].imageurl,
+                  "item_url": rows[i].imageurl
+                  // "buttons": [{
+                  //     "type": "postback",
+                  //     "title": "Read More",
+                  //     "payload": "USER_DEFINED_PAYLOAD"
+                  // }]
+              };
+              contentList.push(keyMap);
+          }
+          var messageData = {
+              "recipient": {
+                  "id": senderID
+              },
+              "message": {
+                  "attachment": {
+                      "type": "template",
+                      "payload": {
+                          "template_type": "generic",
+                          "elements": contentList
+                      }
+                  },
+                  "quick_replies": quickMenu
+              }
+          }
+          callSendAPI(messageData,'https://graph.facebook.com/v2.6/592208327626213/messages');
+      } else {
+          console.log("No Data Found From Database");
+          sendHelpMessage(event);
+      }
+      connection.release();
+  });
+  });
 }
 // QuestionsPacks payload section End ********************************************
 
@@ -329,8 +351,6 @@ function fbuserdetails(event, userid) {
         //var msg = 'Hi '+username+', A lot of exciting things are awaiting for you! Get kicking!';
         //var msg = 'Hi '+username+'! My name is Kicker.\n How may I come of any help to you today?';
         var msg = 'Hi '+username+'! My name is Kicker.\n \n I can help you get closer to your favorite celebrity with a lot of exciting things about them.\n\n Tap what excites you more';
-
-
         console.log("--------:Response data:--------gender ", msg);
         var messageData = {
             "recipient": {
