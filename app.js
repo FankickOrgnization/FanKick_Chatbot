@@ -524,8 +524,6 @@ function sendContentPacks(categoryName, event) {
         });
     } else if (categoryName == "Movies") {
       console.log("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%",moviesObj);
-      //console.log("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%",moviesObj.body);
-      //console.log("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%",moviesObj.body);
       if (moviesObj.length){
         console.log("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%",moviesObj.length);
         var senderID = event.sender.id;
@@ -791,68 +789,6 @@ function sendContentPacks(categoryName, event) {
     }
 }
 
-
-//function sendHelpMessage(event)
-//{
-//
-//     var senderID = event.sender.id;
-//     var messageData = {
-//         "recipient": {
-//             "id": senderID
-//         },
-//         // "message": {
-//         //     "attachment": {
-//         //         "type": "template",
-//         //         "payload": {
-//         //             "template_type": "button",
-//         //             "text": "A lot of exciting things are awaiting for you! Get kicking!",
-//         //             "buttons": [{
-//         //                 "type": "postback",
-//         //                 "title": "Categories",
-//         //                 "payload": "Categories"
-//         //             }, {
-//         //                 "type": "postback",
-//         //                 "title": "Fan Clubs",
-//         //                 "payload": "Fan Clubs"
-//         //             }, {
-//         //                 "type": "postback",
-//         //                 "title": "Fan Magazine",
-//         //                 "payload": "Fan Magazine"
-//         //             }]
-//         //         }
-//         //     }
-//         // }
-//         "message":{
-//             "text":'Hey '+username+', How are you? \n Did you check these amazingly cool stuff on Fankick?',
-//             "quick_replies":[
-//               {
-//                 "content_type":"text",
-//                 "title":"Celebrities",
-//                 "payload":"Celebrities"
-//               },
-//               {
-//                 "content_type":"text",
-//                 "title":"Movies",
-//                 "payload":"Movies"
-//               },
-//               {
-//                 "content_type":"text",
-//                 "title":"Sports",
-//                 "payload":"Sports"
-//               },
-//               {
-//                 "content_type":"text",
-//                 "title":"Fan Magazine",
-//                 "payload":"Fan Magazine"
-//               }
-//
-//             ]
-//           }
-//     }
-//     callSendAPI(messageData,'https://graph.facebook.com/v2.6/592208327626213/messages');
-// }
-
-
 function sendHelpMessage(event){
     var userid = event.sender.id;
     var url = 'https://graph.facebook.com/v2.6/' + userid + '?fields=first_name,last_name,locale,timezone,gender&access_token=' + fbpage_access_token + '';
@@ -918,11 +854,6 @@ function sendHelpMessage(event){
          callSendAPI(messageData,'https://graph.facebook.com/v2.6/592208327626213/messages');
     });
 }
-
-
-
-
-
 
 function callSendAPI(body, url) {
     console.log("url", url);
