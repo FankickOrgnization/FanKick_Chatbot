@@ -397,6 +397,11 @@ function sendContentPacks(categoryName, event) {
                 "quick_replies":[
                   {
                     "content_type":"text",
+                    "title":"Politics",
+                    "payload":"Politics"
+                  },
+                  {
+                    "content_type":"text",
                     "title":"Celebrities",
                     "payload":"Celebrities"
                   },
@@ -881,6 +886,11 @@ function sendHelpMessage(event){
                 "text":msg,
                 //"text":"msg",
                 "quick_replies":[
+                  {
+                    "content_type":"text",
+                    "title":"Politics",
+                    "payload":"Politics"
+                  },
                   {
                     "content_type":"text",
                     "title":"Celebrities",
