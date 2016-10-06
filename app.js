@@ -544,31 +544,34 @@ function sendContentPacks(categoryName, event) {
             //     "quick_replies": quickMenu
             // }
             "message":{
-                "text":"Here is some cool and interesting stuff on movies",
-                "quick_replies":[
-                  {
-                    "content_type":"text",
-                    "title":"Quizzes",
-                    "payload":"Quizzes"
-                  },
-                  {
-                    "content_type":"text",
-                    "title":"Fan Clubs",
-                    "payload":"Fan Clubs"
-                  },
-                  {
-                    "content_type":"text",
-                    "title":"Gossip Corner",
-                    "payload":"Gossip Corner"
-                  },
-                  {
-                    "content_type":"text",
-                    "title":"Fan Magazine",
-                    "payload":"Fan Magazine"
-                  }
+                "text":"Here is some cool and interesting stuff on moviesjfkldsjlfkjkljsd",              
+              },
+              "message":{
+                  "text":"Here is some cool and interesting stuff on movies",
+                  "quick_replies":[
+                    {
+                      "content_type":"text",
+                      "title":"Quizzes",
+                      "payload":"Quizzes"
+                    },
+                    {
+                      "content_type":"text",
+                      "title":"Fan Clubs",
+                      "payload":"Fan Clubs"
+                    },
+                    {
+                      "content_type":"text",
+                      "title":"Gossip Corner",
+                      "payload":"Gossip Corner"
+                    },
+                    {
+                      "content_type":"text",
+                      "title":"Fan Magazine",
+                      "payload":"Fan Magazine"
+                    }
 
-                ]
-              }
+                  ]
+                }
         }
         callSendAPI(messageData,'https://graph.facebook.com/v2.6/592208327626213/messages');
     }else {
