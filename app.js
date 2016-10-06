@@ -256,11 +256,11 @@ function questionsPacks(categoryName, event) {
   var qusCategories = categoryName;
   var senderID = event.sender.id;
   if(categoryName == "Content Pack 1"){
-    var categoryName = 1;
+    categoryName = 1;
   } else if (categoryName == "Content Pack 2"){
-    var categoryName = 2;
+    categoryName = 2;
   } else {
-    var categoryName = 3;
+    categoryName = 3;
   }
 
   pool.getConnection(function(err, connection) {
