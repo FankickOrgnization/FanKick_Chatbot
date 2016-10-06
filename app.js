@@ -693,7 +693,7 @@ function sendContentPacks(categoryName, event) {
                 "id": senderID
             },
             "message":{
-                "text":"Here is some cool and interesting stuff on sports",
+                "text":"Here is some cool and interesting stuff on politics",
                 "quick_replies":[
                   {
                     "content_type":"text",
