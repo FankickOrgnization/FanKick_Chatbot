@@ -252,7 +252,7 @@ function quizzesPacks(categoryName, event) {
 }
 // QuizzesPacks payload section End ********************************************
 // QuestionsPacks payload section Start ********************************************
-function quizzesPacks(categoryName, event) {
+function questionsPacks(categoryName, event) {
   var senderID = event.sender.id;
   var messageData = {
       "recipient": {
