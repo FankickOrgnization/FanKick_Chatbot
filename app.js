@@ -208,7 +208,7 @@ function receivedmessage(messagingEvent) {
       if (categoryName == "Quizzes") {
          quizzesPacks(categoryName, messagingEvent);
          console.log("categoryName########", categoryName);
-     }else if ((categoryName == "1") || (categoryName == "2") || (categoryName == "3")){
+     }else if ((categoryName == "Content Pack 1") || (categoryName == "Content Pack 2") || (categoryName == "Content Pack 3")){
        questionsPacks(categoryName, messagingEvent);
      }else{
        sendContentPacks(categoryName, messagingEvent);
@@ -253,6 +253,7 @@ function quizzesPacks(categoryName, event) {
 // QuizzesPacks payload section End ********************************************
 // QuestionsPacks payload section Start ********************************************
 function questionsPacks(categoryName, event) {
+  var qusCategories = categoryName;
   var senderID = event.sender.id;
   var messageData = {
       "recipient": {
@@ -263,18 +264,18 @@ function questionsPacks(categoryName, event) {
           "quick_replies":[
             {
               "content_type":"text",
-              "title":"11",
-              "payload":"11"
+              "title":"Question number 1",
+              "payload":"Question number 1"
             },
             {
               "content_type":"text",
-              "title":"12",
-              "payload":"12"
+              "title":"Question number 2",
+              "payload":"Question number 2"
             },
             {
               "content_type":"text",
-              "title":"13",
-              "payload":"13"
+              "title":"Question number 3",
+              "payload":"Question number 3"
             },
             {
               "content_type":"text",
