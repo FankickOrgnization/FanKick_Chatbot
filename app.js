@@ -246,11 +246,6 @@ function receivedmessage(messagingEvent) {
 }
 // Quick_reply payload section End ********************************************
 
-
-
-
-
-
 function sendTextMessage(recipientId, messageText) {
     var messageData = {
         "recipient": {
