@@ -208,7 +208,7 @@ function receivedmessage(messagingEvent) {
       if (categoryName == "Quizzes") {
          quizzesPacks(categoryName, messagingEvent);
          console.log("categoryName########", categoryName);
-     }else if ((categoryName == "1") || (categoryName == "2") || (categoryName == "3"))
+     }else if ((categoryName == "1") || (categoryName == "2") || (categoryName == "3")){
        questionsPacks(categoryName, messagingEvent);
      }else{
        sendContentPacks(categoryName, messagingEvent);
