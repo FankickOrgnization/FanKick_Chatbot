@@ -18,23 +18,19 @@ var pool = mysql.createPool({
  var moviesObj =  [
    {
      "name": "Quizzes",
-     "qus": "Name the director of PK?",
-     "img": "images/001.jpg"
+     "qus": "Name the director of PK?"
  },
  {
      "name": "Fan Clubs",
-     "qus": "Join Pretty Alia Club",
-     "img": "images/002.jpg"
+     "qus": "Join Pretty Alia Club"
  },
  {
      "name": "Gossip Corner",
-     "qus": "Anupam Kher slams Om Puri???",
-     "img": "images/003.jpg"
+     "qus": "Anupam Kher slams Om Puri???"
  },
  {
      "name": "Fan Magazines",
-     "qus": "Johnny Depp",
-     "img": "images/004.jpg"
+     "qus": "Johnny Depp"
  }
 ];
 
