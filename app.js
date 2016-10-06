@@ -196,6 +196,25 @@ function mainPacks(categoryName, event){
 }
 
 
+
+
+// Quick_reply payload section Start ********************************************
+function receivedmessage(messagingEvent) {
+    var categoryName = messagingEvent.message.text;
+    var userid = messagingEvent.sender.id;
+    //var quickButton =
+      console.log("quickButton_postback:------", categoryName);
+      console.log("postback_sender_id:------", userid);
+      if (categoryName == "Quizzes") {
+         quizzesPacks(categoryName, messagingEvent);
+         console.log("categoryName########", categoryName);
+     }else if ((categoryName == "1") || (categoryName == "2") || (categoryName == "3"))
+       questionsPacks(categoryName, messagingEvent);
+     }else{
+       sendContentPacks(categoryName, messagingEvent);
+     }
+}
+// Quick_reply payload section End ********************************************
 // QuizzesPacks payload section Start ********************************************
 function quizzesPacks(categoryName, event) {
   var senderID = event.sender.id;
@@ -232,22 +251,42 @@ function quizzesPacks(categoryName, event) {
   callSendAPI(messageData,'https://graph.facebook.com/v2.6/592208327626213/messages');
 }
 // QuizzesPacks payload section End ********************************************
-
-// Quick_reply payload section Start ********************************************
-function receivedmessage(messagingEvent) {
-    var categoryName = messagingEvent.message.text;
-    var userid = messagingEvent.sender.id;
-    //var quickButton =
-      console.log("quickButton_postback:------", categoryName);
-      console.log("postback_sender_id:------", userid);
-      if (categoryName == "Quizzes") {
-         quizzesPacks(categoryName, messagingEvent);
-         console.log("categoryName########", categoryName);
-     }else{
-       sendContentPacks(categoryName, messagingEvent);
-     }
+// QuestionsPacks payload section Start ********************************************
+function quizzesPacks(categoryName, event) {
+  var senderID = event.sender.id;
+  var messageData = {
+      "recipient": {
+          "id": senderID
+      },
+      "message":{
+          "text":"Answer these Kicking Questions!!",
+          "quick_replies":[
+            {
+              "content_type":"text",
+              "title":"11",
+              "payload":"11"
+            },
+            {
+              "content_type":"text",
+              "title":"12",
+              "payload":"12"
+            },
+            {
+              "content_type":"text",
+              "title":"13",
+              "payload":"13"
+            },
+            {
+              "content_type":"text",
+              "title":"What can you do?",
+              "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
+            }
+          ]
+        }
+  }
+  callSendAPI(messageData,'https://graph.facebook.com/v2.6/592208327626213/messages');
 }
-// Quick_reply payload section End ********************************************
+// QuestionsPacks payload section End ********************************************
 
 function sendTextMessage(recipientId, messageText) {
     var messageData = {
