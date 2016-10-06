@@ -608,6 +608,50 @@ function sendContentPacks(categoryName, event) {
         console.log("No Data Found From Database");
         sendHelpMessage(event);
     }
+    } else if (categoryName == "Sports") {
+      if (categoryName == "Sports"){
+        var senderID = event.sender.id;
+        var messageData = {
+            "recipient": {
+                "id": senderID
+            },
+            "message":{
+                "text":"Here is some cool and interesting stuff on sports",
+                "quick_replies":[
+                  {
+                    "content_type":"text",
+                    "title":"Quizzes",
+                    "payload":"Quizzes"
+                  },
+                  {
+                    "content_type":"text",
+                    "title":"Cricket",
+                    "payload":"Cricket"
+                  },
+                  {
+                    "content_type":"text",
+                    "title":"Football",
+                    "payload":"Football"
+                  },
+                  {
+                    "content_type":"text",
+                    "title":"Baseball",
+                    "payload":"Baseball"
+                  },
+                  {
+                    "content_type":"text",
+                    "title":"Basketball",
+                    "payload":"Basketball"
+                  }
+
+                ]
+              }
+        }
+        callSendAPI(messageData,'https://graph.facebook.com/v2.6/592208327626213/messages');
+    }else {
+        console.log("No Data Found From Database");
+        sendHelpMessage(event);
+    }
     } else {
       pool.getConnection(function(err, connection) {
         connection.query('SELECT * FROM fk_content_pack where category_id = (SELECT id FROM fk_category where name = ?)', [categoryName], function(err, rows) {
@@ -745,7 +789,7 @@ function sendHelpMessage(event){
         var senderID = event.sender.id;
         //var msg = 'Hi '+username+', A lot of exciting things are awaiting for you! Get kicking!';
         //var msg = 'Hi '+username+'! My name is Kicker.\n How may I come of any help to you today?';
-        var msg = 'Hey '+username+', How are you? \n Did you check these amazingly cool stuff on Fankick?';
+        var msg = 'Hey '+username+', How are you? \n \nDid you check these amazingly cool stuff on Fankick?';
 
 
         console.log("--------:Response data:--------gender ", msg);
