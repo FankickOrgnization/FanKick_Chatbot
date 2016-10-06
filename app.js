@@ -516,9 +516,9 @@ function sendContentPacks(categoryName, event) {
         var contentList = [];
         for (var i = 0; i < moviesObj.length; i++) { //Construct request body
             var keyMap = {
-                // "title":"We have some cool stuff waiting for you..",
-                // "image_url": moviesObj[i].img,
-                // "item_url": moviesObj[i].img,
+                "title":"We have some cool stuff waiting for you..",
+                // "image_url": moviesObj[i].qus,
+                // "item_url": moviesObj[i].qus
                 "buttons": [{
                     "type": "postback",
                     "title": moviesObj[i].name,
@@ -536,41 +536,43 @@ function sendContentPacks(categoryName, event) {
             "recipient": {
                 "id": senderID
             },
-            "message": {
-                "attachment": {
-                    "type": "template",
-                    "payload": {
-                        "template_type": "generic",
-                        "elements": contentList
+            // "message": {
+            //     "attachment": {
+            //         "type": "template",
+            //         "text":"We have some cool stuff waiting for you..",
+            //         "payload": {
+            //             "template_type": "generic",
+            //             "elements": contentList
+            //         }
+            //     },
+            //     "quick_replies": quickMenu
+            // }
+              "message":{
+                  "text":"Here is some cool and interesting stuff on movies",
+                  "quick_replies":[
+                    {
+                      "content_type":"text",
+                      "title":"Quizzes",
+                      "payload":"Quizzes"
+                    },
+                    {
+                      "content_type":"text",
+                      "title":"Fan Clubs",
+                      "payload":"Fan Clubs"
+                    },
+                    {
+                      "content_type":"text",
+                      "title":"Gossip Corner",
+                      "payload":"Gossip Corner"
+                    },
+                    {
+                      "content_type":"text",
+                      "title":"Fan Magazine",
+                      "payload":"Fan Magazine"
                     }
+
+                  ]
                 }
-            }
-              // "message":{
-              //     "text":"Here is some cool and interesting stuff on movies",
-              //     "quick_replies":[
-              //       {
-              //         "content_type":"text",
-              //         "title":"Quizzes",
-              //         "payload":"Quizzes"
-              //       },
-              //       {
-              //         "content_type":"text",
-              //         "title":"Fan Clubs",
-              //         "payload":"Fan Clubs"
-              //       },
-              //       {
-              //         "content_type":"text",
-              //         "title":"Gossip Corner",
-              //         "payload":"Gossip Corner"
-              //       },
-              //       {
-              //         "content_type":"text",
-              //         "title":"Fan Magazine",
-              //         "payload":"Fan Magazine"
-              //       }
-              //
-              //     ]
-              //   }
         }
         callSendAPI(messageData,'https://graph.facebook.com/v2.6/592208327626213/messages');
     }else {
