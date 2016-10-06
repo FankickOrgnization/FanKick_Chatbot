@@ -259,12 +259,12 @@ function questionsPacks(categoryName, event) {
   //   categoryName = 1;
   // } else if (categoryName == "Content Pack 2"){
   //   categoryName = 2;
-  // } else {
+  // } else (categoryName == "Content Pack 3"){
   //   categoryName = 3;
   // }
 
   pool.getConnection(function(err, connection) {
-  connection.query('SELECT * FROM fk_pack_multiple_item where type=? and pack_id in (select id from fk_content_pack where category_id=1)', ['Question'], function(err, rows) {
+  connection.query('SELECT * FROM fk_pack_multiple_item where type=? and pack_id in (select id from fk_content_pack where category_id=2)', ['Question'], function(err, rows) {
       //console.log("*************************-after", categoryName);
       console.log("*************************questionsPacks", rows);
       if (err) {
