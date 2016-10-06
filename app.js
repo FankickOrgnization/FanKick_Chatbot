@@ -539,7 +539,6 @@ function sendContentPacks(categoryName, event) {
             "message": {
                 "attachment": {
                     "type": "template",
-                    "title":"We have some cool stuff waiting for you..",
                     "payload": {
                         "template_type": "generic",
                         "elements": contentList
