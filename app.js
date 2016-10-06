@@ -272,33 +272,53 @@ function questionsPacks(categoryName, event) {
       } else if (rows.length) {
           var senderID = event.sender.id;
           var contentList = [];
-          for (var i = 0; i < 5; i++) { //Construct request body
-              var keyMap = {
-                  "title": rows[i].name,
-                  "image_url": rows[i].imageurl,
-                  "item_url": rows[i].imageurl
-                  // "buttons": [{
-                  //     "type": "postback",
-                  //     "title": "Read More",
-                  //     "payload": "USER_DEFINED_PAYLOAD"
-                  // }]
-              };
-              contentList.push(keyMap);
-          }
+          // for (var i = 0; i < 5; i++) { //Construct request body
+          //     var keyMap = {
+          //         "title": rows[i].item_name,
+          //         "image_url": rows[i].imageurl,
+          //         "item_url": rows[i].imageurl
+          //         // "buttons": [{
+          //         //     "type": "postback",
+          //         //     "title": "Read More",
+          //         //     "payload": "USER_DEFINED_PAYLOAD"
+          //         // }]
+          //     };
+          //     contentList.push(keyMap);
+          // }
           var messageData = {
               "recipient": {
                   "id": senderID
               },
-              "message": {
-                  "attachment": {
-                      "type": "template",
-                      "payload": {
-                          "template_type": "generic",
-                          "elements": contentList
-                      }
-                  },
-                  "quick_replies": quickMenu
-              }
+              "message":{
+                  "text":rows[1].item_name,
+                  "quick_replies":[
+                    {
+                      "content_type":"text",
+                      "title":rows[1].text1_content,
+                      "payload":"1"
+                    },
+                    {
+                      "content_type":"text",
+                      "title":rows[1].text2_content,
+                      "payload":"2"
+                    },
+                    {
+                      "content_type":"text",
+                      "title":rows[1].text3_content,
+                      "payload":"3"
+                    },
+                    {
+                      "content_type":"text",
+                      "title":rows[1].text4_content,
+                      "payload":"4"
+                    },
+                    {
+                      "content_type":"text",
+                      "title":"What can you do?",
+                      "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
+                    }
+                  ]
+                }
           }
           callSendAPI(messageData,'https://graph.facebook.com/v2.6/592208327626213/messages');
       } else {
