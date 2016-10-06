@@ -7,6 +7,7 @@ const fetch = require('node-fetch');
 const crypto = require('crypto');
 const thread = require('./thread.js');
 const payloadText = require('./payload.js');
+const images = require('./images');
 var pool = mysql.createPool({
     connectionLimit : 2,
     host: 'ap-cdbr-azure-southeast-a.cloudapp.net',
@@ -18,19 +19,23 @@ var pool = mysql.createPool({
  var moviesObj =  [
    {
      "name": "Quizzes",
-     "qus": "Name the director of PK?"
+     "qus": "Name the director of PK?",
+     "img": images/001.jpg
  },
  {
      "name": "Fan Clubs",
      "qus": "Join Pretty Alia Club"
+     "img": images/001.jpg
  },
  {
      "name": "Gossip Corner",
      "qus": "Anupam Kher slams Om Puri???"
+     "img": images/001.jpg
  },
  {
      "name": "Fan Magazines",
      "qus": "Johnny Depp"
+     "img": images/001.jpg
  }
 ];
 
@@ -767,7 +772,7 @@ function sendHelpMessage(event){
 
             "message":{
                 "text":msg,
-                "text":"msg",
+                //"text":"msg",
                 "quick_replies":[
                   {
                     "content_type":"text",
