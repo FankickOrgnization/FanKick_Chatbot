@@ -516,9 +516,9 @@ function sendContentPacks(categoryName, event) {
         var contentList = [];
         for (var i = 0; i < moviesObj.length; i++) { //Construct request body
             var keyMap = {
-                "title":"We have some cool stuff waiting for you..",
-                "image_url": moviesObj[i].img,
-                "item_url": moviesObj[i].img,
+                // "title":"We have some cool stuff waiting for you..",
+                // "image_url": moviesObj[i].img,
+                // "item_url": moviesObj[i].img,
                 "buttons": [{
                     "type": "postback",
                     "title": moviesObj[i].name,
