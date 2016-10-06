@@ -142,19 +142,17 @@ function receivedpostback(messagingEvent) {
         console.log("categoryName", categoryName);
         //getStarted();
     }else if (categoryName == "Ok Goon") {
-        //greetingtext(messagingEvent,Get Started);
-        //thread.persistentMenu(fbpage_access_token);
-      //  fbuserdetails(messagingEvent, userid);
-    //  var Categories = categoryName;
         mainPacks(categoryName, messagingEvent);
-        //sendTextMessage(userid, 'Get Started');
         console.log("categoryName", categoryName);
-        //getStarted();
+    }
+    else if (categoryName == "Quizzes") {
+        quizzesPacks(categoryName, messagingEvent);
+        console.log("categoryName", categoryName);
     }else{
       sendContentPacks(categoryName, messagingEvent);
     }
 }
-
+// postback payload section end ********************************************
 
 function mainPacks(categoryName, event){
   var senderID = event.sender.id;
@@ -162,29 +160,6 @@ function mainPacks(categoryName, event){
       "recipient": {
           "id": senderID
       },
-      // "message": {
-      //     "attachment": {
-      //         "type": "template",
-      //         "payload": {
-      //             "template_type": "button",
-      //             "text": "Hey..tap what excites you more",
-      //             "buttons": [{
-      //                 "type": "postback",
-      //                 "title": "Movies",
-      //                 "payload": "Movies"
-      //             }, {
-      //                 "type": "postback",
-      //                 "title": "Sports",
-      //                 "payload": "Sports"
-      //             }, {
-      //                 "type": "postback",
-      //                 "title": "Celebrities",
-      //                 "payload": "Celebrities"
-      //             }]
-      //         }
-      //     }
-      //
-      // }
       "message":{
           "text":"Hey..tap what excites you more",
           "quick_replies":[
@@ -221,25 +196,43 @@ function mainPacks(categoryName, event){
 }
 
 
+// QuizzesPacks payload section Start ********************************************
+function quizzesPacks(categoryName, event) {
+  var senderID = event.sender.id;
+  var messageData = {
+      "recipient": {
+          "id": senderID
+      },
+      "message":{
+          "text":"Answer these Kicking Questions!!",
+          "quick_replies":[
+            {
+              "content_type":"text",
+              "title":"Content Pack 1",
+              "payload":"Content Pack 1"
+            },
+            {
+              "content_type":"text",
+              "title":"Content Pack 2",
+              "payload":"Content Pack 2"
+            },
+            {
+              "content_type":"text",
+              "title":"Content Pack 3",
+              "payload":"Content Pack 3"
+            },
+            {
+              "content_type":"text",
+              "title":"What can you do?",
+              "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
+            }
+          ]
+        }
+  }
+  callSendAPI(messageData,'https://graph.facebook.com/v2.6/592208327626213/messages');
+}
+// QuizzesPacks payload section End ********************************************
 
-// function getStarted() {
-//
-//     var messageData = {
-//         "setting_type": "call_to_actions",
-//         "thread_state": "new_thread",
-//         "call_to_actions": [{
-//             "payload": "Get Started"
-//         }]
-//     };
-//     /*var messageData = {
-//         "setting_type": "greeting",
-//         "greeting": {
-//             "text": "Timeless apparel for the masses."
-//         }
-//     };*/
-//     var url = 'https://graph.facebook.com/v2.6/me/thread_settings?access_token=' + fbpage_access_token + '';
-//     callSendAPI(messageData, url);
-// }
 // Quick_reply payload section Start ********************************************
 function receivedmessage(messagingEvent) {
     var categoryName = messagingEvent.message.text;
@@ -298,29 +291,6 @@ function fbuserdetails(event, userid) {
             "recipient": {
                 "id": senderID
             },
-            // "message":{
-            //     "attachment":{
-            //        "type": "template",
-            //        "payload": {
-            //            "template_type": "button",
-            //            "text": msg,
-            //            "buttons": [{
-            //                "type": "postback",
-            //                "title": "Ok Goon",
-            //                "payload": "Ok Goon"
-            //            },{
-            //                "type": "postback",
-            //                "title": "Ok Goon",
-            //                "payload": "Ok Goon"
-            //            },{
-            //                "type": "postback",
-            //                "title": "Ok Goon",
-            //                "payload": "Ok Goon"
-            //            }]
-            //        }
-            //    }
-            //
-            //   }
             "message":{
                 "text":msg,
                 "quick_replies":[
@@ -368,30 +338,6 @@ function sendContentPacks(categoryName, event) {
             "recipient": {
                 "id": senderID
             },
-            // "message": {
-            //     "attachment": {
-            //         "type": "template",
-            //         "payload": {
-            //             "template_type": "button",
-            //             "text": "We have Fankick content on the following, why not try them out?",
-            //             "buttons": [{
-            //                 "type": "postback",
-            //                 "title": "Movies",
-            //                 "payload": "Movies"
-            //             }, {
-            //                 "type": "postback",
-            //                 "title": "Sports",
-            //                 "payload": "Sports"
-            //             }, {
-            //                 "type": "postback",
-            //                 "title": "Celebrities",
-            //                 "payload": "Celebrities"
-            //             }]
-            //         }
-            //     },
-            //     "quick_replies": quickMenu
-            //
-            // }
             "message":{
                 "text":"We have Fankick content on the following, why not try them out?",
                 "quick_replies":[
@@ -598,45 +544,7 @@ function sendContentPacks(categoryName, event) {
         console.log("No Data Found From Database");
         sendHelpMessage(event);
     }
-    } else if (categoryName == "Quizzes") {
-      if (categoryName == "Quizzes"){
-        var senderID = event.sender.id;
-        var messageData = {
-            "recipient": {
-                "id": senderID
-            },
-            "message":{
-                "text":"Answer these Kicking Questions!!",
-                "quick_replies":[
-                  {
-                    "content_type":"text",
-                    "title":"Content Pack 1",
-                    "payload":"Content Pack 1"
-                  },
-                  {
-                    "content_type":"text",
-                    "title":"Content Pack 2",
-                    "payload":"Content Pack 2"
-                  },
-                  {
-                    "content_type":"text",
-                    "title":"Content Pack 3",
-                    "payload":"Content Pack 3"
-                  },
-                  {
-                    "content_type":"text",
-                    "title":"What can you do?",
-                    "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
-                  }
-                ]
-              }
-        }
-        callSendAPI(messageData,'https://graph.facebook.com/v2.6/592208327626213/messages');
-    }else {
-        console.log("No Data Found From Database");
-        sendHelpMessage(event);
-    }
-    } else if (categoryName == "Sports") {
+    }  else if (categoryName == "Sports") {
       if (categoryName == "Sports"){
         var senderID = event.sender.id;
         var messageData = {
