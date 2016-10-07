@@ -235,7 +235,7 @@ function textmessage(msgwit, messagingEvent){
   console.log("messaging_msgText:------",msgText);
   console.log("messaging_msgText:------:------",msgwit);
   //payloadText.sendContentPacks(msgText, messagingEvent);
-  receivedtextmessage(msgText, event)
+  receivedtextmessage(msgText, messagingEvent);
 };
 // QuizzesPacks payload section Start ********************************************
 function quizzesPacks(categoryName, event) {
