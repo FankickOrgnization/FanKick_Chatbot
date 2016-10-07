@@ -536,5 +536,6 @@ function sendHelpMessage(event){
 
 module.exports = {
   sendContentPacks: sendContentPacks,
-  name:name
+  // name:name,
+  quickMenu:quickMenu
 };
