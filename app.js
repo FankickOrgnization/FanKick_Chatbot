@@ -221,15 +221,19 @@ function receivedtextmessage(categoryName, event) {
       if (categoryName == "Quizzes") {
          quizzesPacks(categoryName, event);
          console.log("categoryName########", categoryName);
-     }else if ((categoryName == "Content Pack 1") || (categoryName == "Content Pack 2") || (categoryName == "Content Pack 3")){
-       questionsPacks(categoryName, event);
+     }else if ((categoryName == "Content Pack 1") {
+       questionsPacks(1, event);
+     }else if (categoryName == "Content Pack 2"){
+       questionsPacks(2, event);
+     }else if (categoryName == "Content Pack 3")){
+       questionsPacks(3, event);
      }else{
        payloadText.sendContentPacks(categoryName, event);
      }
 }
 // Quick_reply payload section End ********************************************
 function textmessage(msgwit, messagingEvent){
-    var msgText = messagingEvent.message.text;
+  var msgText = messagingEvent.message.text;
   console.log("messaging_message:------",messagingEvent.message);
   console.log("messaging_message_text:------",messagingEvent.message.text);
   console.log("messaging_msgText:------",msgText);
@@ -275,7 +279,7 @@ function quizzesPacks(categoryName, event) {
 // QuizzesPacks payload section End ********************************************
 // QuestionsPacks payload section Start ********************************************
 function questionsPacks(categoryName, event) {
-  var qusCategories = categoryName;
+//  var qusCategories = categoryName;
   var senderID = event.sender.id;
   // if(categoryName == "Content Pack 1"){
   //   categoryName = 1;
@@ -286,7 +290,7 @@ function questionsPacks(categoryName, event) {
   // }
 
   pool.getConnection(function(err, connection) {
-  connection.query('SELECT * FROM fk_pack_multiple_item where type=? and pack_id in (select id from fk_content_pack where category_id=2)', ['Question'], function(err, rows) {
+  connection.query('SELECT * FROM fk_pack_multiple_item where type=? and pack_id in (select id from fk_content_pack where category_id=?)', ['Question',categoryName], function(err, rows) {
       //console.log("*************************-after", categoryName);
       console.log("*************************questionsPacks", rows);
       if (err) {
