@@ -200,7 +200,7 @@ function receivedMessage(event) {
                 //var intentlength = wit_res_data_intent.length;
                 if(JSON.stringify(wit_res_data_ent) === '{}') { //This will check if the object is empty
                   //sendHelpMessage(event);
-                  //textmessage(msgwit, event)
+                  textmessage(msgwit, event)
                   //sendContentPacks(msgwit, event)
                   console.log("wit_res_data_intent.length is Zero", wit_res_data_ent);
                   console.log("wit_res_data_intent.length is Zero", event);
@@ -283,6 +283,14 @@ function receivedtextmessage(categoryName, event) {
      }
 }
 // Quick_reply payload section End ********************************************
+function textmessage(msgwit, messagingEvent){
+    var msgText = messagingEvent.message.text;
+  console.log("messaging_message:------",messagingEvent.message);
+  console.log("messaging_message_text:------",messagingEvent.message.text);
+  console.log("messaging_msgText:------",msgText);
+  console.log("messaging_msgText:------:------",msgwit);
+  sendContentPacks(msgText, messagingEvent);
+};
 // QuizzesPacks payload section Start ********************************************
 function quizzesPacks(categoryName, event) {
   var senderID = event.sender.id;
