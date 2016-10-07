@@ -269,7 +269,7 @@ function mainPacks(categoryName, event){
 // Quick_reply payload section Start ********************************************
 function receivedtextmessage(categoryName, event) {
     //var categoryName = messagingEvent.message.text;
-    var userid = messagingEvent.sender.id;
+    var userid = event.sender.id;
     //var quickButton =
       console.log("quickButton_postback:------", categoryName);
       console.log("postback_sender_id:------", userid);
