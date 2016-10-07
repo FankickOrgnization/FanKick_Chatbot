@@ -202,6 +202,11 @@ function mainPacks(categoryName, event){
             },
             {
               "content_type":"text",
+              "title":"Fan Clubs",
+              "payload":"Fan Clubs"
+            },
+            {
+              "content_type":"text",
               "title":"What can you do?",
               "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
             }
@@ -422,6 +427,16 @@ function fbuserdetails(event, userid) {
                   },
                   {
                     "content_type":"text",
+                    "title":"Fan Clubs",
+                    "payload":"Fan Clubs"
+                  },
+                  {
+                    "content_type":"text",
+                    "title":"Fan Magazine",
+                    "payload":"Fan Magazine"
+                  },
+                  {
+                    "content_type":"text",
                     "title":"What can you do?",
                     "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
                   }
@@ -492,10 +507,14 @@ function sendHelpMessage(event){
                   },
                   {
                     "content_type":"text",
+                    "title":"Fan Clubs",
+                    "payload":"Fan Clubs"
+                  },
+                  {
+                    "content_type":"text",
                     "title":"Fan Magazine",
                     "payload":"Fan Magazine"
                   }
-
                 ]
               }
             }
