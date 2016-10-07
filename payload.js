@@ -359,17 +359,7 @@ const sendContentPacks = (categoryName,event) => {
                     "content_type":"text",
                     "title":"News",
                     "payload":"News"
-                  },
-                  {
-                    "content_type":"text",
-                    "title":"News",
-                    "payload":"News"
-                  },
-                  {
-                    "content_type":"text",
-                    "title":"News",
-                    "payload":"News"
-                  },
+                  },                  
                   {
                     "content_type":"text",
                     "title":"What can you do?",
@@ -484,11 +474,7 @@ function sendHelpMessage(event){
         console.log("--------:Response data:-------- timezone", userprofiledata.timezone);
         console.log("--------:Response data:--------gender ", userprofiledata.gender);
         var senderID = event.sender.id;
-        //var msg = 'Hi '+username+', A lot of exciting things are awaiting for you! Get kicking!';
-        //var msg = 'Hi '+username+'! My name is Kicker.\n How may I come of any help to you today?';
         var msg = 'Hey '+username+', How are you? \n \nDid you check these amazingly cool stuff on Fankick?';
-
-
         console.log("--------:Response data:--------gender ", msg);
         var messageData = {
             "recipient": {
