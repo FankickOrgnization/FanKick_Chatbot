@@ -221,11 +221,11 @@ function receivedtextmessage(categoryName, event) {
       if (categoryName == "Quizzes") {
          quizzesPacks(categoryName, event);
          console.log("categoryName########", categoryName);
-     }else if ((categoryName == "Content Pack 1") {
+     }else if (categoryName == "Content Pack 1") {
        questionsPacks(1, event);
      }else if (categoryName == "Content Pack 2"){
        questionsPacks(2, event);
-     }else if (categoryName == "Content Pack 3")){
+     }else if (categoryName == "Content Pack 3"){
        questionsPacks(3, event);
      }else{
        payloadText.sendContentPacks(categoryName, event);
