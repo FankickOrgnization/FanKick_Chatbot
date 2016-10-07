@@ -200,7 +200,7 @@ function receivedMessage(event) {
                 //var intentlength = wit_res_data_intent.length;
                 if(JSON.stringify(wit_res_data_ent) === '{}') { //This will check if the object is empty
                   //sendHelpMessage(event);
-                  textmessage(msgwit, event)
+                  //textmessage(msgwit, event)
                   //sendContentPacks(msgwit, event)
                   console.log("wit_res_data_intent.length is Zero", wit_res_data_ent);
                   console.log("wit_res_data_intent.length is Zero", event);
