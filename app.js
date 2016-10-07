@@ -37,46 +37,46 @@ var pool = mysql.createPool({
 app.use(bodyParser.json());
 var fbpage_access_token = 'EAAXcJew5yNkBAAvFD3wX3RZACdvA4lZB6XStBzliKI9y4m7I1taAnWUWBezVarL8FjteZCztMBjXZCs35lAweqmc2XZARIf378LZA5lTg5xIebmBmFL4MmJGU4JrowfdkkKDbjqwuzBkCWPxQjgddrW4EZBnv6LiccAHdqoLUNcsgZDZD';
 
-var quickMenu = [
-  {
-    "content_type":"text",
-    "title":"Categories",
-    "payload":"Categories"
-  },
-  {
-    "content_type":"text",
-    "title":"Fan Clubs",
-    "payload":"Fan Clubs"
-  },
-  {
-    "content_type":"text",
-    "title":"Fan Magazine",
-    "payload":"Fan Magazine"
-  },
-  {
-    "content_type":"text",
-    "title":"Movies",
-    "payload":"Movies"
-  },
-  {
-    "content_type":"text",
-    "title":"Sports",
-    "payload":"Sports"
-  },
-  {
-    "content_type":"text",
-    "title":"Celebrities",
-    "payload":"Celebrities"
-  },
-  {
-    "content_type":"text",
-    "title":"What can you do?",
-    "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
-  }
-];
+// var quickMenu = [
+//   {
+//     "content_type":"text",
+//     "title":"Categories",
+//     "payload":"Categories"
+//   },
+//   {
+//     "content_type":"text",
+//     "title":"Fan Clubs",
+//     "payload":"Fan Clubs"
+//   },
+//   {
+//     "content_type":"text",
+//     "title":"Fan Magazine",
+//     "payload":"Fan Magazine"
+//   },
+//   {
+//     "content_type":"text",
+//     "title":"Movies",
+//     "payload":"Movies"
+//   },
+//   {
+//     "content_type":"text",
+//     "title":"Sports",
+//     "payload":"Sports"
+//   },
+//   {
+//     "content_type":"text",
+//     "title":"Celebrities",
+//     "payload":"Celebrities"
+//   },
+//   {
+//     "content_type":"text",
+//     "title":"What can you do?",
+//     "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
+//   }
+// ];
 
-var name123 = payloadText.quickMenu;
-console.log("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@",name123);
+var quickMenu = payloadText.quickMenu;
+//console.log("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@",name123);
 
 app.get('/webhook', function(req, res) {
     //console.log("Validating webhook", console.log(JSON.stringify(req.body)));
