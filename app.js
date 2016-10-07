@@ -104,12 +104,13 @@ app.post('/webhook', function(req, res) {
                     //receivedAuthentication(messagingEvent);
                 } else if (messagingEvent.message) {
                     if (!messagingEvent.message.hasOwnProperty('is_echo')) { // Avoiding multiple database fetches
-                        //receivedMessage(messagingEvent);
+                        receivedMessage(messagingEvent);
+                        //receivedMessage
                     }
                     //var msgText = messagingEvent.message.text;
                     console.log("messaging :------", messagingEvent);
                   //  console.log("messaging :------", messagingEvent.message.quick_reply.payload);
-                    receivedmessage(messagingEvent);
+                  //  receivedmessage(messagingEvent);
                 } else if (messagingEvent.delivery) {
                     //receivedDeliveryConfirmation(messagingEvent);
                 } else if (messagingEvent.postback) {
@@ -154,6 +155,77 @@ function receivedpostback(messagingEvent) {
 }
 // postback payload section end ********************************************
 
+function receivedMessage(event) {
+    var senderID = event.sender.id;
+    var recipientID = event.recipient.id;
+    var timeOfMessage = event.timestamp;
+    var message = event.message;
+    var messageId = message.mid;
+    var msgwit_value;
+    // You may get a text or attachment but not both
+    var messageText = message.text;
+    var messageAttachments = message.attachments;
+    //getMessageFromWitAPI(messageText);
+    console.log("*************messageText*************",messageText);
+      var msgwit = messageText;
+      //bot.getwitmessageText(msgwit);
+
+      //var tb3;
+        request({
+            uri: 'https://api.wit.ai/message?v=20160526&q='+ msgwit,
+            headers: {
+                "Authorization": "Bearer USTWU2HGSIYGK3JBQX6EM2UGEQOS26ZX"
+            }
+        }, function(error, response) {
+            if (error) {
+                console.log("Error While geting response from Wit:", error);
+            } else {
+              var res = JSON.stringify(response);
+              var res_data = response.body;
+              var wit_res_data = JSON.parse(res_data);
+              var wit_res_data_ent = wit_res_data.entities;
+              var wit_res_data_intent =  wit_res_data_ent.intent;
+              var wit_res_data_location = wit_res_data_ent.location;
+              var wit_res_msg_id = wit_res_data.msg_id;
+
+                console.log("Response from Wit--Res", res);
+                //console.log("Response from Wit--response", response);
+                console.log("Response from Wit--msg_id", wit_res_data.msg_id);
+                console.log("Response from Wit************1", wit_res_data.entities);
+                console.log("Response from Wit************2", wit_res_data_ent.intent);
+                console.log("Response from Wit************3", wit_res_data_ent.location);
+                console.log("Response from Wit************4", wit_res_data_intent);
+                console.log("Response from Wit************5", wit_res_data_location);
+                //console.log("Response from Wit************6", wit_res_data_intent.value);
+                //var intentlength = wit_res_data_intent.length;
+                if(JSON.stringify(wit_res_data_ent) === '{}') { //This will check if the object is empty
+                  //sendHelpMessage(event);
+                  textmessage(msgwit, event)
+                  //sendContentPacks(msgwit, event)
+                  console.log("wit_res_data_intent.length is Zero", wit_res_data_ent);
+                  console.log("wit_res_data_intent.length is Zero", event);
+                }else{
+                for(var i=0;i<wit_res_data_intent.length;i++)
+                {
+                  var td1=wit_res_data_intent[i]["confidence"];
+                  var td2=wit_res_data_intent[i]["type"];
+                  var td3=wit_res_data_intent[i]["value"];
+                }
+                console.log("confidence************5",td1);
+                console.log("type************5",td2);
+              console.log("value************5", td3);
+              msgwit_value = td3;
+              console.log('******msgwit_value', msgwit_value);
+            //  bot.getwitmsg(wit_res_msg_id,msgwit_value,msgwit);
+              receivedtextmessage(msgwit_value, event);
+            //  bot.wittest(msgwit_value);
+            }
+
+            }
+        });
+}
+
+
 function mainPacks(categoryName, event){
   var senderID = event.sender.id;
   var messageData = {
@@ -188,19 +260,15 @@ function mainPacks(categoryName, event){
               "title":"What can you do?",
               "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
             }
-
           ]
         }
   }
   callSendAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
 }
 
-
-
-
 // Quick_reply payload section Start ********************************************
-function receivedmessage(messagingEvent) {
-    var categoryName = messagingEvent.message.text;
+function receivedtextmessage(categoryName, event) {
+    //var categoryName = messagingEvent.message.text;
     var userid = messagingEvent.sender.id;
     //var quickButton =
       console.log("quickButton_postback:------", categoryName);
