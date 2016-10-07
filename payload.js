@@ -70,7 +70,7 @@ var quickMenu = [
   }
 ];
 //app.use(bodyParser.json());
-console.log("------:thread:-----");
+//console.log("------:thread:-----");
 
 const sendContentPacks = (categoryName,event) => {
   console.log("*************---categoryName----*******", categoryName );

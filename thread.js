@@ -1,6 +1,6 @@
 'use strict';
 var request = require('request');
-console.log("------:thread:-----");
+//console.log("------:thread:-----");
 
 const persistentMenu = (accessToken) => {
   console.log("accessToken for thread:-----", accessToken);
@@ -16,7 +16,7 @@ const persistentMenu = (accessToken) => {
                 {
                   "type":"postback",
                   "title":"Choose Categories",
-                  "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_START_ORDER"
+                  "payload":"Categories"
                 },
                 {
                   "type":"web_url",
