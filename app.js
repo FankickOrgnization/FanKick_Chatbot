@@ -75,6 +75,8 @@ var quickMenu = [
   }
 ];
 
+var name123 = payloadText.name;
+console.log("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@",name123);
 
 app.get('/webhook', function(req, res) {
     //console.log("Validating webhook", console.log(JSON.stringify(req.body)));

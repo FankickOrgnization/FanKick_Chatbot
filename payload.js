@@ -10,6 +10,9 @@ var pool = mysql.createPool({
     database: 'rankworlddev'
 });
 var fbpage_access_token = 'EAAXcJew5yNkBAAvFD3wX3RZACdvA4lZB6XStBzliKI9y4m7I1taAnWUWBezVarL8FjteZCztMBjXZCs35lAweqmc2XZARIf378LZA5lTg5xIebmBmFL4MmJGU4JrowfdkkKDbjqwuzBkCWPxQjgddrW4EZBnv6LiccAHdqoLUNcsgZDZD';
+
+var name = "Narendranath"; 
+
 var moviesObj =  [
   {
     "name": "Quizzes",
@@ -27,6 +30,44 @@ var moviesObj =  [
     "name": "Fan Magazines",
     "qus": "Johnny Depp"
 }
+];
+
+var quickMenu = [
+  {
+    "content_type":"text",
+    "title":"Categories",
+    "payload":"Categories"
+  },
+  {
+    "content_type":"text",
+    "title":"Fan Clubs",
+    "payload":"Fan Clubs"
+  },
+  {
+    "content_type":"text",
+    "title":"Fan Magazine",
+    "payload":"Fan Magazine"
+  },
+  {
+    "content_type":"text",
+    "title":"Movies",
+    "payload":"Movies"
+  },
+  {
+    "content_type":"text",
+    "title":"Sports",
+    "payload":"Sports"
+  },
+  {
+    "content_type":"text",
+    "title":"Celebrities",
+    "payload":"Celebrities"
+  },
+  {
+    "content_type":"text",
+    "title":"What can you do?",
+    "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
+  }
 ];
 //app.use(bodyParser.json());
 console.log("------:thread:-----");
