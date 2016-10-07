@@ -405,11 +405,11 @@ function fbuserdetails(event, userid) {
             "message":{
                 "text":msg,
                 "quick_replies":[
-                  {
-                    "content_type":"text",
-                    "title":"Politics",
-                    "payload":"Politics"
-                  },
+                  // {
+                  //   "content_type":"text",
+                  //   "title":"Politics",
+                  //   "payload":"Politics"
+                  // },
                   {
                     "content_type":"text",
                     "title":"Movies",
@@ -470,11 +470,11 @@ function sendHelpMessage(event){
                 "text":msg,
                 //"text":"msg",
                 "quick_replies":[
-                  {
-                    "content_type":"text",
-                    "title":"Politics",
-                    "payload":"Politics"
-                  },
+                  // {
+                  //   "content_type":"text",
+                  //   "title":"Politics",
+                  //   "payload":"Politics"
+                  // },
                   {
                     "content_type":"text",
                     "title":"Celebrities",

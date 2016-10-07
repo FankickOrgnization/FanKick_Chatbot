@@ -83,11 +83,11 @@ const sendContentPacks = (categoryName,event) => {
             "message":{
                 "text":"We have Fankick content on the following, why not try them out?",
                 "quick_replies":[
-                  {
-                    "content_type":"text",
-                    "title":"Politics",
-                    "payload":"Politics"
-                  },
+                  // {
+                  //   "content_type":"text",
+                  //   "title":"Politics",
+                  //   "payload":"Politics"
+                  // },
                   {
                     "content_type":"text",
                     "title":"Celebrities",
@@ -359,7 +359,7 @@ const sendContentPacks = (categoryName,event) => {
                     "content_type":"text",
                     "title":"News",
                     "payload":"News"
-                  },                  
+                  },
                   {
                     "content_type":"text",
                     "title":"What can you do?",
@@ -485,11 +485,11 @@ function sendHelpMessage(event){
                 "text":msg,
                 //"text":"msg",
                 "quick_replies":[
-                  {
-                    "content_type":"text",
-                    "title":"Politics",
-                    "payload":"Politics"
-                  },
+                  // {
+                  //   "content_type":"text",
+                  //   "title":"Politics",
+                  //   "payload":"Politics"
+                  // },
                   {
                     "content_type":"text",
                     "title":"Celebrities",
