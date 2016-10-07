@@ -274,12 +274,12 @@ function receivedtextmessage(categoryName, event) {
       console.log("quickButton_postback:------", categoryName);
       console.log("postback_sender_id:------", userid);
       if (categoryName == "Quizzes") {
-         quizzesPacks(categoryName, messagingEvent);
+         quizzesPacks(categoryName, event);
          console.log("categoryName########", categoryName);
      }else if ((categoryName == "Content Pack 1") || (categoryName == "Content Pack 2") || (categoryName == "Content Pack 3")){
-       questionsPacks(categoryName, messagingEvent);
+       questionsPacks(categoryName, event);
      }else{
-       sendContentPacks(categoryName, messagingEvent);
+       sendContentPacks(categoryName, event);
      }
 }
 // Quick_reply payload section End ********************************************
