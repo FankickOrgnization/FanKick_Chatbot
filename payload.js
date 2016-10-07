@@ -9,6 +9,24 @@ var pool = mysql.createPool({
     password: '3e384329',
     database: 'rankworlddev'
 });
+var moviesObj =  [
+  {
+    "name": "Quizzes",
+    "qus": "Name the director of PK?"
+},
+{
+    "name": "Fan Clubs",
+    "qus": "Join Pretty Alia Club"
+},
+{
+    "name": "Gossip Corner",
+    "qus": "Anupam Kher slams Om Puri???"
+},
+{
+    "name": "Fan Magazines",
+    "qus": "Johnny Depp"
+}
+];
 //app.use(bodyParser.json());
 console.log("------:thread:-----");
 
