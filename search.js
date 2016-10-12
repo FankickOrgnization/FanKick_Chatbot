@@ -96,7 +96,7 @@ var url = 'https://kgsearch.googleapis.com/v1/entities:search?query=' + category
         console.log("--------:Response data:--------first_name ", userprofiledata);
         var senderID = event.sender.id;
         //var msg = 'Hey '+username+', How are you? \n \nDid you check these amazingly cool stuff on Fankick?';
-        console.log("--------:Response data:--------gender ", msg);
+        //console.log("--------:Response data:--------gender ", msg);
         // var messageData = {
         //     "recipient": {
         //         "id": senderID
@@ -192,7 +192,7 @@ function sendHelpMessage(event){
         console.log("--------:Response data:--------gender ", userprofiledata.gender);
         var senderID = event.sender.id;
         //var msg = 'Hey '+username+', How are you? \n \nDid you check these amazingly cool stuff on Fankick?';
-        console.log("--------:Response data:--------gender ", msg);
+      //  console.log("--------:Response data:--------gender ", msg);
         var messageData = {
             "recipient": {
                 "id": senderID
