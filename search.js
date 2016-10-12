@@ -98,6 +98,11 @@ var url = 'https://kgsearch.googleapis.com/v1/entities:search?query=' + category
         var senderID = event.sender.id;
         for (var i = 0; i < 5; i++) { //Construct request body
           console.log("--------:google Response data:-------- name ", rows[i].result.name);
+          var name1 = rows[0].result.name;
+          var name2 = rows[1].result.name;
+          var name3 = rows[2].result.name;
+          var name4 = rows[3].result.name;
+          var name5 = rows[4].result.name;
           // var keyMpa ={
           //       "content_type":"text",
           //       "title":"Categories",
@@ -140,27 +145,27 @@ var url = 'https://kgsearch.googleapis.com/v1/entities:search?query=' + category
                   // },
                   {
                     "content_type":"text",
-                    "title":rows[0].result.name,
+                    "title":name1.slice(1,20),
                     "payload":rows[0].result.name
                   },
                   {
                     "content_type":"text",
-                    "title":rows[1].result.name,
+                    "title":name2.slice(1,20),
                     "payload":rows[1].result.name
                   },
                   {
                     "content_type":"text",
-                    "title":rows[2].result.name,
+                    "title":name3.slice(1,20),
                     "payload":rows[2].result.name
                   },
                   {
                     "content_type":"text",
-                    "title":rows[3].result.name,
+                    "title":name4.slice(1,20),
                     "payload":rows[3].result.name
                   },
                   {
                     "content_type":"text",
-                    "title":rows[4].result.name,
+                    "title":name5.slice(1,20),
                     "payload":rows[4].result.name
                   }
 
