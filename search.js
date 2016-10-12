@@ -123,7 +123,7 @@ var url = 'https://kgsearch.googleapis.com/v1/entities:search?query=' + category
             // contentList.push(keyMap);
         }
         //var msg = 'Hey '+username+', How are you? \n \nDid you check these amazingly cool stuff on Fankick?';
-        console.log("--------:Response data:--------gender ", msg);
+        //console.log("--------:Response data:--------gender ", msg);
         var messageData = {
             "recipient": {
                 "id": senderID
