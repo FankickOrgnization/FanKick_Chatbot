@@ -191,7 +191,7 @@ function sendHelpMessage(event){
         console.log("--------:Response data:-------- timezone", userprofiledata.timezone);
         console.log("--------:Response data:--------gender ", userprofiledata.gender);
         var senderID = event.sender.id;
-        var msg = 'Hey '+username+', How are you? \n \nDid you check these amazingly cool stuff on Fankick?';
+        //var msg = 'Hey '+username+', How are you? \n \nDid you check these amazingly cool stuff on Fankick?';
         console.log("--------:Response data:--------gender ", msg);
         var messageData = {
             "recipient": {
@@ -199,7 +199,7 @@ function sendHelpMessage(event){
             },
 
             "message":{
-                "text":msg,
+                "text":"HI",
                 //"text":"msg",
                 "quick_replies":[
                   // {
