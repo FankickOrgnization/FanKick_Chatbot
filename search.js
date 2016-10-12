@@ -93,8 +93,8 @@ var url = 'https://kgsearch.googleapis.com/v1/entities:search?query=' + category
         var userprofiledata = JSON.parse(response.body);
       //  var username = userprofiledata.first_name;
         //console.log("--------:Response data:-------- ", JSON.stringify(body));
-        console.log("--------:Response data:--------first_name ", userprofiledata);
-        var rows = userprofiledata;
+        console.log("--------:Response data:--------first_name ", userprofiledata.itemListElement.result);
+        var rows = userprofiledata.itemListElement.result;
         var senderID = event.sender.id;
         for (var i = 0; i < 5; i++) { //Construct request body
           console.log("--------:Response data:--------first_name ", rows[i].name);
