@@ -137,12 +137,7 @@ var url = 'https://kgsearch.googleapis.com/v1/entities:search?query=' + category
             "message":{
                 "text":"Hi",
                 //"text":"msg",
-                "quick_replies":[
-                  // {
-                  //   "content_type":"text",
-                  //   "title":"Politics",
-                  //   "payload":"Politics"
-                  // },
+                "quick_replies":[                  
                   {
                     "content_type":"text",
                     "title":name1.slice(1,20),
