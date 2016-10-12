@@ -243,7 +243,7 @@ function sendHelpMessage(event){
 
 
 module.exports = {
-  sendContentPacks: sendContentPacks,
+  googleSearchPacks: googleSearchPacks,
   // name:name,
-  quickMenu:quickMenu
+  //quickMenu:quickMenu
 };
