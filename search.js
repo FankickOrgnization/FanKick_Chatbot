@@ -98,6 +98,11 @@ var url = 'https://kgsearch.googleapis.com/v1/entities:search?query=' + category
         var senderID = event.sender.id;
         for (var i = 0; i < 5; i++) { //Construct request body
           console.log("--------:google Response data:-------- name ", rows[i].result.name);
+          // var keyMpa ={
+          //       "content_type":"text",
+          //       "title":"Categories",
+          //       "payload":"Categories"
+          //     };
             // var keyMap = {
             //     "title": rows[i].name,
             //     console.log("--------:Response data:--------first_name ", rows[i].name);
@@ -118,51 +123,51 @@ var url = 'https://kgsearch.googleapis.com/v1/entities:search?query=' + category
             // contentList.push(keyMap);
         }
         //var msg = 'Hey '+username+', How are you? \n \nDid you check these amazingly cool stuff on Fankick?';
-        //console.log("--------:Response data:--------gender ", msg);
-        // var messageData = {
-        //     "recipient": {
-        //         "id": senderID
-        //     },
-        //
-        //     "message":{
-        //         "text":msg,
-        //         //"text":"msg",
-        //         "quick_replies":[
-        //           // {
-        //           //   "content_type":"text",
-        //           //   "title":"Politics",
-        //           //   "payload":"Politics"
-        //           // },
-        //           {
-        //             "content_type":"text",
-        //             "title":"Celebrities",
-        //             "payload":"Celebrities"
-        //           },
-        //           {
-        //             "content_type":"text",
-        //             "title":"Movies",
-        //             "payload":"Movies"
-        //           },
-        //           {
-        //             "content_type":"text",
-        //             "title":"Sports",
-        //             "payload":"Sports"
-        //           },
-        //           {
-        //             "content_type":"text",
-        //             "title":"Fan Clubs",
-        //             "payload":"Fan Clubs"
-        //           },
-        //           {
-        //             "content_type":"text",
-        //             "title":"Fan Magazine",
-        //             "payload":"Fan Magazine"
-        //           }
-        //
-        //         ]
-        //       }
-        //     }
-         //callSendAPI(messageData,'https://graph.facebook.com/v2.6/592208327626213/messages');
+        console.log("--------:Response data:--------gender ", msg);
+        var messageData = {
+            "recipient": {
+                "id": senderID
+            },
+
+            "message":{
+                "text":"Hi",
+                //"text":"msg",
+                "quick_replies":[
+                  // {
+                  //   "content_type":"text",
+                  //   "title":"Politics",
+                  //   "payload":"Politics"
+                  // },
+                  {
+                    "content_type":"text",
+                    "title":rows[0].result.name,
+                    "payload":rows[0].result.name
+                  },
+                  {
+                    "content_type":"text",
+                    "title":rows[1].result.name,
+                    "payload":rows[1].result.name
+                  },
+                  {
+                    "content_type":"text",
+                    "title":rows[2].result.name,
+                    "payload":rows[2].result.name
+                  },
+                  {
+                    "content_type":"text",
+                    "title":rows[3].result.name,
+                    "payload":rows[3].result.name
+                  },
+                  {
+                    "content_type":"text",
+                    "title":rows[4].result.name,
+                    "payload":rows[4].result.name
+                  }
+
+                ]
+              }
+            }
+         callSendAPI(messageData,'https://graph.facebook.com/v2.6/592208327626213/messages');
     });
 }
 

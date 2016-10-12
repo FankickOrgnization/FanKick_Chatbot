@@ -229,7 +229,7 @@ function receivedtextmessage(categoryName, event) {
      }else if (categoryName == "Content Pack 3"){
        questionsPacks(3, event);
      }else{
-       payloadText.sendContentPacks(categoryName, event);
+       //payloadText.sendContentPacks(categoryName, event);
        searchText.googleSearchPacks(categoryName, event);
      }
 }
