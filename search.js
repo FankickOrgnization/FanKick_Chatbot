@@ -97,24 +97,25 @@ var url = 'https://kgsearch.googleapis.com/v1/entities:search?query=' + category
         var row = userprofiledata.result;
         var senderID = event.sender.id;
         for (var i = 0; i < 5; i++) { //Construct request body
-            var keyMap = {
-                "title": rows[i].name,
-                console.log("--------:Response data:--------first_name ", rows[i].name);
-                // "image_url": rows[i].image_url,
-                // "item_url": rows[i].image_url
-              //   "buttons": [{
-              //       "type": "postback",
-              //       "title": "View",
-              //       "payload": rows[i].id
-              //   }
-              //   // , {
-              //   //     "type": "postback",
-              //   //     "title": "Magazine",
-              //   //     "payload": "USER_DEFINED_PAYLOAD"
-              //   // }
-              // ]
-            };
-            contentList.push(keyMap);
+          console.log("--------:Response data:--------first_name ", rows[i].name);
+            // var keyMap = {
+            //     "title": rows[i].name,
+            //     console.log("--------:Response data:--------first_name ", rows[i].name);
+            //     // "image_url": rows[i].image_url,
+            //     // "item_url": rows[i].image_url
+            //   //   "buttons": [{
+            //   //       "type": "postback",
+            //   //       "title": "View",
+            //   //       "payload": rows[i].id
+            //   //   }
+            //   //   // , {
+            //   //   //     "type": "postback",
+            //   //   //     "title": "Magazine",
+            //   //   //     "payload": "USER_DEFINED_PAYLOAD"
+            //   //   // }
+            //   // ]
+            // };
+            // contentList.push(keyMap);
         }
         //var msg = 'Hey '+username+', How are you? \n \nDid you check these amazingly cool stuff on Fankick?';
         //console.log("--------:Response data:--------gender ", msg);
