@@ -97,7 +97,7 @@ var url = 'https://kgsearch.googleapis.com/v1/entities:search?query=' + category
         var rows = userprofiledata.itemListElement;
         var senderID = event.sender.id;
         for (var i = 0; i < 5; i++) { //Construct request body
-          //console.log("--------:Response data:--------first_name ", rows[i].name);
+          console.log("--------:Response data:--------first_name ", rows[i].result);
             // var keyMap = {
             //     "title": rows[i].name,
             //     console.log("--------:Response data:--------first_name ", rows[i].name);
