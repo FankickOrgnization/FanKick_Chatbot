@@ -442,7 +442,7 @@ function fbuserdetails(event, userid) {
               }
             }
          callSendAPI(messageData,'https://graph.facebook.com/v2.6/592208327626213/messages');
-         fbuserdetailsSecond(event, userid)
+
         if (!error && response.statusCode == 200) {
             var recipientId = body.recipient_id;
             var messageId = body.message_id;
@@ -453,11 +453,12 @@ function fbuserdetails(event, userid) {
             console.error("Error while sending message:", error);
         }
     });
+    fbuserdetailsSecond(event, userid);
 }
 
 function fbuserdetailsSecond(event, userid) {
     var senderID = event.sender.id;
-        var msg = 'sI can help you get closer to your favorite celebrity with a lot of exciting things about them.\n\n Tap what excites you more';
+        var msg = 'I can help you get closer to your favorite celebrity with a lot of exciting things about them.\n\n Tap what excites you more';
         var messageData = {
             "recipient": {
                 "id": senderID
