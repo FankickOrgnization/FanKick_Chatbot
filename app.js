@@ -407,38 +407,38 @@ function fbuserdetails(event, userid) {
             },
             "message":{
                 "text":msg,
-                // "quick_replies":[
-                //   // {
-                //   //   "content_type":"text",
-                //   //   "title":"Politics",
-                //   //   "payload":"Politics"
-                //   // },
-                //   {
-                //     "content_type":"text",
-                //     "title":"Movies",
-                //     "payload":"Movies"
-                //   },
-                //   {
-                //     "content_type":"text",
-                //     "title":"Sports",
-                //     "payload":"Sports"
-                //   },
-                //   {
-                //     "content_type":"text",
-                //     "title":"Music",
-                //     "payload":"Music"
-                //   },
-                //   {
-                //     "content_type":"text",
-                //     "title":"Celebrities",
-                //     "payload":"Celebrities"
-                //   },
-                //   {
-                //     "content_type":"text",
-                //     "title":"What can you do?",
-                //     "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
-                //   }
-                // ]
+                "quick_replies":[
+                  // {
+                  //   "content_type":"text",
+                  //   "title":"Politics",
+                  //   "payload":"Politics"
+                  // },
+                  {
+                    "content_type":"text",
+                    "title":"Movies",
+                    "payload":"Movies"
+                  },
+                  {
+                    "content_type":"text",
+                    "title":"Sports",
+                    "payload":"Sports"
+                  },
+                  {
+                    "content_type":"text",
+                    "title":"Music",
+                    "payload":"Music"
+                  },
+                  {
+                    "content_type":"text",
+                    "title":"Celebrities",
+                    "payload":"Celebrities"
+                  },
+                  {
+                    "content_type":"text",
+                    "title":"What can you do?",
+                    "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
+                  }
+                ]
               }
             }
          callSendAPI(messageData,'https://graph.facebook.com/v2.6/592208327626213/messages');
