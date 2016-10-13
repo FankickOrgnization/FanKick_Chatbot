@@ -456,6 +456,7 @@ function fbuserdetails(event, userid) {
 }
 
 function fbuserdetailsSecond(event, userid) {
+    var senderID = event.sender.id;
         var msg = 'sI can help you get closer to your favorite celebrity with a lot of exciting things about them.\n\n Tap what excites you more';
         var messageData = {
             "recipient": {
