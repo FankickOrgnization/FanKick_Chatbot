@@ -495,11 +495,6 @@ function sendHelpMessage(event){
                   // },
                   {
                     "content_type":"text",
-                    "title":"Celebrities",
-                    "payload":"Celebrities"
-                  },
-                  {
-                    "content_type":"text",
                     "title":"Movies",
                     "payload":"Movies"
                   },
@@ -510,15 +505,19 @@ function sendHelpMessage(event){
                   },
                   {
                     "content_type":"text",
-                    "title":"Fan Clubs",
-                    "payload":"Fan Clubs"
+                    "title":"Music",
+                    "payload":"Music"
                   },
                   {
                     "content_type":"text",
-                    "title":"Fan Magazine",
-                    "payload":"Fan Magazine"
+                    "title":"Celebrities",
+                    "payload":"Celebrities"
+                  },
+                  {
+                    "content_type":"text",
+                    "title":"What can you do?",
+                    "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
                   }
-
                 ]
               }
             }
