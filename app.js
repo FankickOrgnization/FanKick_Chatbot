@@ -319,6 +319,11 @@ function questionsPacks(categoryName, event) {
               },
               "message":{
                   "text":rows[1].item_name,
+                  "buttons":[
+                              {
+                                "type":"element_share"
+                              }
+                            ],
                   "quick_replies":[
                     {
                       "content_type":"text",
