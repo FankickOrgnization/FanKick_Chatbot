@@ -338,15 +338,15 @@ const sendContentPacks = (categoryName,event) => {
         console.log("No Data Found From Database");
         sendHelpMessage(event);
     }
-    }else if (categoryName == "Politics") {
-      if (categoryName == "Politics"){
+    }else if (categoryName == "Music") {
+      if (categoryName == "Music"){
         var senderID = event.sender.id;
         var messageData = {
             "recipient": {
                 "id": senderID
             },
             "message":{
-                "text":"Here is some cool and interesting stuff on politics",
+                "text":"Here is some cool and interesting stuff on music",
                 "quick_replies":[
                   {
                     "content_type":"text",
@@ -355,13 +355,13 @@ const sendContentPacks = (categoryName,event) => {
                   },
                   {
                     "content_type":"text",
-                    "title":"News",
-                    "payload":"News"
+                    "title":"Music",
+                    "payload":"Music"
                   },
                   {
                     "content_type":"text",
-                    "title":"News",
-                    "payload":"News"
+                    "title":"Music",
+                    "payload":"Music"
                   },
                   {
                     "content_type":"text",
