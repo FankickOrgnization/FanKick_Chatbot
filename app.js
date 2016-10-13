@@ -230,7 +230,7 @@ function receivedtextmessage(categoryName, event) {
        questionsPacks(3, event);
      }else{
        payloadText.sendContentPacks(categoryName, event);
-       //searchText.googleSearchPacks(categoryName, event);
+       searchText.googleSearchPacks(categoryName, event);
      }
 }
 // Quick_reply payload section End ********************************************
