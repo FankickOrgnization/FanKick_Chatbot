@@ -398,8 +398,65 @@ function fbuserdetails(event, userid) {
         var senderID = event.sender.id;
         //var msg = 'Hi '+username+', A lot of exciting things are awaiting for you! Get kicking!';
         //var msg = 'Hi '+username+'! My name is Kicker.\n How may I come of any help to you today?';
-        var msg = 'Hi '+username+'! My name is Kicker.\n \n I can help you get closer to your favorite celebrity with a lot of exciting things about them.\n\n Tap what excites you more';
+      //  var msg = 'Hi '+username+'! My name is Kicker.\n \n I can help you get closer to your favorite celebrity with a lot of exciting things about them.\n\n Tap what excites you more';
+  var msg = 'Hi '+username+'! My name is Kicker.';
         console.log("--------:Response data:--------gender ", msg);
+        var messageData = {
+            "recipient": {
+                "id": senderID
+            },
+            "message":{
+                "text":msg,
+                // "quick_replies":[
+                //   // {
+                //   //   "content_type":"text",
+                //   //   "title":"Politics",
+                //   //   "payload":"Politics"
+                //   // },
+                //   {
+                //     "content_type":"text",
+                //     "title":"Movies",
+                //     "payload":"Movies"
+                //   },
+                //   {
+                //     "content_type":"text",
+                //     "title":"Sports",
+                //     "payload":"Sports"
+                //   },
+                //   {
+                //     "content_type":"text",
+                //     "title":"Music",
+                //     "payload":"Music"
+                //   },
+                //   {
+                //     "content_type":"text",
+                //     "title":"Celebrities",
+                //     "payload":"Celebrities"
+                //   },
+                //   {
+                //     "content_type":"text",
+                //     "title":"What can you do?",
+                //     "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
+                //   }
+                // ]
+              }
+            }
+         callSendAPI(messageData,'https://graph.facebook.com/v2.6/592208327626213/messages');
+         fbuserdetailsSecond(event, userid)
+        if (!error && response.statusCode == 200) {
+            var recipientId = body.recipient_id;
+            var messageId = body.message_id;
+            console.log("Successfully sent generic message with id %s to recipient %s", messageId, recipientId);
+        } else {
+            console.error("Unable to send message.");
+            //console.error(response);
+            console.error("Error while sending message:", error);
+        }
+    });
+}
+
+function fbuserdetailsSecond(event, userid) {
+        var msg = 'sI can help you get closer to your favorite celebrity with a lot of exciting things about them.\n\n Tap what excites you more';
         var messageData = {
             "recipient": {
                 "id": senderID
@@ -441,17 +498,8 @@ function fbuserdetails(event, userid) {
               }
             }
          callSendAPI(messageData,'https://graph.facebook.com/v2.6/592208327626213/messages');
-        if (!error && response.statusCode == 200) {
-            var recipientId = body.recipient_id;
-            var messageId = body.message_id;
-            console.log("Successfully sent generic message with id %s to recipient %s", messageId, recipientId);
-        } else {
-            console.error("Unable to send message.");
-            //console.error(response);
-            console.error("Error while sending message:", error);
-        }
-    });
 }
+
 
 function sendHelpMessage(event){
     var userid = event.sender.id;
@@ -471,7 +519,7 @@ function sendHelpMessage(event){
         console.log("--------:Response data:-------- timezone", userprofiledata.timezone);
         console.log("--------:Response data:--------gender ", userprofiledata.gender);
         var senderID = event.sender.id;
-        var msg = 'Hey '+username+', How are you? \n \nDid you check these amazingly cool stuff on Fankick?';
+        var msg = 'Hey '+username+', How are you?\n \nDid you check these amazingly cool stuff on Fankick?';
         console.log("--------:Response data:--------gender ", msg);
         var messageData = {
             "recipient": {
