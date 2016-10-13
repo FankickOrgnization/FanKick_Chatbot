@@ -355,12 +355,12 @@ const sendContentPacks = (categoryName,event) => {
                   },
                   {
                     "content_type":"text",
-                    "title":"Music",
+                    "title":"Music-1",
                     "payload":"Music"
                   },
                   {
                     "content_type":"text",
-                    "title":"Music",
+                    "title":"Music-2",
                     "payload":"Music"
                   },
                   {
