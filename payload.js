@@ -94,7 +94,7 @@ const sendContentPacks = (categoryName,event) => {
                 //     "title": moviesObj[i].qus,
                 //     "payload": "USER_DEFINED_PAYLOAD"
                 // }
-              ]
+              //]
             };
             contentList.push(keyMap);
         }
