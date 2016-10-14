@@ -83,7 +83,7 @@ const sendContentPacks = (categoryName,event) => {
                 //"title":moviesObj[i].name,
                 //"subtitle":"We\'ve got the right hat for everyone.",
                 "image_url": moviesObj[i].imgurl,
-                "item_url": moviesObj[i].imgurl
+                "item_url": moviesObj[i].imgurl,
                 "buttons": [{
                     "type": "postback",
                     "title": moviesObj[i].name,
