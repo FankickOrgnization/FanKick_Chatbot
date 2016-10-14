@@ -14,19 +14,19 @@ var fbpage_access_token = 'EAAXcJew5yNkBAAvFD3wX3RZACdvA4lZB6XStBzliKI9y4m7I1taA
 var moviesObj =  [
   {
     "name": "Quizzes",
-    "qus": "Name the director of PK?"
+    "qus": 'https://fankickdev.blob.core.windows.net/images/movies.jpg'
 },
 {
     "name": "Fan Clubs",
-    "qus": "Join Pretty Alia Club"
+    "qus": 'https://fankickdev.blob.core.windows.net/images/movies.jpg'
 },
 {
     "name": "Gossip Corner",
-    "qus": "Anupam Kher slams Om Puri???"
+    "qus": 'https://fankickdev.blob.core.windows.net/images/movies.jpg'
 },
 {
     "name": "Fan Magazines",
-    "qus": "Johnny Depp"
+    "qus": 'https://fankickdev.blob.core.windows.net/images/movies.jpg'
 }
 ];
 
@@ -182,7 +182,7 @@ const sendContentPacks = (categoryName,event) => {
                         "title": rows[i].name,
                         "image_url": rows[i].imageurl,
                         "item_url": rows[i].imageurl,
-                        "subtitle":"We\'ve got the right hat for everyone."
+                        //"subtitle":"We\'ve got the right hat for everyone."
                         // "buttons": [{
                         //     "type": "postback",
                         //     "title": "Read More",
@@ -223,7 +223,7 @@ const sendContentPacks = (categoryName,event) => {
         for (var i = 0; i < moviesObj.length; i++) { //Construct request body
             var keyMap = {
                 "title":"We have some cool stuff waiting for you..",
-                "subtitle":"We\'ve got the right hat for everyone.",
+                //"subtitle":"We\'ve got the right hat for everyone.",
                 // "image_url": moviesObj[i].qus,
                 // "item_url": moviesObj[i].qus
                 "buttons": [{
