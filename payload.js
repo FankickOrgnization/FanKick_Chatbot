@@ -250,8 +250,8 @@ const sendContentPacks = (categoryName,event) => {
             var keyMap = {
                 "title":"We have some cool stuff waiting for you..",
                 //"subtitle":"We\'ve got the right hat for everyone.",
-                "image_url": moviesObj[i].qus,
-                "item_url": moviesObj[i].qus,
+                "image_url": moviesObj[i].imgurl,
+                "item_url": moviesObj[i].imgurl,
                 "buttons": [{
                     "type": "postback",
                     "title": moviesObj[i].name,
