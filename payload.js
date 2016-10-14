@@ -97,7 +97,7 @@ const sendContentPacks = (categoryName,event) => {
             //   //]
             // };
             var keyMap = {
-                                    "title": moviesObj[i].name,
+                                    //"title": moviesObj[i].name,
                                     "image_url": moviesObj[i].imgurl,
                                     //"item_url": moviesObj[i].imgurl,
                                     "buttons": [{
