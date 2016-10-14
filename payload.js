@@ -80,15 +80,15 @@ const sendContentPacks = (categoryName,event) => {
         var contentList = [];
         for (var i = 0; i < moviesObj.length; i++) { //Construct request body
             var keyMap = {
-              //  "title":"We have some cool stuff waiting for you..",
+              "title":moviesObj[i].name,
                 //"subtitle":"We\'ve got the right hat for everyone.",
                 "image_url": moviesObj[i].imgurl,
-                "item_url": moviesObj[i].imgurl,
-                "buttons": [{
-                    "type": "postback",
-                    "title": moviesObj[i].name,
-                    "payload": moviesObj[i].name
-                }
+                "item_url": moviesObj[i].imgurl
+                // "buttons": [{
+                //     "type": "postback",
+                //     "title": moviesObj[i].name,
+                //     "payload": moviesObj[i].name
+                // }
                 // {
                 //     "type": "postback",
                 //     "title": moviesObj[i].qus,
