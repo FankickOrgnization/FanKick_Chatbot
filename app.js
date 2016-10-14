@@ -405,7 +405,7 @@ function fbuserdetails(event, userid) {
         //var msg = 'Hi '+username+'! My name is Kicker.\n How may I come of any help to you today?';
       //var msg = 'Hi '+username+'! My name is Kicker.\n \nI can help you get closer to your favorite celebrity with a lot of exciting things about them.\n\n Tap what excites you more';
   var msg = 'Hi '+username+'! My name is Kicker.';
-        console.log("--------:Response data:--------gender ", msg);
+        console.log("--------:Response data:--------msg1 ", msg);
         var messageData = {
             "recipient": {
                 "id": senderID
@@ -417,10 +417,10 @@ function fbuserdetails(event, userid) {
          callSendAPI(messageData,'https://graph.facebook.com/v2.6/592208327626213/messages');
 
         if (!error && response.statusCode == 200) {
-            fbuserdetailsSecond(event, userid);
             var recipientId = body.recipient_id;
             var messageId = body.message_id;
             console.log("Successfully sent generic message with id %s to recipient %s", messageId, recipientId);
+            fbuserdetailsSecond(event, userid);
         } else {
             console.error("Unable to send message.");
             //console.error(response);
@@ -497,7 +497,7 @@ function sendHelpMessage(event){
         var senderID = event.sender.id;
         //var msg = 'Hey '+username+', How are you?\n \nDid you check these amazingly cool stuff on Fankick?';
         var msg = 'Hey '+username+', How are you?';
-        console.log("--------:Response data:--------gender", msg);
+        console.log("--------:Response data:--------sendHelpMessage1", msg);
         var messageData = {
             "recipient": {
                 "id": senderID
@@ -537,10 +537,10 @@ function sendHelpMessage(event){
             }
          callSendAPI(messageData,'https://graph.facebook.com/v2.6/592208327626213/messages');
          if (!error && response.statusCode == 200) {
-             sendHelpMessageSecond(event, userid);
              var recipientId = body.recipient_id;
              var messageId = body.message_id;
              console.log("Successfully sent generic message with id %s to recipient %s", messageId, recipientId);
+             sendHelpMessageSecond(event, userid);
          } else {
              console.error("Unable to send message.");
              //console.error(response);

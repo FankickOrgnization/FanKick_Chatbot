@@ -494,7 +494,7 @@ function sendHelpMessage(event){
         var senderID = event.sender.id;
         //var msg = 'Hey '+username+', How are you?\n \nDid you check these amazingly cool stuff on Fankick?';
         var msg = 'Hey '+username+', How are you?';
-        console.log("--------:Response data:--------gender", msg);
+        console.log("--------:Response data:--------sendHelpMessage1", msg);
         var messageData = {
             "recipient": {
                 "id": senderID
@@ -533,10 +533,10 @@ function sendHelpMessage(event){
             }
          callSendAPI(messageData,'https://graph.facebook.com/v2.6/592208327626213/messages');
          if (!error && response.statusCode == 200) {
-             sendHelpMessageSecond(event, userid);
              var recipientId = body.recipient_id;
              var messageId = body.message_id;
              console.log("Successfully sent generic message with id %s to recipient %s", messageId, recipientId);
+             sendHelpMessageSecond(event, userid);
          } else {
              console.error("Unable to send message.");
              //console.error(response);
