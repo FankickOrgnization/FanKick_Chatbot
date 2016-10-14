@@ -183,6 +183,11 @@ function mainPacks(categoryName, event){
           "quick_replies":[
             {
               "content_type":"text",
+              "title":"Categories",
+              "payload":"Categories"
+            },
+            {
+              "content_type":"text",
               "title":"Movies",
               "payload":"Movies"
             },
@@ -435,6 +440,11 @@ function fbuserdetailsSecond(event, userid) {
             "message":{
                 "text":msg,
                 "quick_replies":[
+                  {
+                    "content_type":"text",
+                    "title":"Categories",
+                    "payload":"Categories"
+                  },
                   {
                     "content_type":"text",
                     "title":"Movies",

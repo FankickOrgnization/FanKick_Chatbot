@@ -87,7 +87,7 @@ const sendContentPacks = (categoryName,event) => {
                 "buttons": [{
                     "type": "postback",
                     "title": moviesObj[i].name,
-                    "payload": "USER_DEFINED_PAYLOAD"
+                    "payload": moviesObj[i].name
                 }
                 // {
                 //     "type": "postback",
@@ -544,6 +544,11 @@ function sendHelpMessageSecond(event, userid) {
             "message":{
                 "text":msg,
                 "quick_replies":[
+                  {
+                    "content_type":"text",
+                    "title":"Categories",
+                    "payload":"Categories"
+                  },
                   {
                     "content_type":"text",
                     "title":"Movies",
