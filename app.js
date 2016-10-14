@@ -444,6 +444,7 @@ function fbuserdetails(event, userid) {
          callSendAPI(messageData,'https://graph.facebook.com/v2.6/592208327626213/messages');
 
         if (!error && response.statusCode == 200) {
+            fbuserdetailsSecond(event, userid);
             var recipientId = body.recipient_id;
             var messageId = body.message_id;
             console.log("Successfully sent generic message with id %s to recipient %s", messageId, recipientId);
@@ -453,7 +454,7 @@ function fbuserdetails(event, userid) {
             console.error("Error while sending message:", error);
         }
     });
-    fbuserdetailsSecond(event, userid);
+
 }
 
 function fbuserdetailsSecond(event, userid) {
