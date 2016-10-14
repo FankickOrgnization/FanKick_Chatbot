@@ -181,7 +181,8 @@ const sendContentPacks = (categoryName,event) => {
                     var keyMap = {
                         "title": rows[i].name,
                         "image_url": rows[i].imageurl,
-                        "item_url": rows[i].imageurl
+                        "item_url": rows[i].imageurl,
+                        "subtitle":"We\'ve got the right hat for everyone."
                         // "buttons": [{
                         //     "type": "postback",
                         //     "title": "Read More",
@@ -222,6 +223,7 @@ const sendContentPacks = (categoryName,event) => {
         for (var i = 0; i < moviesObj.length; i++) { //Construct request body
             var keyMap = {
                 "title":"We have some cool stuff waiting for you..",
+                "subtitle":"We\'ve got the right hat for everyone.",
                 // "image_url": moviesObj[i].qus,
                 // "item_url": moviesObj[i].qus
                 "buttons": [{
