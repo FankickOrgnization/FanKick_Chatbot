@@ -80,26 +80,21 @@ const sendContentPacks = (categoryName,event) => {
         var contentList = [];
         for (var i = 0; i < moviesObj.length; i++) { //Construct request body
             var keyMap = {
-                //"title":moviesObj[i].name,
+                "title":moviesObj[i].name,
                 //"subtitle":"We\'ve got the right hat for everyone.",
                 "image_url": moviesObj[i].imgurl,
-                "item_url": moviesObj[i].imgurl,
-              //   "buttons": [{
-              //       "type": "postback",
-              //       "title": moviesObj[i].name,
-              //       "payload": moviesObj[i].name
-              //   }
-              //   // {
-              //   //     "type": "postback",
-              //   //     "title": moviesObj[i].qus,
-              //   //     "payload": "USER_DEFINED_PAYLOAD"
-              //   // }
-              // ]
-              "buttons": [{
-                  "type": "postback",
-                  "title": "Click Here",
-                  "payload": moviesObj[i].name
-              }]
+                "item_url": moviesObj[i].imgurl
+                // "buttons": [{
+                //     "type": "postback",
+                //     "title": moviesObj[i].name,
+                //     "payload": moviesObj[i].name
+                // }
+                // {
+                //     "type": "postback",
+                //     "title": moviesObj[i].qus,
+                //     "payload": "USER_DEFINED_PAYLOAD"
+                // }
+              //]
             };
             contentList.push(keyMap);
         }
