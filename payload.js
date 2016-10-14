@@ -224,18 +224,19 @@ const sendContentPacks = (categoryName,event) => {
             var keyMap = {
                 "title":"We have some cool stuff waiting for you..",
                 //"subtitle":"We\'ve got the right hat for everyone.",
-                // "image_url": moviesObj[i].qus,
-                // "item_url": moviesObj[i].qus
+                "image_url": moviesObj[i].qus,
+                "item_url": moviesObj[i].qus
                 "buttons": [{
                     "type": "postback",
                     "title": moviesObj[i].name,
                     "payload": "USER_DEFINED_PAYLOAD"
-                },
-                {
-                    "type": "postback",
-                    "title": moviesObj[i].qus,
-                    "payload": "USER_DEFINED_PAYLOAD"
-                }]
+                }
+                // {
+                //     "type": "postback",
+                //     "title": moviesObj[i].qus,
+                //     "payload": "USER_DEFINED_PAYLOAD"
+                // }
+              ]
             };
             contentList.push(keyMap);
         }
