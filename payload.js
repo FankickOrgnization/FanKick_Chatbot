@@ -99,15 +99,11 @@ const sendContentPacks = (categoryName,event) => {
             var keyMap = {
                                     "title": moviesObj[i].name,
                                     "image_url": moviesObj[i].imgurl,
-                                    "item_url": moviesObj[i].imgurl,
+                                    //"item_url": moviesObj[i].imgurl,
                                     "buttons": [{
                                         "type": "postback",
-                                        "title": "View",
+                                        "title": moviesObj[i].name,
                                         "payload": moviesObj[i].name
-                                    }, {
-                                        "type": "postback",
-                                        "title": "Magazine",
-                                        "payload": "USER_DEFINED_PAYLOAD"
                                     }]
                                 };
 
