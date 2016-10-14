@@ -13,20 +13,20 @@ var fbpage_access_token = 'EAAXcJew5yNkBAAvFD3wX3RZACdvA4lZB6XStBzliKI9y4m7I1taA
 
 var moviesObj =  [
   {
-    "name": "Quizzes",
-    "qus": 'https://fankickdev.blob.core.windows.net/images/movies.jpg'
+    "name": "Movies",
+    "imgurl": 'https://fankickdev.blob.core.windows.net/images/movies.jpg'
 },
 {
-    "name": "Fan Clubs",
-    "qus": 'https://fankickdev.blob.core.windows.net/images/celebrities.jpg'
+    "name": "Celebrities",
+    "imgurl": 'https://fankickdev.blob.core.windows.net/images/celebrities.jpg'
 },
 {
-    "name": "Gossip Corner",
-    "qus": 'https://fankickdev.blob.core.windows.net/images/music.jpg'
+    "name": "Music",
+    "imgurl": 'https://fankickdev.blob.core.windows.net/images/music.jpg'
 },
 {
-    "name": "Fan Magazines",
-    "qus": 'https://fankickdev.blob.core.windows.net/images/sports.jpg'
+    "name": "Sports",
+    "imgurl": 'https://fankickdev.blob.core.windows.net/images/sports.jpg'
 }
 ];
 
@@ -73,54 +73,79 @@ var quickMenu = [
 const sendContentPacks = (categoryName,event) => {
   console.log("*************---categoryName----*******", categoryName );
     if (categoryName == "Categories") {
+      console.log("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%",moviesObj);
+      if (moviesObj.length){
+        console.log("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%",moviesObj.length);
         var senderID = event.sender.id;
+        var contentList = [];
+        for (var i = 0; i < moviesObj.length; i++) { //Construct request body
+            var keyMap = {
+              //  "title":"We have some cool stuff waiting for you..",
+                //"subtitle":"We\'ve got the right hat for everyone.",
+                "image_url": moviesObj[i].imgurl,
+                "item_url": moviesObj[i].imgurl,
+                "buttons": [{
+                    "type": "postback",
+                    "title": moviesObj[i].name,
+                    "payload": "USER_DEFINED_PAYLOAD"
+                }
+                // {
+                //     "type": "postback",
+                //     "title": moviesObj[i].qus,
+                //     "payload": "USER_DEFINED_PAYLOAD"
+                // }
+              ]
+            };
+            contentList.push(keyMap);
+        }
         var messageData = {
             "recipient": {
                 "id": senderID
             },
-            "message":{
-                "text":"We have Fankick content on the following, why not try them out?",
-                "quick_replies":[
-                  // {
-                  //   "content_type":"text",
-                  //   "title":"Politics",
-                  //   "payload":"Politics"
-                  // },
-                  {
-                    "content_type":"text",
-                    "title":"Celebrities",
-                    "payload":"Celebrities"
-                  },
-                  {
-                    "content_type":"text",
-                    "title":"Movies",
-                    "payload":"Movies"
-                  },
-                  {
-                    "content_type":"text",
-                    "title":"Sports",
-                    "payload":"Sports"
-                  },
-                  {
-                    "content_type":"text",
-                    "title":"Fan Magazine",
-                    "payload":"Fan Magazine"
-                  },
-                  {
-                    "content_type":"text",
-                    "title":"Fan Clubs",
-                    "payload":"Fan Clubs"
-                  },
-                  {
-                    "content_type":"text",
-                    "title":"What can you do?",
-                    "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
-                  }
-
-                ]
-              }
+            "message": {
+                "attachment": {
+                    "type": "template",
+                    //"text":"We have some cool stuff waiting for you..",
+                    "payload": {
+                        "template_type": "generic",
+                        "elements": contentList
+                    }
+                },
+                "quick_replies": quickMenu
+            }
+              // "message":{
+              //     "text":"Here is some cool and interesting stuff on movies",
+              //     "quick_replies":[
+              //       {
+              //         "content_type":"text",
+              //         "title":"Quizzes",
+              //         "payload":"Quizzes"
+              //       },
+              //       {
+              //         "content_type":"text",
+              //         "title":"Fan Clubs",
+              //         "payload":"Fan Clubs"
+              //       },
+              //       {
+              //         "content_type":"text",
+              //         "title":"Gossip Corner",
+              //         "payload":"Gossip Corner"
+              //       },
+              //       {
+              //         "content_type":"text",
+              //         "title":"Fan Magazine",
+              //         "payload":"Fan Magazine"
+              //       },
+              //       {
+              //         "content_type":"text",
+              //         "title":"What can you do?",
+              //         "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
+              //       }
+              //
+              //     ]
+              //   }
         }
-        callSendAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
+        callSendAPI(messageData,'https://graph.facebook.com/v2.6/592208327626213/messages');
     } else if (categoryName == "Fan Clubs") {
       pool.getConnection(function(err, connection) {
         connection.query('SELECT * FROM fk_pack_fanclub', function(err, rows) {
@@ -244,48 +269,48 @@ const sendContentPacks = (categoryName,event) => {
             "recipient": {
                 "id": senderID
             },
-            "message": {
-                "attachment": {
-                    "type": "template",
-                    //"text":"We have some cool stuff waiting for you..",
-                    "payload": {
-                        "template_type": "generic",
-                        "elements": contentList
+            // "message": {
+            //     "attachment": {
+            //         "type": "template",
+            //         //"text":"We have some cool stuff waiting for you..",
+            //         "payload": {
+            //             "template_type": "generic",
+            //             "elements": contentList
+            //         }
+            //     },
+            //     "quick_replies": quickMenu
+            // }
+              "message":{
+                  "text":"Here is some cool and interesting stuff on movies",
+                  "quick_replies":[
+                    {
+                      "content_type":"text",
+                      "title":"Quizzes",
+                      "payload":"Quizzes"
+                    },
+                    {
+                      "content_type":"text",
+                      "title":"Fan Clubs",
+                      "payload":"Fan Clubs"
+                    },
+                    {
+                      "content_type":"text",
+                      "title":"Gossip Corner",
+                      "payload":"Gossip Corner"
+                    },
+                    {
+                      "content_type":"text",
+                      "title":"Fan Magazine",
+                      "payload":"Fan Magazine"
+                    },
+                    {
+                      "content_type":"text",
+                      "title":"What can you do?",
+                      "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
                     }
-                },
-                "quick_replies": quickMenu
-            }
-              // "message":{
-              //     "text":"Here is some cool and interesting stuff on movies",
-              //     "quick_replies":[
-              //       {
-              //         "content_type":"text",
-              //         "title":"Quizzes",
-              //         "payload":"Quizzes"
-              //       },
-              //       {
-              //         "content_type":"text",
-              //         "title":"Fan Clubs",
-              //         "payload":"Fan Clubs"
-              //       },
-              //       {
-              //         "content_type":"text",
-              //         "title":"Gossip Corner",
-              //         "payload":"Gossip Corner"
-              //       },
-              //       {
-              //         "content_type":"text",
-              //         "title":"Fan Magazine",
-              //         "payload":"Fan Magazine"
-              //       },
-              //       {
-              //         "content_type":"text",
-              //         "title":"What can you do?",
-              //         "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
-              //       }
-              //
-              //     ]
-              //   }
+
+                  ]
+                }
         }
         callSendAPI(messageData,'https://graph.facebook.com/v2.6/592208327626213/messages');
     }else {
