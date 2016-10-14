@@ -488,7 +488,6 @@ function sendHelpMessage(event){
             "recipient": {
                 "id": senderID
             },
-
             "message":{
                 "text":msg,
                 //"text":"msg",
