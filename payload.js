@@ -79,23 +79,38 @@ const sendContentPacks = (categoryName,event) => {
         var senderID = event.sender.id;
         var contentList = [];
         for (var i = 0; i < moviesObj.length; i++) { //Construct request body
+            // var keyMap = {
+            //     "title":moviesObj[i].name,
+            //     //"subtitle":"We\'ve got the right hat for everyone.",
+            //     "image_url": moviesObj[i].imgurl,
+            //     "item_url": moviesObj[i].imgurl
+            //     // "buttons": [{
+            //     //     "type": "postback",
+            //     //     "title": moviesObj[i].name,
+            //     //     "payload": moviesObj[i].name
+            //     // }
+            //     // {
+            //     //     "type": "postback",
+            //     //     "title": moviesObj[i].qus,
+            //     //     "payload": "USER_DEFINED_PAYLOAD"
+            //     // }
+            //   //]
+            // };
             var keyMap = {
-                "title":moviesObj[i].name,
-                //"subtitle":"We\'ve got the right hat for everyone.",
-                "image_url": moviesObj[i].imgurl,
-                "item_url": moviesObj[i].imgurl
-                // "buttons": [{
-                //     "type": "postback",
-                //     "title": moviesObj[i].name,
-                //     "payload": moviesObj[i].name
-                // }
-                // {
-                //     "type": "postback",
-                //     "title": moviesObj[i].qus,
-                //     "payload": "USER_DEFINED_PAYLOAD"
-                // }
-              //]
-            };
+                                    "title": moviesObj[i].name,
+                                    "image_url": moviesObj[i].imgurl,
+                                    "item_url": moviesObj[i].imgurl,
+                                    "buttons": [{
+                                        "type": "postback",
+                                        "title": "View",
+                                        "payload": moviesObj[i].name
+                                    }, {
+                                        "type": "postback",
+                                        "title": "Magazine",
+                                        "payload": "USER_DEFINED_PAYLOAD"
+                                    }]
+                                };
+
             contentList.push(keyMap);
         }
         var messageData = {
