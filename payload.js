@@ -18,15 +18,15 @@ var moviesObj =  [
 },
 {
     "name": "Fan Clubs",
-    "qus": 'https://fankickdev.blob.core.windows.net/images/movies.jpg'
+    "qus": 'https://fankickdev.blob.core.windows.net/images/celebrities.jpg'
 },
 {
     "name": "Gossip Corner",
-    "qus": 'https://fankickdev.blob.core.windows.net/images/movies.jpg'
+    "qus": 'https://fankickdev.blob.core.windows.net/images/music.jpg'
 },
 {
     "name": "Fan Magazines",
-    "qus": 'https://fankickdev.blob.core.windows.net/images/movies.jpg'
+    "qus": 'https://fankickdev.blob.core.windows.net/images/sports.jpg'
 }
 ];
 
