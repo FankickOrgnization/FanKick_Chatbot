@@ -145,6 +145,7 @@ const sendContentPacks = (categoryName,event) => {
               //     ]
               //   }
         }
+      }
         callSendAPI(messageData,'https://graph.facebook.com/v2.6/592208327626213/messages');
     } else if (categoryName == "Fan Clubs") {
       pool.getConnection(function(err, connection) {
@@ -460,32 +461,7 @@ const sendContentPacks = (categoryName,event) => {
     }
 }
 
-function callSendAPI(body, url) {
-    console.log("url", url);
-    console.log("Body", body);
-    request({
-        uri: url,
-        qs: {
-            access_token: fbpage_access_token
-        },
-        method: 'POST',
-        json: body,
-        headers: {
-            "Content-Type": "application/json"
-        }
-    }, function(error, response, body) {
-        console.log("Response data: ", JSON.stringify(body));
-        if (!error && response.statusCode == 200) {
-            var recipientId = body.recipient_id;
-            var messageId = body.message_id;
-            console.log("Successfully sent generic message with id %s to recipient %s", messageId, recipientId);
-        } else {
-            console.error("Unable to send message.");
-            //console.error(response);
-            console.error("Error while sending message:", error);
-        }
-    });
-}
+
 
 function sendHelpMessage(event){
     var userid = event.sender.id;
@@ -600,7 +576,32 @@ function sendHelpMessageSecond(event, userid) {
          callSendAPI(messageData,'https://graph.facebook.com/v2.6/592208327626213/messages');
 }
 
-
+function callSendAPI(body, url) {
+    console.log("url", url);
+    console.log("Body", body);
+    request({
+        uri: url,
+        qs: {
+            access_token: fbpage_access_token
+        },
+        method: 'POST',
+        json: body,
+        headers: {
+            "Content-Type": "application/json"
+        }
+    }, function(error, response, body) {
+        console.log("Response data: ", JSON.stringify(body));
+        if (!error && response.statusCode == 200) {
+            var recipientId = body.recipient_id;
+            var messageId = body.message_id;
+            console.log("Successfully sent generic message with id %s to recipient %s", messageId, recipientId);
+        } else {
+            console.error("Unable to send message.");
+            //console.error(response);
+            console.error("Error while sending message:", error);
+        }
+    });
+}
 
 module.exports = {
   sendContentPacks: sendContentPacks,
