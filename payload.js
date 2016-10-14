@@ -84,17 +84,22 @@ const sendContentPacks = (categoryName,event) => {
                 //"subtitle":"We\'ve got the right hat for everyone.",
                 "image_url": moviesObj[i].imgurl,
                 "item_url": moviesObj[i].imgurl,
-                "buttons": [{
-                    "type": "postback",
-                    "title": moviesObj[i].name,
-                    "payload": moviesObj[i].name
-                }
-                // {
-                //     "type": "postback",
-                //     "title": moviesObj[i].qus,
-                //     "payload": "USER_DEFINED_PAYLOAD"
-                // }
-              ]
+              //   "buttons": [{
+              //       "type": "postback",
+              //       "title": moviesObj[i].name,
+              //       "payload": moviesObj[i].name
+              //   }
+              //   // {
+              //   //     "type": "postback",
+              //   //     "title": moviesObj[i].qus,
+              //   //     "payload": "USER_DEFINED_PAYLOAD"
+              //   // }
+              // ]
+              "buttons": [{
+                  "type": "postback",
+                  "title": "Click Here",
+                  "payload": moviesObj[i].name
+              }]
             };
             contentList.push(keyMap);
         }
