@@ -97,13 +97,13 @@ const sendContentPacks = (categoryName,event) => {
             //   //]
             // };
             var keyMap = {
-                                    //"title": moviesObj[i].name,
-                                    "image_url": moviesObj[i].imgurl,
+                          "title": moviesObj[i].name,
+                          "image_url": moviesObj[i].imgurl,
                                     //"item_url": moviesObj[i].imgurl,
-                                    "buttons": [{
-                                        "type": "postback",
-                                        "title": moviesObj[i].name,
-                                        "payload": moviesObj[i].name
+                          "buttons": [{
+                                      "type": "postback",
+                                      "title": "Click Here",
+                                      "payload": moviesObj[i].name
                                     }]
                                 };
 
