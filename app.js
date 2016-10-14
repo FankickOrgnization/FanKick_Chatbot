@@ -407,38 +407,6 @@ function fbuserdetails(event, userid) {
             },
             "message":{
                 "text":msg,
-                // "quick_replies":[
-                //   // {
-                //   //   "content_type":"text",
-                //   //   "title":"Politics",
-                //   //   "payload":"Politics"
-                //   // },
-                //   {
-                //     "content_type":"text",
-                //     "title":"Movies",
-                //     "payload":"Movies"
-                //   },
-                //   {
-                //     "content_type":"text",
-                //     "title":"Sports",
-                //     "payload":"Sports"
-                //   },
-                //   {
-                //     "content_type":"text",
-                //     "title":"Music",
-                //     "payload":"Music"
-                //   },
-                //   {
-                //     "content_type":"text",
-                //     "title":"Celebrities",
-                //     "payload":"Celebrities"
-                //   },
-                //   {
-                //     "content_type":"text",
-                //     "title":"What can you do?",
-                //     "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
-                //   }
-                // ]
               }
             }
          callSendAPI(messageData,'https://graph.facebook.com/v2.6/592208327626213/messages');
@@ -467,11 +435,6 @@ function fbuserdetailsSecond(event, userid) {
             "message":{
                 "text":msg,
                 "quick_replies":[
-                  // {
-                  //   "content_type":"text",
-                  //   "title":"Politics",
-                  //   "payload":"Politics"
-                  // },
                   {
                     "content_type":"text",
                     "title":"Movies",
@@ -522,7 +485,8 @@ function sendHelpMessage(event){
         console.log("--------:Response data:-------- timezone", userprofiledata.timezone);
         console.log("--------:Response data:--------gender ", userprofiledata.gender);
         var senderID = event.sender.id;
-        var msg = 'Hey '+username+', How are you?\n \nDid you check these amazingly cool stuff on Fankick?';
+        //var msg = 'Hey '+username+', How are you?\n \nDid you check these amazingly cool stuff on Fankick?';
+        var msg = 'Hey '+username+', How are you?';
         console.log("--------:Response data:--------gender", msg);
         var messageData = {
             "recipient": {
@@ -532,12 +496,59 @@ function sendHelpMessage(event){
             "message":{
                 "text":msg,
                 //"text":"msg",
+                // "quick_replies":[
+                //   {
+                //     "content_type":"text",
+                //     "title":"Movies",
+                //     "payload":"Movies"
+                //   },
+                //   {
+                //     "content_type":"text",
+                //     "title":"Sports",
+                //     "payload":"Sports"
+                //   },
+                //   {
+                //     "content_type":"text",
+                //     "title":"Music",
+                //     "payload":"Music"
+                //   },
+                //   {
+                //     "content_type":"text",
+                //     "title":"Celebrities",
+                //     "payload":"Celebrities"
+                //   },
+                //   {
+                //     "content_type":"text",
+                //     "title":"What can you do?",
+                //     "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
+                //   }
+                // ]
+              }
+            }
+         callSendAPI(messageData,'https://graph.facebook.com/v2.6/592208327626213/messages');
+         if (!error && response.statusCode == 200) {
+             sendHelpMessageSecond(event, userid);
+             var recipientId = body.recipient_id;
+             var messageId = body.message_id;
+             console.log("Successfully sent generic message with id %s to recipient %s", messageId, recipientId);
+         } else {
+             console.error("Unable to send message.");
+             //console.error(response);
+             console.error("Error while sending message:", error);
+         }
+    });
+}
+
+function sendHelpMessageSecond(event, userid) {
+    var senderID = event.sender.id;
+        var msg = 'Did you check these amazingly cool stuff on Fankick?';
+        var messageData = {
+            "recipient": {
+                "id": senderID
+            },
+            "message":{
+                "text":msg,
                 "quick_replies":[
-                  // {
-                  //   "content_type":"text",
-                  //   "title":"Politics",
-                  //   "payload":"Politics"
-                  // },
                   {
                     "content_type":"text",
                     "title":"Movies",
@@ -567,7 +578,6 @@ function sendHelpMessage(event){
               }
             }
          callSendAPI(messageData,'https://graph.facebook.com/v2.6/592208327626213/messages');
-    });
 }
 
 function callSendAPI(body, url) {
