@@ -398,8 +398,8 @@ function fbuserdetails(event, userid) {
         var senderID = event.sender.id;
         //var msg = 'Hi '+username+', A lot of exciting things are awaiting for you! Get kicking!';
         //var msg = 'Hi '+username+'! My name is Kicker.\n How may I come of any help to you today?';
-      var msg = 'Hi '+username+'! My name is Kicker.\n \nI can help you get closer to your favorite celebrity with a lot of exciting things about them.\n\n Tap what excites you more';
-  //var msg = 'Hi '+username+'! My name is Kicker.';
+      //var msg = 'Hi '+username+'! My name is Kicker.\n \nI can help you get closer to your favorite celebrity with a lot of exciting things about them.\n\n Tap what excites you more';
+  var msg = 'Hi '+username+'! My name is Kicker.';
         console.log("--------:Response data:--------gender ", msg);
         var messageData = {
             "recipient": {
@@ -407,38 +407,38 @@ function fbuserdetails(event, userid) {
             },
             "message":{
                 "text":msg,
-                "quick_replies":[
-                  // {
-                  //   "content_type":"text",
-                  //   "title":"Politics",
-                  //   "payload":"Politics"
-                  // },
-                  {
-                    "content_type":"text",
-                    "title":"Movies",
-                    "payload":"Movies"
-                  },
-                  {
-                    "content_type":"text",
-                    "title":"Sports",
-                    "payload":"Sports"
-                  },
-                  {
-                    "content_type":"text",
-                    "title":"Music",
-                    "payload":"Music"
-                  },
-                  {
-                    "content_type":"text",
-                    "title":"Celebrities",
-                    "payload":"Celebrities"
-                  },
-                  {
-                    "content_type":"text",
-                    "title":"What can you do?",
-                    "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
-                  }
-                ]
+                // "quick_replies":[
+                //   // {
+                //   //   "content_type":"text",
+                //   //   "title":"Politics",
+                //   //   "payload":"Politics"
+                //   // },
+                //   {
+                //     "content_type":"text",
+                //     "title":"Movies",
+                //     "payload":"Movies"
+                //   },
+                //   {
+                //     "content_type":"text",
+                //     "title":"Sports",
+                //     "payload":"Sports"
+                //   },
+                //   {
+                //     "content_type":"text",
+                //     "title":"Music",
+                //     "payload":"Music"
+                //   },
+                //   {
+                //     "content_type":"text",
+                //     "title":"Celebrities",
+                //     "payload":"Celebrities"
+                //   },
+                //   {
+                //     "content_type":"text",
+                //     "title":"What can you do?",
+                //     "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
+                //   }
+                // ]
               }
             }
          callSendAPI(messageData,'https://graph.facebook.com/v2.6/592208327626213/messages');
@@ -453,7 +453,7 @@ function fbuserdetails(event, userid) {
             console.error("Error while sending message:", error);
         }
     });
-    //fbuserdetailsSecond(event, userid);
+    fbuserdetailsSecond(event, userid);
 }
 
 function fbuserdetailsSecond(event, userid) {
