@@ -60,12 +60,13 @@ var quickMenu = [
     "content_type":"text",
     "title":"Celebrities",
     "payload":"Celebrities"
-  },
-  {
-    "content_type":"text",
-    "title":"What can you do?",
-    "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
   }
+  // ,
+  // {
+  //   "content_type":"text",
+  //   "title":"What can you do?",
+  //   "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
+  // }
 ];
 //app.use(bodyParser.json());
 //console.log("------:thread:-----");
@@ -314,12 +315,13 @@ const sendContentPacks = (categoryName,event) => {
                       "content_type":"text",
                       "title":"Fan Magazine",
                       "payload":"Fan Magazine"
-                    },
-                    {
-                      "content_type":"text",
-                      "title":"What can you do?",
-                      "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
                     }
+                    // ,
+                    // {
+                    //   "content_type":"text",
+                    //   "title":"What can you do?",
+                    //   "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
+                    // }
 
                   ]
                 }

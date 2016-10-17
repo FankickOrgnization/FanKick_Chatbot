@@ -205,12 +205,13 @@ function mainPacks(categoryName, event){
               "content_type":"text",
               "title":"Celebrities",
               "payload":"Celebrities"
-            },
-            {
-              "content_type":"text",
-              "title":"What can you do?",
-              "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
             }
+            // ,
+            // {
+            //   "content_type":"text",
+            //   "title":"What can you do?",
+            //   "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
+            // }
           ]
         }
   }
@@ -272,12 +273,13 @@ function quizzesPacks(categoryName, event) {
               "content_type":"text",
               "title":"Content Pack 3",
               "payload":"Content Pack 3"
-            },
-            {
-              "content_type":"text",
-              "title":"What can you do?",
-              "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
             }
+            // ,
+            // {
+            //   "content_type":"text",
+            //   "title":"What can you do?",
+            //   "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
+            // }
           ]
         }
   }
@@ -344,12 +346,13 @@ function questionsPacks(categoryName, event) {
                       "content_type":"text",
                       "title":rows[1].text4_content,
                       "payload":"4"
-                    },
-                    {
-                      "content_type":"text",
-                      "title":"What can you do?",
-                      "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
                     }
+                    // ,
+                    // {
+                    //   "content_type":"text",
+                    //   "title":"What can you do?",
+                    //   "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
+                    // }
                   ]
                 }
           }
@@ -464,12 +467,13 @@ function fbuserdetailsSecond(event, userid) {
                     "content_type":"text",
                     "title":"Celebrities",
                     "payload":"Celebrities"
-                  },
-                  {
-                    "content_type":"text",
-                    "title":"What can you do?",
-                    "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
                   }
+                  // ,
+                  // {
+                  //   "content_type":"text",
+                  //   "title":"What can you do?",
+                  //   "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
+                  // }
                 ]
               }
             }
@@ -578,12 +582,13 @@ function sendHelpMessageSecond(event, userid) {
                     "content_type":"text",
                     "title":"Celebrities",
                     "payload":"Celebrities"
-                  },
-                  {
-                    "content_type":"text",
-                    "title":"What can you do?",
-                    "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
                   }
+                  // ,
+                  // {
+                  //   "content_type":"text",
+                  //   "title":"What can you do?",
+                  //   "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
+                  // }
                 ]
               }
             }
