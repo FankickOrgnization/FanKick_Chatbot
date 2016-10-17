@@ -540,12 +540,13 @@ function sendHelpMessage(event){
               }
             }
          callSendAPI(messageData,'https://graph.facebook.com/v2.6/592208327626213/messages');
+         sendHelpMessageSecond(event, userid);
          if (!error && response.statusCode == 200) {
              var recipientId = body.recipient_id;
              var messageId = body.message_id;
              console.log("Successfully sent generic message with id %s to recipient %s", messageId, recipientId);
              //searchText.sendHelpMessageSecond(event, userid);
-             sendHelpMessageSecond(event, userid);
+
          } else {
              console.error("Unable to send message.");
              //console.error(response);
