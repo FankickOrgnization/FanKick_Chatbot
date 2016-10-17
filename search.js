@@ -315,7 +315,7 @@ const sendHelpMessageSecond = (event, userid) => {
 
 module.exports = {
   googleSearchPacks: googleSearchPacks,
-  //sendHelpMessageSecond: sendHelpMessageSecond
+  sendHelpMessageSecond: sendHelpMessageSecond
   // name:name,
   //quickMenu:quickMenu
 };
