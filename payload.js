@@ -102,7 +102,7 @@ const sendContentPacks = (categoryName,event) => {
                                     //"item_url": moviesObj[i].imgurl,
                           "buttons": [{
                                       "type": "postback",
-                                      "title": "Click Here",
+                                      "title": moviesObj[i].name,
                                       "payload": moviesObj[i].name
                                     }]
                                 };
