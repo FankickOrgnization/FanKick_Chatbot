@@ -266,11 +266,56 @@ function sendHelpMessage(event){
          callSendAPI(messageData,'https://graph.facebook.com/v2.6/592208327626213/messages');
     });
 }
-
-
+const sendHelpMessageSecond = (event, userid) => {
+//function sendHelpMessageSecond(event, userid) {
+    var senderID = event.sender.id;
+        var msg = 'Did you check these amazingly cool stuff on Fankick?';
+        var messageData = {
+            "recipient": {
+                "id": senderID
+            },
+            "message":{
+                "text":msg,
+                "quick_replies":[
+                  {
+                    "content_type":"text",
+                    "title":"Categories",
+                    "payload":"Categories"
+                  },
+                  {
+                    "content_type":"text",
+                    "title":"Movies",
+                    "payload":"Movies"
+                  },
+                  {
+                    "content_type":"text",
+                    "title":"Sports",
+                    "payload":"Sports"
+                  },
+                  {
+                    "content_type":"text",
+                    "title":"Music",
+                    "payload":"Music"
+                  },
+                  {
+                    "content_type":"text",
+                    "title":"Celebrities",
+                    "payload":"Celebrities"
+                  },
+                  {
+                    "content_type":"text",
+                    "title":"What can you do?",
+                    "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
+                  }
+                ]
+              }
+            }
+         callSendAPI(messageData,'https://graph.facebook.com/v2.6/592208327626213/messages');
+}
 
 module.exports = {
   googleSearchPacks: googleSearchPacks,
+  sendHelpMessageSecond: sendHelpMessageSecond
   // name:name,
   //quickMenu:quickMenu
 };

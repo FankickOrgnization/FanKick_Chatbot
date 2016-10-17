@@ -1,5 +1,6 @@
 'use strict';
 var request = require('request');
+const searchText = require('./search.js');
 //var app = express();
 var mysql = require('mysql');
 var pool = mysql.createPool({
@@ -538,7 +539,7 @@ function sendHelpMessage(event){
              var recipientId = body.recipient_id;
              var messageId = body.message_id;
              console.log("Successfully sent generic message with id %s to recipient %s", messageId, recipientId);
-             sendHelpMessageSecond(event, userid);
+             searchText.sendHelpMessageSecond(event, userid);
          } else {
              console.error("Unable to send message.");
              //console.error(response);
@@ -547,51 +548,51 @@ function sendHelpMessage(event){
     });
 }
 
-function sendHelpMessageSecond(event, userid) {
-    var senderID = event.sender.id;
-        var msg = 'Did you check these amazingly cool stuff on Fankick?';
-        var messageData = {
-            "recipient": {
-                "id": senderID
-            },
-            "message":{
-                "text":msg,
-                "quick_replies":[
-                  {
-                    "content_type":"text",
-                    "title":"Categories",
-                    "payload":"Categories"
-                  },
-                  {
-                    "content_type":"text",
-                    "title":"Movies",
-                    "payload":"Movies"
-                  },
-                  {
-                    "content_type":"text",
-                    "title":"Sports",
-                    "payload":"Sports"
-                  },
-                  {
-                    "content_type":"text",
-                    "title":"Music",
-                    "payload":"Music"
-                  },
-                  {
-                    "content_type":"text",
-                    "title":"Celebrities",
-                    "payload":"Celebrities"
-                  },
-                  {
-                    "content_type":"text",
-                    "title":"What can you do?",
-                    "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
-                  }
-                ]
-              }
-            }
-         callSendAPI(messageData,'https://graph.facebook.com/v2.6/592208327626213/messages');
-}
+// function sendHelpMessageSecond(event, userid) {
+//     var senderID = event.sender.id;
+//         var msg = 'Did you check these amazingly cool stuff on Fankick?';
+//         var messageData = {
+//             "recipient": {
+//                 "id": senderID
+//             },
+//             "message":{
+//                 "text":msg,
+//                 "quick_replies":[
+//                   {
+//                     "content_type":"text",
+//                     "title":"Categories",
+//                     "payload":"Categories"
+//                   },
+//                   {
+//                     "content_type":"text",
+//                     "title":"Movies",
+//                     "payload":"Movies"
+//                   },
+//                   {
+//                     "content_type":"text",
+//                     "title":"Sports",
+//                     "payload":"Sports"
+//                   },
+//                   {
+//                     "content_type":"text",
+//                     "title":"Music",
+//                     "payload":"Music"
+//                   },
+//                   {
+//                     "content_type":"text",
+//                     "title":"Celebrities",
+//                     "payload":"Celebrities"
+//                   },
+//                   {
+//                     "content_type":"text",
+//                     "title":"What can you do?",
+//                     "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
+//                   }
+//                 ]
+//               }
+//             }
+//          callSendAPI(messageData,'https://graph.facebook.com/v2.6/592208327626213/messages');
+// }
 
 function callSendAPI(body, url) {
     console.log("url", url);
