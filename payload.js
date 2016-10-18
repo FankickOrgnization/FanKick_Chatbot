@@ -46,22 +46,23 @@ var quickMenu = [
     "content_type":"text",
     "title":"Fan Magazine",
     "payload":"Fan Magazine"
-  },
-  {
-    "content_type":"text",
-    "title":"Movies",
-    "payload":"Movies"
-  },
-  {
-    "content_type":"text",
-    "title":"Sports",
-    "payload":"Sports"
-  },
-  {
-    "content_type":"text",
-    "title":"Celebrities",
-    "payload":"Celebrities"
   }
+  // ,
+  // {
+  //   "content_type":"text",
+  //   "title":"Movies",
+  //   "payload":"Movies"
+  // },
+  // {
+  //   "content_type":"text",
+  //   "title":"Sports",
+  //   "payload":"Sports"
+  // },
+  // {
+  //   "content_type":"text",
+  //   "title":"Celebrities",
+  //   "payload":"Celebrities"
+  // }
   // ,
   // {
   //   "content_type":"text",
