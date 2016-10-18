@@ -454,7 +454,7 @@ const sendContentPacks = (categoryName,event) => {
                       "content_type":"text",
                       "title":"Categories",
                       "payload":"Categories"
-                    },
+                    }
                     // ,
                     // {
                     //   "content_type":"text",
@@ -507,8 +507,8 @@ const sendContentPacks = (categoryName,event) => {
                   },
                   {
                     "content_type":"text",
-                    "title":"What can you do?",
-                    "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
+                    "title":"Categories",
+                    "payload":"Categories"
                   }
 
                 ]
@@ -536,18 +536,18 @@ const sendContentPacks = (categoryName,event) => {
                   },
                   {
                     "content_type":"text",
-                    "title":"Music-1",
+                    "title":"Classical Music",
                     "payload":"Music"
                   },
                   {
                     "content_type":"text",
-                    "title":"Music-2",
+                    "title":"Western Music",
                     "payload":"Music"
                   },
                   {
                     "content_type":"text",
-                    "title":"What can you do?",
-                    "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
+                    "title":"Categories",
+                    "payload":"Categories"
                   }
 
                 ]
