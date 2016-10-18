@@ -478,7 +478,7 @@ const sendContentPacks = (categoryName,event) => {
                 "id": senderID
             },
             "message":{
-                "text":"Here is some cool and interesting stuff on sports",
+                "text":"Here is some cool and interesting stuff on sports.\n\nWhy not check them??",
                 "quick_replies":[
                   {
                     "content_type":"text",
@@ -527,7 +527,7 @@ const sendContentPacks = (categoryName,event) => {
                 "id": senderID
             },
             "message":{
-                "text":"Here is some cool and interesting stuff on music",
+                "text":"Here is some cool and interesting stuff on music.\n\nWhy not check them??",
                 "quick_replies":[
                   {
                     "content_type":"text",
