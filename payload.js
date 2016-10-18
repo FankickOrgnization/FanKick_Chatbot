@@ -33,133 +33,93 @@ var moviesObj =  [
 var celbritieObj =  [
   {
     "name": "Pavan Kalyan",
-    "imgurl": 'https://fankickdev.blob.core.windows.net/images/movies.jpg'
+    "imgurl": 'https://fankickdev.blob.core.windows.net/images/pk4.jpg'
 },
 {
     "name": "Sachin Tendulkar",
-    "imgurl": 'https://fankickdev.blob.core.windows.net/images/celebrities.jpg'
+    "imgurl": 'https://fankickdev.blob.core.windows.net/images/sachin4.jpg'
 },
 {
     "name": "Shahrukh Khan",
-    "imgurl": 'https://fankickdev.blob.core.windows.net/images/celebrities.jpg'
+    "imgurl": 'https://fankickdev.blob.core.windows.net/images/sharuk4.jpg'
 },
 {
     "name": "Aamir Khan",
-    "imgurl": 'https://fankickdev.blob.core.windows.net/images/music.jpg'
+    "imgurl": 'https://fankickdev.blob.core.windows.net/images/amir4.jpg'
 },
 {
     "name": "Virat Kohli",
-    "imgurl": 'https://fankickdev.blob.core.windows.net/images/sports.jpg'
+    "imgurl": 'https://fankickdev.blob.core.windows.net/images/virat4.jpg'
 }
 ];
 var viratObj =  [
   {
-    "name": "Virat Kohli",
-    "imgurl": 'https://fankickdev.blob.core.windows.net/images/movies.jpg'
+    "name": "Quizzes",
+    "imgurl": 'https://fankickdev.blob.core.windows.net/images/virat1.jpg'
 },
 {
-    "name": "Virat Kohli",
-    "imgurl": 'https://fankickdev.blob.core.windows.net/images/celebrities.jpg'
+    "name": "Fan Clubs",
+    "imgurl": 'https://fankickdev.blob.core.windows.net/images/virat2.jpg'
 },
 {
-    "name": "Virat Kohli",
-    "imgurl": 'https://fankickdev.blob.core.windows.net/images/celebrities.jpg'
-},
-{
-    "name": "Virat Kohli",
-    "imgurl": 'https://fankickdev.blob.core.windows.net/images/music.jpg'
-},
-{
-    "name": "Virat Kohli",
-    "imgurl": 'https://fankickdev.blob.core.windows.net/images/sports.jpg'
+    "name": "Fan Magazine",
+    "imgurl": 'https://fankickdev.blob.core.windows.net/images/virat3.jpg'
 }
 ];
 var aamirObj =  [
   {
-    "name": "Aamir Khan",
-    "imgurl": 'https://fankickdev.blob.core.windows.net/images/movies.jpg'
+    "name": "Quizzes",
+    "imgurl": 'https://fankickdev.blob.core.windows.net/images/amir1.jpg'
 },
 {
-    "name": "Aamir Khan",
-    "imgurl": 'https://fankickdev.blob.core.windows.net/images/celebrities.jpg'
+    "name": "Fan Clubs",
+    "imgurl": 'https://fankickdev.blob.core.windows.net/images/amir2.jpg'
 },
 {
-    "name": "Aamir Khan",
-    "imgurl": 'https://fankickdev.blob.core.windows.net/images/celebrities.jpg'
-},
-{
-    "name": "Aamir Khan",
-    "imgurl": 'https://fankickdev.blob.core.windows.net/images/music.jpg'
-},
-{
-    "name": "Aamir Khan",
-    "imgurl": 'https://fankickdev.blob.core.windows.net/images/sports.jpg'
+    "name": "Fan Magazine",
+    "imgurl": 'https://fankickdev.blob.core.windows.net/images/amir3.jpg'
 }
 ];
 var shahrukhObj =  [
   {
-    "name": "Shahrukh Khan",
-    "imgurl": 'https://fankickdev.blob.core.windows.net/images/movies.jpg'
+    "name": "Quizzes",
+    "imgurl": 'https://fankickdev.blob.core.windows.net/images/sharuk1.jpg'
 },
 {
-    "name": "Shahrukh Khan",
-    "imgurl": 'https://fankickdev.blob.core.windows.net/images/celebrities.jpg'
+    "name": "Fan Clubs",
+    "imgurl": 'https://fankickdev.blob.core.windows.net/images/sharuk2.jpg'
 },
 {
-    "name": "Shahrukh Khan",
-    "imgurl": 'https://fankickdev.blob.core.windows.net/images/celebrities.jpg'
-},
-{
-    "name": "Shahrukh Khan",
-    "imgurl": 'https://fankickdev.blob.core.windows.net/images/music.jpg'
-},
-{
-    "name": "Shahrukh Khan",
-    "imgurl": 'https://fankickdev.blob.core.windows.net/images/sports.jpg'
+    "name": "Fan Magazine",
+    "imgurl": 'https://fankickdev.blob.core.windows.net/images/sharuk3.jpg'
 }
 ];
 var sachinObj =  [
 {
-    "name": "Sachin Tendulkar",
-    "imgurl": 'https://fankickdev.blob.core.windows.net/images/movies.jpg'
+    "name": "Quizzes",
+    "imgurl": 'https://fankickdev.blob.core.windows.net/images/sachin1.jpg'
 },
 {
-    "name": "Sachin Tendulkar",
-    "imgurl": 'https://fankickdev.blob.core.windows.net/images/celebrities.jpg'
+    "name": "Fan Clubs",
+    "imgurl": 'https://fankickdev.blob.core.windows.net/images/sachin2.jpg'
 },
 {
-    "name": "Sachin Tendulkar",
-    "imgurl": 'https://fankickdev.blob.core.windows.net/images/celebrities.jpg'
-},
-{
-    "name": "Sachin Tendulkar",
-    "imgurl": 'https://fankickdev.blob.core.windows.net/images/music.jpg'
-},
-{
-    "name": "Sachin Tendulkar",
-    "imgurl": 'https://fankickdev.blob.core.windows.net/images/sports.jpg'
+    "name": "Fan Magazine",
+    "imgurl": 'https://fankickdev.blob.core.windows.net/images/sachin3.jpg'
 }
 ];
 var pavanObj =  [
   {
-    "name": "Pavan Kalyan",
-    "imgurl": 'https://fankickdev.blob.core.windows.net/images/movies.jpg'
+    "name": "Quizzes",
+    "imgurl": 'https://fankickdev.blob.core.windows.net/images/pk1.jpg'
 },
 {
-    "name": "Pavan Kalyan",
-    "imgurl": 'https://fankickdev.blob.core.windows.net/images/celebrities.jpg'
+    "name": "Fan Clubs",
+    "imgurl": 'https://fankickdev.blob.core.windows.net/images/pk2.jpg'
 },
 {
-    "name": "Pavan Kalyan",
-    "imgurl": 'https://fankickdev.blob.core.windows.net/images/celebrities.jpg'
-},
-{
-    "name": "Pavan Kalyan",
-    "imgurl": 'https://fankickdev.blob.core.windows.net/images/music.jpg'
-},
-{
-    "name": "Pavan Kalyan",
-    "imgurl": 'https://fankickdev.blob.core.windows.net/images/sports.jpg'
+    "name": "Fan Magazine",
+    "imgurl": 'https://fankickdev.blob.core.windows.net/images/pk3.jpg'
 }
 ];
 
@@ -386,8 +346,16 @@ const sendContentPacks = (categoryName,event) => {
             connection.release();
         });
         });
-    } else if (categoryName == "Pavan Kalyan"||categoryName =="Sachin Tendulkar"||categoryName =="Shahrukh Khan"||categoryName =="Aamir Khan"||categoryName =="Virat Kohli") {
+    } else if (categoryName == "Pavan Kalyan") {
       pavandetails(event);
+    }else if (categoryName =="Sachin Tendulkar") {
+      sachindetails(event);
+    }else if (categoryName =="Shahrukh Khan") {
+      shahrukhdetails(event);
+    }else if (categoryName =="Aamir Khan") {
+      aamirdetails(event);
+    }else if (categoryName =="Virat Kohli") {
+      viratdetails(event);
     }else if (categoryName == "Movies") {
       console.log("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%",moviesObj);
       if (moviesObj.length){
@@ -726,38 +694,6 @@ function pavandetails(event){
               },
               "quick_replies": quickMenu
           }
-            // "message":{
-            //     "text":"Here is some cool and interesting stuff on movies",
-            //     "quick_replies":[
-            //       {
-            //         "content_type":"text",
-            //         "title":"Quizzes",
-            //         "payload":"Quizzes"
-            //       },
-            //       {
-            //         "content_type":"text",
-            //         "title":"Fan Clubs",
-            //         "payload":"Fan Clubs"
-            //       },
-            //       {
-            //         "content_type":"text",
-            //         "title":"Gossip Corner",
-            //         "payload":"Gossip Corner"
-            //       },
-            //       {
-            //         "content_type":"text",
-            //         "title":"Fan Magazine",
-            //         "payload":"Fan Magazine"
-            //       }
-            //       // ,
-            //       // {
-            //       //   "content_type":"text",
-            //       //   "title":"What can you do?",
-            //       //   "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
-            //       // }
-            //
-            //     ]
-            //   }
       }
       callSendAPI(messageData,'https://graph.facebook.com/v2.6/592208327626213/messages');
   }else {
@@ -765,8 +701,188 @@ function pavandetails(event){
       sendHelpMessage(event);
   }
   }
+}
 
+function sachindetails(event){
+  {
+    if (sachinObj.length){
+      console.log("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%",sachinObj.length);
+      var senderID = event.sender.id;
+      var contentList = [];
+      for (var i = 0; i < sachinObj.length; i++) { //Construct request body
+          var keyMap = {
+              "title":"We have some cool stuff waiting for you..",
+              //"subtitle":"We\'ve got the right hat for everyone.",
+              "image_url": sachinObj[i].imgurl,
+              "item_url": sachinObj[i].imgurl,
+              "buttons": [{
+                  "type": "postback",
+                  "title": sachinObj[i].name,
+                  "payload": "USER_DEFINED_PAYLOAD"
+              }
+            ]
+          };
+          contentList.push(keyMap);
+      }
+      var messageData = {
+          "recipient": {
+              "id": senderID
+          },
+          "message": {
+              "attachment": {
+                  "type": "template",
+                  //"text":"We have some cool stuff waiting for you..",
+                  "payload": {
+                      "template_type": "generic",
+                      "elements": contentList
+                  }
+              },
+              "quick_replies": quickMenu
+          }
 
+      }
+      callSendAPI(messageData,'https://graph.facebook.com/v2.6/592208327626213/messages');
+  }else {
+      console.log("No Data Found From Database");
+      sendHelpMessage(event);
+  }
+  }
+}
+function shahrukhdetails(event){
+  {
+    if (shahrukhObj.length){
+      console.log("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%",shahrukhObj.length);
+      var senderID = event.sender.id;
+      var contentList = [];
+      for (var i = 0; i < shahrukhObj.length; i++) { //Construct request body
+          var keyMap = {
+              "title":"We have some cool stuff waiting for you..",
+              //"subtitle":"We\'ve got the right hat for everyone.",
+              "image_url": shahrukhObj[i].imgurl,
+              "item_url": shahrukhObj[i].imgurl,
+              "buttons": [{
+                  "type": "postback",
+                  "title": shahrukhObj[i].name,
+                  "payload": "USER_DEFINED_PAYLOAD"
+              }
+            ]
+          };
+          contentList.push(keyMap);
+      }
+      var messageData = {
+          "recipient": {
+              "id": senderID
+          },
+          "message": {
+              "attachment": {
+                  "type": "template",
+                  //"text":"We have some cool stuff waiting for you..",
+                  "payload": {
+                      "template_type": "generic",
+                      "elements": contentList
+                  }
+              },
+              "quick_replies": quickMenu
+          }
+
+      }
+      callSendAPI(messageData,'https://graph.facebook.com/v2.6/592208327626213/messages');
+  }else {
+      console.log("No Data Found From Database");
+      sendHelpMessage(event);
+  }
+  }
+}
+function aamirdetails(event){
+  {
+    if (aamirObj.length){
+      console.log("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%",aamirObj.length);
+      var senderID = event.sender.id;
+      var contentList = [];
+      for (var i = 0; i < aamirObj.length; i++) { //Construct request body
+          var keyMap = {
+              "title":"We have some cool stuff waiting for you..",
+              //"subtitle":"We\'ve got the right hat for everyone.",
+              "image_url": aamirObj[i].imgurl,
+              "item_url": aamirObj[i].imgurl,
+              "buttons": [{
+                  "type": "postback",
+                  "title": aamirObj[i].name,
+                  "payload": "USER_DEFINED_PAYLOAD"
+              }
+            ]
+          };
+          contentList.push(keyMap);
+      }
+      var messageData = {
+          "recipient": {
+              "id": senderID
+          },
+          "message": {
+              "attachment": {
+                  "type": "template",
+                  //"text":"We have some cool stuff waiting for you..",
+                  "payload": {
+                      "template_type": "generic",
+                      "elements": contentList
+                  }
+              },
+              "quick_replies": quickMenu
+          }
+
+      }
+      callSendAPI(messageData,'https://graph.facebook.com/v2.6/592208327626213/messages');
+  }else {
+      console.log("No Data Found From Database");
+      sendHelpMessage(event);
+  }
+  }
+}
+
+function viratdetails(event){
+  {
+    if (viratObj.length){
+      console.log("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%",viratObj.length);
+      var senderID = event.sender.id;
+      var contentList = [];
+      for (var i = 0; i < viratObj.length; i++) { //Construct request body
+          var keyMap = {
+              "title":"We have some cool stuff waiting for you..",
+              //"subtitle":"We\'ve got the right hat for everyone.",
+              "image_url": viratObj[i].imgurl,
+              "item_url": viratObj[i].imgurl,
+              "buttons": [{
+                  "type": "postback",
+                  "title": viratObj[i].name,
+                  "payload": "USER_DEFINED_PAYLOAD"
+              }
+            ]
+          };
+          contentList.push(keyMap);
+      }
+      var messageData = {
+          "recipient": {
+              "id": senderID
+          },
+          "message": {
+              "attachment": {
+                  "type": "template",
+                  //"text":"We have some cool stuff waiting for you..",
+                  "payload": {
+                      "template_type": "generic",
+                      "elements": contentList
+                  }
+              },
+              "quick_replies": quickMenu
+          }
+
+      }
+      callSendAPI(messageData,'https://graph.facebook.com/v2.6/592208327626213/messages');
+  }else {
+      console.log("No Data Found From Database");
+      sendHelpMessage(event);
+  }
+  }
 }
 
 
