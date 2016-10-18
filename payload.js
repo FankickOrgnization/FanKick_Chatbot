@@ -55,17 +55,17 @@ var celbritieObj =  [
 var viratObj =  [
   {
     "name": "Quizzes",
-    "des" : "How well do you know about your celebrities? Find out by taking this quiz!"
+    "des" : "How well do you know about your celebrities? Find out by taking this quiz!",
     "imgurl": 'https://fankickdev.blob.core.windows.net/images/virat1.jpg'
 },
 {
     "name": "Fan Clubs",
-    "des" : "How well do you know about your celebrities? Find out by taking this quiz!"
+    "des" : "How well do you know about your celebrities? Find out by taking this quiz!",
     "imgurl": 'https://fankickdev.blob.core.windows.net/images/virat2.jpg'
 },
 {
     "name": "Fan Magazine",
-    "des" : "How well do you know about your celebrities? Find out by taking this quiz!"
+    "des" : "How well do you know about your celebrities? Find out by taking this quiz!",
     "imgurl": 'https://fankickdev.blob.core.windows.net/images/virat3.jpg'
 }
 ];
