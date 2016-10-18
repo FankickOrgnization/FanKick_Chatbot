@@ -55,14 +55,17 @@ var celbritieObj =  [
 var viratObj =  [
   {
     "name": "Quizzes",
+    "des" : "How well do you know about your celebrities? Find out by taking this quiz!"
     "imgurl": 'https://fankickdev.blob.core.windows.net/images/virat1.jpg'
 },
 {
     "name": "Fan Clubs",
+    "des" : "How well do you know about your celebrities? Find out by taking this quiz!"
     "imgurl": 'https://fankickdev.blob.core.windows.net/images/virat2.jpg'
 },
 {
     "name": "Fan Magazine",
+    "des" : "How well do you know about your celebrities? Find out by taking this quiz!"
     "imgurl": 'https://fankickdev.blob.core.windows.net/images/virat3.jpg'
 }
 ];
@@ -398,7 +401,7 @@ const sendContentPacks = (categoryName,event) => {
             //     "quick_replies": quickMenu
             // }
               "message":{
-                  "text":"Here is some cool and interesting stuff on movies",
+                  "text":"Here is some cool and interesting stuff on movies.\n\nWhy not check them??",
                   "quick_replies":[
                     {
                       "content_type":"text",
@@ -847,7 +850,7 @@ function viratdetails(event){
       var contentList = [];
       for (var i = 0; i < viratObj.length; i++) { //Construct request body
           var keyMap = {
-              "title":viratObj[i].name,
+              "title":viratObj[i].des,
               //"subtitle":"We\'ve got the right hat for everyone.",
               "image_url": viratObj[i].imgurl,
               "item_url": viratObj[i].imgurl,
