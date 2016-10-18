@@ -386,85 +386,8 @@ const sendContentPacks = (categoryName,event) => {
             connection.release();
         });
         });
-    } else if (categoryName == "Movies" || categoryName == "Pavan Kalyan"||categoryName =="Sachin Tendulkar"||categoryName =="Shahrukh Khan"||categoryName =="Aamir Khan"||categoryName =="Virat Kohli") {
-      console.log("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%",moviesObj);
-      if (moviesObj.length){
-        console.log("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%",moviesObj.length);
-        var senderID = event.sender.id;
-        var contentList = [];
-        for (var i = 0; i < moviesObj.length; i++) { //Construct request body
-            var keyMap = {
-                "title":"We have some cool stuff waiting for you..",
-                //"subtitle":"We\'ve got the right hat for everyone.",
-                "image_url": moviesObj[i].imgurl,
-                "item_url": moviesObj[i].imgurl,
-                "buttons": [{
-                    "type": "postback",
-                    "title": moviesObj[i].name,
-                    "payload": "USER_DEFINED_PAYLOAD"
-                }
-                // {
-                //     "type": "postback",
-                //     "title": moviesObj[i].qus,
-                //     "payload": "USER_DEFINED_PAYLOAD"
-                // }
-              ]
-            };
-            contentList.push(keyMap);
-        }
-        var messageData = {
-            "recipient": {
-                "id": senderID
-            },
-            // "message": {
-            //     "attachment": {
-            //         "type": "template",
-            //         //"text":"We have some cool stuff waiting for you..",
-            //         "payload": {
-            //             "template_type": "generic",
-            //             "elements": contentList
-            //         }
-            //     },
-            //     "quick_replies": quickMenu
-            // }
-              "message":{
-                  "text":"Here is some cool and interesting stuff on movies",
-                  "quick_replies":[
-                    {
-                      "content_type":"text",
-                      "title":"Quizzes",
-                      "payload":"Quizzes"
-                    },
-                    {
-                      "content_type":"text",
-                      "title":"Fan Clubs",
-                      "payload":"Fan Clubs"
-                    },
-                    {
-                      "content_type":"text",
-                      "title":"Gossip Corner",
-                      "payload":"Gossip Corner"
-                    },
-                    {
-                      "content_type":"text",
-                      "title":"Fan Magazine",
-                      "payload":"Fan Magazine"
-                    }
-                    // ,
-                    // {
-                    //   "content_type":"text",
-                    //   "title":"What can you do?",
-                    //   "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
-                    // }
-
-                  ]
-                }
-        }
-        callSendAPI(messageData,'https://graph.facebook.com/v2.6/592208327626213/messages');
-    }else {
-        console.log("No Data Found From Database");
-        sendHelpMessage(event);
-    }
+    } else if (categoryName == "Pavan Kalyan"||categoryName =="Sachin Tendulkar"||categoryName =="Shahrukh Khan"||categoryName =="Aamir Khan"||categoryName =="Virat Kohli") {
+      pavandetails(event);
     }else if (categoryName == "Movies") {
       console.log("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%",moviesObj);
       if (moviesObj.length){
@@ -764,19 +687,19 @@ const sendContentPacks = (categoryName,event) => {
 function pavandetails(event){
   {
     //console.log("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%",moviesObj);
-    if (moviesObj.length){
-      console.log("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%",moviesObj.length);
+    if (pavanObj.length){
+      console.log("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%",pavanObj.length);
       var senderID = event.sender.id;
       var contentList = [];
-      for (var i = 0; i < moviesObj.length; i++) { //Construct request body
+      for (var i = 0; i < pavanObj.length; i++) { //Construct request body
           var keyMap = {
               "title":"We have some cool stuff waiting for you..",
               //"subtitle":"We\'ve got the right hat for everyone.",
-              "image_url": moviesObj[i].imgurl,
-              "item_url": moviesObj[i].imgurl,
+              "image_url": pavanObj[i].imgurl,
+              "item_url": pavanObj[i].imgurl,
               "buttons": [{
                   "type": "postback",
-                  "title": moviesObj[i].name,
+                  "title": pavanObj[i].name,
                   "payload": "USER_DEFINED_PAYLOAD"
               }
               // {
@@ -792,49 +715,49 @@ function pavandetails(event){
           "recipient": {
               "id": senderID
           },
-          // "message": {
-          //     "attachment": {
-          //         "type": "template",
-          //         //"text":"We have some cool stuff waiting for you..",
-          //         "payload": {
-          //             "template_type": "generic",
-          //             "elements": contentList
-          //         }
-          //     },
-          //     "quick_replies": quickMenu
-          // }
-            "message":{
-                "text":"Here is some cool and interesting stuff on movies",
-                "quick_replies":[
-                  {
-                    "content_type":"text",
-                    "title":"Quizzes",
-                    "payload":"Quizzes"
-                  },
-                  {
-                    "content_type":"text",
-                    "title":"Fan Clubs",
-                    "payload":"Fan Clubs"
-                  },
-                  {
-                    "content_type":"text",
-                    "title":"Gossip Corner",
-                    "payload":"Gossip Corner"
-                  },
-                  {
-                    "content_type":"text",
-                    "title":"Fan Magazine",
-                    "payload":"Fan Magazine"
+          "message": {
+              "attachment": {
+                  "type": "template",
+                  //"text":"We have some cool stuff waiting for you..",
+                  "payload": {
+                      "template_type": "generic",
+                      "elements": contentList
                   }
-                  // ,
-                  // {
-                  //   "content_type":"text",
-                  //   "title":"What can you do?",
-                  //   "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
-                  // }
-
-                ]
-              }
+              },
+              "quick_replies": quickMenu
+          }
+            // "message":{
+            //     "text":"Here is some cool and interesting stuff on movies",
+            //     "quick_replies":[
+            //       {
+            //         "content_type":"text",
+            //         "title":"Quizzes",
+            //         "payload":"Quizzes"
+            //       },
+            //       {
+            //         "content_type":"text",
+            //         "title":"Fan Clubs",
+            //         "payload":"Fan Clubs"
+            //       },
+            //       {
+            //         "content_type":"text",
+            //         "title":"Gossip Corner",
+            //         "payload":"Gossip Corner"
+            //       },
+            //       {
+            //         "content_type":"text",
+            //         "title":"Fan Magazine",
+            //         "payload":"Fan Magazine"
+            //       }
+            //       // ,
+            //       // {
+            //       //   "content_type":"text",
+            //       //   "title":"What can you do?",
+            //       //   "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
+            //       // }
+            //
+            //     ]
+            //   }
       }
       callSendAPI(messageData,'https://graph.facebook.com/v2.6/592208327626213/messages');
   }else {
