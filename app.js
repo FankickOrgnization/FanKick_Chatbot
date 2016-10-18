@@ -179,7 +179,7 @@ function mainPacks(categoryName, event){
           "id": senderID
       },
       "message":{
-          "text":"Hey..tap what excites you more",
+          "text":"Hey..Choose what excites you more",
           "quick_replies":[
             {
               "content_type":"text",
@@ -396,7 +396,7 @@ function fbuserdetails(event, userid) {
         var senderID = event.sender.id;
         //var msg = 'Hi '+username+', A lot of exciting things are awaiting for you! Get kicking!';
         //var msg = 'Hi '+username+'! My name is Kicker.\n How may I come of any help to you today?';
-    var msg = 'Hi '+username+'! My name is Kicker.\n \nI can help you get closer to your favorite celebrity with a lot of exciting things about them.\n\n Tap what excites you more';
+    var msg = 'Hi '+username+'! My name is Kicker.\n \nI can help you get closer to your favorite celebrity with a lot of exciting things about them.\n\n Choose what excites you more';
   //var msg = 'Hi '+username+'! My name is Kicker.';
         console.log("--------:Response data:--------msg1 ", msg);
         var messageData = {
@@ -450,7 +450,7 @@ function fbuserdetails(event, userid) {
 
 function fbuserdetailsSecond(event, userid) {
     var senderID = event.sender.id;
-        var msg = 'I can help you get closer to your favorite celebrity with a lot of exciting things about them.\n\n Tap what excites you more';
+        var msg = 'I can help you get closer to your favorite celebrity with a lot of exciting things about them.\n\n Choose what excites you more';
         var messageData = {
             "recipient": {
                 "id": senderID

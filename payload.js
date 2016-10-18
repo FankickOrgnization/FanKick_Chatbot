@@ -661,7 +661,7 @@ function pavandetails(event){
       var contentList = [];
       for (var i = 0; i < pavanObj.length; i++) { //Construct request body
           var keyMap = {
-              "title":"We have some cool stuff waiting for you..",
+              "title":pavanObj[i].name,
               //"subtitle":"We\'ve got the right hat for everyone.",
               "image_url": pavanObj[i].imgurl,
               "item_url": pavanObj[i].imgurl,
@@ -711,7 +711,7 @@ function sachindetails(event){
       var contentList = [];
       for (var i = 0; i < sachinObj.length; i++) { //Construct request body
           var keyMap = {
-              "title":"We have some cool stuff waiting for you..",
+              "title":sachinObj[i].name,
               //"subtitle":"We\'ve got the right hat for everyone.",
               "image_url": sachinObj[i].imgurl,
               "item_url": sachinObj[i].imgurl,
@@ -756,7 +756,7 @@ function shahrukhdetails(event){
       var contentList = [];
       for (var i = 0; i < shahrukhObj.length; i++) { //Construct request body
           var keyMap = {
-              "title":"We have some cool stuff waiting for you..",
+              "title":shahrukhObj[i].name,
               //"subtitle":"We\'ve got the right hat for everyone.",
               "image_url": shahrukhObj[i].imgurl,
               "item_url": shahrukhObj[i].imgurl,
@@ -801,7 +801,7 @@ function aamirdetails(event){
       var contentList = [];
       for (var i = 0; i < aamirObj.length; i++) { //Construct request body
           var keyMap = {
-              "title":"We have some cool stuff waiting for you..",
+              "title":aamirObj[i].name,
               //"subtitle":"We\'ve got the right hat for everyone.",
               "image_url": aamirObj[i].imgurl,
               "item_url": aamirObj[i].imgurl,
@@ -847,7 +847,7 @@ function viratdetails(event){
       var contentList = [];
       for (var i = 0; i < viratObj.length; i++) { //Construct request body
           var keyMap = {
-              "title":"We have some cool stuff waiting for you..",
+              "title":viratObj[i].name,
               //"subtitle":"We\'ve got the right hat for everyone.",
               "image_url": viratObj[i].imgurl,
               "item_url": viratObj[i].imgurl,
