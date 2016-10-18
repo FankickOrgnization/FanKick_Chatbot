@@ -703,7 +703,7 @@ function pavandetails(event){
               "buttons": [{
                   "type": "postback",
                   "title": pavanObj[i].name,
-                  "payload": "USER_DEFINED_PAYLOAD"
+                  "payload": pavanObj[i].name
               }
               // {
               //     "type": "postback",
@@ -753,7 +753,7 @@ function sachindetails(event){
               "buttons": [{
                   "type": "postback",
                   "title": sachinObj[i].name,
-                  "payload": "USER_DEFINED_PAYLOAD"
+                  "payload": sachinObj[i].name
               }
             ]
           };
@@ -798,7 +798,7 @@ function shahrukhdetails(event){
               "buttons": [{
                   "type": "postback",
                   "title": shahrukhObj[i].name,
-                  "payload": "USER_DEFINED_PAYLOAD"
+                  "payload": shahrukhObj[i].name
               }
             ]
           };
@@ -843,7 +843,7 @@ function aamirdetails(event){
               "buttons": [{
                   "type": "postback",
                   "title": aamirObj[i].name,
-                  "payload": "USER_DEFINED_PAYLOAD"
+                  "payload": aamirObj[i].name
               }
             ]
           };
@@ -889,7 +889,7 @@ function viratdetails(event){
               "buttons": [{
                   "type": "postback",
                   "title": viratObj[i].name,
-                  "payload": "USER_DEFINED_PAYLOAD"
+                  "payload": viratObj[i].name
               }
             ]
           };
