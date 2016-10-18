@@ -243,7 +243,7 @@ function textmessage(msgwit, messagingEvent){
 function quizzesPacks(categoryName, event) {
   var senderID = event.sender.id;
   var cat = 'https://fankickdev.blob.core.windows.net/images/pk3.jpg';
-  var cate = 'Categories'+cat'';
+  var cate = 'Categories'+cat+'';
   var messageData = {
       "recipient": {
           "id": senderID
