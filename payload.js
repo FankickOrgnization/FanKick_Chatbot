@@ -699,7 +699,7 @@ function pavandetails(event){
               "title":pavanObj[i].des,
               "subtitle":pavanObj[i].subdesc,
               "image_url": pavanObj[i].imgurl,
-              "item_url": pavanObj[i].imgurl,
+              //"item_url": pavanObj[i].imgurl,
               "buttons": [{
                   "type": "postback",
                   "title": pavanObj[i].name,
@@ -749,7 +749,7 @@ function sachindetails(event){
               "title":sachinObj[i].des,
               "subtitle":sachinObj[i].subdesc,
               "image_url": sachinObj[i].imgurl,
-              "item_url": sachinObj[i].imgurl,
+              //"item_url": sachinObj[i].imgurl,
               "buttons": [{
                   "type": "postback",
                   "title": sachinObj[i].name,
@@ -794,7 +794,7 @@ function shahrukhdetails(event){
               "title":shahrukhObj[i].des,
               "subtitle":shahrukhObj[i].subdesc,
               "image_url": shahrukhObj[i].imgurl,
-              "item_url": shahrukhObj[i].imgurl,
+              //"item_url": shahrukhObj[i].imgurl,
               "buttons": [{
                   "type": "postback",
                   "title": shahrukhObj[i].name,
@@ -839,7 +839,7 @@ function aamirdetails(event){
               "title":aamirObj[i].des,
               "subtitle":aamirObj[i].subdesc,
               "image_url": aamirObj[i].imgurl,
-              "item_url": aamirObj[i].imgurl,
+            //  "item_url": aamirObj[i].imgurl,
               "buttons": [{
                   "type": "postback",
                   "title": aamirObj[i].name,
