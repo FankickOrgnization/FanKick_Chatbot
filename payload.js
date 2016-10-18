@@ -449,7 +449,12 @@ const sendContentPacks = (categoryName,event) => {
                       "content_type":"text",
                       "title":"Fan Magazine",
                       "payload":"Fan Magazine"
-                    }
+                    },
+                    {
+                      "content_type":"text",
+                      "title":"Categories",
+                      "payload":"Categories"
+                    },
                     // ,
                     // {
                     //   "content_type":"text",

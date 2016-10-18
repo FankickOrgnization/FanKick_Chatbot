@@ -252,7 +252,7 @@ function quizzesPacks(categoryName, event) {
             {
               "content_type":"text",
               "title":"Content Pack 1",
-              "payload":"Content Pack 1"
+              "payload":"Content Pack 2"
             },
             {
               "content_type":"text",
@@ -336,13 +336,12 @@ function questionsPacks(categoryName, event) {
                       "content_type":"text",
                       "title":rows[1].text4_content,
                       "payload":"4"
-                    }
-                    // ,
-                    // {
-                    //   "content_type":"text",
-                    //   "title":"What can you do?",
-                    //   "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
-                    // }
+                    },
+                    {
+                      "content_type":"text",
+                      "title":"Categories",
+                      "payload":"Categories"
+                    }                    
                   ]
                 }
           }
