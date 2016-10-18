@@ -242,6 +242,8 @@ function textmessage(msgwit, messagingEvent){
 // QuizzesPacks payload section Start ********************************************
 function quizzesPacks(categoryName, event) {
   var senderID = event.sender.id;
+  var cat = 'https://fankickdev.blob.core.windows.net/images/pk3.jpg';
+  var cate = 'Categories'+cat'';
   var messageData = {
       "recipient": {
           "id": senderID
@@ -263,6 +265,11 @@ function quizzesPacks(categoryName, event) {
               "content_type":"text",
               "title":"Content Pack 3",
               "payload":"Content Pack 3"
+            },
+            {
+              "content_type":"text",
+              "title":cate,
+              "payload":"Categories"
             }
             // ,
             // {
@@ -341,7 +348,7 @@ function questionsPacks(categoryName, event) {
                       "content_type":"text",
                       "title":"Categories",
                       "payload":"Categories"
-                    }                    
+                    }
                   ]
                 }
           }
