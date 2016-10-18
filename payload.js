@@ -56,75 +56,99 @@ var viratObj =  [
   {
     "name": "Quizzes",
     "des" : "How well do you know about your celebrities?",
-    "subdesc" : "How well do you know about your celebrities? Find out by taking this quiz!",
+    "subdesc" : "Find out by taking this quiz!",
     "imgurl": 'https://fankickdev.blob.core.windows.net/images/virat1.jpg'
 },
 {
     "name": "Fan Clubs",
-    "des" : "How well do you know about your celebrities?",
-    "subdesc" : "How well do you know about your celebrities? Find out by taking this quiz!",
+    "des" : "Join Fan Club of your favorite celebrity. Be an official fan!",
+    "subdesc" : "Connect with your celebrity and other fans, write comments, view Photos, and do a lot more..",
     "imgurl": 'https://fankickdev.blob.core.windows.net/images/virat2.jpg'
 },
 {
     "name": "Fan Magazine",
-    "des" : "How well do you know about your celebrities?",
-    "subdesc" : "How well do you know about your celebrities? Find out by taking this quiz!",
+    "des" : "Never miss an issue of your favorite celebrity magazine. Subscribe Now!",
+    "subdesc" : "Breaking news, gossips, style tips, fashion, interviews and much more..",
     "imgurl": 'https://fankickdev.blob.core.windows.net/images/virat3.jpg'
 }
 ];
 var aamirObj =  [
   {
     "name": "Quizzes",
+    "des" : "How well do you know about your celebrities?",
+    "subdesc" : "Find out by taking this quiz!",
     "imgurl": 'https://fankickdev.blob.core.windows.net/images/amir1.jpg'
 },
 {
     "name": "Fan Clubs",
+    "des" : "Join Fan Club of your favorite celebrity. Be an official fan!",
+    "subdesc" : "Connect with your celebrity and other fans, write comments, view Photos, and do a lot more..",
     "imgurl": 'https://fankickdev.blob.core.windows.net/images/amir2.jpg'
 },
 {
     "name": "Fan Magazine",
+    "des" : "Never miss an issue of your favorite celebrity magazine. Subscribe Now!",
+    "subdesc" : "Breaking news, gossips, style tips, fashion, interviews and much more..",
     "imgurl": 'https://fankickdev.blob.core.windows.net/images/amir3.jpg'
 }
 ];
 var shahrukhObj =  [
   {
     "name": "Quizzes",
+    "des" : "How well do you know about your celebrities?",
+    "subdesc" : "Find out by taking this quiz!",
     "imgurl": 'https://fankickdev.blob.core.windows.net/images/sharuk1.jpg'
 },
 {
     "name": "Fan Clubs",
+    "des" : "Join Fan Club of your favorite celebrity. Be an official fan!",
+    "subdesc" : "Connect with your celebrity and other fans, write comments, view Photos, and do a lot more..",
     "imgurl": 'https://fankickdev.blob.core.windows.net/images/sharuk2.jpg'
 },
 {
     "name": "Fan Magazine",
+    "des" : "Never miss an issue of your favorite celebrity magazine. Subscribe Now!",
+    "subdesc" : "Breaking news, gossips, style tips, fashion, interviews and much more..",
     "imgurl": 'https://fankickdev.blob.core.windows.net/images/sharuk3.jpg'
 }
 ];
 var sachinObj =  [
 {
     "name": "Quizzes",
+    "des" : "How well do you know about your celebrities?",
+    "subdesc" : "Find out by taking this quiz!",
     "imgurl": 'https://fankickdev.blob.core.windows.net/images/sachin1.jpg'
 },
 {
     "name": "Fan Clubs",
+    "des" : "Join Fan Club of your favorite celebrity. Be an official fan!",
+    "subdesc" : "Connect with your celebrity and other fans, write comments, view Photos, and do a lot more..",
     "imgurl": 'https://fankickdev.blob.core.windows.net/images/sachin2.jpg'
 },
 {
     "name": "Fan Magazine",
+    "des" : "Never miss an issue of your favorite celebrity magazine. Subscribe Now!",
+    "subdesc" : "Breaking news, gossips, style tips, fashion, interviews and much more..",
     "imgurl": 'https://fankickdev.blob.core.windows.net/images/sachin3.jpg'
 }
 ];
 var pavanObj =  [
   {
     "name": "Quizzes",
+    "des" : "How well do you know about your celebrities?",
+    "subdesc" : "Find out by taking this quiz!",
     "imgurl": 'https://fankickdev.blob.core.windows.net/images/pk1.jpg'
 },
 {
     "name": "Fan Clubs",
+    "des" : "Join Fan Club of your favorite celebrity. Be an official fan!",
+    "subdesc" : "Connect with your celebrity and other fans, write comments, view Photos, and do a lot more..",
     "imgurl": 'https://fankickdev.blob.core.windows.net/images/pk2.jpg'
 },
 {
     "name": "Fan Magazine",
+    "des" : "Never miss an issue of your favorite celebrity magazine. Subscribe Now!",
+    "subdesc" : "Breaking news, gossips, style tips, fashion, interviews and much more..",
     "imgurl": 'https://fankickdev.blob.core.windows.net/images/pk3.jpg'
 }
 ];
@@ -667,8 +691,8 @@ function pavandetails(event){
       var contentList = [];
       for (var i = 0; i < pavanObj.length; i++) { //Construct request body
           var keyMap = {
-              "title":pavanObj[i].name,
-              //"subtitle":"We\'ve got the right hat for everyone.",
+              "title":pavanObj[i].des,
+              "subtitle":pavanObj[i].subdesc,
               "image_url": pavanObj[i].imgurl,
               "item_url": pavanObj[i].imgurl,
               "buttons": [{
@@ -717,8 +741,8 @@ function sachindetails(event){
       var contentList = [];
       for (var i = 0; i < sachinObj.length; i++) { //Construct request body
           var keyMap = {
-              "title":sachinObj[i].name,
-              //"subtitle":"We\'ve got the right hat for everyone.",
+              "title":sachinObj[i].des,
+              "subtitle":sachinObj[i].subdesc,
               "image_url": sachinObj[i].imgurl,
               "item_url": sachinObj[i].imgurl,
               "buttons": [{
@@ -762,8 +786,8 @@ function shahrukhdetails(event){
       var contentList = [];
       for (var i = 0; i < shahrukhObj.length; i++) { //Construct request body
           var keyMap = {
-              "title":shahrukhObj[i].name,
-              //"subtitle":"We\'ve got the right hat for everyone.",
+              "title":shahrukhObj[i].des,
+              "subtitle":shahrukhObj[i].subdesc,
               "image_url": shahrukhObj[i].imgurl,
               "item_url": shahrukhObj[i].imgurl,
               "buttons": [{
@@ -807,8 +831,8 @@ function aamirdetails(event){
       var contentList = [];
       for (var i = 0; i < aamirObj.length; i++) { //Construct request body
           var keyMap = {
-              "title":aamirObj[i].name,
-              //"subtitle":"We\'ve got the right hat for everyone.",
+              "title":aamirObj[i].des,
+              "subtitle":aamirObj[i].subdesc,
               "image_url": aamirObj[i].imgurl,
               "item_url": aamirObj[i].imgurl,
               "buttons": [{
