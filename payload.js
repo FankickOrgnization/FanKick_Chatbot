@@ -505,37 +505,33 @@ function sendHelpMessage(event){
             "message":{
                 "text":msg,
                 //"text":"msg",
-                // "quick_replies":[
-                //   {
-                //     "content_type":"text",
-                //     "title":"Movies",
-                //     "payload":"Movies"
-                //   },
-                //   {
-                //     "content_type":"text",
-                //     "title":"Sports",
-                //     "payload":"Sports"
-                //   },
-                //   {
-                //     "content_type":"text",
-                //     "title":"Music",
-                //     "payload":"Music"
-                //   },
-                //   {
-                //     "content_type":"text",
-                //     "title":"Celebrities",
-                //     "payload":"Celebrities"
-                //   },
-                //   {
-                //     "content_type":"text",
-                //     "title":"What can you do?",
-                //     "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
-                //   }
-                // ]
+                "quick_replies":[
+                  {
+                    "content_type":"text",
+                    "title":"Categories",
+                    "payload":"Categories"
+                  },
+                  {
+                    "content_type":"text",
+                    "title":"Fan Clubs",
+                    "payload":"Fan Clubs"
+                  },
+                  {
+                    "content_type":"text",
+                    "title":"Fan Magazine",
+                    "payload":"Fan Magazine"
+                  }
+                  // ,
+                  // {
+                  //   "content_type":"text",
+                  //   "title":"What can you do?",
+                  //   "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
+                  // }
+                ]
               }
             }
          callSendAPI(messageData,'https://graph.facebook.com/v2.6/592208327626213/messages');
-         sendHelpMessageSecond(event, userid);
+         //sendHelpMessageSecond(event, userid);
          if (!error && response.statusCode == 200) {
              var recipientId = body.recipient_id;
              var messageId = body.message_id;

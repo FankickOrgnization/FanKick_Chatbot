@@ -188,23 +188,13 @@ function mainPacks(categoryName, event){
             },
             {
               "content_type":"text",
-              "title":"Movies",
-              "payload":"Movies"
+              "title":"Fan Clubs",
+              "payload":"Fan Clubs"
             },
             {
               "content_type":"text",
-              "title":"Sports",
-              "payload":"Sports"
-            },
-            {
-              "content_type":"text",
-              "title":"Music",
-              "payload":"Music"
-            },
-            {
-              "content_type":"text",
-              "title":"Celebrities",
-              "payload":"Celebrities"
+              "title":"Fan Magazine",
+              "payload":"Fan Magazine"
             }
             // ,
             // {
@@ -406,8 +396,8 @@ function fbuserdetails(event, userid) {
         var senderID = event.sender.id;
         //var msg = 'Hi '+username+', A lot of exciting things are awaiting for you! Get kicking!';
         //var msg = 'Hi '+username+'! My name is Kicker.\n How may I come of any help to you today?';
-      //var msg = 'Hi '+username+'! My name is Kicker.\n \nI can help you get closer to your favorite celebrity with a lot of exciting things about them.\n\n Tap what excites you more';
-  var msg = 'Hi '+username+'! My name is Kicker.';
+    var msg = 'Hi '+username+'! My name is Kicker.\n \nI can help you get closer to your favorite celebrity with a lot of exciting things about them.\n\n Tap what excites you more';
+  //var msg = 'Hi '+username+'! My name is Kicker.';
         console.log("--------:Response data:--------msg1 ", msg);
         var messageData = {
             "recipient": {
@@ -415,10 +405,34 @@ function fbuserdetails(event, userid) {
             },
             "message":{
                 "text":msg,
+                "quick_replies":[
+                  {
+                    "content_type":"text",
+                    "title":"Categories",
+                    "payload":"Categories"
+                  },
+                  {
+                    "content_type":"text",
+                    "title":"Fan Clubs",
+                    "payload":"Fan Clubs"
+                  },
+                  {
+                    "content_type":"text",
+                    "title":"Fan Magazine",
+                    "payload":"Fan Magazine"
+                  }
+                  // ,
+                  // {
+                  //   "content_type":"text",
+                  //   "title":"What can you do?",
+                  //   "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
+                  // }
+                ]
+
               }
             }
          callSendAPI(messageData,'https://graph.facebook.com/v2.6/592208327626213/messages');
-         fbuserdetailsSecond(event, userid);
+         //fbuserdetailsSecond(event, userid);
 
         if (!error && response.statusCode == 200) {
             var recipientId = body.recipient_id;
@@ -451,23 +465,13 @@ function fbuserdetailsSecond(event, userid) {
                   },
                   {
                     "content_type":"text",
-                    "title":"Movies",
-                    "payload":"Movies"
+                    "title":"Fan Clubs",
+                    "payload":"Fan Clubs"
                   },
                   {
                     "content_type":"text",
-                    "title":"Sports",
-                    "payload":"Sports"
-                  },
-                  {
-                    "content_type":"text",
-                    "title":"Music",
-                    "payload":"Music"
-                  },
-                  {
-                    "content_type":"text",
-                    "title":"Celebrities",
-                    "payload":"Celebrities"
+                    "title":"Fan Magazine",
+                    "payload":"Fan Magazine"
                   }
                   // ,
                   // {
@@ -500,8 +504,8 @@ function sendHelpMessage(event){
         console.log("--------:Response data:-------- timezone", userprofiledata.timezone);
         console.log("--------:Response data:--------gender ", userprofiledata.gender);
         var senderID = event.sender.id;
-        //var msg = 'Hey '+username+', How are you?\n \nDid you check these amazingly cool stuff on Fankick?';
-        var msg = 'Hey '+username+', How are you?';
+        var msg = 'Hey '+username+', How are you?\n \nDid you check these amazingly cool stuff on Fankick?';
+        //var msg = 'Hey '+username+', How are you?';
         console.log("--------:Response data:--------sendHelpMessage1", msg);
         var messageData = {
             "recipient": {
@@ -511,37 +515,37 @@ function sendHelpMessage(event){
             "message":{
                 "text":msg,
                 //"text":"msg",
-                // "quick_replies":[
-                //   {
-                //     "content_type":"text",
-                //     "title":"Movies",
-                //     "payload":"Movies"
-                //   },
-                //   {
-                //     "content_type":"text",
-                //     "title":"Sports",
-                //     "payload":"Sports"
-                //   },
-                //   {
-                //     "content_type":"text",
-                //     "title":"Music",
-                //     "payload":"Music"
-                //   },
-                //   {
-                //     "content_type":"text",
-                //     "title":"Celebrities",
-                //     "payload":"Celebrities"
-                //   },
-                //   {
-                //     "content_type":"text",
-                //     "title":"What can you do?",
-                //     "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
-                //   }
-                // ]
+                "quick_replies":[
+                  {
+                    "content_type":"text",
+                    "title":"Categories",
+                    "payload":"Categories"
+                  },
+                  {
+                    "content_type":"text",
+                    "title":"Movies",
+                    "payload":"Movies"
+                  },
+                  {
+                    "content_type":"text",
+                    "title":"Sports",
+                    "payload":"Sports"
+                  },
+                  {
+                    "content_type":"text",
+                    "title":"Music",
+                    "payload":"Music"
+                  },
+                  {
+                    "content_type":"text",
+                    "title":"Celebrities",
+                    "payload":"Celebrities"
+                  }
+                ]
               }
             }
          callSendAPI(messageData,'https://graph.facebook.com/v2.6/592208327626213/messages');
-         sendHelpMessageSecond(event, userid);
+         //sendHelpMessageSecond(event, userid);
          if (!error && response.statusCode == 200) {
              var recipientId = body.recipient_id;
              var messageId = body.message_id;
