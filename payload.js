@@ -376,15 +376,15 @@ const sendContentPacks = (categoryName,event) => {
             connection.release();
         });
         });
-    } else if (categoryName == "Pavan Kalyan") {
+    } else if (categoryName == "pavan kalyan" || categoryName == "Pavan Kalyan") {
       pavandetails(event);
-    }else if (categoryName =="Sachin Tendulkar") {
+    }else if (categoryName =="Sachin Tendulkar" || categoryName =="sachin tendulkar") {
       sachindetails(event);
-    }else if (categoryName =="Shahrukh Khan") {
+    }else if (categoryName =="Shahrukh Khan" || categoryName =="shahrukh khan" ) {
       shahrukhdetails(event);
-    }else if (categoryName =="Aamir Khan") {
+    }else if (categoryName =="Aamir Khan" || categoryName =="aamir khan") {
       aamirdetails(event);
-    }else if (categoryName =="Virat Kohli") {
+    }else if (categoryName =="Virat Kohli" || categoryName =="virat kohli") {
       viratdetails(event);
     }else if (categoryName == "Movies") {
       console.log("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%",moviesObj);
