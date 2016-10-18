@@ -416,11 +416,84 @@ const sendContentPacks = (categoryName,event) => {
               }
         }
         callSendAPI(messageData,'https://graph.facebook.com/v2.6/592208327626213/messages');
+        }else {
+            console.log("No Data Found From Database");
+            sendHelpMessage(event);
+        }
+    } else if (categoryName == "Celebrities") {
+      if (categoryName == "Celebrities"){
+        if (moviesObj.length){
+          console.log("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%",moviesObj.length);
+          var senderID = event.sender.id;
+          var contentList = [];
+          for (var i = 0; i < moviesObj.length; i++) { //Construct request body
+              var keyMap = {
+                            "title": moviesObj[i].name,
+                            "image_url": moviesObj[i].imgurl,
+                                      //"item_url": moviesObj[i].imgurl,
+                            "buttons": [{
+                                        "type": "postback",
+                                        "title": moviesObj[i].name,
+                                        "payload": moviesObj[i].name
+                                      }]
+                                  };
+
+              contentList.push(keyMap);
+          }
+          var messageData = {
+              "recipient": {
+                  "id": senderID
+              },
+              "message": {
+                  "attachment": {
+                      "type": "template",
+                      //"text":"We have some cool stuff waiting for you..",
+                      "payload": {
+                          "template_type": "generic",
+                          "elements": contentList
+                      }
+                  },
+                  "quick_replies": quickMenu
+              }
+                // "message":{
+                //     "text":"Here is some cool and interesting stuff on movies",
+                //     "quick_replies":[
+                //       {
+                //         "content_type":"text",
+                //         "title":"Quizzes",
+                //         "payload":"Quizzes"
+                //       },
+                //       {
+                //         "content_type":"text",
+                //         "title":"Fan Clubs",
+                //         "payload":"Fan Clubs"
+                //       },
+                //       {
+                //         "content_type":"text",
+                //         "title":"Gossip Corner",
+                //         "payload":"Gossip Corner"
+                //       },
+                //       {
+                //         "content_type":"text",
+                //         "title":"Fan Magazine",
+                //         "payload":"Fan Magazine"
+                //       },
+                //       {
+                //         "content_type":"text",
+                //         "title":"What can you do?",
+                //         "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
+                //       }
+                //
+                //     ]
+                //   }
+          }
+        }
+        callSendAPI(messageData,'https://graph.facebook.com/v2.6/592208327626213/messages');
+        }else {
+            console.log("No Data Found From Database");
+            sendHelpMessage(event);
+        }
     }else {
-        console.log("No Data Found From Database");
-        sendHelpMessage(event);
-    }
-    } else {
       pool.getConnection(function(err, connection) {
         connection.query('SELECT * FROM fk_content_pack where category_id = (SELECT id FROM fk_category where name = ?)', [categoryName], function(err, rows) {
             if (err) {
