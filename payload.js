@@ -55,17 +55,20 @@ var celbritieObj =  [
 var viratObj =  [
   {
     "name": "Quizzes",
-    "des" : "How well do you know about your celebrities? Find out by taking this quiz!",
+    "des" : "How well do you know about your celebrities?",
+    "subdesc" : "How well do you know about your celebrities? Find out by taking this quiz!",
     "imgurl": 'https://fankickdev.blob.core.windows.net/images/virat1.jpg'
 },
 {
     "name": "Fan Clubs",
-    "des" : "How well do you know about your celebrities? Find out by taking this quiz!",
+    "des" : "How well do you know about your celebrities?",
+    "subdesc" : "How well do you know about your celebrities? Find out by taking this quiz!",
     "imgurl": 'https://fankickdev.blob.core.windows.net/images/virat2.jpg'
 },
 {
     "name": "Fan Magazine",
-    "des" : "How well do you know about your celebrities? Find out by taking this quiz!",
+    "des" : "How well do you know about your celebrities?",
+    "subdesc" : "How well do you know about your celebrities? Find out by taking this quiz!",
     "imgurl": 'https://fankickdev.blob.core.windows.net/images/virat3.jpg'
 }
 ];
@@ -851,9 +854,9 @@ function viratdetails(event){
       for (var i = 0; i < viratObj.length; i++) { //Construct request body
           var keyMap = {
               "title":viratObj[i].des,
-              //"subtitle":"We\'ve got the right hat for everyone.",
+              "subtitle":viratObj[i].subdesc,
               "image_url": viratObj[i].imgurl,
-              "item_url": viratObj[i].imgurl,
+              //"item_url": viratObj[i].imgurl,
               "buttons": [{
                   "type": "postback",
                   "title": viratObj[i].name,
