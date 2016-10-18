@@ -266,7 +266,7 @@ function quizzesPacks(categoryName, event) {
             },
             {
               "content_type":"text",
-              "title":"Categories",
+              "title":"Categories &#8624;",
               "payload":"Categories"
             }
             // ,
