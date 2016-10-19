@@ -92,10 +92,11 @@ function receivedpostback(messagingEvent) {
         mainPacks(categoryName, messagingEvent);
         console.log("categoryName", categoryName);
     }
-    else if (categoryName == "Quizzes") {
-        quizzesPacks(categoryName, messagingEvent);
-        console.log("categoryName########", categoryName);
-    }else{
+    // else if (categoryName == "Quizzes") {
+    //     quizzesPacks(categoryName, messagingEvent);
+    //     console.log("categoryName########", categoryName);
+    // }
+    else{
       payloadText.sendContentPacks(categoryName, messagingEvent);
     }
 }
