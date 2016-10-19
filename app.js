@@ -15,7 +15,23 @@ var pool = mysql.createPool({
     password: '3e384329',
     database: 'rankworlddev'
 });
-
+var quickMenu = [
+  {
+    "content_type":"text",
+    "title":"Categories",
+    "payload":"Categories"
+  },
+  {
+    "content_type":"text",
+    "title":"Fan Clubs",
+    "payload":"Fan Clubs"
+  },
+  {
+    "content_type":"text",
+    "title":"Fan Magazine",
+    "payload":"Fan Magazine"
+  }
+];
 
 app.use(bodyParser.json());
 var fbpage_access_token = 'EAAXcJew5yNkBAAvFD3wX3RZACdvA4lZB6XStBzliKI9y4m7I1taAnWUWBezVarL8FjteZCztMBjXZCs35lAweqmc2XZARIf378LZA5lTg5xIebmBmFL4MmJGU4JrowfdkkKDbjqwuzBkCWPxQjgddrW4EZBnv6LiccAHdqoLUNcsgZDZD';
@@ -231,7 +247,8 @@ pool.getConnection(function(err, connection) {
                             "template_type": "generic",
                             "elements": contentList
                         }
-                    }
+                    },
+                      "quick_replies": quickMenu
                 }
             }
             callSendAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
