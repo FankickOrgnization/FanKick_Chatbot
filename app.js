@@ -182,6 +182,7 @@ function receivedMessage(event) {
 }
 function sendContentPackItems(packId, event) {
     //connection.query('select distinct item_id,item_name,item_type,item_image_url from fk_pack_multiple_item where pack_id = ? union all select distinct item_id,item_name,item_type,iteam_image_url from fk_pack_poll_item where pack_id = ?', [packId,packId], function(error, rows) {
+pool.getConnection(function(err, connection) {
     connection.query('Select poll.item_name,poll.item_type,poll.iteam_image_url,poll.left_text,poll.right_text from rankworlddev.fk_pack_poll_item As poll Inner Join rankworlddev.fk_pack_content_items On rankworlddev.fk_pack_content_items.id = poll.item_id where rankworlddev.fk_pack_content_items.pack_id = ?', [packId], function(error, rows) {
         if (error) {
             console.log('error while retriving content pack items from database', error);
@@ -233,8 +234,9 @@ function sendContentPackItems(packId, event) {
                     }
                 }
             }
-            callSendAPI(messageData);
+            callSendAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
         }
+        connection.release();
     });
 }
 
