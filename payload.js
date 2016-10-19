@@ -695,7 +695,7 @@ function quizzes(event){
 
 function pavandetails(categoryName,event){
   pool.getConnection(function(err, connection) {
-    connection.query('SELECT * fk_pack_fanclub where name=?', [categoryName], function(err, rows) {
+    connection.query('SELECT * fk_pack_fanclub where name=?',[categoryName], function(err, rows) {
         if (err) {
             console.log("Error While retriving content pack data from database:", err);
         } else if (rows.length) {
