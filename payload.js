@@ -613,7 +613,7 @@ function quizzes(event){
   connection.query('SELECT * FROM fk_pack_multiple_item where pack_id=(select id from fk_content_pack where name="Aamir Khan")and type=?', ['Question'], function(err, rows) {
 
       //console.log("*************************-after", categoryName);
-      console.log("*************************questionsPacks", rows);
+      console.log("*************************Questions Packs********************", rows);
       if (err) {
           console.log("Error While retriving content pack data from database:", err);
       } else if (rows.length) {

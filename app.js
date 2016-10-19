@@ -216,10 +216,11 @@ function receivedtextmessage(categoryName, event) {
     //var quickButton =
       console.log("quickButton_postback:------", categoryName);
       console.log("postback_sender_id:------", userid);
-      if (categoryName == "Quizzes") {
-         quizzesPacks(categoryName, event);
-         console.log("categoryName########", categoryName);
-     }else if (categoryName == "Content Pack 1") {
+    //   if (categoryName == "Quizzes") {
+    //      quizzesPacks(categoryName, event);
+    //      console.log("categoryName########", categoryName);
+    //  }else
+     if (categoryName == "Content Pack 1") {
        questionsPacks(1, event);
      }else if (categoryName == "Content Pack 2"){
        questionsPacks(2, event);
