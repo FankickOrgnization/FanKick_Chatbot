@@ -560,17 +560,17 @@ const sendContentPacks = (categoryName,event) => {
                         "title": rows[i].name,
                         "image_url": rows[i].image_url,
                         "item_url": rows[i].image_url
-                      //   "buttons": [{
-                      //       "type": "postback",
-                      //       "title": "View",
-                      //       "payload": rows[i].id
-                      //   }
+                        "buttons": [{
+                            "type": "postback",
+                            "title": "View",
+                            "payload": rows[i].id
+                        }
                       //   // , {
                       //   //     "type": "postback",
                       //   //     "title": "Magazine",
                       //   //     "payload": "USER_DEFINED_PAYLOAD"
                       //   // }
-                      // ]
+                      ]
                     };
                     contentList.push(keyMap);
                 }
