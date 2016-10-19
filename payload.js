@@ -559,7 +559,7 @@ const sendContentPacks = (categoryName,event) => {
                     var keyMap = {
                         "title": rows[i].name,
                         "image_url": rows[i].image_url,
-                        "item_url": rows[i].image_url
+                        "item_url": rows[i].image_url,
                         "buttons": [{
                             "type": "postback",
                             "title": "View",
@@ -586,7 +586,7 @@ const sendContentPacks = (categoryName,event) => {
                                 "elements": contentList
                             }
                         },
-                        //"quick_replies":quickMenu
+                        "quick_replies":quickMenu
                     }
                 }
                 callSendAPI(messageData,'https://graph.facebook.com/v2.6/592208327626213/messages');
