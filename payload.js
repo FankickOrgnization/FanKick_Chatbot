@@ -610,7 +610,7 @@ function quizzes(event){
 
   pool.getConnection(function(err, connection) {
   //connection.query('SELECT * FROM fk_pack_multiple_item where type=? and pack_id in (select id from fk_content_pack where category_id=?)', ['Question',categoryName], function(err, rows) {
-  connection.query('SELECT * FROM fk_pack_multiple_item where pack_id=(select id from fk_content_pack where name="Aamir Khan")and type=?', ['Question',categoryName], function(err, rows) {
+  connection.query('SELECT * FROM fk_pack_multiple_item where pack_id=(select id from fk_content_pack where name="Aamir Khan")and type=?', ['Question'], function(err, rows) {
 
       //console.log("*************************-after", categoryName);
       console.log("*************************questionsPacks", rows);
