@@ -196,6 +196,7 @@ function receivedMessage(event) {
             }
         });
 }
+
 function sendContentPackItems(packId, event) {
     //connection.query('select distinct item_id,item_name,item_type,item_image_url from fk_pack_multiple_item where pack_id = ? union all select distinct item_id,item_name,item_type,iteam_image_url from fk_pack_poll_item where pack_id = ?', [packId,packId], function(error, rows) {
 pool.getConnection(function(err, connection) {
@@ -211,7 +212,7 @@ pool.getConnection(function(err, connection) {
                     var keyMap = {
                         "title": rows[i].item_name,
                         "image_url": rows[i].iteam_image_url,
-                        "item_url": rows[i].iteam_image_url,
+                        //"item_url": rows[i].iteam_image_url,
                         "buttons": [{
                             "type": "postback",
                             "title": rows[i].left_text,

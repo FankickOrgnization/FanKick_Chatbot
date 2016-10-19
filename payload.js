@@ -266,12 +266,12 @@ const sendContentPacks = (categoryName,event) => {
                     var keyMap = {
                         "title": rows[i].name,
                         "image_url": rows[i].imageurl,
-                        "item_url": rows[i].imageurl
-                        // "buttons": [{
-                        //     "type": "web_url",
-                        //     "url": rows[i].wiki_url,
-                        //     "title": "Read More"
-                        // }]
+                        //"item_url": rows[i].imageurl,
+                        "buttons": [{
+                            "type": "web_url",
+                            "url": rows[i].name,
+                            "title": rows[i].name
+                        }]
                     };
                     contentList.push(keyMap);
                 }
@@ -347,15 +347,15 @@ const sendContentPacks = (categoryName,event) => {
         });
         });
     } else if (categoryName == "pavan kalyan" || categoryName == "Pavan Kalyan" || categoryName == "Pavan" || categoryName == "Kalyan") {
-      pavandetails(event);
+      pavandetails(categoryName,event);
     }else if (categoryName =="Sachin Tendulkar" || categoryName =="sachin tendulkar" || categoryName =="sachin" || categoryName =="tendulkar") {
-      sachindetails(event);
+      pavandetails(categoryName,event);
     }else if (categoryName =="Shahrukh Khan" || categoryName =="shahrukh khan" || categoryName =="shahrukh" ) {
-      shahrukhdetails(event);
+      pavandetails(categoryName,event);
     }else if (categoryName =="Aamir Khan" || categoryName =="aamir khan" || categoryName =="aamir") {
-      aamirdetails(event);
+      pavandetails(categoryName,event);
     }else if (categoryName =="Virat Kohli" || categoryName =="virat kohli" || categoryName =="kohli" || categoryName =="virat") {
-      viratdetails(event);
+      pavandetails(categoryName,event);
     }else if (categoryName =="Aamir Quizzes") {
       quizzes(event);
     }else if (categoryName =="Aamir Fan Clubs") {
@@ -688,55 +688,58 @@ function quizzes(event){
   });
 }
 
-function pavandetails(event){
-  {
-    //console.log("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%",moviesObj);
-    if (pavanObj.length){
-      console.log("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%",pavanObj.length);
-      var senderID = event.sender.id;
-      var contentList = [];
-      for (var i = 0; i < pavanObj.length; i++) { //Construct request body
-          var keyMap = {
-              "title":pavanObj[i].des,
-              "subtitle":pavanObj[i].subdesc,
-              "image_url": pavanObj[i].imgurl,
-              //"item_url": pavanObj[i].imgurl,
-              "buttons": [{
-                  "type": "postback",
-                  "title": pavanObj[i].name,
-                  "payload": pavanObj[i].subname
-              }
-              // {
-              //     "type": "postback",
-              //     "title": moviesObj[i].qus,
-              //     "payload": "USER_DEFINED_PAYLOAD"
-              // }
-            ]
-          };
-          contentList.push(keyMap);
-      }
-      var messageData = {
-          "recipient": {
-              "id": senderID
-          },
-          "message": {
-              "attachment": {
-                  "type": "template",
-                  //"text":"We have some cool stuff waiting for you..",
-                  "payload": {
-                      "template_type": "generic",
-                      "elements": contentList
-                  }
-              },
-              "quick_replies": quickMenu
-          }
-      }
-      callSendAPI(messageData,'https://graph.facebook.com/v2.6/592208327626213/messages');
-  }else {
-      console.log("No Data Found From Database");
-      sendHelpMessage(event);
-  }
-  }
+function pavandetails(categoryName,event){
+  pool.getConnection(function(err, connection) {
+    connection.query('SELECT * FROM fk_pack_fanclub where name=?', [categoryName], function(err, rows) {
+        if (err) {
+            console.log("Error While retriving content pack data from database:", err);
+        } else if (rows.length) {
+            var senderID = event.sender.id;
+            var contentList = [];
+
+            for (var i = 0; i < rows.length; i++) { //Construct request body
+                var keyMap = {
+                    "title": rows[i].name,
+                    "image_url": rows[i].image_url,
+                    //"item_url": rows[i].image_url,
+                    "buttons": [{
+                        "type": "postback",
+                        "title": "View",
+                        "payload": rows[i].id
+                    }
+                  //   // , {
+                  //   //     "type": "postback",
+                  //   //     "title": "Magazine",
+                  //   //     "payload": "USER_DEFINED_PAYLOAD"
+                  //   // }
+                  ]
+                };
+                contentList.push(keyMap);
+            }
+            var messageData = {
+                "recipient": {
+                    "id": senderID
+                },
+                "message": {
+                    "attachment": {
+                        "type": "template",
+                        "payload": {
+                            "template_type": "generic",
+                            "elements": contentList
+                        }
+                    },
+                    "quick_replies":quickMenu
+                }
+            }
+            callSendAPI(messageData,'https://graph.facebook.com/v2.6/592208327626213/messages');
+        } else {
+            console.log("No Data Found From Database");
+            sendHelpMessage(event);
+            //sendImageMessage(event);
+        }
+        connection.release();
+    });
+    });
 }
 
 function sachindetails(event){
