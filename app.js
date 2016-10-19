@@ -80,26 +80,35 @@ app.post('/webhook', function(req, res) {
 function receivedpostback(messagingEvent) {
     var categoryName = messagingEvent.postback.payload;
     var userid = messagingEvent.sender.id;
+    var packId = parseInt(messageText);
+    if (isNaN(packId)) {
+        //sendContentPacks(messageText, event);
+        payloadText.sendContentPacks(categoryName, messagingEvent)
+    } else {
+        sendContentPackItems(packId, event);
+    }
     console.log("postback_sender_id:------", userid);
-    if (categoryName == "Get Started") {
-        //greetingtext(messagingEvent,Get Started);
-        thread.persistentMenu(fbpage_access_token);
-        fbuserdetails(messagingEvent, userid);
-        //sendTextMessage(userid, 'Get Started');
-        console.log("categoryName", categoryName);
-        //getStarted();
-    }else if (categoryName == "Ok Goon") {
-        mainPacks(categoryName, messagingEvent);
-        console.log("categoryName", categoryName);
-    }
-    // else if (categoryName == "Quizzes") {
-    //     quizzesPacks(categoryName, messagingEvent);
-    //     console.log("categoryName########", categoryName);
+    // if (categoryName == "Get Started") {
+    //     //greetingtext(messagingEvent,Get Started);
+    //     thread.persistentMenu(fbpage_access_token);
+    //     fbuserdetails(messagingEvent, userid);
+    //     //sendTextMessage(userid, 'Get Started');
+    //     console.log("categoryName", categoryName);
+    //     //getStarted();
+    // }else if (categoryName == "Ok Goon") {
+    //     mainPacks(categoryName, messagingEvent);
+    //     console.log("categoryName", categoryName);
     // }
-    else{
-      payloadText.sendContentPacks(categoryName, messagingEvent);
-    }
+    // // else if (categoryName == "Quizzes") {
+    // //     quizzesPacks(categoryName, messagingEvent);
+    // //     console.log("categoryName########", categoryName);
+    // // }
+    // else{
+    //   payloadText.sendContentPacks(categoryName, messagingEvent);
+    // }
 }
+
+
 // postback payload section end ********************************************
 
 function receivedMessage(event) {
@@ -171,7 +180,63 @@ function receivedMessage(event) {
             }
         });
 }
-
+function sendContentPackItems(packId, event) {
+    //connection.query('select distinct item_id,item_name,item_type,item_image_url from fk_pack_multiple_item where pack_id = ? union all select distinct item_id,item_name,item_type,iteam_image_url from fk_pack_poll_item where pack_id = ?', [packId,packId], function(error, rows) {
+    connection.query('Select poll.item_name,poll.item_type,poll.iteam_image_url,poll.left_text,poll.right_text from rankworlddev.fk_pack_poll_item As poll Inner Join rankworlddev.fk_pack_content_items On rankworlddev.fk_pack_content_items.id = poll.item_id where rankworlddev.fk_pack_content_items.pack_id = ?', [packId], function(error, rows) {
+        if (error) {
+            console.log('error while retriving content pack items from database', error);
+        } else if (rows.length > 0) {
+            var senderID = event.sender.id;
+            var contentList = [];
+            for (var i = 0; i < rows.length; i++) { //Construct request body
+                if (rows[i].item_type == 'Poll') {
+                    //var it = 'Poll';
+                    var keyMap = {
+                        "title": rows[i].item_name,
+                        "image_url": rows[i].iteam_image_url,
+                        "item_url": rows[i].iteam_image_url,
+                        "buttons": [{
+                            "type": "postback",
+                            "title": rows[i].left_text,
+                            "payload": rows[i].left_text
+                        }, {
+                            "type": "postback",
+                            "title": rows[i].right_text,
+                            "payload": rows[i].right_text
+                        }]
+                    };
+                } else {
+                    var keyMap = {
+                        "title": rows[i].item_name,
+                        "image_url": rows[i].item_image_url,
+                        "item_url": rows[i].item_image_url,
+                        "buttons": [{
+                            "type": "postback",
+                            "title": "Read More",
+                            "payload": "DEVELOPER_DEFINED_PAYLOAD"
+                        }]
+                    };
+                }
+                contentList.push(keyMap);
+            }
+            var messageData = {
+                "recipient": {
+                    "id": senderID
+                },
+                "message": {
+                    "attachment": {
+                        "type": "template",
+                        "payload": {
+                            "template_type": "generic",
+                            "elements": contentList
+                        }
+                    }
+                }
+            }
+            callSendAPI(messageData);
+        }
+    });
+}
 
 function mainPacks(categoryName, event){
   var senderID = event.sender.id;
