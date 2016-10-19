@@ -267,10 +267,15 @@ const sendContentPacks = (categoryName,event) => {
                         "title": rows[i].name,
                         "image_url": rows[i].imageurl,
                         //"item_url": rows[i].imageurl,
+                        // "buttons": [{
+                        //     "type": "web_url",
+                        //     "url": rows[i].name,
+                        //     "title": rows[i].name
+                        // }]
                         "buttons": [{
-                            "type": "web_url",
-                            "url": rows[i].name,
-                            "title": rows[i].name
+                            "type": "postback",
+                            "title": rows[i].name,
+                            "payload": rows[i].name
                         }]
                     };
                     contentList.push(keyMap);
@@ -688,9 +693,9 @@ function quizzes(event){
   });
 }
 
-function pavandetails(categoryName,event){
+function pavandetails(event){
   pool.getConnection(function(err, connection) {
-    connection.query('SELECT * FROM fk_pack_fanclub where name=?', [categoryName], function(err, rows) {
+    connection.query('SELECT * FROM fk_content_pack where category_id = (SELECT id FROM fk_category where name = ?)', [categoryName], function(err, rows) {
         if (err) {
             console.log("Error While retriving content pack data from database:", err);
         } else if (rows.length) {
@@ -701,7 +706,7 @@ function pavandetails(categoryName,event){
                 var keyMap = {
                     "title": rows[i].name,
                     "image_url": rows[i].image_url,
-                    //"item_url": rows[i].image_url,
+                    "item_url": rows[i].image_url,
                     "buttons": [{
                         "type": "postback",
                         "title": "View",
