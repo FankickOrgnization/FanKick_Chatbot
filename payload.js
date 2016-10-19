@@ -351,7 +351,7 @@ const sendContentPacks = (categoryName,event) => {
             connection.release();
         });
         });
-    } else if (categoryName == "pavan kalyan" || categoryName == "Pavan Kalyan" || categoryName == "Pavan" || categoryName == "Kalyan") {
+    } else if (categoryName == "pavan kalyan" || categoryName == "Pavan Kalyan" || categoryName == "Chiranjeevi" || categoryName == "Kalyan"|| categoryName == "Pawan Kalyan") {
       pavandetails(categoryName,event);
     }else if (categoryName =="Sachin Tendulkar" || categoryName =="sachin tendulkar" || categoryName =="sachin" || categoryName =="tendulkar") {
       pavandetails(categoryName,event);
