@@ -85,7 +85,7 @@ function receivedpostback(messagingEvent) {
         //sendContentPacks(messageText, event);
         payloadText.sendContentPacks(categoryName, messagingEvent)
     } else {
-        sendContentPackItems(packId, event);
+        sendContentPackItems(packId, messagingEvent);
     }
     console.log("postback_sender_id:------", userid);
     // if (categoryName == "Get Started") {
