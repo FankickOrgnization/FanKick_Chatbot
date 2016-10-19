@@ -247,8 +247,9 @@ const sendContentPacks = (categoryName,event) => {
         callSendAPI(messageData,'https://graph.facebook.com/v2.6/592208327626213/messages');
     } else if (categoryName == "Get Started") {
         //greetingtext(messagingEvent,Get Started);
+        var senderID = event.sender.id;
         thread.persistentMenu(fbpage_access_token);
-        fbuserdetails(messagingEvent, userid);
+        fbuserdetails(event, senderID);
         //sendTextMessage(userid, 'Get Started');
         console.log("categoryName", categoryName);
         //getStarted();
@@ -1084,7 +1085,7 @@ function callSendAPI(body, url) {
 
 module.exports = {
   sendContentPacks: sendContentPacks,
-  fbuserdetails:fbuserdetails,
+  //fbuserdetails:fbuserdetails,
   // name:name,
   quickMenu:quickMenu
 };
