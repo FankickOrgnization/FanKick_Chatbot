@@ -238,6 +238,7 @@ pool.getConnection(function(err, connection) {
         }
         connection.release();
     });
+  });
 }
 
 function mainPacks(categoryName, event){
