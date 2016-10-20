@@ -302,10 +302,10 @@ function receivedtextmessage(categoryName, event) {
     //var quickButton =
       console.log("quickButton_postback:------", categoryName);
       console.log("postback_sender_id:------", userid);
-    //   if (categoryName == "Quizzes") {
-    //      quizzesPacks(categoryName, event);
-    //      console.log("categoryName########", categoryName);
-    //  }else
+      if (categoryName == "Quizzes") {
+         quizzesPacks(categoryName, event);
+         console.log("categoryName########", categoryName);
+     }else
      if (categoryName == "Content Pack 1") {
        questionsPacks(1, event);
      }else if (categoryName == "Content Pack 2"){
@@ -373,13 +373,13 @@ function quizzesPacks(categoryName, event) {
 function questionsPacks(categoryName, event) {
 //  var qusCategories = categoryName;
   var senderID = event.sender.id;
-  // if(categoryName == "Content Pack 1"){
-  //   categoryName = 1;
-  // } else if (categoryName == "Content Pack 2"){
-  //   categoryName = 2;
-  // } else (categoryName == "Content Pack 3"){
-  //   categoryName = 3;
-  // }
+  if(categoryName == "Content Pack 1"){
+    categoryName = 1;
+  } else if (categoryName == "Content Pack 2"){
+    categoryName = 2;
+  } else (categoryName == "Content Pack 3"){
+    categoryName = 3;
+  }
 
   pool.getConnection(function(err, connection) {
   connection.query('SELECT * FROM fk_pack_multiple_item where type=? and pack_id in (select id from fk_content_pack where category_id=?)', ['Question',categoryName], function(err, rows) {
