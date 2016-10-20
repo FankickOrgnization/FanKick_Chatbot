@@ -39,7 +39,7 @@ var moviesObj =  [
     "imgurl": 'https://fankickdev.blob.core.windows.net/images/celebrities.jpg'
 },
 {
-    "name": "Music",
+    "name": "Politics",
     "imgurl": 'https://fankickdev.blob.core.windows.net/images/music.jpg'
 },
 {
