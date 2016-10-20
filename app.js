@@ -372,14 +372,14 @@ function quizzesPacks(categoryName, event) {
 // QuestionsPacks payload section Start ********************************************
 function questionsPacks(categoryName, event) {
 //  var qusCategories = categoryName;
-  var senderID = event.sender.id;
-  if(categoryName == "Content Pack 1"){
-    categoryName = 1;
-  } else if (categoryName == "Content Pack 2"){
-    categoryName = 2;
-  } else (categoryName == "Content Pack 3"){
-    categoryName = 3;
-  }
+  // var senderID = event.sender.id;
+  // if(categoryName == "Content Pack 1"){
+  //   categoryName = 1;
+  // } else if (categoryName == "Content Pack 2"){
+  //   categoryName = 2;
+  // } else (categoryName == "Content Pack 3"){
+  //   categoryName = 3;
+  // }
 
   pool.getConnection(function(err, connection) {
   connection.query('SELECT * FROM fk_pack_multiple_item where type=? and pack_id in (select id from fk_content_pack where category_id=?)', ['Question',categoryName], function(err, rows) {
