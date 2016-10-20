@@ -435,8 +435,8 @@ const sendContentPacks = (categoryName,event) => {
                 var senderID = event.sender.id;
                 var contentList = [];
                 var datalength = rows.length;
-                if(datalength>5){
-                for (var i = 0; i < 5; i++) { //Construct request body
+                if(datalength > 10){
+                for (var i = 0; i < 10; i++) { //Construct request body
                     var keyMap = {
                         "title": rows[i].name,
                         "image_url": rows[i].image_url,
