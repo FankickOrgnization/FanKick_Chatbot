@@ -230,68 +230,70 @@ const sendContentPacks = (categoryName,event) => {
       fanClubs(event);
     }else if (categoryName =="Aamir Fan Magazine") {
       fanMagazine(event);
-    }else if (categoryName == "Movies") {
-      console.log("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%",moviesObj);
-      if (moviesObj.length){
-        console.log("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%",moviesObj.length);
-        var senderID = event.sender.id;
-        var contentList = [];
-        for (var i = 0; i < moviesObj.length; i++) { //Construct request body
-            var keyMap = {
-                "title":"We have some cool stuff waiting for you..",
-                //"subtitle":"We\'ve got the right hat for everyone.",
-                "image_url": moviesObj[i].imgurl,
-                "item_url": moviesObj[i].imgurl,
-                "buttons": [{
-                    "type": "postback",
-                    "title": moviesObj[i].name,
-                    "payload": "USER_DEFINED_PAYLOAD"
-                }
-              ]
-            };
-            contentList.push(keyMap);
-        }
-        var messageData = {
-            "recipient": {
-                "id": senderID
-            },
-              "message":{
-                  "text":"Here is some cool and interesting stuff on movies.\n\nWhy not check them??",
-                  "quick_replies":[
-                    {
-                      "content_type":"text",
-                      "title":"Quizzes",
-                      "payload":"Quizzes"
-                    },
-                    {
-                      "content_type":"text",
-                      "title":"Fan Clubs",
-                      "payload":"Fan Clubs"
-                    },
-                    {
-                      "content_type":"text",
-                      "title":"Gossip Corner",
-                      "payload":"Gossip Corner"
-                    },
-                    {
-                      "content_type":"text",
-                      "title":"Fan Magazine",
-                      "payload":"Fan Magazine"
-                    },
-                    {
-                      "content_type":"text",
-                      "title":"Categories",
-                      "payload":"Categories"
-                    }
-                  ]
-                }
-        }
-        callSendAPI(messageData,'https://graph.facebook.com/v2.6/592208327626213/messages');
-    }else {
-        console.log("No Data Found From Database");
-        sendHelpMessage(event);
     }
-    }  else if (categoryName == "Sports") {
+    // else if (categoryName == "Movies") {
+    //   console.log("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%",moviesObj);
+    //   if (moviesObj.length){
+    //     console.log("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%",moviesObj.length);
+    //     var senderID = event.sender.id;
+    //     var contentList = [];
+    //     for (var i = 0; i < moviesObj.length; i++) { //Construct request body
+    //         var keyMap = {
+    //             "title":"We have some cool stuff waiting for you..",
+    //             //"subtitle":"We\'ve got the right hat for everyone.",
+    //             "image_url": moviesObj[i].imgurl,
+    //             "item_url": moviesObj[i].imgurl,
+    //             "buttons": [{
+    //                 "type": "postback",
+    //                 "title": moviesObj[i].name,
+    //                 "payload": "USER_DEFINED_PAYLOAD"
+    //             }
+    //           ]
+    //         };
+    //         contentList.push(keyMap);
+    //     }
+    //     var messageData = {
+    //         "recipient": {
+    //             "id": senderID
+    //         },
+    //           "message":{
+    //               "text":"Here is some cool and interesting stuff on movies.\n\nWhy not check them??",
+    //               "quick_replies":[
+    //                 {
+    //                   "content_type":"text",
+    //                   "title":"Quizzes",
+    //                   "payload":"Quizzes"
+    //                 },
+    //                 {
+    //                   "content_type":"text",
+    //                   "title":"Fan Clubs",
+    //                   "payload":"Fan Clubs"
+    //                 },
+    //                 {
+    //                   "content_type":"text",
+    //                   "title":"Gossip Corner",
+    //                   "payload":"Gossip Corner"
+    //                 },
+    //                 {
+    //                   "content_type":"text",
+    //                   "title":"Fan Magazine",
+    //                   "payload":"Fan Magazine"
+    //                 },
+    //                 {
+    //                   "content_type":"text",
+    //                   "title":"Categories",
+    //                   "payload":"Categories"
+    //                 }
+    //               ]
+    //             }
+    //     }
+    //     callSendAPI(messageData,'https://graph.facebook.com/v2.6/592208327626213/messages');
+    // }else {
+    //     console.log("No Data Found From Database");
+    //     sendHelpMessage(event);
+    // }
+    // }
+    else if (categoryName == "Sports") {
       if (categoryName == "Sports"){
         var senderID = event.sender.id;
         var messageData = {
