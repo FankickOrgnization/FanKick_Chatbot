@@ -144,9 +144,10 @@ function receivedMessage(event) {
 
       //var tb3;
         request({
-            uri: 'https://api.wit.ai/message?v=20160526&q='+ msgwit,
+            uri: 'https://api.wit.ai/message?v=20161020&q='+ msgwit,
             headers: {
-                "Authorization": "Bearer USTWU2HGSIYGK3JBQX6EM2UGEQOS26ZX"
+                //"Authorization": "Bearer USTWU2HGSIYGK3JBQX6EM2UGEQOS26ZX"
+              "Authorization":  "Bearer LZ7DCQVUW3FWMSF4MAD35CSYUCMOW2W4"
             }
         }, function(error, response) {
             if (error) {
