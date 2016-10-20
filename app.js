@@ -408,26 +408,26 @@ function questionsPacks(categoryName, event) {
                   "id": senderID
               },
               "message":{
-                  "text":rows[1].item_name,
+                  "text":rows[3].item_name,
                   "quick_replies":[
                     {
                       "content_type":"text",
-                      "title":rows[1].text1_content,
+                      "title":rows[3].text1_content,
                       "payload":"1"
                     },
                     {
                       "content_type":"text",
-                      "title":rows[1].text2_content,
+                      "title":rows[3].text2_content,
                       "payload":"2"
                     },
                     {
                       "content_type":"text",
-                      "title":rows[1].text3_content,
+                      "title":rows[3].text3_content,
                       "payload":"3"
                     },
                     {
                       "content_type":"text",
-                      "title":rows[1].text4_content,
+                      "title":rows[3].text4_content,
                       "payload":"4"
                     },
                     {
