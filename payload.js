@@ -439,6 +439,7 @@ const sendContentPacks = (categoryName,event) => {
                         "title": rows[i].name,
                         "image_url": rows[i].image_url,
                         //"item_url": rows[i].image_url,
+                        "subtitle": categoryName,
                         "buttons": [{
                             "type": "postback",
                             "title": "View",
