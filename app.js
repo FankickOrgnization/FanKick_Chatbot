@@ -100,7 +100,10 @@ function receivedpostback(messagingEvent) {
     if (isNaN(packId)) {
         //sendContentPacks(messageText, event);
         payloadText.sendContentPacks(categoryName, messagingEvent)
-    } else {
+    } else if (categoryName == "Quizzes") {
+        quizzesPacks(categoryName, messagingEvent);
+        console.log("categoryName########", categoryName);
+    }else {
         sendContentPackItems(packId, messagingEvent);
     }
     console.log("postback_sender_id:------", userid);
