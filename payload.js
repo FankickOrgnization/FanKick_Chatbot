@@ -265,7 +265,7 @@ const sendContentPacks = (categoryName,event) => {
                 for (var i = 0; i < rows.length; i++) { //Construct request body
                     var keyMap = {
                         "title": rows[i].name,
-                        "image_url": rows[i].imageurl,
+                        "image_url": rows[i].img_url,
                         //"item_url": rows[i].imageurl,
                         // "buttons": [{
                         //     "type": "web_url",
