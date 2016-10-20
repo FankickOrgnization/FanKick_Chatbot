@@ -434,7 +434,8 @@ const sendContentPacks = (categoryName,event) => {
             } else if (rows.length) {
                 var senderID = event.sender.id;
                 var contentList = [];
-
+                var datalength = rows.length;
+                if(datalength>5){
                 for (var i = 0; i < 5; i++) { //Construct request body
                     var keyMap = {
                         "title": rows[i].name,
@@ -455,6 +456,28 @@ const sendContentPacks = (categoryName,event) => {
                     };
                     contentList.push(keyMap);
                 }
+              }else{
+                for (var i = 0; i < datalength; i++) { //Construct request body
+                    var keyMap = {
+                        "title": rows[i].name,
+                        "image_url": rows[i].image_url,
+                        //"item_url": rows[i].image_url,
+                        "subtitle": categoryName,
+                        "buttons": [{
+                            "type": "postback",
+                            "title": "View",
+                            "payload": rows[i].id
+                        }
+                      //   // , {
+                      //   //     "type": "postback",
+                      //   //     "title": "Magazine",
+                      //   //     "payload": "USER_DEFINED_PAYLOAD"
+                      //   // }
+                      ]
+                    };
+                    contentList.push(keyMap);
+                }
+              }
                 var messageData = {
                     "recipient": {
                         "id": senderID
