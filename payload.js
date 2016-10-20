@@ -293,56 +293,57 @@ const sendContentPacks = (categoryName,event) => {
     //     sendHelpMessage(event);
     // }
     // }
-    else if (categoryName == "Sports") {
-      if (categoryName == "Sports"){
-        var senderID = event.sender.id;
-        var messageData = {
-            "recipient": {
-                "id": senderID
-            },
-            "message":{
-                "text":"Here is some cool and interesting stuff on sports.\n\nWhy not check them??",
-                "quick_replies":[
-                  {
-                    "content_type":"text",
-                    "title":"Quizzes",
-                    "payload":"Quizzes"
-                  },
-                  {
-                    "content_type":"text",
-                    "title":"Cricket",
-                    "payload":"Cricket"
-                  },
-                  {
-                    "content_type":"text",
-                    "title":"Football",
-                    "payload":"Football"
-                  },
-                  {
-                    "content_type":"text",
-                    "title":"Baseball",
-                    "payload":"Baseball"
-                  },
-                  {
-                    "content_type":"text",
-                    "title":"Basketball",
-                    "payload":"Basketball"
-                  },
-                  {
-                    "content_type":"text",
-                    "title":"Categories",
-                    "payload":"Categories"
-                  }
-
-                ]
-              }
-        }
-        callSendAPI(messageData,'https://graph.facebook.com/v2.6/592208327626213/messages');
-    }else {
-        console.log("No Data Found From Database");
-        sendHelpMessage(event);
-    }
-    }else if (categoryName == "Music") {
+    // else if (categoryName == "Sports") {
+    //   if (categoryName == "Sports"){
+    //     var senderID = event.sender.id;
+    //     var messageData = {
+    //         "recipient": {
+    //             "id": senderID
+    //         },
+    //         "message":{
+    //             "text":"Here is some cool and interesting stuff on sports.\n\nWhy not check them??",
+    //             "quick_replies":[
+    //               {
+    //                 "content_type":"text",
+    //                 "title":"Quizzes",
+    //                 "payload":"Quizzes"
+    //               },
+    //               {
+    //                 "content_type":"text",
+    //                 "title":"Cricket",
+    //                 "payload":"Cricket"
+    //               },
+    //               {
+    //                 "content_type":"text",
+    //                 "title":"Football",
+    //                 "payload":"Football"
+    //               },
+    //               {
+    //                 "content_type":"text",
+    //                 "title":"Baseball",
+    //                 "payload":"Baseball"
+    //               },
+    //               {
+    //                 "content_type":"text",
+    //                 "title":"Basketball",
+    //                 "payload":"Basketball"
+    //               },
+    //               {
+    //                 "content_type":"text",
+    //                 "title":"Categories",
+    //                 "payload":"Categories"
+    //               }
+    //
+    //             ]
+    //           }
+    //     }
+    //     callSendAPI(messageData,'https://graph.facebook.com/v2.6/592208327626213/messages');
+    // }else {
+    //     console.log("No Data Found From Database");
+    //     sendHelpMessage(event);
+    // }
+    // }
+    else if (categoryName == "Music") {
       if (categoryName == "Music"){
         var senderID = event.sender.id;
         var messageData = {
