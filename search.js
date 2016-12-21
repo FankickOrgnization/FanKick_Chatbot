@@ -98,11 +98,11 @@ var url = 'https://kgsearch.googleapis.com/v1/entities:search?query=' + category
         var senderID = event.sender.id;
         for (var i = 0; i < 10; i++) { //Construct request body
           console.log("--------:google Response data:-------- name ", rows[i].result.name);
-          // var name1 = rows[0].result.name;
-          // var name2 = rows[1].result.name;
-          // var name3 = rows[2].result.name;
-          // var name4 = rows[3].result.name;
-          // var name5 = rows[4].result.name;
+          var name1 = rows[0].result.name;
+          var name2 = rows[1].result.name;
+          var name3 = rows[2].result.name;
+          var name4 = rows[3].result.name;
+          var name5 = rows[4].result.name;
           // var keyMpa ={
           //       "content_type":"text",
           //       "title":"Categories",
@@ -162,7 +162,8 @@ var url = 'https://kgsearch.googleapis.com/v1/entities:search?query=' + category
                     "content_type":"text",
                     "title":name5.slice(0,20),
                     "payload":rows[4].result.name
-                  },
+                  }
+                  ,
                   {
                     "content_type":"text",
                     "title":name4.slice(0,20),
@@ -187,7 +188,7 @@ var url = 'https://kgsearch.googleapis.com/v1/entities:search?query=' + category
                     "content_type":"text",
                     "title":name4.slice(0,20),
                     "payload":rows[9].result.name
-                  },
+                  }
 
                 ]
               }
