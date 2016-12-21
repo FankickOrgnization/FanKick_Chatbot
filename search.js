@@ -116,7 +116,7 @@ var url = 'https://kgsearch.googleapis.com/v1/entities:search?query=' + category
           if(last4car == "film"){
               var keyMap = {
                               "content_type":"text",
-                              "title":rows[i].result.name.slice(0,20),
+                              "title":rows[i].result.name.substring(0,20),
                               "payload":rows[i].result.name
                             };
 
