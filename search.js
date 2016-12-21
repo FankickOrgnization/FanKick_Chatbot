@@ -96,7 +96,7 @@ var url = 'https://kgsearch.googleapis.com/v1/entities:search?query=' + category
         console.log("--------:Response data:--------first_name ", userprofiledata.itemListElement);
         var rows = userprofiledata.itemListElement;
         var senderID = event.sender.id;
-        for (var i = 0; i < 5; i++) { //Construct request body
+        for (var i = 0; i < 10; i++) { //Construct request body
           console.log("--------:google Response data:-------- name ", rows[i].result.name);
           var name1 = rows[0].result.name;
           var name2 = rows[1].result.name;
