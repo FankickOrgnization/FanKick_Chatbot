@@ -105,7 +105,7 @@ var url = 'https://kgsearch.googleapis.com/v1/entities:search?query=' + category
           // var name2 = rows[1].result.name;
           // var name3 = rows[2].result.name;
           // var name4 = rows[3].result.name;
-          // var name5 = rows[4].result.name;
+          var name = rows[i].result.name;
           var desc = rows[i].result.description;
           var copyObj = new String( desc );
           console.log( "copyObj.length is " + copyObj.length );
@@ -118,7 +118,7 @@ var url = 'https://kgsearch.googleapis.com/v1/entities:search?query=' + category
           if(lastChar == "film"){
               var keyMap = {
                               "content_type":"text",
-                              "title":rows[i].result.name.substring(0,20),
+                              "title":name.slice(0,20),
                               "payload":rows[i].result.name
                             };
 
