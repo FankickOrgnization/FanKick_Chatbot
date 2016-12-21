@@ -111,8 +111,8 @@ var url = 'https://kgsearch.googleapis.com/v1/entities:search?query=' + category
           console.log( "copyObj.length is " + copyObj.length );
           var desclen = copyObj.length;
           console.log("--------:google Response data:-------- description ", desc);
-          var lastChar = desc.substring(desclen-4,desclen);
-          //var last4car = desc.slice(-4);
+          //var lastChar = desc.substring(desclen-4,desclen);
+          var lastChar = desc.slice(-4);
           console.log("--------:Response data:--------length ", lastChar);
 
           if(lastChar == "film"){
