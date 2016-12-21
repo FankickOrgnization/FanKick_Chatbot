@@ -113,7 +113,7 @@ var url = 'https://kgsearch.googleapis.com/v1/entities:search?query=' + category
           //var last4car = desc.slice(-4);
           console.log("--------:Response data:--------length ", lastChar);
 
-          if(last4car == "film"){
+          if(lastChar == "film"){
               var keyMap = {
                               "content_type":"text",
                               "title":rows[i].result.name.substring(0,20),
