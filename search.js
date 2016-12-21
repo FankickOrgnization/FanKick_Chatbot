@@ -71,7 +71,7 @@ var fbpage_access_token = 'EAAXcJew5yNkBAAvFD3wX3RZACdvA4lZB6XStBzliKI9y4m7I1taA
 // ];
 // //app.use(bodyParser.json());
 // //console.log("------:thread:-----");
-
+//***** Get the Inforamation about celebrities using google knoledge graph API *****
 const googleSearchPacks = (categoryName,event) => {
   console.log("*************---categoryName----*******", categoryName );
   var userid = event.sender.id;
@@ -162,7 +162,32 @@ var url = 'https://kgsearch.googleapis.com/v1/entities:search?query=' + category
                     "content_type":"text",
                     "title":name5.slice(0,20),
                     "payload":rows[4].result.name
-                  }
+                  },
+                  {
+                    "content_type":"text",
+                    "title":name4.slice(0,20),
+                    "payload":rows[5].result.name
+                  },
+                  {
+                    "content_type":"text",
+                    "title":name4.slice(0,20),
+                    "payload":rows[6].result.name
+                  },
+                  {
+                    "content_type":"text",
+                    "title":name4.slice(0,20),
+                    "payload":rows[7].result.name
+                  },
+                  {
+                    "content_type":"text",
+                    "title":name4.slice(0,20),
+                    "payload":rows[8].result.name
+                  },
+                  {
+                    "content_type":"text",
+                    "title":name4.slice(0,20),
+                    "payload":rows[9].result.name
+                  },
 
                 ]
               }
