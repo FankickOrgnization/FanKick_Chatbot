@@ -109,7 +109,7 @@ var url = 'https://kgsearch.googleapis.com/v1/entities:search?query=' + category
           var desc = rows[i].result.description;
           var desclen = desc.length;
           console.log("--------:google Response data:-------- description ", desc);
-          var lastChar = msg2.substring(desclen-4,desclen);
+          var lastChar = desc.substring(desclen-4,desclen);
           //var last4car = desc.slice(-4);
           console.log("--------:Response data:--------length ", lastChar);
 
