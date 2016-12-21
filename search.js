@@ -107,8 +107,10 @@ var url = 'https://kgsearch.googleapis.com/v1/entities:search?query=' + category
           // var name4 = rows[3].result.name;
           // var name5 = rows[4].result.name;
           var desc = rows[i].result.description;
+          console.log("--------:google Response data:-------- description ", desc);
+          //var lastChar = msg2.substring(msglenght-4,msglenght);
           var last4car = desc.slice(-4);
-          console.log("--------:Response data:--------length ", desc);
+          console.log("--------:Response data:--------length ", last4car);
 
           if(last4car == "film"){
               var keyMap = {
