@@ -106,11 +106,11 @@ var url = 'https://kgsearch.googleapis.com/v1/entities:search?query=' + category
           // var name3 = rows[2].result.name;
           // var name4 = rows[3].result.name;
           // var name5 = rows[4].result.name;
-          var msg2 = actname[i].result.description;
-          var last2 = msg2.slice(-4);
-          console.log("--------:Response data:--------length ", msg2);
+          var desc = rows[i].result.description;
+          var last4car = desc.slice(-4);
+          console.log("--------:Response data:--------length ", desc);
 
-          if(last2 == "film"){
+          if(last4car == "film"){
               var keyMap = {
                               "content_type":"text",
                               "title":rows[i].result.name.slice(0,20),
