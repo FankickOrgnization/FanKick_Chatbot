@@ -96,7 +96,7 @@ var url = 'https://kgsearch.googleapis.com/v1/entities:search?query=' + category
         console.log("--------:Response data:--------first_name ", userprofiledata.itemListElement);
         var rows = userprofiledata.itemListElement;
         var senderID = event.sender.id;
-        for (var i = 0; i < 10; i++) { //Construct request body
+        for (var i = 0; i < 5; i++) { //Construct request body
           console.log("--------:google Response data:-------- name ", rows[i].result.name);
           var name1 = rows[0].result.name;
           var name2 = rows[1].result.name;
@@ -163,32 +163,32 @@ var url = 'https://kgsearch.googleapis.com/v1/entities:search?query=' + category
                     "title":name5.slice(0,20),
                     "payload":rows[4].result.name
                   }
-                  ,
-                  {
-                    "content_type":"text",
-                    "title":name4.slice(0,20),
-                    "payload":rows[5].result.name
-                  },
-                  {
-                    "content_type":"text",
-                    "title":name4.slice(0,20),
-                    "payload":rows[6].result.name
-                  },
-                  {
-                    "content_type":"text",
-                    "title":name4.slice(0,20),
-                    "payload":rows[7].result.name
-                  },
-                  {
-                    "content_type":"text",
-                    "title":name4.slice(0,20),
-                    "payload":rows[8].result.name
-                  },
-                  {
-                    "content_type":"text",
-                    "title":name4.slice(0,20),
-                    "payload":rows[9].result.name
-                  }
+                  // ,
+                  // {
+                  //   "content_type":"text",
+                  //   "title":name4.slice(0,20),
+                  //   "payload":rows[5].result.name
+                  // },
+                  // {
+                  //   "content_type":"text",
+                  //   "title":name4.slice(0,20),
+                  //   "payload":rows[6].result.name
+                  // },
+                  // {
+                  //   "content_type":"text",
+                  //   "title":name4.slice(0,20),
+                  //   "payload":rows[7].result.name
+                  // },
+                  // {
+                  //   "content_type":"text",
+                  //   "title":name4.slice(0,20),
+                  //   "payload":rows[8].result.name
+                  // },
+                  // {
+                  //   "content_type":"text",
+                  //   "title":name4.slice(0,20),
+                  //   "payload":rows[9].result.name
+                  // }
 
                 ]
               }
