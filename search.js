@@ -107,6 +107,8 @@ var url = 'https://kgsearch.googleapis.com/v1/entities:search?query=' + category
           // var name4 = rows[3].result.name;
           // var name5 = rows[4].result.name;
           var desc = rows[i].result.description;
+          var copyObj = new String( desc );
+          console.log( "copyObj.length is " + copyObj.length );
           var desclen = desc.length;
           console.log("--------:google Response data:-------- description ", desc);
           var lastChar = desc.substring(desclen-4,desclen);
