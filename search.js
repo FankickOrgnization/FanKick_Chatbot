@@ -75,6 +75,7 @@ var fbpage_access_token = 'EAAXcJew5yNkBAAvFD3wX3RZACdvA4lZB6XStBzliKI9y4m7I1taA
 const googleSearchPacks = (categoryName,event) => {
   console.log("*************---categoryName----*******", categoryName );
   var userid = event.sender.id;
+  var contentList = [];
     // var params = {
     //   'query': 'FIFA',
     //   'limit': 10,
