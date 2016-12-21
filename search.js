@@ -135,7 +135,7 @@ var url = 'https://kgsearch.googleapis.com/v1/entities:search?query=' + category
             },
 
             "message":{
-                "text":"Hi",
+                "text":'Hi are you search for ' + categoryName + '',
                 //"text":"msg",
                 "quick_replies":[
                   {
