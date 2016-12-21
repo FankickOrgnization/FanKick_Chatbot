@@ -95,6 +95,8 @@ var url = 'https://kgsearch.googleapis.com/v1/entities:search?query=' + category
         //console.log("--------:Response data:-------- ", JSON.stringify(body));
         console.log("--------:Response data:--------first_name ", userprofiledata.itemListElement);
         var rows = userprofiledata.itemListElement;
+        var rowlen = rows.length;
+        console.log("--------:Response data:--------length ", rowlen);
         var senderID = event.sender.id;
         for (var i = 0; i < 5; i++) { //Construct request body
           console.log("--------:google Response data:-------- name ", rows[i].result.name);
@@ -103,6 +105,24 @@ var url = 'https://kgsearch.googleapis.com/v1/entities:search?query=' + category
           var name3 = rows[2].result.name;
           var name4 = rows[3].result.name;
           var name5 = rows[4].result.name;
+
+          // for (var i = 0; i < moviesObj.length; i++) { //Construct request body
+          //     var keyMap = {
+          //                   "title": moviesObj[i].name,
+          //                   "image_url": moviesObj[i].imgurl,
+          //                             //"item_url": moviesObj[i].imgurl,
+          //                   "buttons": [{
+          //                               "type": "postback",
+          //                               "title": moviesObj[i].name,
+          //                               "payload": moviesObj[i].name
+          //                             }]
+          //                         };
+          //
+          //     contentList.push(keyMap);
+          // }
+
+
+
           // var keyMpa ={
           //       "content_type":"text",
           //       "title":"Categories",
