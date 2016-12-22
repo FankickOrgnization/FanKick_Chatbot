@@ -75,14 +75,13 @@ var fbpage_access_token = 'EAAXcJew5yNkBAAvFD3wX3RZACdvA4lZB6XStBzliKI9y4m7I1taA
 const googleSearchPacks = (categoryName,event) => {
   console.log("*************---categoryName----*******", categoryName );
   var userid = event.sender.id;
-  var contentList = [];
     // var params = {
     //   'query': 'FIFA',
     //   'limit': 10,
     //   'indent': true,
     //   'key' : 'AIzaSyCavmWhCL_wMeLAKrurcVPUdP0ztgubHZc',
     // };
-var url = 'https://kgsearch.googleapis.com/v1/entities:search?query=' + categoryName + '&key=AIzaSyCavmWhCL_wMeLAKrurcVPUdP0ztgubHZc&limit=100&indent=True'
+var url = 'https://kgsearch.googleapis.com/v1/entities:search?query=' + categoryName + '&key=AIzaSyCavmWhCL_wMeLAKrurcVPUdP0ztgubHZc&limit=5&indent=True'
   //  var url = 'https://kgsearch.googleapis.com/v1/entities:search' + userid + '?fields=first_name,last_name,locale,timezone,gender&access_token=' + fbpage_access_token + '';
 //https://kgsearch.googleapis.com/v1/entities:search?query=' + userid + '&key=AIzaSyCavmWhCL_wMeLAKrurcVPUdP0ztgubHZc&limit=10&indent=True
 
@@ -99,33 +98,30 @@ var url = 'https://kgsearch.googleapis.com/v1/entities:search?query=' + category
         var rowlen = rows.length;
         console.log("--------:Response data:--------length ", rowlen);
         var senderID = event.sender.id;
-        for (var i = 0; i < 10; i++) { //Construct request body
+        for (var i = 0; i < 5; i++) { //Construct request body
           console.log("--------:google Response data:-------- name ", rows[i].result.name);
-          // var name1 = rows[0].result.name;
-          // var name2 = rows[1].result.name;
-          // var name3 = rows[2].result.name;
-          // var name4 = rows[3].result.name;
-          var name = rows[i].result.name;
-          var desc = rows[i].result.description;
-          var copyObj = new String( desc );
-          console.log( "copyObj.length is " + copyObj.length );
-          var desclen = copyObj.length;
-          console.log("--------:google Response data:-------- description ", desc);
-          //var lastChar = desc.substring(desclen-4,desclen);
-          var lastChar = desc.slice(-4);
-          console.log("--------:Response data:--------length ", lastChar);
+          var name1 = rows[0].result.name;
+          var name2 = rows[1].result.name;
+          var name3 = rows[2].result.name;
+          var name4 = rows[3].result.name;
+          var name5 = rows[4].result.name;
 
-          if(lastChar == "film"){
-              var keyMap = {
-                              "content_type":"text",
-                              "title":name.slice(0,20),
-                              "payload":rows[i].result.name
-                            };
-
-              contentList.push(keyMap);
+          // for (var i = 0; i < moviesObj.length; i++) { //Construct request body
+          //     var keyMap = {
+          //                   "title": moviesObj[i].name,
+          //                   "image_url": moviesObj[i].imgurl,
+          //                             //"item_url": moviesObj[i].imgurl,
+          //                   "buttons": [{
+          //                               "type": "postback",
+          //                               "title": moviesObj[i].name,
+          //                               "payload": moviesObj[i].name
+          //                             }]
+          //                         };
+          //
+          //     contentList.push(keyMap);
+          // }
 
 
-            }
 
           // var keyMpa ={
           //       "content_type":"text",
@@ -161,61 +157,60 @@ var url = 'https://kgsearch.googleapis.com/v1/entities:search?query=' + category
             "message":{
                 "text":'I assume that you are a fan of ' + categoryName + ' browse the amazing stuff we have on ' + categoryName + '',
                 //"text":"msg",
-                "quick_replies":contentList
-                // [
-                //   {
-                //     "content_type":"text",
-                //     "title":name1.slice(0,20),
-                //     "payload":rows[0].result.name
-                //   },
-                //   {
-                //     "content_type":"text",
-                //     "title":name2.slice(0,20),
-                //     "payload":rows[1].result.name
-                //   },
-                //   {
-                //     "content_type":"text",
-                //     "title":name3.slice(0,20),
-                //     "payload":rows[2].result.name
-                //   },
-                //   {
-                //     "content_type":"text",
-                //     "title":name4.slice(0,20),
-                //     "payload":rows[3].result.name
-                //   },
-                //   {
-                //     "content_type":"text",
-                //     "title":name5.slice(0,20),
-                //     "payload":rows[4].result.name
-                //   }
-                //   // ,
-                //   // {
-                //   //   "content_type":"text",
-                //   //   "title":name4.slice(0,20),
-                //   //   "payload":rows[5].result.name
-                //   // },
-                //   // {
-                //   //   "content_type":"text",
-                //   //   "title":name4.slice(0,20),
-                //   //   "payload":rows[6].result.name
-                //   // },
-                //   // {
-                //   //   "content_type":"text",
-                //   //   "title":name4.slice(0,20),
-                //   //   "payload":rows[7].result.name
-                //   // },
-                //   // {
-                //   //   "content_type":"text",
-                //   //   "title":name4.slice(0,20),
-                //   //   "payload":rows[8].result.name
-                //   // },
-                //   // {
-                //   //   "content_type":"text",
-                //   //   "title":name4.slice(0,20),
-                //   //   "payload":rows[9].result.name
-                //   // }
-                //
-                // ]
+                "quick_replies":[
+                  {
+                    "content_type":"text",
+                    "title":name1.slice(0,20),
+                    "payload":rows[0].result.name
+                  },
+                  {
+                    "content_type":"text",
+                    "title":name2.slice(0,20),
+                    "payload":rows[1].result.name
+                  },
+                  {
+                    "content_type":"text",
+                    "title":name3.slice(0,20),
+                    "payload":rows[2].result.name
+                  },
+                  {
+                    "content_type":"text",
+                    "title":name4.slice(0,20),
+                    "payload":rows[3].result.name
+                  },
+                  {
+                    "content_type":"text",
+                    "title":name5.slice(0,20),
+                    "payload":rows[4].result.name
+                  }
+                  // ,
+                  // {
+                  //   "content_type":"text",
+                  //   "title":name4.slice(0,20),
+                  //   "payload":rows[5].result.name
+                  // },
+                  // {
+                  //   "content_type":"text",
+                  //   "title":name4.slice(0,20),
+                  //   "payload":rows[6].result.name
+                  // },
+                  // {
+                  //   "content_type":"text",
+                  //   "title":name4.slice(0,20),
+                  //   "payload":rows[7].result.name
+                  // },
+                  // {
+                  //   "content_type":"text",
+                  //   "title":name4.slice(0,20),
+                  //   "payload":rows[8].result.name
+                  // },
+                  // {
+                  //   "content_type":"text",
+                  //   "title":name4.slice(0,20),
+                  //   "payload":rows[9].result.name
+                  // }
+
+                ]
               }
             }
          callSendAPI(messageData,'https://graph.facebook.com/v2.6/592208327626213/messages');
