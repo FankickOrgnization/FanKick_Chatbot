@@ -125,7 +125,7 @@ const sendContentPacks = (categoryName,event) => {
                 var senderID = event.sender.id;
                 var contentList = [];
 
-                for (var i = 0; i < rows.length; i++) { //Construct request body
+                for (var i = 0; i < 5; i++) { //Construct request body
                     var keyMap = {
                         "title": rows[i].name,
                         "image_url": rows[i].img_url,
