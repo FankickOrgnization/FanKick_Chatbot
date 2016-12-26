@@ -8,7 +8,7 @@ const crypto = require('crypto');
 const thread = require('./thread.js');
 const payloadText = require('./payload.js');
 const searchText = require('./search.js');
-const bot = require('./wit.js');
+//const bot = require('./wit.js');
 
 var pool = mysql.createPool({
     connectionLimit : 2,

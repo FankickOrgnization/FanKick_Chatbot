@@ -207,6 +207,6 @@ module.exports = {
   // value_123 : value_123,
   // witvalue : witvalue,
   // getWit: getWit,
-  getwitmsg: getwitmsg,
+  // getwitmsg: getwitmsg,
   //getwitmessageText: getwitmessageText
 };
