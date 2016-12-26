@@ -193,8 +193,8 @@ function receivedMessage(event) {
               console.log("value************5", td3);
               msgwit_value = td3;
               console.log('******msgwit_value', msgwit_value);
-            //  bot.getwitmsg(wit_res_msg_id,msgwit_value,msgwit);
-              receivedtextmessage(msgwit_value, event);
+             bot.getwitmsg(wit_res_msg_id,msgwit_value,msgwit);
+              //receivedtextmessage(msgwit_value, event);
             //  bot.wittest(msgwit_value);
             }
 

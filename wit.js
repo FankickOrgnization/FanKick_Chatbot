@@ -186,7 +186,7 @@ request({
 
 // var value_123 = witvalue;
 // console.log("Unable to send message value_123.",value_123 );
-// module.exports = {
+module.exports = {
 //     test: function() {
 //         console.log('var is', this.myvar);
 //     },
@@ -202,11 +202,11 @@ request({
 //   // }
 //   return "initValue";
 // },
-  //wittest: wittest,
-  //name : name,
-  //value_123 : value_123,
-  //witvalue : witvalue,
-  //getWit: getWit,
-  //getwitmsg: getwitmsg,
+  // wittest: wittest,
+  // name : name,
+  // value_123 : value_123,
+  // witvalue : witvalue,
+  // getWit: getWit,
+  getwitmsg: getwitmsg,
   //getwitmessageText: getwitmessageText
 };
