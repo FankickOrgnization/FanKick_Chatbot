@@ -5,7 +5,7 @@ const thread = require('./thread.js');
 //var app = express();
 var mysql = require('mysql');
 var pool = mysql.createPool({
-    connectionLimit : 2,
+    connectionLimit : 1,
     host: 'ap-cdbr-azure-southeast-a.cloudapp.net',
     user: 'bb603e8108da6e',
     password: '3e384329',
