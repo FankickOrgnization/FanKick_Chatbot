@@ -5,9 +5,9 @@ var bodyParser = require('body-parser');
 var mysql = require('mysql');
 const fetch = require('node-fetch');
 const crypto = require('crypto');
-const thread = require('.modules/thread.js');
-const payloadText = require('.modules/payload.js');
-const searchText = require('.modules/search.js');
+const thread = require('./modules/thread.js');
+const payloadText = require('./modules/payload.js');
+const searchText = require('./modules/search.js');
 //const bot = require('./wit.js');
 
 var pool = mysql.createPool({
