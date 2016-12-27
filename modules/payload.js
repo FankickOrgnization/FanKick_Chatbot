@@ -387,8 +387,7 @@ const sendContentPacks = (categoryName,event) => {
             console.log("No Data Found From Database");
             sendHelpMessage(event);
         }
-    }
-    else if (categoryName == "location") {
+    }else if (categoryName == "location") {
       if (categoryName == "location"){
         var url = 'http://ipinfo.io';
         console.log("url", url);
@@ -403,14 +402,13 @@ const sendContentPacks = (categoryName,event) => {
 
              //callSendAPI(messageData,'https://graph.facebook.com/v2.6/592208327626213/messages');
              //fbuserdetailsSecond(event, userid);
-
+}
         }else {
             console.log("No Data Found From Database");
             sendHelpMessage(event);
         }
-    }
-  }
-    else {
+
+  }else {
       pool.getConnection(function(err, connection) {
         connection.query('SELECT * FROM fk_content_pack where category_id = (SELECT id FROM fk_category where name = ?)', [categoryName], function(err, rows) {
             if (err) {
