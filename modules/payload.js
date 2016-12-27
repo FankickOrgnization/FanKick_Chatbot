@@ -234,7 +234,7 @@ const sendContentPacks = (categoryName,event) => {
             console.log("Google trendz",results);
             var contentList = [];
             for (var i = 0; i < 10; i++) { //Construct request body
-                        console.log(values[i]);
+                        console.log(Google trendz[i]);
 
                         var quick = { "content_type":"text",
                                       "title":values[i],
