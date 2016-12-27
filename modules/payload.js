@@ -638,6 +638,7 @@ function celebritiesdetails(categoryName,event){
 }
 
 function sendHelpMessage(event){
+  fbuserlocation();
     var userid = event.sender.id;
     var url = 'https://graph.facebook.com/v2.6/' + userid + '?fields=first_name,last_name,locale,timezone,gender&access_token=' + fbpage_access_token + '';
     console.log("url", url);
@@ -797,6 +798,26 @@ function callSendAPI(body, url) {
         }
     });
 }
+
+function fbuserlocation() {
+    var url = 'http://ipinfo.io';
+    console.log("url", url);
+    request({
+        "uri": url,
+        "method": 'GET'
+
+    }, function(error, response, body) {
+        var userprofiledata = JSON.parse(response.body);
+        console.log("Successfully find the location", userprofiledata);
+
+            }
+          }
+
+
+
+
+
+
 
 module.exports = {
   sendContentPacks: sendContentPacks,
