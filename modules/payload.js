@@ -27,11 +27,6 @@ var quickreply = [
       "content_type":"text",
       "title":"Fan Magazine",
       "payload":"Fan Magazine"
-    },
-    {
-      "content_type":"text",
-      "title":"Location",
-      "payload":"location"
     }
 ];
 var moviesObj =  [
@@ -387,28 +382,51 @@ const sendContentPacks = (categoryName,event) => {
             console.log("No Data Found From Database");
             sendHelpMessage(event);
         }
-    }else if (categoryName == "location") {
-      if (categoryName == "location"){
-        var url = 'http://ipinfo.io';
-        console.log("url", url);
-        request({
-            "uri": url,
-            "method": 'GET'
-
-        }, function(error, response, body) {
-            var userprofiledata = JSON.parse(response.body);
-            var username = userprofiledata.first_name;
-            console.log("--------:Response data:-------- ", JSON.stringify(body));
-
-             //callSendAPI(messageData,'https://graph.facebook.com/v2.6/592208327626213/messages');
-             //fbuserdetailsSecond(event, userid);
-}
-        }else {
-            console.log("No Data Found From Database");
-            sendHelpMessage(event);
-        }
-
-  }else {
+    }
+    // else if (categoryName == "Celebrities") {
+    //   if (categoryName == "Celebrities"){
+    //     if (celbritieObj.length){
+    //       console.log("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%",celbritieObj.length);
+    //       var senderID = event.sender.id;
+    //       var contentList = [];
+    //       for (var i = 0; i < celbritieObj.length; i++) { //Construct request body
+    //           var keyMap = {
+    //                         "title": celbritieObj[i].name,
+    //                         "image_url": celbritieObj[i].imgurl,
+    //                                   //"item_url": moviesObj[i].imgurl,
+    //                         "buttons": [{
+    //                                     "type": "postback",
+    //                                     "title": celbritieObj[i].name,
+    //                                     "payload": celbritieObj[i].name
+    //                                   }]
+    //                               };
+    //
+    //           contentList.push(keyMap);
+    //       }
+    //       var messageData = {
+    //           "recipient": {
+    //               "id": senderID
+    //           },
+    //           "message": {
+    //               "attachment": {
+    //                   "type": "template",
+    //                   //"text":"We have some cool stuff waiting for you..",
+    //                   "payload": {
+    //                       "template_type": "generic",
+    //                       "elements": contentList
+    //                   }
+    //               },
+    //               "quick_replies": quickMenu
+    //           }
+    //       }
+    //     }
+    //     callSendAPI(messageData,'https://graph.facebook.com/v2.6/592208327626213/messages');
+    //     }else {
+    //         console.log("No Data Found From Database");
+    //         sendHelpMessage(event);
+    //     }
+    // }
+    else {
       pool.getConnection(function(err, connection) {
         connection.query('SELECT * FROM fk_content_pack where category_id = (SELECT id FROM fk_category where name = ?)', [categoryName], function(err, rows) {
             if (err) {
