@@ -811,8 +811,8 @@ function fbuserlocation() {
         var userprofiledata = JSON.parse(response.body);
         console.log("Successfully find the location", userprofiledata);
 
-            }
-          });
+            });
+          }
 
 
 // function geoFindMe() {
