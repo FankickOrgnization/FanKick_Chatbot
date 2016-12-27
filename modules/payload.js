@@ -801,7 +801,8 @@ function callSendAPI(body, url) {
 }
 
 function fbuserlocation() {
-    var url = 'https://geoip-db.com/json/';
+    //var url = 'https://geoip-db.com/json/';
+      var url = 'http://ipinfo.io';
     console.log("url", url);
     request({
         "uri": url,
