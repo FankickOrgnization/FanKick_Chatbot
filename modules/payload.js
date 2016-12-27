@@ -283,7 +283,11 @@ const sendContentPacks = (categoryName,event) => {
                       "content_type":"text",
                       "title":"Categories",
                       "payload":"Categories"
+                    },
+                    {
+                      "content_type":"location",
                     }
+
                   ]
                 }
         }
