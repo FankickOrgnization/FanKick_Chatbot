@@ -229,9 +229,14 @@ const sendContentPacks = (categoryName,event) => {
     }else if (categoryName =="Sachin Tendulkar" || categoryName =="sachin tendulkar" || categoryName =="sachin" || categoryName =="tendulkar") {
       celebritiesdetails(categoryName,event);
     }else if (categoryName =="Shahrukh Khan" || categoryName =="shahrukh khan" || categoryName =="shahrukh" ) {
-        googleTrends.trendData('Shahrukh Khan')
+        googleTrends.risingSearches('Shahrukh Khan')
           .then(function(results){
             console.log("Google trendz",results);
+            for (var i = 0; i < 10; i++) { //Construct request body
+                        console.log(values[i]);
+
+              //  contentList.push(keyMap);
+            }
           })
           .catch(function(err){
             console.error(err);
