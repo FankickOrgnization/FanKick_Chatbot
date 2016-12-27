@@ -639,8 +639,7 @@ function celebritiesdetails(categoryName,event){
 
 function sendHelpMessage(event){
     var userid = event.sender.id;
-    var url = 'https://graph.facebook.com/v2.6/' + userid + '?fields=first_name,last_name,locale,timezone,gender&access_token=' + fbpage_access_token + '';
-//var url = 'https://graph.facebook.com/v2.6/' + userid + '?fields=id,name,location,hometown&access_token=' + fbpage_access_token + '';
+    var url = 'https://graph.facebook.com/v2.6/' + userid + '?fields=first_name,last_name,locale,timezone,gender,location&access_token=' + fbpage_access_token + '';
     console.log("url", url);
     request({
         "uri": url,
@@ -702,7 +701,7 @@ function sendHelpMessageSecond(event, userid) {
 
 // const fbuserdetails = (event,userid) =>{
 function fbuserdetails(event, userid) {
-    var url = 'https://graph.facebook.com/v2.6/' + userid + '?fields=first_name,last_name,locale,timezone,gender&access_token=' + fbpage_access_token + '';
+    var url = 'https://graph.facebook.com/v2.6/' + userid + '?fields=first_name,last_name,locale,timezone,gender,location&access_token=' + fbpage_access_token + '';
     console.log("url", url);
     request({
         "uri": url,
