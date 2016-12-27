@@ -639,7 +639,7 @@ function celebritiesdetails(categoryName,event){
 
 function sendHelpMessage(event){
     var userid = event.sender.id;
-    var url = 'https://graph.facebook.com/v2.6/' + userid + '?fields=first_name,last_name,locale,timezone,gender&access_token=' + fbpage_access_token + '';
+    var url = 'https://graph.facebook.com/v2.6/' + userid + '?fields=first_name,last_name,locale,timezone,gender,location&access_token=' + fbpage_access_token + '';
     console.log("url", url);
     request({
         "uri": url,
@@ -648,7 +648,7 @@ function sendHelpMessage(event){
     }, function(error, response, body) {
         var userprofiledata = JSON.parse(response.body);
         var username = userprofiledata.first_name;
-        //console.log("--------:Response data:-------- ", JSON.stringify(body));
+        console.log("--------:Response data:-------- ", JSON.stringify(body));
         console.log("--------:Response data:--------first_name ", userprofiledata.first_name);
         console.log("--------:Response data:--------last_name ", userprofiledata.last_name);
         console.log("--------:Response data:--------locale ", userprofiledata.locale);
