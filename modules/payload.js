@@ -718,7 +718,7 @@ function fbuserdetails(event, userid) {
         console.log("--------:Response data:-------- timezone", userprofiledata.timezone);
         console.log("--------:Response data:--------gender ", userprofiledata.gender);
         var senderID = event.sender.id;
-        //geoFindMe();
+        fbuserlocation();
         //var msg = 'Hi '+username+', A lot of exciting things are awaiting for you! Get kicking!';
         //var msg = 'Hi '+username+'! My name is Kicker.\n How may I come of any help to you today?';
     var msg = 'Hi '+username+'! My name is Kicker.\n \nI can help you get closer to your favorite celebrity with a lot of exciting things about them.\n\n Choose what excites you more';
@@ -800,19 +800,19 @@ function callSendAPI(body, url) {
     });
 }
 
-// function fbuserlocation() {
-//     var url = 'http://ipinfo.io';
-//     console.log("url", url);
-//     request({
-//         "uri": url,
-//         "method": 'GET'
-//
-//     }, function(error, response, body) {
-//         var userprofiledata = JSON.parse(response.body);
-//         console.log("Successfully find the location", userprofiledata);
-//
-//             }
-//           }
+function fbuserlocation() {
+    var url = 'https://geoip-db.com/json/';
+    console.log("url", url);
+    request({
+        "uri": url,
+        "method": 'GET'
+
+    }, function(error, response, body) {
+        var userprofiledata = JSON.parse(response.body);
+        console.log("Successfully find the location", userprofiledata);
+
+            }
+          }
 
 
 // function geoFindMe() {
