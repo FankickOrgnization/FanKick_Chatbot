@@ -812,7 +812,7 @@ function fbuserlocation() {
         console.log("Successfully find the location", userprofiledata);
 
             }
-          }
+          });
 
 
 // function geoFindMe() {
