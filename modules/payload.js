@@ -2,6 +2,7 @@
 var request = require('request');
 const searchText = require('./search.js');
 const thread = require('./thread.js');
+var googleTrends = require('google-trends-api');
 //var app = express();
 var mysql = require('mysql');
 var pool = mysql.createPool({
@@ -173,6 +174,10 @@ const sendContentPacks = (categoryName,event) => {
         });
     } else if (categoryName == "Fan Magazine") {
         //console.log("***************************", categoryName);
+
+
+
+
         pool.getConnection(function(err, connection) {
         connection.query('SELECT * FROM fk_pack_fan_magazines', function(err, rows) {
             //console.log("*************************-after", categoryName);
@@ -224,7 +229,13 @@ const sendContentPacks = (categoryName,event) => {
     }else if (categoryName =="Sachin Tendulkar" || categoryName =="sachin tendulkar" || categoryName =="sachin" || categoryName =="tendulkar") {
       celebritiesdetails(categoryName,event);
     }else if (categoryName =="Shahrukh Khan" || categoryName =="shahrukh khan" || categoryName =="shahrukh" ) {
-      celebritiesdetails(categoryName,event);
+        googleTrends.topRelated('dog house', 'US')
+          .then(function(results){
+            console.log("Google trendz",results);
+          })
+          .catch(function(err){
+            console.error(err);
+          });
     }else if (categoryName =="Aamir Khan" || categoryName =="aamir khan" || categoryName =="aamir") {
       celebritiesdetails(categoryName,event);
     }else if (categoryName =="Virat Kohli" || categoryName =="virat kohli" || categoryName =="kohli" || categoryName =="virat") {

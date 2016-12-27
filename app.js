@@ -8,6 +8,7 @@ const crypto = require('crypto');
 const thread = require('./modules/thread.js');
 const payloadText = require('./modules/payload.js');
 const searchText = require('./modules/search.js');
+var googleTrends = require('google-trends-api');
 //const bot = require('./wit.js');
 
 var pool = mysql.createPool({
