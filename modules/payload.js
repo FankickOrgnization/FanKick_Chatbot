@@ -232,11 +232,31 @@ const sendContentPacks = (categoryName,event) => {
         googleTrends.risingSearches('Shahrukh Khan')
           .then(function(results){
             console.log("Google trendz",results);
+            var contentList = [];
             for (var i = 0; i < 10; i++) { //Construct request body
                         console.log(values[i]);
 
-              //  contentList.push(keyMap);
+                        var quick = { "content_type":"text",
+                                      "title":values[i],
+                                      "payload":values[i]
+                                    }
+
+               contentList.push(quick);
             }
+            console.log(values[1]);
+            console.log(values[2]);
+            var messageData = {
+                "recipient": {
+                    "id": senderID
+                },
+
+                "message":{
+                    "text":'I assume that you are a fan of ' + categoryName + ' browse the amazing stuff we have on ' + categoryName + '',
+                    //"text":"msg",
+                    "quick_replies":contentList
+                  }
+                }
+
           })
           .catch(function(err){
             console.error(err);
