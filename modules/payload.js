@@ -243,8 +243,8 @@ const sendContentPacks = (categoryName,event) => {
 
                contentList.push(quick);
             }
-            console.log(values[1]);
-            console.log(values[2]);
+            console.log(values.Google trendz[1]);
+            console.log(values.Google trendz[2]);
             var messageData = {
                 "recipient": {
                     "id": senderID
