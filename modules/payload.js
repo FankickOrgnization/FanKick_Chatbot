@@ -229,7 +229,7 @@ const sendContentPacks = (categoryName,event) => {
     }else if (categoryName =="Sachin Tendulkar" || categoryName =="sachin tendulkar" || categoryName =="sachin" || categoryName =="tendulkar") {
       celebritiesdetails(categoryName,event);
     }else if (categoryName =="Shahrukh Khan" || categoryName =="shahrukh khan" || categoryName =="shahrukh" ) {
-        googleTrends.topRelated('dog house', 'US')
+        googleTrends.trendData('Shahrukh Khan')
           .then(function(results){
             console.log("Google trendz",results);
           })
