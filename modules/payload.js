@@ -248,57 +248,10 @@ const sendContentPacks = (categoryName,event) => {
           console.error(err);
         });
     }else if (categoryName =="Shahrukh Khan" || categoryName =="shahrukh khan" || categoryName =="shahrukh" ) {
-        googleTrends.risingSearches('Shahrukh Khan')
-          .then(function(results){
-            console.log("Google trendz",results);
-            var googleTrends_result = results;
-              for(var i in googleTrends_result){
-                console.log(i.value); // alerts key
-                console.log(googleTrends_result[i]); //alerts key's value
-                var googleTrends_result_obj = googleTrends_result[i]
-              }
-              var aaa=JSON.stringify(googleTrends_result_obj);
-              // for(var i=0;i<10;i++){
-              //   console.log("dataaaaaaaaaa.....",aaa[i].value);
-              // }
-              // var areas = [{"news":"1"}, {"story":"1"}]
-              // console.log(areas)
-              var a = [];
-              Object.keys(googleTrends_result_obj).forEach(function(key) {
-                  console.log(key + ':----- ' + googleTrends_result_obj[key]);
-                  var myArray = key;
-                  console.log(myArray + ':----- ' + googleTrends_result_obj[key]);
-                  a.push(myArray);
-              });
-              console.log("**************************",a);
-              //var myArray = ["a","b","c","d"];
-// for (let item of aaa) {
-//   console.log("**************************",item)
-// }
-//
-// //var myArray = ["a","b","c","d"];
-// for (var key in aaa) {
-//   console.log("key: %o, value: %o", key, aaa[key])
-// }
-
-              // aaa.forEach(function(e) {
-              // Object.keys(e).forEach(function(key) {
-              // var value = e[key]
-              // console.log(key)
-              // console.log(value)
-              // })
-              // })
 
 
-            //console.log(Object.keys(googleTrends_result));
-            // for ( property in googleTrends_result ) {
-            //   console.log( property ); // Outputs: foo, fiz or fiz, foo
-            // }
-            //console.log("googleTrends_result",googleTrends_result);
-          })
-          .catch(function(err){
-            console.error(err);
-          });
+
+          googletrendsfun(categoryName,event);
     }else if (categoryName =="Aamir Khan" || categoryName =="aamir khan" || categoryName =="aamir" || categoryName == "dangal" || categoryName == "Dangal") {
       //celebritiesdetails(categoryName,event);
       googlegraph(categoryName,event);
@@ -588,6 +541,80 @@ const sendContentPacks = (categoryName,event) => {
         });
     }
 }
+
+
+googletrendsfun(categoryName,event){
+  googleTrends.risingSearches(categoryName)
+    .then(function(results){
+      console.log("Google trendz",results);
+      var googleTrends_result = results;
+        // for(var i in googleTrends_result){
+        //   console.log(i.value); // alerts key
+        //   console.log(googleTrends_result[i]); //alerts key's value
+        //   var googleTrends_result_obj = googleTrends_result[i]
+        // }
+        var aaa=JSON.stringify(googleTrends_result_obj);
+        var googleTrends_result_obj_name = [];
+        Object.keys(googleTrends_result_obj).forEach(function(key) {
+            console.log(key + ':----- ' + googleTrends_result_obj[key]);
+            var myArray = key;
+            console.log(myArray + ':----- ' + googleTrends_result_obj[key]);
+            googleTrends_result_obj_name.push(myArray);
+        });
+        console.log("**************************",googleTrends_result_obj_name);
+        var messageData = {
+            "recipient": {
+                "id": senderID
+            },
+            "message":{
+                "text":categoryName,
+                "quick_replies":[
+                  {
+                    "content_type":"text",
+                    "title":googleTrends_result_obj_name[4],
+                    "payload":googleTrends_result_obj_name[4]
+                  },
+                  {
+                    "content_type":"text",
+                    "title":googleTrends_result_obj_name[5],
+                    "payload":googleTrends_result_obj_name[5]
+                  },
+                  {
+                    "content_type":"text",
+                    "title":googleTrends_result_obj_name[6],
+                    "payload":googleTrends_result_obj_name[6]
+                  },
+                  {
+                    "content_type":"text",
+                    "title":googleTrends_result_obj_name[7],
+                    "payload":googleTrends_result_obj_name[7]
+                  },
+                  {
+                    "content_type":"text",
+                    "title":googleTrends_result_obj_name[8],
+                    "payload":googleTrends_result_obj_name[8]
+                  },
+                  {
+                    "content_type":"text",
+                    "title":"Categories",
+                    "payload":"Categories"
+                  }
+                ]
+              }
+        }
+        callSendAPI(messageData,'https://graph.facebook.com/v2.6/592208327626213/messages');
+
+    })
+    .catch(function(err){
+      console.error(err);
+      sendHelpMessage(event);
+    });
+}
+
+
+
+
+
 function quizzes(event){
   var senderID = event.sender.id;
   // if(categoryName == "Content Pack 1"){
