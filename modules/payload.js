@@ -225,7 +225,8 @@ const sendContentPacks = (categoryName,event) => {
         });
         });
     } else if (categoryName == "pavan kalyan" || categoryName == "Pavan Kalyan" || categoryName == "Chiranjeevi" || categoryName == "Kalyan"|| categoryName == "Pawan Kalyan") {
-      celebritiesdetails(categoryName,event);
+      //celebritiesdetails(categoryName,event);
+      googlegraph(categoryName,event)
     }else if (categoryName =="Sachin Tendulkar" || categoryName =="sachin tendulkar" || categoryName =="sachin" || categoryName =="tendulkar") {
       googleTrends.risingSearches('Shahrukh Khan')
         .then(function(results){
