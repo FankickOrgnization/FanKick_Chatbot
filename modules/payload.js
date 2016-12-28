@@ -248,9 +248,6 @@ const sendContentPacks = (categoryName,event) => {
           console.error(err);
         });
     }else if (categoryName =="Shahrukh Khan" || categoryName =="shahrukh khan" || categoryName =="shahrukh" ) {
-
-
-
           googletrendsfun(categoryName,event);
     }else if (categoryName =="Aamir Khan" || categoryName =="aamir khan" || categoryName =="aamir" || categoryName == "dangal" || categoryName == "Dangal") {
       //celebritiesdetails(categoryName,event);
