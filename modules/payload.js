@@ -706,6 +706,7 @@ function celebritiesdetails(categoryName,event){
 
 function googlegraph(categoryName,event){
   console.log("*************---categoryName----*******", categoryName );
+  var contentList = [];
   var userid = event.sender.id;
     // var params = {
     //   'query': 'FIFA',
@@ -737,6 +738,9 @@ var url = 'https://kgsearch.googleapis.com/v1/entities:search?query=' + category
           var name3 = rows[2].result.name;
           var name4 = rows[3].result.name;
           var name5 = rows[4].result.name;
+          var namesfromgoogle = {rows[i].result.name};
+          contentList.push(namesfromgoogle);
+
 
           // for (var i = 0; i < moviesObj.length; i++) { //Construct request body
           //     var keyMap = {
@@ -779,6 +783,7 @@ var url = 'https://kgsearch.googleapis.com/v1/entities:search?query=' + category
             // };
             // contentList.push(keyMap);
         }
+        console.log('contentList',contentList);
         //var msg = 'Hey '+username+', How are you? \n \nDid you check these amazingly cool stuff on Fankick?';
         //console.log("--------:Response data:--------gender ", msg);
         var messageData = {
