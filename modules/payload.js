@@ -232,7 +232,7 @@ const sendContentPacks = (categoryName,event) => {
         googleTrends.risingSearches('Shahrukh Khan')
           .then(function(results){
             console.log("Google trendz",results);
-            var googleTrends_result =   JSON.parse(results);
+            var googleTrends_result = results;
             console.log("googleTrends_result",googleTrends_result);
           })
           .catch(function(err){
