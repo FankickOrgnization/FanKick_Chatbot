@@ -233,7 +233,7 @@ const sendContentPacks = (categoryName,event) => {
           .then(function(results){
             console.log("Google trendz",results);
             var googleTrends_result =   JSON.parse(results);
-            console.log("googleTrends_result",googleTrends_result);         
+            console.log("googleTrends_result",googleTrends_result);
           })
           .catch(function(err){
             console.error(err);
@@ -740,7 +740,7 @@ function fbuserdetails(event, userid) {
         console.log("--------:Response data:-------- timezone", userprofiledata.timezone);
         console.log("--------:Response data:--------gender ", userprofiledata.gender);
         var senderID = event.sender.id;
-        fbuserlocation();
+        //fbuserlocation();
         //var msg = 'Hi '+username+', A lot of exciting things are awaiting for you! Get kicking!';
         //var msg = 'Hi '+username+'! My name is Kicker.\n How may I come of any help to you today?';
     var msg = 'Hi '+username+'! My name is Kicker.\n \nI can help you get closer to your favorite celebrity with a lot of exciting things about them.\n\n Choose what excites you more';
