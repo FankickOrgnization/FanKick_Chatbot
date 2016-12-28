@@ -233,14 +233,14 @@ const sendContentPacks = (categoryName,event) => {
           .then(function(results){
             console.log("Google trendz",results);
             var googleTrends_result = results;
-              // for(var i in googleTrends_result){
-              //   console.log(i); // alerts key
-              //   console.log(googleTrends_result[i]); //alerts key's value
-              // }
-            console.log(Object.keys(googleTrends_result));
-            for ( property in googleTrends_result ) {
-              console.log( property ); // Outputs: foo, fiz or fiz, foo
-            }
+              for(var i in googleTrends_result){
+                console.log(i.value); // alerts key
+                console.log(googleTrends_result[i]); //alerts key's value
+              }
+            //console.log(Object.keys(googleTrends_result));
+            // for ( property in googleTrends_result ) {
+            //   console.log( property ); // Outputs: foo, fiz or fiz, foo
+            // }
             //console.log("googleTrends_result",googleTrends_result);
           })
           .catch(function(err){
