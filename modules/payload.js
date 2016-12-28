@@ -258,7 +258,7 @@ const sendContentPacks = (categoryName,event) => {
                 var googleTrends_result_obj = googleTrends_result[i]
               }
               var aaa=JSON.stringify(googleTrends_result_obj);
-              console.log(aaa,aaa[0],aaa[0].amitabh bachchan);
+              console.log(aaa,aaa[0]);
             //console.log(Object.keys(googleTrends_result));
             // for ( property in googleTrends_result ) {
             //   console.log( property ); // Outputs: foo, fiz or fiz, foo
