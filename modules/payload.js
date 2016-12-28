@@ -268,9 +268,10 @@ const sendContentPacks = (categoryName,event) => {
                   console.log(key + ':-------- ' + googleTrends_result_obj[key]);
                   var objkey = key;
                   //objectdata.push(objkey);
+                  console.log("fdshjfhjkasdhjkfhjkh", objkey);
 
               });
-              console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!", objectdata);
+              //console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!", objectdata);
               //var myArray = ["a","b","c","d"];
 // for (let item of aaa) {
 //   console.log("**************************",item)
