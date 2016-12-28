@@ -265,9 +265,9 @@ const sendContentPacks = (categoryName,event) => {
               // var areas = [{"news":"1"}, {"story":"1"}]
               // console.log(areas)
               Object.keys(googleTrends_result_obj).forEach(function(key) {
-                  console.log(key + ': ' + googleTrends_result_obj[key]);
+                  console.log(key + ':-------- ' + googleTrends_result_obj[key]);
                   var objkey = key;
-                  objectdata.push(objkey);
+                  //objectdata.push(objkey);
 
               });
               console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!", objectdata);
