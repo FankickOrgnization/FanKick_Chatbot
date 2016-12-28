@@ -251,9 +251,11 @@ const sendContentPacks = (categoryName,event) => {
           googletrendsfun(categoryName,event);
     }else if (categoryName =="Aamir Khan" || categoryName =="aamir khan" || categoryName =="aamir" || categoryName == "dangal" || categoryName == "Dangal") {
       //celebritiesdetails(categoryName,event);
-      googlegraph(categoryName,event);
+    //  googlegraph(categoryName,event);
+    googletrendsfun(categoryName,event);
     }else if (categoryName =="Virat Kohli" || categoryName =="virat kohli" || categoryName =="kohli" || categoryName =="virat") {
-      celebritiesdetails(categoryName,event);
+      //celebritiesdetails(categoryName,event);
+       googlegraph(categoryName,event);
     }else if (categoryName =="Aamir Quizzes") {
       quizzes(event);
     }else if (categoryName =="Aamir Fan Clubs") {
