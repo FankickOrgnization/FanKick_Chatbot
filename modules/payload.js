@@ -289,7 +289,7 @@ const sendContentPacks = (categoryName,event) => {
                 "id": senderID
             },
               "message":{
-                  "text":"Here is some cool and interesting stuff on movies.\n\nWhy not check them??",
+                  "text":"Here is some cool and interesting stuff on movies.\n\nWhy not check them??:)",
                   "quick_replies":[
                     {
                       "content_type":"text",
