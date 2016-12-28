@@ -545,11 +545,11 @@ function googletrendsfun(categoryName,event){
     .then(function(results){
       console.log("Google trendz",results);
       var googleTrends_result = results;
-        // for(var i in googleTrends_result){
-        //   console.log(i.value); // alerts key
-        //   console.log(googleTrends_result[i]); //alerts key's value
-        //   var googleTrends_result_obj = googleTrends_result[i]
-        // }
+        for(var i in googleTrends_result){
+          console.log(i.value); // alerts key
+          console.log(googleTrends_result[i]); //alerts key's value
+          var googleTrends_result_obj = googleTrends_result[i]
+        }
         var aaa=JSON.stringify(googleTrends_result_obj);
         var googleTrends_result_obj_name = [];
         Object.keys(googleTrends_result_obj).forEach(function(key) {
