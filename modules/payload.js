@@ -249,7 +249,6 @@ const sendContentPacks = (categoryName,event) => {
         });
     }else if (categoryName =="Shahrukh Khan" || categoryName =="shahrukh khan" || categoryName =="shahrukh" ) {
         googleTrends.risingSearches('Shahrukh Khan')
-        var objectdata = [];
           .then(function(results){
             console.log("Google trendz",results);
             var googleTrends_result = results;
@@ -265,13 +264,9 @@ const sendContentPacks = (categoryName,event) => {
               // var areas = [{"news":"1"}, {"story":"1"}]
               // console.log(areas)
               Object.keys(googleTrends_result_obj).forEach(function(key) {
-                  console.log(key + ':-------- ' + googleTrends_result_obj[key]);
-                  var objkey = key;
-                  //objectdata.push(objkey);
-                  console.log("fdshjfhjkasdhjkfhjkh", objkey);
+                  console.log(key + ':----- ' + googleTrends_result_obj[key]);
 
               });
-              //console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!", objectdata);
               //var myArray = ["a","b","c","d"];
 // for (let item of aaa) {
 //   console.log("**************************",item)
