@@ -236,7 +236,9 @@ const sendContentPacks = (categoryName,event) => {
               for(var i in googleTrends_result){
                 console.log(i.value); // alerts key
                 console.log(googleTrends_result[i]); //alerts key's value
+                var googleTrends_result_obj = googleTrends_result[i]
               }
+              console.log(googleTrends_result_obj[0]);
             //console.log(Object.keys(googleTrends_result));
             // for ( property in googleTrends_result ) {
             //   console.log( property ); // Outputs: foo, fiz or fiz, foo
