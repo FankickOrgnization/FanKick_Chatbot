@@ -226,7 +226,7 @@ const sendContentPacks = (categoryName,event) => {
         });
     } else if (categoryName == "pavan kalyan" || categoryName == "Pavan Kalyan" || categoryName == "Chiranjeevi" || categoryName == "Kalyan"|| categoryName == "Pawan Kalyan") {
       //celebritiesdetails(categoryName,event);
-      googlegraph(categoryName,event)
+      googlegraph(categoryName,event);
     }else if (categoryName =="Sachin Tendulkar" || categoryName =="sachin tendulkar" || categoryName =="sachin" || categoryName =="tendulkar") {
       googleTrends.risingSearches('Shahrukh Khan')
         .then(function(results){
@@ -267,8 +267,9 @@ const sendContentPacks = (categoryName,event) => {
           .catch(function(err){
             console.error(err);
           });
-    }else if (categoryName =="Aamir Khan" || categoryName =="aamir khan" || categoryName =="aamir") {
-      celebritiesdetails(categoryName,event);
+    }else if (categoryName =="Aamir Khan" || categoryName =="aamir khan" || categoryName =="aamir" || categoryName == "dangal" || categoryName == "Dangal") {
+      //celebritiesdetails(categoryName,event);
+      googlegraph(categoryName,event);
     }else if (categoryName =="Virat Kohli" || categoryName =="virat kohli" || categoryName =="kohli" || categoryName =="virat") {
       celebritiesdetails(categoryName,event);
     }else if (categoryName =="Aamir Quizzes") {
