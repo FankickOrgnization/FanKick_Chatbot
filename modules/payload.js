@@ -263,10 +263,14 @@ const sendContentPacks = (categoryName,event) => {
               // }
               // var areas = [{"news":"1"}, {"story":"1"}]
               // console.log(areas)
+              var a = [];
               Object.keys(googleTrends_result_obj).forEach(function(key) {
                   console.log(key + ':----- ' + googleTrends_result_obj[key]);
-
+                  var myArray = key;
+                  console.log(myArray + ':----- ' + googleTrends_result_obj[key]);
+                  a.push(myArray);
               });
+              console.log("**************************",a);
               //var myArray = ["a","b","c","d"];
 // for (let item of aaa) {
 //   console.log("**************************",item)
