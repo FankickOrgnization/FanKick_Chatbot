@@ -227,7 +227,25 @@ const sendContentPacks = (categoryName,event) => {
     } else if (categoryName == "pavan kalyan" || categoryName == "Pavan Kalyan" || categoryName == "Chiranjeevi" || categoryName == "Kalyan"|| categoryName == "Pawan Kalyan") {
       celebritiesdetails(categoryName,event);
     }else if (categoryName =="Sachin Tendulkar" || categoryName =="sachin tendulkar" || categoryName =="sachin" || categoryName =="tendulkar") {
-      celebritiesdetails(categoryName,event);
+      googleTrends.risingSearches('Shahrukh Khan')
+        .then(function(results){
+          console.log("Google trendz",results);
+          var googleTrends_result = results;
+            for(var i in googleTrends_result){
+              console.log(i.value); // alerts key
+              console.log(googleTrends_result[i]); //alerts key's value
+              var googleTrends_result_obj = googleTrends_result[i]
+            }
+            console.log(googleTrends_result_obj);
+          //console.log(Object.keys(googleTrends_result));
+          // for ( property in googleTrends_result ) {
+          //   console.log( property ); // Outputs: foo, fiz or fiz, foo
+          // }
+          //console.log("googleTrends_result",googleTrends_result);
+        })
+        .catch(function(err){
+          console.error(err);
+        });
     }else if (categoryName =="Shahrukh Khan" || categoryName =="shahrukh khan" || categoryName =="shahrukh" ) {
         googleTrends.risingSearches('Shahrukh Khan')
           .then(function(results){
