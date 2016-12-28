@@ -540,7 +540,7 @@ const sendContentPacks = (categoryName,event) => {
 }
 
 
-googletrendsfun(categoryName,event){
+function googletrendsfun(categoryName,event){
   googleTrends.risingSearches(categoryName)
     .then(function(results){
       console.log("Google trendz",results);
