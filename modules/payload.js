@@ -541,6 +541,7 @@ const sendContentPacks = (categoryName,event) => {
 
 
 function googletrendsfun(categoryName,event){
+  var senderID = event.sender.id;
   googleTrends.risingSearches(categoryName)
     .then(function(results){
       console.log("Google trendz",results);
