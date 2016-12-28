@@ -258,9 +258,21 @@ const sendContentPacks = (categoryName,event) => {
                 var googleTrends_result_obj = googleTrends_result[i]
               }
               var aaa=JSON.stringify(googleTrends_result_obj);
-              for(var i=0;i<10;i++){
-                console.log("dataaaaaaaaaa.....",aaa[i]);
-              }
+              // for(var i=0;i<10;i++){
+              //   console.log("dataaaaaaaaaa.....",aaa[i].value);
+              // }
+              // var areas = [{"news":"1"}, {"story":"1"}]
+              // console.log(areas)
+
+              aaa.forEach(function(e) {
+              Object.keys(e).forEach(function(key) {
+              var value = e[key]
+              console.log(key)
+              console.log(value)
+              })
+              })
+
+
             //console.log(Object.keys(googleTrends_result));
             // for ( property in googleTrends_result ) {
             //   console.log( property ); // Outputs: foo, fiz or fiz, foo
