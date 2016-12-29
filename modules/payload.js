@@ -51,10 +51,10 @@ var moviesObj =  [
 
 var quickMenu = [
   {
+    "image_url":'https://fankickdev.blob.core.windows.net/images/movies.jpg',
     "content_type":"text",
     "title":'Categories O:-)',
-    "payload":"Categories",
-    "image_url":'https://fankickdev.blob.core.windows.net/images/sports.jpg'
+    "payload":"Categories"
   },
   {
     "content_type":"text",
@@ -66,7 +66,7 @@ var quickMenu = [
     "content_type":"text",
     "title":'Fan Magazine O:-)',
     "payload":"Fan Magazine",
-    "image_url":'https://fankickdev.blob.core.windows.net/images/sports.jpg'
+    "image_url":'https://fankickdev.blob.core.windows.net/images/celebrities.jpg'
   }
 ];
 // var quickMenu = [
@@ -148,12 +148,7 @@ const sendContentPacks = (categoryName,event) => {
                             "type": "postback",
                             "title": rows[i].name,
                             "payload": rows[i].name
-                        },
-                        {
-                            "type": "postback",
-                            "title": ':putnam:',
-                            "payload": rows[i].name
-                        },
+                        }
                       ]
                     };
                     contentList.push(keyMap);
