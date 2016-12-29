@@ -143,7 +143,7 @@ const sendContentPacks = (categoryName,event) => {
                         // }]
                         "buttons": [{
                             "type": "postback",
-                            "title": rows[i].name,
+                            "title": rows[i].name+':putnam:',
                             "payload": rows[i].name
                         }]
                     };
@@ -174,10 +174,6 @@ const sendContentPacks = (categoryName,event) => {
         });
     } else if (categoryName == "Fan Magazine") {
         //console.log("***************************", categoryName);
-
-
-
-
         pool.getConnection(function(err, connection) {
         connection.query('SELECT * FROM fk_pack_fan_magazines', function(err, rows) {
             //console.log("*************************-after", categoryName);
@@ -315,11 +311,7 @@ const sendContentPacks = (categoryName,event) => {
                       "content_type":"text",
                       "title":"Categories",
                       "payload":"Categories"
-                    },
-                    {
-                      "content_type":"location",
                     }
-
                   ]
                 }
         }
