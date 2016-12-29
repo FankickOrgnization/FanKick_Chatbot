@@ -57,7 +57,7 @@ var quickMenu = [
   },
   {
     "content_type":"text",
-    "title":"Fan Clubs O:-)",
+    "title":"Fan Clubs :-)"+'https://fankickdev.blob.core.windows.net/images/sports.jpg',
     "payload":"Fan Clubs"
   },
   {
