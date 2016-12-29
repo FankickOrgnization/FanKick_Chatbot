@@ -143,7 +143,7 @@ const sendContentPacks = (categoryName,event) => {
                         // }]
                         "buttons": [{
                             "type": "postback",
-                            "title": rows[i].name+':putnam:',
+                            "title": rows[i].name +'8-|'+,
                             "payload": rows[i].name
                         }]
                     };
