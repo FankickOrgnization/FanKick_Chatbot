@@ -92,7 +92,7 @@ const sendContentPacks = (categoryName,event) => {
                                     //"item_url": moviesObj[i].imgurl,
                           "buttons": [{
                                       "type": "postback",
-                                      "title": moviesObj[i].name,
+                                      "title": moviesObj[i].name+":"+moviesObj[i].imgurl,
                                       "payload": moviesObj[i].name
                                     }]
                                 };
@@ -146,7 +146,7 @@ const sendContentPacks = (categoryName,event) => {
                         // }]
                         "buttons": [{
                             "type": "postback",
-                            "title": rows[i].name,
+                            "title": rows[i].name+":"+rows[i].img_url,
                             "payload": rows[i].name
                         }
                       ]
