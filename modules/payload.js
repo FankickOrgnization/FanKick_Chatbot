@@ -54,19 +54,19 @@ var quickMenu = [
     "content_type":"text",
     "title":'Categories O:-)',
     "payload":"Categories",
-    "image_url":"http://petersfantastichats.com/img/red.png"
+    "image_url":'https://fankickdev.blob.core.windows.net/images/sports.jpg'
   },
   {
     "content_type":"text",
     "title":'Fan Clubs :-)',
     "payload":"Fan Clubs",
-    "image_url":"http://petersfantastichats.com/img/red.png"
+    "image_url":'https://fankickdev.blob.core.windows.net/images/sports.jpg'
   },
   {
     "content_type":"text",
     "title":'Fan Magazine O:-)',
     "payload":"Fan Magazine",
-    "image_url":"http://petersfantastichats.com/img/red.png"
+    "image_url":'https://fankickdev.blob.core.windows.net/images/sports.jpg'
   }
 ];
 // var quickMenu = [
