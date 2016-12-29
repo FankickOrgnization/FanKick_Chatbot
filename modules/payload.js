@@ -249,7 +249,7 @@ const sendContentPacks = (categoryName,event) => {
         });
     }else if (categoryName =="Shahrukh Khan" || categoryName =="shahrukh khan" || categoryName =="shahrukh" ) {
           googletrendsfun(categoryName,event);
-    }else if (categoryName =="Aamir Khan" || categoryName =="aamir khan" || categoryName =="aamir" || categoryName == "dangal" || categoryName == "Dangal") {
+    }else if (categoryName =="Aamir Khan" || categoryName =="aamir khan" || categoryName =="aamir" || categoryName == "dangal" || categoryName == "Dangal"|| categoryName ==  "dangal review") {
       //celebritiesdetails(categoryName,event);
     //  googlegraph(categoryName,event);
     googletrendsfun(categoryName,event);
