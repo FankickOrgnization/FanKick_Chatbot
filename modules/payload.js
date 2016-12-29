@@ -53,17 +53,20 @@ var quickMenu = [
   {
     "content_type":"text",
     "title":'Categories O:-)',
-    "payload":"Categories"
+    "payload":"Categories",
+    "image_url":"http://petersfantastichats.com/img/red.png"
   },
   {
     "content_type":"text",
     "title":'Fan Clubs :-)',
-    "payload":"Fan Clubs"
+    "payload":"Fan Clubs",
+    "image_url":"http://petersfantastichats.com/img/red.png"
   },
   {
     "content_type":"text",
     "title":'Fan Magazine O:-)',
-    "payload":"Fan Magazine"
+    "payload":"Fan Magazine",
+    "image_url":"http://petersfantastichats.com/img/red.png"
   }
 ];
 // var quickMenu = [
@@ -144,12 +147,14 @@ const sendContentPacks = (categoryName,event) => {
                         "buttons": [{
                             "type": "postback",
                             "title": rows[i].name,
-                            "payload": rows[i].name
+                            "payload": rows[i].name,
+                            "image_url":"http://petersfantastichats.com/img/red.png"
                         },
                         {
                             "type": "postback",
                             "title": "Skip ;-)",
-                            "payload": rows[i].name
+                            "payload": rows[i].name,
+                            "image_url":"http://petersfantastichats.com/img/green.png"
                         },
                       ]
                     };
