@@ -738,12 +738,9 @@ var trailer = 'https://www.youtube.com/watch?v=x_7YlGv9u1g';
             "attachment": {
                 "type": "video",
                 "payload": {
-                    //"template_type": "generic",
-                    //"elements": contentList
                     "url":"https://www.youtube.com/watch?v=x_7YlGv9u1g"
                 }
-            },
-            "quick_replies":quickMenu
+            }
         }
     }
           callSendAPI(messageData,'https://graph.facebook.com/v2.6/592208327626213/messages');
