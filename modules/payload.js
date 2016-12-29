@@ -694,7 +694,7 @@ function quizzes(event){
 
 function review(event){
   var senderID = event.sender.id;
-  var imgdangol = 'https://www.google.co.in/imgres?imgurl=http://t3.gstatic.com/images%3Fq%3Dtbn:ANd9GcQIXnFlBKGWT1ByyIu3qfxX6opQX6BmeeU_qsiE3X8rX9ZRr63r&imgrefurl=http://t3.gstatic.com/images%3Fq%3Dtbn:ANd9GcQIXnFlBKGWT1ByyIu3qfxX6opQX6BmeeU_qsiE3X8rX9ZRr63r&h=1080&w=720&tbnid=f8RFxbQD8Cd_JM:&vet=1&tbnh=160&tbnw=106&docid=6K7KR7GqNo-kzM&itg=1&usg=___r9-eawmB7jE1-xKt86sLlA37qI=&sa=X&ved=0ahUKEwiEjMC5_5jRAhUJNo8KHZiRChcQ_B0IhQEwDg';
+  var imgdangol = 'http://t3.gstatic.com/images?q=tbn:ANd9GcQIXnFlBKGWT1ByyIu3qfxX6opQX6BmeeU_qsiE3X8rX9ZRr63r';
   // var keyMap = {
   //     "title": "Review",
   //     "image_url": imgdangol,
