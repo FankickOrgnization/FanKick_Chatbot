@@ -52,17 +52,17 @@ var moviesObj =  [
 var quickMenu = [
   {
     "content_type":"text",
-    "title":"Categories O:-)",
+    "title":'Categories O:-)',
     "payload":"Categories"
   },
   {
     "content_type":"text",
-    "title":"Fan Clubs :-)"+'https://fankickdev.blob.core.windows.net/images/sports.jpg',
+    "title":'Fan Clubs :-)'+'https://fankickdev.blob.core.windows.net/images/sports.jpg',
     "payload":"Fan Clubs"
   },
   {
     "content_type":"text",
-    "title":"Fan Magazine O:-)",
+    "title":'Fan Magazine O:-)',
     "payload":"Fan Magazine"
   }
 ];
