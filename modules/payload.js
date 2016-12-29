@@ -49,28 +49,28 @@ var moviesObj =  [
 }
 ];
 
-// var quickMenu = [
-//   {
-//     "content_type":"text",
-//     "title":"Categories",
-//     "payload":"Categories"
-//   },
-//   {
-//     "content_type":"text",
-//     "title":"Fan Clubs",
-//     "payload":"Fan Clubs"
-//   },
-//   {
-//     "content_type":"text",
-//     "title":"Fan Magazine",
-//     "payload":"Fan Magazine"
-//   }
-// ];
 var quickMenu = [
-      {
-        "content_type":"location",
-      }
-    ];
+  {
+    "content_type":"text",
+    "title":"Categories",
+    "payload":"Categories"
+  },
+  {
+    "content_type":"text",
+    "title":"Fan Clubs",
+    "payload":"Fan Clubs"
+  },
+  {
+    "content_type":"text",
+    "title":"Fan Magazine",
+    "payload":"Fan Magazine"
+  }
+];
+// var quickMenu = [
+//       {
+//         "content_type":"location",
+//       }
+//     ];
 //app.use(bodyParser.json());
 //console.log("------:thread:-----");
 
@@ -143,7 +143,7 @@ const sendContentPacks = (categoryName,event) => {
                         // }]
                         "buttons": [{
                             "type": "postback",
-                            "title": rows[i].name +'8-|',
+                            "title": rows[i].name,
                             "payload": rows[i].name
                         }]
                     };
@@ -285,7 +285,7 @@ const sendContentPacks = (categoryName,event) => {
                 "id": senderID
             },
               "message":{
-                  "text":"Here is some cool and interesting stuff on movies.\n\nWhy not check them?? :) :(",
+                  "text":"Here is some cool :-) and interesting stuff on movies.\n\n O:-) Why not check them??",
                   "quick_replies":[
                     {
                       "content_type":"text",
