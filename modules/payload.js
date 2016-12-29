@@ -52,17 +52,17 @@ var moviesObj =  [
 var quickMenu = [
   {
     "content_type":"text",
-    "title":"Categories",
+    "title":"Categories O:-)",
     "payload":"Categories"
   },
   {
     "content_type":"text",
-    "title":"Fan Clubs",
+    "title":"Fan Clubs O:-)",
     "payload":"Fan Clubs"
   },
   {
     "content_type":"text",
-    "title":"Fan Magazine",
+    "title":"Fan Magazine O:-)",
     "payload":"Fan Magazine"
   }
 ];
