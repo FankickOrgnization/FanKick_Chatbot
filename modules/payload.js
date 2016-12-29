@@ -740,7 +740,7 @@ var trailer = 'https://www.youtube.com/watch?v=x_7YlGv9u1g';
                 "payload": {
                     //"template_type": "generic",
                     //"elements": contentList
-                    "url":trailer
+                    "url":'https://www.youtube.com/watch?v=x_7YlGv9u1g'
                 }
             },
             "quick_replies":quickMenu
