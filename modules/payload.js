@@ -147,14 +147,12 @@ const sendContentPacks = (categoryName,event) => {
                         "buttons": [{
                             "type": "postback",
                             "title": rows[i].name,
-                            "payload": rows[i].name,
-                            "image_url":"http://petersfantastichats.com/img/red.png"
+                            "payload": rows[i].name
                         },
                         {
                             "type": "postback",
-                            "title": "Skip ;-)",
-                            "payload": rows[i].name,
-                            "image_url":"http://petersfantastichats.com/img/green.png"
+                            "title": ':putnam:',
+                            "payload": rows[i].name
                         },
                       ]
                     };
