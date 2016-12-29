@@ -734,25 +734,18 @@ var trailer = 'https://www.youtube.com/watch?v=x_7YlGv9u1g';
         "recipient": {
             "id": senderID
         },
-        // "message": {
-        //     "attachment": {
-        //         "type": "template",
-        //         "payload": {
-        //             "template_type": "generic",
-        //             "elements": contentList
-        //         }
-        //     },
         "message": {
-          "attachment":{
-   "type":"video",
-   "payload":{
-     "url":trailer
-   }
- },
+            "attachment": {
+                "type": "video",
+                "payload": {
+                    //"template_type": "generic",
+                    //"elements": contentList
+                    "url":trailer
+                }
+            },
             "quick_replies":quickMenu
         }
     }
-  };
           callSendAPI(messageData,'https://graph.facebook.com/v2.6/592208327626213/messages');
         }
 
