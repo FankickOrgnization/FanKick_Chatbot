@@ -698,12 +698,12 @@ function review(event){
   var keyMap = {
       "title": "Review",
       "image_url": imgdangol,
-      "subtitle":"That was crucial for us to believe in Dangal, which borrows several elements from the real-life Haryana wrestler who trained his older two daughters, Geeta (Fatima Sana Shaikh) and Babita (Sanya Malhotra), in the art of wrestling, and turned them into winners. Dangal works on the twin parameters it sets up for itself.",
-      // "buttons": [{
-      //     "type": "postback",
-      //     "title": "View",
-      //     "payload": rows[i].id
-      // }
+      //"subtitle":"That was crucial for us to believe in Dangal, which borrows several elements from the real-life Haryana wrestler who trained his older two daughters, Geeta (Fatima Sana Shaikh) and Babita (Sanya Malhotra), in the art of wrestling, and turned them into winners. Dangal works on the twin parameters it sets up for itself.",
+      "buttons": [{
+          "type": "postback",
+          "title": "View",
+          "payload": "View"
+      }]
     };
 
 
