@@ -57,7 +57,7 @@ var quickMenu = [
   },
   {
     "content_type":"text",
-    "title":'Fan Clubs :-)'+'https://fankickdev.blob.core.windows.net/images/sports.jpg',
+    "title":'Fan Clubs :-)',
     "payload":"Fan Clubs"
   },
   {
@@ -145,7 +145,13 @@ const sendContentPacks = (categoryName,event) => {
                             "type": "postback",
                             "title": rows[i].name,
                             "payload": rows[i].name
-                        }]
+                        },
+                        {
+                            "type": "postback",
+                            "title": "Skip ;-)",
+                            "payload": rows[i].name
+                        },
+                      ]
                     };
                     contentList.push(keyMap);
                 }
