@@ -695,7 +695,7 @@ function quizzes(event){
 function review(event){
   var senderID = event.sender.id;
   var imgdangol = 'http://t3.gstatic.com/images?q=tbn:ANd9GcQIXnFlBKGWT1ByyIu3qfxX6opQX6BmeeU_qsiE3X8rX9ZRr63r';
-var trailer = 'https://www.youtube.com/watch?v=x_7YlGv9u1g';
+//var trailer = 'https://www.youtube.com/watch?v=x_7YlGv9u1g';
   // var keyMap = {
   //     "title": "Review",
   //     "image_url": imgdangol,
@@ -717,11 +717,12 @@ var trailer = 'https://www.youtube.com/watch?v=x_7YlGv9u1g';
               "type": "web_url",
                "url": 'http://timesofindia.indiatimes.com/entertainment/hindi/movie-reviews/dangal/movie-review/56102623.cms',
                "title": "Read More"
-            },{
-              "type": "web_url",
-               "url": trailer,
-               "title": "Trailer"
             }
+            // ,{
+            //   "type": "web_url",
+            //    "url": trailer,
+            //    "title": "Trailer"
+            // }
           //   // , {
           //   //     "type": "postback",
           //   //     "title": "Magazine",
