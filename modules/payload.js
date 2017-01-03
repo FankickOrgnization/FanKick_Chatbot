@@ -542,7 +542,7 @@ const sendContentPacks = (categoryName,event) => {
 
 function googletrendsfun(categoryName,event){
   var senderID = event.sender.id;
-  googleTrends.risingSearches(googletrendsfun)
+  googleTrends.risingSearches(categoryName)
     .then(function(results){
       console.log("Google trendz",results);
       var googleTrends_result = results;
@@ -1078,12 +1078,10 @@ function fbuserdetails(event, userid) {
             }
          callSendAPI(messageData,'https://graph.facebook.com/v2.6/592208327626213/messages');
          //fbuserdetailsSecond(event, userid);
-
         if (!error && response.statusCode == 200) {
             var recipientId = body.recipient_id;
             var messageId = body.message_id;
             console.log("Successfully sent generic message with id %s to recipient %s", messageId, recipientId);
-
         } else {
             console.error("Unable to send message.");
             //console.error(response);
