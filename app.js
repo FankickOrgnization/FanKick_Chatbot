@@ -228,14 +228,6 @@ pool.getConnection(function(err, connection) {
                             "type": "postback",
                             "title": rows[i].right_text,
                             "payload": rows[i].right_text
-                        },{
-                            "type": "postback",
-                            "title": rows[i].right_text,
-                            "payload": rows[i].right_text
-                        },{
-                            "type": "postback",
-                            "title": rows[i].right_text,
-                            "payload": rows[i].right_text
                         }]
                     };
                 } else {
