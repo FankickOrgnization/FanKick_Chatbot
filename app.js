@@ -230,12 +230,8 @@ pool.getConnection(function(err, connection) {
                             "payload": rows[i].right_text
                         },{
                             "type": "postback",
-                            "title": "readmore",
-                            "payload": "readmore"
-                        },{
-                            "type": "postback",
-                            "title": "More",
-                            "payload": "More"
+                            "title": "No",
+                            "payload": "rows[i].right_text"
                         }]
                     };
                 } else {
