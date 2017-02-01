@@ -181,7 +181,7 @@ const sendContentPacks = (categoryName,event) => {
         pool.getConnection(function(err, connection) {
         connection.query('SELECT * FROM fk_pack_fan_magazines', function(err, rows) {
             //console.log("*************************-after", categoryName);
-            console.log("*************************-after", rows);
+            //console.log("*************************-after", rows);
             if (err) {
                 console.log("Error While retriving content pack data from database:", err);
             } else if (rows.length) {
