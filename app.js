@@ -232,10 +232,6 @@ pool.getConnection(function(err, connection) {
                             "type": "postback",
                             "title": "No",
                             "payload": "rows[i].right_text"
-                        },{
-                            "type": "postback",
-                            "title": "1234",
-                            "payload": "rows[i].right_text"
                         }]
                     };
                 } else {
