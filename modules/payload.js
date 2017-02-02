@@ -291,7 +291,7 @@ const sendContentPacks = (categoryName,event) => {
                 "id": senderID
             },
               "message":{
-                  "text":"Movie is the king of entertainment. \n Pick your favorite kingdom (You can select multiple)…:-)",
+                  "text":"Movie is the king of entertainment. \n Pick your favorite kingdom (You can select multiple)… :-)",
                   "quick_replies":[
                     {
                       "content_type":"text",
@@ -327,56 +327,50 @@ const sendContentPacks = (categoryName,event) => {
         sendHelpMessage(event);
     }
     }
-    // else if (categoryName == "Sports") {
-    //   if (categoryName == "Sports"){
-    //     var senderID = event.sender.id;
-    //     var messageData = {
-    //         "recipient": {
-    //             "id": senderID
-    //         },
-    //         "message":{
-    //             "text":"Here is some cool and interesting stuff on sports.\n\nWhy not check them??",
-    //             "quick_replies":[
-    //               {
-    //                 "content_type":"text",
-    //                 "title":"Quizzes",
-    //                 "payload":"Quizzes"
-    //               },
-    //               {
-    //                 "content_type":"text",
-    //                 "title":"Cricket",
-    //                 "payload":"Cricket"
-    //               },
-    //               {
-    //                 "content_type":"text",
-    //                 "title":"Football",
-    //                 "payload":"Football"
-    //               },
-    //               {
-    //                 "content_type":"text",
-    //                 "title":"Baseball",
-    //                 "payload":"Baseball"
-    //               },
-    //               {
-    //                 "content_type":"text",
-    //                 "title":"Basketball",
-    //                 "payload":"Basketball"
-    //               },
-    //               {
-    //                 "content_type":"text",
-    //                 "title":"Categories",
-    //                 "payload":"Categories"
-    //               }
-    //
-    //             ]
-    //           }
-    //     }
-    //     callSendAPI(messageData,'https://graph.facebook.com/v2.6/592208327626213/messages');
-    // }else {
-    //     console.log("No Data Found From Database");
-    //     sendHelpMessage(event);
-    // }
-    // }
+    else if (categoryName == "Sports") {
+      if (categoryName == "Sports"){
+        var senderID = event.sender.id;
+        var messageData = {
+            "recipient": {
+                "id": senderID
+            },
+            "message":{
+                "text":"Let's hit the world! \n There is no thrill beyond sports, \n which sport(s) enthrills you more…",
+                "quick_replies":[
+                  {
+                    "content_type":"text",
+                    "title":"Cricket",
+                    "payload":"Cricket"
+                  },
+                  {
+                    "content_type":"text",
+                    "title":"Soccer",
+                    "payload":"Soccer"
+                  },
+                  {
+                    "content_type":"text",
+                    "title":"Tennis",
+                    "payload":"Tennis"
+                  },
+                  {
+                    "content_type":"text",
+                    "title":"Badminton",
+                    "payload":"Badminton"
+                  },
+                  {
+                    "content_type":"text",
+                    "title":"Categories",
+                    "payload":"Categories"
+                  }
+                ]
+              }
+        }
+        callSendAPI(messageData,'https://graph.facebook.com/v2.6/592208327626213/messages');
+    }else {
+        console.log("No Data Found From Database");
+        sendHelpMessage(event);
+    }
+    }
     else if (categoryName == "Music") {
       if (categoryName == "Music"){
         var senderID = event.sender.id;
@@ -385,7 +379,7 @@ const sendContentPacks = (categoryName,event) => {
                 "id": senderID
             },
             "message":{
-                "text":"Widen your ears! I'm going to make a huge noise, define the tune… &#9833; &#9834; &#9835; &#9836;",
+                "text":"Widen your ears! I'm going to make a huge noise, define the tune…",
                 "quick_replies":[
                   {
                     "content_type":"text",
@@ -417,49 +411,69 @@ const sendContentPacks = (categoryName,event) => {
             sendHelpMessage(event);
         }
     }
-    // else if (categoryName == "Celebrities") {
-    //   if (categoryName == "Celebrities"){
-    //     if (celbritieObj.length){
-    //       console.log("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%",celbritieObj.length);
-    //       var senderID = event.sender.id;
-    //       var contentList = [];
-    //       for (var i = 0; i < celbritieObj.length; i++) { //Construct request body
-    //           var keyMap = {
-    //                         "title": celbritieObj[i].name,
-    //                         "image_url": celbritieObj[i].imgurl,
-    //                                   //"item_url": moviesObj[i].imgurl,
-    //                         "buttons": [{
-    //                                     "type": "postback",
-    //                                     "title": celbritieObj[i].name,
-    //                                     "payload": celbritieObj[i].name
-    //                                   }]
-    //                               };
-    //
-    //           contentList.push(keyMap);
-    //       }
-    //       var messageData = {
-    //           "recipient": {
-    //               "id": senderID
-    //           },
-    //           "message": {
-    //               "attachment": {
-    //                   "type": "template",
-    //                   //"text":"We have some cool stuff waiting for you..",
-    //                   "payload": {
-    //                       "template_type": "generic",
-    //                       "elements": contentList
-    //                   }
-    //               },
-    //               "quick_replies": quickMenu
-    //           }
-    //       }
-    //     }
-    //     callSendAPI(messageData,'https://graph.facebook.com/v2.6/592208327626213/messages');
-    //     }else {
-    //         console.log("No Data Found From Database");
-    //         sendHelpMessage(event);
-    //     }
-    // }
+    else if (categoryName == "TV Shows") {
+      if (categoryName == "TV Shows"){
+        if (celbritieObj.length){
+          console.log("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%",celbritieObj.length);
+          var senderID = event.sender.id;
+          // var contentList = [];
+          // for (var i = 0; i < celbritieObj.length; i++) { //Construct request body
+          //     var keyMap = {
+          //                   "title": celbritieObj[i].name,
+          //                   "image_url": celbritieObj[i].imgurl,
+          //                             //"item_url": moviesObj[i].imgurl,
+          //                   "buttons": [{
+          //                               "type": "postback",
+          //                               "title": celbritieObj[i].name,
+          //                               "payload": celbritieObj[i].name
+          //                             }]
+          //                         };
+          //
+          //     contentList.push(keyMap);
+          // }
+          var messageData = {
+              "recipient": {
+                  "id": senderID
+              },
+              "message": {
+                  "text":"My dad won't allow me to switch on the Idiot Box, please switch me up and set the favorite mode…",
+                  "quick_replies":[
+                    {
+                      "content_type":"text",
+                      "title":"Romantic Comedy",
+                      "payload":"Romantic Comedy"
+                    },
+                    {
+                      "content_type":"text",
+                      "title":"Action",
+                      "payload":"Action"
+                    },
+                    {
+                      "content_type":"text",
+                      "title":"Horror",
+                      "payload":"Horror"
+                    },
+                    {
+                      "content_type":"text",
+                      "title":"Animation",
+                      "payload":"Animation"
+                    },
+                    {
+                      "content_type":"text",
+                      "title":"Categories",
+                      "payload":"Categories"
+                    }
+
+                  ]
+                }
+          }
+        }
+        callSendAPI(messageData,'https://graph.facebook.com/v2.6/592208327626213/messages');
+        }else {
+            console.log("No Data Found From Database");
+            sendHelpMessage(event);
+        }
+    }
     else {
       pool.getConnection(function(err, connection) {
         connection.query('SELECT * FROM fk_content_pack where category_id = (SELECT id FROM fk_category where name = ?)', [categoryName], function(err, rows) {
