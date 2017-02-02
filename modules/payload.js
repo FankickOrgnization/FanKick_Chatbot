@@ -1043,8 +1043,8 @@ function fbuserdetails(event, userid) {
         //fbuserlocation();
         //var msg = 'Hi '+username+', A lot of exciting things are awaiting for you! Get kicking!';
         //var msg = 'Hi '+username+'! My name is Kicker.\n How may I come of any help to you today?';
-    var msg = 'Hi '+username+'! My name is Kicker.\n \nI can help you get closer to your favorite celebrity with a lot of exciting things about them.\n\n Choose what excites you more';
-  //var msg = 'Hi '+username+'! My name is Kicker.';
+    //var msg = 'Hi '+username+'! My name is Kicker.\n \nI can help you get closer to your favorite celebrity with a lot of exciting things about them.\n\n Choose what excites you more';
+  var msg = 'Entertainment matters! \n\n Welcome to the big zone, select your preferences…';
         console.log("--------:Response data:--------msg1 ", msg);
         var messageData = {
             "recipient": {
@@ -1055,8 +1055,23 @@ function fbuserdetails(event, userid) {
                 "quick_replies":[
                   {
                     "content_type":"text",
-                    "title":"Categories",
-                    "payload":"Categories"
+                    "title":"Movies",
+                    "payload":"Movies"
+                  },
+                  {
+                    "content_type":"text",
+                    "title":"Music",
+                    "payload":"Music"
+                  },
+                  {
+                    "content_type":"text",
+                    "title":"TV Shows",
+                    "payload":"TV Shows"
+                  },
+                  {
+                    "content_type":"text",
+                    "title":"Sports",
+                    "payload":"Sports"
                   },
                   {
                     "content_type":"text",
