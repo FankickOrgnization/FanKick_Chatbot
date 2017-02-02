@@ -291,27 +291,27 @@ const sendContentPacks = (categoryName,event) => {
                 "id": senderID
             },
               "message":{
-                  "text":"Here is some cool :-) and interesting stuff on movies.\n\n O:-) Why not check them??",
+                  "text":"Movie is the king of entertainment. \n Pick your favorite kingdom (You can select multiple)…:-)",
                   "quick_replies":[
                     {
                       "content_type":"text",
-                      "title":"Quizzes",
-                      "payload":"Quizzes"
+                      "title":"Hollywood",
+                      "payload":"Hollywood"
                     },
                     {
                       "content_type":"text",
-                      "title":"Fan Clubs",
-                      "payload":"Fan Clubs"
+                      "title":"Bollywood",
+                      "payload":"Bollywood"
                     },
                     {
                       "content_type":"text",
-                      "title":"Gossip Corner",
-                      "payload":"Gossip Corner"
+                      "title":"Tollywood",
+                      "payload":"Tollywood"
                     },
                     {
                       "content_type":"text",
-                      "title":"Fan Magazine",
-                      "payload":"Fan Magazine"
+                      "title":"Kollywood",
+                      "payload":"Kollywood"
                     },
                     {
                       "content_type":"text",
@@ -385,7 +385,7 @@ const sendContentPacks = (categoryName,event) => {
                 "id": senderID
             },
             "message":{
-                "text":"Here is some cool and interesting stuff on music.\n\nWhy not check them??",
+                "text":"Widen your ears! I'm going to make a huge noise, define the tune… &#9833; &#9834; &#9835; &#9836;",
                 "quick_replies":[
                   {
                     "content_type":"text",
