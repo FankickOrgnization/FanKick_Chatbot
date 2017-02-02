@@ -717,6 +717,8 @@ function review(event){
               "type": "web_url",
                "url": 'http://timesofindia.indiatimes.com/entertainment/hindi/movie-reviews/dangal/movie-review/56102623.cms',
                "title": "Read More"
+            },{
+              "type":"element_share"
             }
             // ,{
             //   "type": "web_url",
