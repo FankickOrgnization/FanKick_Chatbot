@@ -291,7 +291,7 @@ const sendContentPacks = (categoryName,event) => {
                 "id": senderID
             },
               "message":{
-                  "text":"Movie is the king of entertainment. \n Pick your favorite kingdom (You can select multiple)… :-)",
+                  "text":"Movie is the king of entertainment. Pick your favorite kingdom (You can select multiple)… :-)",
                   "quick_replies":[
                     {
                       "content_type":"text",
@@ -335,7 +335,7 @@ const sendContentPacks = (categoryName,event) => {
                 "id": senderID
             },
             "message":{
-                "text":"Let's hit the world! \n There is no thrill beyond sports, \n which sport(s) enthrills you more…",
+                "text":"Let's hit the world! There is no thrill beyond sports, which sport(s) enthrills you more… :-)",
                 "quick_replies":[
                   {
                     "content_type":"text",
@@ -379,7 +379,7 @@ const sendContentPacks = (categoryName,event) => {
                 "id": senderID
             },
             "message":{
-                "text":"Widen your ears! I'm going to make a huge noise, define the tune…",
+                "text":"Widen your ears! I'm going to make a huge noise, define the tune… :-)",
                 "quick_replies":[
                   {
                     "content_type":"text",
@@ -413,8 +413,8 @@ const sendContentPacks = (categoryName,event) => {
     }
     else if (categoryName == "TV Shows") {
       if (categoryName == "TV Shows"){
-        if (celbritieObj.length){
-          console.log("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%",celbritieObj.length);
+        // if (celbritieObj.length){
+        //   console.log("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%",celbritieObj.length);
           var senderID = event.sender.id;
           // var contentList = [];
           // for (var i = 0; i < celbritieObj.length; i++) { //Construct request body
@@ -467,7 +467,7 @@ const sendContentPacks = (categoryName,event) => {
                   ]
                 }
           }
-        }
+
         callSendAPI(messageData,'https://graph.facebook.com/v2.6/592208327626213/messages');
         }else {
             console.log("No Data Found From Database");
