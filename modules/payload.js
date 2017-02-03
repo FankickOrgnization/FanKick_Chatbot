@@ -36,11 +36,11 @@ var moviesObj =  [
     "imgurl": 'https://fankickdev.blob.core.windows.net/images/movies.jpg'
 },
 {
-    "name": "Celebrities",
+    "name": "TV Shows",
     "imgurl": 'https://fankickdev.blob.core.windows.net/images/celebrities.jpg'
 },
 {
-    "name": "Politics",
+    "name": "Music",
     "imgurl": 'https://fankickdev.blob.core.windows.net/images/music.jpg'
 },
 {
@@ -317,6 +317,9 @@ const sendContentPacks = (categoryName,event) => {
                       "content_type":"text",
                       "title":"Categories",
                       "payload":"Categories"
+                    },
+                    {
+                      "content_type":"location",
                     }
                   ]
                 }
@@ -334,44 +337,44 @@ const sendContentPacks = (categoryName,event) => {
             "recipient": {
                 "id": senderID
             },
+//             "message":{
+//   "attachment":{
+//     "type":"video",
+//     "payload":{
+//       "url":"https://petersapparel.com/bin/clip.mp4"
+//     }
+//   }
+// }
             "message":{
-  "attachment":{
-    "type":"video",
-    "payload":{
-      "url":"https://petersapparel.com/bin/clip.mp4"
-    }
-  }
-}
-            // "message":{
-            //     "text":"Let's hit the world! There is no thrill beyond sports, which sport(s) enthrills you more… :-)",
-            //     "quick_replies":[
-            //       {
-            //         "content_type":"text",
-            //         "title":"Cricket",
-            //         "payload":"Cricket"
-            //       },
-            //       {
-            //         "content_type":"text",
-            //         "title":"Soccer",
-            //         "payload":"Soccer"
-            //       },
-            //       {
-            //         "content_type":"text",
-            //         "title":"Tennis",
-            //         "payload":"Tennis"
-            //       },
-            //       {
-            //         "content_type":"text",
-            //         "title":"Badminton",
-            //         "payload":"Badminton"
-            //       },
-            //       {
-            //         "content_type":"text",
-            //         "title":"Categories",
-            //         "payload":"Categories"
-            //       }
-            //     ]
-            //   }
+                "text":"Let's hit the world! There is no thrill beyond sports, which sport(s) enthrills you more… :-)",
+                "quick_replies":[
+                  {
+                    "content_type":"text",
+                    "title":"Cricket",
+                    "payload":"Cricket"
+                  },
+                  {
+                    "content_type":"text",
+                    "title":"Soccer",
+                    "payload":"Soccer"
+                  },
+                  {
+                    "content_type":"text",
+                    "title":"Tennis",
+                    "payload":"Tennis"
+                  },
+                  {
+                    "content_type":"text",
+                    "title":"Badminton",
+                    "payload":"Badminton"
+                  },
+                  {
+                    "content_type":"text",
+                    "title":"Categories",
+                    "payload":"Categories"
+                  }
+                ]
+              }
         }
         callSendAPI(messageData,'https://graph.facebook.com/v2.6/592208327626213/messages');
     }else {
@@ -386,42 +389,45 @@ const sendContentPacks = (categoryName,event) => {
             "recipient": {
                 "id": senderID
             },
-            // "message":
-            // {
-            //     "text":"Widen your ears! I'm going to make a huge noise, define the tune… :-)",
-            //     "quick_replies":[
-            //       {
-            //         "content_type":"text",
-            //         "title":"Quizzes",
-            //         "payload":"Quizzes"
-            //       },
-            //       {
-            //         "content_type":"text",
-            //         "title":"Classical Music",
-            //         "payload":"Music"
-            //       },
-            //       {
-            //         "content_type":"text",
-            //         "title":"Western Music",
-            //         "payload":"Music"
-            //       },
-            //       {
-            //         "content_type":"text",
-            //         "title":"Categories",
-            //         "payload":"Categories"
-            //       }
-            //
-            //     ]
-            //   }
+            "message":
+            {
+                "text":"Widen your ears! I'm going to make a huge noise, define the tune… :-)",
+                "quick_replies":[
+                  {
+                    "content_type":"text",
+                    "title":"Quizzes",
+                    "payload":"Quizzes"
+                  },
+                  {
+                    "content_type":"text",
+                    "title":"Classical Music",
+                    "payload":"Music"
+                  },
+                  {
+                    "content_type":"text",
+                    "title":"Western Music",
+                    "payload":"Music"
+                  },
+                  {
+                    "content_type":"text",
+                    "title":"Categories",
+                    "payload":"Categories"
+                  },
+                  {
+                    "content_type":"location",
+                  }
 
-            "message":{
-    "attachment":{
-      "type":"audio",
-      "payload":{
-        "url":"https://petersapparel.com/bin/clip.mp3"
-      }
-    }
-  }
+                ]
+              }
+
+  //           "message":{
+  //   "attachment":{
+  //     "type":"audio",
+  //     "payload":{
+  //       "url":"https://petersapparel.com/bin/clip.mp3"
+  //     }
+  //   }
+  // }
         }
         callSendAPI(messageData,'https://graph.facebook.com/v2.6/592208327626213/messages');
         }else {
