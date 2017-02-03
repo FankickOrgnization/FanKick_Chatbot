@@ -335,35 +335,43 @@ const sendContentPacks = (categoryName,event) => {
                 "id": senderID
             },
             "message":{
-                "text":"Let's hit the world! There is no thrill beyond sports, which sport(s) enthrills you more… :-)",
-                "quick_replies":[
-                  {
-                    "content_type":"text",
-                    "title":"Cricket",
-                    "payload":"Cricket"
-                  },
-                  {
-                    "content_type":"text",
-                    "title":"Soccer",
-                    "payload":"Soccer"
-                  },
-                  {
-                    "content_type":"text",
-                    "title":"Tennis",
-                    "payload":"Tennis"
-                  },
-                  {
-                    "content_type":"text",
-                    "title":"Badminton",
-                    "payload":"Badminton"
-                  },
-                  {
-                    "content_type":"text",
-                    "title":"Categories",
-                    "payload":"Categories"
-                  }
-                ]
-              }
+  "attachment":{
+    "type":"video",
+    "payload":{
+      "url":"https://petersapparel.com/bin/clip.mp4"
+    }
+  }
+}
+            // "message":{
+            //     "text":"Let's hit the world! There is no thrill beyond sports, which sport(s) enthrills you more… :-)",
+            //     "quick_replies":[
+            //       {
+            //         "content_type":"text",
+            //         "title":"Cricket",
+            //         "payload":"Cricket"
+            //       },
+            //       {
+            //         "content_type":"text",
+            //         "title":"Soccer",
+            //         "payload":"Soccer"
+            //       },
+            //       {
+            //         "content_type":"text",
+            //         "title":"Tennis",
+            //         "payload":"Tennis"
+            //       },
+            //       {
+            //         "content_type":"text",
+            //         "title":"Badminton",
+            //         "payload":"Badminton"
+            //       },
+            //       {
+            //         "content_type":"text",
+            //         "title":"Categories",
+            //         "payload":"Categories"
+            //       }
+            //     ]
+            //   }
         }
         callSendAPI(messageData,'https://graph.facebook.com/v2.6/592208327626213/messages');
     }else {
@@ -378,32 +386,42 @@ const sendContentPacks = (categoryName,event) => {
             "recipient": {
                 "id": senderID
             },
-            "message":{
-                "text":"Widen your ears! I'm going to make a huge noise, define the tune… :-)",
-                "quick_replies":[
-                  {
-                    "content_type":"text",
-                    "title":"Quizzes",
-                    "payload":"Quizzes"
-                  },
-                  {
-                    "content_type":"text",
-                    "title":"Classical Music",
-                    "payload":"Music"
-                  },
-                  {
-                    "content_type":"text",
-                    "title":"Western Music",
-                    "payload":"Music"
-                  },
-                  {
-                    "content_type":"text",
-                    "title":"Categories",
-                    "payload":"Categories"
-                  }
+            // "message":
+            // {
+            //     "text":"Widen your ears! I'm going to make a huge noise, define the tune… :-)",
+            //     "quick_replies":[
+            //       {
+            //         "content_type":"text",
+            //         "title":"Quizzes",
+            //         "payload":"Quizzes"
+            //       },
+            //       {
+            //         "content_type":"text",
+            //         "title":"Classical Music",
+            //         "payload":"Music"
+            //       },
+            //       {
+            //         "content_type":"text",
+            //         "title":"Western Music",
+            //         "payload":"Music"
+            //       },
+            //       {
+            //         "content_type":"text",
+            //         "title":"Categories",
+            //         "payload":"Categories"
+            //       }
+            //
+            //     ]
+            //   }
 
-                ]
-              }
+            "message":{
+    "attachment":{
+      "type":"audio",
+      "payload":{
+        "url":"https://petersapparel.com/bin/clip.mp3"
+      }
+    }
+  }
         }
         callSendAPI(messageData,'https://graph.facebook.com/v2.6/592208327626213/messages');
         }else {
@@ -463,7 +481,6 @@ const sendContentPacks = (categoryName,event) => {
                       "title":"Categories",
                       "payload":"Categories"
                     }
-
                   ]
                 }
           }
