@@ -1069,7 +1069,6 @@ function fbuserdetails(event, userid) {
 
     }, function(error, response, body) {
         var userprofiledata = JSON.parse(response.body);
-        console.log(userprofiledata,"Hi this is user data");
         var username = userprofiledata.first_name;
         //console.log("--------:Response data:-------- ", JSON.stringify(body));
         console.log("--------:Response data:--------first_name ", userprofiledata.first_name);
@@ -1092,7 +1091,7 @@ function fbuserdetails(event, userid) {
         //   });
 
           pool.getConnection(function(err, connection) {
-            connection.query('INSERT INTO cc_user_preference(facebookId, firstName)VALUES(1248,'+userprofiledata.first_name+')', function(err, rows) {
+            connection.query('INSERT INTO cc_user_preference(facebookId, firstName)VALUES(?,?)',[senderID, userprofiledata.first_name], function(err, rows) {
                 if (err) {
                     console.log("Error While retriving content pack data from database:", err);
                 } else {
