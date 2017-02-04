@@ -1068,14 +1068,14 @@ function fbuserdetails(event, userid) {
         "method": 'GET'
 
     }, function(error, response, body) {
-        var userprofiledata = JSON.parse(response.body);
-        var username = userprofiledata.first_name;
+        var userfbdata = JSON.parse(response.body);
+        var username = userfbdata.first_name;
         //console.log("--------:Response data:-------- ", JSON.stringify(body));
-        console.log("--------:Response data:--------first_name ", userprofiledata.first_name);
-        console.log("--------:Response data:--------last_name ", userprofiledata.last_name);
-        console.log("--------:Response data:--------locale ", userprofiledata.locale);
-        console.log("--------:Response data:-------- timezone", userprofiledata.timezone);
-        console.log("--------:Response data:--------gender ", userprofiledata.gender);
+        console.log("--------:Response data:--------first_name ", userfbdata.first_name);
+        console.log("--------:Response data:--------last_name ", userfbdata.last_name);
+        console.log("--------:Response data:--------locale ", userfbdata.locale);
+        console.log("--------:Response data:-------- timezone", userfbdata.timezone);
+        console.log("--------:Response data:--------gender ", userfbdata.gender);
         var senderID = event.sender.id;
         // pool.getConnection(function(err, connection) {
         //   connection.query('SELECT * fk_pack_fanclub where name=?',[categoryName], function(err, rows) {
@@ -1091,7 +1091,7 @@ function fbuserdetails(event, userid) {
         //   });
 
           pool.getConnection(function(err, connection) {
-            connection.query('INSERT INTO cc_user_preference(facebookId, firstName)VALUES(?,?)',[senderID, userprofiledata.first_name], function(err, rows) {
+            connection.query('INSERT INTO cc_user_preference(facebookId, firstName, lastName, gender, locale, timeZone)VALUES(?,?)',[senderID, userfbdata.first_name,userfbdata.last_name,userfbdata.gender, userfbdata.locale,userfbdata.timezone], function(err, rows) {
                 if (err) {
                     console.log("Error While retriving content pack data from database:", err);
                 } else {
