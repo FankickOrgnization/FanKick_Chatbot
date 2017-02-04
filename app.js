@@ -199,7 +199,6 @@ function receivedMessage(event) {
               receivedtextmessage(msgwit_value, event);
             //  bot.wittest(msgwit_value);
             }
-
             }
         });
 }
@@ -494,7 +493,7 @@ function fbuserdetails(event, userid) {
         console.log("--------:Response data:--------first_name ", userprofiledata.first_name);
         console.log("--------:Response data:--------last_name ", userprofiledata.last_name);
         console.log("--------:Response data:--------locale ", userprofiledata.locale);
-        console.log("--------:Response data:-------- timezone", userprofiledata.timezone);
+        console.log("--------:Response data:--------timezone", userprofiledata.timezone);
         console.log("--------:Response data:--------gender ", userprofiledata.gender);
         var senderID = event.sender.id;
         //var msg = 'Hi '+username+', A lot of exciting things are awaiting for you! Get kicking!';
@@ -541,14 +540,12 @@ function fbuserdetails(event, userid) {
             var recipientId = body.recipient_id;
             var messageId = body.message_id;
             console.log("Successfully sent generic message with id %s to recipient %s", messageId, recipientId);
-
         } else {
             console.error("Unable to send message.");
             //console.error(response);
             console.error("Error while sending message:", error);
         }
     });
-
 }
 
 function fbuserdetailsSecond(event, userid) {

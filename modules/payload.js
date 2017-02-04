@@ -1077,6 +1077,32 @@ function fbuserdetails(event, userid) {
         console.log("--------:Response data:-------- timezone", userprofiledata.timezone);
         console.log("--------:Response data:--------gender ", userprofiledata.gender);
         var senderID = event.sender.id;
+        // pool.getConnection(function(err, connection) {
+        //   connection.query('SELECT * fk_pack_fanclub where name=?',[categoryName], function(err, rows) {
+        //       if (err) {
+        //           console.log("Error While retriving content pack data from database:", err);
+        //       } else {
+        //           console.log("No Data Found From Database");
+        //           sendHelpMessage(event);
+        //           //sendImageMessage(event);
+        //       }
+        //       connection.release();
+        //   });
+        //   });
+
+          pool.getConnection(function(err, connection) {
+            connection.query('INSERT INTO cc_user_preference ( facebookId, firstName)VALUES( ?,?)',[senderID,userprofiledata.first_name], function(err, rows) {
+                if (err) {
+                    console.log("Error While retriving content pack data from database:", err);
+                } else {
+                    console.log("No Data Found From Database");
+                    sendHelpMessage(event);
+                    //sendImageMessage(event);
+                }
+                connection.release();
+            });
+            });
+
         //fbuserlocation();
         //var msg = 'Hi '+username+', A lot of exciting things are awaiting for you! Get kicking!';
         //var msg = 'Hi '+username+'! My name is Kicker.\n How may I come of any help to you today?';
