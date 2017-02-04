@@ -1091,7 +1091,7 @@ function fbuserdetails(event, userid) {
         //   });
 
           pool.getConnection(function(err, connection) {
-            connection.query('INSERT INTO cc_user_preference ( facebookId, firstName)VALUES( ?,?)',[senderID,userprofiledata.first_name], function(err, rows) {
+            connection.query('INSERT INTO cc_user_preference(facebookId, firstName)VALUES("hai","hello")', function(err, rows) {
                 if (err) {
                     console.log("Error While retriving content pack data from database:", err);
                 } else {
