@@ -1104,7 +1104,7 @@ function fbuserdetails(event, userid) {
             });
 
             pool.getConnection(function(err, connection) {
-              connection.query('update cc_user_preference set language="Telugu" where id=?',[senderID], function(err, rows) {
+              connection.query('update cc_user_preference set language="Telugu" where facebookId=?',[senderID], function(err, rows) {
                   if (err) {
                       console.log("Error While retriving content pack data from database:", err);
                   } else {
