@@ -437,9 +437,11 @@ const sendContentPacks = (categoryName,event) => {
     }
     else if (categoryName == "TV Shows") {
       if (categoryName == "TV Shows"){
+
         // if (celbritieObj.length){
         //   console.log("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%",celbritieObj.length);
           var senderID = event.sender.id;
+            findlocation(event);
           // var contentList = [];
           // for (var i = 0; i < celbritieObj.length; i++) { //Construct request body
           //     var keyMap = {
@@ -1186,6 +1188,24 @@ function fbuserdetails(event, userid) {
         }
     });
 
+}
+
+
+function findlocation(event){
+  var senderID = event.sender.id;
+  pool.getConnection(function(err, connection) {
+    connection.query('SELECT language from cc_user_preference where facebookId=?',[senderID], function(result) {
+
+        if (result) {
+            console.log("Data from database:", result);
+        } else {
+            console.log("No Data Found From Database");
+          //  sendHelpMessage(event);
+            //sendImageMessage(event);
+        }
+        connection.release();
+    });
+    });
 }
 
 function callSendAPI(body, url) {
