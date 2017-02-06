@@ -1192,12 +1192,14 @@ function fbuserdetails(event, userid) {
 
 
 function findlocation(event){
+  console.log("findlocation");
   var senderID = event.sender.id;
   pool.getConnection(function(err, connection) {
-    connection.query('SELECT language from cc_user_preference where facebookId=?',[senderID], function(result) {
+    connection.query('SELECT language from cc_user_preference where facebookId=?',[senderID], function(err, rows) {
+      console.log("Result for language",rows);
 
-        if (result) {
-            console.log("Data from database:", result);
+        if (err) {
+            console.log("Error While retriving content pack data from database:", err);
         } else {
             console.log("No Data Found From Database");
           //  sendHelpMessage(event);
