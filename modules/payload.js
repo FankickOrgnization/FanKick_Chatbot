@@ -1197,7 +1197,7 @@ function findlocation(event){
   pool.getConnection(function(err, connection) {
     connection.query('SELECT language from cc_user_preference where facebookId=?',[senderID], function(err, rows) {
       console.log("Result for language",rows);
-      console.log("Result for language",rows.language);
+      console.log("Result for language",rows[0].RowDataPacket.language);
         if (err) {
             console.log("Error While retriving content pack data from database:", err);
         } else {
