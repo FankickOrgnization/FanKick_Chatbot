@@ -310,7 +310,7 @@ const sendContentPacks = (categoryName,event) => {
                     },
                     {
                       "content_type":"text",
-                      "title":"Kollywood",
+                      "title":"Another 😂",
                       "payload":"Kollywood"
                     },
                     {
