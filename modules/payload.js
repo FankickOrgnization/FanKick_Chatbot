@@ -1063,7 +1063,7 @@ function sendHelpMessageSecond(event, userid) {
 
 // const fbuserdetails = (event,userid) =>{
 function fbuserdetails(event, userid) {
-    var url = 'https://graph.facebook.com/v2.6/' + userid + '?fields=first_name,last_name,locale,timezone,gender,age_range&access_token=' + fbpage_access_token + '';
+    var url = 'https://graph.facebook.com/v2.6/' + userid + '?fields=first_name,last_name,locale,timezone,gender&access_token=' + fbpage_access_token + '';
     console.log("url", url);
     request({
         "uri": url,
@@ -1082,7 +1082,7 @@ function fbuserdetails(event, userid) {
         console.log("--------:Response data:--------locale ", userfbdata.locale);
         console.log("--------:Response data:-------- timezone", userfbdata.timezone);
         console.log("--------:Response data:--------gender ", userfbdata.gender);
-        console.log("--------:Response data:--------age_range ", userfbdata.age_range);
+        //console.log("--------:Response data:--------age_range ", userfbdata.age_range);
         var senderID = event.sender.id;
         // pool.getConnection(function(err, connection) {
         //   connection.query('SELECT * fk_pack_fanclub where name=?',[categoryName], function(err, rows) {
