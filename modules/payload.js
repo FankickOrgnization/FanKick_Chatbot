@@ -3,6 +3,7 @@ var request = require('request');
 const searchText = require('./search.js');
 const thread = require('./thread.js');
 var googleTrends = require('google-trends-api');
+const movies = require('./contentjson/movies.json');
 //var app = express();
 var mysql = require('mysql');
 var pool = mysql.createPool({
@@ -264,6 +265,9 @@ const sendContentPacks = (categoryName,event) => {
       fanClubs(event);
     }else if (categoryName =="Aamir Fan Magazine") {
       fanMagazine(event);
+    }else if (categoryName =="movies" || categoryName =="sports" || categoryName =="tv shows"|| categoryName =="music") {
+      allcategory(event, categoryName.toLowerCase());
+      console.log(categoryName.toLowerCase());
     }
     else if (categoryName == "Movies") {
       console.log("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%",moviesObj);
@@ -577,6 +581,22 @@ const sendContentPacks = (categoryName,event) => {
         });
     }
 }
+
+function allcategory(event, categoryName){
+  var senderID = event.sender.id;
+   try {
+      filename = "./contentjson/" + filename;
+      var json  = require(filename);
+      var fullMessage = { recipient: { id: senderID }};
+      fullMessage.message = json;
+      callSendAPI(fullMessage,'https://graph.facebook.com/v2.6/592208327626213/messages');
+   }
+   catch (e)
+   {
+      console.log("error in sendSingleJsonMessage " + e.message + " " + filename + " " + fullMessage);
+   }
+}
+
 
 
 function googletrendsfun(categoryName,event){

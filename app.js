@@ -102,6 +102,8 @@ function receivedpostback(messagingEvent) {
     var packId = parseInt(categoryName);
     if (isNaN(packId)) {
         //sendContentPacks(messageText, event);
+        var res = categoryName.toLowerCase();
+        console.log("********************************************************",res)
         payloadText.sendContentPacks(categoryName, messagingEvent)
     } else if (categoryName == "Quizzes") {
         quizzesPacks(categoryName, messagingEvent);
