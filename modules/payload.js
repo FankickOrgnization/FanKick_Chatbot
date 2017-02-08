@@ -632,8 +632,7 @@ function allcategory(event, categoryName){
           "content_type":"text",
           "title":"Home",
           "payload":"Home"
-        }
-      ]
+        }]
     }
       var fullMessage = { recipient: { id: senderID }};
       fullMessage.message = json;
