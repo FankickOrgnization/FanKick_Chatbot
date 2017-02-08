@@ -78,7 +78,7 @@ var quickMenu = [
 //app.use(bodyParser.json());
 //console.log("------:thread:-----");
 
-const sendContentPacks = (categoryName,event) => {
+const sendContentPacks = (categoryName.toLowerCase(),event) => {
   console.log("*************---categoryName----*******", categoryName );
     if (categoryName == "Categories") {
       console.log("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%",moviesObj);
@@ -266,8 +266,7 @@ const sendContentPacks = (categoryName,event) => {
     }else if (categoryName =="Aamir Fan Magazine") {
       fanMagazine(event);
     }else if (categoryName =="movies" || categoryName =="sports" || categoryName =="tv shows"|| categoryName =="music") {
-      allcategory(event, categoryName.toLowerCase());
-      console.log(categoryName.toLowerCase());
+      allcategory(event, categoryName);
     }
     else if (categoryName == "Movies") {
       console.log("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%",moviesObj);
