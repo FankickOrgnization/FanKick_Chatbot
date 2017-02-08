@@ -587,42 +587,7 @@ function allcategory(event, categoryName){
   var imgdangol = 'http://t3.gstatic.com/images?q=tbn:ANd9GcQIXnFlBKGWT1ByyIu3qfxX6opQX6BmeeU_qsiE3X8rX9ZRr63r';
    try {
       categoryName = "../contentjson/" + categoryName;
-      var json  = require(categoryName);
-      // var json = {
-      //       "attachment": {
-      //         "type": "template",
-      //           "payload": {
-      //             "template_type": "generic",
-      //             "elements":[{
-      //                 "title":"Music",
-      //                 "image_url":imgdangol,
-      //                 "subtitle":"Widen your ears! I'm going to make a huge noise, define the tune… :-)",
-      //                 "buttons":[{
-      //                   "type": "postback",
-      //                   "title": "Music",
-      //                   "payload": "Music"
-      //                 }]
-      //               }]
-      //           }
-      //         },
-      //       "quick_replies":[
-      //         {
-      //           "content_type":"text",
-      //           "title":"Classical Music",
-      //           "payload":"Music"
-      //         },
-      //         {
-      //           "content_type":"text",
-      //           "title":"Western Music",
-      //           "payload":"Music"
-      //         },
-      //         {
-      //           "content_type":"text",
-      //           "title":"Categories",
-      //           "payload":"Categories"
-      //         }]
-      // };
-
+      var json  = require(categoryName);    
       var fullMessage = { recipient: { id: senderID }};
       fullMessage.message = json;
       callSendAPI(fullMessage,'https://graph.facebook.com/v2.6/592208327626213/messages');
