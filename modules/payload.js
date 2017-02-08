@@ -593,7 +593,7 @@ function allcategory(event, categoryName){
    }
    catch (e)
    {
-      console.log("error in sendSingleJsonMessage " + e.message + " " + filename + " " + fullMessage);
+      console.log("error in sendSingleJsonMessage " + e.message + " " + categoryName + " " + fullMessage);
    }
 }
 
