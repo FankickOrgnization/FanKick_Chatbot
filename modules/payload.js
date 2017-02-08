@@ -587,7 +587,38 @@ function allcategory(event, categoryName){
   var imgdangol = 'http://t3.gstatic.com/images?q=tbn:ANd9GcQIXnFlBKGWT1ByyIu3qfxX6opQX6BmeeU_qsiE3X8rX9ZRr63r';
    try {
       categoryName = "../contentjson/" + categoryName;
-      var json  = require(categoryName);    
+      //var json  = require(categoryName); 
+      var json = {
+            "text": "Movie is the king of entertainment. Pick your favorite kingdom (You can select multiple)… :-).",
+            "quick_replies": [{
+                "content_type":"text",
+                "title":"Hollywood",
+                "payload":"Hollywood"
+              },
+              {
+                "content_type":"text",
+                "title":"Bollywood",
+                "payload":"Bollywood"
+              },
+              {
+                "content_type":"text",
+                "title":"Tollywood",
+                "payload":"Tollywood"
+              },
+              {
+                "content_type":"text",
+                "title":"Kollywood",
+                "payload":"Kollywood"
+              },
+              {
+                "content_type":"text",
+                "title":"Categories",
+                "payload":"Categories"
+              },
+              {
+                "content_type":"location",
+              }]
+      };
       var fullMessage = { recipient: { id: senderID }};
       fullMessage.message = json;
       callSendAPI(fullMessage,'https://graph.facebook.com/v2.6/592208327626213/messages');
