@@ -99,6 +99,8 @@ app.post('/webhook', function(req, res) {
 function receivedpostback(messagingEvent) {
     var categoryName = messagingEvent.postback.payload;
     var userid = messagingEvent.sender.id;
+    var catname = categoryName.toLowerCase();
+    console.log("catname", catname);
     var packId = parseInt(categoryName);
     if (isNaN(packId)) {
         //sendContentPacks(messageText, event);

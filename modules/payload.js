@@ -78,7 +78,7 @@ var quickMenu = [
 //app.use(bodyParser.json());
 //console.log("------:thread:-----");
 
-const sendContentPacks = (categoryName.toLowerCase(),event) => {
+const sendContentPacks = (categoryName,event) => {
   console.log("*************---categoryName----*******", categoryName );
     if (categoryName == "Categories") {
       console.log("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%",moviesObj);
