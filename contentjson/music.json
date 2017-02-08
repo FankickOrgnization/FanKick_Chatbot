@@ -4,18 +4,16 @@
           "payload": {
             "template_type": "generic",
             "elements":{
-                "subtitle": "Widen your ears! I'm going to make a huge noise, define the tune… :-)",
-                "buttons":[
-                {
+                "subtitle":"Widen your ears! I'm going to make a huge noise, define the tune… :-)",
+                "buttons":[{
                   "type": "postback",
                   "title": "Music",
                   "payload": "Music"
                 }]
               }
           }
-      },
-      "quick_replies":[
-        {
+        },
+      "quick_replies":[{
           "content_type":"text",
           "title":"Quizzes",
           "payload":"Quizzes"
