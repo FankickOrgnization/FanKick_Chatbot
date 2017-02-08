@@ -586,7 +586,7 @@ function allcategory(event, categoryName){
   var senderID = event.sender.id;
   var imgdangol = 'http://t3.gstatic.com/images?q=tbn:ANd9GcQIXnFlBKGWT1ByyIu3qfxX6opQX6BmeeU_qsiE3X8rX9ZRr63r';
    try {
-      categoryName = "../contentjson/" + categoryName;
+      //categoryName = "../contentjson/" + categoryName;
       //var json  = require(categoryName);
       // var json = {
       //       "text": "Movie is the king of entertainment. Pick your favorite kingdom (You can select multiple)… :-).",
