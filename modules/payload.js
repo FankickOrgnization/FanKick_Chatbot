@@ -595,7 +595,7 @@ function allcategory(event, categoryName){
                   "template_type": "generic",
                   "elements":{
                       "title":"Music",
-                      "image_url": imgdangol,
+                      "image_url":imgdangol,
                       "subtitle":"Widen your ears! I'm going to make a huge noise, define the tune… :-)",
                       "buttons":[{
                         "type": "postback",
@@ -605,22 +605,23 @@ function allcategory(event, categoryName){
                     }
                 }
               },
-            "quick_replies":[
-              {
-                "content_type":"text",
-                "title":"Classical Music",
-                "payload":"Music"
-              },
-              {
-                "content_type":"text",
-                "title":"Western Music",
-                "payload":"Music"
-              },
-              {
-                "content_type":"text",
-                "title":"Categories",
-                "payload":"Categories"
-              }]
+              "quick_replies":quickMenu
+            // "quick_replies":[
+            //   {
+            //     "content_type":"text",
+            //     "title":"Classical Music",
+            //     "payload":"Music"
+            //   },
+            //   {
+            //     "content_type":"text",
+            //     "title":"Western Music",
+            //     "payload":"Music"
+            //   },
+            //   {
+            //     "content_type":"text",
+            //     "title":"Categories",
+            //     "payload":"Categories"
+            //   }]
       };
 
       var fullMessage = { recipient: { id: senderID }};
