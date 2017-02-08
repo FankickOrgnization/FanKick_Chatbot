@@ -593,6 +593,7 @@ function allcategory(event, categoryName){
                 "payload": {
                   "template_type": "generic",
                   "elements":{
+                        "title":"Music",
                       "subtitle":"Widen your ears! I'm going to make a huge noise, define the tune… :-)",
                       "buttons":[{
                         "type": "postback",
