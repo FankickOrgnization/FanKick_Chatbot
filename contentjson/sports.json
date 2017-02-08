@@ -2,43 +2,34 @@
       "attachment": {
         "type": "template",
         "payload": {
-          "template_type": "button",
-          "subtitle": "Widen your ears! I'm going to make a huge noise, define the tune… :-)",
-          "buttons":[
+         "template_type": "generic",
+          "elements": [
           {
-            "type": "postback",
-            "title": "Music",
-            "payload": "Music"
+            "title": "LinkedIn",
+            "item_url": "https://www.linkedin.com/in/matthewericfisher",
+            "image_url": "https://raw.githubusercontent.com/matthewericfisher/fb-robot/master/img/linkedin.png"
+          },
+          {
+            "title": "Medium",
+            "item_url": "https://medium.com/@matthewericfisher",
+            "image_url": "https://raw.githubusercontent.com/matthewericfisher/fb-robot/master/img/medium.png"
+          },
+          {
+            "title": "StackOverflow",
+            "item_url": "http://stackoverflow.com/users/6577680/matthew-fisher?tab=profile",
+            "image_url": "https://raw.githubusercontent.com/matthewericfisher/fb-robot/master/img/so-logo.png"
+          },
+          {
+            "title": "Tumblr",
+            "item_url": "https://matthewericfisher.tumblr.com",
+            "image_url": "https://raw.githubusercontent.com/matthewericfisher/fb-robot/master/img/tumblr.png"
+          },
+          {
+            "title": "YouTube",
+            "item_url": "https://www.youtube.com/user/MemoryLeakDMS",
+            "image_url": "https://raw.githubusercontent.com/matthewericfisher/fb-robot/master/img/youtube.png"
           }
-
-           ]
+          ]
         }
-      },
-      "quick_replies":[
-           {
-             "content_type":"text",
-              "title":"Cricket",
-               "payload":"Cricket"
-             },
-             {
-               "content_type":"text",
-               "title":"Soccer",
-               "payload":"Soccer"
-             },
-             {
-               "content_type":"text",
-               "title":"Tennis",
-               "payload":"Tennis"
-             },
-           {
-               "content_type":"text",
-               "title":"Badminton",
-               "payload":"Badminton"
-             },
-             {
-             "content_type":"text",
-             "title":"Categories",
-             "payload":"Categories"
-             }
-           ]
+      }
 }
