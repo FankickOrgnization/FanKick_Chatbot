@@ -13,11 +13,7 @@
               }
           }
         },
-      "quick_replies":[{
-          "content_type":"text",
-          "title":"Quizzes",
-          "payload":"Quizzes"
-        },
+      "quick_replies":[
         {
           "content_type":"text",
           "title":"Classical Music",
@@ -32,8 +28,5 @@
           "content_type":"text",
           "title":"Categories",
           "payload":"Categories"
-        },
-        {
-          "content_type":"location",
         }]
 }
