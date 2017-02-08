@@ -2,16 +2,16 @@
       "attachment": {
         "type": "template",
         "payload": {
-          "template_type": "button",
-          "subtitle": "Widen your ears! I'm going to make a huge noise, define the tune… :-)",
-          "buttons":[
-          {
-            "type": "postback",
-            "title": "Music",
-            "payload": "Music"
-          }
-
-           ]
+          "template_type": "generic",
+          "elements":{
+              "subtitle": "Widen your ears! I'm going to make a huge noise, define the tune… :-)",
+              "buttons":[
+              {
+                "type": "postback",
+                "title": "Music",
+                "payload": "Music"
+              }]
+        }
         }
       },
       "quick_replies":[

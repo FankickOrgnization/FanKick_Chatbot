@@ -586,48 +586,7 @@ function allcategory(event, categoryName){
   var senderID = event.sender.id;
    try {
       categoryName = "../contentjson/" + categoryName;
-    //  var json  = require(categoryName);
-    var json = {
-          "attachment": {
-            "type": "template",
-            "payload": {
-              "template_type": "button",
-              "subtitle": "Widen your ears! I'm going to make a huge noise, define the tune… :-)",
-              "buttons":[
-              {
-                "type": "postback",
-                "title": "Music",
-                "payload": "Music"
-              }]
-            }
-          },
-          "quick_replies":[
-            {
-              "content_type":"text",
-              "title":"Quizzes",
-              "payload":"Quizzes"
-            },
-            {
-              "content_type":"text",
-              "title":"Classical Music",
-              "payload":"Music"
-            },
-            {
-              "content_type":"text",
-              "title":"Western Music",
-              "payload":"Music"
-            },
-            {
-              "content_type":"text",
-              "title":"Categories",
-              "payload":"Categories"
-            },
-            {
-              "content_type":"location",
-            }
-          ]
-    };
-
+      var json  = require(categoryName);
       var fullMessage = { recipient: { id: senderID }};
       fullMessage.message = json;
       callSendAPI(fullMessage,'https://graph.facebook.com/v2.6/592208327626213/messages');
