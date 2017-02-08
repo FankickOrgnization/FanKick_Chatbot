@@ -1,37 +1,33 @@
 {
-
-          "text":"Widen your ears! I'm going to make a huge noise, define the tune… :-)",
-          "quick_replies":[
-            {
-              "content_type":"text",
-              "title":"Hollywood",
-              "payload":"Hollywood"
-            },
-            {
-              "content_type":"text",
-              "title":"Bollywood",
-              "payload":"Bollywood"
-            },
-            {
-              "content_type":"text",
-              "title":"Tollywood",
-              "payload":"Tollywood"
-            },
-            {
-              "content_type":"text",
-              "title":"Kollywood",
-              "payload":"Kollywood"
-            },
-            {
-              "content_type":"text",
-              "title":"Categories",
-              "payload":"Categories"
-            },
-            {
-              "content_type":"location",
-            }
-          ]
-      
-
-
+      "text": "Widen your ears! I'm going to make a huge noise, define the tune… :-)",
+      "quick_replies": [
+        {
+          "content_type":"text",
+          "title":"Hollywood",
+          "payload":"Hollywood"
+        },
+        {
+          "content_type":"text",
+          "title":"Bollywood",
+          "payload":"Bollywood"
+        },
+        {
+          "content_type":"text",
+          "title":"Tollywood",
+          "payload":"Tollywood"
+        },
+        {
+          "content_type":"text",
+          "title":"Kollywood",
+          "payload":"Kollywood"
+        },
+        {
+          "content_type":"text",
+          "title":"Categories",
+          "payload":"Categories"
+        },
+        {
+          "content_type":"location",
+        }
+      ]
 }
