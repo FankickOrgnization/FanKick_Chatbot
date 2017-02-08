@@ -267,6 +267,7 @@ const sendContentPacks = (categoryName,event) => {
       fanMagazine(event);
     }else if (categoryName =="movies" || categoryName =="sports" || categoryName =="tv shows"|| categoryName =="music") {
       allcategory(event, categoryName);
+      console.log("enter into the allcategory function");
     }
     else if (categoryName == "Movies") {
       console.log("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%",moviesObj);
@@ -584,7 +585,7 @@ const sendContentPacks = (categoryName,event) => {
 function allcategory(event, categoryName){
   var senderID = event.sender.id;
    try {
-      filename = "./contentjson/" + filename;
+      filename = "../contentjson/" + categoryName;
       var json  = require(filename);
       var fullMessage = { recipient: { id: senderID }};
       fullMessage.message = json;

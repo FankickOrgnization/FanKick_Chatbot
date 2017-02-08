@@ -106,7 +106,9 @@ function receivedpostback(messagingEvent) {
         //sendContentPacks(messageText, event);
         var res = categoryName.toLowerCase();
         console.log("********************************************************",res)
-        payloadText.sendContentPacks(categoryName, messagingEvent)
+        //payloadText.sendContentPacks(categoryName, messagingEvent);
+        payloadText.sendContentPacks(catname, messagingEvent);
+
     } else if (categoryName == "Quizzes") {
         quizzesPacks(categoryName, messagingEvent);
         console.log("categoryName########", categoryName);
