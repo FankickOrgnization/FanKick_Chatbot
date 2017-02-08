@@ -584,6 +584,7 @@ const sendContentPacks = (categoryName,event) => {
 
 function allcategory(event, categoryName){
   var senderID = event.sender.id;
+  var imgdangol = 'http://t3.gstatic.com/images?q=tbn:ANd9GcQIXnFlBKGWT1ByyIu3qfxX6opQX6BmeeU_qsiE3X8rX9ZRr63r';
    try {
       categoryName = "../contentjson/" + categoryName;
       var json  = require(categoryName);
@@ -593,7 +594,8 @@ function allcategory(event, categoryName){
                 "payload": {
                   "template_type": "generic",
                   "elements":{
-                        "title":"Music",
+                      "title":"Music",
+                      "image_url": imgdangol,
                       "subtitle":"Widen your ears! I'm going to make a huge noise, define the tune… :-)",
                       "buttons":[{
                         "type": "postback",
