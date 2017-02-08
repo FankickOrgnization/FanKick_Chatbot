@@ -3,7 +3,7 @@
         "type": "template",
         "payload": {
           "template_type": "button",
-          "text": "This is the personal assistant bot for Matthew Fisher, CEO of DMS Software.  You can found out more about DMS Software, bots and other cool stuff.  Type 'home' at anytime to start again",
+          "subtitle": "Widen your ears! I'm going to make a huge noise, define the tune… :-)",
           "buttons":[
           {
             "type": "postback",
@@ -13,5 +13,31 @@
 
            ]
         }
-      }
+      },
+      "quick_replies":[
+        {
+          "content_type":"text",
+          "title":"Quizzes",
+          "payload":"Quizzes"
+        },
+        {
+          "content_type":"text",
+          "title":"Classical Music",
+          "payload":"Music"
+        },
+        {
+          "content_type":"text",
+          "title":"Western Music",
+          "payload":"Music"
+        },
+        {
+          "content_type":"text",
+          "title":"Categories",
+          "payload":"Categories"
+        },
+        {
+          "content_type":"location",
+        }
+
+      ]
 }

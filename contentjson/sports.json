@@ -3,15 +3,42 @@
         "type": "template",
         "payload": {
           "template_type": "button",
-          "text": "This is the personal assistant bot for Matthew Fisher, CEO of DMS Software.  You can found out more about DMS Software, bots and other cool stuff.  Type 'home' at anytime to start again",
+          "subtitle": "Widen your ears! I'm going to make a huge noise, define the tune… :-)",
           "buttons":[
           {
             "type": "postback",
-            "title": "Sports",
-            "payload": "Sports"
+            "title": "Music",
+            "payload": "Music"
           }
 
            ]
         }
-      }
+      },
+      "quick_replies":[
+           {
+             "content_type":"text",
+              "title":"Cricket",
+               "payload":"Cricket"
+             },
+             {
+               "content_type":"text",
+               "title":"Soccer",
+               "payload":"Soccer"
+             },
+             {
+               "content_type":"text",
+               "title":"Tennis",
+               "payload":"Tennis"
+             },
+           {
+               "content_type":"text",
+               "title":"Badminton",
+               "payload":"Badminton"
+             },
+             {
+             "content_type":"text",
+             "title":"Categories",
+             "payload":"Categories"
+             }
+           ]
 }
