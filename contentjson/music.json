@@ -3,14 +3,16 @@
         "type": "template",
           "payload": {
             "template_type": "generic",
-            "elements":{
+            "elements":[{
+                "title":"Music",
+                "image_url":"http://t3.gstatic.com/images?q=tbn:ANd9GcQIXnFlBKGWT1ByyIu3qfxX6opQX6BmeeU_qsiE3X8rX9ZRr63r",
                 "subtitle":"Widen your ears! I'm going to make a huge noise, define the tune… :-)",
                 "buttons":[{
                   "type": "postback",
                   "title": "Music",
                   "payload": "Music"
                 }]
-              }
+              }]
           }
         },
       "quick_replies":[
