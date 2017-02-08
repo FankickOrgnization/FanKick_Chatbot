@@ -585,8 +585,8 @@ const sendContentPacks = (categoryName,event) => {
 function allcategory(event, categoryName){
   var senderID = event.sender.id;
    try {
-      filename = "../contentjson/" + categoryName;
-      var json  = require(filename);
+      categoryName = "../contentjson/" + categoryName;
+      var json  = require(categoryName);
       var fullMessage = { recipient: { id: senderID }};
       fullMessage.message = json;
       callSendAPI(fullMessage,'https://graph.facebook.com/v2.6/592208327626213/messages');
