@@ -715,6 +715,21 @@ var url = 'https://kgsearch.googleapis.com/v1/entities:search?query=' + category
                     "content_type":"text",
                     "title":name5.slice(0,20),
                     "payload":rows[4].result.name
+                  },
+                  {
+                    "content_type":"text",
+                    "title":"Categories",
+                    "payload":"Categories"
+                  },
+                  {
+                    "content_type":"text",
+                    "title":"Fan Clubs",
+                    "payload":"Fan Clubs"
+                  },
+                  {
+                    "content_type":"text",
+                    "title":"Fan Magazine",
+                    "payload":"Fan Magazine"
                   }
                   // ,
                   // {
