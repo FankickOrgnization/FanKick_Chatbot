@@ -9,12 +9,12 @@
       {
         "content_type":"text",
         "title":"Classical Music",
-        "payload":"Music"
+        "payload":"Classical Music"
       },
       {
         "content_type":"text",
         "title":"Western Music",
-        "payload":"Music"
+        "payload":"Western Music"
       },
       {
         "content_type":"text",

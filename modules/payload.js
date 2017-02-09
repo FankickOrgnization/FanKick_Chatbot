@@ -190,7 +190,7 @@ const sendContentPacks = (categoryName,event) => {
     } else if (categoryName == "pavan kalyan" || categoryName == "Pavan Kalyan" || categoryName == "Chiranjeevi" || categoryName == "Kalyan"|| categoryName == "Pawan Kalyan") {
       //celebritiesdetails(categoryName,event);
       googlegraph(categoryName,event);
-    }else if (categoryName == "hollywood" || categoryName == "tollywood" || categoryName == "bollywood" || categoryName == "kollywood") {
+    }else if (categoryName == "hollywood" || categoryName == "tollywood" || categoryName == "bollywood" || categoryName == "kollywood" || categoryName == "classical music" || categoryName == "western music") {
       //celebritiesdetails(categoryName,event);
       googlegraph(categoryName,event);
     }else if (categoryName == "cricket" || categoryName == "soccer" || categoryName == "tennis" || categoryName == "badminton") {
