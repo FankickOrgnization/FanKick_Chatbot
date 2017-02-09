@@ -151,7 +151,7 @@ function receivedMessage(event) {
     var messageAttachments = message.attachments;
     //getMessageFromWitAPI(messageText);
 
-      var msgwit = messageText.toLowerCase();
+      var msgwit = messageText;
       console.log("*************messageText*************",messageText);
       //bot.getwitmessageText(msgwit);
 
@@ -200,7 +200,7 @@ function receivedMessage(event) {
                 console.log("confidence************5",td1);
                 console.log("type************5",td2);
               console.log("value************5", td3);
-              msgwit_value = td3;
+              msgwit_value = td3.toLowerCase();
               console.log('******msgwit_value', msgwit_value);
              //bot.getwitmsg(wit_res_msg_id,msgwit_value,msgwit);
               receivedtextmessage(msgwit_value, event);
