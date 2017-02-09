@@ -238,7 +238,7 @@ const sendContentPacks = (categoryName,event) => {
       fanClubs(event);
     }else if (categoryName =="Aamir Fan Magazine") {
       fanMagazine(event);
-    }else if (categoryName =="movies" || categoryName =="sports" || categoryName =="tv shows"|| categoryName =="music" || categoryName =="categories") {
+    }else if (categoryName =="movies" || categoryName =="sports" || categoryName =="tv shows"|| categoryName =="music" || categoryName =="home") {
       allcategory(event, categoryName);
       console.log("enter into the allcategory function");
     }
