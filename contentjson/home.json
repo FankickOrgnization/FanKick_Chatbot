@@ -1,0 +1,58 @@
+{
+      "attachment": {
+        "type": "template",
+        "payload": {
+         "template_type": "generic",
+          "elements": [
+          {
+            "title": "Movies",
+            "subtitle": "Movies",
+            "image_url": "https://fankickdev.blob.core.windows.net/images/movies.jpg",
+            "buttons": [
+            {
+              "type": "postback",
+              "title": "Movies",
+              "payload": "Movies"
+            }
+            ]
+          },
+		        {
+            "title": "Sports",
+            "subtitle": "Sports",
+            "image_url": "https://fankickdev.blob.core.windows.net/images/sports.jpg",
+            "buttons": [
+            {
+              "type": "postback",
+              "title": "Sports",
+              "payload": "Sports"
+            }
+            ]
+          },
+          {
+            "title": "TV Shows",
+            "subtitle": "TV Shows",
+            "image_url": "https://fankickdev.blob.core.windows.net/images/celebrities.jpg",
+            "buttons": [
+            {
+              "type": "postback",
+              "title": "TV Shows",
+              "payload": "TV Shows"
+            }
+            ]
+          },
+          {
+            "title": "Music",
+            "subtitle": "Music",
+            "image_url": "https://fankickdev.blob.core.windows.net/images/music.jpg",
+            "buttons": [
+            {
+              "type": "postback",
+              "title": "Music",
+              "payload": "Music"
+            }
+            ]
+          }
+          ]
+        }
+      }
+    }
