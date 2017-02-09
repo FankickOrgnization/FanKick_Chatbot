@@ -316,6 +316,7 @@ function mainPacks(categoryName, event){
 function receivedtextmessage(categoryName, event) {
     //var categoryName = messagingEvent.message.text;
     var userid = event.sender.id;
+    var categoryName = categoryName.toLowerCase();
     //var quickButton =
       console.log("quickButton_postback:------", categoryName);
       console.log("postback_sender_id:------", userid);
