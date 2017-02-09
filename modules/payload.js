@@ -80,46 +80,7 @@ var quickMenu = [
 
 const sendContentPacks = (categoryName,event) => {
   console.log("*************---categoryName----*******", categoryName );
-    // if (categoryName == "Categories") {
-    //   console.log("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%",moviesObj);
-    //   if (moviesObj.length){
-    //     console.log("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%",moviesObj.length);
-    //     var senderID = event.sender.id;
-    //     var contentList = [];
-    //     for (var i = 0; i < moviesObj.length; i++) { //Construct request body
-    //         var keyMap = {
-    //                       "title": moviesObj[i].name,
-    //                       "image_url": moviesObj[i].imgurl,
-    //                                 //"item_url": moviesObj[i].imgurl,
-    //                       "buttons": [{
-    //                                   "type": "postback",
-    //                                   "title": moviesObj[i].name,
-    //                                   "payload": moviesObj[i].name
-    //                                 }]
-    //                             };
-    //
-    //         contentList.push(keyMap);
-    //     }
-    //     var messageData = {
-    //         "recipient": {
-    //             "id": senderID
-    //         },
-    //         "message": {
-    //             "attachment": {
-    //                 "type": "template",
-    //                 //"text":"We have some cool stuff waiting for you..",
-    //                 "payload": {
-    //                     "template_type": "generic",
-    //                     "elements": contentList
-    //                 }
-    //             },
-    //             //"quick_replies": quickMenu
-    //         }
-    //     }
-    //   }
-    //     callSendAPI(messageData,'https://graph.facebook.com/v2.6/592208327626213/messages');
-    // } else
-    if (categoryName == "Get Started") {
+    if (categoryName == "get started") {
         //greetingtext(messagingEvent,Get Started);
         var senderID = event.sender.id;
         thread.persistentMenu(fbpage_access_token);
@@ -127,7 +88,7 @@ const sendContentPacks = (categoryName,event) => {
         //sendTextMessage(userid, 'Get Started');
         console.log("categoryName", categoryName);
         //getStarted();
-    }else if (categoryName == "Fan Clubs") {
+    }else if (categoryName == "fan clubs") {
       pool.getConnection(function(err, connection) {
         connection.query('SELECT * FROM fk_pack_fanclub', function(err, rows) {
             if (err) {
@@ -178,7 +139,7 @@ const sendContentPacks = (categoryName,event) => {
             connection.release();
         });
         });
-    } else if (categoryName == "Fan Magazine") {
+    } else if (categoryName == "fan magazine") {
         //console.log("***************************", categoryName);
         pool.getConnection(function(err, connection) {
         connection.query('SELECT * FROM fk_pack_fan_magazines', function(err, rows) {
@@ -227,6 +188,12 @@ const sendContentPacks = (categoryName,event) => {
         });
         });
     } else if (categoryName == "pavan kalyan" || categoryName == "Pavan Kalyan" || categoryName == "Chiranjeevi" || categoryName == "Kalyan"|| categoryName == "Pawan Kalyan") {
+      //celebritiesdetails(categoryName,event);
+      googlegraph(categoryName,event);
+    }else if (categoryName == "hollywood" || categoryName == "tollywood" || categoryName == "bollywood" || categoryName == "kollywood") {
+      //celebritiesdetails(categoryName,event);
+      googlegraph(categoryName,event);
+    }else if (categoryName == "cricket" || categoryName == "soccer" || categoryName == "tennis" || categoryName == "badminton") {
       //celebritiesdetails(categoryName,event);
       googlegraph(categoryName,event);
     }else if (categoryName =="Sachin Tendulkar" || categoryName =="sachin tendulkar" || categoryName =="sachin" || categoryName =="tendulkar") {
@@ -355,38 +322,6 @@ function allcategory(event, categoryName){
    try {
       categoryName = "../contentjson/" + categoryName;
       var json  = require(categoryName);
-      // var json = {
-      //       "text": "Movie is the king of entertainment. Pick your favorite kingdom (You can select multiple)… :-).",
-      //       "quick_replies": [
-      //         {
-      //           "content_type":"text",
-      //           "title":"Hollywood",
-      //           "payload":"Hollywood"
-      //         },
-      //         {
-      //           "content_type":"text",
-      //           "title":"Bollywood",
-      //           "payload":"Bollywood"
-      //         },
-      //         {
-      //           "content_type":"text",
-      //           "title":"Tollywood",
-      //           "payload":"Tollywood"
-      //         },
-      //         {
-      //           "content_type":"text",
-      //           "title":"Kollywood",
-      //           "payload":"Kollywood"
-      //         },
-      //         {
-      //           "content_type":"text",
-      //           "title":"Categories",
-      //           "payload":"Categories"
-      //         },
-      //         {
-      //           "content_type":"location",
-      //         }]
-      // };
       var fullMessage = { recipient: { id: senderID }};
       fullMessage.message = json;
       callSendAPI(fullMessage,'https://graph.facebook.com/v2.6/592208327626213/messages');
