@@ -873,7 +873,7 @@ function fbuserdetails(event, userid) {
                     console.log("Error While retriving content pack data from database:", err);
                 } else {
                     console.log("No Data Found From Database");
-                    sendHelpMessage(event);
+                    //sendHelpMessage(event);
                     //sendImageMessage(event);
                 }
                 connection.release();
