@@ -646,8 +646,8 @@ function sendHelpMessage(event){
                   },
                   {
                     "content_type":"text",
-                    "title":"Celebrities",
-                    "payload":"Celebrities"
+                    "title":"TV Shows",
+                    "payload":"TV Shows"
                   }
                 ]
               }

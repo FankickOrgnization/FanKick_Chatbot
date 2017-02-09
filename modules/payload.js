@@ -720,17 +720,18 @@ var url = 'https://kgsearch.googleapis.com/v1/entities:search?query=' + category
                     "content_type":"text",
                     "title":"Categories",
                     "payload":"Categories"
-                  },
-                  {
-                    "content_type":"text",
-                    "title":"Fan Clubs",
-                    "payload":"Fan Clubs"
-                  },
-                  {
-                    "content_type":"text",
-                    "title":"Fan Magazine",
-                    "payload":"Fan Magazine"
                   }
+                  // ,
+                  // {
+                  //   "content_type":"text",
+                  //   "title":"Fan Clubs",
+                  //   "payload":"Fan Clubs"
+                  // },
+                  // {
+                  //   "content_type":"text",
+                  //   "title":"Fan Magazine",
+                  //   "payload":"Fan Magazine"
+                  // }
                   // ,
                   // {
                   //   "content_type":"text",
@@ -897,7 +898,7 @@ function fbuserdetails(event, userid) {
         //var msg = 'Hi '+username+', A lot of exciting things are awaiting for you! Get kicking!';
         //var msg = 'Hi '+username+'! My name is Kicker.\n How may I come of any help to you today?';
     //var msg = 'Hi '+username+'! My name is Kicker.\n \nI can help you get closer to your favorite celebrity with a lot of exciting things about them.\n\n Choose what excites you more';
-  var msg = 'Welcome to the club! \n \n Entertainment is served here, order your preferences…';
+  var msg = 'Welcome to the club! \n \nEntertainment is served here, order your preferences…';
         console.log("--------:Response data:--------msg1 ", msg);
         var messageData = {
             "recipient": {
@@ -925,16 +926,6 @@ function fbuserdetails(event, userid) {
                     "content_type":"text",
                     "title":"Sports",
                     "payload":"Sports"
-                  },
-                  {
-                    "content_type":"text",
-                    "title":"Fan Clubs",
-                    "payload":"Fan Clubs"
-                  },
-                  {
-                    "content_type":"text",
-                    "title":"Fan Magazine",
-                    "payload":"Fan Magazine"
                   }
                   // ,
                   // {
