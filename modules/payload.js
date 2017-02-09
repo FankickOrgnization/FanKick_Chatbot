@@ -202,7 +202,7 @@ const sendContentPacks = (categoryName,event) => {
       //celebritiesdetails(categoryName,event);
       googlegraph(categoryName,event);
     }else if (categoryName =="Sachin Tendulkar" || categoryName =="sachin tendulkar" || categoryName =="sachin" || categoryName =="tendulkar") {
-      googleTrends.risingSearches('Shahrukh Khan')
+      googleTrends.risingSearches(categoryName)
         .then(function(results){
           console.log("Google trendz",results);
           var googleTrends_result = results;
@@ -211,7 +211,7 @@ const sendContentPacks = (categoryName,event) => {
               console.log(googleTrends_result[i]); //alerts key's value
               var googleTrends_result_obj = googleTrends_result[i]
             }
-            console.log(googleTrends_result_obj);
+            console.log("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$",googleTrends_result_obj);
           //console.log(Object.keys(googleTrends_result));
           // for ( property in googleTrends_result ) {
           //   console.log( property ); // Outputs: foo, fiz or fiz, foo
@@ -723,7 +723,7 @@ var url = 'https://kgsearch.googleapis.com/v1/entities:search?query=' + category
                   },
                   {
                     "content_type":"text",
-                    "title":"Categories",
+                    "title":"home",
                     "payload":"Categories"
                   }
                   // ,
