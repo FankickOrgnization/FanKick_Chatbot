@@ -80,45 +80,46 @@ var quickMenu = [
 
 const sendContentPacks = (categoryName,event) => {
   console.log("*************---categoryName----*******", categoryName );
-    if (categoryName == "Categories") {
-      console.log("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%",moviesObj);
-      if (moviesObj.length){
-        console.log("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%",moviesObj.length);
-        var senderID = event.sender.id;
-        var contentList = [];
-        for (var i = 0; i < moviesObj.length; i++) { //Construct request body
-            var keyMap = {
-                          "title": moviesObj[i].name,
-                          "image_url": moviesObj[i].imgurl,
-                                    //"item_url": moviesObj[i].imgurl,
-                          "buttons": [{
-                                      "type": "postback",
-                                      "title": moviesObj[i].name,
-                                      "payload": moviesObj[i].name
-                                    }]
-                                };
-
-            contentList.push(keyMap);
-        }
-        var messageData = {
-            "recipient": {
-                "id": senderID
-            },
-            "message": {
-                "attachment": {
-                    "type": "template",
-                    //"text":"We have some cool stuff waiting for you..",
-                    "payload": {
-                        "template_type": "generic",
-                        "elements": contentList
-                    }
-                },
-                //"quick_replies": quickMenu
-            }
-        }
-      }
-        callSendAPI(messageData,'https://graph.facebook.com/v2.6/592208327626213/messages');
-    } else if (categoryName == "Get Started") {
+    // if (categoryName == "Categories") {
+    //   console.log("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%",moviesObj);
+    //   if (moviesObj.length){
+    //     console.log("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%",moviesObj.length);
+    //     var senderID = event.sender.id;
+    //     var contentList = [];
+    //     for (var i = 0; i < moviesObj.length; i++) { //Construct request body
+    //         var keyMap = {
+    //                       "title": moviesObj[i].name,
+    //                       "image_url": moviesObj[i].imgurl,
+    //                                 //"item_url": moviesObj[i].imgurl,
+    //                       "buttons": [{
+    //                                   "type": "postback",
+    //                                   "title": moviesObj[i].name,
+    //                                   "payload": moviesObj[i].name
+    //                                 }]
+    //                             };
+    //
+    //         contentList.push(keyMap);
+    //     }
+    //     var messageData = {
+    //         "recipient": {
+    //             "id": senderID
+    //         },
+    //         "message": {
+    //             "attachment": {
+    //                 "type": "template",
+    //                 //"text":"We have some cool stuff waiting for you..",
+    //                 "payload": {
+    //                     "template_type": "generic",
+    //                     "elements": contentList
+    //                 }
+    //             },
+    //             //"quick_replies": quickMenu
+    //         }
+    //     }
+    //   }
+    //     callSendAPI(messageData,'https://graph.facebook.com/v2.6/592208327626213/messages');
+    // } else
+    if (categoryName == "Get Started") {
         //greetingtext(messagingEvent,Get Started);
         var senderID = event.sender.id;
         thread.persistentMenu(fbpage_access_token);
@@ -265,243 +266,9 @@ const sendContentPacks = (categoryName,event) => {
       fanClubs(event);
     }else if (categoryName =="Aamir Fan Magazine") {
       fanMagazine(event);
-    }else if (categoryName =="movies" || categoryName =="sports" || categoryName =="tv shows"|| categoryName =="music") {
+    }else if (categoryName =="movies" || categoryName =="sports" || categoryName =="tv shows"|| categoryName =="music" || categoryName =="categories") {
       allcategory(event, categoryName);
       console.log("enter into the allcategory function");
-    }
-    else if (categoryName == "Movies") {
-      console.log("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%",moviesObj);
-      if (moviesObj.length){
-        console.log("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%",moviesObj.length);
-        var senderID = event.sender.id;
-        var contentList = [];
-        for (var i = 0; i < moviesObj.length; i++) { //Construct request body
-            var keyMap = {
-                "title":"We have some cool stuff waiting for you..",
-                //"subtitle":"We\'ve got the right hat for everyone.",
-                "image_url": moviesObj[i].imgurl,
-                "item_url": moviesObj[i].imgurl,
-                "buttons": [{
-                    "type": "postback",
-                    "title": moviesObj[i].name,
-                    "payload": "USER_DEFINED_PAYLOAD"
-                }
-              ]
-            };
-            contentList.push(keyMap);
-        }
-        var messageData = {
-            "recipient": {
-                "id": senderID
-            },
-              "message":{
-                  "text":"Movie is the king of entertainment. Pick your favorite kingdom (You can select multiple)… :-)",
-                  "quick_replies":[
-                    {
-                      "content_type":"text",
-                      "title":"Hollywood",
-                      "payload":"Hollywood"
-                    },
-                    {
-                      "content_type":"text",
-                      "title":"Bollywood",
-                      "payload":"Bollywood"
-                    },
-                    {
-                      "content_type":"text",
-                      "title":"Tollywood",
-                      "payload":"Tollywood"
-                    },
-                    {
-                      "content_type":"text",
-                      "title":"Kollywood",
-                      "payload":"Kollywood"
-                    },
-                    {
-                      "content_type":"text",
-                      "title":"Categories",
-                      "payload":"Categories"
-                    },
-                    {
-                      "content_type":"location",
-                    }
-                  ]
-                }
-        }
-        callSendAPI(messageData,'https://graph.facebook.com/v2.6/592208327626213/messages');
-    }else {
-        console.log("No Data Found From Database");
-        sendHelpMessage(event);
-    }
-    }
-    else if (categoryName == "Sports") {
-      if (categoryName == "Sports"){
-        var senderID = event.sender.id;
-        var messageData = {
-            "recipient": {
-                "id": senderID
-            },
-            "message":{
-  "attachment":{
-    "type":"video",
-    "payload":{
-      "url":"https://www.youtube.com/watch?v=HTIrzHThPvs"
-    }
-  }
-}
-            // "message":{
-            //     "text":"Let's hit the world! There is no thrill beyond sports, which sport(s) enthrills you more… :-)",
-            //     "quick_replies":[
-            //       {
-            //         "content_type":"text",
-            //         "title":"Cricket",
-            //         "payload":"Cricket"
-            //       },
-            //       {
-            //         "content_type":"text",
-            //         "title":"Soccer",
-            //         "payload":"Soccer"
-            //       },
-            //       {
-            //         "content_type":"text",
-            //         "title":"Tennis",
-            //         "payload":"Tennis"
-            //       },
-            //       {
-            //         "content_type":"text",
-            //         "title":"Badminton",
-            //         "payload":"Badminton"
-            //       },
-            //       {
-            //         "content_type":"text",
-            //         "title":"Categories",
-            //         "payload":"Categories"
-            //       }
-            //     ]
-            //   }
-        }
-        callSendAPI(messageData,'https://graph.facebook.com/v2.6/592208327626213/messages');
-    }else {
-        console.log("No Data Found From Database");
-        sendHelpMessage(event);
-    }
-    }
-    else if (categoryName == "Music") {
-      if (categoryName == "Music"){
-        var senderID = event.sender.id;
-        var messageData = {
-            "recipient": {
-                "id": senderID
-            },
-            "message":
-            {
-                "text":"Widen your ears! I'm going to make a huge noise, define the tune… :-)",
-                "quick_replies":[
-                  {
-                    "content_type":"text",
-                    "title":"Quizzes",
-                    "payload":"Quizzes"
-                  },
-                  {
-                    "content_type":"text",
-                    "title":"Classical Music",
-                    "payload":"Music"
-                  },
-                  {
-                    "content_type":"text",
-                    "title":"Western Music",
-                    "payload":"Music"
-                  },
-                  {
-                    "content_type":"text",
-                    "title":"Categories",
-                    "payload":"Categories"
-                  },
-                  {
-                    "content_type":"location",
-                  }
-
-                ]
-              }
-
-  //           "message":{
-  //   "attachment":{
-  //     "type":"audio",
-  //     "payload":{
-  //       "url":"https://petersapparel.com/bin/clip.mp3"
-  //     }
-  //   }
-  // }
-        }
-        callSendAPI(messageData,'https://graph.facebook.com/v2.6/592208327626213/messages');
-        }else {
-            console.log("No Data Found From Database");
-            sendHelpMessage(event);
-        }
-    }
-    else if (categoryName == "TV Shows") {
-      if (categoryName == "TV Shows"){
-
-        // if (celbritieObj.length){
-        //   console.log("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%",celbritieObj.length);
-          var senderID = event.sender.id;
-            findlocation(event);
-          // var contentList = [];
-          // for (var i = 0; i < celbritieObj.length; i++) { //Construct request body
-          //     var keyMap = {
-          //                   "title": celbritieObj[i].name,
-          //                   "image_url": celbritieObj[i].imgurl,
-          //                             //"item_url": moviesObj[i].imgurl,
-          //                   "buttons": [{
-          //                               "type": "postback",
-          //                               "title": celbritieObj[i].name,
-          //                               "payload": celbritieObj[i].name
-          //                             }]
-          //                         };
-          //
-          //     contentList.push(keyMap);
-          // }
-          var messageData = {
-              "recipient": {
-                  "id": senderID
-              },
-              "message": {
-                  "text":"My dad won't allow me to switch on the Idiot Box, please switch me up and set the favorite mode…",
-                  "quick_replies":[
-                    {
-                      "content_type":"text",
-                      "title":"Romantic Comedy",
-                      "payload":"Romantic Comedy"
-                    },
-                    {
-                      "content_type":"text",
-                      "title":"Action",
-                      "payload":"Action"
-                    },
-                    {
-                      "content_type":"text",
-                      "title":"Horror",
-                      "payload":"Horror"
-                    },
-                    {
-                      "content_type":"text",
-                      "title":"Animation",
-                      "payload":"Animation"
-                    },
-                    {
-                      "content_type":"text",
-                      "title":"Categories",
-                      "payload":"Categories"
-                    }
-                  ]
-                }
-          }
-
-        callSendAPI(messageData,'https://graph.facebook.com/v2.6/592208327626213/messages');
-        }else {
-            console.log("No Data Found From Database");
-            sendHelpMessage(event);
-        }
     }
     else {
       pool.getConnection(function(err, connection) {
