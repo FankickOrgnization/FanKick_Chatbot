@@ -1,34 +1,24 @@
 {
-      "attachment": {
-        "type": "template",
-          "payload": {
-            "template_type": "generic",
-            "elements":[{
-                "title":"Music",
-                "image_url":"http://t3.gstatic.com/images?q=tbn:ANd9GcQIXnFlBKGWT1ByyIu3qfxX6opQX6BmeeU_qsiE3X8rX9ZRr63r",
-                "subtitle":"Widen your ears! I'm going to make a huge noise, define the tune… :-)",
-                "buttons":[{
-                  "type": "postback",
-                  "title": "Music",
-                  "payload": "Music"
-                }]
-              }]
-          }
-        },
-      "quick_replies":[
-        {
-          "content_type":"text",
-          "title":"Classical Music",
-          "payload":"Music"
-        },
-        {
-          "content_type":"text",
-          "title":"Western Music",
-          "payload":"Music"
-        },
-        {
-          "content_type":"text",
-          "title":"Categories",
-          "payload":"Categories"
-        }]
-}
+    "text":"Widen your ears! I'm going to make a huge noise, define the tune… :-)",
+    "quick_replies":[
+      {
+        "content_type":"text",
+        "title":"Quizzes",
+        "payload":"Quizzes"
+      },
+      {
+        "content_type":"text",
+        "title":"Classical Music",
+        "payload":"Music"
+      },
+      {
+        "content_type":"text",
+        "title":"Western Music",
+        "payload":"Music"
+      },
+      {
+        "content_type":"text",
+        "title":"Categories",
+        "payload":"Categories"
+      }]
+  }

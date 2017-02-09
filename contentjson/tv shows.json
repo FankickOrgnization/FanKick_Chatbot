@@ -1,45 +1,29 @@
 {
-      "attachment": {
-        "type": "template",
-          "payload": {
-            "template_type": "generic",
-            "elements":[{
-                "title":"Music",
-                "image_url":"http://t3.gstatic.com/images?q=tbn:ANd9GcQIXnFlBKGWT1ByyIu3qfxX6opQX6BmeeU_qsiE3X8rX9ZRr63r",
-                "subtitle":"Widen your ears! I'm going to make a huge noise, define the tune… :-)",
-                "buttons":[{
-                  "type": "postback",
-                  "title": "Music",
-                  "payload": "Music"
-                }]
-              }]
-          }
-        },
-      "quick_replies":[
-        {
-          "content_type":"text",
-          "title":"Romantic Comedy",
-          "payload":"Romantic Comedy"
-        },
-        {
-          "content_type":"text",
-          "title":"Action",
-          "payload":"Action"
-        },
-        {
-          "content_type":"text",
-          "title":"Horror",
-          "payload":"Horror"
-        },
-        {
-          "content_type":"text",
-          "title":"Animation",
-          "payload":"Animation"
-        },
-        {
-          "content_type":"text",
-          "title":"Categories",
-          "payload":"Categories"
-        }
-      ]
-}
+    "text":"My dad won't allow me to switch on the Idiot Box, please switch me up and set the favorite mode…",
+    "quick_replies":[
+      {
+        "content_type":"text",
+        "title":"Romantic Comedy",
+        "payload":"Romantic Comedy"
+      },
+      {
+        "content_type":"text",
+        "title":"Action",
+        "payload":"Action"
+      },
+      {
+        "content_type":"text",
+        "title":"Horror",
+        "payload":"Horror"
+      },
+      {
+        "content_type":"text",
+        "title":"Animation",
+        "payload":"Animation"
+      },
+      {
+        "content_type":"text",
+        "title":"Categories",
+        "payload":"Categories"
+      }]
+  }
