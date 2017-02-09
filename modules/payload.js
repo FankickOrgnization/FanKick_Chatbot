@@ -192,7 +192,7 @@ const sendContentPacks = (categoryName,event) => {
             connection.release();
         });
         });
-    } else if (categoryName == "pavan kalyan" || categoryName == "Pavan Kalyan" || categoryName == "Chiranjeevi" || categoryName == "Kalyan"|| categoryName == "Pawan Kalyan") {
+    } else if (categoryName == "pavan kalyan" || categoryName == "nagarjuna" || categoryName == "chiranjeevi" || categoryName == "allu arjun"|| categoryName == "bala krishna") {
       //celebritiesdetails(categoryName,event);
       googlegraph(categoryName,event);
     }else if (categoryName == "hollywood" || categoryName == "tollywood" || categoryName == "bollywood" || categoryName == "kollywood" || categoryName == "classical music" || categoryName == "western music") {
@@ -201,44 +201,55 @@ const sendContentPacks = (categoryName,event) => {
     }else if (categoryName == "cricket" || categoryName == "soccer" || categoryName == "tennis" || categoryName == "badminton") {
       //celebritiesdetails(categoryName,event);
       googlegraph(categoryName,event);
-    }else if (categoryName =="Sachin Tendulkar" || categoryName =="sachin tendulkar" || categoryName =="sachin" || categoryName =="tendulkar") {
-      googleTrends.risingSearches(categoryName)
-        .then(function(results){
-          console.log("Google trendz",results);
-          var googleTrends_result = results;
-            for(var i in googleTrends_result){
-              console.log(i.value); // alerts key
-              console.log(googleTrends_result[i]); //alerts key's value
-              var googleTrends_result_obj = googleTrends_result[i]
-            }
-            console.log("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$",googleTrends_result_obj);
-          //console.log(Object.keys(googleTrends_result));
-          // for ( property in googleTrends_result ) {
-          //   console.log( property ); // Outputs: foo, fiz or fiz, foo
-          // }
-          //console.log("googleTrends_result",googleTrends_result);
-        })
-        .catch(function(err){
-          console.error(err);
-        });
-    }else if (categoryName =="Shahrukh Khan" || categoryName =="shahrukh khan" || categoryName =="shahrukh" ) {
-          googletrendsfun(categoryName,event);
-    }else if (categoryName =="Aamir Khan" || categoryName =="aamir khan" || categoryName =="aamir" || categoryName == "dangal" || categoryName == "Dangal") {
-      //celebritiesdetails(categoryName,event);
-    //  googlegraph(categoryName,event);
-    googletrendsfun(categoryName,event);
-    }else if (categoryName =="Virat Kohli" || categoryName =="virat kohli" || categoryName =="kohli" || categoryName =="virat") {
-      //celebritiesdetails(categoryName,event);
-       googlegraph(categoryName,event);
-    }else if (categoryName =="dangal review") {
-      review(event);
-    }else if (categoryName =="Aamir Quizzes") {
-      quizzes(event);
-    }else if (categoryName =="Aamir Fan Clubs") {
-      fanClubs(event);
-    }else if (categoryName =="Aamir Fan Magazine") {
-      fanMagazine(event);
-    }else if (categoryName =="movies" || categoryName =="sports" || categoryName =="tv shows"|| categoryName =="music" || categoryName =="home") {
+    }
+    // else if (categoryName =="Sachin Tendulkar" || categoryName =="sachin tendulkar" || categoryName =="sachin" || categoryName =="tendulkar") {
+    //   googleTrends.risingSearches(categoryName)
+    //     .then(function(results){
+    //       console.log("Google trendz",results);
+    //       var googleTrends_result = results;
+    //         for(var i in googleTrends_result){
+    //           console.log(i.value); // alerts key
+    //           console.log(googleTrends_result[i]); //alerts key's value
+    //           var googleTrends_result_obj = googleTrends_result[i]
+    //         }
+    //         console.log("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$",googleTrends_result_obj);
+    //       //console.log(Object.keys(googleTrends_result));
+    //       // for ( property in googleTrends_result ) {
+    //       //   console.log( property ); // Outputs: foo, fiz or fiz, foo
+    //       // }
+    //       //console.log("googleTrends_result",googleTrends_result);
+    //     })
+    //     .catch(function(err){
+    //       console.error(err);
+    //     });
+    // }
+    else if (categoryName =="akshay kumar" || categoryName =="shahrukh khan" || categoryName =="aamir khan" || categoryName =="ranveer singh" || categoryName =="hrithik roshan") {
+          //googletrendsfun(categoryName,event);
+          googlegraph(categoryName,event);
+    }
+    else if (categoryName =="virat kohli" || categoryName =="rohit sharma" || categoryName =="yuvraj singh" || categoryName =="sachin tendulkar" || categoryName =="dhoni") {
+          //googletrendsfun(categoryName,event);
+          googlegraph(categoryName,event);
+      }
+    // else if (categoryName =="Aamir Khan" || categoryName =="aamir khan" || categoryName =="aamir" || categoryName == "dangal" || categoryName == "Dangal") {
+    //   //celebritiesdetails(categoryName,event);
+    // //  googlegraph(categoryName,event);
+    // googletrendsfun(categoryName,event);
+    // }
+    // else if (categoryName =="Virat Kohli" || categoryName =="virat kohli" || categoryName =="kohli" || categoryName =="virat") {
+    //   //celebritiesdetails(categoryName,event);
+    //    googlegraph(categoryName,event);
+    // }
+    // else if (categoryName =="dangal review") {
+    //   review(event);
+    // }else if (categoryName =="Aamir Quizzes") {
+    //   quizzes(event);
+    // }else if (categoryName =="Aamir Fan Clubs") {
+    //   fanClubs(event);
+    // }else if (categoryName =="Aamir Fan Magazine") {
+    //   fanMagazine(event);
+    // }
+    else if (categoryName =="movies" || categoryName =="sports" || categoryName =="tv shows"|| categoryName =="music" || categoryName =="home") {
       allcategory(event, categoryName);
       console.log("enter into the allcategory function");
     }
@@ -393,7 +404,7 @@ function googletrendsfun(categoryName,event){
                   },
                   {
                     "content_type":"text",
-                    "title":"Categories",
+                    "title":"home",
                     "payload":"Categories"
                   }
                 ]
