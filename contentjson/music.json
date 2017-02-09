@@ -3,22 +3,27 @@
     "quick_replies":[
       {
         "content_type":"text",
-        "title":"Quizzes",
-        "payload":"Quizzes"
+        "title":"Movie Albums",
+        "payload":"Movie Albums"
       },
       {
         "content_type":"text",
-        "title":"Classical Music",
-        "payload":"Classical Music"
+        "title":"Private Albums",
+        "payload":"Private Albums"
       },
       {
         "content_type":"text",
-        "title":"Western Music",
-        "payload":"Western Music"
+        "title":"Remix",
+        "payload":"Remix"
       },
       {
         "content_type":"text",
-        "title":"Categories",
+        "title":"Breakup Songs",
+        "payload":"Breakup Songs"
+      },
+      {
+        "content_type":"text",
+        "title":"Home",
         "payload":"Categories"
       }]
   }
