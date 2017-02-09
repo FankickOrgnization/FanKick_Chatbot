@@ -19,21 +19,26 @@ var pool = mysql.createPool({
     database: 'rankworlddev'
 });
 var quickMenu = [
-  {
-    "content_type":"text",
-    "title":"Categories",
-    "payload":"Categories"
-  },
-  {
-    "content_type":"text",
-    "title":"Fan Clubs",
-    "payload":"Fan Clubs"
-  },
-  {
-    "content_type":"text",
-    "title":"Fan Magazine",
-    "payload":"Fan Magazine"
-  }
+    {
+      "content_type":"text",
+      "title":"Movies",
+      "payload":"Movies"
+    },
+    {
+      "content_type":"text",
+      "title":"Sports",
+      "payload":"Sports"
+    },
+    {
+      "content_type":"text",
+      "title":"TV Shows",
+      "payload":"TV Shows"
+    },
+    {
+      "content_type":"text",
+      "title":"Music",
+      "payload":"Music"
+    }
 ];
 
 app.use(bodyParser.json());
@@ -285,27 +290,26 @@ function mainPacks(categoryName, event){
       "message":{
           "text":"Hey..Choose what excites you more",
           "quick_replies":[
-            {
-              "content_type":"text",
-              "title":"Categories",
-              "payload":"Categories"
-            },
-            {
-              "content_type":"text",
-              "title":"Fan Clubs",
-              "payload":"Fan Clubs"
-            },
-            {
-              "content_type":"text",
-              "title":"Fan Magazine",
-              "payload":"Fan Magazine"
-            }
-            // ,
-            // {
-            //   "content_type":"text",
-            //   "title":"What can you do?",
-            //   "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
-            // }
+              {
+                "content_type":"text",
+                "title":"Movies",
+                "payload":"Movies"
+              },
+              {
+                "content_type":"text",
+                "title":"Sports",
+                "payload":"Sports"
+              },
+              {
+                "content_type":"text",
+                "title":"TV Shows",
+                "payload":"TV Shows"
+              },
+              {
+                "content_type":"text",
+                "title":"Music",
+                "payload":"Music"
+              }
           ]
         }
   }
@@ -624,31 +628,26 @@ function sendHelpMessage(event){
                 "text":msg,
                 //"text":"msg",
                 "quick_replies":[
-                  {
-                    "content_type":"text",
-                    "title":"Categories",
-                    "payload":"Categories"
-                  },
-                  {
-                    "content_type":"text",
-                    "title":"Movies",
-                    "payload":"Movies"
-                  },
-                  {
-                    "content_type":"text",
-                    "title":"Sports",
-                    "payload":"Sports"
-                  },
-                  {
-                    "content_type":"text",
-                    "title":"Music",
-                    "payload":"Music"
-                  },
-                  {
-                    "content_type":"text",
-                    "title":"TV Shows",
-                    "payload":"TV Shows"
-                  }
+                    {
+                      "content_type":"text",
+                      "title":"Movies",
+                      "payload":"Movies"
+                    },
+                    {
+                      "content_type":"text",
+                      "title":"Sports",
+                      "payload":"Sports"
+                    },
+                    {
+                      "content_type":"text",
+                      "title":"TV Shows",
+                      "payload":"TV Shows"
+                    },
+                    {
+                      "content_type":"text",
+                      "title":"Music",
+                      "payload":"Music"
+                    }
                 ]
               }
             }

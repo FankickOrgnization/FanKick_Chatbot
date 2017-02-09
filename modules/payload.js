@@ -17,18 +17,23 @@ var fbpage_access_token = 'EAAXcJew5yNkBAAvFD3wX3RZACdvA4lZB6XStBzliKI9y4m7I1taA
 var quickreply = [
     {
       "content_type":"text",
-      "title":"Categories",
-      "payload":"Categories"
+      "title":"Movies",
+      "payload":"Movies"
     },
     {
       "content_type":"text",
-      "title":"Fan Clubs",
-      "payload":"Fan Clubs"
+      "title":"Sports",
+      "payload":"Sports"
     },
     {
       "content_type":"text",
-      "title":"Fan Magazine",
-      "payload":"Fan Magazine"
+      "title":"TV Shows",
+      "payload":"TV Shows"
+    },
+    {
+      "content_type":"text",
+      "title":"Music",
+      "payload":"Music"
     }
 ];
 var moviesObj =  [
