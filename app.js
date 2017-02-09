@@ -107,7 +107,7 @@ function receivedpostback(messagingEvent) {
         var res = categoryName.toLowerCase();
         console.log("********************************************************",res)
         //payloadText.sendContentPacks(categoryName, messagingEvent);
-        payloadText.sendContentPacks(catname, messagingEvent);
+        payloadText.sendContentPacks(res, messagingEvent);
 
     } else if (categoryName == "Quizzes") {
         quizzesPacks(categoryName, messagingEvent);
@@ -150,8 +150,9 @@ function receivedMessage(event) {
     var messageText = message.text;
     var messageAttachments = message.attachments;
     //getMessageFromWitAPI(messageText);
-    console.log("*************messageText*************",messageText);
-      var msgwit = messageText;
+
+      var msgwit = messageText.toLowerCase();
+      console.log("*************messageText*************",messageText);
       //bot.getwitmessageText(msgwit);
 
       //var tb3;
