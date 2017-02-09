@@ -1,6 +1,7 @@
 {
       "text": "Movie is the king of entertainment. Pick your favorite kingdom (You can select multiple)… :-).",
-      "quick_replies": [{
+      "quick_replies": [
+        {
           "content_type":"text",
           "title":"Hollywood",
           "payload":"Hollywood"
@@ -27,5 +28,6 @@
         },
         {
           "content_type":"location",
-        }]
+        }
+      ]
 }
