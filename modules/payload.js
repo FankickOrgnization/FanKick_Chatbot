@@ -227,7 +227,7 @@ const sendContentPacks = (categoryName,event) => {
           //googletrendsfun(categoryName,event);
           googlegraph(categoryName,event);
     }
-    else if (categoryName =="virat kohli" || categoryName =="rohit sharma" || categoryName =="yuvraj singh" || categoryName =="sachin tendulkar" || categoryName =="dhoni") {
+    else if (categoryName =="virat kohli" || categoryName =="rohit sharma" || categoryName =="rohit sharma wife" || categoryName =="yuvraj singh" || categoryName =="sachin tendulkar" || categoryName =="dhoni") {
           //googletrendsfun(categoryName,event);
           //googlegraph(categoryName,event);
           googletrendsfun(categoryName,event);
