@@ -655,9 +655,9 @@ var url = 'https://kgsearch.googleapis.com/v1/entities:search?query=' + category
           var name4 = rows[3].result.name;
           var name5 = rows[4].result.name;
           //var namesfromgoogle = rows[0].result.name;
-          imagedata = row[0].result.image;
+          imagedata = rows[0].result.image;
           console.log("%%%%%%%%%%%%%%%%%%%%%",imagedata);
-          desdata = row[0].result.detailedDescription;
+          desdata = rows[0].result.detailedDescription;
           console.log("%%%%%%%%%%%%%%%%%%%%%",desdata);
           //contentList.push(namesfromgoogle);
         }
