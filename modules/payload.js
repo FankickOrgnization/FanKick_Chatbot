@@ -677,7 +677,7 @@ var url = 'https://kgsearch.googleapis.com/v1/entities:search?query=' + category
             "elements":[{
                 "title":name1,
                 "image_url":conurl,
-                "subtitle":name1,
+                "subtitle":desdetails,
                 "buttons":[{
                   "type":"web_url",
                   "url":desurl,
