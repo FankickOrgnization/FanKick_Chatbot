@@ -353,7 +353,7 @@ function allcategory(event, categoryName){
 
 function googletrendsfun(categoryName,event){
   var senderID = event.sender.id;
-  googleTrends.risingSearches(categoryName)
+  googleTrends.risingSearches(categoryName,'IN')
     .then(function(results){
       console.log("Google trendz",results);
       var googleTrends_result = results;
