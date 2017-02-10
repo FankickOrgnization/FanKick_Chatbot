@@ -645,23 +645,28 @@ var url = 'https://kgsearch.googleapis.com/v1/entities:search?query=' + category
         var rowlen = rows.length;
         console.log("--------:Response data:--------length ", rowlen);
         var senderID = event.sender.id;
-        for (var i = 0; i < 5; i++) { //Construct request body
+          var imagedata;
+          var desdata;
+        for (var i = 0; i < rowlen; i++) { //Construct request body
           console.log("--------:google Response data:-------- name ", rows[i].result.name);
           var name1 = rows[0].result.name;
           var name2 = rows[1].result.name;
           var name3 = rows[2].result.name;
           var name4 = rows[3].result.name;
           var name5 = rows[4].result.name;
-          var namesfromgoogle = rows[0].result.name;
-          var imagedata = row[0].result.image;
+          //var namesfromgoogle = rows[0].result.name;
+          imagedata = row[0].result.image;
           console.log("%%%%%%%%%%%%%%%%%%%%%",imagedata);
-          var conurl = imagedata.contentUrl;
-            console.log("%%%%%%%%%%%%%%%%%%%%%",conurl);
-          var desurl = imagedata.url;
-            console.log("%%%%%%%%%%%%%%%%%%%%%",desurl);
-          var desdetails = row[0].result.detailedDescription.articleBody;
-          contentList.push(namesfromgoogle);
+          desdata = row[0].result.detailedDescription;
+          console.log("%%%%%%%%%%%%%%%%%%%%%",desdata);
+          //contentList.push(namesfromgoogle);
         }
+        var desdetails = desdata.articleBody;
+        console.log("%%%%%%%%%%%%%%%%%%%%%desdetails",desdetails);
+        var conurl = imagedata.contentUrl;
+          console.log("%%%%%%%%%%%%%%%%%%%%%conurl",conurl);
+        var desurl = imagedata.url;
+          console.log("%%%%%%%%%%%%%%%%%%%%%desurl",desurl);
 
           var messageData = { recipient: { id: senderID }};
           messageData.message = {
