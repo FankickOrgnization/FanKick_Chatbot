@@ -202,28 +202,7 @@ const sendContentPacks = (categoryName,event) => {
       //celebritiesdetails(categoryName,event);
       googlegraph(categoryName,event);
     }
-    // else if (categoryName =="Sachin Tendulkar" || categoryName =="sachin tendulkar" || categoryName =="sachin" || categoryName =="tendulkar") {
-    //   googleTrends.risingSearches(categoryName)
-    //     .then(function(results){
-    //       console.log("Google trendz",results);
-    //       var googleTrends_result = results;
-    //         for(var i in googleTrends_result){
-    //           console.log(i.value); // alerts key
-    //           console.log(googleTrends_result[i]); //alerts key's value
-    //           var googleTrends_result_obj = googleTrends_result[i]
-    //         }
-    //         console.log("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$",googleTrends_result_obj);
-    //       //console.log(Object.keys(googleTrends_result));
-    //       // for ( property in googleTrends_result ) {
-    //       //   console.log( property ); // Outputs: foo, fiz or fiz, foo
-    //       // }
-    //       //console.log("googleTrends_result",googleTrends_result);
-    //     })
-    //     .catch(function(err){
-    //       console.error(err);
-    //     });
-    // }
-    else if (categoryName =="akshay kumar" || categoryName =="shahrukh khan" || categoryName =="aamir khan" || categoryName =="ranveer singh" || categoryName =="hrithik roshan") {
+      else if (categoryName =="akshay kumar" || categoryName =="shahrukh khan" || categoryName =="aamir khan" || categoryName =="ranveer singh" || categoryName =="hrithik roshan") {
           //googletrendsfun(categoryName,event);
           googlegraph(categoryName,event);
     }
@@ -232,24 +211,6 @@ const sendContentPacks = (categoryName,event) => {
           googlegraph(categoryName,event);
           //googletrendsfun(categoryName,event);
       }
-    // else if (categoryName =="Aamir Khan" || categoryName =="aamir khan" || categoryName =="aamir" || categoryName == "dangal" || categoryName == "Dangal") {
-    //   //celebritiesdetails(categoryName,event);
-    // //  googlegraph(categoryName,event);
-    // googletrendsfun(categoryName,event);
-    // }
-    // else if (categoryName =="Virat Kohli" || categoryName =="virat kohli" || categoryName =="kohli" || categoryName =="virat") {
-    //   //celebritiesdetails(categoryName,event);
-    //    googlegraph(categoryName,event);
-    // }
-    // else if (categoryName =="dangal review") {
-    //   review(event);
-    // }else if (categoryName =="Aamir Quizzes") {
-    //   quizzes(event);
-    // }else if (categoryName =="Aamir Fan Clubs") {
-    //   fanClubs(event);
-    // }else if (categoryName =="Aamir Fan Magazine") {
-    //   fanMagazine(event);
-    // }
     else if (categoryName =="movies" || categoryName =="sports" || categoryName =="tv shows"|| categoryName =="music" || categoryName =="home") {
       allcategory(event, categoryName);
       console.log("enter into the allcategory function");
@@ -517,21 +478,8 @@ function quizzes(event){
 function review(event){
   var senderID = event.sender.id;
   var imgdangol = 'http://t3.gstatic.com/images?q=tbn:ANd9GcQIXnFlBKGWT1ByyIu3qfxX6opQX6BmeeU_qsiE3X8rX9ZRr63r';
-//var trailer = 'https://www.youtube.com/watch?v=x_7YlGv9u1g';
-  // var keyMap = {
-  //     "title": "Review",
-  //     "image_url": imgdangol,
-  //     "subtitle":"That was crucial for us to believe in Dangal, which borrows several elements from the real-life Haryana wrestler who trained his older two daughters, Geeta (Fatima Sana Shaikh) and Babita (Sanya Malhotra), in the art of wrestling, and turned them into winners. Dangal works on the twin parameters it sets up for itself.",
-  //     "buttons": [{
-  //         "type": "postback",
-  //         "title": "View",
-  //         "payload": "View"
-  //     }]
-  //   };
-    var contentList = [];
-
-
-        var keyMap = {
+  var contentList = [];
+  var keyMap = {
             "title": "Review",
             "image_url": imgdangol,
             "subtitle":"That was crucial for us to believe in Dangal, which borrows several elements from the real-life Haryana wrestler who trained his older two daughters, Geeta (Fatima Sana Shaikh) and Babita (Sanya Malhotra), in the art of wrestling, and turned them into winners. Dangal works on the twin parameters it sets up for itself.",
@@ -723,176 +671,6 @@ var url = 'https://kgsearch.googleapis.com/v1/entities:search?query=' + category
          callSendAPI(messageData,'https://graph.facebook.com/v2.6/592208327626213/messages');
     });
 }
-
-
-
-// function googlegraph(categoryName,event){
-//   console.log("*************---categoryName----*******", categoryName );
-//   var contentList = [];
-//   var userid = event.sender.id;
-//     // var params = {
-//     //   'query': 'FIFA',
-//     //   'limit': 10,
-//     //   'indent': true,
-//     //   'key' : 'AIzaSyCavmWhCL_wMeLAKrurcVPUdP0ztgubHZc',
-//     // };
-// var url = 'https://kgsearch.googleapis.com/v1/entities:search?query=' + categoryName + '&key=AIzaSyCavmWhCL_wMeLAKrurcVPUdP0ztgubHZc&limit=5&indent=True'
-//   //  var url = 'https://kgsearch.googleapis.com/v1/entities:search' + userid + '?fields=first_name,last_name,locale,timezone,gender&access_token=' + fbpage_access_token + '';
-// //https://kgsearch.googleapis.com/v1/entities:search?query=' + userid + '&key=AIzaSyCavmWhCL_wMeLAKrurcVPUdP0ztgubHZc&limit=10&indent=True
-//
-//     console.log("url", url);
-//     request({
-//         "uri": url,
-//         "method": 'GET'
-//     }, function(error, response, body) {
-//         var userprofiledata = JSON.parse(response.body);
-//       //  var username = userprofiledata.first_name;
-//         //console.log("--------:Response data:-------- ", JSON.stringify(body));
-//         console.log("--------:Response data:--------first_name ", userprofiledata.itemListElement);
-//         var rows = userprofiledata.itemListElement;
-//         var rowlen = rows.length;
-//         console.log("--------:Response data:--------length ", rowlen);
-//         var senderID = event.sender.id;
-//         for (var i = 0; i < 5; i++) { //Construct request body
-//           console.log("--------:google Response data:-------- name ", rows[i].result.name);
-//           var name1 = rows[0].result.name;
-//           var name2 = rows[1].result.name;
-//           var name3 = rows[2].result.name;
-//           var name4 = rows[3].result.name;
-//           var name5 = rows[4].result.name;
-//           var namesfromgoogle = rows[i].result.name;
-//           contentList.push(namesfromgoogle);
-//
-//
-//           // for (var i = 0; i < moviesObj.length; i++) { //Construct request body
-//           //     var keyMap = {
-//           //                   "title": moviesObj[i].name,
-//           //                   "image_url": moviesObj[i].imgurl,
-//           //                             //"item_url": moviesObj[i].imgurl,
-//           //                   "buttons": [{
-//           //                               "type": "postback",
-//           //                               "title": moviesObj[i].name,
-//           //                               "payload": moviesObj[i].name
-//           //                             }]
-//           //                         };
-//           //
-//           //     contentList.push(keyMap);
-//           // }
-//
-//
-//
-//           // var keyMpa ={
-//           //       "content_type":"text",
-//           //       "title":"Categories",
-//           //       "payload":"Categories"
-//           //     };
-//             // var keyMap = {
-//             //     "title": rows[i].name,
-//             //     console.log("--------:Response data:--------first_name ", rows[i].name);
-//             //     // "image_url": rows[i].image_url,
-//             //     // "item_url": rows[i].image_url
-//             //   //   "buttons": [{
-//             //   //       "type": "postback",
-//             //   //       "title": "View",
-//             //   //       "payload": rows[i].id
-//             //   //   }
-//             //   //   // , {
-//             //   //   //     "type": "postback",
-//             //   //   //     "title": "Magazine",
-//             //   //   //     "payload": "USER_DEFINED_PAYLOAD"
-//             //   //   // }
-//             //   // ]
-//             // };
-//             // contentList.push(keyMap);
-//         }
-//         console.log('contentList',contentList);
-//         //var msg = 'Hey '+username+', How are you? \n \nDid you check these amazingly cool stuff on Fankick?';
-//         //console.log("--------:Response data:--------gender ", msg);
-//         var messageData = {
-//             "recipient": {
-//                 "id": senderID
-//             },
-//
-//             "message":{
-//                 "text":'I assume that you are a fan of ' + categoryName + ' browse the amazing stuff we have on ' + categoryName + '',
-//                 //"text":"msg",
-//                 "quick_replies":[
-//                   {
-//                     "content_type":"text",
-//                     "title":name1.slice(0,20),
-//                     "payload":rows[0].result.name
-//                   },
-//                   {
-//                     "content_type":"text",
-//                     "title":name2.slice(0,20),
-//                     "payload":rows[1].result.name
-//                   },
-//                   {
-//                     "content_type":"text",
-//                     "title":name3.slice(0,20),
-//                     "payload":rows[2].result.name
-//                   },
-//                   {
-//                     "content_type":"text",
-//                     "title":name4.slice(0,20),
-//                     "payload":rows[3].result.name
-//                   },
-//                   {
-//                     "content_type":"text",
-//                     "title":name5.slice(0,20),
-//                     "payload":rows[4].result.name
-//                   },
-//                   {
-//                     "content_type":"text",
-//                     "title":"Home",
-//                     "payload":"Categories"
-//                   }
-//                   // ,
-//                   // {
-//                   //   "content_type":"text",
-//                   //   "title":"Fan Clubs",
-//                   //   "payload":"Fan Clubs"
-//                   // },
-//                   // {
-//                   //   "content_type":"text",
-//                   //   "title":"Fan Magazine",
-//                   //   "payload":"Fan Magazine"
-//                   // }
-//                   // ,
-//                   // {
-//                   //   "content_type":"text",
-//                   //   "title":name4.slice(0,20),
-//                   //   "payload":rows[5].result.name
-//                   // },
-//                   // {
-//                   //   "content_type":"text",
-//                   //   "title":name4.slice(0,20),
-//                   //   "payload":rows[6].result.name
-//                   // },
-//                   // {
-//                   //   "content_type":"text",
-//                   //   "title":name4.slice(0,20),
-//                   //   "payload":rows[7].result.name
-//                   // },
-//                   // {
-//                   //   "content_type":"text",
-//                   //   "title":name4.slice(0,20),
-//                   //   "payload":rows[8].result.name
-//                   // },
-//                   // {
-//                   //   "content_type":"text",
-//                   //   "title":name4.slice(0,20),
-//                   //   "payload":rows[9].result.name
-//                   // }
-//
-//                 ]
-//               }
-//             }
-//          callSendAPI(messageData,'https://graph.facebook.com/v2.6/592208327626213/messages');
-//     });
-// }
-
-
 
 
 function sendHelpMessage(event){
@@ -1140,46 +918,6 @@ function fbuserlocation() {
 
             });
           }
-
-
-// function geoFindMe() {
-//   //var output = document.getElementById("out");
-//
-//   // if (!navigator.geolocation){
-//   //   output.innerHTML = "<p>Geolocation is not supported by your browser</p>";
-//   //   return;
-//   // }
-//
-//   function success(position) {
-//     var latitude  = position.coords.latitude;
-//     var longitude = position.coords.longitude;
-//     console.log("latitude");
-//     console.log("longitude");
-//
-//
-//     //output.innerHTML = '<p>Latitude is ' + latitude + '° <br>Longitude is ' + longitude + '°</p>';
-//
-//     // var img = new Image();
-//     // img.src = "https://maps.googleapis.com/maps/api/staticmap?center=" + latitude + "," + longitude + "&zoom=13&size=300x300&sensor=false";
-//     //
-//     // output.appendChild(img);
-//   }
-//
-//   function error() {
-//     //output.innerHTML = "Unable to retrieve your location";
-//     console.log("Unable to retrieve your location");
-//   }
-//
-//   //output.innerHTML = "<p>Locating…</p>";
-//
-//   navigator.geolocation.getCurrentPosition(success, error);
-// }
-
-
-
-
-
-
 
 module.exports = {
   sendContentPacks: sendContentPacks,
