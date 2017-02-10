@@ -657,6 +657,7 @@ var url = 'https://kgsearch.googleapis.com/v1/entities:search?query=' + category
           var desurl = row[0].result.image.url;
           var desdetails = row[0].result.detailedDescription.articleBody;
           contentList.push(namesfromgoogle);
+        }
 
           var messageData = { recipient: { id: senderID }};
           messageData.message = {
@@ -707,9 +708,9 @@ var url = 'https://kgsearch.googleapis.com/v1/entities:search?query=' + category
                     "title":"Home",
                     "payload":"Categories"
                   }]
-};
 
 
+}
          callSendAPI(messageData,'https://graph.facebook.com/v2.6/592208327626213/messages');
     });
 }
