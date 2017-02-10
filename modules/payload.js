@@ -652,7 +652,7 @@ var url = 'https://kgsearch.googleapis.com/v1/entities:search?query=' + category
           var name3 = rows[2].result.name;
           var name4 = rows[3].result.name;
           var name5 = rows[4].result.name;
-          var namesfromgoogle = rows[i].result.name;
+          var namesfromgoogle = rows[0].result.name;
           var conurl = row[0].result.image.contentUrl;
           var desurl = row[0].result.image.url;
           var desdetails = row[0].result.detailedDescription.articleBody;
