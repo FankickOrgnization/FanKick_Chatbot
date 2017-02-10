@@ -405,7 +405,7 @@ function googletrendsfun(categoryName,event){
                   },
                   {
                     "content_type":"text",
-                    "title":"home",
+                    "title":"Home",
                     "payload":"Categories"
                   }
                 ]
@@ -746,7 +746,7 @@ var url = 'https://kgsearch.googleapis.com/v1/entities:search?query=' + category
                   },
                   {
                     "content_type":"text",
-                    "title":"home",
+                    "title":"Home",
                     "payload":"Categories"
                   }
                   // ,
