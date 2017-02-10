@@ -653,8 +653,12 @@ var url = 'https://kgsearch.googleapis.com/v1/entities:search?query=' + category
           var name4 = rows[3].result.name;
           var name5 = rows[4].result.name;
           var namesfromgoogle = rows[0].result.name;
-          var conurl = row[0].result.image.contentUrl;
-          var desurl = row[0].result.image.url;
+          var imagedata = row[0].result.image;
+          console.log("%%%%%%%%%%%%%%%%%%%%%",imagedata);
+          var conurl = imagedata.contentUrl;
+            console.log("%%%%%%%%%%%%%%%%%%%%%",conurl);
+          var desurl = imagedata.url;
+            console.log("%%%%%%%%%%%%%%%%%%%%%",desurl);
           var desdetails = row[0].result.detailedDescription.articleBody;
           contentList.push(namesfromgoogle);
         }
