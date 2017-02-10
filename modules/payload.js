@@ -229,7 +229,8 @@ const sendContentPacks = (categoryName,event) => {
     }
     else if (categoryName =="virat kohli" || categoryName =="rohit sharma" || categoryName =="yuvraj singh" || categoryName =="sachin tendulkar" || categoryName =="dhoni") {
           //googletrendsfun(categoryName,event);
-          googlegraph(categoryName,event);
+          //googlegraph(categoryName,event);
+          googletrendsfun(categoryName,event);
       }
     // else if (categoryName =="Aamir Khan" || categoryName =="aamir khan" || categoryName =="aamir" || categoryName == "dangal" || categoryName == "Dangal") {
     //   //celebritiesdetails(categoryName,event);
