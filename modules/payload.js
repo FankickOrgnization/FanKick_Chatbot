@@ -627,20 +627,12 @@ function celebritiesdetails(categoryName,event){
     });
     });
 }
-
+// ************************** Googlegraph api ********************************
 function googlegraph(categoryName,event){
   console.log("*************---categoryName----*******", categoryName );
   var contentList = [];
   var userid = event.sender.id;
-    // var params = {
-    //   'query': 'FIFA',
-    //   'limit': 10,
-    //   'indent': true,
-    //   'key' : 'AIzaSyCavmWhCL_wMeLAKrurcVPUdP0ztgubHZc',
-    // };
 var url = 'https://kgsearch.googleapis.com/v1/entities:search?query=' + categoryName + '&key=AIzaSyCavmWhCL_wMeLAKrurcVPUdP0ztgubHZc&limit=5&indent=True'
-  //  var url = 'https://kgsearch.googleapis.com/v1/entities:search' + userid + '?fields=first_name,last_name,locale,timezone,gender&access_token=' + fbpage_access_token + '';
-//https://kgsearch.googleapis.com/v1/entities:search?query=' + userid + '&key=AIzaSyCavmWhCL_wMeLAKrurcVPUdP0ztgubHZc&limit=10&indent=True
 
     console.log("url", url);
     request({
@@ -648,8 +640,6 @@ var url = 'https://kgsearch.googleapis.com/v1/entities:search?query=' + category
         "method": 'GET'
     }, function(error, response, body) {
         var userprofiledata = JSON.parse(response.body);
-      //  var username = userprofiledata.first_name;
-        //console.log("--------:Response data:-------- ", JSON.stringify(body));
         console.log("--------:Response data:--------first_name ", userprofiledata.itemListElement);
         var rows = userprofiledata.itemListElement;
         var rowlen = rows.length;
@@ -663,62 +653,30 @@ var url = 'https://kgsearch.googleapis.com/v1/entities:search?query=' + category
           var name4 = rows[3].result.name;
           var name5 = rows[4].result.name;
           var namesfromgoogle = rows[i].result.name;
+          var conurl = row[0].result.image.contentUrl;
+          var desurl = row[0].result.image.url;
+          var desdetails = row[0].result.detailedDescription.articleBody;
           contentList.push(namesfromgoogle);
 
-
-          // for (var i = 0; i < moviesObj.length; i++) { //Construct request body
-          //     var keyMap = {
-          //                   "title": moviesObj[i].name,
-          //                   "image_url": moviesObj[i].imgurl,
-          //                             //"item_url": moviesObj[i].imgurl,
-          //                   "buttons": [{
-          //                               "type": "postback",
-          //                               "title": moviesObj[i].name,
-          //                               "payload": moviesObj[i].name
-          //                             }]
-          //                         };
-          //
-          //     contentList.push(keyMap);
-          // }
-
-
-
-          // var keyMpa ={
-          //       "content_type":"text",
-          //       "title":"Categories",
-          //       "payload":"Categories"
-          //     };
-            // var keyMap = {
-            //     "title": rows[i].name,
-            //     console.log("--------:Response data:--------first_name ", rows[i].name);
-            //     // "image_url": rows[i].image_url,
-            //     // "item_url": rows[i].image_url
-            //   //   "buttons": [{
-            //   //       "type": "postback",
-            //   //       "title": "View",
-            //   //       "payload": rows[i].id
-            //   //   }
-            //   //   // , {
-            //   //   //     "type": "postback",
-            //   //   //     "title": "Magazine",
-            //   //   //     "payload": "USER_DEFINED_PAYLOAD"
-            //   //   // }
-            //   // ]
-            // };
-            // contentList.push(keyMap);
-        }
-        console.log('contentList',contentList);
-        //var msg = 'Hey '+username+', How are you? \n \nDid you check these amazingly cool stuff on Fankick?';
-        //console.log("--------:Response data:--------gender ", msg);
-        var messageData = {
-            "recipient": {
-                "id": senderID
-            },
-
-            "message":{
-                "text":'I assume that you are a fan of ' + categoryName + ' browse the amazing stuff we have on ' + categoryName + '',
-                //"text":"msg",
-                "quick_replies":[
+          var messageData = { recipient: { id: senderID }};
+          messageData.message = {
+      "attachment": {
+        "type": "template",
+          "payload": {
+            "template_type": "generic",
+            "elements":[{
+                "title":name1,
+                "image_url":conurl,
+                "subtitle":desdetails,
+                "buttons":[{
+                  "type":"web_url",
+                  "url":desurl,
+                  "title":"Read More"
+                }]
+              }]
+          }
+        },
+      "quick_replies":[
                   {
                     "content_type":"text",
                     "title":name1.slice(0,20),
@@ -748,51 +706,181 @@ var url = 'https://kgsearch.googleapis.com/v1/entities:search?query=' + category
                     "content_type":"text",
                     "title":"Home",
                     "payload":"Categories"
-                  }
-                  // ,
-                  // {
-                  //   "content_type":"text",
-                  //   "title":"Fan Clubs",
-                  //   "payload":"Fan Clubs"
-                  // },
-                  // {
-                  //   "content_type":"text",
-                  //   "title":"Fan Magazine",
-                  //   "payload":"Fan Magazine"
-                  // }
-                  // ,
-                  // {
-                  //   "content_type":"text",
-                  //   "title":name4.slice(0,20),
-                  //   "payload":rows[5].result.name
-                  // },
-                  // {
-                  //   "content_type":"text",
-                  //   "title":name4.slice(0,20),
-                  //   "payload":rows[6].result.name
-                  // },
-                  // {
-                  //   "content_type":"text",
-                  //   "title":name4.slice(0,20),
-                  //   "payload":rows[7].result.name
-                  // },
-                  // {
-                  //   "content_type":"text",
-                  //   "title":name4.slice(0,20),
-                  //   "payload":rows[8].result.name
-                  // },
-                  // {
-                  //   "content_type":"text",
-                  //   "title":name4.slice(0,20),
-                  //   "payload":rows[9].result.name
-                  // }
+                  }]
+};
 
-                ]
-              }
-            }
+
          callSendAPI(messageData,'https://graph.facebook.com/v2.6/592208327626213/messages');
     });
 }
+
+
+
+// function googlegraph(categoryName,event){
+//   console.log("*************---categoryName----*******", categoryName );
+//   var contentList = [];
+//   var userid = event.sender.id;
+//     // var params = {
+//     //   'query': 'FIFA',
+//     //   'limit': 10,
+//     //   'indent': true,
+//     //   'key' : 'AIzaSyCavmWhCL_wMeLAKrurcVPUdP0ztgubHZc',
+//     // };
+// var url = 'https://kgsearch.googleapis.com/v1/entities:search?query=' + categoryName + '&key=AIzaSyCavmWhCL_wMeLAKrurcVPUdP0ztgubHZc&limit=5&indent=True'
+//   //  var url = 'https://kgsearch.googleapis.com/v1/entities:search' + userid + '?fields=first_name,last_name,locale,timezone,gender&access_token=' + fbpage_access_token + '';
+// //https://kgsearch.googleapis.com/v1/entities:search?query=' + userid + '&key=AIzaSyCavmWhCL_wMeLAKrurcVPUdP0ztgubHZc&limit=10&indent=True
+//
+//     console.log("url", url);
+//     request({
+//         "uri": url,
+//         "method": 'GET'
+//     }, function(error, response, body) {
+//         var userprofiledata = JSON.parse(response.body);
+//       //  var username = userprofiledata.first_name;
+//         //console.log("--------:Response data:-------- ", JSON.stringify(body));
+//         console.log("--------:Response data:--------first_name ", userprofiledata.itemListElement);
+//         var rows = userprofiledata.itemListElement;
+//         var rowlen = rows.length;
+//         console.log("--------:Response data:--------length ", rowlen);
+//         var senderID = event.sender.id;
+//         for (var i = 0; i < 5; i++) { //Construct request body
+//           console.log("--------:google Response data:-------- name ", rows[i].result.name);
+//           var name1 = rows[0].result.name;
+//           var name2 = rows[1].result.name;
+//           var name3 = rows[2].result.name;
+//           var name4 = rows[3].result.name;
+//           var name5 = rows[4].result.name;
+//           var namesfromgoogle = rows[i].result.name;
+//           contentList.push(namesfromgoogle);
+//
+//
+//           // for (var i = 0; i < moviesObj.length; i++) { //Construct request body
+//           //     var keyMap = {
+//           //                   "title": moviesObj[i].name,
+//           //                   "image_url": moviesObj[i].imgurl,
+//           //                             //"item_url": moviesObj[i].imgurl,
+//           //                   "buttons": [{
+//           //                               "type": "postback",
+//           //                               "title": moviesObj[i].name,
+//           //                               "payload": moviesObj[i].name
+//           //                             }]
+//           //                         };
+//           //
+//           //     contentList.push(keyMap);
+//           // }
+//
+//
+//
+//           // var keyMpa ={
+//           //       "content_type":"text",
+//           //       "title":"Categories",
+//           //       "payload":"Categories"
+//           //     };
+//             // var keyMap = {
+//             //     "title": rows[i].name,
+//             //     console.log("--------:Response data:--------first_name ", rows[i].name);
+//             //     // "image_url": rows[i].image_url,
+//             //     // "item_url": rows[i].image_url
+//             //   //   "buttons": [{
+//             //   //       "type": "postback",
+//             //   //       "title": "View",
+//             //   //       "payload": rows[i].id
+//             //   //   }
+//             //   //   // , {
+//             //   //   //     "type": "postback",
+//             //   //   //     "title": "Magazine",
+//             //   //   //     "payload": "USER_DEFINED_PAYLOAD"
+//             //   //   // }
+//             //   // ]
+//             // };
+//             // contentList.push(keyMap);
+//         }
+//         console.log('contentList',contentList);
+//         //var msg = 'Hey '+username+', How are you? \n \nDid you check these amazingly cool stuff on Fankick?';
+//         //console.log("--------:Response data:--------gender ", msg);
+//         var messageData = {
+//             "recipient": {
+//                 "id": senderID
+//             },
+//
+//             "message":{
+//                 "text":'I assume that you are a fan of ' + categoryName + ' browse the amazing stuff we have on ' + categoryName + '',
+//                 //"text":"msg",
+//                 "quick_replies":[
+//                   {
+//                     "content_type":"text",
+//                     "title":name1.slice(0,20),
+//                     "payload":rows[0].result.name
+//                   },
+//                   {
+//                     "content_type":"text",
+//                     "title":name2.slice(0,20),
+//                     "payload":rows[1].result.name
+//                   },
+//                   {
+//                     "content_type":"text",
+//                     "title":name3.slice(0,20),
+//                     "payload":rows[2].result.name
+//                   },
+//                   {
+//                     "content_type":"text",
+//                     "title":name4.slice(0,20),
+//                     "payload":rows[3].result.name
+//                   },
+//                   {
+//                     "content_type":"text",
+//                     "title":name5.slice(0,20),
+//                     "payload":rows[4].result.name
+//                   },
+//                   {
+//                     "content_type":"text",
+//                     "title":"Home",
+//                     "payload":"Categories"
+//                   }
+//                   // ,
+//                   // {
+//                   //   "content_type":"text",
+//                   //   "title":"Fan Clubs",
+//                   //   "payload":"Fan Clubs"
+//                   // },
+//                   // {
+//                   //   "content_type":"text",
+//                   //   "title":"Fan Magazine",
+//                   //   "payload":"Fan Magazine"
+//                   // }
+//                   // ,
+//                   // {
+//                   //   "content_type":"text",
+//                   //   "title":name4.slice(0,20),
+//                   //   "payload":rows[5].result.name
+//                   // },
+//                   // {
+//                   //   "content_type":"text",
+//                   //   "title":name4.slice(0,20),
+//                   //   "payload":rows[6].result.name
+//                   // },
+//                   // {
+//                   //   "content_type":"text",
+//                   //   "title":name4.slice(0,20),
+//                   //   "payload":rows[7].result.name
+//                   // },
+//                   // {
+//                   //   "content_type":"text",
+//                   //   "title":name4.slice(0,20),
+//                   //   "payload":rows[8].result.name
+//                   // },
+//                   // {
+//                   //   "content_type":"text",
+//                   //   "title":name4.slice(0,20),
+//                   //   "payload":rows[9].result.name
+//                   // }
+//
+//                 ]
+//               }
+//             }
+//          callSendAPI(messageData,'https://graph.facebook.com/v2.6/592208327626213/messages');
+//     });
+// }
 
 
 
