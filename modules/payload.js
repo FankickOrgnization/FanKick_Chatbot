@@ -418,6 +418,17 @@ function googletrendsfun(categoryName,event){
       console.error(err);
       sendHelpMessage(event);
     });
+
+
+
+
+    googleTrends.hotTrends('IN')
+    .then(function(results){
+      console.log("googleTrends.hotTrends results",results);
+    })
+    .catch(function(err){
+        console.log("googleTrends.hotTrends err", err);
+      });
 }
 
 
