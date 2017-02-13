@@ -198,11 +198,11 @@ const sendContentPacks = (categoryName,event) => {
     }else if (categoryName == "hollywood" || categoryName == "tollywood" || categoryName == "bollywood" || categoryName == "kollywood" || categoryName == "classical music" || categoryName == "western music") {
       //celebritiesdetails(categoryName,event);
       googlegraph(categoryName,event);
-    }else if (categoryName == "cricket" || categoryName == "soccer" || categoryName == "tennis" || categoryName == "badminton") {
+    }else if (categoryName == "cricket" || categoryName == "soccer" || categoryName == "football" || categoryName == "tennis" || categoryName == "badminton") {
       //celebritiesdetails(categoryName,event);
       googlegraph(categoryName,event);
     }
-      else if (categoryName =="akshay kumar" || categoryName =="shahrukh khan" || categoryName =="aamir khan" || categoryName =="ranveer singh" || categoryName =="hrithik roshan") {
+      else if (categoryName =="akshay kumar" || categoryName =="shahrukh khan" || categoryName =="aamir khan" || categoryName =="ranveer singh" || categoryName =="hrithik roshan" || categoryName =="hindi movies") {
           //googletrendsfun(categoryName,event);
           googlegraph(categoryName,event);
     }
@@ -211,7 +211,7 @@ const sendContentPacks = (categoryName,event) => {
           googlegraph(categoryName,event);
           //googletrendsfun(categoryName,event);
       }
-    else if (categoryName =="movies" || categoryName =="sports" || categoryName =="tv shows"|| categoryName =="music" || categoryName =="home") {
+    else if (categoryName =="movies" || categoryName =="sports" || categoryName =="tv shows"|| categoryName =="music"  || categoryName =="home" ) {
       allcategory(event, categoryName);
       console.log("enter into the allcategory function");
     }
