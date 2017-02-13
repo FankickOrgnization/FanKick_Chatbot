@@ -202,7 +202,7 @@ const sendContentPacks = (categoryName,event) => {
       //celebritiesdetails(categoryName,event);
       googlegraph(categoryName,event);
     }
-      else if (categoryName =="akshay kumar" || categoryName =="shahrukh khan" || categoryName =="aamir khan" || categoryName =="ranveer singh" || categoryName =="hrithik roshan" || categoryName =="hindi cinema" || categoryName =="telugu cinema" || categoryName =="bollywood cinema") {
+      else if (categoryName =="akshay kumar" || categoryName =="shahrukh khan" || categoryName =="aamir khan" || categoryName =="ranveer singh" || categoryName =="hrithik roshan" || categoryName =="hindi films" || categoryName =="telugu films" || categoryName =="bollywood films") {
           //googletrendsfun(categoryName,event);
           googlegraph(categoryName,event);
     }
