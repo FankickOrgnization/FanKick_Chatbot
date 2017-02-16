@@ -810,34 +810,34 @@ function fbuserdetails(event, userid) {
             },
             "message":{
                 "text":msg,
-                "quick_replies":[
-                  {
-                    "content_type":"text",
-                    "title":"Movies",
-                    "payload":"Movies"
-                  },
-                  {
-                    "content_type":"text",
-                    "title":"Music",
-                    "payload":"Music"
-                  },
-                  {
-                    "content_type":"text",
-                    "title":"TV Shows",
-                    "payload":"TV Shows"
-                  },
-                  {
-                    "content_type":"text",
-                    "title":"Sports",
-                    "payload":"Sports"
-                  }
-                  // ,
-                  // {
-                  //   "content_type":"text",
-                  //   "title":"What can you do?",
-                  //   "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
-                  // }
-                ]
+                // "quick_replies":[
+                //   {
+                //     "content_type":"text",
+                //     "title":"Movies",
+                //     "payload":"Movies"
+                //   },
+                //   {
+                //     "content_type":"text",
+                //     "title":"Music",
+                //     "payload":"Music"
+                //   },
+                //   {
+                //     "content_type":"text",
+                //     "title":"TV Shows",
+                //     "payload":"TV Shows"
+                //   },
+                //   {
+                //     "content_type":"text",
+                //     "title":"Sports",
+                //     "payload":"Sports"
+                //   }
+                //   // ,
+                //   // {
+                //   //   "content_type":"text",
+                //   //   "title":"What can you do?",
+                //   //   "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
+                //   // }
+                // ]
 
               }
             }
