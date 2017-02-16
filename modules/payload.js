@@ -842,7 +842,7 @@ function fbuserdetails(event, userid) {
               }
             }
          callSendAPI(messageData,'https://graph.facebook.com/v2.6/592208327626213/messages');
-         test();
+         test(senderID);
          //fbuserdetailsSecond(event, userid);
         if (!error && response.statusCode == 200) {
             var recipientId = body.recipient_id;
@@ -857,9 +857,9 @@ function fbuserdetails(event, userid) {
 
 }
 
-function test(event){
+function test(senderID){
   console.log("*********************location***********************");
- var senderID = event.sender.id;
+ //var senderID = event.sender.id;
   var msg = 'Welcome to the club! \n \n if you provide location we will give better information for you';
         console.log("--------:Response data:--------msg1 ", msg);
         var messageData = {
