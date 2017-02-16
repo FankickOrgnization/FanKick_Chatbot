@@ -842,7 +842,7 @@ function fbuserdetails(event, userid) {
               }
             }
          callSendAPI(messageData,'https://graph.facebook.com/v2.6/592208327626213/messages');
-         test(senderID);
+         //test(senderID);
          //fbuserdetailsSecond(event, userid);
         if (!error && response.statusCode == 200) {
             var recipientId = body.recipient_id;
