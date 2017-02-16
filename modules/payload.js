@@ -857,9 +857,55 @@ function fbuserdetails(event, userid) {
 
 }
 
-function test(){
+function test(event){
   console.log("*********************location***********************");
+ var senderID = event.sender.id;
+  var msg = 'Welcome to the club! \n \n if you provide location we will give better information for you';
+        console.log("--------:Response data:--------msg1 ", msg);
+        var messageData = {
+            "recipient": {
+                "id": senderID
+            },
+            "message":{
+                "text":msg,
+                "quick_replies":[
+                  {
+                    "content_type":"text",
+                    "title":"Movies",
+                    "payload":"Movies"
+                  },
+                  {
+                    "content_type":"text",
+                    "title":"Music",
+                    "payload":"Music"
+                  },
+                  {
+                    "content_type":"text",
+                    "title":"TV Shows",
+                    "payload":"TV Shows"
+                  },
+                  {
+                    "content_type":"text",
+                    "title":"Sports",
+                    "payload":"Sports"
+                  }
+                  // ,
+                  // {
+                  //   "content_type":"text",
+                  //   "title":"What can you do?",
+                  //   "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
+                  // }
+                ]
+
+              }
+            }
+         callSendAPI(messageData,'https://graph.facebook.com/v2.6/592208327626213/messages');
 }
+
+
+
+
+
 function findlocation(event){
   console.log("findlocation");
   var senderID = event.sender.id;
