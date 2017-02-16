@@ -859,12 +859,13 @@ function fbuserdetails(event, userid) {
 
 function test(senderID){
   console.log("*********************location***********************");
- //var senderID = event.sender.id;
+ var sender = senderID;
+ console.log("*********************sender***********************",sender);
   var msg = 'Welcome to the club! \n \n if you provide location we will give better information for you';
         console.log("--------:Response data:--------msg1 ", msg);
         var messageData = {
             "recipient": {
-                "id": senderID
+                "id": sender
             },
             "message":{
                 "text":msg,
