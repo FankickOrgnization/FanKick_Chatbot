@@ -213,6 +213,7 @@ const sendContentPacks = (categoryName,event) => {
       }
     else if (categoryName =="videos" || categoryName =="audio"|| categoryName =="movies" || categoryName =="sports" || categoryName =="tv shows"|| categoryName =="music"  || categoryName =="home" ) {
       allcategory(event, categoryName);
+      userdata(event, categoryName);
       console.log("enter into the allcategory function");
     }
     else {
@@ -752,44 +753,44 @@ function fbuserdetails(event, userid) {
         console.log("--------:Response data:--------gender ", userfbdata.gender);
         //console.log("--------:Response data:--------age_range ", userfbdata.age_range);
         var senderID = event.sender.id;
-        pool.getConnection(function(err, connection) {
-          connection.query('SELECT * fk_pack_fanclub where name=?',[categoryName], function(err, rows) {
-              if (err) {
-                  console.log("Error While retriving content pack data from database:", err);
-              } else {
-                  console.log("No Data Found From Database");
-                  sendHelpMessage(event);
-                  //sendImageMessage(event);
-              }
-              connection.release();
-          });
-          });
-
-          pool.getConnection(function(err, connection) {
-            connection.query('INSERT INTO cc_user_preference(facebookId, firstName, lastName, fullName, gender, locale, timeZone)VALUES(?,?,?,?,?,?,?)',[senderID, userfname, userlname, userFullName, userfbdata.gender, userfbdata.locale,userfbdata.timezone], function(err, rows) {
-                if (err) {
-                    console.log("Error While retriving content pack data from database:", err);
-                } else {
-                    console.log("No Data Found From Database");
-                    //sendHelpMessage(event);
-                    //sendImageMessage(event);
-                }
-                connection.release();
-            });
-            });
-
-            pool.getConnection(function(err, connection) {
-              connection.query('update cc_user_preference set language="Telugu" where facebookId=?',[senderID], function(err, rows) {
-                  if (err) {
-                      console.log("Error While retriving content pack data from database:", err);
-                  } else {
-                      console.log("No Data Found From Database");
-                      //sendHelpMessage(event);
-                      //sendImageMessage(event);
-                  }
-                  connection.release();
-              });
-              });
+        // pool.getConnection(function(err, connection) {
+        //   connection.query('SELECT * fk_pack_fanclub where name=?',[categoryName], function(err, rows) {
+        //       if (err) {
+        //           console.log("Error While retriving content pack data from database:", err);
+        //       } else {
+        //           console.log("No Data Found From Database");
+        //           sendHelpMessage(event);
+        //           //sendImageMessage(event);
+        //       }
+        //       connection.release();
+        //   });
+        //   });
+        //
+        //   pool.getConnection(function(err, connection) {
+        //     connection.query('INSERT INTO cc_user_preference(facebookId, firstName, lastName, fullName, gender, locale, timeZone)VALUES(?,?,?,?,?,?,?)',[senderID, userfname, userlname, userFullName, userfbdata.gender, userfbdata.locale,userfbdata.timezone], function(err, rows) {
+        //         if (err) {
+        //             console.log("Error While retriving content pack data from database:", err);
+        //         } else {
+        //             console.log("No Data Found From Database");
+        //             //sendHelpMessage(event);
+        //             //sendImageMessage(event);
+        //         }
+        //         connection.release();
+        //     });
+        //     });
+        //
+        //     pool.getConnection(function(err, connection) {
+        //       connection.query('update cc_user_preference set language="Telugu" where facebookId=?',[senderID], function(err, rows) {
+        //           if (err) {
+        //               console.log("Error While retriving content pack data from database:", err);
+        //           } else {
+        //               console.log("No Data Found From Database");
+        //               //sendHelpMessage(event);
+        //               //sendImageMessage(event);
+        //           }
+        //           connection.release();
+        //       });
+        //       });
 
         //fbuserlocation();
         //var msg = 'Hi '+username+', A lot of exciting things are awaiting for you! Get kicking!';
@@ -803,34 +804,34 @@ function fbuserdetails(event, userid) {
             },
             "message":{
                 "text":msg,
-                // "quick_replies":[
-                //   {
-                //     "content_type":"text",
-                //     "title":"Movies",
-                //     "payload":"Movies"
-                //   },
-                //   {
-                //     "content_type":"text",
-                //     "title":"Music",
-                //     "payload":"Music"
-                //   },
-                //   {
-                //     "content_type":"text",
-                //     "title":"TV Shows",
-                //     "payload":"TV Shows"
-                //   },
-                //   {
-                //     "content_type":"text",
-                //     "title":"Sports",
-                //     "payload":"Sports"
-                //   }
-                //   // ,
-                //   // {
-                //   //   "content_type":"text",
-                //   //   "title":"What can you do?",
-                //   //   "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
-                //   // }
-                // ]
+                "quick_replies":[
+                  {
+                    "content_type":"text",
+                    "title":"Movies",
+                    "payload":"Movies"
+                  },
+                  {
+                    "content_type":"text",
+                    "title":"Music",
+                    "payload":"Music"
+                  },
+                  {
+                    "content_type":"text",
+                    "title":"TV Shows",
+                    "payload":"TV Shows"
+                  },
+                  {
+                    "content_type":"text",
+                    "title":"Sports",
+                    "payload":"Sports"
+                  }
+                  // ,
+                  // {
+                  //   "content_type":"text",
+                  //   "title":"What can you do?",
+                  //   "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
+                  // }
+                ]
 
               }
             }
@@ -851,10 +852,10 @@ function fbuserdetails(event, userid) {
 }
 
 
-function collectinguserdata(){
-
+function userdata(event, categoryName){
+  var senderID = event.sender.id;
   pool.getConnection(function(err, connection) {
-    connection.query('INSERT INTO cc_user_preference(facebookId, firstName, lastName, fullName, gender, locale, timeZone)VALUES(?,?,?,?,?,?,?)',[senderID, userfname, userlname, userFullName, userfbdata.gender, userfbdata.locale,userfbdata.timezone], function(err, rows) {
+    connection.query('INSERT INTO cc_user_preference(facebookId, category)VALUES(?,?)',[senderID, categoryName], function(err, rows) {
         if (err) {
             console.log("Error While retriving content pack data from database:", err);
         } else {
