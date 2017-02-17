@@ -195,12 +195,15 @@ const sendContentPacks = (categoryName,event) => {
     } else if (categoryName == "pavan kalyan" || categoryName == "nagarjuna" || categoryName == "chiranjeevi" || categoryName == "allu arjun"|| categoryName == "bala krishna") {
       //celebritiesdetails(categoryName,event);
       googlegraph(categoryName,event);
+
     }else if (categoryName == "hollywood" || categoryName == "tollywood" || categoryName == "bollywood" || categoryName == "kollywood" || categoryName == "classical music" || categoryName == "western music") {
       //celebritiesdetails(categoryName,event);
       googlegraph(categoryName,event);
+      usersubcategory(event, categoryName);
     }else if (categoryName == "cricket" || categoryName == "soccer" || categoryName == "football" || categoryName == "tennis" || categoryName == "badminton") {
       //celebritiesdetails(categoryName,event);
       googlegraph(categoryName,event);
+      usersubcategory(event, categoryName);
     }
       else if (categoryName =="akshay kumar" || categoryName =="shahrukh khan" || categoryName =="aamir khan" || categoryName =="ranveer singh" || categoryName =="hrithik roshan" || categoryName =="hindi films" || categoryName =="telugu films" || categoryName =="bollywood films") {
           //googletrendsfun(categoryName,event);
@@ -213,7 +216,7 @@ const sendContentPacks = (categoryName,event) => {
       }
     else if (categoryName =="videos" || categoryName =="audio"|| categoryName =="movies" || categoryName =="sports" || categoryName =="tv shows"|| categoryName =="music"  || categoryName =="home" ) {
       allcategory(event, categoryName);
-      userdata(event, categoryName);
+      usercategory(event, categoryName);
       console.log("enter into the allcategory function");
     }
     else {
@@ -852,7 +855,7 @@ function fbuserdetails(event, userid) {
 }
 
 
-function userdata(event, categoryName){
+function usercategory(event, categoryName){
   var senderID = event.sender.id;
   pool.getConnection(function(err, connection) {
     connection.query('update cc_user_preference set category = ? where facebookId = ?',[categoryName,senderID], function(err, rows) {
@@ -866,6 +869,21 @@ function userdata(event, categoryName){
         connection.release();
     });
     });
+
+    function usersubcategory(event, categoryName){
+      var senderID = event.sender.id;
+      pool.getConnection(function(err, connection) {
+        connection.query('update cc_user_preference set subcategory = ? where facebookId = ?',[categoryName,senderID], function(err, rows) {
+            if (err) {
+                console.log("Error While retriving content pack data from database:", err);
+            } else {
+                console.log("No Data Found From Database");
+                //sendHelpMessage(event);
+                //sendImageMessage(event);
+            }
+            connection.release();
+        });
+        });
 
 
 
