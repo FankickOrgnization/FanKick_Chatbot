@@ -869,6 +869,8 @@ function usercategory(event, categoryName){
         connection.release();
     });
     });
+}
+
 
     function usersubcategory(event, categoryName){
       var senderID = event.sender.id;
@@ -884,9 +886,6 @@ function usercategory(event, categoryName){
             connection.release();
         });
         });
-
-
-
 }
 
 
