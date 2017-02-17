@@ -213,8 +213,6 @@ const sendContentPacks = (categoryName,event) => {
       }
     else if (categoryName =="videos" || categoryName =="audio"|| categoryName =="movies" || categoryName =="sports" || categoryName =="tv shows"|| categoryName =="music"  || categoryName =="home" ) {
       allcategory(event, categoryName);
-      collectusercategory(event, categoryName);
-
       console.log("enter into the allcategory function");
     }
     else {
@@ -382,9 +380,6 @@ function googletrendsfun(categoryName,event){
       sendHelpMessage(event);
     });
 
-
-
-
     googleTrends.hotTrends('IN')
     .then(function(results){
       console.log("googleTrends.hotTrends results",results);
@@ -393,10 +388,6 @@ function googletrendsfun(categoryName,event){
         console.log("googleTrends.hotTrends err", err);
       });
 }
-
-
-
-
 
 function quizzes(event){
   var senderID = event.sender.id;
@@ -761,44 +752,44 @@ function fbuserdetails(event, userid) {
         console.log("--------:Response data:--------gender ", userfbdata.gender);
         //console.log("--------:Response data:--------age_range ", userfbdata.age_range);
         var senderID = event.sender.id;
-        // pool.getConnection(function(err, connection) {
-        //   connection.query('SELECT * fk_pack_fanclub where name=?',[categoryName], function(err, rows) {
-        //       if (err) {
-        //           console.log("Error While retriving content pack data from database:", err);
-        //       } else {
-        //           console.log("No Data Found From Database");
-        //           sendHelpMessage(event);
-        //           //sendImageMessage(event);
-        //       }
-        //       connection.release();
-        //   });
-        //   });
+        pool.getConnection(function(err, connection) {
+          connection.query('SELECT * fk_pack_fanclub where name=?',[categoryName], function(err, rows) {
+              if (err) {
+                  console.log("Error While retriving content pack data from database:", err);
+              } else {
+                  console.log("No Data Found From Database");
+                  sendHelpMessage(event);
+                  //sendImageMessage(event);
+              }
+              connection.release();
+          });
+          });
 
-          // pool.getConnection(function(err, connection) {
-          //   connection.query('INSERT INTO cc_user_preference(facebookId, firstName, lastName, fullName, gender, locale, timeZone)VALUES(?,?,?,?,?,?,?)',[senderID, userfname, userlname, userFullName, userfbdata.gender, userfbdata.locale,userfbdata.timezone], function(err, rows) {
-          //       if (err) {
-          //           console.log("Error While retriving content pack data from database:", err);
-          //       } else {
-          //           console.log("No Data Found From Database");
-          //           //sendHelpMessage(event);
-          //           //sendImageMessage(event);
-          //       }
-          //       connection.release();
-          //   });
-          //   });
+          pool.getConnection(function(err, connection) {
+            connection.query('INSERT INTO cc_user_preference(facebookId, firstName, lastName, fullName, gender, locale, timeZone)VALUES(?,?,?,?,?,?,?)',[senderID, userfname, userlname, userFullName, userfbdata.gender, userfbdata.locale,userfbdata.timezone], function(err, rows) {
+                if (err) {
+                    console.log("Error While retriving content pack data from database:", err);
+                } else {
+                    console.log("No Data Found From Database");
+                    //sendHelpMessage(event);
+                    //sendImageMessage(event);
+                }
+                connection.release();
+            });
+            });
 
-            // pool.getConnection(function(err, connection) {
-            //   connection.query('update cc_user_preference set language="Telugu" where facebookId=?',[senderID], function(err, rows) {
-            //       if (err) {
-            //           console.log("Error While retriving content pack data from database:", err);
-            //       } else {
-            //           console.log("No Data Found From Database");
-            //           //sendHelpMessage(event);
-            //           //sendImageMessage(event);
-            //       }
-            //       connection.release();
-            //   });
-            //   });
+            pool.getConnection(function(err, connection) {
+              connection.query('update cc_user_preference set language="Telugu" where facebookId=?',[senderID], function(err, rows) {
+                  if (err) {
+                      console.log("Error While retriving content pack data from database:", err);
+                  } else {
+                      console.log("No Data Found From Database");
+                      //sendHelpMessage(event);
+                      //sendImageMessage(event);
+                  }
+                  connection.release();
+              });
+              });
 
         //fbuserlocation();
         //var msg = 'Hi '+username+', A lot of exciting things are awaiting for you! Get kicking!';
@@ -860,10 +851,10 @@ function fbuserdetails(event, userid) {
 }
 
 
-function collectusercategory(event, categoryName){
-  var senderID = event.sender.id;
+function collectinguserdata(){
+
   pool.getConnection(function(err, connection) {
-    connection.query('INSERT INTO cc_user_preference(facebookId, category)VALUES(?,?)',[senderID, categoryName], function(err, rows) {
+    connection.query('INSERT INTO cc_user_preference(facebookId, firstName, lastName, fullName, gender, locale, timeZone)VALUES(?,?,?,?,?,?,?)',[senderID, userfname, userlname, userFullName, userfbdata.gender, userfbdata.locale,userfbdata.timezone], function(err, rows) {
         if (err) {
             console.log("Error While retriving content pack data from database:", err);
         } else {
