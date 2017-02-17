@@ -213,7 +213,7 @@ const sendContentPacks = (categoryName,event) => {
       }
     else if (categoryName =="videos" || categoryName =="audio"|| categoryName =="movies" || categoryName =="sports" || categoryName =="tv shows"|| categoryName =="music"  || categoryName =="home" ) {
       allcategory(event, categoryName);
-      userdata(event, categoryName);
+      //userdata(event, categoryName);
       console.log("enter into the allcategory function");
     }
     else {
@@ -766,18 +766,18 @@ function fbuserdetails(event, userid) {
         //   });
         //   });
         //
-        //   pool.getConnection(function(err, connection) {
-        //     connection.query('INSERT INTO cc_user_preference(facebookId, firstName, lastName, fullName, gender, locale, timeZone)VALUES(?,?,?,?,?,?,?)',[senderID, userfname, userlname, userFullName, userfbdata.gender, userfbdata.locale,userfbdata.timezone], function(err, rows) {
-        //         if (err) {
-        //             console.log("Error While retriving content pack data from database:", err);
-        //         } else {
-        //             console.log("No Data Found From Database");
-        //             //sendHelpMessage(event);
-        //             //sendImageMessage(event);
-        //         }
-        //         connection.release();
-        //     });
-        //     });
+          pool.getConnection(function(err, connection) {
+            connection.query('INSERT INTO cc_user_preference(facebookId, firstName, lastName, fullName, gender, locale, timeZone)VALUES(?,?,?,?,?,?,?)',[senderID, userfname, userlname, userFullName, userfbdata.gender, userfbdata.locale,userfbdata.timezone], function(err, rows) {
+                if (err) {
+                    console.log("Error While retriving content pack data from database:", err);
+                } else {
+                    console.log("No Data Found From Database");
+                    //sendHelpMessage(event);
+                    //sendImageMessage(event);
+                }
+                connection.release();
+            });
+            });
         //
         //     pool.getConnection(function(err, connection) {
         //       connection.query('update cc_user_preference set language="Telugu" where facebookId=?',[senderID], function(err, rows) {
