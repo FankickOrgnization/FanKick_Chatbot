@@ -213,6 +213,8 @@ const sendContentPacks = (categoryName,event) => {
       }
     else if (categoryName =="videos" || categoryName =="audio"|| categoryName =="movies" || categoryName =="sports" || categoryName =="tv shows"|| categoryName =="music"  || categoryName =="home" ) {
       allcategory(event, categoryName);
+      collectusercategory(event, categoryName);
+
       console.log("enter into the allcategory function");
     }
     else {
@@ -856,6 +858,27 @@ function fbuserdetails(event, userid) {
     });
 
 }
+
+
+function collectusercategory(event, categoryName){
+  var senderID = event.sender.id;
+  pool.getConnection(function(err, connection) {
+    connection.query('INSERT INTO cc_user_preference(facebookId, category)VALUES(?,?)',[senderID, categoryName], function(err, rows) {
+        if (err) {
+            console.log("Error While retriving content pack data from database:", err);
+        } else {
+            console.log("No Data Found From Database");
+            //sendHelpMessage(event);
+            //sendImageMessage(event);
+        }
+        connection.release();
+    });
+    });
+
+
+
+}
+
 
 function test(senderID){
   console.log("*********************location***********************");
