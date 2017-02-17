@@ -855,7 +855,7 @@ function fbuserdetails(event, userid) {
 function userdata(event, categoryName){
   var senderID = event.sender.id;
   pool.getConnection(function(err, connection) {
-    connection.query('INSERT INTO cc_user_preference(facebookId, category)VALUES(?,?)',[senderID, categoryName], function(err, rows) {
+    connection.query('update cc_user_preference set category = ? where facebookId = ?',[categoryName,senderID], function(err, rows) {
         if (err) {
             console.log("Error While retriving content pack data from database:", err);
         } else {
