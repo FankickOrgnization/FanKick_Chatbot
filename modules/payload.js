@@ -213,7 +213,7 @@ const sendContentPacks = (categoryName,event) => {
       }
     else if (categoryName =="videos" || categoryName =="audio"|| categoryName =="movies" || categoryName =="sports" || categoryName =="tv shows"|| categoryName =="music"  || categoryName =="home" ) {
       allcategory(event, categoryName);
-      //userdata(event, categoryName);
+      userdata(event, categoryName);
       console.log("enter into the allcategory function");
     }
     else {
