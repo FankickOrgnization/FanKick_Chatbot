@@ -915,7 +915,7 @@ function userlocation(event, categoryName){
         if (err) {
             console.log("Error While retriving content pack data from database:", err);
         } else {
-            console.log("No Data Found From Database", rows);
+            console.log("***********No Data Found From Database*********", rows.location);
             //sendHelpMessage(event);
             //sendImageMessage(event);
         }
