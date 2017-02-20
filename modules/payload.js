@@ -251,6 +251,7 @@ const sendContentPacks = (categoryName,event) => {
     else if (categoryName =="videos" || categoryName =="audio"|| categoryName =="movies" || categoryName =="sports" || categoryName =="tv shows"|| categoryName =="music"  || categoryName =="home" ) {
       allcategory(event, categoryName);
       usercategory(event, categoryName);
+      userlocation(event, categoryName);
       console.log("enter into the allcategory function");
     }
     else {
@@ -898,6 +899,23 @@ function usercategory(event, categoryName){
             console.log("Error While retriving content pack data from database:", err);
         } else {
             console.log("No Data Found From Database");
+            //sendHelpMessage(event);
+            //sendImageMessage(event);
+        }
+        connection.release();
+    });
+    });
+}
+
+
+function userlocation(event, categoryName){
+  var senderID = event.sender.id;
+  pool.getConnection(function(err, connection) {
+    connection.query('select location from cc_user_preference where facebookId = ?',[senderID], function(err, rows) {
+        if (err) {
+            console.log("Error While retriving content pack data from database:", err);
+        } else {
+            console.log("No Data Found From Database", rows);
             //sendHelpMessage(event);
             //sendImageMessage(event);
         }
