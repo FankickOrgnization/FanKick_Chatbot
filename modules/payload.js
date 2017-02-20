@@ -66,7 +66,8 @@ var hollywood = [
     {
       "content_type":"text",
       "title":"Home",
-      "payload":"home"
+      "payload":"home",
+      "image_url":"https://fankickdev.blob.core.windows.net/images/home_logo.png"
     }
 ];
 
@@ -406,7 +407,8 @@ function googletrendsfun(categoryName,event){
                   {
                     "content_type":"text",
                     "title":"Home",
-                    "payload":"Categories"
+                    "payload":"Categories",
+                    "image_url":"https://fankickdev.blob.core.windows.net/images/home_logo.png"
                   }
                 ]
               }
@@ -696,7 +698,8 @@ var url = 'https://kgsearch.googleapis.com/v1/entities:search?query=' + category
                   {
                     "content_type":"text",
                     "title":"Home",
-                    "payload":"Categories"
+                    "payload":"Categories",
+                    "image_url":"https://fankickdev.blob.core.windows.net/images/home_logo.png"
                   }]
 
 
@@ -972,7 +975,8 @@ function adduserlocation(event,userloca,categoryName){
                    {
                      "content_type":"text",
                      "title":"skip",
-                     "payload":"home"
+                     "payload":"home",
+                     "image_url":"https://fankickdev.blob.core.windows.net/images/home_logo.png"
                    }
                  ]
 
