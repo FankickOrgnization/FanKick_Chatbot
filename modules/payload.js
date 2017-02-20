@@ -926,9 +926,9 @@ function userlocation(event, categoryName){
     });
     });
 
-if(userloca == 'null'){
+
   console.log("*******************User location NULL****************", userloca);
-}
+
 }
 
 
