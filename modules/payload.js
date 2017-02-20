@@ -972,7 +972,7 @@ function adduserlocation(event,userloca,categoryName){
                    {
                      "content_type":"text",
                      "title":"skip",
-                     "payload":"Sports"
+                     "payload":"home"
                    }
                  ]
 
