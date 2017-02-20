@@ -910,18 +910,24 @@ function usercategory(event, categoryName){
 
 function userlocation(event, categoryName){
   var senderID = event.sender.id;
+  var userloca;
   pool.getConnection(function(err, connection) {
     connection.query('select location from cc_user_preference where facebookId = ?',[senderID], function(err, rows) {
         if (err) {
             console.log("Error While retriving content pack data from database:", err);
         } else {
             console.log("***********No Data Found From Database*********",rows[0].location);
+            userloca = rows[0].location;
             //sendHelpMessage(event);
             //sendImageMessage(event);
         }
         connection.release();
     });
     });
+
+if(userloca == 'null'){
+  console.log("*******************User location NULL****************", userloca);
+}
 }
 
 
