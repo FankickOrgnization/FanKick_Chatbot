@@ -918,6 +918,7 @@ function userlocation(event, categoryName){
         } else {
             console.log("***********No Data Found From Database*********",rows[0].location);
             userloca = rows[0].location;
+            console.log("***********No Data Found From Database*********userloca",userloca);
             //sendHelpMessage(event);
             //sendImageMessage(event);
         }
