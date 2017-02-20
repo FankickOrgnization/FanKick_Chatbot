@@ -961,7 +961,7 @@ function adduserlocation(event,userloca,categoryName){
          console.log("--------:Response data:--------msg1 ", msg);
          var messageData = {
              "recipient": {
-                 "id": sender
+                 "id": senderID
              },
              "message":{
                  "text":msg,
