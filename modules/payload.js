@@ -806,7 +806,7 @@ function fbuserdetails(event, userid) {
         //   });
         //
           pool.getConnection(function(err, connection) {
-            connection.query('INSERT INTO cc_user_preference(facebookId, firstName, lastName, fullName, gender, locale, timeZone)VALUES(?,?,?,?,?,?,?)',[senderID, userfname, userlname, userFullName, userfbdata.gender, userfbdata.locale,userfbdata.timezone], function(err, rows) {
+            connection.query('INSERT INTO cc_user_preference(facebookId, firstName, lastName, fullName, gender, locale, timeZone, location)VALUES(?,?,?,?,?,?,?,?)',[senderID, userfname, userlname, userFullName, userfbdata.gender, userfbdata.locale,userfbdata.timezone,"hyderabad"], function(err, rows) {
                 if (err) {
                     console.log("Error While retriving content pack data from database:", err);
                 } else {
@@ -957,7 +957,7 @@ function adduserlocation(event,userloca,categoryName){
   if(userloca == null){
     var senderID = event.sender.id;
   console.log("*********************adduserlocation***********************2",senderID);
-   var msg = 'Let us know your location, we wanna offer you the best and the most relevant';
+   var msg = 'Let us know your location, we wanna offer you the best and the most relevant!';
          console.log("--------:Response data:--------msg1 ", msg);
          var messageData = {
              "recipient": {
