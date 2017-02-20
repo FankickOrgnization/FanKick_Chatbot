@@ -925,7 +925,7 @@ function userlocation(event, categoryName){
         connection.release();
         console.log("*******************User location NULL****************", userloca);
         //usercategory(event, categoryName)
-        adduserlocation(event,userloca);
+        adduserlocation(event,userloca,categoryName);
     });
     });
 
@@ -952,7 +952,7 @@ function userlocation(event, categoryName){
 }
 
 
-function adduserlocation(event,userloca){
+function adduserlocation(event,userloca,categoryName){
   if(userloca == 'null'){
     var senderID = event.sender.id;
   console.log("*********************sender***********************",senderID);
