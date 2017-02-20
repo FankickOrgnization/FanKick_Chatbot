@@ -967,29 +967,7 @@ function adduserlocation(event,userloca,categoryName){
                  "text":msg,
                  "quick_replies":[
                    {
-                     "content_type":"text",
-                     "title":"Movies",
-                     "payload":"Movies"
-                   },
-                   {
-                     "content_type":"text",
-                     "title":"Music",
-                     "payload":"Music"
-                   },
-                   {
-                     "content_type":"text",
-                     "title":"TV Shows",
-                     "payload":"TV Shows"
-                   },
-                   {
-                     "content_type":"text",
-                     "title":"Sports",
-                     "payload":"Sports"
-                   },
-                   {
-                     "content_type":"text",
-                     "title":"Home",
-                     "payload":"Categories"
+                      "content_type":"location"
                    }
                  ]
 
