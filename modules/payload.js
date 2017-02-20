@@ -923,11 +923,14 @@ function userlocation(event, categoryName){
             //sendImageMessage(event);
         }
         connection.release();
+        console.log("*******************User location NULL****************", userloca);
+        usercategory(event, categoryName);
+        test(senderID,userloca);
     });
     });
 
 
-  console.log("*******************User location NULL****************", userloca);
+
 
 }
 
@@ -949,50 +952,13 @@ function userlocation(event, categoryName){
 }
 
 
-function test(senderID){
-  console.log("*********************location***********************");
+function test(senderID, userloca){
+  console.log("*********************location***********************",senderID);
+  console.log("*********************location***********************",userloca);
  var sender = senderID;
  console.log("*********************sender***********************",sender);
   var msg = 'Welcome to the club! \n \n if you provide location we will give better information for you';
         console.log("--------:Response data:--------msg1 ", msg);
-        var messageData = {
-            "recipient": {
-                "id": sender
-            },
-            "message":{
-                "text":msg,
-                "quick_replies":[
-                  {
-                    "content_type":"text",
-                    "title":"Movies",
-                    "payload":"Movies"
-                  },
-                  {
-                    "content_type":"text",
-                    "title":"Music",
-                    "payload":"Music"
-                  },
-                  {
-                    "content_type":"text",
-                    "title":"TV Shows",
-                    "payload":"TV Shows"
-                  },
-                  {
-                    "content_type":"text",
-                    "title":"Sports",
-                    "payload":"Sports"
-                  }
-                  // ,
-                  // {
-                  //   "content_type":"text",
-                  //   "title":"What can you do?",
-                  //   "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
-                  // }
-                ]
-
-              }
-            }
-         callSendAPI(messageData,'https://graph.facebook.com/v2.6/592208327626213/messages');
 }
 
 
