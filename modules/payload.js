@@ -665,38 +665,38 @@ var url = 'https://kgsearch.googleapis.com/v1/entities:search?query=' + category
               }]
           }
         },
-        "quick_replies": categoryName
-      // "quick_replies":[
-      //             {
-      //               "content_type":"text",
-      //               "title":name1.slice(0,20),
-      //               "payload":rows[0].result.name
-      //             },
-      //             {
-      //               "content_type":"text",
-      //               "title":name2.slice(0,20),
-      //               "payload":rows[1].result.name
-      //             },
-      //             {
-      //               "content_type":"text",
-      //               "title":name3.slice(0,20),
-      //               "payload":rows[2].result.name
-      //             },
-      //             {
-      //               "content_type":"text",
-      //               "title":name4.slice(0,20),
-      //               "payload":rows[3].result.name
-      //             },
-      //             {
-      //               "content_type":"text",
-      //               "title":name5.slice(0,20),
-      //               "payload":rows[4].result.name
-      //             },
-      //             {
-      //               "content_type":"text",
-      //               "title":"Home",
-      //               "payload":"Categories"
-      //             }]
+        //"quick_replies": categoryName
+      "quick_replies":[
+                  {
+                    "content_type":"text",
+                    "title":name1.slice(0,20),
+                    "payload":rows[0].result.name
+                  },
+                  {
+                    "content_type":"text",
+                    "title":name2.slice(0,20),
+                    "payload":rows[1].result.name
+                  },
+                  {
+                    "content_type":"text",
+                    "title":name3.slice(0,20),
+                    "payload":rows[2].result.name
+                  },
+                  {
+                    "content_type":"text",
+                    "title":name4.slice(0,20),
+                    "payload":rows[3].result.name
+                  },
+                  {
+                    "content_type":"text",
+                    "title":name5.slice(0,20),
+                    "payload":rows[4].result.name
+                  },
+                  {
+                    "content_type":"text",
+                    "title":"Home",
+                    "payload":"Categories"
+                  }]
 
 
 }
