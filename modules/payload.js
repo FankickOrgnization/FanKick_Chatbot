@@ -968,6 +968,11 @@ function adduserlocation(event,userloca,categoryName){
                  "quick_replies":[
                    {
                       "content_type":"location"
+                   },
+                   {
+                     "content_type":"text",
+                     "title":"skip",
+                     "payload":"Sports"
                    }
                  ]
 
