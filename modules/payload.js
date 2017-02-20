@@ -249,7 +249,7 @@ const sendContentPacks = (categoryName,event) => {
           //googletrendsfun(categoryName,event);
       }
     else if (categoryName =="videos" || categoryName =="audio"|| categoryName =="movies" || categoryName =="sports" || categoryName =="tv shows"|| categoryName =="music"  || categoryName =="home" ) {
-      allcategory(event, categoryName);
+      //allcategory(event, categoryName);
       usercategory(event, categoryName);
       userlocation(event, categoryName);
       console.log("enter into the allcategory function");
@@ -924,8 +924,8 @@ function userlocation(event, categoryName){
         }
         connection.release();
         console.log("*******************User location NULL****************", userloca);
-        usercategory(event, categoryName);
-        test(senderID,userloca);
+        //usercategory(event, categoryName)
+        adduserlocation(event,userloca);
     });
     });
 
@@ -952,13 +952,54 @@ function userlocation(event, categoryName){
 }
 
 
-function test(senderID, userloca){
-  console.log("*********************location***********************",senderID);
-  console.log("*********************location***********************",userloca);
- var sender = senderID;
- console.log("*********************sender***********************",sender);
-  var msg = 'Welcome to the club! \n \n if you provide location we will give better information for you';
-        console.log("--------:Response data:--------msg1 ", msg);
+function adduserlocation(event,userloca){
+  if(userloca == 'null'){
+    var senderID = event.sender.id;
+  console.log("*********************sender***********************",senderID);
+   var msg = 'Welcome to the club! \n \n if you provide location we will give better information for you';
+         console.log("--------:Response data:--------msg1 ", msg);
+         var messageData = {
+             "recipient": {
+                 "id": sender
+             },
+             "message":{
+                 "text":msg,
+                 "quick_replies":[
+                   {
+                     "content_type":"text",
+                     "title":"Movies",
+                     "payload":"Movies"
+                   },
+                   {
+                     "content_type":"text",
+                     "title":"Music",
+                     "payload":"Music"
+                   },
+                   {
+                     "content_type":"text",
+                     "title":"TV Shows",
+                     "payload":"TV Shows"
+                   },
+                   {
+                     "content_type":"text",
+                     "title":"Sports",
+                     "payload":"Sports"
+                   },
+                   {
+                     "content_type":"text",
+                     "title":"Home",
+                     "payload":"Categories"
+                   }
+                 ]
+
+               }
+             }
+          callSendAPI(messageData,'https://graph.facebook.com/v2.6/592208327626213/messages');
+
+        }else{
+          allcategory(event, categoryName);
+        }
+
 }
 
 
