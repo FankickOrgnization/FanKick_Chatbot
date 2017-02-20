@@ -711,7 +711,7 @@ var url = 'https://kgsearch.googleapis.com/v1/entities:search?query=' + category
                     "content_type":"text",
                     "title":"Facebook",
                     "payload":"Facebook",
-                    "image_url":"https://fankickdev.blob.core.windows.net/images/fb.png"
+                    "image_url":"https://fankickdev.blob.core.windows.net/images/fb.jpg"
                   },
                   {
                     "content_type":"text",
