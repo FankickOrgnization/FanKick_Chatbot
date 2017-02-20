@@ -957,7 +957,7 @@ function adduserlocation(event,userloca,categoryName){
   if(userloca == null){
     var senderID = event.sender.id;
   console.log("*********************adduserlocation***********************2",senderID);
-   var msg = 'Welcome to the club! \n \n if you provide location we will give better information for you';
+   var msg = 'Let us know your location, we wanna offer you the best and the most relevant';
          console.log("--------:Response data:--------msg1 ", msg);
          var messageData = {
              "recipient": {
