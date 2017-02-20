@@ -697,6 +697,30 @@ var url = 'https://kgsearch.googleapis.com/v1/entities:search?query=' + category
                   },
                   {
                     "content_type":"text",
+                    "title":"Google",
+                    "payload":"google",
+                    "image_url":"https://fankickdev.blob.core.windows.net/images/google.png"
+                  },
+                  {
+                    "content_type":"text",
+                    "title":"Youtube",
+                    "payload":"Youtube",
+                    "image_url":"https://fankickdev.blob.core.windows.net/images/youtube.png"
+                  },
+                  {
+                    "content_type":"text",
+                    "title":"Facebook",
+                    "payload":"Facebook",
+                    "image_url":"https://fankickdev.blob.core.windows.net/images/fb.png"
+                  },
+                  {
+                    "content_type":"text",
+                    "title":"Twitter",
+                    "payload":"Twitter",
+                    "image_url":"https://fankickdev.blob.core.windows.net/images/twitter.png"
+                  },
+                  {
+                    "content_type":"text",
                     "title":"Home",
                     "payload":"Categories",
                     "image_url":"https://fankickdev.blob.core.windows.net/images/home_logo.png"
