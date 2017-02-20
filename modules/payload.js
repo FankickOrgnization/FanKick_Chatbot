@@ -953,9 +953,10 @@ function userlocation(event, categoryName){
 
 
 function adduserlocation(event,userloca,categoryName){
+  console.log("*********************adduserlocation***********************1",userloca);
   if(userloca == 'null'){
     var senderID = event.sender.id;
-  console.log("*********************sender***********************",senderID);
+  console.log("*********************adduserlocation***********************2",senderID);
    var msg = 'Welcome to the club! \n \n if you provide location we will give better information for you';
          console.log("--------:Response data:--------msg1 ", msg);
          var messageData = {
@@ -995,8 +996,8 @@ function adduserlocation(event,userloca,categoryName){
                }
              }
           callSendAPI(messageData,'https://graph.facebook.com/v2.6/592208327626213/messages');
-
         }else{
+          console.log("*********************adduserlocation***********************3",userloca);
           allcategory(event, categoryName);
         }
 
