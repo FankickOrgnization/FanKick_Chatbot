@@ -574,16 +574,33 @@ function celebritiesdetails(categoryName,event){
                     //"image_url": rows[i].celebrityName,
                     "subtitle":rows[i].description,
                   //  "item_url": rows[i].image_url,
-                    "buttons": [{
-                        "type":"web_url",
-                        "url": rows[i].facebookHandle,
-                        "title":"facebook posts"
+                    "buttons": [
+                      {
+                      "type": "postback",
+                      "title": rows[i].facebookHandle,
+                      "payload": rows[i].facebookHandle
                     },
                     {
-                      "type":"web_url",
-                      "url": rows[i].twitterHandle,
-                      "title":"Twitter posts"
-                    }]
+                    "type": "postback",
+                    "title": rows[i].twitterHandle,
+                    "payload": rows[i].facebookHandle
+                    }
+                    ]
+                    // [{
+                    //     "type":"web_url",
+                    //     "url": rows[i].facebookHandle,
+                    //     "title":"facebook posts"
+                    // },
+                    // {
+                    //   "type":"web_url",
+                    //   "url": rows[i].twitterHandle,
+                    //   "title":"Twitter posts"
+                    // }]
+                    // {
+                    // "type": "postback",
+                    // "title": "Read More",
+                    // "payload": "USER_DEFINED_PAYLOAD"
+                    // }
                 };
                 contentList.push(keyMap);
             }
