@@ -646,15 +646,14 @@ var url = 'https://kgsearch.googleapis.com/v1/entities:search?query=' + category
           // //contentList.push(namesfromgoogle);
 //-----------------------------------------------------------
 var keyMap = {
-                     "title": rows[i].result.name,
-         "image_url":rows[i].result.image.url,
-         "subtitle":rows[i].result.detailedDescription.articleBody,
-                     "buttons": [{
+              "title": rows[i].result.name,
+              "image_url":rows[i].result.image.url,
+              "subtitle":rows[i].result.detailedDescription.articleBody,
+              "buttons": [{
                          "type":"web_url",
-                         "title": rows[i].result.image.contentUrl,
-                         "payload": "Read More"
-                     }
-                   ]
+                         "url": rows[i].result.image.contentUrl,
+                         "title":"Read More"
+                        }]
                  };
                  contentList.push(keyMap);
 
