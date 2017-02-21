@@ -229,7 +229,7 @@ const sendContentPacks = (categoryName,event) => {
         });
     } else if (categoryName == "pavan kalyan" || categoryName == "nagarjuna" || categoryName == "chiranjeevi" || categoryName == "allu arjun"|| categoryName == "bala krishna") {
       celebritiesdetails(categoryName,event);
-      googlegraph(categoryName,event);
+      //googlegraph(categoryName,event);
 
     }else if (categoryName == "hollywood" || categoryName == "tollywood" || categoryName == "bollywood" || categoryName == "kollywood" || categoryName == "classical music" || categoryName == "western music") {
       //celebritiesdetails(categoryName,event);
@@ -565,43 +565,44 @@ function celebritiesdetails(categoryName,event){
         } else if (rows.length) {
             var senderID = event.sender.id;
             var contentList = [];
+            var quickList = [];
             console.log("*******cc_celebrity_preference data from database:*********", rows);
 
-            // for (var i = 0; i < rows.length; i++) { //Construct request body
-            //     var keyMap = {
-            //         "title": rows[i].name,
-            //         "image_url": rows[i].image_url,
-            //       //  "item_url": rows[i].image_url,
-            //         "buttons": [{
-            //             "type": "postback",
-            //             "title": "View",
-            //             "payload": rows[i].id
-            //         }
-            //       //   // , {
-            //       //   //     "type": "postback",
-            //       //   //     "title": "Magazine",
-            //       //   //     "payload": "USER_DEFINED_PAYLOAD"
-            //       //   // }
-            //       ]
-            //     };
-            //     contentList.push(keyMap);
-            // }
-            // var messageData = {
-            //     "recipient": {
-            //         "id": senderID
-            //     },
-            //     "message": {
-            //         "attachment": {
-            //             "type": "template",
-            //             "payload": {
-            //                 "template_type": "generic",
-            //                 "elements": contentList
-            //             }
-            //         },
-            //         "quick_replies":quickMenu
-            //     }
-            // }
-            //callSendAPI(messageData,'https://graph.facebook.com/v2.6/592208327626213/messages');
+            for (var i = 0; i < rows.length; i++) { //Construct request body
+                var keyMap = {
+                    "title": rows[i].celebrityName,
+                    "image_url": rows[i].celebrityName,
+                    "subtitle":rows[i].description,
+                  //  "item_url": rows[i].image_url,
+                    "buttons": [{
+                        "type":"web_url",
+                        "url": rows[i].facebookHandle,
+                        "title":"facebook posts"
+                    },
+                    {
+                      "type":"web_url",
+                      "url": rows[i].twitterHandle,
+                      "title":"Twitter posts"
+                    }]
+                };
+                contentList.push(keyMap);
+            }
+            var messageData = {
+                "recipient": {
+                    "id": senderID
+                },
+                "message": {
+                    "attachment": {
+                        "type": "template",
+                        "payload": {
+                            "template_type": "generic",
+                            "elements": contentList
+                        }
+                    },
+                    "quick_replies":quickMenu
+                }
+            }
+            callSendAPI(messageData,'https://graph.facebook.com/v2.6/592208327626213/messages');
         } else {
             console.log("No Data Found From Database");
             sendHelpMessage(event);
