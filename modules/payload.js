@@ -613,6 +613,8 @@ function celebritiesdetails(categoryName,event){
 function googlegraph(categoryName,event){
   console.log("*************---categoryName----*******", categoryName );
   var contentList = [];
+  var quickList = [];
+
   var userid = event.sender.id;
 var url = 'https://kgsearch.googleapis.com/v1/entities:search?query=' + categoryName + '&key=AIzaSyCavmWhCL_wMeLAKrurcVPUdP0ztgubHZc&limit=5&indent=True'
 
