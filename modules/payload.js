@@ -571,7 +571,7 @@ function celebritiesdetails(categoryName,event){
             for (var i = 0; i < rows.length; i++) { //Construct request body
                 var keyMap = {
                     "title": rows[i].celebrityName,
-                    "image_url": rows[i].celebrityName,
+                    //"image_url": rows[i].celebrityName,
                     "subtitle":rows[i].description,
                   //  "item_url": rows[i].image_url,
                     "buttons": [{
