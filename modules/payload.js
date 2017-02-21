@@ -656,36 +656,33 @@ function celebritiesdetails(categoryName,event){
             for (var i = 0; i < rows.length; i++) { //Construct request body
                 var keyMap = {
                     "title": rows[i].celebrityName,
-                    //"image_url": rows[i].celebrityName,
+                    "image_url": rows[i].celebrityImageUrl,
                     "subtitle":rows[i].description,
                   //  "item_url": rows[i].image_url,
-                    "buttons": [
-                      {
-                      "type": "postback",
-                      "title": rows[i].facebookHandle,
-                      "payload": rows[i].facebookHandle
-                    },
-                    {
-                    "type": "postback",
-                    "title": rows[i].twitterHandle,
-                    "payload": rows[i].facebookHandle
-                    }
-                    ]
-                    // [{
-                    //     "type":"web_url",
-                    //     "url": rows[i].facebookHandle,
-                    //     "title":"facebook posts"
+                    "buttons":
+                    // [
+                    //   {
+                    //   "type": "postback",
+                    //   "title": rows[i].facebookHandle,
+                    //   "payload": rows[i].facebookHandle
                     // },
                     // {
-                    //   "type":"web_url",
-                    //   "url": rows[i].twitterHandle,
-                    //   "title":"Twitter posts"
-                    // }]
-                    // {
                     // "type": "postback",
-                    // "title": "Read More",
-                    // "payload": "USER_DEFINED_PAYLOAD"
+                    // "title": rows[i].twitterHandle,
+                    // "payload": rows[i].facebookHandle
                     // }
+                    // ]
+                    [{
+                        "type":"web_url",
+                        "url": rows[i].facebookHandle,
+                        "title":"facebook posts"
+                    },
+                    {
+                      "type":"web_url",
+                      "url": rows[i].twitterHandle,
+                      "title":"Twitter posts"
+                    }]
+                    
                 };
                 contentList.push(keyMap);
                 movieslist = rows[i].lastFiveMovies;
