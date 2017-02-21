@@ -237,8 +237,9 @@ const sendContentPacks = (categoryName,event) => {
       usersubcategory(event, categoryName);
     }else if (categoryName == "cricket" || categoryName == "soccer" || categoryName == "football" || categoryName == "tennis" || categoryName == "badminton") {
       //celebritiesdetails(categoryName,event);
-      googlegraph(categoryName,event);
+      //googlegraph(categoryName,event);
       usersubcategory(event, categoryName);
+      subcategorydetails(categoryName,event);
     }
       else if (categoryName =="akshay kumar" || categoryName =="shahrukh khan" || categoryName =="aamir khan" || categoryName =="ranveer singh" || categoryName =="hrithik roshan" || categoryName =="hindi films" || categoryName =="telugu films" || categoryName =="bollywood films") {
           //googletrendsfun(categoryName,event);
