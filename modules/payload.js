@@ -650,7 +650,7 @@ var keyMap = {
          "image_url":rows[i].result.image.url,
          "subtitle":rows[i].result.detailedDescription.articleBody,
                      "buttons": [{
-                         "type": "postback",
+                         "type":"web_url",
                          "title": rows[i].result.image.contentUrl,
                          "payload": "Read More"
                      }
