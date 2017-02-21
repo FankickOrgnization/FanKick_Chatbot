@@ -558,7 +558,7 @@ function review(event){
     function subcategorydetails(categoryName,event){
           pool.getConnection(function(err, connection) {
             //connection.query('select * from cc_celebrity_preference where celebrityName=?',[categoryName], function(err, rows) {
-            connection.query('select * from cc_celebrity_preference where subCategory = ?',[categoryName],function(err, rows) {
+            connection.query('select * from cc_celebrity_preference where subCategory = ?',[5],function(err, rows) {
                 if (err) {
                     console.log("Error While retriving content pack data from database:", err);
                 } else if (rows.length) {
