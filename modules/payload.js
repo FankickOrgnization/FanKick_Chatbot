@@ -663,6 +663,12 @@ function celebritiesdetails(categoryName,event){
             for(var i = 0; i < myarray.length; i++)
             {
                console.log(myarray[i]);
+              var moviearray = {
+                 "content_type":"text",
+                 "title":myarray[i],
+                 "payload":myarray[i]
+               }
+               quickList.push(moviearray);
             }
             var messageData = {
                 "recipient": {
@@ -676,7 +682,7 @@ function celebritiesdetails(categoryName,event){
                             "elements": contentList
                         }
                     },
-                    "quick_replies":quickreply
+                    "quick_replies":quickList
                 }
             }
             callSendAPI(messageData,'https://graph.facebook.com/v2.6/592208327626213/messages');
