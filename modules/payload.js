@@ -228,7 +228,7 @@ const sendContentPacks = (categoryName,event) => {
         });
         });
     } else if (categoryName == "pavan kalyan" || categoryName == "nagarjuna" || categoryName == "chiranjeevi" || categoryName == "allu arjun"|| categoryName == "bala krishna") {
-      //celebritiesdetails(categoryName,event);
+      celebritiesdetails(categoryName,event);
       googlegraph(categoryName,event);
 
     }else if (categoryName == "hollywood" || categoryName == "tollywood" || categoryName == "bollywood" || categoryName == "kollywood" || categoryName == "classical music" || categoryName == "western music") {
@@ -558,48 +558,50 @@ function review(event){
 
 function celebritiesdetails(categoryName,event){
   pool.getConnection(function(err, connection) {
-    connection.query('SELECT * fk_pack_fanclub where name=?',[categoryName], function(err, rows) {
+    //connection.query('select * from cc_celebrity_preference where celebrityName=?',[categoryName], function(err, rows) {
+    connection.query('select * from cc_celebrity_preference', function(err, rows) {
         if (err) {
             console.log("Error While retriving content pack data from database:", err);
         } else if (rows.length) {
             var senderID = event.sender.id;
             var contentList = [];
+            console.log("*******cc_celebrity_preference data from database:*********", rows);
 
-            for (var i = 0; i < rows.length; i++) { //Construct request body
-                var keyMap = {
-                    "title": rows[i].name,
-                    "image_url": rows[i].image_url,
-                  //  "item_url": rows[i].image_url,
-                    "buttons": [{
-                        "type": "postback",
-                        "title": "View",
-                        "payload": rows[i].id
-                    }
-                  //   // , {
-                  //   //     "type": "postback",
-                  //   //     "title": "Magazine",
-                  //   //     "payload": "USER_DEFINED_PAYLOAD"
-                  //   // }
-                  ]
-                };
-                contentList.push(keyMap);
-            }
-            var messageData = {
-                "recipient": {
-                    "id": senderID
-                },
-                "message": {
-                    "attachment": {
-                        "type": "template",
-                        "payload": {
-                            "template_type": "generic",
-                            "elements": contentList
-                        }
-                    },
-                    "quick_replies":quickMenu
-                }
-            }
-            callSendAPI(messageData,'https://graph.facebook.com/v2.6/592208327626213/messages');
+            // for (var i = 0; i < rows.length; i++) { //Construct request body
+            //     var keyMap = {
+            //         "title": rows[i].name,
+            //         "image_url": rows[i].image_url,
+            //       //  "item_url": rows[i].image_url,
+            //         "buttons": [{
+            //             "type": "postback",
+            //             "title": "View",
+            //             "payload": rows[i].id
+            //         }
+            //       //   // , {
+            //       //   //     "type": "postback",
+            //       //   //     "title": "Magazine",
+            //       //   //     "payload": "USER_DEFINED_PAYLOAD"
+            //       //   // }
+            //       ]
+            //     };
+            //     contentList.push(keyMap);
+            // }
+            // var messageData = {
+            //     "recipient": {
+            //         "id": senderID
+            //     },
+            //     "message": {
+            //         "attachment": {
+            //             "type": "template",
+            //             "payload": {
+            //                 "template_type": "generic",
+            //                 "elements": contentList
+            //             }
+            //         },
+            //         "quick_replies":quickMenu
+            //     }
+            // }
+            //callSendAPI(messageData,'https://graph.facebook.com/v2.6/592208327626213/messages');
         } else {
             console.log("No Data Found From Database");
             sendHelpMessage(event);
