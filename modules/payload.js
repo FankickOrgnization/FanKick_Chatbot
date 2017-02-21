@@ -250,8 +250,8 @@ const sendContentPacks = (categoryName,event) => {
           //googletrendsfun(categoryName,event);
       }
     else if (categoryName =="videos" || categoryName =="audio"|| categoryName =="movies" || categoryName =="sports" || categoryName =="tv shows"|| categoryName =="music"  || categoryName =="home" ) {
-      //allcategory(event, categoryName);
-      usercategory(event, categoryName);
+      allcategory(event, categoryName);
+      //usercategory(event, categoryName);
       //userlocation(event, categoryName);
       console.log("enter into the allcategory function");
     }
@@ -566,6 +566,7 @@ function review(event){
                     var senderID = event.sender.id;
                     var contentList = [];
                     var quickList = [];
+                    var movieslist;
                     console.log("*******cc_celebrity_preference data from database:*********", rows);
 
                     for (var i = 0; i < rows.length; i++) { //Construct request body
@@ -603,7 +604,17 @@ function review(event){
                             // }
                         };
                         contentList.push(keyMap);
+                        movieslist = rows[i].lastFiveMovies;
+                        console.log("%%%%%%%%%%%%movieslist%%%%%%%%%%%%%",movieslist);
                     }
+
+                    var myarray = movieslist.split(',');
+                    for(var i = 0; i < myarray.length; i++)
+                    {
+                       console.log(myarray[i]);
+                    }
+
+
                     var messageData = {
                         "recipient": {
                             "id": senderID
@@ -616,7 +627,7 @@ function review(event){
                                     "elements": contentList
                                 }
                             },
-                            "quick_replies":quickMenu
+                            "quick_replies":quickreply
                         }
                     }
                     callSendAPI(messageData,'https://graph.facebook.com/v2.6/592208327626213/messages');
@@ -694,7 +705,7 @@ function celebritiesdetails(categoryName,event){
                             "elements": contentList
                         }
                     },
-                    "quick_replies":quickMenu
+                    "quick_replies":quickreply
                 }
             }
             callSendAPI(messageData,'https://graph.facebook.com/v2.6/592208327626213/messages');
