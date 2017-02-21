@@ -232,8 +232,8 @@ const sendContentPacks = (categoryName,event) => {
       //googlegraph(categoryName,event);
 
     }else if (categoryName == "hollywood" || categoryName == "tollywood" || categoryName == "bollywood" || categoryName == "kollywood" || categoryName == "classical music" || categoryName == "western music") {
-      //celebritiesdetails(categoryName,event);
-      googlegraph(categoryName,event);
+      subcategorydetails(categoryName,event);
+      //googlegraph(categoryName,event);
       usersubcategory(event, categoryName);
     }else if (categoryName == "cricket" || categoryName == "soccer" || categoryName == "football" || categoryName == "tennis" || categoryName == "badminton") {
       //celebritiesdetails(categoryName,event);
@@ -554,12 +554,87 @@ function review(event){
     }
           callSendAPI(messageData,'https://graph.facebook.com/v2.6/592208327626213/messages');
         }
+//subcategorydetails*************************************************************************
+    function subcategorydetails(categoryName,event){
+          pool.getConnection(function(err, connection) {
+            //connection.query('select * from cc_celebrity_preference where celebrityName=?',[categoryName], function(err, rows) {
+            connection.query('select * from cc_celebrity_preference where subCategory = ?',[categoryName],function(err, rows) {
+                if (err) {
+                    console.log("Error While retriving content pack data from database:", err);
+                } else if (rows.length) {
+                    var senderID = event.sender.id;
+                    var contentList = [];
+                    var quickList = [];
+                    console.log("*******cc_celebrity_preference data from database:*********", rows);
 
+                    for (var i = 0; i < rows.length; i++) { //Construct request body
+                        var keyMap = {
+                            "title": rows[i].celebrityName,
+                            //"image_url": rows[i].celebrityName,
+                            "subtitle":rows[i].description,
+                          //  "item_url": rows[i].image_url,
+                            "buttons": [
+                              {
+                              "type": "postback",
+                              "title": rows[i].facebookHandle,
+                              "payload": rows[i].facebookHandle
+                            },
+                            {
+                            "type": "postback",
+                            "title": rows[i].twitterHandle,
+                            "payload": rows[i].facebookHandle
+                            }
+                            ]
+                            // [{
+                            //     "type":"web_url",
+                            //     "url": rows[i].facebookHandle,
+                            //     "title":"facebook posts"
+                            // },
+                            // {
+                            //   "type":"web_url",
+                            //   "url": rows[i].twitterHandle,
+                            //   "title":"Twitter posts"
+                            // }]
+                            // {
+                            // "type": "postback",
+                            // "title": "Read More",
+                            // "payload": "USER_DEFINED_PAYLOAD"
+                            // }
+                        };
+                        contentList.push(keyMap);
+                    }
+                    var messageData = {
+                        "recipient": {
+                            "id": senderID
+                        },
+                        "message": {
+                            "attachment": {
+                                "type": "template",
+                                "payload": {
+                                    "template_type": "generic",
+                                    "elements": contentList
+                                }
+                            },
+                            "quick_replies":quickMenu
+                        }
+                    }
+                    callSendAPI(messageData,'https://graph.facebook.com/v2.6/592208327626213/messages');
+                } else {
+                    console.log("No Data Found From Database");
+                    sendHelpMessage(event);
+                    //sendImageMessage(event);
+                }
+                connection.release();
+            });
+            });
+        }
 
+//subcategorydetails end *********************************************
+//celebritiesdetails***************************************************
 function celebritiesdetails(categoryName,event){
   pool.getConnection(function(err, connection) {
     //connection.query('select * from cc_celebrity_preference where celebrityName=?',[categoryName], function(err, rows) {
-    connection.query('select * from cc_celebrity_preference', function(err, rows) {
+    connection.query('select * from cc_celebrity_preference where celebrityName = ?',[categoryName], function(err, rows) {
         if (err) {
             console.log("Error While retriving content pack data from database:", err);
         } else if (rows.length) {
@@ -629,6 +704,8 @@ function celebritiesdetails(categoryName,event){
     });
     });
 }
+//celebritiesdetails ends***************************************************
+
 // ************************** Googlegraph api ********************************
 function googlegraph(categoryName,event){
   console.log("*************---categoryName----*******", categoryName );
