@@ -631,7 +631,7 @@ var url = 'https://kgsearch.googleapis.com/v1/entities:search?query=' + category
         var senderID = event.sender.id;
           var imagedata;
           var desdata;
-        for (var i = 0; i < rowlen; i++) { //Construct request body
+        for (var i = 0; i < 3; i++) { //Construct request body
           // console.log("--------:google Response data:-------- name ", rows[i].result.name);
           // var name1 = rows[0].result.name;
           // var name2 = rows[1].result.name;
@@ -648,7 +648,7 @@ var url = 'https://kgsearch.googleapis.com/v1/entities:search?query=' + category
 var keyMap = {
                      "title": rows[i].result.name,
          "image_url":rows[i].result.image.url,
-         "subtitle":rows[0].result.detailedDescription.articleBody,
+         "subtitle":rows[i].result.detailedDescription.articleBody,
                      "buttons": [{
                          "type": "postback",
                          "title": rows[i].result.image.contentUrl,
