@@ -566,7 +566,7 @@ function review(event){
                     var senderID = event.sender.id;
                     var contentList = [];
                     var quickList = [];
-                    var movieslist;
+                  //  var movieslist;
                     console.log("*******cc_celebrity_preference data from database:*********", rows);
 
                     for (var i = 0; i < rows.length; i++) { //Construct request body
