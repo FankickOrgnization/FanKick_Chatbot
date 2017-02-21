@@ -586,6 +586,11 @@ function review(event){
                               "type":"web_url",
                               "url": rows[i].twitterHandle,
                               "title":"Twitter posts"
+                            },
+                            {
+                            "type": "postback",
+                            "title": "Read More",
+                            "payload": rows[i].celebrityName
                             }]
                         };
                         contentList.push(keyMap);
