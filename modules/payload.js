@@ -671,15 +671,15 @@ var keyMap = {
 
 
         }
-        var desdetails = desdata.articleBody;
-        console.log("%%%%%%%%%%%%%%%%%%%%%desdetails",desdetails);
-        var conurl = imagedata.contentUrl;
-          console.log("%%%%%%%%%%%%%%%%%%%%%conurl",conurl);
-        var desurl = imagedata.url;
-          console.log("%%%%%%%%%%%%%%%%%%%%%desurl",desurl);
-
-          var messageData = { recipient: { id: senderID }};
-//           messageData.message = {
+//         var desdetails = desdata.articleBody;
+//         console.log("%%%%%%%%%%%%%%%%%%%%%desdetails",desdetails);
+//         var conurl = imagedata.contentUrl;
+//           console.log("%%%%%%%%%%%%%%%%%%%%%conurl",conurl);
+//         var desurl = imagedata.url;
+//           console.log("%%%%%%%%%%%%%%%%%%%%%desurl",desurl);
+//
+//           var messageData = { recipient: { id: senderID }};
+// //           messageData.message = {
 //       "attachment": {
 //         "type": "template",
 //           "payload": {
