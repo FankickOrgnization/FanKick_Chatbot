@@ -630,18 +630,44 @@ var url = 'https://kgsearch.googleapis.com/v1/entities:search?query=' + category
           var imagedata;
           var desdata;
         for (var i = 0; i < rowlen; i++) { //Construct request body
-          console.log("--------:google Response data:-------- name ", rows[i].result.name);
-          var name1 = rows[0].result.name;
-          var name2 = rows[1].result.name;
-          var name3 = rows[2].result.name;
-          var name4 = rows[3].result.name;
-          var name5 = rows[4].result.name;
-          //var namesfromgoogle = rows[0].result.name;
-          imagedata = rows[0].result.image;
-          console.log("%%%%%%%%%%%%%%%%%%%%%",imagedata);
-          desdata = rows[0].result.detailedDescription;
-          console.log("%%%%%%%%%%%%%%%%%%%%%",desdata);
-          //contentList.push(namesfromgoogle);
+          // console.log("--------:google Response data:-------- name ", rows[i].result.name);
+          // var name1 = rows[0].result.name;
+          // var name2 = rows[1].result.name;
+          // var name3 = rows[2].result.name;
+          // var name4 = rows[3].result.name;
+          // var name5 = rows[4].result.name;
+          // //var namesfromgoogle = rows[0].result.name;
+          // imagedata = rows[0].result.image;
+          // console.log("%%%%%%%%%%%%%%%%%%%%%",imagedata);
+          // desdata = rows[0].result.detailedDescription;
+          // console.log("%%%%%%%%%%%%%%%%%%%%%",desdata);
+          // //contentList.push(namesfromgoogle);
+//-----------------------------------------------------------
+var keyMap = {
+                     "title": rows[i].result.name,
+         "image_url":rows[i].result.image.url,
+         "subtitle":rows[0].result.detailedDescription.articleBody,
+                     "buttons": [{
+                         "type": "postback",
+                         "title": rows[i].result.image.contentUrl,
+                         "payload": "Read More"
+                     }
+                   ]
+                 };
+                 contentList.push(keyMap);
+
+       var quickMap = {
+                 "content_type":"text",
+                 "title":rows[i].result.name,
+                 "payload":rows[i].result.name
+       };
+
+                 quickList.push(quickMap);
+//--------------------------------------------------------
+
+
+
+
         }
         var desdetails = desdata.articleBody;
         console.log("%%%%%%%%%%%%%%%%%%%%%desdetails",desdetails);
@@ -651,83 +677,101 @@ var url = 'https://kgsearch.googleapis.com/v1/entities:search?query=' + category
           console.log("%%%%%%%%%%%%%%%%%%%%%desurl",desurl);
 
           var messageData = { recipient: { id: senderID }};
-          messageData.message = {
-      "attachment": {
-        "type": "template",
-          "payload": {
-            "template_type": "generic",
-            "elements":[{
-                "title":name1,
-                "image_url":conurl,
-                "subtitle":desdetails,
-                "buttons":[{
-                  "type":"web_url",
-                  "url":desurl,
-                  "title":"Read More"
-                }]
-              }]
-          }
-        },
-        //"quick_replies": categoryName
-      "quick_replies":[
-                  {
-                    "content_type":"text",
-                    "title":name1.slice(0,20),
-                    "payload":rows[0].result.name
-                  },
-                  {
-                    "content_type":"text",
-                    "title":name2.slice(0,20),
-                    "payload":rows[1].result.name
-                  },
-                  {
-                    "content_type":"text",
-                    "title":name3.slice(0,20),
-                    "payload":rows[2].result.name
-                  },
-                  {
-                    "content_type":"text",
-                    "title":name4.slice(0,20),
-                    "payload":rows[3].result.name
-                  },
-                  {
-                    "content_type":"text",
-                    "title":name5.slice(0,20),
-                    "payload":rows[4].result.name
-                  },
-                  {
-                    "content_type":"text",
-                    "title":"Google",
-                    "payload":"google",
-                    "image_url":"https://fankickdev.blob.core.windows.net/images/google.png"
-                  },
-                  {
-                    "content_type":"text",
-                    "title":"Youtube",
-                    "payload":"Youtube",
-                    "image_url":"https://fankickdev.blob.core.windows.net/images/youtube.png"
-                  },
-                  {
-                    "content_type":"text",
-                    "title":"Facebook",
-                    "payload":"Facebook",
-                    "image_url":"https://fankickdev.blob.core.windows.net/images/fb.jpg"
-                  },
-                  {
-                    "content_type":"text",
-                    "title":"Twitter",
-                    "payload":"Twitter",
-                    "image_url":"https://fankickdev.blob.core.windows.net/images/twitter.png"
-                  },
-                  {
-                    "content_type":"text",
-                    "title":"Home",
-                    "payload":"Categories",
-                    "image_url":"https://fankickdev.blob.core.windows.net/images/home_logo.png"
-                  }]
+//           messageData.message = {
+//       "attachment": {
+//         "type": "template",
+//           "payload": {
+//             "template_type": "generic",
+//             "elements":[{
+//                 "title":name1,
+//                 "image_url":conurl,
+//                 "subtitle":desdetails,
+//                 "buttons":[{
+//                   "type":"web_url",
+//                   "url":desurl,
+//                   "title":"Read More"
+//                 }]
+//               }]
+//           }
+//         },
+//         //"quick_replies": categoryName
+//       "quick_replies":[
+//                   {
+//                     "content_type":"text",
+//                     "title":name1.slice(0,20),
+//                     "payload":rows[0].result.name
+//                   },
+//                   {
+//                     "content_type":"text",
+//                     "title":name2.slice(0,20),
+//                     "payload":rows[1].result.name
+//                   },
+//                   {
+//                     "content_type":"text",
+//                     "title":name3.slice(0,20),
+//                     "payload":rows[2].result.name
+//                   },
+//                   {
+//                     "content_type":"text",
+//                     "title":name4.slice(0,20),
+//                     "payload":rows[3].result.name
+//                   },
+//                   {
+//                     "content_type":"text",
+//                     "title":name5.slice(0,20),
+//                     "payload":rows[4].result.name
+//                   },
+//                   {
+//                     "content_type":"text",
+//                     "title":"Google",
+//                     "payload":"google",
+//                     "image_url":"https://fankickdev.blob.core.windows.net/images/google.png"
+//                   },
+//                   {
+//                     "content_type":"text",
+//                     "title":"Youtube",
+//                     "payload":"Youtube",
+//                     "image_url":"https://fankickdev.blob.core.windows.net/images/youtube.png"
+//                   },
+//                   {
+//                     "content_type":"text",
+//                     "title":"Facebook",
+//                     "payload":"Facebook",
+//                     "image_url":"https://fankickdev.blob.core.windows.net/images/fb.jpg"
+//                   },
+//                   {
+//                     "content_type":"text",
+//                     "title":"Twitter",
+//                     "payload":"Twitter",
+//                     "image_url":"https://fankickdev.blob.core.windows.net/images/twitter.png"
+//                   },
+//                   {
+//                     "content_type":"text",
+//                     "title":"Home",
+//                     "payload":"Categories",
+//                     "image_url":"https://fankickdev.blob.core.windows.net/images/home_logo.png"
+//                   }]
+//
+//
+// }
 
-
-}
+//---------------------------------------------------------------
+var messageData = {
+                    "recipient": {
+                        "id": senderID
+                    },
+                    "message": {
+                        "attachment": {
+                            "type": "template",
+                            "payload": {
+                                "template_type": "generic",
+                                "elements": contentList
+                            }
+                        },
+                          "quick_replies": quickList
+                    }
+                }
+//--------------------------------------------------------------
          callSendAPI(messageData,'https://graph.facebook.com/v2.6/592208327626213/messages');
     });
 }
