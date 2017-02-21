@@ -647,11 +647,11 @@ var url = 'https://kgsearch.googleapis.com/v1/entities:search?query=' + category
 //-----------------------------------------------------------
 var keyMap = {
               "title": rows[i].result.name,
-              "image_url":rows[i].result.image.url,
+              "image_url":rows[i].result.image.contentUrl,
               "subtitle":rows[i].result.detailedDescription.articleBody,
               "buttons": [{
                          "type":"web_url",
-                         "url": rows[i].result.image.contentUrl,
+                         "url": rows[i].result.image.url,
                          "title":"Read More"
                         }]
                  };
