@@ -807,7 +807,7 @@ function sendHelpMessage(event){
         //var msg = 'I am sorry '+username+', my senses are gone wrong. Why dont you try a different command...';
 
         //var msg = 'Hey '+username+', How are you?';
-        console.log("--------:Response data:--------sendHelpMessage1", msg);
+        //console.log("--------:Response data:--------sendHelpMessage1", msg);
         var messageData = {
             "recipient": {
                 "id": senderID
