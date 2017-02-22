@@ -113,15 +113,13 @@ function receivedpostback(messagingEvent) {
         console.log("********************************************************",res)
         //payloadText.sendContentPacks(categoryName, messagingEvent);
         payloadText.sendContentPacks(res, messagingEvent);
-
     } else if (categoryName == "Quizzes") {
         quizzesPacks(categoryName, messagingEvent);
         console.log("categoryName########", categoryName);
     }else {
         //sendContentPackItems(packId, messagingEvent);
         celebrityid(packId, messagingEvent);
-        console.log("postback_sender_id:------", catname);
-
+        console.log("postback_sender_id:------", packId);
     }
     console.log("postback_sender_id:------", userid);
     // if (categoryName == "Get Started") {
@@ -357,9 +355,6 @@ function celebrityid(categoryName,event){
     });
 }
 //celebritiesdetails ends***************************************************
-
-
-
 
 function mainPacks(categoryName, event){
   var senderID = event.sender.id;
