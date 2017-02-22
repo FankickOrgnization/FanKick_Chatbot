@@ -306,7 +306,7 @@ function celebrityid(categoryName,event){
                     {
                         "type":"web_url",
                         "url": rows[i].facebookHandle,
-                        "title":"facebook posts"
+                        "title":"Facebook posts"
                     },
                     {
                       "type":"web_url",
@@ -322,10 +322,12 @@ function celebrityid(categoryName,event){
             for(var i = 0; i < myarray.length; i++)
             {
                console.log(myarray[i]);
+               var res1 = myarray[i].concat(myarray[i]);
+               console.log(res1);
               var moviearray = {
                  "content_type":"text",
                  "title":myarray[i],
-                 "payload":myarray[i]
+                 "payload":res1
                }
                quickList.push(moviearray);
             }
