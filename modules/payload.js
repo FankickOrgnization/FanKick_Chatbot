@@ -590,7 +590,7 @@ function review(event){
                             {
                             "type": "postback",
                             "title": "Read More",
-                            "payload": rows[i].celebrityName
+                            "payload": rows[i].id
                             }]
                         };
                         contentList.push(keyMap);
