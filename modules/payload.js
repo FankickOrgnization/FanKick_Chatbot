@@ -570,7 +570,7 @@ function review(event){
                   //  var movieslist;
                     console.log("*******cc_celebrity_preference data from database:*********", rows);
 
-                    for (var i = 0; i < rows.length; i++) { //Construct request body
+                    for (var i = 0; i < 2; i++) { //Construct request body
                       var res1 = rows[i].id;
                       var res2 = rows[i].celebrityName;
                       var res3 = res2.concat(res1);
