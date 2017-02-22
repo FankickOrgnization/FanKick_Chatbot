@@ -575,6 +575,7 @@ function review(event){
                       var res1 = rows[i].id;
                       var res2 = rows[i].celebrityName +",";
                       var res3 = res2.concat(res1);
+                      var res5 = res3.concat(res2);
                         var keyMap = {
                             "title": rows[i].celebrityName,
                             "image_url": rows[i].celebrityImageUrl,
@@ -594,7 +595,7 @@ function review(event){
                             {
                             "type": "postback",
                             "title": "Read More",
-                            "payload": res3
+                            "payload": res5
                             }]
                         };
                         contentList.push(keyMap);
