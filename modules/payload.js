@@ -4,7 +4,7 @@ const searchText = require('./search.js');
 const thread = require('./thread.js');
 var googleTrends = require('google-trends-api');
 const movies = require('../contentjson/movies.json');
-const   jokes = require('../contentjson/errormsg.json');
+const   errors = require('../contentjson/errormsg.json');
 //var app = express();
 var mysql = require('mysql');
 var pool = mysql.createPool({
@@ -790,13 +790,13 @@ function sendHelpMessage(event){
 
 //Random messages
 
-var jokeString = "";
+var errorString = "";
 
-while( jokeString ===  "")
+while( errorString ===  "")
 {
-    var random = Math.floor(Math.random() * jokes.length);
-    if(jokes[random].joke.length < 320)   // better be a least one good joke :)
-        jokeString = jokes[random].joke;
+    var random = Math.floor(Math.random() * errors.length);
+    if(errors[random].error.length < 320)   // better be a least one good joke :)
+        errorString = errors[random].error;
 }
 
 
@@ -813,7 +813,7 @@ while( jokeString ===  "")
                 "id": senderID
             },
             "message":{
-                "text":jokeString,
+                "text":errorString,
                 //"text":"msg",
                 "quick_replies":quickreply
               }
