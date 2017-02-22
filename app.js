@@ -322,12 +322,12 @@ function celebrityid(categoryName,event){
             for(var i = 0; i < myarray.length; i++)
             {
                console.log(myarray[i]);
-               var res1 = myarray[i].concat(myarray[i]);
-               console.log(res1);
+              //  var res1 = myarray[i].concat(myarray[i]);
+              //  console.log(res1);
               var moviearray = {
                  "content_type":"text",
                  "title":myarray[i],
-                 "payload":res1
+                 "payload":myarray[i]
                }
                quickList.push(moviearray);
             }
