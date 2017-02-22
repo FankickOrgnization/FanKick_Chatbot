@@ -572,6 +572,8 @@ function review(event){
 
                     for (var i = 0; i < rows.length; i++) { //Construct request body
                       var res1 = rows[i].id;
+                      var res2 = rows[i].celebrityName;
+                      var res3 = res1.concat(res2);
                         var keyMap = {
                             "title": rows[i].celebrityName,
                             "image_url": rows[i].celebrityImageUrl,
@@ -591,7 +593,7 @@ function review(event){
                             {
                             "type": "postback",
                             "title": "Read More",
-                            "payload": res1.concat(rows[i].celebrityName)
+                            "payload": res3
                             }]
                         };
                         contentList.push(keyMap);
