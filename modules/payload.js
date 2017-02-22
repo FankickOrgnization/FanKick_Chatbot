@@ -787,7 +787,8 @@ function sendHelpMessage(event){
         // console.log("--------:Response data:-------- timezone", userprofiledata.timezone);
         // console.log("--------:Response data:--------gender ", userprofiledata.gender);
         var senderID = event.sender.id;
-        var msg = 'Hey '+username+', How are you?\n \nDid you check these amazingly cool stuff on Fankick?';
+        var msg = 'I am sorry '+username+', my senses are gone wrong. Why dont you try a different command...';
+
         //var msg = 'Hey '+username+', How are you?';
         console.log("--------:Response data:--------sendHelpMessage1", msg);
         var messageData = {
