@@ -119,6 +119,7 @@ function receivedpostback(messagingEvent) {
         console.log("categoryName########", categoryName);
     }else {
         sendContentPackItems(packId, messagingEvent);
+        console.log("postback_sender_id:------", catname);
     }
     console.log("postback_sender_id:------", userid);
     // if (categoryName == "Get Started") {
