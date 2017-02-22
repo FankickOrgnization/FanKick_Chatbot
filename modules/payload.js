@@ -594,7 +594,7 @@ function review(event){
                             {
                             "type": "postback",
                             "title": "Read More",
-                            "payload": res3
+                            "payload": rows[i].id
                             }]
                         };
                         contentList.push(keyMap);
@@ -788,23 +788,23 @@ function sendHelpMessage(event){
         // console.log("--------:Response data:-------- timezone", userprofiledata.timezone);
         // console.log("--------:Response data:--------gender ", userprofiledata.gender);
 
-//Random messages
+          //Random messages
 
-var errorString = "";
+          var errorString = "";
 
-while( errorString ===  "")
-{
-    var random = Math.floor(Math.random() * errors.length);
-    if(errors[random].error.length < 320)   // better be a least one good joke :)
-        errorString = errors[random].error;
-}
+          while( errorString ===  "")
+          {
+            var random = Math.floor(Math.random() * errors.length);
+            if(errors[random].error.length < 320)   // better be a least one good joke :)
+                errorString = errors[random].error;
+          }
 
 
-//Randum messages for Unable find the data what user types
+          //End Randum messages for Unable find the data what user types
 
 
         var senderID = event.sender.id;
-        var msg = 'I am sorry '+username+', my senses are gone wrong. Why dont you try a different command...';
+        //var msg = 'I am sorry '+username+', my senses are gone wrong. Why dont you try a different command...';
 
         //var msg = 'Hey '+username+', How are you?';
         console.log("--------:Response data:--------sendHelpMessage1", msg);
@@ -834,20 +834,7 @@ while( errorString ===  "")
     });
 }
 
-function sendHelpMessageSecond(event, userid) {
-    var senderID = event.sender.id;
-        var msg = 'Did you check these amazingly cool stuff on Fankick?';
-        var messageData = {
-            "recipient": {
-                "id": senderID
-            },
-            "message":{
-                "text":msg,
-                "quick_replies":quickreply
-              }
-            }
-         callSendAPI(messageData,'https://graph.facebook.com/v2.6/592208327626213/messages');
-}
+
 
 // const fbuserdetails = (event,userid) =>{
 function fbuserdetails(event, userid) {
