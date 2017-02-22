@@ -572,7 +572,7 @@ function review(event){
                     console.log("*******cc_celebrity_preference data from database:*********", rows);
 
                     for (var i = 0; i < rows.length; i++) { //Construct request body
-                      var res1 = rows[i].id;
+                      var res1 = rows[i].id +",";
                       var res2 = rows[i].celebrityName +",";
                       var res3 = res2.concat(res1);
                       var res5 = res3.concat(res2);
