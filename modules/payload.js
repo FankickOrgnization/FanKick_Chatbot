@@ -571,6 +571,7 @@ function review(event){
                     console.log("*******cc_celebrity_preference data from database:*********", rows);
 
                     for (var i = 0; i < rows.length; i++) { //Construct request body
+                      var res1 = rows[i].id;
                         var keyMap = {
                             "title": rows[i].celebrityName,
                             "image_url": rows[i].celebrityImageUrl,
@@ -590,7 +591,7 @@ function review(event){
                             {
                             "type": "postback",
                             "title": "Read More",
-                            "payload": rows[i].id.concat(rows[i].celebrityName)
+                            "payload": res1.concat(rows[i].celebrityName)
                             }]
                         };
                         contentList.push(keyMap);
