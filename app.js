@@ -104,8 +104,8 @@ app.post('/webhook', function(req, res) {
 function receivedpostback(messagingEvent) {
     var categoryName = messagingEvent.postback.payload;
     var userid = messagingEvent.sender.id;
-    var catname = categoryName.toLowerCase();
-    console.log("catname", catname);
+    // var catname = categoryName.toLowerCase();
+    // console.log("catname", catname);
     var packId = parseInt(categoryName);
     if (isNaN(packId)) {
         //sendContentPacks(messageText, event);
@@ -118,8 +118,10 @@ function receivedpostback(messagingEvent) {
         quizzesPacks(categoryName, messagingEvent);
         console.log("categoryName########", categoryName);
     }else {
-        sendContentPackItems(packId, messagingEvent);
+        //sendContentPackItems(packId, messagingEvent);
+        celebrityid(packId, messagingEvent);
         console.log("postback_sender_id:------", catname);
+
     }
     console.log("postback_sender_id:------", userid);
     // if (categoryName == "Get Started") {
@@ -281,6 +283,83 @@ pool.getConnection(function(err, connection) {
     });
   });
 }
+
+//celebritiesdetails***************************************************
+function celebrityid(categoryName,event){
+  pool.getConnection(function(err, connection) {
+    //connection.query('select * from cc_celebrity_preference where celebrityName=?',[categoryName], function(err, rows) {
+    connection.query('select * from cc_celebrity_preference where id = ?',[categoryName], function(err, rows) {
+        if (err) {
+            console.log("Error While retriving content pack data from database:", err);
+        } else if (rows.length) {
+            var senderID = event.sender.id;
+            var contentList = [];
+            var quickList = [];
+            var movieslist;
+            console.log("*******cc_celebrity_preference data from database:*********", rows);
+
+            for (var i = 0; i < rows.length; i++) { //Construct request body
+                var keyMap = {
+                    "title": rows[i].celebrityName,
+                    "image_url": rows[i].celebrityImageUrl,
+                    "subtitle":rows[i].description,
+                  //  "item_url": rows[i].image_url,
+                    "buttons":[
+                    {
+                        "type":"web_url",
+                        "url": rows[i].facebookHandle,
+                        "title":"facebook posts"
+                    },
+                    {
+                      "type":"web_url",
+                      "url": rows[i].twitterHandle,
+                      "title":"Twitter posts"
+                    }]
+                };
+                contentList.push(keyMap);
+                movieslist = rows[i].lastFiveMovies;
+                console.log("%%%%%%%%%%%%movieslist%%%%%%%%%%%%%",movieslist);
+            }
+            var myarray = movieslist.split(',');
+            for(var i = 0; i < myarray.length; i++)
+            {
+               console.log(myarray[i]);
+              var moviearray = {
+                 "content_type":"text",
+                 "title":myarray[i],
+                 "payload":myarray[i]
+               }
+               quickList.push(moviearray);
+            }
+            var messageData = {
+                "recipient": {
+                    "id": senderID
+                },
+                "message": {
+                    "attachment": {
+                        "type": "template",
+                        "payload": {
+                            "template_type": "generic",
+                            "elements": contentList
+                        }
+                    },
+                    "quick_replies":quickList
+                }
+            }
+            callSendAPI(messageData,'https://graph.facebook.com/v2.6/592208327626213/messages');
+        } else {
+            console.log("No Data Found From Database");
+            sendHelpMessage(event);
+            //sendImageMessage(event);
+        }
+        connection.release();
+    });
+    });
+}
+//celebritiesdetails ends***************************************************
+
+
+
 
 function mainPacks(categoryName, event){
   var senderID = event.sender.id;
