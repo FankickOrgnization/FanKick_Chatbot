@@ -4,6 +4,7 @@ const searchText = require('./search.js');
 const thread = require('./thread.js');
 var googleTrends = require('google-trends-api');
 const movies = require('../contentjson/movies.json');
+const   jokes = require('../contentjson/errormsg.json');
 //var app = express();
 var mysql = require('mysql');
 var pool = mysql.createPool({
@@ -786,6 +787,22 @@ function sendHelpMessage(event){
         // console.log("--------:Response data:--------locale ", userprofiledata.locale);
         // console.log("--------:Response data:-------- timezone", userprofiledata.timezone);
         // console.log("--------:Response data:--------gender ", userprofiledata.gender);
+
+//Random messages
+
+var jokeString = "";
+
+while( jokeString ===  "")
+{
+    var random = Math.floor(Math.random() * jokes.length);
+    if(jokes[random].joke.length < 320)   // better be a least one good joke :)
+        jokeString = jokes[random].joke;
+}
+
+
+//Randum messages for Unable find the data what user types
+
+
         var senderID = event.sender.id;
         var msg = 'I am sorry '+username+', my senses are gone wrong. Why dont you try a different command...';
 
@@ -796,7 +813,7 @@ function sendHelpMessage(event){
                 "id": senderID
             },
             "message":{
-                "text":msg,
+                "text":jokeString,
                 //"text":"msg",
                 "quick_replies":quickreply
               }
