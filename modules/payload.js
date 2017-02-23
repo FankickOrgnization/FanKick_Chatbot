@@ -595,7 +595,7 @@ function review(event){
                             {
                             "type": "postback",
                             "title": "Read More",
-                            "payload": res5
+                            "payload": rows[i].id
                             }]
                         };
                         contentList.push(keyMap);
