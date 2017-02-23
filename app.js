@@ -296,9 +296,9 @@ function celebrityid(categoryName,event){
             var quickList = [];
             var movieslist;
             console.log("*******cc_celebrity_preference data from database:*********", rows);
-            var celebrityName;
+            var usercelebrityName;
             for (var i = 0; i < rows.length; i++) { //Construct request body
-              celebrityName = rows[i].celebrityName;
+              usercelebrityName = rows[i].celebrityName;
                 var keyMap = {
                     "title": rows[i].celebrityName,
                     "image_url": rows[i].celebrityImageUrl,
@@ -320,7 +320,7 @@ function celebrityid(categoryName,event){
                 movieslist = rows[i].lastFiveMovies;
                 console.log("%%%%%%%%%%%%movieslist%%%%%%%%%%%%%",movieslist);
             }
-            updateusercelebrity(categoryName,senderID);
+            updateusercelebrity(usercelebrityName,senderID);
             var myarray = movieslist.split(',');
             for(var i = 0; i < myarray.length; i++)
             {
@@ -361,11 +361,11 @@ function celebrityid(categoryName,event){
     });
 }
 //celebritiesdetails ends***************************************************
-function updateusercelebrity(categoryName,senderID){
-  console.log("******************categoryName*************",categoryName);
+function updateusercelebrity(usercelebrityName,senderID){
+  console.log("******************categoryName*************",usercelebrityName);
   console.log("******************senderID*************",senderID);
       pool.getConnection(function(err, connection) {
-        connection.query('update cc_user_preference set favCelebrity= ? where facebookId=?',[categoryName,senderID], function(err, rows) {
+        connection.query('update cc_user_preference set favCelebrity= ? where facebookId=?',[usercelebrityName,senderID], function(err, rows) {
             if (err) {
                 console.log("Error While retriving content pack data from database:", err);
             } else {
