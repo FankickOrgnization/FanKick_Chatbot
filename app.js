@@ -300,7 +300,7 @@ function celebrityid(categoryName,event){
             for (var i = 0; i < rows.length; i++) { //Construct request body
               usercelebrityName = rows[i].celebrityName;
               var movi = "Mov**"
-              var readmorebtn = usercelebrityName.concat(movi);
+              var readmorebtn = (usercelebrityName +",").concat(movi);
                 var keyMap = {
                     "title": rows[i].celebrityName,
                     "image_url": rows[i].celebrityImageUrl,
