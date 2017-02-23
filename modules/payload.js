@@ -35,8 +35,7 @@ var quickreply = [
       "content_type":"text",
       "title":"Music",
       "payload":"Music"
-    }
-];
+    }];
 
 var hollywood = [
     {
@@ -601,9 +600,6 @@ function review(event){
                         contentList.push(keyMap);
                     }
 
-
-
-
                     var messageData = {
                         "recipient": {
                             "id": senderID
@@ -677,7 +673,7 @@ function celebritiesdetails(categoryName,event){
                  "content_type":"text",
                  "title":myarray[i],
                  "payload":myarray[i]
-               };
+               }
                quickList.push(moviearray);
             }
             var messageData = {
