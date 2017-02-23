@@ -683,7 +683,7 @@ function celebritiesdetails(categoryName,event){
                  "content_type":"text",
                  "title":myarray[i],
                  "payload":myarray[i]
-               };
+               }
                quickList.push(moviearray);
             }
             var messageData = {
