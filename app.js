@@ -304,17 +304,23 @@ function celebrityid(categoryName,event){
                     "image_url": rows[i].celebrityImageUrl,
                     "subtitle":rows[i].description,
                   //  "item_url": rows[i].image_url,
-                    "buttons":[
-                    {
-                        "type":"web_url",
-                        "url": rows[i].facebookHandle,
-                        "title":"Facebook posts"
-                    },
-                    {
-                      "type":"web_url",
-                      "url": rows[i].twitterHandle,
-                      "title":"Twitter posts"
-                    }]
+                    "buttons":[{
+                        "type": "postback",
+                        "title": "Read More",
+                        "payload": rows[i].celebrityName
+                    }
+                    // ,
+                    // {
+                    //     "type":"web_url",
+                    //     "url": rows[i].facebookHandle,
+                    //     "title":"Facebook posts"
+                    // },
+                    // {
+                    //   "type":"web_url",
+                    //   "url": rows[i].twitterHandle,
+                    //   "title":"Twitter posts"
+                    // }
+                  ]
                 };
                 contentList.push(keyMap);
                 movieslist = rows[i].lastFiveMovies;

@@ -35,7 +35,13 @@ var quickreply = [
       "content_type":"text",
       "title":"Music",
       "payload":"Music"
+    },
+    {
+      "content_type":"text",
+      "title":"Home",
+      "payload":"Home"
     }
+
 ];
 
 var hollywood = [
@@ -67,7 +73,7 @@ var hollywood = [
     {
       "content_type":"text",
       "title":"Home",
-      "payload":"home",
+      "payload":"Home",
       "image_url":"https://fankickdev.blob.core.windows.net/images/home_logo.png"
     }
 ];
@@ -409,7 +415,7 @@ function googletrendsfun(categoryName,event){
                   {
                     "content_type":"text",
                     "title":"Home",
-                    "payload":"Categories",
+                    "payload":"Home",
                     "image_url":"https://fankickdev.blob.core.windows.net/images/home_logo.png"
                   }
                 ]
@@ -677,7 +683,12 @@ function celebritiesdetails(categoryName,event){
                  "content_type":"text",
                  "title":myarray[i],
                  "payload":myarray[i]
-               }
+               },
+               {
+                 "content_type":"text",
+                 "title":"Home",
+                 "payload":"Home"
+               };
                quickList.push(moviearray);
             }
             var messageData = {
@@ -746,6 +757,11 @@ var url = 'https://kgsearch.googleapis.com/v1/entities:search?query=' + category
                  "content_type":"text",
                  "title":rows[i].result.name,
                  "payload":rows[i].result.name
+               },
+               {
+                 "content_type":"text",
+                 "title":"Home",
+                 "payload":"Home"
                };
 
                  quickList.push(quickMap);
@@ -1036,7 +1052,7 @@ function adduserlocation(event,userloca,categoryName){
                    {
                      "content_type":"text",
                      "title":"skip",
-                     "payload":"home",
+                     "payload":"Home",
                      "image_url":"https://fankickdev.blob.core.windows.net/images/home_logo.png"
                    }
                  ]
