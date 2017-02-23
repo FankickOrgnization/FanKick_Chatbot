@@ -35,13 +35,7 @@ var quickreply = [
       "content_type":"text",
       "title":"Music",
       "payload":"Music"
-    },
-    {
-      "content_type":"text",
-      "title":"Home",
-      "payload":"Home"
     }
-
 ];
 
 var hollywood = [
@@ -73,7 +67,7 @@ var hollywood = [
     {
       "content_type":"text",
       "title":"Home",
-      "payload":"Home",
+      "payload":"home",
       "image_url":"https://fankickdev.blob.core.windows.net/images/home_logo.png"
     }
 ];
@@ -415,7 +409,7 @@ function googletrendsfun(categoryName,event){
                   {
                     "content_type":"text",
                     "title":"Home",
-                    "payload":"Home",
+                    "payload":"Categories",
                     "image_url":"https://fankickdev.blob.core.windows.net/images/home_logo.png"
                   }
                 ]
@@ -683,7 +677,7 @@ function celebritiesdetails(categoryName,event){
                  "content_type":"text",
                  "title":myarray[i],
                  "payload":myarray[i]
-               }
+               };
                quickList.push(moviearray);
             }
             var messageData = {
@@ -755,8 +749,8 @@ var url = 'https://kgsearch.googleapis.com/v1/entities:search?query=' + category
                },
                {
                  "content_type":"text",
-                 "title":"Home",
-                 "payload":"Home"
+                 "title":"home",
+                 "payload":"home"
                };
 
                  quickList.push(quickMap);
@@ -1047,7 +1041,7 @@ function adduserlocation(event,userloca,categoryName){
                    {
                      "content_type":"text",
                      "title":"skip",
-                     "payload":"Home",
+                     "payload":"home",
                      "image_url":"https://fankickdev.blob.core.windows.net/images/home_logo.png"
                    }
                  ]
