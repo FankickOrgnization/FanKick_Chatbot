@@ -35,7 +35,8 @@ var quickreply = [
       "content_type":"text",
       "title":"Music",
       "payload":"Music"
-    }];
+    }
+];
 
 var hollywood = [
     {
@@ -68,7 +69,8 @@ var hollywood = [
       "title":"Home",
       "payload":"home",
       "image_url":"https://fankickdev.blob.core.windows.net/images/home_logo.png"
-    }];
+    }
+];
 
 var moviesObj =  [
   {
@@ -107,7 +109,8 @@ var quickMenu = [
     "title":'Fan Magazine O:-)',
     "payload":"Fan Magazine",
     "image_url":'https://fankickdev.blob.core.windows.net/images/celebrities.jpg'
-  }];
+  }
+];
 // var quickMenu = [
 //       {
 //         "content_type":"location",
@@ -520,8 +523,7 @@ function review(event){
               "type": "web_url",
                "url": 'http://timesofindia.indiatimes.com/entertainment/hindi/movie-reviews/dangal/movie-review/56102623.cms',
                "title": "Read More"
-            },
-            {
+            },{
               "type":"element_share"
             }
             // ,{
@@ -553,7 +555,7 @@ function review(event){
         }
     }
           callSendAPI(messageData,'https://graph.facebook.com/v2.6/592208327626213/messages');
-  }
+        }
 //subcategorydetails*************************************************************************
     function subcategorydetails(categoryName,event){
           pool.getConnection(function(err, connection) {
@@ -598,6 +600,9 @@ function review(event){
                         };
                         contentList.push(keyMap);
                     }
+
+
+
 
                     var messageData = {
                         "recipient": {
@@ -741,11 +746,6 @@ var url = 'https://kgsearch.googleapis.com/v1/entities:search?query=' + category
                  "content_type":"text",
                  "title":rows[i].result.name,
                  "payload":rows[i].result.name
-               },
-               {
-                 "content_type":"text",
-                 "title":"home",
-                 "payload":"home"
                };
 
                  quickList.push(quickMap);
