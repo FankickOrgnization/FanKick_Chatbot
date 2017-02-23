@@ -108,6 +108,28 @@ function receivedpostback(messagingEvent) {
     // console.log("catname", catname);
 
     console.log("???????????????????????categoryName?????????????????????",categoryName);
+
+    var myarray = categoryName.split(',');
+    //var a = '2008, 1993';
+    //var array = a.split(',');
+    var b = parseInt(myarray[0]);
+    var c = parseInt(myarray[1]);
+    console.log("???????????????????????.split?????????????????????",b , c);
+
+    for(var i = 0; i < myarray.length; i++)
+    {
+       console.log(myarray[i]);
+       var celname = myarray[i];
+       console.log(myarray[i]);
+      var moviearray = {
+         "content_type":"text",
+         "title":myarray[i],
+         "payload":myarray[i]
+       }
+       quickList.push(moviearray);
+    }
+
+
     var packId = parseInt(categoryName);
     if (isNaN(packId)) {
         //sendContentPacks(messageText, event);
