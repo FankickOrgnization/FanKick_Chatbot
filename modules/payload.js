@@ -683,11 +683,6 @@ function celebritiesdetails(categoryName,event){
                  "content_type":"text",
                  "title":myarray[i],
                  "payload":myarray[i]
-               },
-               {
-                 "content_type":"text",
-                 "title":"Home",
-                 "payload":"Home"
                };
                quickList.push(moviearray);
             }
