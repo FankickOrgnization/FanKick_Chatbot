@@ -732,7 +732,8 @@ var url = 'https://kgsearch.googleapis.com/v1/entities:search?query=' + category
         for (var i = 0; i < 2; i++) {
           var keyMap = {
               "title": rows[i].result.name,
-              "image_url":rows[i].result.image.contentUrl,
+              //"image_url":rows[i].result.image.contentUrl,
+              "image_url":rows[i].result.image.url,
               "subtitle":rows[i].result.detailedDescription.articleBody,
               "buttons": [{
                          "type":"web_url",
