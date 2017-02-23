@@ -242,7 +242,7 @@ const sendContentPacks = (categoryName,event) => {
       usersubcategory(event, categoryName);
       subcategorydetails(categoryName,event);
     }
-      else if (categoryName =="akshay kumar" || categoryName =="shahrukh khan" || categoryName =="aamir khan" || categoryName =="ranveer singh" || categoryName =="hrithik roshan" || categoryName =="hindi films" || categoryName =="telugu films" || categoryName =="bollywood films") {
+      else if (categoryName =="akshay kumar" || categoryName =="julai" || categoryName =="shahrukh khan" || categoryName =="aamir khan" || categoryName =="ranveer singh" || categoryName =="hrithik roshan" || categoryName =="hindi films" || categoryName =="telugu films" || categoryName =="bollywood films") {
           //googletrendsfun(categoryName,event);
           googlegraph(categoryName,event);
     }
