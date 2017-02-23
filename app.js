@@ -284,6 +284,7 @@ pool.getConnection(function(err, connection) {
 
 //celebritiesdetails***************************************************
 function celebrityid(categoryName,event){
+
   pool.getConnection(function(err, connection) {
     //connection.query('select * from cc_celebrity_preference where celebrityName=?',[categoryName], function(err, rows) {
     connection.query('select * from cc_celebrity_preference where id = ?',[categoryName], function(err, rows) {
@@ -295,8 +296,9 @@ function celebrityid(categoryName,event){
             var quickList = [];
             var movieslist;
             console.log("*******cc_celebrity_preference data from database:*********", rows);
-
+            var celebrityName;
             for (var i = 0; i < rows.length; i++) { //Construct request body
+              celebrityName = rows[i].celebrityName;
                 var keyMap = {
                     "title": rows[i].celebrityName,
                     "image_url": rows[i].celebrityImageUrl,
@@ -318,6 +320,7 @@ function celebrityid(categoryName,event){
                 movieslist = rows[i].lastFiveMovies;
                 console.log("%%%%%%%%%%%%movieslist%%%%%%%%%%%%%",movieslist);
             }
+            updateusercelebrity(categoryName,senderID);
             var myarray = movieslist.split(',');
             for(var i = 0; i < myarray.length; i++)
             {
@@ -347,6 +350,7 @@ function celebrityid(categoryName,event){
                 }
             }
             callSendAPI(messageData,'https://graph.facebook.com/v2.6/592208327626213/messages');
+
         } else {
             console.log("No Data Found From Database");
             sendHelpMessage(event);
@@ -357,6 +361,27 @@ function celebrityid(categoryName,event){
     });
 }
 //celebritiesdetails ends***************************************************
+function updateusercelebrity(categoryName,senderID){
+  console.log("******************categoryName*************",categoryName);
+  console.log("******************senderID*************",senderID);
+      pool.getConnection(function(err, connection) {
+        connection.query('update cc_user_preference set favCelebrity= ? where facebookId=?',[categoryName,senderID], function(err, rows) {
+            if (err) {
+                console.log("Error While retriving content pack data from database:", err);
+            } else {
+                console.log("No Data Found From Database");
+                //sendHelpMessage(event);
+                //sendImageMessage(event);
+            }
+            connection.release();
+        });
+        });
+}
+
+
+
+
+
 
 function mainPacks(categoryName, event){
   var senderID = event.sender.id;
