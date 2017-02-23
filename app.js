@@ -116,18 +116,18 @@ function receivedpostback(messagingEvent) {
     var c = parseInt(myarray[1]);
     console.log("???????????????????????.split?????????????????????",b , c);
 
-    for(var i = 0; i < myarray.length; i++)
-    {
-       console.log(myarray[i]);
-       var celname = myarray[i];
-       console.log(myarray[i]);
-      var moviearray = {
-         "content_type":"text",
-         "title":myarray[i],
-         "payload":myarray[i]
-       }
-       quickList.push(moviearray);
-    }
+    // for(var i = 0; i < myarray.length; i++)
+    // {
+    //    console.log(myarray[i]);
+    //    var celname = myarray[i];
+    //    console.log(myarray[i]);
+    //   var moviearray = {
+    //      "content_type":"text",
+    //      "title":myarray[i],
+    //      "payload":myarray[i]
+    //    }
+    //    quickList.push(moviearray);
+    // }
 
 
     var packId = parseInt(categoryName);
