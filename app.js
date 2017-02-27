@@ -411,7 +411,7 @@ function updateusercelebrity(usercelebrityName,senderID){
 function quickpayload(messagingEvent){
   console.log("entered in the quickpayload function");
   var quicktext = messagingEvent.message.quick_reply;
-  var quickpayloadtext = replytext.payload;
+  var quickpayloadtext = quicktext.payload;
   var userid = messagingEvent.sender.id;
   var sear = quickpayloadtext.search("%%");
              if(sear == -1)
