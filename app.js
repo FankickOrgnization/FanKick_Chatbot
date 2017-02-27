@@ -189,9 +189,6 @@ function receivedMessage(event) {
           if(sear == -1)
           {
             console.log("categoryName***",sear);
-
-          }else{
-            console.log("categoryName***",sear);
             request({
                 uri: 'https://api.wit.ai/message?v=20161020&q='+ msgwit,
                 headers: {
@@ -244,6 +241,9 @@ function receivedMessage(event) {
                 }
                 }
             });
+
+          }else{
+            console.log("categoryName***",sear);
           }
       //bot.getwitmessageText(msgwit);
 
