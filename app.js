@@ -420,8 +420,9 @@ function quickpayload(messagingEvent){
                receivedMessage(messagingEvent);
              }else{
                //console.log("Yessssssss");
-               var txt = quickpayloadtext.replace(" %%","");
-               console.log("Yessssssss", txt);
+               var moviename = quickpayloadtext.replace(" %%","");
+               console.log("Yessssssss", moviename);
+               quickmovies(messagingEvent,moviename);
              }
 
 }
@@ -495,62 +496,12 @@ function textmessage(msgwit, messagingEvent){
   //payloadText.sendContentPacks(msgText, messagingEvent);
   receivedtextmessage(msgText, messagingEvent);
 };
-// QuizzesPacks payload section Start ********************************************
-function quizzesPacks(categoryName, event) {
-  var senderID = event.sender.id;
-  var messageData = {
-      "recipient": {
-          "id": senderID
-      },
-      "message":{
-          "text":"Answer these Kicking Questions!!",
-          "quick_replies":[
-            {
-              "content_type":"text",
-              "title":"Content Pack 1",
-              "payload":"Content Pack 2"
-            },
-            {
-              "content_type":"text",
-              "title":"Content Pack 2",
-              "payload":"Content Pack 2"
-            },
-            {
-              "content_type":"text",
-              "title":"Content Pack 3",
-              "payload":"Content Pack 3"
-            },
-            {
-              "content_type":"text",
-              "title":"Categories",
-              "payload":"Categories"
-            }
-            // ,
-            // {
-            //   "content_type":"text",
-            //   "title":"What can you do?",
-            //   "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
-            // }
-          ]
-        }
-  }
-  callSendAPI(messageData,'https://graph.facebook.com/v2.6/592208327626213/messages');
-}
-// QuizzesPacks payload section End ********************************************
-// QuestionsPacks payload section Start ********************************************
-function questionsPacks(categoryName, event) {
-//  var qusCategories = categoryName;
-  // var senderID = event.sender.id;
-  // if(categoryName == "Content Pack 1"){
-  //   categoryName = 1;
-  // } else if (categoryName == "Content Pack 2"){
-  //   categoryName = 2;
-  // } else (categoryName == "Content Pack 3"){
-  //   categoryName = 3;
-  // }
+// QuizzesPacks payload section Start **********************
 
+// get movies from the DB***********************************
+function quickmovies(categoryName, event) {
   pool.getConnection(function(err, connection) {
-  connection.query('SELECT * FROM fk_pack_multiple_item where type=? and pack_id in (select id from fk_content_pack where category_id=?)', ['Question',categoryName], function(err, rows) {
+  connection.query('select * from cc_movies_preference where movieName="Malayalam Movie"', [], function(err, rows) {
       //console.log("*************************-after", categoryName);
       console.log("*************************questionsPacks", rows);
       if (err) {
@@ -558,19 +509,19 @@ function questionsPacks(categoryName, event) {
       } else if (rows.length) {
           var senderID = event.sender.id;
           var contentList = [];
-          // for (var i = 0; i < 5; i++) { //Construct request body
-          //     var keyMap = {
-          //         "title": rows[i].item_name,
-          //         "image_url": rows[i].imageurl,
-          //         "item_url": rows[i].imageurl
-          //         // "buttons": [{
-          //         //     "type": "postback",
-          //         //     "title": "Read More",
-          //         //     "payload": "USER_DEFINED_PAYLOAD"
-          //         // }]
-          //     };
-          //     contentList.push(keyMap);
-          // }
+          for (var i = 0; i < 5; i++) { //Construct request body
+              var keyMap = {
+                  "title": rows[i].item_name,
+                  "image_url": rows[i].imageurl,
+                  "item_url": rows[i].imageurl
+                  // "buttons": [{
+                  //     "type": "postback",
+                  //     "title": "Read More",
+                  //     "payload": "USER_DEFINED_PAYLOAD"
+                  // }]
+              };
+              contentList.push(keyMap);
+          }
           var messageData = {
               "recipient": {
                   "id": senderID
@@ -615,7 +566,9 @@ function questionsPacks(categoryName, event) {
   });
   });
 }
-// QuestionsPacks payload section End ********************************************
+
+// end get movies from the DB *******************************
+
 
 function sendTextMessage(recipientId, messageText) {
     var messageData = {
@@ -705,9 +658,6 @@ function sendTextMessage(recipientId, messageText) {
 //         }
 //     });
 // }
-
-
-
 
 function sendHelpMessage(event){
     var userid = event.sender.id;
