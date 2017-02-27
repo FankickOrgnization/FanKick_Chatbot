@@ -75,7 +75,7 @@ app.post('/webhook', function(req, res) {
                 } else if (messagingEvent.message) {
                     if (!messagingEvent.message.hasOwnProperty('is_echo')) { // Avoiding multiple database fetches
 
-                      if(messagingEvent.message.quick_reply == "undefined"){
+                      if(messagingEvent.message.quick_reply == undefined){
                         console.log("1messaging quick_reply payload:------", messagingEvent.message.text);
                         receivedMessage(messagingEvent);
                       }else{
