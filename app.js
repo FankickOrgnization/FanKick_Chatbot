@@ -511,14 +511,18 @@ function quickmovies(categoryName, event) {
           var contentList = [];
           for (var i = 0; i < 5; i++) { //Construct request body
               var keyMap = {
-                  "title": rows[i].item_name,
-                  "image_url": rows[i].imageurl,
-                  "item_url": rows[i].imageurl
-                  // "buttons": [{
-                  //     "type": "postback",
-                  //     "title": "Read More",
-                  //     "payload": "USER_DEFINED_PAYLOAD"
-                  // }]
+                  "title": rows[i].movieName,
+                  "image_url": rows[i].movieImageUrl,
+                  "item_url": rows[i].movieImageUrl
+                  "buttons": [{
+                      "type": "web_url",
+                      "url": rows[i].trailerUrl,
+                      "title": "Trailer"
+                  },{
+                      "type": "web_url",
+                      "url": rows[i].movieDescriptionUrl,
+                      "title": "About"
+                  }]
               };
               contentList.push(keyMap);
           }
@@ -527,32 +531,38 @@ function quickmovies(categoryName, event) {
                   "id": senderID
               },
               "message":{
-                  "text":rows[3].item_name,
+                "attachment": {
+                  "type": "template",
+                  "payload": {
+                      "template_type": "generic",
+                      "elements": contentList
+                      }
+                  },
                   "quick_replies":[
                     {
                       "content_type":"text",
-                      "title":rows[3].text1_content,
+                      "title":rows[0].leadActor,
                       "payload":"1"
                     },
                     {
                       "content_type":"text",
-                      "title":rows[3].text2_content,
+                      "title":rows[0].leadActress,
                       "payload":"2"
                     },
                     {
                       "content_type":"text",
-                      "title":rows[3].text3_content,
+                      "title":rows[0].director,
                       "payload":"3"
                     },
                     {
                       "content_type":"text",
-                      "title":rows[3].text4_content,
+                      "title":rows[0].text4_content,
                       "payload":"4"
                     },
                     {
                       "content_type":"text",
-                      "title":"Categories",
-                      "payload":"Categories"
+                      "title":"home",
+                      "payload":"home"
                     }
                   ]
                 }
