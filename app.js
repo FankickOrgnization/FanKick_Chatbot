@@ -542,22 +542,22 @@ function quickmovies(categoryName, event) {
                     {
                       "content_type":"text",
                       "title":rows[0].leadActor,
-                      "payload":"1"
+                      "payload":rows[0].leadActor
                     },
                     {
                       "content_type":"text",
                       "title":rows[0].leadActress,
-                      "payload":"2"
+                      "payload":rows[0].leadActress
                     },
                     {
                       "content_type":"text",
                       "title":rows[0].director,
-                      "payload":"3"
+                      "payload":rows[0].director
                     },
                     {
                       "content_type":"text",
-                      "title":rows[0].text4_content,
-                      "payload":"4"
+                      "title":rows[0].musicDirector,
+                      "payload":rows[0].musicDirector
                     },
                     {
                       "content_type":"text",
