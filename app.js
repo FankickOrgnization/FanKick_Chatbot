@@ -74,13 +74,13 @@ app.post('/webhook', function(req, res) {
                     //receivedAuthentication(messagingEvent);
                 } else if (messagingEvent.message) {
                     if (!messagingEvent.message.hasOwnProperty('is_echo')) { // Avoiding multiple database fetches
-
-                      if(messagingEvent.message.quick_reply == undefined){
-                        console.log("1messaging quick_reply payload:------", messagingEvent.message.text);
-                        receivedMessage(messagingEvent);
-                      }else{
-                        console.log("2messaging quick_reply payload:------", messagingEvent.message.quick_reply);
-                      }
+                      receivedMessage(messagingEvent);
+                      // if(messagingEvent.message.quick_reply == undefined){
+                      //   console.log("1messaging quick_reply payload:------", messagingEvent.message.text);
+                      //   receivedMessage(messagingEvent);
+                      // }else{
+                      //   console.log("2messaging quick_reply payload:------", messagingEvent.message.quick_reply);
+                      // }
                         //receivedMessage
                     }
                     //var msgText = messagingEvent.message.text;
