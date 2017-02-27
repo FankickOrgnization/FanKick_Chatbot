@@ -422,7 +422,7 @@ function quickpayload(messagingEvent){
                //console.log("Yessssssss");
                var moviename = quickpayloadtext.replace(" %%","");
                console.log("Yessssssss", moviename);
-               //quickmovies(messagingEvent,moviename);
+               quickmovies(messagingEvent,moviename);
              }
 
 }
