@@ -516,7 +516,7 @@ function quickmovies(messagingEvent, moviename) {
               var keyMap = {
                   "title": rows[i].movieName,
                   "image_url": rows[i].movieImageUrl,
-                  "item_url": rows[i].movieImageUrl,
+                  //"item_url": rows[i].movieImageUrl,
                   "buttons": [{
                       "type": "web_url",
                       "url": rows[i].trailerUrl,
@@ -524,7 +524,7 @@ function quickmovies(messagingEvent, moviename) {
                   },{
                       "type": "web_url",
                       "url": rows[i].movieDescriptionUrl,
-                      "title": "About"
+                      "title": "Audio"
                   }]
               };
               contentList.push(keyMap);
