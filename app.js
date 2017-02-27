@@ -503,9 +503,10 @@ function quickmovies(messagingEvent, moviename) {
   // var movie = moviename.replace(" %%","");
   console.log("quickmovies", moviename);
   pool.getConnection(function(err, connection) {
-  connection.query('select * from cc_movies_preference where movieName=?', [moviename], function(err, rows) {
+  connection.query('select * from cc_movies_preference where movieName="3 Idiots"', [], function(err, rows) {
+    console.log("********quickmovies*********", moviename);
       //console.log("*************************-after", categoryName);
-      console.log("*************************questionsPacks", rows);
+      console.log("*************************quickmovies", rows);
       if (err) {
           console.log("Error While retriving content pack data from database:", err);
       } else if (rows.length) {
