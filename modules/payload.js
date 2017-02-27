@@ -232,7 +232,11 @@ const sendContentPacks = (categoryName,event) => {
       celebritiesdetails(categoryName,event);
       //googlegraph(categoryName,event);
 
-    }else if (categoryName == "hollywood" || categoryName == "tollywood" || categoryName == "bollywood" || categoryName == "kollywood" || categoryName == "classical music" || categoryName == "western music") {
+    } else if (categoryName == "hi" || categoryName == "hello" || categoryName == "hey") {
+        wishingmessage(categoryName,event);
+        //googlegraph(categoryName,event);
+
+      }else if (categoryName == "hollywood" || categoryName == "tollywood" || categoryName == "bollywood" || categoryName == "kollywood" || categoryName == "classical music" || categoryName == "western music") {
       subcategorydetails(categoryName,event);
       //googlegraph(categoryName,event);
       usersubcategory(event, categoryName);
@@ -974,6 +978,50 @@ function usercategory(event, categoryName){
     });
 }
 
+function wishingmessage(categoryName,event){
+  var senderID = event.sender.id;
+  //var msg = 'Welcome to the club! \n \nEntertainment is served here, order your preferences…';
+  var msg = "Welcome to the Pacific of entertainment! Mark your favorite spots, I'd like to take you for boating...";
+        console.log("--------:Response data:--------msg1 ", msg);
+        var messageData = {
+            "recipient": {
+                "id": senderID
+            },
+            "message":{
+                "text":msg,
+                "quick_replies":[
+                  {
+                    "content_type":"text",
+                    "title":"Movies",
+                    "payload":"Movies"
+                  },
+                  {
+                    "content_type":"text",
+                    "title":"Music",
+                    "payload":"Music"
+                  },
+                  {
+                    "content_type":"text",
+                    "title":"TV Shows",
+                    "payload":"TV Shows"
+                  },
+                  {
+                    "content_type":"text",
+                    "title":"Sports",
+                    "payload":"Sports"
+                  }
+                  // ,
+                  // {
+                  //   "content_type":"text",
+                  //   "title":"What can you do?",
+                  //   "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
+                  // }
+                ]
+
+              }
+            }
+         callSendAPI(messageData,'https://graph.facebook.com/v2.6/592208327626213/messages');
+}
 
 function userlocation(event, categoryName){
   var senderID = event.sender.id;
