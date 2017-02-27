@@ -183,6 +183,8 @@ function receivedMessage(event) {
 
       var msgwit = messageText;
       console.log("*************messageText*************",messageText);
+      var sear = msgwit.search("**");
+      console.log("*******search text********",messageText);
       //bot.getwitmessageText(msgwit);
 
       //var tb3;
