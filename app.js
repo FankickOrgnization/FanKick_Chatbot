@@ -357,8 +357,8 @@ function celebrityid(categoryName,event){
               //  console.log(res1);
               var moviearray = {
                  "content_type":"text",
-                 "title":myarray[i]+" %%",
-                 "payload":myarray[i]
+                 "title":myarray[i],
+                 "payload":myarray[i]+" %%"
                }
                quickList.push(moviearray);
             }
