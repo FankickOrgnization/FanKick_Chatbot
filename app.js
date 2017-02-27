@@ -500,8 +500,10 @@ function textmessage(msgwit, messagingEvent){
 
 // get movies from the DB***********************************
 function quickmovies(messagingEvent, moviename) {
+  // var movie = moviename.replace(" %%","");
+  // console.log("Yessssssss", moviename);
   pool.getConnection(function(err, connection) {
-  connection.query('select * from cc_movies_preference where movieName=?', ["Malayalam Movie"], function(err, rows) {
+  connection.query('select * from cc_movies_preference where movieName=?', [moviename], function(err, rows) {
       //console.log("*************************-after", categoryName);
       console.log("*************************questionsPacks", rows);
       if (err) {
