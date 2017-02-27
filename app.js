@@ -134,7 +134,15 @@ function receivedpostback(messagingEvent) {
     if (isNaN(packId)) {
         //sendContentPacks(messageText, event);
         var res = categoryName.toLowerCase();
-        console.log("********************************************************",res)
+        var sear = res.search("**");
+            if(sear == -1)
+            {
+              console.log("categoryName***",sear);
+
+            }else{
+              console.log("categoryName***",sear);
+            }
+        console.log("********************************************************",res);
         //payloadText.sendContentPacks(categoryName, messagingEvent);
         payloadText.sendContentPacks(res, messagingEvent);
     } else if (categoryName == "Quizzes") {
@@ -349,8 +357,8 @@ function celebrityid(categoryName,event){
               //  console.log(res1);
               var moviearray = {
                  "content_type":"text",
-                 "title":myarray[i],
-                 "payload":myarray[i]
+                 "title":myarray[i]+"**",
+                 "payload":myarray[i]+"**"
                }
                quickList.push(moviearray);
             }

@@ -636,9 +636,7 @@ function celebritiesdetails(categoryName,event){
   pool.getConnection(function(err, connection) {
     //connection.query('select * from cc_celebrity_preference where celebrityName=?',[categoryName], function(err, rows) {
     connection.query('select * from cc_celebrity_preference where celebrityName = ?',[categoryName], function(err, rows) {
-
-
-        if (err) {
+      if (err) {
             console.log("Error While retriving content pack data from database:", err);
         } else if (rows.length) {
             var senderID = event.sender.id;
