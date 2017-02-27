@@ -74,13 +74,14 @@ app.post('/webhook', function(req, res) {
                     //receivedAuthentication(messagingEvent);
                 } else if (messagingEvent.message) {
                     if (!messagingEvent.message.hasOwnProperty('is_echo')) { // Avoiding multiple database fetches
-                      receivedMessage(messagingEvent);
-                      // if(messagingEvent.message.quick_reply == undefined){
-                      //   console.log("1messaging quick_reply payload:------", messagingEvent.message.text);
-                      //   receivedMessage(messagingEvent);
-                      // }else{
-                      //   console.log("2messaging quick_reply payload:------", messagingEvent.message.quick_reply);
-                      // }
+                      //receivedMessage(messagingEvent);
+                      if(messagingEvent.message.quick_reply == undefined){
+                        console.log("1messaging quick_reply payload:------", messagingEvent.message.text);
+                        receivedMessage(messagingEvent);
+                      }else{
+                        console.log("2messaging quick_reply payload:------", messagingEvent.message.quick_reply);
+                        quickpayload(messagingEvent)
+                      }
                         //receivedMessage
                     }
                     //var msgText = messagingEvent.message.text;
@@ -189,124 +190,62 @@ function receivedMessage(event) {
 
       var msgwit = messageText;
       console.log("*************messageText*************",messageText);
-      var sear = msgwit.search("%%");
-           if(sear == -1)
-           {
-             console.log("NOOOOOOOOO");
-             request({
-                 uri: 'https://api.wit.ai/message?v=20161020&q='+ msgwit,
-                 headers: {
-                     //"Authorization": "Bearer USTWU2HGSIYGK3JBQX6EM2UGEQOS26ZX"
-                   "Authorization":  "Bearer LZ7DCQVUW3FWMSF4MAD35CSYUCMOW2W4"
-                 }
-             }, function(error, response) {
-                 if (error) {
-                     console.log("Error While geting response from Wit:", error);
-                 } else {
-                   var res = JSON.stringify(response);
-                   var res_data = response.body;
-                   var wit_res_data = JSON.parse(res_data);
-                   var wit_res_data_ent = wit_res_data.entities;
-                   var wit_res_data_intent =  wit_res_data_ent.intent;
-                   var wit_res_data_location = wit_res_data_ent.location;
-                   var wit_res_msg_id = wit_res_data.msg_id;
 
-                     console.log("Response from Wit--Res", res);
-                     //console.log("Response from Wit--response", response);
-                     console.log("Response from Wit--msg_id", wit_res_data.msg_id);
-                     console.log("Response from Wit************1", wit_res_data.entities);
-                     console.log("Response from Wit************2", wit_res_data_ent.intent);
-                     console.log("Response from Wit************3", wit_res_data_ent.location);
-                     console.log("Response from Wit************4", wit_res_data_intent);
-                     console.log("Response from Wit************5", wit_res_data_location);
-                     //console.log("Response from Wit************6", wit_res_data_intent.value);
-                     //var intentlength = wit_res_data_intent.length;
-                     if(JSON.stringify(wit_res_data_ent) === '{}') { //This will check if the object is empty
-                       //sendHelpMessage(event);
-                       textmessage(msgwit, event)
-                       //sendContentPacks(msgwit, event)
-                       console.log("wit_res_data_intent.length is Zero", wit_res_data_ent);
-                       console.log("wit_res_data_intent.length is Zero", event);
-                     }else{
-                     for(var i=0;i<wit_res_data_intent.length;i++)
-                     {
-                       var td1=wit_res_data_intent[i]["confidence"];
-                       var td2=wit_res_data_intent[i]["type"];
-                       var td3=wit_res_data_intent[i]["value"];
-                     }
-                     console.log("confidence************5",td1);
-                     console.log("type************5",td2);
-                   console.log("value************5", td3);
-                   msgwit_value = td3.toLowerCase();
-                   console.log('******msgwit_value', msgwit_value);
-                  //bot.getwitmsg(wit_res_msg_id,msgwit_value,msgwit);
-                   receivedtextmessage(msgwit_value, event);
-                 //  bot.wittest(msgwit_value);
-                 }
-                 }
-             });
-
-           }else{
-             console.log("Yessssssss");
-             var txt = msgwit.replace(" %%","");
-             console.log("Yessssssss", txt);
-
-           }
       //bot.getwitmessageText(msgwit);
 
       //var tb3;
-        // request({
-        //     uri: 'https://api.wit.ai/message?v=20161020&q='+ msgwit,
-        //     headers: {
-        //         //"Authorization": "Bearer USTWU2HGSIYGK3JBQX6EM2UGEQOS26ZX"
-        //       "Authorization":  "Bearer LZ7DCQVUW3FWMSF4MAD35CSYUCMOW2W4"
-        //     }
-        // }, function(error, response) {
-        //     if (error) {
-        //         console.log("Error While geting response from Wit:", error);
-        //     } else {
-        //       var res = JSON.stringify(response);
-        //       var res_data = response.body;
-        //       var wit_res_data = JSON.parse(res_data);
-        //       var wit_res_data_ent = wit_res_data.entities;
-        //       var wit_res_data_intent =  wit_res_data_ent.intent;
-        //       var wit_res_data_location = wit_res_data_ent.location;
-        //       var wit_res_msg_id = wit_res_data.msg_id;
-        //
-        //         console.log("Response from Wit--Res", res);
-        //         //console.log("Response from Wit--response", response);
-        //         console.log("Response from Wit--msg_id", wit_res_data.msg_id);
-        //         console.log("Response from Wit************1", wit_res_data.entities);
-        //         console.log("Response from Wit************2", wit_res_data_ent.intent);
-        //         console.log("Response from Wit************3", wit_res_data_ent.location);
-        //         console.log("Response from Wit************4", wit_res_data_intent);
-        //         console.log("Response from Wit************5", wit_res_data_location);
-        //         //console.log("Response from Wit************6", wit_res_data_intent.value);
-        //         //var intentlength = wit_res_data_intent.length;
-        //         if(JSON.stringify(wit_res_data_ent) === '{}') { //This will check if the object is empty
-        //           //sendHelpMessage(event);
-        //           textmessage(msgwit, event)
-        //           //sendContentPacks(msgwit, event)
-        //           console.log("wit_res_data_intent.length is Zero", wit_res_data_ent);
-        //           console.log("wit_res_data_intent.length is Zero", event);
-        //         }else{
-        //         for(var i=0;i<wit_res_data_intent.length;i++)
-        //         {
-        //           var td1=wit_res_data_intent[i]["confidence"];
-        //           var td2=wit_res_data_intent[i]["type"];
-        //           var td3=wit_res_data_intent[i]["value"];
-        //         }
-        //         console.log("confidence************5",td1);
-        //         console.log("type************5",td2);
-        //       console.log("value************5", td3);
-        //       msgwit_value = td3.toLowerCase();
-        //       console.log('******msgwit_value', msgwit_value);
-        //      //bot.getwitmsg(wit_res_msg_id,msgwit_value,msgwit);
-        //       receivedtextmessage(msgwit_value, event);
-        //     //  bot.wittest(msgwit_value);
-        //     }
-        //     }
-        // });
+        request({
+            uri: 'https://api.wit.ai/message?v=20161020&q='+ msgwit,
+            headers: {
+                //"Authorization": "Bearer USTWU2HGSIYGK3JBQX6EM2UGEQOS26ZX"
+              "Authorization":  "Bearer LZ7DCQVUW3FWMSF4MAD35CSYUCMOW2W4"
+            }
+        }, function(error, response) {
+            if (error) {
+                console.log("Error While geting response from Wit:", error);
+            } else {
+              var res = JSON.stringify(response);
+              var res_data = response.body;
+              var wit_res_data = JSON.parse(res_data);
+              var wit_res_data_ent = wit_res_data.entities;
+              var wit_res_data_intent =  wit_res_data_ent.intent;
+              var wit_res_data_location = wit_res_data_ent.location;
+              var wit_res_msg_id = wit_res_data.msg_id;
+
+                console.log("Response from Wit--Res", res);
+                //console.log("Response from Wit--response", response);
+                console.log("Response from Wit--msg_id", wit_res_data.msg_id);
+                console.log("Response from Wit************1", wit_res_data.entities);
+                console.log("Response from Wit************2", wit_res_data_ent.intent);
+                console.log("Response from Wit************3", wit_res_data_ent.location);
+                console.log("Response from Wit************4", wit_res_data_intent);
+                console.log("Response from Wit************5", wit_res_data_location);
+                //console.log("Response from Wit************6", wit_res_data_intent.value);
+                //var intentlength = wit_res_data_intent.length;
+                if(JSON.stringify(wit_res_data_ent) === '{}') { //This will check if the object is empty
+                  //sendHelpMessage(event);
+                  textmessage(msgwit, event)
+                  //sendContentPacks(msgwit, event)
+                  console.log("wit_res_data_intent.length is Zero", wit_res_data_ent);
+                  console.log("wit_res_data_intent.length is Zero", event);
+                }else{
+                for(var i=0;i<wit_res_data_intent.length;i++)
+                {
+                  var td1=wit_res_data_intent[i]["confidence"];
+                  var td2=wit_res_data_intent[i]["type"];
+                  var td3=wit_res_data_intent[i]["value"];
+                }
+                console.log("confidence************5",td1);
+                console.log("type************5",td2);
+              console.log("value************5", td3);
+              msgwit_value = td3.toLowerCase();
+              console.log('******msgwit_value', msgwit_value);
+             //bot.getwitmsg(wit_res_msg_id,msgwit_value,msgwit);
+              receivedtextmessage(msgwit_value, event);
+            //  bot.wittest(msgwit_value);
+            }
+            }
+        });
 }
 
 function sendContentPackItems(packId, event) {
@@ -469,7 +408,23 @@ function updateusercelebrity(usercelebrityName,senderID){
 
 
 
+function quickpayload(messagingEvent){
+  console.log("entered in the quickpayload function");
+  var quicktext = messagingEvent.message.quick_reply;
+  var quickpayloadtext = replytext.payload;
+  var userid = messagingEvent.sender.id;
+  var sear = quickpayloadtext.search("%%");
+             if(sear == -1)
+             {
+               console.log("NOOOOOOOOO");
+               receivedMessage(messagingEvent);
+             }else{
+               //console.log("Yessssssss");
+               var txt = quickpayloadtext.replace(" %%","");
+               console.log("Yessssssss", txt);
+             }
 
+}
 
 
 function mainPacks(categoryName, event){
