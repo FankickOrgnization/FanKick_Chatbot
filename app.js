@@ -422,7 +422,7 @@ function quickpayload(messagingEvent){
                //console.log("Yessssssss");
                var moviename = quickpayloadtext.replace(" %%","");
                console.log("Yessssssss", moviename);
-               quickmovies(messagingEvent,moviename);
+               quickmovies(messagingEvent, moviename);
              }
 
 }
@@ -501,7 +501,7 @@ function textmessage(msgwit, messagingEvent){
 // get movies from the DB***********************************
 function quickmovies(messagingEvent, moviename) {
   // var movie = moviename.replace(" %%","");
-  // console.log("Yessssssss", moviename);
+  console.log("quickmovies", moviename);
   pool.getConnection(function(err, connection) {
   connection.query('select * from cc_movies_preference where movieName=?', [moviename], function(err, rows) {
       //console.log("*************************-after", categoryName);
