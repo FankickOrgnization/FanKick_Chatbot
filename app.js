@@ -499,7 +499,7 @@ function textmessage(msgwit, messagingEvent){
 // QuizzesPacks payload section Start **********************
 
 // get movies from the DB***********************************
-function quickmovies(messagingEvent,moviename) {
+function quickmovies(messagingEvent, moviename) {
   pool.getConnection(function(err, connection) {
   connection.query('select * from cc_movies_preference where movieName=?', ["Malayalam Movie"], function(err, rows) {
       //console.log("*************************-after", categoryName);
@@ -509,7 +509,7 @@ function quickmovies(messagingEvent,moviename) {
       } else if (rows.length) {
           var senderID = messagingEvent.sender.id;
           var contentList = [];
-          for (var i = 0; i < 5; i++) { //Construct request body
+          for (var i = 0; i < rows.length; i++) { //Construct request body
               var keyMap = {
                   "title": rows[i].movieName,
                   "image_url": rows[i].movieImageUrl,
