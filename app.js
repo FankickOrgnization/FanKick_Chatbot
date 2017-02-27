@@ -74,12 +74,18 @@ app.post('/webhook', function(req, res) {
                     //receivedAuthentication(messagingEvent);
                 } else if (messagingEvent.message) {
                     if (!messagingEvent.message.hasOwnProperty('is_echo')) { // Avoiding multiple database fetches
+
+                      if(messagingEvent.message.quick_reply == "undefined"){
                         receivedMessage(messagingEvent);
+                        console.log("messaging quick_reply payload:------", messagingEvent.message.text);
+                      }else{
+                        console.log("messaging quick_reply payload:------", messagingEvent.message.quick_reply);
+                      }
                         //receivedMessage
                     }
                     //var msgText = messagingEvent.message.text;
-                    console.log("messaging :------", messagingEvent);
-                    console.log("messaging quick_reply payload:------", messagingEvent.message.quick_reply);
+                    // console.log("messaging :------", messagingEvent);
+                    // console.log("messaging quick_reply payload:------", messagingEvent.message.quick_reply);
                   //  receivedmessage(messagingEvent);
                 } else if (messagingEvent.delivery) {
                     //receivedDeliveryConfirmation(messagingEvent);
