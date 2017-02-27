@@ -242,6 +242,8 @@ function receivedMessage(event) {
 
            }else{
              console.log("Yessssssss");
+             var txt = msgwit.replace(" %%","");
+             console.log("Yessssssss", txt);
 
            }
       //bot.getwitmessageText(msgwit);
@@ -410,8 +412,8 @@ function celebrityid(categoryName,event){
               //  console.log(res1);
               var moviearray = {
                  "content_type":"text",
-                 "title":myarray[i]+"%%",
-                 "payload":myarray[i]+"%%"
+                 "title":myarray[i]+" %%",
+                 "payload":myarray[i]+" %%"
                }
                quickList.push(moviearray);
             }
