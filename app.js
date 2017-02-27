@@ -499,83 +499,83 @@ function textmessage(msgwit, messagingEvent){
 // QuizzesPacks payload section Start **********************
 
 // get movies from the DB***********************************
-// function quickmovies(categoryName, event) {
-//   pool.getConnection(function(err, connection) {
-//   connection.query('select * from cc_movies_preference where movieName=?', ["Malayalam Movie"], function(err, rows) {
-//       //console.log("*************************-after", categoryName);
-//       console.log("*************************questionsPacks", rows);
-//       if (err) {
-//           console.log("Error While retriving content pack data from database:", err);
-//       } else if (rows.length) {
-//           var senderID = event.sender.id;
-//           var contentList = [];
-//           for (var i = 0; i < 5; i++) { //Construct request body
-//               var keyMap = {
-//                   "title": rows[i].movieName,
-//                   "image_url": rows[i].movieImageUrl,
-//                   "item_url": rows[i].movieImageUrl
-//                   "buttons": [{
-//                       "type": "web_url",
-//                       "url": rows[i].trailerUrl,
-//                       "title": "Trailer"
-//                   },{
-//                       "type": "web_url",
-//                       "url": rows[i].movieDescriptionUrl,
-//                       "title": "About"
-//                   }]
-//               };
-//               contentList.push(keyMap);
-//           }
-//           var messageData = {
-//               "recipient": {
-//                   "id": senderID
-//               },
-//               "message":{
-//                 "attachment": {
-//                   "type": "template",
-//                   "payload": {
-//                       "template_type": "generic",
-//                       "elements": contentList
-//                       }
-//                   },
-//                   "quick_replies":[
-//                     {
-//                       "content_type":"text",
-//                       "title":rows[0].leadActor,
-//                       "payload":rows[0].leadActor
-//                     },
-//                     {
-//                       "content_type":"text",
-//                       "title":rows[0].leadActress,
-//                       "payload":rows[0].leadActress
-//                     },
-//                     {
-//                       "content_type":"text",
-//                       "title":rows[0].director,
-//                       "payload":rows[0].director
-//                     },
-//                     {
-//                       "content_type":"text",
-//                       "title":rows[0].musicDirector,
-//                       "payload":rows[0].musicDirector
-//                     },
-//                     {
-//                       "content_type":"text",
-//                       "title":"home",
-//                       "payload":"home"
-//                     }
-//                   ]
-//                 }
-//           }
-//           callSendAPI(messageData,'https://graph.facebook.com/v2.6/592208327626213/messages');
-//       } else {
-//           console.log("No Data Found From Database");
-//           sendHelpMessage(event);
-//       }
-//       connection.release();
-//   });
-//   });
-// }
+function quickmovies(messagingEvent,moviename) {
+  pool.getConnection(function(err, connection) {
+  connection.query('select * from cc_movies_preference where movieName=?', ["Malayalam Movie"], function(err, rows) {
+      //console.log("*************************-after", categoryName);
+      console.log("*************************questionsPacks", rows);
+      if (err) {
+          console.log("Error While retriving content pack data from database:", err);
+      } else if (rows.length) {
+          var senderID = event.sender.id;
+          var contentList = [];
+          for (var i = 0; i < 5; i++) { //Construct request body
+              var keyMap = {
+                  "title": rows[i].movieName,
+                  "image_url": rows[i].movieImageUrl,
+                  "item_url": rows[i].movieImageUrl
+                  "buttons": [{
+                      "type": "web_url",
+                      "url": rows[i].trailerUrl,
+                      "title": "Trailer"
+                  },{
+                      "type": "web_url",
+                      "url": rows[i].movieDescriptionUrl,
+                      "title": "About"
+                  }]
+              };
+              contentList.push(keyMap);
+          }
+          var messageData = {
+              "recipient": {
+                  "id": senderID
+              },
+              "message":{
+                "attachment": {
+                  "type": "template",
+                  "payload": {
+                      "template_type": "generic",
+                      "elements": contentList
+                      }
+                  },
+                  "quick_replies":[
+                    {
+                      "content_type":"text",
+                      "title":rows[0].leadActor,
+                      "payload":rows[0].leadActor
+                    },
+                    {
+                      "content_type":"text",
+                      "title":rows[0].leadActress,
+                      "payload":rows[0].leadActress
+                    },
+                    {
+                      "content_type":"text",
+                      "title":rows[0].director,
+                      "payload":rows[0].director
+                    },
+                    {
+                      "content_type":"text",
+                      "title":rows[0].musicDirector,
+                      "payload":rows[0].musicDirector
+                    },
+                    {
+                      "content_type":"text",
+                      "title":"home",
+                      "payload":"home"
+                    }
+                  ]
+                }
+          }
+          callSendAPI(messageData,'https://graph.facebook.com/v2.6/592208327626213/messages');
+      } else {
+          console.log("No Data Found From Database");
+          sendHelpMessage(event);
+      }
+      connection.release();
+  });
+  });
+}
 
 // end get movies from the DB *******************************
 
