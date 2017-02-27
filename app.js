@@ -134,14 +134,6 @@ function receivedpostback(messagingEvent) {
     if (isNaN(packId)) {
         //sendContentPacks(messageText, event);
         var res = categoryName.toLowerCase();
-        var sear = res.search("**");
-            if(sear == -1)
-            {
-              console.log("categoryName***",sear);
-
-            }else{
-              console.log("categoryName***",sear);
-            }
         console.log("********************************************************",res);
         //payloadText.sendContentPacks(categoryName, messagingEvent);
         payloadText.sendContentPacks(res, messagingEvent);
@@ -191,6 +183,16 @@ function receivedMessage(event) {
 
       var msgwit = messageText;
       console.log("*************messageText*************",messageText);
+
+
+      var sear = msgwit.search("**");
+          if(sear == -1)
+          {
+            console.log("categoryName***",sear);
+
+          }else{
+            console.log("categoryName***",sear);
+          }
       //bot.getwitmessageText(msgwit);
 
       //var tb3;
