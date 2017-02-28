@@ -16,7 +16,7 @@ var mysql = require('mysql');
 // });
 var pool = mysql.createPool({
     connectionLimit : 1,
-    host: 'mysql://adminn4wfSQw:xVBQ6bgcsmcu@127.13.97.130',
+    host: 'adminn4wfSQw:xVBQ6bgcsmcu@127.13.97.130',
     user: 'adminn4wfSQw',
     password: 'xVBQ6bgcsmcu',
     database: 'fk',
