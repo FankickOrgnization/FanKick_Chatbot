@@ -16,7 +16,7 @@ var mysql = require('mysql');
 // });
 var pool = mysql.createPool({
     connectionLimit : 1,
-    host: 'mysql://587c698e2d5271393300001e@fk-chatbotapp.rhcloud.com',
+    host: '587c698e2d5271393300001e@fk-chatbotapp.rhcloud.com',
     user: 'adminn4wfSQw',
     password: 'xVBQ6bgcsmcu',
     database: 'fk',
