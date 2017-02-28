@@ -20,11 +20,10 @@ var googleTrends = require('google-trends-api');
 // });
 var pool = mysql.createPool({
     connectionLimit : 1,
-    host: 'adminn4wfSQw:xVBQ6bgcsmcu@127.13.97.130',
+    host: 'adminn4wfSQw:xVBQ6bgcsmcu@127.13.97.130:3306',
     user: 'adminn4wfSQw',
     password: 'xVBQ6bgcsmcu',
-    database: 'fk',
-    port: 3306
+    database: 'fk'
 });
 // var connection = mysql.createConnection({
 //  host     : '127.13.97.130',

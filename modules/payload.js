@@ -16,11 +16,10 @@ var mysql = require('mysql');
 // });
 var pool = mysql.createPool({
     connectionLimit : 1,
-    host: 'adminn4wfSQw:xVBQ6bgcsmcu@127.13.97.130',
+    host: 'adminn4wfSQw:xVBQ6bgcsmcu@127.13.97.130:3306',
     user: 'adminn4wfSQw',
     password: 'xVBQ6bgcsmcu',
-    database: 'fk',
-    port: 3306
+    database: 'fk'
 });
 var fbpage_access_token = 'EAADV2VT6AuUBAHyUBL8zV5dYdRCBE7ZCKYQvOWCu2kkWQSV1RCllfvMymjDhXZCBQ93IkOFDpVYjN1E8jCHYpHKdH6uwNuhYAyCGdHOv6VgVZCwI6BZCc3AwAc7CW17yNTXe1YE7GkegMHHz36ax5JZC01zllTmTnAQRe0ZB0U3wZDZD';
 var quickreply = [
