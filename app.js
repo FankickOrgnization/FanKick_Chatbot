@@ -444,8 +444,9 @@ function textmessage(msgwit, messagingEvent){
 function quickmovies(messagingEvent, moviename) {
   // var movie = moviename.replace(" %%","");
   console.log("quickmovies", moviename);
+  var mname = moviename;
   pool.getConnection(function(err, connection) {
-  connection.query('select * from cc_movies_preference where movieName= "3 Idiots"', [], function(err, rows) {
+  connection.query('select * from cc_movies_preference where movieName= ?', [mname], function(err, rows) {
     console.log("********quickmovies*********", moviename);
       //console.log("*************************-after", categoryName);
       console.log("*************************quickmovies", rows);
