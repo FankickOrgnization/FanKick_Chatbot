@@ -319,13 +319,13 @@ function celebrityid(categoryName,event){
                 var keyMap = {
                     "title": rows[i].celebrityName,
                     "image_url": rows[i].celebrityImageUrl,
-                    "subtitle":rows[i].description,
+                    //"subtitle":rows[i].description,
                   //  "item_url": rows[i].image_url,
-                    "buttons":[{
-                        "type": "postback",
-                        "title": "Read More",
-                        "payload": readmorebtn
-                    }]
+                    // "buttons":[{
+                    //     "type": "postback",
+                    //     "title": "Read More",
+                    //     "payload": readmorebtn
+                    // }]
                 };
                 contentList.push(keyMap);
                 movieslist = rows[i].lastFiveMovies;
@@ -536,11 +536,11 @@ function quickmovies(messagingEvent, moviename) {
 // get actor from the DB *******************************
 function quickactor(messagingEvent, actorname) {
   // var movie = moviename.replace(" %%","");
-  console.log("quickactor", moviename);
-  var mname = moviename.trim();
+  console.log("quickactor", actorname);
+  var aname = actorname.trim();
   pool.getConnection(function(err, connection) {
-  connection.query('select * from cc_movies_preference where movieName= ?',[mname], function(err, rows) {
-    console.log("********quickactor*********", mname);
+  connection.query('select * from cc_celebrity_preference where celebrityName = "Allu Arjun"',[], function(err, rows) {
+    console.log("********quickactor*********", aname);
       //console.log("*************************-after", categoryName);
       console.log("*************************quickactor", rows);
       if (err) {
