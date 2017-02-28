@@ -539,7 +539,7 @@ function quickactor(messagingEvent, actorname) {
   console.log("quickactor", actorname);
   var aname = actorname.trim();
   pool.getConnection(function(err, connection) {
-  connection.query('select * from cc_celebrity_preference where celebrityName = "Allu Arjun"',[], function(err, rows) {
+  connection.query('select * from cc_celebrity_preference where celebrityName = ?',[aname], function(err, rows) {
     console.log("********quickactor*********", aname);
       //console.log("*************************-after", categoryName);
       console.log("*************************quickactor", rows);
