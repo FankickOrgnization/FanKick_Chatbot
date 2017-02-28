@@ -341,7 +341,7 @@ function celebrityid(categoryName,event){
               var moviearray = {
                  "content_type":"text",
                  "title":myarray[i],
-                 "payload":myarray[i]+" %%"
+                 "payload":myarray[i]+" %m%"
                }
                quickList.push(moviearray);
             }
@@ -396,14 +396,23 @@ function quickpayload(messagingEvent){
   var quicktext = messagingEvent.message.quick_reply;
   var quickpayloadtext = quicktext.payload;
   var userid = messagingEvent.sender.id;
-  var sear = quickpayloadtext.search("%%");
-             if(sear == -1)
+  var movietext = quickpayloadtext.search("%m%");
+             if(movietext == -1)
              {
-               console.log("NOOOOOOOOO");
-               receivedMessage(messagingEvent);
+               console.log("Not Movie");
+               var actortext = quickpayloadtext.search("%a%")
+               if(actortext == -1){
+                 receivedMessage(messagingEvent);
+                 console.log("Not actor");
+               }else{
+                 var actorname = quickpayloadtext.replace(" %a%","");
+                 console.log("actor name", actorname);
+                 quickactor(messagingEvent, actorname);
+               }
+
              }else{
                //console.log("Yessssssss");
-               var moviename = quickpayloadtext.replace(" %%","");
+               var moviename = quickpayloadtext.replace(" %m%","");
                console.log("Yessssssss", moviename);
                quickmovies(messagingEvent, moviename);
              }
@@ -488,6 +497,90 @@ function quickmovies(messagingEvent, moviename) {
                     {
                       "content_type":"text",
                       "title":rows[0].leadActor,
+                      "payload":rows[0].leadActor +" %a%"
+                    },
+                    {
+                      "content_type":"text",
+                      "title":rows[0].leadActress,
+                      "payload":rows[0].leadActress +" %a%"
+                    },
+                    {
+                      "content_type":"text",
+                      "title":rows[0].director,
+                      "payload":rows[0].director +" %a%"
+                    },
+                    {
+                      "content_type":"text",
+                      "title":rows[0].musicDirector,
+                      "payload":rows[0].musicDirector +" %a%"
+                    },
+                    {
+                      "content_type":"text",
+                      "title":"home",
+                      "payload":"home"
+                    }
+                  ]
+                }
+          }
+          callSendAPI(messageData,'https://graph.facebook.com/v2.6/592208327626213/messages');
+      } else {
+          console.log("No Data Found From Database");
+          sendHelpMessage(messagingEvent);
+      }
+      connection.release();
+  });
+  });
+}
+
+// end get movies from the DB *******************************
+// get actor from the DB *******************************
+function quickactor(messagingEvent, actorname) {
+  // var movie = moviename.replace(" %%","");
+  console.log("quickactor", moviename);
+  var mname = moviename.trim();
+  pool.getConnection(function(err, connection) {
+  connection.query('select * from cc_movies_preference where movieName= ?',[mname], function(err, rows) {
+    console.log("********quickactor*********", mname);
+      //console.log("*************************-after", categoryName);
+      console.log("*************************quickactor", rows);
+      if (err) {
+          console.log("Error While retriving content pack data from database:", err);
+      } else if (rows.length) {
+          var senderID = messagingEvent.sender.id;
+          var contentList = [];
+          for (var i = 0; i < rows.length; i++) { //Construct request body
+              var keyMap = {
+                  "title": rows[i].movieName,
+                  "image_url": rows[i].movieImageUrl,
+                  //"item_url": rows[i].movieImageUrl,
+                  "buttons": [{
+                      "type": "web_url",
+                      "url": rows[i].trailerUrl,
+                      "title": "Trailer"
+                  },{
+                      "type": "web_url",
+                      "url": rows[i].movieDescriptionUrl,
+                      "title": "Audio"
+                  }]
+              };
+              contentList.push(keyMap);
+          }
+          var messageData = {
+              "recipient": {
+                  "id": senderID
+              },
+              "message":{
+                "attachment": {
+                  "type": "template",
+                  "payload": {
+                      "template_type": "generic",
+                      "elements": contentList
+                      }
+                  },
+                  "quick_replies":[
+                    {
+                      "content_type":"text",
+                      "title":rows[0].leadActor,
                       "payload":rows[0].leadActor
                     },
                     {
@@ -523,7 +616,7 @@ function quickmovies(messagingEvent, moviename) {
   });
 }
 
-// end get movies from the DB *******************************
+//End get actor name from the DB
 
 
 function sendTextMessage(recipientId, messageText) {
