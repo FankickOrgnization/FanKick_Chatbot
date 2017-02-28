@@ -471,7 +471,8 @@ var url = 'https://kgsearch.googleapis.com/v1/entities:search?query=' + category
                         }]
                  };
                  contentList.push(keyMap);
-
+               }
+for (var i = 0; i < 5; i++) {
        var quickMap = {
                  "content_type":"text",
                  "title":rows[i].result.name,
@@ -479,7 +480,7 @@ var url = 'https://kgsearch.googleapis.com/v1/entities:search?query=' + category
                };
 
                  quickList.push(quickMap);
-                 }
+               }
       var messageData = {
                     "recipient": {
                         "id": senderID
