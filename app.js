@@ -444,10 +444,10 @@ function textmessage(msgwit, messagingEvent){
 function quickmovies(messagingEvent, moviename) {
   // var movie = moviename.replace(" %%","");
   console.log("quickmovies", moviename);
-  var mname = moviename;
+  var mname = moviename.trim();
   pool.getConnection(function(err, connection) {
-  connection.query('select * from cc_movies_preference where movieName= ?',[moviename], function(err, rows) {
-    console.log("********quickmovies*********", moviename);
+  connection.query('select * from cc_movies_preference where movieName= ?',[mname], function(err, rows) {
+    console.log("********quickmovies*********", mname);
       //console.log("*************************-after", categoryName);
       console.log("*************************quickmovies", rows);
       if (err) {
