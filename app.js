@@ -549,6 +549,7 @@ function quickactor(messagingEvent, actorname) {
           var senderID = messagingEvent.sender.id;
           var contentList = [];
           var quickList = [];
+          var movieslist;
           for (var i = 0; i < rows.length; i++) { //Construct request body
               var keyMap = {
                   "title": rows[i].celebrityName,
@@ -569,6 +570,7 @@ function quickactor(messagingEvent, actorname) {
                     }]
               };
               contentList.push(keyMap);
+                movieslist = rows[i].lastFiveMovies;
           }
           var myarray = movieslist.split(',');
           for(var i = 0; i < myarray.length; i++)
