@@ -38,7 +38,26 @@ var quickreply = [
       "payload":"Music"
     }
 ];
-
+var quickMenu = [
+  {
+    "image_url":'https://fankickdev.blob.core.windows.net/images/movies.jpg',
+    "content_type":"text",
+    "title":'Categories O:-)',
+    "payload":"Categories"
+  },
+  {
+    "content_type":"text",
+    "title":'Fan Clubs :-)',
+    "payload":"Fan Clubs",
+    "image_url":'https://fankickdev.blob.core.windows.net/images/sports.jpg'
+  },
+  {
+    "content_type":"text",
+    "title":'Fan Magazine O:-)',
+    "payload":"Fan Magazine",
+    "image_url":'https://fankickdev.blob.core.windows.net/images/celebrities.jpg'
+  }
+];
 // var quickMenu = [
 //       {
 //         "content_type":"location",
