@@ -76,7 +76,7 @@ const sendContentPacks = (categoryName,event) => {
         //sendTextMessage(userid, 'Get Started');
         console.log("categoryName", categoryName);
         //getStarted();
-    }else if (categoryName == "pawan kalyan" || categoryName == "nagarjuna" || categoryName == "chiranjeevi" || categoryName == "allu arjun"|| categoryName == "bala krishna") {
+    }else if (categoryName == "pawan kalyan" || categoryName == "nagarjuna" || categoryName == "chiranjeevi" || categoryName == "allu arjun"|| categoryName == "bala krishna" || categoryName == "mahesh babu") {
     //  celebritiesdetails(categoryName,event);
       googlegraph(categoryName,event);
 
