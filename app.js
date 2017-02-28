@@ -548,22 +548,38 @@ function quickactor(messagingEvent, actorname) {
       } else if (rows.length) {
           var senderID = messagingEvent.sender.id;
           var contentList = [];
+          var quickList = [];
           for (var i = 0; i < rows.length; i++) { //Construct request body
               var keyMap = {
-                  "title": rows[i].movieName,
-                  "image_url": rows[i].movieImageUrl,
+                  "title": rows[i].celebrityName,
+                  "image_url": rows[i].celebrityImageUrl,
                   //"item_url": rows[i].movieImageUrl,
                   "buttons": [{
                       "type": "web_url",
-                      "url": rows[i].trailerUrl,
-                      "title": "Trailer"
+                      "url": rows[i].facebookHandle,
+                      "title": "Facebook Post"
                   },{
                       "type": "web_url",
-                      "url": rows[i].movieDescriptionUrl,
-                      "title": "Audio"
-                  }]
+                      "url": rows[i].twitterHandle,
+                      "title": "Twitter Tweets"
+                  },{
+                    "type": "postback",
+                    "title": "Read More",
+                    "payload": rows[i].id
+                    }]
               };
               contentList.push(keyMap);
+          }
+          var myarray = movieslist.split(',');
+          for(var i = 0; i < myarray.length; i++)
+          {
+             console.log(myarray[i]);
+            var moviearray = {
+               "content_type":"text",
+               "title":myarray[i],
+               "payload":myarray[i]
+             }
+             quickList.push(moviearray);
           }
           var messageData = {
               "recipient": {
@@ -577,33 +593,7 @@ function quickactor(messagingEvent, actorname) {
                       "elements": contentList
                       }
                   },
-                  "quick_replies":[
-                    {
-                      "content_type":"text",
-                      "title":rows[0].leadActor,
-                      "payload":rows[0].leadActor
-                    },
-                    {
-                      "content_type":"text",
-                      "title":rows[0].leadActress,
-                      "payload":rows[0].leadActress
-                    },
-                    {
-                      "content_type":"text",
-                      "title":rows[0].director,
-                      "payload":rows[0].director
-                    },
-                    {
-                      "content_type":"text",
-                      "title":rows[0].musicDirector,
-                      "payload":rows[0].musicDirector
-                    },
-                    {
-                      "content_type":"text",
-                      "title":"home",
-                      "payload":"home"
-                    }
-                  ]
+                  "quick_replies":quickList
                 }
           }
           callSendAPI(messageData,'https://graph.facebook.com/v2.6/592208327626213/messages');
