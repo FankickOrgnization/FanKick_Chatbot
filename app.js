@@ -400,7 +400,7 @@ function quickpayload(messagingEvent){
              if(movietext == -1)
              {
                console.log("Not Movie");
-               receivedMessage(messagingEvent);
+               //receivedMessage(messagingEvent);
                var actortext = quickpayloadtext.search("%a%");
                    if(actortext == -1){
                      receivedMessage(messagingEvent);
