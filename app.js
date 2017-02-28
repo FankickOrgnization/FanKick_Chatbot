@@ -18,32 +18,6 @@ var pool = mysql.createPool({
     password: '3e384329',
     database: 'rankworlddev'
 });
-// var pool = mysql.createPool({
-//     connectionLimit : 1,
-//     host: '587c698e2d5271393300001e@fk-chatbotapp.rhcloud.com',
-//     user: 'adminn4wfSQw',
-//     password: 'xVBQ6bgcsmcu',
-//     database: 'fk',
-//     port    : '3306'
-// });
-// var connection = mysql.createConnection({
-//  host     : '127.13.97.130',
-//  port     : '3306',
-//  user     : 'adminn4wfSQw',
-//  password : 'xVBQ6bgcsmcu',
-//  database : 'fk'
-// });
-//
-// connection.connect( function(err){
-// if (err){
-//    throw err;
-//     console.log('***************err',err);
-// }
-// else {
-//    console.log('***************Connected');
-// }
-// });
-
 
 var quickMenu = [
     {
@@ -180,24 +154,6 @@ function receivedpostback(messagingEvent) {
         console.log("postback_sender_id:------", packId);
     }
     console.log("postback_sender_id:------", userid);
-    // if (categoryName == "Get Started") {
-    //     //greetingtext(messagingEvent,Get Started);
-    //     thread.persistentMenu(fbpage_access_token);
-    //     fbuserdetails(messagingEvent, userid);
-    //     //sendTextMessage(userid, 'Get Started');
-    //     console.log("categoryName", categoryName);
-    //     //getStarted();
-    // }else if (categoryName == "Ok Goon") {
-    //     mainPacks(categoryName, messagingEvent);
-    //     console.log("categoryName", categoryName);
-    // }
-    // // else if (categoryName == "Quizzes") {
-    // //     quizzesPacks(categoryName, messagingEvent);
-    // //     console.log("categoryName########", categoryName);
-    // // }
-    // else{
-    //   payloadText.sendContentPacks(categoryName, messagingEvent);
-    // }
 }
 
 
@@ -455,40 +411,6 @@ function quickpayload(messagingEvent){
 }
 
 
-function mainPacks(categoryName, event){
-  var senderID = event.sender.id;
-  var messageData = {
-      "recipient": {
-          "id": senderID
-      },
-      "message":{
-          "text":"Hey..Choose what excites you more",
-          "quick_replies":[
-              {
-                "content_type":"text",
-                "title":"Movies",
-                "payload":"Movies"
-              },
-              {
-                "content_type":"text",
-                "title":"Sports",
-                "payload":"Sports"
-              },
-              {
-                "content_type":"text",
-                "title":"TV Shows",
-                "payload":"TV Shows"
-              },
-              {
-                "content_type":"text",
-                "title":"Music",
-                "payload":"Music"
-              }
-          ]
-        }
-  }
-  callSendAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
-}
 
 // Quick_reply payload section Start ********************************************
 function receivedtextmessage(categoryName, event) {
@@ -499,15 +421,8 @@ function receivedtextmessage(categoryName, event) {
       console.log("quickButton_postback:------", categoryName);
       console.log("postback_sender_id:------", userid);
       if (categoryName == "Quizzes") {
-         quizzesPacks(categoryName, event);
+         //quizzesPacks(categoryName, event);
          console.log("categoryName########", categoryName);
-     }else
-     if (categoryName == "Content Pack 1") {
-       questionsPacks(1, event);
-     }else if (categoryName == "Content Pack 2"){
-       questionsPacks(2, event);
-     }else if (categoryName == "Content Pack 3"){
-       questionsPacks(3, event);
      }else{
        payloadText.sendContentPacks(categoryName, event);
        //searchText.googleSearchPacks(categoryName, event);
@@ -629,75 +544,6 @@ function sendTextMessage(recipientId, messageText) {
 }
 
 
-
-// function fbuserdetails(event, userid) {
-//     var url = 'https://graph.facebook.com/v2.6/' + userid + '?fields=first_name,last_name,locale,timezone,gender&access_token=' + fbpage_access_token + '';
-//     console.log("url", url);
-//     request({
-//         "uri": url,
-//         "method": 'GET'
-//
-//     }, function(error, response, body) {
-//         var userprofiledata = JSON.parse(response.body);
-//         var username = userprofiledata.first_name;
-//         //console.log("--------:Response data:-------- ", JSON.stringify(body));
-//         console.log("--------:Response data:--------first_name ", userprofiledata.first_name);
-//         console.log("--------:Response data:--------last_name ", userprofiledata.last_name);
-//         console.log("--------:Response data:--------locale ", userprofiledata.locale);
-//         console.log("--------:Response data:--------timezone", userprofiledata.timezone);
-//         console.log("--------:Response data:--------gender ", userprofiledata.gender);
-//         var senderID = event.sender.id;
-//         //var msg = 'Hi '+username+', A lot of exciting things are awaiting for you! Get kicking!';
-//         //var msg = 'Hi '+username+'! My name is Kicker.\n How may I come of any help to you today?';
-//     var msg = 'Hi '+username+'! My name is Kicker.\n \nI can help you get closer to your favorite celebrity with a lot of exciting things about them.\n\n Choose what excites you more';
-//   //var msg = 'Hi '+username+'! My name is Kicker.';
-//         console.log("--------:Response data:--------msg1 ", msg);
-//         var messageData = {
-//             "recipient": {
-//                 "id": senderID
-//             },
-//             "message":{
-//                 "text":msg,
-//                 "quick_replies":[
-//                   {
-//                     "content_type":"text",
-//                     "title":"Categories",
-//                     "payload":"Categories"
-//                   },
-//                   {
-//                     "content_type":"text",
-//                     "title":"Fan Clubs",
-//                     "payload":"Fan Clubs"
-//                   },
-//                   {
-//                     "content_type":"text",
-//                     "title":"Fan Magazine",
-//                     "payload":"Fan Magazine"
-//                   }
-//                   // ,
-//                   // {
-//                   //   "content_type":"text",
-//                   //   "title":"What can you do?",
-//                   //   "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
-//                   // }
-//                 ]
-//
-//               }
-//             }
-//          callSendAPI(messageData,'https://graph.facebook.com/v2.6/592208327626213/messages');
-//          //fbuserdetailsSecond(event, userid);
-//
-//         if (!error && response.statusCode == 200) {
-//             var recipientId = body.recipient_id;
-//             var messageId = body.message_id;
-//             console.log("Successfully sent generic message with id %s to recipient %s", messageId, recipientId);
-//         } else {
-//             console.error("Unable to send message.");
-//             //console.error(response);
-//             console.error("Error while sending message:", error);
-//         }
-//     });
-// }
 
 function sendHelpMessage(event){
     var userid = event.sender.id;

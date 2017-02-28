@@ -14,14 +14,7 @@ var pool = mysql.createPool({
     password: '3e384329',
     database: 'rankworlddev'
 });
-// var pool = mysql.createPool({
-//     connectionLimit : 1,
-//     host: '587c698e2d5271393300001e@fk-chatbotapp.rhcloud.com',
-//     user: 'adminn4wfSQw',
-//     password: 'xVBQ6bgcsmcu',
-//     database: 'fk',
-//     port    : '3306'
-// });
+
 var fbpage_access_token = 'EAADV2VT6AuUBAHyUBL8zV5dYdRCBE7ZCKYQvOWCu2kkWQSV1RCllfvMymjDhXZCBQ93IkOFDpVYjN1E8jCHYpHKdH6uwNuhYAyCGdHOv6VgVZCwI6BZCc3AwAc7CW17yNTXe1YE7GkegMHHz36ax5JZC01zllTmTnAQRe0ZB0U3wZDZD';
 var quickreply = [
     {
@@ -46,79 +39,6 @@ var quickreply = [
     }
 ];
 
-var hollywood = [
-    {
-      "content_type":"text",
-      "title":"hollywood movies",
-      "payload":"hollywood movies"
-    },
-    {
-      "content_type":"text",
-      "title":"hollywood trailer",
-      "payload":"hollywood trailer"
-    },
-    {
-      "content_type":"text",
-      "title":"hollywood actors",
-      "payload":"hollywood actors"
-    },
-    {
-      "content_type":"text",
-      "title":"hollywood actress",
-      "payload":"hollywood actress"
-    },
-    {
-      "content_type":"text",
-      "title":"hollywood actors",
-      "payload":"hollywood actors"
-    },
-    {
-      "content_type":"text",
-      "title":"Home",
-      "payload":"home",
-      "image_url":"https://fankickdev.blob.core.windows.net/images/home_logo.png"
-    }
-];
-
-var moviesObj =  [
-  {
-    "name": "Movies",
-    "imgurl": 'https://fankickdev.blob.core.windows.net/images/movies.jpg'
-},
-{
-    "name": "TV Shows",
-    "imgurl": 'https://fankickdev.blob.core.windows.net/images/celebrities.jpg'
-},
-{
-    "name": "Music",
-    "imgurl": 'https://fankickdev.blob.core.windows.net/images/music.jpg'
-},
-{
-    "name": "Sports",
-    "imgurl": 'https://fankickdev.blob.core.windows.net/images/sports.jpg'
-}
-];
-
-var quickMenu = [
-  {
-    "image_url":'https://fankickdev.blob.core.windows.net/images/movies.jpg',
-    "content_type":"text",
-    "title":'Categories O:-)',
-    "payload":"Categories"
-  },
-  {
-    "content_type":"text",
-    "title":'Fan Clubs :-)',
-    "payload":"Fan Clubs",
-    "image_url":'https://fankickdev.blob.core.windows.net/images/sports.jpg'
-  },
-  {
-    "content_type":"text",
-    "title":'Fan Magazine O:-)',
-    "payload":"Fan Magazine",
-    "image_url":'https://fankickdev.blob.core.windows.net/images/celebrities.jpg'
-  }
-];
 // var quickMenu = [
 //       {
 //         "content_type":"location",
@@ -137,106 +57,7 @@ const sendContentPacks = (categoryName,event) => {
         //sendTextMessage(userid, 'Get Started');
         console.log("categoryName", categoryName);
         //getStarted();
-    }else if (categoryName == "fan clubs") {
-      pool.getConnection(function(err, connection) {
-        connection.query('SELECT * FROM fk_pack_fanclub', function(err, rows) {
-            if (err) {
-                console.log("Error While retriving content pack data from database:", err);
-            } else if (rows.length) {
-                var senderID = event.sender.id;
-                var contentList = [];
-
-                for (var i = 0; i < 5; i++) { //Construct request body
-                    var keyMap = {
-                        "title": rows[i].name,
-                        "image_url": rows[i].img_url,
-                        //"item_url": rows[i].imageurl,
-                        // "buttons": [{
-                        //     "type": "web_url",
-                        //     "url": rows[i].name,
-                        //     "title": rows[i].name
-                        // }]
-                        "buttons": [{
-                            "type": "postback",
-                            "title": rows[i].name,
-                            "payload": rows[i].name
-                        }
-                      ]
-                    };
-                    contentList.push(keyMap);
-                }
-                var messageData = {
-                    "recipient": {
-                        "id": senderID
-                    },
-                    "message": {
-                        "attachment": {
-                            "type": "template",
-                            "payload": {
-                                "template_type": "generic",
-                                "elements": contentList
-                            }
-                        },
-                          "quick_replies": quickMenu
-                    }
-                }
-                callSendAPI(messageData,'https://graph.facebook.com/v2.6/592208327626213/messages');
-            } else {
-                console.log("No Data Found From Database");
-                sendHelpMessage(event);
-            }
-            connection.release();
-        });
-        });
-    } else if (categoryName == "fan magazine") {
-        //console.log("***************************", categoryName);
-        pool.getConnection(function(err, connection) {
-        connection.query('SELECT * FROM fk_pack_fan_magazines', function(err, rows) {
-            //console.log("*************************-after", categoryName);
-            //console.log("*************************-after", rows);
-            if (err) {
-                console.log("Error While retriving content pack data from database:", err);
-            } else if (rows.length) {
-                var senderID = event.sender.id;
-                var contentList = [];
-                for (var i = 0; i < 5; i++) { //Construct request body
-                    var keyMap = {
-                        "title": rows[i].name,
-                        "image_url": rows[i].imageurl,
-                        //"item_url": rows[i].imageurl,
-                        //"subtitle":"We\'ve got the right hat for everyone."
-                        "buttons": [{
-                            "type": "postback",
-                            "title": "Read More",
-                            "payload": "USER_DEFINED_PAYLOAD"
-                        }]
-                    };
-                    contentList.push(keyMap);
-                }
-                var messageData = {
-                    "recipient": {
-                        "id": senderID
-                    },
-                    "message": {
-                        "attachment": {
-                            "type": "template",
-                            "payload": {
-                                "template_type": "generic",
-                                "elements": contentList
-                            }
-                        },
-                        "quick_replies": quickMenu
-                    }
-                }
-                callSendAPI(messageData,'https://graph.facebook.com/v2.6/592208327626213/messages');
-            } else {
-                console.log("No Data Found From Database");
-                sendHelpMessage(event);
-            }
-            connection.release();
-        });
-        });
-    } else if (categoryName == "pawan kalyan" || categoryName == "nagarjuna" || categoryName == "chiranjeevi" || categoryName == "allu arjun"|| categoryName == "bala krishna") {
+    }else if (categoryName == "pawan kalyan" || categoryName == "nagarjuna" || categoryName == "chiranjeevi" || categoryName == "allu arjun"|| categoryName == "bala krishna") {
       celebritiesdetails(categoryName,event);
       //googlegraph(categoryName,event);
 
@@ -435,7 +256,9 @@ function googletrendsfun(categoryName,event){
       sendHelpMessage(event);
     });
 
-    googleTrends.hotTrends('IN')
+
+//googleTrends node madule *************
+googleTrends.hotTrends('IN')
     .then(function(results){
       console.log("googleTrends.hotTrends results",results);
     })
@@ -443,131 +266,8 @@ function googletrendsfun(categoryName,event){
         console.log("googleTrends.hotTrends err", err);
       });
 }
+//googleTrends node madule **************
 
-function quizzes(event){
-  var senderID = event.sender.id;
-  // if(categoryName == "Content Pack 1"){
-  //   categoryName = 1;
-  // } else if (categoryName == "Content Pack 2"){
-  //   categoryName = 2;
-  // } else (categoryName == "Content Pack 3"){
-  //   categoryName = 3;
-  // }
-
-  pool.getConnection(function(err, connection) {
-  //connection.query('SELECT * FROM fk_pack_multiple_item where type=? and pack_id in (select id from fk_content_pack where category_id=?)', ['Question',categoryName], function(err, rows) {
-  connection.query('SELECT * FROM fk_pack_multiple_item where pack_id=(select id from fk_content_pack where name="Aamir Khan")and type=?', ['Question'], function(err, rows) {
-
-      //console.log("*************************-after", categoryName);
-      console.log("*************************Questions Packs********************", rows);
-      if (err) {
-          console.log("Error While retriving content pack data from database:", err);
-      } else if (rows.length) {
-          var senderID = event.sender.id;
-          var contentList = [];
-          // for (var i = 0; i < 5; i++) { //Construct request body
-          //     var keyMap = {
-          //         "title": rows[i].item_name,
-          //         "image_url": rows[i].imageurl,
-          //         "item_url": rows[i].imageurl
-          //         // "buttons": [{
-          //         //     "type": "postback",
-          //         //     "title": "Read More",
-          //         //     "payload": "USER_DEFINED_PAYLOAD"
-          //         // }]
-          //     };
-          //     contentList.push(keyMap);
-          // }
-          var messageData = {
-              "recipient": {
-                  "id": senderID
-              },
-              "message":{
-                  "text":rows[2].item_name,
-                  "quick_replies":[
-                    {
-                      "content_type":"text",
-                      "title":rows[2].text1_content,
-                      "payload":"1"
-                    },
-                    {
-                      "content_type":"text",
-                      "title":rows[2].text2_content,
-                      "payload":"2"
-                    },
-                    {
-                      "content_type":"text",
-                      "title":rows[2].text3_content,
-                      "payload":"3"
-                    },
-                    {
-                      "content_type":"text",
-                      "title":rows[2].text4_content,
-                      "payload":"4"
-                    },
-                    {
-                      "content_type":"text",
-                      "title":"Categories",
-                      "payload":"Categories"
-                    }
-                  ]
-                }
-          }
-          callSendAPI(messageData,'https://graph.facebook.com/v2.6/592208327626213/messages');
-      } else {
-          console.log("No Data Found From Database");
-          sendHelpMessage(event);
-      }
-      connection.release();
-  });
-  });
-}
-
-function review(event){
-  var senderID = event.sender.id;
-  var imgdangol = 'http://t3.gstatic.com/images?q=tbn:ANd9GcQIXnFlBKGWT1ByyIu3qfxX6opQX6BmeeU_qsiE3X8rX9ZRr63r';
-  var contentList = [];
-  var keyMap = {
-            "title": "Review",
-            "image_url": imgdangol,
-            "subtitle":"That was crucial for us to believe in Dangal, which borrows several elements from the real-life Haryana wrestler who trained his older two daughters, Geeta (Fatima Sana Shaikh) and Babita (Sanya Malhotra), in the art of wrestling, and turned them into winners. Dangal works on the twin parameters it sets up for itself.",
-            "buttons": [{
-              "type": "web_url",
-               "url": 'http://timesofindia.indiatimes.com/entertainment/hindi/movie-reviews/dangal/movie-review/56102623.cms',
-               "title": "Read More"
-            },{
-              "type":"element_share"
-            }
-            // ,{
-            //   "type": "web_url",
-            //    "url": trailer,
-            //    "title": "Trailer"
-            // }
-          //   // , {
-          //   //     "type": "postback",
-          //   //     "title": "Magazine",
-          //   //     "payload": "USER_DEFINED_PAYLOAD"
-          //   // }
-          ]
-        };
-        contentList.push(keyMap);
-    var messageData = {
-        "recipient": {
-            "id": senderID
-        },
-        "message": {
-            "attachment": {
-                "type": "template",
-                "payload": {
-                    "template_type": "generic",
-                    "elements": contentList
-                }
-            },
-            "quick_replies":quickMenu
-        }
-    }
-          callSendAPI(messageData,'https://graph.facebook.com/v2.6/592208327626213/messages');
-        }
 //subcategorydetails*************************************************************************
     function subcategorydetails(categoryName,event){
           pool.getConnection(function(err, connection) {
