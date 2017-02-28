@@ -77,8 +77,8 @@ const sendContentPacks = (categoryName,event) => {
         console.log("categoryName", categoryName);
         //getStarted();
     }else if (categoryName == "pawan kalyan" || categoryName == "nagarjuna" || categoryName == "chiranjeevi" || categoryName == "allu arjun"|| categoryName == "bala krishna") {
-      celebritiesdetails(categoryName,event);
-      //googlegraph(categoryName,event);
+    //  celebritiesdetails(categoryName,event);
+      googlegraph(categoryName,event);
 
     } else if (categoryName == "hi" || categoryName == "hello" || categoryName == "hey") {
         wishingmessage(categoryName,event);
