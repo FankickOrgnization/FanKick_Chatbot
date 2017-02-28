@@ -565,7 +565,7 @@ function quickactor(messagingEvent, actorname) {
                       "title": "Twitter Tweets"
                   },{
                     "type": "postback",
-                    "title": "Read More",
+                    "title": "More Info",
                     "payload": rows[i].id
                     }]
               };

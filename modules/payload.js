@@ -316,7 +316,7 @@ googleTrends.hotTrends('IN')
                               {
                                 "type":"web_url",
                                 "url": rows[i].facebookHandle,
-                                "title":"facebook posts"
+                                "title":"Facebook posts"
                             },
                             {
                               "type":"web_url",
@@ -325,7 +325,7 @@ googleTrends.hotTrends('IN')
                             },
                             {
                             "type": "postback",
-                            "title": "Read More",
+                            "title": "More Info",
                             "payload": rows[i].id
                             }]
                         };
