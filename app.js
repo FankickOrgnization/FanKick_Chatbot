@@ -551,52 +551,49 @@ function quickactor(messagingEvent, actorname) {
           var quickList = [];
           var movieslist;
           for (var i = 0; i < rows.length; i++) { //Construct request body
+            var res1 = rows[i].id +",";
+            var res2 = rows[i].celebrityName +",";
+            var res3 = res2.concat(res1);
+            var res5 = res3.concat(res2);
               var keyMap = {
                   "title": rows[i].celebrityName,
                   "image_url": rows[i].celebrityImageUrl,
-                  //"item_url": rows[i].movieImageUrl,
-                  "buttons": [{
-                      "type": "web_url",
+                  "subtitle":rows[i].description,
+                //  "item_url": rows[i].image_url,
+                  "buttons": [
+                    {
+                      "type":"web_url",
                       "url": rows[i].facebookHandle,
-                      "title": "Facebook"
-                  },{
-                      "type": "web_url",
-                      "url": rows[i].twitterHandle,
-                      "title": "Twitter"
-                  },{
-                    "type": "postback",
-                    "title": "More Info",
-                    "payload": rows[i].id
-                    }]
+                      "title":"Facebook"
+                  },
+                  {
+                    "type":"web_url",
+                    "url": rows[i].twitterHandle,
+                    "title":"Twitter"
+                  },
+                  {
+                  "type": "postback",
+                  "title": "More Info",
+                  "payload": rows[i].id
+                  }]
               };
               contentList.push(keyMap);
-                movieslist = rows[i].lastFiveMovies;
           }
-          var myarray = movieslist.split(',');
-          for(var i = 0; i < myarray.length; i++)
-          {
-             console.log(myarray[i]);
-            var moviearray = {
-               "content_type":"text",
-               "title":myarray[i],
-               "payload":myarray[i]
-             }
-             quickList.push(moviearray);
-          }
+
           var messageData = {
               "recipient": {
                   "id": senderID
               },
-              "message":{
-                "attachment": {
-                  "type": "template",
-                  "payload": {
-                      "template_type": "generic",
-                      "elements": contentList
+              "message": {
+                  "attachment": {
+                      "type": "template",
+                      "payload": {
+                          "template_type": "generic",
+                          "elements": contentList
                       }
                   },
-                  "quick_replies":quickList
-                }
+                  "quick_replies":quickMenu
+              }
           }
           callSendAPI(messageData,'https://graph.facebook.com/v2.6/592208327626213/messages');
       } else {
