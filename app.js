@@ -19,7 +19,29 @@ var pool = mysql.createPool({
     database: 'rankworlddev'
 });
 
-var quickMenu = [
+var quickMenu  = [
+    {
+      "content_type":"text",
+      "title":"Movies",
+      "payload":"Movies"
+    },
+    {
+      "content_type":"text",
+      "title":"Sports",
+      "payload":"Sports"
+    },
+    {
+      "content_type":"text",
+      "title":"TV Shows",
+      "payload":"TV Shows"
+    },
+    {
+      "content_type":"text",
+      "title":"Music",
+      "payload":"Music"
+    }
+];
+var quickreply = [
     {
       "content_type":"text",
       "title":"Movies",
@@ -592,7 +614,7 @@ function quickactor(messagingEvent, actorname) {
                           "elements": contentList
                       }
                   },
-                  "quick_replies":quickMenu
+                  "quick_replies":quickreply
               }
           }
           callSendAPI(messageData,'https://graph.facebook.com/v2.6/592208327626213/messages');
