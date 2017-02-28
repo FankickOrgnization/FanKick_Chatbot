@@ -11,21 +11,40 @@ const searchText = require('./modules/search.js');
 var googleTrends = require('google-trends-api');
 //const bot = require('./wit.js');
 
-var pool = mysql.createPool({
-    connectionLimit : 1,
-    host: 'ap-cdbr-azure-southeast-a.cloudapp.net',
-    user: 'bb603e8108da6e',
-    password: '3e384329',
-    database: 'rankworlddev'
-});
 // var pool = mysql.createPool({
 //     connectionLimit : 1,
-//     host: '127.13.97.130',
-//     user: 'adminn4wfSQw',
-//     password: 'xVBQ6bgcsmcu',
-//     database: 'fk',
-//     port: 3306
+//     host: 'ap-cdbr-azure-southeast-a.cloudapp.net',
+//     user: 'bb603e8108da6e',
+//     password: '3e384329',
+//     database: 'rankworlddev'
 // });
+var pool = mysql.createPool({
+    connectionLimit : 1,
+    host: '127.13.97.130',
+    user: 'adminn4wfSQw',
+    password: 'xVBQ6bgcsmcu',
+    database: 'fk',
+    port: 3306
+});
+// var connection = mysql.createConnection({
+//  host     : '127.13.97.130',
+//  port     : '3306',
+//  user     : 'adminn4wfSQw',
+//  password : 'xVBQ6bgcsmcu',
+//  database : 'fk'
+// });
+//
+// connection.connect( function(err){
+// if (err){
+//    throw err;
+//     console.log('***************err',err);
+// }
+// else {
+//    console.log('***************Connected');
+// }
+// });
+
+
 var quickMenu = [
     {
       "content_type":"text",
