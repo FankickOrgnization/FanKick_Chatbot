@@ -401,16 +401,15 @@ function quickpayload(messagingEvent){
              {
                console.log("Not Movie");
                receivedMessage(messagingEvent);
-               var actortext = quickpayloadtext.search("%a%")
-               if(actortext == -1){
-                 receivedMessage(messagingEvent);
-                 console.log("Not actor");
-               }else{
-                 var actorname = quickpayloadtext.replace(" %a%","");
-                 console.log("actor name", actorname);
-                 quickactor(messagingEvent, actorname);
-               }
-
+               var actortext = quickpayloadtext.search("%a%");
+                   if(actortext == -1){
+                     receivedMessage(messagingEvent);
+                     console.log("Not actor");
+                   }else{
+                     var actorname = quickpayloadtext.replace(" %a%","");
+                     console.log("actor name", actorname);
+                     quickactor(messagingEvent, actorname);
+                   }
              }else{
                //console.log("Yessssssss");
                var moviename = quickpayloadtext.replace(" %m%","");
@@ -559,11 +558,11 @@ function quickactor(messagingEvent, actorname) {
                   "buttons": [{
                       "type": "web_url",
                       "url": rows[i].facebookHandle,
-                      "title": "Facebook Post"
+                      "title": "Facebook"
                   },{
                       "type": "web_url",
                       "url": rows[i].twitterHandle,
-                      "title": "Twitter Tweets"
+                      "title": "Twitter"
                   },{
                     "type": "postback",
                     "title": "More Info",

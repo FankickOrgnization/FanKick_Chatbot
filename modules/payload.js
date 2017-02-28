@@ -316,12 +316,12 @@ googleTrends.hotTrends('IN')
                               {
                                 "type":"web_url",
                                 "url": rows[i].facebookHandle,
-                                "title":"Facebook posts"
+                                "title":"Facebook"
                             },
                             {
                               "type":"web_url",
                               "url": rows[i].twitterHandle,
-                              "title":"Twitter posts"
+                              "title":"Twitter"
                             },
                             {
                             "type": "postback",
@@ -386,12 +386,12 @@ function celebritiesdetails(categoryName,event){
                     {
                         "type":"web_url",
                         "url": rows[i].facebookHandle,
-                        "title":"facebook posts"
+                        "title":"facebook"
                     },
                     {
                       "type":"web_url",
                       "url": rows[i].twitterHandle,
-                      "title":"Twitter posts"
+                      "title":"Twitter"
                     }]
                 };
                 contentList.push(keyMap);
