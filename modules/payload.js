@@ -458,7 +458,7 @@ var url = 'https://kgsearch.googleapis.com/v1/entities:search?query=' + category
         var senderID = event.sender.id;
           var imagedata;
           var desdata;
-        for (var i = 0; i < 2; i++) {
+        for (var i = 0; i < 1; i++) {
           var keyMap = {
               "title": rows[i].result.name,
               //"image_url":rows[i].result.image.contentUrl,
