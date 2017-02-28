@@ -7,21 +7,21 @@ const movies = require('../contentjson/movies.json');
 const   errors = require('../contentjson/errormsg.json');
 //var app = express();
 var mysql = require('mysql');
-// var pool = mysql.createPool({
-//     connectionLimit : 1,
-//     host: 'ap-cdbr-azure-southeast-a.cloudapp.net',
-//     user: 'bb603e8108da6e',
-//     password: '3e384329',
-//     database: 'rankworlddev'
-// });
 var pool = mysql.createPool({
     connectionLimit : 1,
-    host: '587c698e2d5271393300001e@fk-chatbotapp.rhcloud.com',
-    user: 'adminn4wfSQw',
-    password: 'xVBQ6bgcsmcu',
-    database: 'fk',
-    port    : '3306'
+    host: 'ap-cdbr-azure-southeast-a.cloudapp.net',
+    user: 'bb603e8108da6e',
+    password: '3e384329',
+    database: 'rankworlddev'
 });
+// var pool = mysql.createPool({
+//     connectionLimit : 1,
+//     host: '587c698e2d5271393300001e@fk-chatbotapp.rhcloud.com',
+//     user: 'adminn4wfSQw',
+//     password: 'xVBQ6bgcsmcu',
+//     database: 'fk',
+//     port    : '3306'
+// });
 var fbpage_access_token = 'EAADV2VT6AuUBAHyUBL8zV5dYdRCBE7ZCKYQvOWCu2kkWQSV1RCllfvMymjDhXZCBQ93IkOFDpVYjN1E8jCHYpHKdH6uwNuhYAyCGdHOv6VgVZCwI6BZCc3AwAc7CW17yNTXe1YE7GkegMHHz36ax5JZC01zllTmTnAQRe0ZB0U3wZDZD';
 var quickreply = [
     {
