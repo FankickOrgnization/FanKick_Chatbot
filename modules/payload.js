@@ -817,15 +817,14 @@ if (err) {
               "id": senderID
           },
           "message": {
-              "attachment": {
-                  "type": "template",
-                  "payload": {
-                      "template_type": "generic",
-                      "elements": contentList
+                "recipient": {
+                    "id": senderID
+                },
+                "message":{
+                    "text":submenuString,
+                    "quick_replies":quickList
                   }
-              },
-              "quick_replies":quickList
-          }
+                }
       }
       callSendAPI(messageData,'https://graph.facebook.com/v2.6/592208327626213/messages');
   } else {
