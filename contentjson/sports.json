@@ -1,29 +1,6 @@
-{
-     "text":"Let's hit the world! There is no other thrill beyond sports, which sport(s) enthrills you more… :-)",
-     "quick_replies":[
-       {
-         "content_type":"text",
-         "title":"Cricket",
-         "payload":"Cricket"
-       },
-       {
-         "content_type":"text",
-         "title":"Soccer",
-         "payload":"Soccer"
-       },
-       {
-         "content_type":"text",
-         "title":"Tennis",
-         "payload":"Tennis"
-       },
-       {
-         "content_type":"text",
-         "title":"Badminton",
-         "payload":"Badminton"
-       },
-       {
-         "content_type":"text",
-         "title":"Home",
-         "payload":"Categories"
-       }]
-   }
+[
+{ "sports": "Absolute thrill and amazing skills!\nHere are the results…" },
+{ "sports": "Welcome to the finest form of entertainment.\nHere are your resutls…" },
+{ "sports": "Do you follow sports? That's great dear!\nHere are the best…" },
+{ "sports": " Run, jump, sink and rise!\nJoin us and explore the world of sports..." }
+]

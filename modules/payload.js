@@ -3,12 +3,11 @@ var request = require('request');
 const searchText = require('./search.js');
 const thread = require('./thread.js');
 var googleTrends = require('google-trends-api');
-const movie = require('../contentjson/movies.json');
 const errors = require('../contentjson/errormsg.json');
-//const   movies = require('../contentjson/moviesmsg.json');
-//const   sports = require('../contentjson/sportsmsg.json');
-//const   tv_shows = require('../contentjson/tvshowsmsg.json');
-//const   music = require('../contentjson/musicmsg.json');
+const movie = require('../contentjson/movies.json');
+const sport = require('../contentjson/sports.json');
+const tv_show = require('../contentjson/tv shows.json');
+const musics = require('../contentjson/music.json');
 //var app = express();
 var mysql = require('mysql');
 var pool = mysql.createPool({
@@ -753,10 +752,29 @@ function submenu(event, categoryName){
     var submenuString = "";
           while( submenuString ===  "")
           {
-            console.log("***********************",submenuname);
-            var random = Math.floor(Math.random() * movie.length);
-            if(movie[random].movies.length < 320)   // better be a least one good joke :)
-                submenuString = movie[random].movies;
+            {
+              if(subname == "movies"){
+               console.log("***********************",submenuname);
+              var random = Math.floor(Math.random() * movie.length);
+              if(movie[random].movies.length < 320)
+                  submenuString = movie[random].movies;
+              }else if (subname == "sports") {
+                console.log("***************subname*********************",subname);
+                var random = Math.floor(Math.random() * sport.length);
+                if(sport[random].sports.length < 320)   // better be a least one good joke :)
+                    submenuString = sport[random].sports;
+              }else if (subname == "music") {
+                console.log("***************subname*********************",subname);
+                var random = Math.floor(Math.random() * musics.length);
+                if(musics[random].music.length < 320)   // better be a least one good joke :)
+                    submenuString = musics[random].music;
+              }else if (subname == "tv_shows") {
+                console.log("***************subname*********************",subname);
+                var random = Math.floor(Math.random() * tv_show.length);
+                if(tv_show[random].tv_shows.length < 320)   // better be a least one good joke :)
+                    submenuString = tv_show[random].tv_shows;
+              }
+            }
           }       //var msg = 'I am sorry '+username+', my senses are gone wrong. Why dont you try a different command...';
 
         //var msg = 'Hey '+username+', How are you?';

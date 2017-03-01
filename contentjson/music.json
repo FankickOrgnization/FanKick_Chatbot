@@ -1,29 +1,6 @@
-{
-    "text":"Widen your ears! I'm going to make a huge noise, define the tune… :-)",
-    "quick_replies":[
-      {
-        "content_type":"text",
-        "title":"Movie Albums",
-        "payload":"Movie Albums"
-      },
-      {
-        "content_type":"text",
-        "title":"Private Albums",
-        "payload":"Private Albums"
-      },
-      {
-        "content_type":"text",
-        "title":"Remix",
-        "payload":"Remix"
-      },
-      {
-        "content_type":"text",
-        "title":"Breakup Songs",
-        "payload":"Breakup Songs"
-      },
-      {
-        "content_type":"text",
-        "title":"Home",
-        "payload":"Categories"
-      }]
-  }
+[
+{ "music": "I can't do anything without music, glad we're alike.\nHere are the results…" },
+{ "music": "Every noise is a tune! I too like music.\nHere are the results…" },
+{ "music": "Music is the oxygen for many ears and minds.\nHere are your results…" },
+{ "music": "Sing, dance and compose!\nIt is all about music and music..." }
+]

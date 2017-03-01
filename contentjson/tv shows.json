@@ -1,29 +1,5 @@
-{
-    "text":"My dad won't allow me to switch on the Idiot Box, please switch me up and set the favorite mode…",
-    "quick_replies":[
-      {
-        "content_type":"text",
-        "title":"Romantic Comedy",
-        "payload":"Romantic Comedy"
-      },
-      {
-        "content_type":"text",
-        "title":"Action",
-        "payload":"Action"
-      },
-      {
-        "content_type":"text",
-        "title":"Horror",
-        "payload":"Horror"
-      },
-      {
-        "content_type":"text",
-        "title":"Animation",
-        "payload":"Animation"
-      },
-      {
-        "content_type":"text",
-        "title":"Home",
-        "payload":"Categories"
-      }]
-  }
+[
+{ "tv_show": "Can you imagine yourself without TV Shows? No, for sure!\nHere are the results…" },
+{ "tv_show": "Welcome to the idiot club!\nHere are your favorites…" },
+{ "tv_show": " Different TV Shows for different age groups!\nSelect your favorites…" }
+]
