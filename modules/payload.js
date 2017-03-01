@@ -779,6 +779,16 @@ function submenu(event, categoryName){
 
         //var msg = 'Hey '+username+', How are you?';
         //console.log("--------:Response data:--------sendHelpMessage1", msg);
+        pool.getConnection(function(err, connection) {
+          connection.query('select * from cc_subcategories where categoryId = (select id from cc_categories where categoryName = ?)',[subname], function(err, rows) {
+              if (err) {
+                  console.log("Error While retriving content pack data from database:", err);
+              } else {
+                  console.log("*******************subcategory data*************",rows);
+              }
+              connection.release();
+          });
+          });
         var messageData = {
             "recipient": {
                 "id": senderID
