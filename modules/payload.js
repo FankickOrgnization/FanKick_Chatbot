@@ -749,13 +749,14 @@ function submenu(event, categoryName){
     var senderID = event.sender.id;
     var submenuname = categoryName.replace(" ", "_");
     console.log("***********************",submenuname);
+    var subname = submenuname.trim();
     var submenuString = "";
           while( submenuString ===  "")
           {
             console.log("***********************",submenuname);
             var random = Math.floor(Math.random() * errors.length);
-            if(errors[random].sports.length < 320)   // better be a least one good joke :)
-                submenuString = errors[random].sports;
+            if(errors[random].subname.length < 320)   // better be a least one good joke :)
+                submenuString = errors[random].subname;
           }       //var msg = 'I am sorry '+username+', my senses are gone wrong. Why dont you try a different command...';
 
         //var msg = 'Hey '+username+', How are you?';
