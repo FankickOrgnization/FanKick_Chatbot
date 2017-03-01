@@ -792,24 +792,27 @@ function submenu(event, categoryName){
                                       "title":rows[i].subCategoryName,
                                       "payload":rows[i].subCategoryName
                                     }
-                                    quickList.push(moviearray);
+                    quickList.push(moviearray);
                   }
               }
               connection.release();
           });
           });
+
+
+
+
         var messageData = {
             "recipient": {
                 "id": senderID
             },
             "message":{
                 "text":submenuString,
-                //"text":"msg",
                 "quick_replies":quickList
               }
             }
-         callSendAPI(messageData,'https://graph.facebook.com/v2.6/592208327626213/messages');    //sendHelpMessageSecond(event, userid);
-
+            
+         callSendAPI(messageData,'https://graph.facebook.com/v2.6/592208327626213/messages');
 }
 
 
