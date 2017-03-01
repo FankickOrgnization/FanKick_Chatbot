@@ -792,35 +792,51 @@ function submemuquickreply(event, categoryName, submenuString){
   var senderID = event.sender.id;
   var quickList = [];
   pool.getConnection(function(err, connection) {
-    connection.query('select * from cc_subcategories where categoryId = (select id from cc_categories where categoryName = ?)',[categoryName], function(err, rows) {
-        if (err) {
-            console.log("Error While retriving content pack data from database:", err);
-        } else {
-            console.log("*******************subcategory data*************",rows);
-            for (var i = 0; i < rows.length; i++) { //Construct request body
-              console.log(rows[i].subCategoryName);
-              var moviearray = {
-                                "content_type":"text",
-                                "title":rows[i].subCategoryName,
-                                "payload":rows[i].subCategoryName
-                              }
-              quickList.push(moviearray);
-            }
-        }
-        connection.release();
-    });
-    var messageData = {
-        "recipient": {
-            "id": senderID
-        },
-        "message":{
-            "text":submenuString,
-            "quick_replies":quickList
-          }
-        }
+connection.query('select * from cc_subcategories where categoryId = (select id from cc_categories where categoryName = ?)',[categoryName], function(err, rows) {
+if (err) {
+      console.log("Error While retriving content pack data from database:", err);
+  } else if (rows.length) {
+    //  var senderID = event.sender.id;
+      var quickList = [];
+      console.log("*******************subcategory data*************",rows);
+      for (var i = 0; i < rows.length; i++) { //Construct request body
+          console.log(rows[i].subCategoryName);
+        var moviearray = {
+                          "content_type":"text",
+                          "title":rows[i].subCategoryName,
+                          "payload":rows[i].subCategoryName
+                        }
+        quickList.push(moviearray);
+         // contentList.push(keyMap);
+         // movieslist = rows[i].lastFiveMovies;
+         // console.log("%%%%%%%%%%%%movieslist%%%%%%%%%%%%%",movieslist);
+      }
 
-     callSendAPI(messageData,'https://graph.facebook.com/v2.6/592208327626213/messages');
-    });
+      var messageData = {
+          "recipient": {
+              "id": senderID
+          },
+          "message": {
+              "attachment": {
+                  "type": "template",
+                  "payload": {
+                      "template_type": "generic",
+                      "elements": contentList
+                  }
+              },
+              "quick_replies":quickList
+          }
+      }
+      callSendAPI(messageData,'https://graph.facebook.com/v2.6/592208327626213/messages');
+  } else {
+      console.log("No Data Found From Database");
+      sendHelpMessage(event);
+      //sendImageMessage(event);
+  }
+  connection.release();
+});
+});
+
 }
 
 
