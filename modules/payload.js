@@ -749,6 +749,7 @@ function submenu(event, categoryName){
     var submenuname = categoryName.replace(" ", "_");
     console.log("***********************",submenuname);
     var subname = submenuname.trim();
+    var quickList = [];
     var submenuString = "";
           while( submenuString ===  "")
           {
@@ -780,11 +781,19 @@ function submenu(event, categoryName){
         //var msg = 'Hey '+username+', How are you?';
         //console.log("--------:Response data:--------sendHelpMessage1", msg);
         pool.getConnection(function(err, connection) {
-          connection.query('select * from cc_subcategories where categoryId = (select id from cc_categories where categoryName = ?)',[subname], function(err, rows) {
+          connection.query('select * from cc_subcategories where categoryId = (select id from cc_categories where categoryName = ?)',[categoryName], function(err, rows) {
               if (err) {
                   console.log("Error While retriving content pack data from database:", err);
               } else {
                   console.log("*******************subcategory data*************",rows);
+                  for (var i = 0; i < rows.length; i++) { //Construct request body
+                    var moviearray = {
+                                      "content_type":"text",
+                                      "title":rows[i].subCategoryName,
+                                      "payload":rows[i].subCategoryName
+                                    }
+                                    quickList.push(moviearray);
+                  }
               }
               connection.release();
           });
@@ -796,34 +805,7 @@ function submenu(event, categoryName){
             "message":{
                 "text":submenuString,
                 //"text":"msg",
-                "quick_replies":[
-                  {
-                    "content_type":"text",
-                    "title":"Movies",
-                    "payload":"Movies"
-                  },
-                  {
-                    "content_type":"text",
-                    "title":"Music",
-                    "payload":"Music"
-                  },
-                  {
-                    "content_type":"text",
-                    "title":"TV Shows",
-                    "payload":"TV Shows"
-                  },
-                  {
-                    "content_type":"text",
-                    "title":"Sports",
-                    "payload":"Sports"
-                  }
-                  // ,
-                  // {
-                  //   "content_type":"text",
-                  //   "title":"What can you do?",
-                  //   "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
-                  // }
-                ]
+                "quick_replies":quickList
               }
             }
          callSendAPI(messageData,'https://graph.facebook.com/v2.6/592208327626213/messages');    //sendHelpMessageSecond(event, userid);
