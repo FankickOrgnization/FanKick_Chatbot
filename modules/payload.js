@@ -748,32 +748,15 @@ function wishingmessage(categoryName,event){
 function submenu(event, categoryName){
     var senderID = event.sender.id;
     var submenuname = categoryName.replace(" ", "_");
+    console.log("***********************",submenuname);
     var subname = submenuname.trim();
-
     var submenuString = "";
           while( submenuString ===  "")
           {
-            if(subname == "movies"){
-              console.log("***************subname*********************",subname);
+            console.log("***********************",submenuname);
             var random = Math.floor(Math.random() * errors.length);
-            if(errors[random].movies.length < 320)   // better be a least one good joke :)
-                submenuString = errors[random].movies;
-            }else if (subname == "sports") {
-              console.log("***************subname*********************",subname);
-              var random = Math.floor(Math.random() * errors.length);
-              if(errors[random].sports.length < 320)   // better be a least one good joke :)
-                  submenuString = errors[random].sports;
-            }else if (subname == "music") {
-              console.log("***************subname*********************",subname);
-              var random = Math.floor(Math.random() * errors.length);
-              if(errors[random].music.length < 320)   // better be a least one good joke :)
-                  submenuString = errors[random].music;
-            }else if (subname == "tv_shows") {
-              console.log("***************subname*********************",subname);
-              var random = Math.floor(Math.random() * errors.length);
-              if(errors[random].tv_shows.length < 320)   // better be a least one good joke :)
-                  submenuString = errors[random].tv_shows;
-            }
+            if(errors[random].sports.length < 320)   // better be a least one good joke :)
+                submenuString = errors[random].sports;
           }       //var msg = 'I am sorry '+username+', my senses are gone wrong. Why dont you try a different command...';
 
         //var msg = 'Hey '+username+', How are you?';
