@@ -5,6 +5,10 @@ const thread = require('./thread.js');
 var googleTrends = require('google-trends-api');
 const movies = require('../contentjson/movies.json');
 const   errors = require('../contentjson/errormsg.json');
+const   movies = require('../contentjson/moviesmsg.json');
+const   sports = require('../contentjson/sportsmsg.json');
+const   tv_shows = require('../contentjson/tvshowsmsg.json');
+const   music = require('../contentjson/musicmsg.json');
 //var app = express();
 var mysql = require('mysql');
 var pool = mysql.createPool({
@@ -69,47 +73,35 @@ var quickMenu = [
 const sendContentPacks = (categoryName,event) => {
   console.log("*************---categoryName----*******", categoryName );
     if (categoryName == "get started") {
-        //greetingtext(messagingEvent,Get Started);
         var senderID = event.sender.id;
         thread.persistentMenu(fbpage_access_token);
         fbuserdetails(event, senderID);
-        //sendTextMessage(userid, 'Get Started');
         console.log("categoryName", categoryName);
-        //getStarted();
     }else if (categoryName == "pawan kalyan" || categoryName == "nagarjuna" || categoryName == "chiranjeevi" || categoryName == "allu arjun"|| categoryName == "bala krishna" || categoryName == "mahesh babu") {
     //  celebritiesdetails(categoryName,event);
       googlegraph(categoryName,event);
-
-    } else if (categoryName == "hi" || categoryName == "hello" || categoryName == "hey") {
+    }else if (categoryName == "hi" || categoryName == "hello" || categoryName == "hey") {
         wishingmessage(categoryName,event);
-        //googlegraph(categoryName,event);
-
-      }else if (categoryName == "hollywood" || categoryName == "tollywood" || categoryName == "bollywood" || categoryName == "kollywood" || categoryName == "classical music" || categoryName == "western music") {
+    }else if (categoryName == "hollywood" || categoryName == "tollywood" || categoryName == "bollywood" || categoryName == "kollywood" || categoryName == "classical music" || categoryName == "western music") {
       subcategorydetails(categoryName,event);
-      //googlegraph(categoryName,event);
       usersubcategory(event, categoryName);
     }else if (categoryName == "cricket" || categoryName == "soccer" || categoryName == "football" || categoryName == "tennis" || categoryName == "badminton") {
       //celebritiesdetails(categoryName,event);
       //googlegraph(categoryName,event);
       usersubcategory(event, categoryName);
       subcategorydetails(categoryName,event);
-    }
-      else if (categoryName =="akshay kumar" || categoryName =="arya 2" || categoryName =="shahrukh khan" || categoryName =="aamir khan" || categoryName =="ranveer singh" || categoryName =="hrithik roshan" || categoryName =="hindi films" || categoryName =="telugu films" || categoryName =="bollywood films") {
-          //googletrendsfun(categoryName,event);
-          googlegraph(categoryName,event);
-    }
-    else if (categoryName =="virat kohli" || categoryName =="rohit sharma" || categoryName =="rohit sharma records" || categoryName =="yuvraj singh" || categoryName =="sachin tendulkar" || categoryName =="dhoni" || categoryName =="sakshi dhoni" ) {
-          //googletrendsfun(categoryName,event);
-          googlegraph(categoryName,event);
-          //googletrendsfun(categoryName,event);
-      }
-    else if (categoryName =="videos" || categoryName =="audio"|| categoryName =="movies" || categoryName =="sports" || categoryName =="tv shows"|| categoryName =="music"  || categoryName =="home" ) {
-      allcategory(event, categoryName);
-      //usercategory(event, categoryName);
-      //userlocation(event, categoryName);
+    }else if (categoryName =="akshay kumar" || categoryName =="shahrukh khan" || categoryName =="aamir khan" || categoryName =="ranveer singh" || categoryName =="hrithik roshan") {
+      //googletrendsfun(categoryName,event);
+      googlegraph(categoryName,event);
+    }else if (categoryName =="virat kohli" || categoryName =="rohit sharma" || categoryName =="yuvraj singh" || categoryName =="sachin tendulkar" || categoryName =="dhoni") {
+      //googletrendsfun(categoryName,event);
+      googlegraph(categoryName,event);
+      //googletrendsfun(categoryName,event);
+    }else if (categoryName =="movies" || categoryName =="sports" || categoryName =="tv shows"|| categoryName =="music"  || categoryName =="home" ) {
+      //allcategory(event, categoryName);
+      submenu(event, categoryName);
       console.log("enter into the allcategory function");
-    }
-    else {
+    }else {
       pool.getConnection(function(err, connection) {
         connection.query('SELECT * FROM fk_content_pack where category_id = (SELECT id FROM fk_category where name = ?)', [categoryName], function(err, rows) {
             if (err) {
@@ -751,6 +743,38 @@ function wishingmessage(categoryName,event){
          callSendAPI(messageData,'https://graph.facebook.com/v2.6/592208327626213/messages');
 }
 
+
+//Random messages for the main Categories
+function submenu(event, categoryName){
+    var senderID = event.sender.id;
+    var submenuname = categoryName.replace(" ", "_");
+    var submenuString = "";
+          while( submenuString ===  "")
+          {
+            var random = Math.floor(Math.random() * errors.length);
+            if(errors[random].error.length < 320)   // better be a least one good joke :)
+                submenuString = errors[random].submenuname;
+          }       //var msg = 'I am sorry '+username+', my senses are gone wrong. Why dont you try a different command...';
+
+        //var msg = 'Hey '+username+', How are you?';
+        //console.log("--------:Response data:--------sendHelpMessage1", msg);
+        var messageData = {
+            "recipient": {
+                "id": senderID
+            },
+            "message":{
+                "text":errorString,
+                //"text":"msg",
+                "quick_replies":quickreply
+              }
+            }
+         callSendAPI(messageData,'https://graph.facebook.com/v2.6/592208327626213/messages');    //sendHelpMessageSecond(event, userid);
+
+}
+
+
+
+//Ended the Random messages for the main Categories
 function userlocation(event, categoryName){
   var senderID = event.sender.id;
   var userloca;

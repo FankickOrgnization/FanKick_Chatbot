@@ -553,11 +553,10 @@ function quickmovies(messagingEvent, moviename) {
   });
   });
 }
+// end get movies from the DB **************************
 
-// end get movies from the DB *******************************
 // get actor from the DB *******************************
 function quickactor(messagingEvent, actorname) {
-  // var movie = moviename.replace(" %%","");
   console.log("quickactor", actorname);
   var aname = actorname.trim();
   pool.getConnection(function(err, connection) {
@@ -630,26 +629,6 @@ function quickactor(messagingEvent, actorname) {
 //End get actor name from the DB
 
 
-function sendTextMessage(recipientId, messageText) {
-    var messageData = {
-        "recipient": {
-            "id": recipientId
-        },
-        "message": {
-                    "attachment": {
-                        "type": "template",
-                        "payload": {
-                            "template_type": "generic",
-                            "elements": contentList
-                        }
-                    }
-                }
-    };
-    callSendAPI(messageData, 'https://graph.facebook.com/v2.6/me/messages');
-}
-
-
-
 function sendHelpMessage(event){
     var userid = event.sender.id;
     var url = 'https://graph.facebook.com/v2.6/' + userid + '?fields=first_name,last_name,locale,timezone,gender&access_token=' + fbpage_access_token + '';
@@ -661,12 +640,6 @@ function sendHelpMessage(event){
     }, function(error, response, body) {
         var userprofiledata = JSON.parse(response.body);
         var username = userprofiledata.first_name;
-        //console.log("--------:Response data:-------- ", JSON.stringify(body));
-        console.log("--------:Response data:--------first_name ", userprofiledata.first_name);
-        console.log("--------:Response data:--------last_name ", userprofiledata.last_name);
-        console.log("--------:Response data:--------locale ", userprofiledata.locale);
-        console.log("--------:Response data:-------- timezone", userprofiledata.timezone);
-        console.log("--------:Response data:--------gender ", userprofiledata.gender);
         var senderID = event.sender.id;
         var msg = 'Hey '+username+', I am expecting a lot of noise, select the domain...';
         //var msg = 'Hey '+username+', How are you?';
