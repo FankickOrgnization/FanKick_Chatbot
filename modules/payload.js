@@ -759,57 +759,67 @@ function submenu(event, categoryName){
               var random = Math.floor(Math.random() * movie.length);
               if(movie[random].movies.length < 320)
                   submenuString = movie[random].movies;
+                submemuquickreply(event, categoryName, submenuString);
               }else if (subname == "sports") {
                 console.log("***************subname*********************",subname);
                 var random = Math.floor(Math.random() * sport.length);
                 if(sport[random].sports.length < 320)   // better be a least one good joke :)
                     submenuString = sport[random].sports;
+                submemuquickreply(event, categoryName, submenuString);
               }else if (subname == "music") {
                 console.log("***************subname*********************",subname);
                 var random = Math.floor(Math.random() * musics.length);
                 if(musics[random].music.length < 320)   // better be a least one good joke :)
                     submenuString = musics[random].music;
+                submemuquickreply(event, categoryName, submenuString);
               }else if (subname == "tv_shows") {
                 console.log("***************subname*********************",subname);
                 var random = Math.floor(Math.random() * tv_show.length);
                 if(tv_show[random].tv_shows.length < 320)   // better be a least one good joke :)
                     submenuString = tv_show[random].tv_shows;
+                submemuquickreply(event, categoryName, submenuString);
               }
             }
           }       //var msg = 'I am sorry '+username+', my senses are gone wrong. Why dont you try a different command...';
 
         //var msg = 'Hey '+username+', How are you?';
         //console.log("--------:Response data:--------sendHelpMessage1", msg);
-        pool.getConnection(function(err, connection) {
-          connection.query('select * from cc_subcategories where categoryId = (select id from cc_categories where categoryName = ?)',[categoryName], function(err, rows) {
-              if (err) {
-                  console.log("Error While retriving content pack data from database:", err);
-              } else {
-                  console.log("*******************subcategory data*************",rows);
-                  for (var i = 0; i < rows.length; i++) { //Construct request body
-                    var moviearray = {
-                                      "content_type":"text",
-                                      "title":rows[i].subCategoryName,
-                                      "payload":rows[i].subCategoryName
-                                    }
-                    quickList.push(moviearray);
-                  }
-              }
-              connection.release();
-          });
-          var messageData = {
-              "recipient": {
-                  "id": senderID
-              },
-              "message":{
-                  "text":submenuString,
-                  "quick_replies":quickList
-                }
-              }
 
-           callSendAPI(messageData,'https://graph.facebook.com/v2.6/592208327626213/messages');
-          });
 
+}
+
+function submemuquickreply(event, categoryName, submenuString){
+  var senderID = event.sender.id;
+  var quickList = [];
+  pool.getConnection(function(err, connection) {
+    connection.query('select * from cc_subcategories where categoryId = (select id from cc_categories where categoryName = ?)',[categoryName], function(err, rows) {
+        if (err) {
+            console.log("Error While retriving content pack data from database:", err);
+        } else {
+            console.log("*******************subcategory data*************",rows);
+            for (var i = 0; i < rows.length; i++) { //Construct request body
+              var moviearray = {
+                                "content_type":"text",
+                                "title":rows[i].subCategoryName,
+                                "payload":rows[i].subCategoryName
+                              }
+              quickList.push(moviearray);
+            }
+        }
+        connection.release();
+    });
+    var messageData = {
+        "recipient": {
+            "id": senderID
+        },
+        "message":{
+            "text":submenuString,
+            "quick_replies":quickList
+          }
+        }
+
+     callSendAPI(messageData,'https://graph.facebook.com/v2.6/592208327626213/messages');
+    });
 }
 
 
