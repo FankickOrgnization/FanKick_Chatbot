@@ -205,7 +205,7 @@ function quickmovies(categoryName,event) {
   //var mname = moviename.trim();
   pool.getConnection(function(err, connection) {
   connection.query('select * from cc_movies_preference where subCategory = (select id from cc_subcategories where subCategoryName = ?)',[categoryName], function(err, rows) {
-    console.log("********quickmovies*********", mname);
+    //console.log("********quickmovies*********", mname);
       //console.log("*************************-after", categoryName);
       console.log("*************************quickmovies", rows);
       if (err) {
@@ -274,7 +274,7 @@ function quickmovies(categoryName,event) {
         //  callSendAPI(messageData,'https://graph.facebook.com/v2.6/592208327626213/messages');
       } else {
           console.log("No Data Found From Database");
-          sendHelpMessage(messagingEvent);
+          sendHelpMessage(event);
       }
       connection.release();
   });
