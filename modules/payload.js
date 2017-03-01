@@ -748,6 +748,7 @@ function wishingmessage(categoryName,event){
 function submenu(event, categoryName){
     var senderID = event.sender.id;
     var submenuname = categoryName.replace(" ", "_");
+    console.log("***********************",submenuname);
     var submenuString = "";
           while( submenuString ===  "")
           {
@@ -763,7 +764,7 @@ function submenu(event, categoryName){
                 "id": senderID
             },
             "message":{
-                "text":errorString,
+                "text":submenuString,
                 //"text":"msg",
                 "quick_replies":[
                   {
