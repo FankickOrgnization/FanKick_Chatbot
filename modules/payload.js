@@ -797,22 +797,19 @@ function submenu(event, categoryName){
               }
               connection.release();
           });
+          var messageData = {
+              "recipient": {
+                  "id": senderID
+              },
+              "message":{
+                  "text":submenuString,
+                  "quick_replies":quickList
+                }
+              }
+
+           callSendAPI(messageData,'https://graph.facebook.com/v2.6/592208327626213/messages');
           });
 
-
-
-
-        var messageData = {
-            "recipient": {
-                "id": senderID
-            },
-            "message":{
-                "text":submenuString,
-                "quick_replies":quickList
-              }
-            }
-            
-         callSendAPI(messageData,'https://graph.facebook.com/v2.6/592208327626213/messages');
 }
 
 
