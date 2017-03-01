@@ -1,29 +1,19 @@
-{
-      "text": "Movie is the king of entertainment. Pick your favorite kingdom...:-).",
-      "quick_replies": [
-        {
-          "content_type":"text",
-          "title":"Hollywood",
-          "payload":"Hollywood"
-        },
-        {
-          "content_type":"text",
-          "title":"Bollywood",
-          "payload":"Bollywood"
-        },
-        {
-          "content_type":"text",
-          "title":"Tollywood",
-          "payload":"Tollywood"
-        },
-        {
-          "content_type":"text",
-          "title":"Kollywood",
-          "payload":"Kollywood"
-        },
-        {
-          "content_type":"text",
-          "title":"Home",
-          "payload":"Categories"
-        }]
-}
+[
+{ "movies": "1I'm sorry, my senses are gone wrong. Why don't you try a different command..." },
+{ "movies": "2I hate myself that I'm asking my frnd to reframe his question, please...." },
+{ "movies": "3I'm learning, help me in understanding your command, please..." },
+{ "movies": "4Hey, I may not help you about this, will mind this, hope you understand. Please try something else...." },
+{ "movies": "5No idea my frnd, why don't you try something else...." },
+{ "movies": "6I'm improving myself, next time I'll hit the target. Please try something else for now...." },
+{ "movies": "7movies!!!!, my senses are gone wrong. Why don't you try a different command..." },
+{ "movies": "8movies^^^^^^^ that I'm asking my frnd to reframe his question, please...." },
+{ "movies": "9movies))))))))I'm learning, help me in understanding your command, please..." },
+{ "movies": "10sports********Hey, I may not help you about this, will mind this, hope you understand. Please try something else...." },
+{ "movies": "11sports^^^^^^^No idea my frnd, why don't you try something else...." },
+{ "movies": "11tv_shows%%%%%%%%I'm improving myself, next time I'll hit the target. Please try something else for now...." },
+{ "movies": "12tv_shows###########I'm improving myself, next time I'll hit the target. Please try something else for now...." },
+{ "movies": "13tv_shows@@@@@@@@I'm improving myself, next time I'll hit the target. Please try something else for now...." },
+{ "movies": "14I'm improving myself, next time I'll hit the target. Please try something else for now...." },
+{ "movies": "15I'm improving myself, next time I'll hit the target. Please try something else for now...." },
+{ "movies": "16I'm improving myself, next time I'll hit the target. Please try something else for now...." }
+]

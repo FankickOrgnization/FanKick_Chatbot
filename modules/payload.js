@@ -3,8 +3,8 @@ var request = require('request');
 const searchText = require('./search.js');
 const thread = require('./thread.js');
 var googleTrends = require('google-trends-api');
-//const movies = require('../contentjson/movies.json');
-const   errors = require('../contentjson/errormsg.json');
+const movie = require('../contentjson/movies.json');
+const errors = require('../contentjson/errormsg.json');
 //const   movies = require('../contentjson/moviesmsg.json');
 //const   sports = require('../contentjson/sportsmsg.json');
 //const   tv_shows = require('../contentjson/tvshowsmsg.json');
@@ -754,9 +754,9 @@ function submenu(event, categoryName){
           while( submenuString ===  "")
           {
             console.log("***********************",submenuname);
-            var random = Math.floor(Math.random() * errors.length);
-            if(errors[random].sports.length < 320)   // better be a least one good joke :)
-                submenuString = errors[random].sports;
+            var random = Math.floor(Math.random() * movie.length);
+            if(movie[random].movies.length < 320)   // better be a least one good joke :)
+                submenuString = movie[random].movies;
           }       //var msg = 'I am sorry '+username+', my senses are gone wrong. Why dont you try a different command...';
 
         //var msg = 'Hey '+username+', How are you?';
