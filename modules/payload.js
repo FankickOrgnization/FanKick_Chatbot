@@ -752,9 +752,10 @@ function submenu(event, categoryName){
     var submenuString = "";
           while( submenuString ===  "")
           {
+            console.log("***********************",submenuname);
             var random = Math.floor(Math.random() * errors.length);
-            if(errors[random].submenuname.length < 320)   // better be a least one good joke :)
-                submenuString = errors[random].submenuname;
+            if(errors[random].sports.length < 320)   // better be a least one good joke :)
+                submenuString = errors[random].sports;
           }       //var msg = 'I am sorry '+username+', my senses are gone wrong. Why dont you try a different command...';
 
         //var msg = 'Hey '+username+', How are you?';
