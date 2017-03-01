@@ -798,6 +798,7 @@ function submemuquickreply(event, categoryName, submenuString){
         } else {
             console.log("*******************subcategory data*************",rows);
             for (var i = 0; i < rows.length; i++) { //Construct request body
+              console.log(rows[i].subCategoryName);
               var moviearray = {
                                 "content_type":"text",
                                 "title":rows[i].subCategoryName,
