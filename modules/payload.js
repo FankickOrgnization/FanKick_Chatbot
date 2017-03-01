@@ -213,65 +213,65 @@ function quickmovies(categoryName,event) {
       } else if (rows.length) {
           var senderID = event.sender.id;
           var contentList = [];
-          // for (var i = 0; i < rows.length; i++) { //Construct request body
-          //     var keyMap = {
-          //         "title": rows[i].movieName,
-          //         "image_url": rows[i].movieImageUrl,
-          //         //"item_url": rows[i].movieImageUrl,
-          //         "buttons": [{
-          //             "type": "web_url",
-          //             "url": rows[i].trailerUrl,
-          //             "title": "Trailer"
-          //         },{
-          //             "type": "web_url",
-          //             "url": rows[i].movieDescriptionUrl,
-          //             "title": "Audio"
-          //         }]
-          //     };
-          //     contentList.push(keyMap);
-          // }
-          // var messageData = {
-          //     "recipient": {
-          //         "id": senderID
-          //     },
-          //     "message":{
-          //       "attachment": {
-          //         "type": "template",
-          //         "payload": {
-          //             "template_type": "generic",
-          //             "elements": contentList
-          //             }
-          //         },
-          //         "quick_replies":[
-          //           {
-          //             "content_type":"text",
-          //             "title":rows[0].leadActor,
-          //             "payload":rows[0].leadActor +" %a%"
-          //           },
-          //           {
-          //             "content_type":"text",
-          //             "title":rows[0].leadActress,
-          //             "payload":rows[0].leadActress +" %a%"
-          //           },
-          //           {
-          //             "content_type":"text",
-          //             "title":rows[0].director,
-          //             "payload":rows[0].director +" %a%"
-          //           },
-          //           {
-          //             "content_type":"text",
-          //             "title":rows[0].musicDirector,
-          //             "payload":rows[0].musicDirector +" %a%"
-          //           },
-          //           {
-          //             "content_type":"text",
-          //             "title":"home",
-          //             "payload":"home"
-          //           }
-          //         ]
-          //       }
-          // }
-        //  callSendAPI(messageData,'https://graph.facebook.com/v2.6/592208327626213/messages');
+          for (var i = 0; i < rows.length; i++) { //Construct request body
+              var keyMap = {
+                  "title": rows[i].movieName,
+                  "image_url": rows[i].movieImageUrl,
+                  //"item_url": rows[i].movieImageUrl,
+                  "buttons": [{
+                      "type": "web_url",
+                      "url": rows[i].trailerUrl,
+                      "title": "Trailer"
+                  },{
+                      "type": "web_url",
+                      "url": rows[i].movieDescriptionUrl,
+                      "title": "Audio"
+                  }]
+              };
+              contentList.push(keyMap);
+          }
+          var messageData = {
+              "recipient": {
+                  "id": senderID
+              },
+              "message":{
+                "attachment": {
+                  "type": "template",
+                  "payload": {
+                      "template_type": "generic",
+                      "elements": contentList
+                      }
+                  },
+                  "quick_replies":[
+                    {
+                      "content_type":"text",
+                      "title":rows[0].leadActor,
+                      "payload":rows[0].leadActor +" %a%"
+                    },
+                    {
+                      "content_type":"text",
+                      "title":rows[0].leadActress,
+                      "payload":rows[0].leadActress +" %a%"
+                    },
+                    {
+                      "content_type":"text",
+                      "title":rows[0].director,
+                      "payload":rows[0].director +" %a%"
+                    },
+                    {
+                      "content_type":"text",
+                      "title":rows[0].musicDirector,
+                      "payload":rows[0].musicDirector +" %a%"
+                    },
+                    {
+                      "content_type":"text",
+                      "title":"home",
+                      "payload":"home"
+                    }
+                  ]
+                }
+          }
+         callSendAPI(messageData,'https://graph.facebook.com/v2.6/592208327626213/messages');
       } else {
           console.log("No Data Found From Database");
           sendHelpMessage(event);
