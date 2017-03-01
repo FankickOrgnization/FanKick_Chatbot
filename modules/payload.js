@@ -813,19 +813,14 @@ if (err) {
       }
 
       var messageData = {
-          "recipient": {
-              "id": senderID
-          },
-          "message": {
-                "recipient": {
-                    "id": senderID
-                },
-                "message":{
-                    "text":submenuString,
-                    "quick_replies":quickList
-                  }
-                }
-      }
+        "recipient": {
+            "id": senderID
+        },
+        "message":{
+            "text":submenuString,
+            "quick_replies":quickList
+          }
+        }
       callSendAPI(messageData,'https://graph.facebook.com/v2.6/592208327626213/messages');
   } else {
       console.log("No Data Found From Database");
