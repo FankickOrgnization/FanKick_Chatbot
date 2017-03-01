@@ -748,15 +748,27 @@ function wishingmessage(categoryName,event){
 function submenu(event, categoryName){
     var senderID = event.sender.id;
     var submenuname = categoryName.replace(" ", "_");
-    console.log("***********************",submenuname);
     var subname = submenuname.trim();
     var submenuString = "";
           while( submenuString ===  "")
           {
-            console.log("***********************",submenuname);
+            if(subname == "movies"){
             var random = Math.floor(Math.random() * errors.length);
-            if(errors[random].subname.length < 320)   // better be a least one good joke :)
-                submenuString = errors[random].subname;
+            if(errors[random].movies.length < 320)   // better be a least one good joke :)
+                submenuString = errors[random].movies;
+            }else if (subname == "sports") {
+              var random = Math.floor(Math.random() * errors.length);
+              if(errors[random].sports.length < 320)   // better be a least one good joke :)
+                  submenuString = errors[random].sports;
+            }else if (subname == "music") {
+              var random = Math.floor(Math.random() * errors.length);
+              if(errors[random].music.length < 320)   // better be a least one good joke :)
+                  submenuString = errors[random].music;
+            }else if (subname == "tv_shows") {
+              var random = Math.floor(Math.random() * errors.length);
+              if(errors[random].tv_shows.length < 320)   // better be a least one good joke :)
+                  submenuString = errors[random].tv_shows;
+            }
           }       //var msg = 'I am sorry '+username+', my senses are gone wrong. Why dont you try a different command...';
 
         //var msg = 'Hey '+username+', How are you?';
