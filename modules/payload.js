@@ -749,6 +749,7 @@ function submenu(event, categoryName){
     var senderID = event.sender.id;
     var submenuname = categoryName.replace(" ", "_");
     var subname = submenuname.trim();
+    console.log("***************subname*********************",subname);
     var submenuString = "";
           while( submenuString ===  "")
           {
