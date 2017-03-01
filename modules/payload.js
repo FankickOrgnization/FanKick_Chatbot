@@ -753,7 +753,7 @@ function submenu(event, categoryName){
           while( submenuString ===  "")
           {
             var random = Math.floor(Math.random() * errors.length);
-            if(errors[random].error.length < 320)   // better be a least one good joke :)
+            if(errors[random].submenuname.length < 320)   // better be a least one good joke :)
                 submenuString = errors[random].submenuname;
           }       //var msg = 'I am sorry '+username+', my senses are gone wrong. Why dont you try a different command...';
 
