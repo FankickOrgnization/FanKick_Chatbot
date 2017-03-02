@@ -97,7 +97,7 @@ const sendContentPacks = (categoryName,event) => {
       //googletrendsfun(categoryName,event);
       googlegraph(categoryName,event);
       //googletrendsfun(categoryName,event);
-    }else if (categoryName =="movies" || categoryName =="sports" || categoryName =="tv shows"|| categoryName =="music"  || categoryName =="home" ) {
+    }else if (categoryName =="movies" || categoryName =="sports" || categoryName =="tv shows"|| categoryName =="music" ) {
       //allcategory(event, categoryName);
       submenu(event, categoryName);
       console.log("enter into the allcategory function");
