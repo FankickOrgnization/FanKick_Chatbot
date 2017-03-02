@@ -181,7 +181,8 @@ function receivedpostback(messagingEvent) {
                  //console.log("Yessssssss");
                  var moviename = categoryName.replace(" %mname%","");
                  //console.log("Yessssssss", moviename);
-                 celebritymovies(messagingEvent, moviename);
+                 actorintro(messagingEvent, moviename);
+                 //celebritymovies(messagingEvent, moviename);
                }
 
 
@@ -262,6 +263,20 @@ function receivedMessage(event) {
         });
 }
 
+actorintro(messagingEvent, moviename){
+  var senderID = messagingEvent.sender.id;
+  var msg = 'Amazing talent! Here is what I know about +'moviename'';
+  var messageData = {
+      "recipient": {
+          "id": senderID
+      },
+      "message":
+          "text":msg,
+          }
+  }
+  callSendAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
+  celebritymovies(messagingEvent, moviename);
+}
 
 //Getting the celebrity related movies from selected celebrity
 function celebritymovies(messagingEvent, moviename){
