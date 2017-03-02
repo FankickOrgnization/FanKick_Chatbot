@@ -125,6 +125,7 @@ const sendContentPacks = (categoryName,event) => {
                             "title": "View",
                             "payload": rows[i].id
                         }
+                        
                       //   // , {
                       //   //     "type": "postback",
                       //   //     "title": "Magazine",
