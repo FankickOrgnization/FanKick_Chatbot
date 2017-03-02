@@ -76,23 +76,22 @@ const sendContentPacks = (categoryName,event) => {
         thread.persistentMenu(fbpage_access_token);
         fbuserdetails(event, senderID);
         console.log("categoryName", categoryName);
-    }else if (categoryName == "pawan kalyan" || categoryName == "prabhas" || categoryName == "chiranjeevi" || categoryName == "allu arjun"|| categoryName == "ram charan tej" || categoryName == "mahesh babu") {
+    }else if (categoryName == "pawan kalyan" || categoryName == "nagarjuna" || categoryName == "chiranjeevi" || categoryName == "allu arjun"|| categoryName == "bala krishna" || categoryName == "mahesh babu") {
     //  celebritiesdetails(categoryName,event);
-    //celebritiesdetails(categoryName,event)
-    celebrityintro(event, categoryName);
-      //googlegraph(categoryName,event);
+      googlegraph(categoryName,event);
     }else if (categoryName == "hi" || categoryName == "hello" || categoryName == "hey") {
         wishingmessage(categoryName,event);
     }else if (categoryName == "hollywood" || categoryName == "tollywood" || categoryName == "bollywood" || categoryName == "kollywood" || categoryName == "classical music" || categoryName == "western music") {
+      //subcategorydetails(categoryName,event);
       quickmovies(categoryName,event);
       usersubcategory(event, categoryName);
     }else if (categoryName == "cricket" || categoryName == "soccer" || categoryName == "football" || categoryName == "tennis" || categoryName == "badminton") {
+      //celebritiesdetails(categoryName,event);
+      //googlegraph(categoryName,event);
       usersubcategory(event, categoryName);
       subcategorydetails(categoryName,event);
-    }else if (categoryName =="akshay kumar" || categoryName =="shah rukh khan" || categoryName =="aamir khan" || categoryName =="Salman Khan" || categoryName =="hrithik roshan") {
-      //googlegraph(categoryName,event);
-      //celebritiesdetails(event,categoryName);
-        celebrityintro(event, categoryName);
+    }else if (categoryName =="akshay kumar" || categoryName =="shahrukh khan" || categoryName =="aamir khan" || categoryName =="ranveer singh" || categoryName =="hrithik roshan") {
+      googlegraph(categoryName,event);
     }else if (categoryName =="virat kohli" || categoryName =="rohit sharma" || categoryName =="yuvraj singh" || categoryName =="sachin tendulkar" || categoryName =="dhoni") {
       googlegraph(categoryName,event);
     }else if (categoryName =="movies" || categoryName =="sports" || categoryName =="tv shows"|| categoryName =="music" ) {
@@ -334,6 +333,10 @@ function quickmovies(categoryName,event) {
                         };
                         contentList.push(keyMap);
                     }
+
+
+
+
                     var messageData = {
                         "recipient": {
                             "id": senderID
@@ -362,7 +365,7 @@ function quickmovies(categoryName,event) {
 
 //subcategorydetails end *********************************************
 //celebritiesdetails***************************************************
-function celebritiesdetails(event,categoryName){
+function celebritiesdetails(categoryName,event){
   pool.getConnection(function(err, connection) {
     //connection.query('select * from cc_celebrity_preference where celebrityName=?',[categoryName], function(err, rows) {
     connection.query('select * from cc_celebrity_preference where celebrityName = ?',[categoryName], function(err, rows) {
@@ -435,7 +438,7 @@ function celebritiesdetails(event,categoryName){
 }
 //celebritiesdetails ends***************************************************
 
-// Googlegraph api function
+// ************************** Googlegraph api ********************************
 function googlegraph(categoryName,event){
   console.log("*************---categoryName----*******", categoryName );
   var contentList = [];
@@ -498,24 +501,8 @@ for (var i = 0; i < 5; i++) {
          callSendAPI(messageData,'https://graph.facebook.com/v2.6/592208327626213/messages');
     });
 }
-// Googlegraph api function End ********************************
-// actorintro for before showing the movies details
-function celebrityintro(event, categoryName){
-  var senderID = event.sender.id;
-  var msg = 'Amazing talent! Here is what I know about +'categoryName'';
-  var messageData = {
-      "recipient": {
-          "id": senderID
-      },
-      "message":{
-          "text":msg
-        }
-      };
-  callSendAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
-  //celebritymovies(event, categoryName);
-  celebritiesdetails(event,categoryName)
-}
-// celebrityintro for before showing the movies details***************
+// ************************** Googlegraph api End ********************************
+
 function sendHelpMessage(event){
   //fbuserlocation();
     var userid = event.sender.id;

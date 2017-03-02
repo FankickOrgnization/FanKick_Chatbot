@@ -157,7 +157,7 @@ function receivedpostback(messagingEvent) {
                  //console.log("Yessssssss");
                  var moviename = categoryName.replace(" %mname%","");
                  //console.log("Yessssssss", moviename);
-                 movieintro(messagingEvent, moviename);
+                 actorintro(messagingEvent, moviename);
                  //celebritymovies(messagingEvent, moviename);
                }
 }
@@ -190,7 +190,7 @@ function quickpayload(messagingEvent){
              }
 }
 // Quick_Reply payload section start *********************************
-// wit.ai function for verify the text
+// wit.ai function for verify the text in wit.ai
 function receivedMessage(event) {
     var senderID = event.sender.id;
     var recipientID = event.recipient.id;
@@ -256,9 +256,8 @@ function receivedMessage(event) {
             }
         });
 }
-// wit.ai function for verify the text end********************************
-// movieintro for before showing the movies details
-function movieintro(messagingEvent, moviename){
+
+function actorintro(messagingEvent, moviename){
   var senderID = messagingEvent.sender.id;
   //var msg = 'Amazing talent! Here is what I know about +'moviename'';
   var messageData = {
@@ -272,7 +271,6 @@ function movieintro(messagingEvent, moviename){
   callSendAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
   celebritymovies(messagingEvent, moviename);
 }
-// movieintro for before showing the movies details End***************************
 
 //Getting the celebrity related movies from selected celebrity
 function celebritymovies(messagingEvent, moviename){
@@ -429,6 +427,7 @@ pool.getConnection(function(err, connection) {
 
 //celebritiesdetails***************************************************
 function celebrityid(categoryName,event){
+
   pool.getConnection(function(err, connection) {
     //connection.query('select * from cc_celebrity_preference where celebrityName=?',[categoryName], function(err, rows) {
     connection.query('select * from cc_celebrity_preference where id = ?',[categoryName], function(err, rows) {
