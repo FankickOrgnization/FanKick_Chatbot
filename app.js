@@ -298,11 +298,13 @@ pool.getConnection(function(err, connection) {
                                "type": "web_url",
                                "url": rows[i].trailerUrl,
                                "title": "Trailer"
-                           },{
-                               "type": "web_url",
-                               "url": rows[i].movieDescriptionUrl,
-                               "title": "Audio"
-                           }]
+                           }
+                          //  ,{
+                          //      "type": "web_url",
+                          //      "url": rows[i].movieDescriptionUrl,
+                          //      "title": "Audio"
+                          //  }
+                         ]
                           };
                           contentList.push(keyMap);
                         }
