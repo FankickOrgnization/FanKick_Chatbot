@@ -137,26 +137,6 @@ function receivedpostback(messagingEvent) {
     // var catname = categoryName.toLowerCase();
     // console.log("catname", catname);
     console.log("???????????????????????categoryName?????????????????????",categoryName);
-
-    // var myarray = categoryName.split(',');
-    // //var a = '2008, 1993';
-    // //var array = a.split(',');
-    // var b = parseInt(myarray[0]);
-    // var c = parseInt(myarray[1]);
-    // console.log("???????????????????????.split?????????????????????",b , c);
-    //
-    // // for(var i = 0; i < myarray.length; i++)
-    // // {
-    // //    console.log(myarray[i]);
-    // //    var celname = myarray[i];
-    // //    console.log(myarray[i]);
-    // //   var moviearray = {
-    // //      "content_type":"text",
-    // //      "title":myarray[i],
-    // //      "payload":myarray[i]
-    // //    }
-    // //    quickList.push(moviearray);
-    // // }
     var movietext = categoryName.search("%mname%");
                if(movietext == -1)
                {
@@ -167,10 +147,7 @@ function receivedpostback(messagingEvent) {
                        console.log("********************************************************",res);
                        //payloadText.sendContentPacks(categoryName, messagingEvent);
                        payloadText.sendContentPacks(res, messagingEvent);
-                   } else if (categoryName == "Quizzes") {
-                       quizzesPacks(categoryName, messagingEvent);
-                       console.log("categoryName########", categoryName);
-                   }else {
+                   } else {
                        //sendContentPackItems(packId, messagingEvent);
                        celebrityid(packId, messagingEvent);
                        console.log("postback_sender_id:------", packId);
@@ -180,15 +157,12 @@ function receivedpostback(messagingEvent) {
                  //console.log("Yessssssss");
                  var moviename = categoryName.replace(" %mname%","");
                  //console.log("Yessssssss", moviename);
-                 actorintro(messagingEvent, moviename);
+                 movieintro(messagingEvent, moviename);
                  //celebritymovies(messagingEvent, moviename);
                }
-
-
 }
-
-
-// postback payload section end ********************************************
+// postback payload section end *****************************
+// Quick_Reply payload section start
 function quickpayload(messagingEvent){
   console.log("entered in the quickpayload function");
   var quicktext = messagingEvent.message.quick_reply;
@@ -206,7 +180,7 @@ function quickpayload(messagingEvent){
                    }else{
                      var actorname = quickpayloadtext.replace(" %a%","");
                      console.log("actor name", actorname);
-                     quickactor(messagingEvent, actorname);
+                    filmactor(messagingEvent, actorname);
                    }
              }else{
                //console.log("Yessssssss");
@@ -214,9 +188,9 @@ function quickpayload(messagingEvent){
                console.log("Yessssssss", moviename);
                quickmovies(messagingEvent, moviename);
              }
-
 }
-
+// Quick_Reply payload section start *********************************
+// wit.ai function for verify the text
 function receivedMessage(event) {
     var senderID = event.sender.id;
     var recipientID = event.recipient.id;
@@ -227,14 +201,8 @@ function receivedMessage(event) {
     // You may get a text or attachment but not both
     var messageText = message.text;
     var messageAttachments = message.attachments;
-    //getMessageFromWitAPI(messageText);
-
-      var msgwit = messageText;
-      console.log("*************messageText*************",messageText);
-
-      //bot.getwitmessageText(msgwit);
-
-      //var tb3;
+    var msgwit = messageText;
+    console.log("*************messageText*************",messageText);
         request({
             uri: 'https://api.wit.ai/message?v=20161020&q='+ msgwit,
             headers: {
@@ -288,8 +256,9 @@ function receivedMessage(event) {
             }
         });
 }
-
-function actorintro(messagingEvent, moviename){
+// wit.ai function for verify the text end********************************
+// movieintro for before showing the movies details
+function movieintro(messagingEvent, moviename){
   var senderID = messagingEvent.sender.id;
   //var msg = 'Amazing talent! Here is what I know about +'moviename'';
   var messageData = {
@@ -303,6 +272,7 @@ function actorintro(messagingEvent, moviename){
   callSendAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
   celebritymovies(messagingEvent, moviename);
 }
+// movieintro for before showing the movies details End***************************
 
 //Getting the celebrity related movies from selected celebrity
 function celebritymovies(messagingEvent, moviename){
@@ -459,7 +429,6 @@ pool.getConnection(function(err, connection) {
 
 //celebritiesdetails***************************************************
 function celebrityid(categoryName,event){
-
   pool.getConnection(function(err, connection) {
     //connection.query('select * from cc_celebrity_preference where celebrityName=?',[categoryName], function(err, rows) {
     connection.query('select * from cc_celebrity_preference where id = ?',[categoryName], function(err, rows) {
@@ -531,7 +500,8 @@ function celebrityid(categoryName,event){
     });
     });
 }
-//celebritiesdetails ends***************************************************
+//celebritiesdetails ends*************************************
+//updateing the celebritiesdetails in user_preforence
 function updateusercelebrity(usercelebrityName,senderID){
   console.log("******************categoryName*************",usercelebrityName);
   console.log("******************senderID*************",senderID);
@@ -548,30 +518,9 @@ function updateusercelebrity(usercelebrityName,senderID){
         });
         });
 }
+//updateing the celebritiesdetails in user_preforence******************************
 
 
-
-
-
-
-
-// Quick_reply payload section Start ********************************************
-function receivedtextmessage(categoryName, event) {
-    //var categoryName = messagingEvent.message.text;
-    var userid = event.sender.id;
-    var categoryName = categoryName.toLowerCase();
-    //var quickButton =
-      console.log("quickButton_postback:------", categoryName);
-      console.log("postback_sender_id:------", userid);
-      if (categoryName == "Quizzes") {
-         //quizzesPacks(categoryName, event);
-         console.log("categoryName########", categoryName);
-     }else{
-       payloadText.sendContentPacks(categoryName, event);
-       //searchText.googleSearchPacks(categoryName, event);
-     }
-}
-// Quick_reply payload section End ********************************************
 function textmessage(msgwit, messagingEvent){
   var msgText = messagingEvent.message.text;
   console.log("messaging_message:------",messagingEvent.message);
@@ -581,7 +530,19 @@ function textmessage(msgwit, messagingEvent){
   //payloadText.sendContentPacks(msgText, messagingEvent);
   receivedtextmessage(msgText, messagingEvent);
 };
-// QuizzesPacks payload section Start **********************
+
+// Quick_reply payload section Start
+function receivedtextmessage(categoryName, event) {
+    //var categoryName = messagingEvent.message.text;
+    var userid = event.sender.id;
+    var categoryName = categoryName.toLowerCase();
+    //var quickButton =
+      console.log("quickButton_postback:------", categoryName);
+      console.log("postback_sender_id:------", userid);
+      payloadText.sendContentPacks(categoryName, event);
+}
+// Quick_reply payload section End *****************************
+
 
 // get movies from the DB***********************************
 function quickmovies(messagingEvent, moviename) {
@@ -665,18 +626,17 @@ function quickmovies(messagingEvent, moviename) {
   });
   });
 }
-
 // end get movies from the DB **************************
 
-// get actor from the DB *******************************
-function quickactor(messagingEvent, actorname) {
-  console.log("quickactor", actorname);
+// get filmactor from the DB *******************************
+function filmactor(messagingEvent, actorname) {
+  console.log("filmactor", actorname);
   var aname = actorname.trim();
   pool.getConnection(function(err, connection) {
   connection.query('select * from cc_celebrity_preference where celebrityName = ?',[aname], function(err, rows) {
-    console.log("********quickactor*********", aname);
+    console.log("********filmactor*********", aname);
       //console.log("*************************-after", categoryName);
-      console.log("*************************quickactor", rows);
+      console.log("*************************filmactor", rows);
       if (err) {
           console.log("Error While retriving content pack data from database:", err);
       } else if (rows.length) {
@@ -738,8 +698,7 @@ function quickactor(messagingEvent, actorname) {
   });
   });
 }
-
-//End get actor name from the DB
+//End get filmactor name from the DB***************
 
 
 function sendHelpMessage(event){

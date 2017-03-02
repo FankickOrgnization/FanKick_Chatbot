@@ -76,34 +76,30 @@ const sendContentPacks = (categoryName,event) => {
         thread.persistentMenu(fbpage_access_token);
         fbuserdetails(event, senderID);
         console.log("categoryName", categoryName);
-    }else if (categoryName == "pawan kalyan" || categoryName == "nagarjuna" || categoryName == "chiranjeevi" || categoryName == "allu arjun"|| categoryName == "bala krishna" || categoryName == "mahesh babu") {
+    }else if (categoryName == "pawan kalyan" || categoryName == "prabhas" || categoryName == "chiranjeevi" || categoryName == "allu arjun"|| categoryName == "ram charan tej" || categoryName == "mahesh babu") {
     //  celebritiesdetails(categoryName,event);
-      googlegraph(categoryName,event);
+    //celebritiesdetails(categoryName,event)
+    celebrityintro(event, categoryName);
+      //googlegraph(categoryName,event);
     }else if (categoryName == "hi" || categoryName == "hello" || categoryName == "hey") {
         wishingmessage(categoryName,event);
     }else if (categoryName == "hollywood" || categoryName == "tollywood" || categoryName == "bollywood" || categoryName == "kollywood" || categoryName == "classical music" || categoryName == "western music") {
-      //subcategorydetails(categoryName,event);
       quickmovies(categoryName,event);
       usersubcategory(event, categoryName);
     }else if (categoryName == "cricket" || categoryName == "soccer" || categoryName == "football" || categoryName == "tennis" || categoryName == "badminton") {
-      //celebritiesdetails(categoryName,event);
-      //googlegraph(categoryName,event);
       usersubcategory(event, categoryName);
       subcategorydetails(categoryName,event);
-    }else if (categoryName =="akshay kumar" || categoryName =="shahrukh khan" || categoryName =="aamir khan" || categoryName =="ranveer singh" || categoryName =="hrithik roshan") {
-      //googletrendsfun(categoryName,event);
-      googlegraph(categoryName,event);
+    }else if (categoryName =="akshay kumar" || categoryName =="shah rukh khan" || categoryName =="aamir khan" || categoryName =="Salman Khan" || categoryName =="hrithik roshan") {
+      //googlegraph(categoryName,event);
+      //celebritiesdetails(event,categoryName);
+        celebrityintro(event, categoryName);
     }else if (categoryName =="virat kohli" || categoryName =="rohit sharma" || categoryName =="yuvraj singh" || categoryName =="sachin tendulkar" || categoryName =="dhoni") {
-      //googletrendsfun(categoryName,event);
       googlegraph(categoryName,event);
-      //googletrendsfun(categoryName,event);
     }else if (categoryName =="movies" || categoryName =="sports" || categoryName =="tv shows"|| categoryName =="music" ) {
-      //allcategory(event, categoryName);
       submenu(event, categoryName);
       console.log("enter into the allcategory function");
     }else if (categoryName =="home" ) {
       allcategory(event, categoryName);
-      //console.log("enter into the allcategory function");
     }else {
       pool.getConnection(function(err, connection) {
         connection.query('SELECT * FROM fk_content_pack where category_id = (SELECT id FROM fk_category where name = ?)', [categoryName], function(err, rows) {
@@ -125,7 +121,7 @@ const sendContentPacks = (categoryName,event) => {
                             "title": "View",
                             "payload": rows[i].id
                         }
-                        
+
                       //   // , {
                       //   //     "type": "postback",
                       //   //     "title": "Magazine",
@@ -294,88 +290,6 @@ function quickmovies(categoryName,event) {
 }
 // end get movies from the DB **************************
 
-
-function googletrendsfun(categoryName,event){
-  var senderID = event.sender.id;
-  googleTrends.risingSearches(categoryName,'IN')
-    .then(function(results){
-      console.log("Google trendz",results);
-      var googleTrends_result = results;
-        for(var i in googleTrends_result){
-          console.log(i.value); // alerts key
-          console.log(googleTrends_result[i]); //alerts key's value
-          var googleTrends_result_obj = googleTrends_result[i]
-        }
-        var aaa=JSON.stringify(googleTrends_result_obj);
-        var googleTrends_result_obj_name = [];
-        Object.keys(googleTrends_result_obj).forEach(function(key) {
-            console.log(key + ':----- ' + googleTrends_result_obj[key]);
-            var myArray = key;
-            console.log(myArray + ':----- ' + googleTrends_result_obj[key]);
-            googleTrends_result_obj_name.push(myArray);
-        });
-        console.log("**************************",googleTrends_result_obj_name);
-        var messageData = {
-            "recipient": {
-                "id": senderID
-            },
-            "message":{
-                "text":categoryName,
-                "quick_replies":[
-                  {
-                    "content_type":"text",
-                    "title":googleTrends_result_obj_name[4],
-                    "payload":googleTrends_result_obj_name[4]
-                  },
-                  {
-                    "content_type":"text",
-                    "title":googleTrends_result_obj_name[5],
-                    "payload":googleTrends_result_obj_name[5]
-                  },
-                  {
-                    "content_type":"text",
-                    "title":googleTrends_result_obj_name[6],
-                    "payload":googleTrends_result_obj_name[6]
-                  },
-                  {
-                    "content_type":"text",
-                    "title":googleTrends_result_obj_name[7],
-                    "payload":googleTrends_result_obj_name[7]
-                  },
-                  {
-                    "content_type":"text",
-                    "title":googleTrends_result_obj_name[8],
-                    "payload":googleTrends_result_obj_name[8]
-                  },
-                  {
-                    "content_type":"text",
-                    "title":"Home",
-                    "payload":"Categories",
-                    "image_url":"https://fankickdev.blob.core.windows.net/images/home_logo.png"
-                  }
-                ]
-              }
-        }
-        callSendAPI(messageData,'https://graph.facebook.com/v2.6/592208327626213/messages');
-
-    })
-    .catch(function(err){
-      console.error(err);
-      sendHelpMessage(event);
-    });
-
-
-//googleTrends node madule *************
-googleTrends.hotTrends('IN')
-    .then(function(results){
-      console.log("googleTrends.hotTrends results",results);
-    })
-    .catch(function(err){
-        console.log("googleTrends.hotTrends err", err);
-      });
-}
-//googleTrends node madule **************
-
 //subcategorydetails*************************************************************************
     function subcategorydetails(categoryName,event){
           pool.getConnection(function(err, connection) {
@@ -420,10 +334,6 @@ googleTrends.hotTrends('IN')
                         };
                         contentList.push(keyMap);
                     }
-
-
-
-
                     var messageData = {
                         "recipient": {
                             "id": senderID
@@ -452,7 +362,7 @@ googleTrends.hotTrends('IN')
 
 //subcategorydetails end *********************************************
 //celebritiesdetails***************************************************
-function celebritiesdetails(categoryName,event){
+function celebritiesdetails(event,categoryName){
   pool.getConnection(function(err, connection) {
     //connection.query('select * from cc_celebrity_preference where celebrityName=?',[categoryName], function(err, rows) {
     connection.query('select * from cc_celebrity_preference where celebrityName = ?',[categoryName], function(err, rows) {
@@ -525,7 +435,7 @@ function celebritiesdetails(categoryName,event){
 }
 //celebritiesdetails ends***************************************************
 
-// ************************** Googlegraph api ********************************
+// Googlegraph api function
 function googlegraph(categoryName,event){
   console.log("*************---categoryName----*******", categoryName );
   var contentList = [];
@@ -588,8 +498,24 @@ for (var i = 0; i < 5; i++) {
          callSendAPI(messageData,'https://graph.facebook.com/v2.6/592208327626213/messages');
     });
 }
-// ************************** Googlegraph api End ********************************
-
+// Googlegraph api function End ********************************
+// actorintro for before showing the movies details
+function celebrityintro(event, categoryName){
+  var senderID = event.sender.id;
+  var msg = 'Amazing talent! Here is what I know about +'categoryName'';
+  var messageData = {
+      "recipient": {
+          "id": senderID
+      },
+      "message":{
+          "text":msg
+        }
+      };
+  callSendAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
+  //celebritymovies(event, categoryName);
+  celebritiesdetails(event,categoryName)
+}
+// celebrityintro for before showing the movies details***************
 function sendHelpMessage(event){
   //fbuserlocation();
     var userid = event.sender.id;
