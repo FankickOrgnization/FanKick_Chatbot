@@ -199,7 +199,7 @@ function allcategory(event, categoryName){
 
 function actorintro(categoryName,event){
   var senderID = event.sender.id;
-  var msg = 'Amazing talent! Here is what I know about +'categoryName'';
+  var msg = 'Amazing talent! Here is what I know about '+ categoryName +'';
   var messageData = {
       "recipient": {
           "id": senderID
