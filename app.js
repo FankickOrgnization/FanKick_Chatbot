@@ -260,7 +260,7 @@ function receivedMessage(event) {
 function actorintro(messagingEvent, moviename){
   var senderID = messagingEvent.sender.id;
   var img = 'https://fankickdev.blob.core.windows.net/images/home_logo.png';
-  var msg = 'Amazing talent! Here is what I know about +'img'';
+  var msg = 'Amazing talent! Here is what I know about '+img+'';
   var messageData = {
       "recipient": {
           "id": senderID
