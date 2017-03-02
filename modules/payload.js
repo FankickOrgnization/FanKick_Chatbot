@@ -246,7 +246,7 @@ function quickmovies(categoryName,event) {
                     {
                       "content_type":"text",
                       "title":"info",
-                      "payload":"info"
+                      "payload":rows[i].movieName+" %m%"
                     },
                     {
                       "content_type":"text",
