@@ -242,12 +242,7 @@ function quickmovies(categoryName,event) {
                       "elements": contentList
                       }
                   },
-                  "quick_replies":[
-                    {
-                      "content_type":"text",
-                      "title":"info",
-                      "payload":rows[i].movieName+" %m%"
-                    },
+                  "quick_replies":[                    
                     {
                       "content_type":"text",
                       "title":"Action",
