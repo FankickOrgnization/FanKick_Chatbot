@@ -265,15 +265,14 @@ function receivedMessage(event) {
 
 actorintro(messagingEvent, moviename){
   var senderID = messagingEvent.sender.id;
-  var msg = 'Amazing talent! Here is what I know about +'moviename'';
+  //var msg = 'Amazing talent! Here is what I know about +'moviename'';
   var messageData = {
       "recipient": {
           "id": senderID
       },
       "message":
-          "text":msg
-          }
-  }
+          "text":"Here you go.."
+          }  
   callSendAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
   celebritymovies(messagingEvent, moviename);
 }
