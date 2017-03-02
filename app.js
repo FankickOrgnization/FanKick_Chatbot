@@ -275,6 +275,10 @@ function actorintro(messagingEvent, moviename){
 //Getting the celebrity related movies from selected celebrity
 function celebritymovies(messagingEvent, moviename){
 console.log("*************Celebritymovies name************", moviename);
+var Actor;
+var Actress;
+var director ;
+var musicDirector;
 pool.getConnection(function(err, connection) {
     connection.query('select  * from cc_movies_preference where movieName= ?', [moviename], function(error, rows) {
         if (error) {
@@ -305,7 +309,17 @@ pool.getConnection(function(err, connection) {
                          ]
                           };
                           contentList.push(keyMap);
+                          actor = rows[i].leadActor;
+                          actress = rows[i].leadActress;
+                          director = rows[i].director;
+                          musicDirector = rows[i].musicDirector;
+                          console.log("actor",actor);
+                          console.log("actor",actress);
+                          console.log("actor",director);
+                          console.log("actor",musicDirector);
                         }
+
+
             var messageData = {
                 "recipient": {
                     "id": senderID
@@ -322,22 +336,22 @@ pool.getConnection(function(err, connection) {
                     {
                       "content_type":"text",
                       "title":"leadActor",
-                      "payload":rows[1].leadActor
+                      "payload":actor
                     },
                     {
                       "content_type":"text",
                       "title":"leadActress",
-                      "payload":rows[1].leadActress
+                      "payload":actress
                     },
                     {
                       "content_type":"text",
                       "title":"director",
-                      "payload":rows[1].director
+                      "payload":director
                     },
                     {
                       "content_type":"text",
                       "title":"musicDirector",
-                      "payload":rows[1].musicDirector
+                      "payload":musicDirector
                     },{
                       "content_type":"text",
                       "title":"Similar Movie",
