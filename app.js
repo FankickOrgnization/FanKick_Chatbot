@@ -270,8 +270,9 @@ function actorintro(messagingEvent, moviename){
       "recipient": {
           "id": senderID
       },
-      "message":
+      "message":{
           "text":"Here you go.."
+        }
       };
   callSendAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
   celebritymovies(messagingEvent, moviename);
