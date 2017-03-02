@@ -139,43 +139,52 @@ function receivedpostback(messagingEvent) {
 
     console.log("???????????????????????categoryName?????????????????????",categoryName);
 
-    var myarray = categoryName.split(',');
-    //var a = '2008, 1993';
-    //var array = a.split(',');
-    var b = parseInt(myarray[0]);
-    var c = parseInt(myarray[1]);
-    console.log("???????????????????????.split?????????????????????",b , c);
+    // var myarray = categoryName.split(',');
+    // //var a = '2008, 1993';
+    // //var array = a.split(',');
+    // var b = parseInt(myarray[0]);
+    // var c = parseInt(myarray[1]);
+    // console.log("???????????????????????.split?????????????????????",b , c);
+    //
+    // // for(var i = 0; i < myarray.length; i++)
+    // // {
+    // //    console.log(myarray[i]);
+    // //    var celname = myarray[i];
+    // //    console.log(myarray[i]);
+    // //   var moviearray = {
+    // //      "content_type":"text",
+    // //      "title":myarray[i],
+    // //      "payload":myarray[i]
+    // //    }
+    // //    quickList.push(moviearray);
+    // // }
+    var movietext = categoryName.search("%mname%");
+               if(movietext == -1)
+               {
+                   var packId = parseInt(categoryName);
+                   if (isNaN(packId)) {
+                       //sendContentPacks(messageText, event);
+                       var res = categoryName.toLowerCase();
+                       console.log("********************************************************",res);
+                       //payloadText.sendContentPacks(categoryName, messagingEvent);
+                       payloadText.sendContentPacks(res, messagingEvent);
+                   } else if (categoryName == "Quizzes") {
+                       quizzesPacks(categoryName, messagingEvent);
+                       console.log("categoryName########", categoryName);
+                   }else {
+                       //sendContentPackItems(packId, messagingEvent);
+                       celebrityid(packId, messagingEvent);
+                       console.log("postback_sender_id:------", packId);
+                   }
+                   console.log("postback_sender_id:------", userid);
+               }else{
+                 //console.log("Yessssssss");
+                 var moviename = categoryName.replace(" %mname%","");
+                 //console.log("Yessssssss", moviename);
+                 celebritymovies(messagingEvent, moviename);
+               }
 
-    // for(var i = 0; i < myarray.length; i++)
-    // {
-    //    console.log(myarray[i]);
-    //    var celname = myarray[i];
-    //    console.log(myarray[i]);
-    //   var moviearray = {
-    //      "content_type":"text",
-    //      "title":myarray[i],
-    //      "payload":myarray[i]
-    //    }
-    //    quickList.push(moviearray);
-    // }
 
-
-    var packId = parseInt(categoryName);
-    if (isNaN(packId)) {
-        //sendContentPacks(messageText, event);
-        var res = categoryName.toLowerCase();
-        console.log("********************************************************",res);
-        //payloadText.sendContentPacks(categoryName, messagingEvent);
-        payloadText.sendContentPacks(res, messagingEvent);
-    } else if (categoryName == "Quizzes") {
-        quizzesPacks(categoryName, messagingEvent);
-        console.log("categoryName########", categoryName);
-    }else {
-        //sendContentPackItems(packId, messagingEvent);
-        celebrityid(packId, messagingEvent);
-        console.log("postback_sender_id:------", packId);
-    }
-    console.log("postback_sender_id:------", userid);
 }
 
 
@@ -252,6 +261,17 @@ function receivedMessage(event) {
             }
         });
 }
+
+
+
+function celebritymovies(messagingEvent, moviename){
+console.log("*************Celebritymovies name************", moviename);
+
+
+
+
+}
+
 
 function sendContentPackItems(packId, event) {
     //connection.query('select distinct item_id,item_name,item_type,item_image_url from fk_pack_multiple_item where pack_id = ? union all select distinct item_id,item_name,item_type,iteam_image_url from fk_pack_poll_item where pack_id = ?', [packId,packId], function(error, rows) {
