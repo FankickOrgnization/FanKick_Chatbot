@@ -245,23 +245,33 @@ function quickmovies(categoryName,event) {
                   "quick_replies":[
                     {
                       "content_type":"text",
-                      "title":rows[0].leadActor,
-                      "payload":rows[0].leadActor +" %a%"
+                      "title":"info",
+                      "payload":"info"
                     },
                     {
                       "content_type":"text",
-                      "title":rows[0].leadActress,
-                      "payload":rows[0].leadActress +" %a%"
+                      "title":"Action",
+                      "payload":"Action"
                     },
                     {
                       "content_type":"text",
-                      "title":rows[0].director,
-                      "payload":rows[0].director +" %a%"
+                      "title":"Comedy",
+                      "payload":"Comedy"
                     },
                     {
                       "content_type":"text",
-                      "title":rows[0].musicDirector,
-                      "payload":rows[0].musicDirector +" %a%"
+                      "title":"Romance",
+                      "payload":"Romance"
+                    },
+                    {
+                      "content_type":"text",
+                      "title":"Triller",
+                      "payload":"Triller"
+                    },
+                    {
+                      "content_type":"text",
+                      "title":"Google Search",
+                      "payload":"Google Search"
                     },
                     {
                       "content_type":"text",
