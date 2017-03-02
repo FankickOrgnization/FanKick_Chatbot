@@ -231,7 +231,7 @@ function quickmovies(categoryName,event) {
                   {
                     "type": "postback",
                     "title": "More Info",
-                    "payload": rows[i].id+'%mname%'
+                    "payload": rows[i].movieName+' %mname%'
                     }]
               };
               contentList.push(keyMap);
