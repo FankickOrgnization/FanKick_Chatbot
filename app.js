@@ -271,7 +271,7 @@ actorintro(messagingEvent, moviename){
           "id": senderID
       },
       "message":
-          "text":msg,
+          "text":msg
           }
   }
   callSendAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
