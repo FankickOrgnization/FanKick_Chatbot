@@ -136,7 +136,6 @@ function receivedpostback(messagingEvent) {
     var userid = messagingEvent.sender.id;
     // var catname = categoryName.toLowerCase();
     // console.log("catname", catname);
-
     console.log("???????????????????????categoryName?????????????????????",categoryName);
 
     // var myarray = categoryName.split(',');
@@ -190,6 +189,33 @@ function receivedpostback(messagingEvent) {
 
 
 // postback payload section end ********************************************
+function quickpayload(messagingEvent){
+  console.log("entered in the quickpayload function");
+  var quicktext = messagingEvent.message.quick_reply;
+  var quickpayloadtext = quicktext.payload;
+  var userid = messagingEvent.sender.id;
+  var movietext = quickpayloadtext.search("%m%");
+             if(movietext == -1)
+             {
+               console.log("Not Movie");
+               //receivedMessage(messagingEvent);
+               var actortext = quickpayloadtext.search("%a%");
+                   if(actortext == -1){
+                     receivedMessage(messagingEvent);
+                     console.log("Not actor");
+                   }else{
+                     var actorname = quickpayloadtext.replace(" %a%","");
+                     console.log("actor name", actorname);
+                     quickactor(messagingEvent, actorname);
+                   }
+             }else{
+               //console.log("Yessssssss");
+               var moviename = quickpayloadtext.replace(" %m%","");
+               console.log("Yessssssss", moviename);
+               quickmovies(messagingEvent, moviename);
+             }
+
+}
 
 function receivedMessage(event) {
     var senderID = event.sender.id;
@@ -299,11 +325,15 @@ pool.getConnection(function(err, connection) {
                                "url": rows[i].trailerUrl,
                                "title": "Trailer"
                            }
-                          //  ,{
-                          //      "type": "web_url",
-                          //      "url": rows[i].movieDescriptionUrl,
-                          //      "title": "Audio"
-                          //  }
+                           ,{
+                               "type": "web_url",
+                               "url": rows[i].trailerUrl,
+                               "title": "Audio"
+                           },{
+                               "type": "web_url",
+                               "url": rows[i].trailerUrl,
+                               "title": "About"
+                           }
                          ]
                           };
                           contentList.push(keyMap);
@@ -320,7 +350,37 @@ pool.getConnection(function(err, connection) {
                             "elements": contentList
                         }
                     },
-                      "quick_replies": quickMenu
+                      "quick_replies": [
+                    {
+                      "content_type":"text",
+                      "title":"leadActor",
+                      "payload":"leadActor"
+                    },
+                    {
+                      "content_type":"text",
+                      "title":"leadActress",
+                      "payload":"leadActress"
+                    },
+                    {
+                      "content_type":"text",
+                      "title":"director",
+                      "payload":"director"
+                    },
+                    {
+                      "content_type":"text",
+                      "title":"musicDirector",
+                      "payload":"musicDirector"
+                    },{
+                      "content_type":"text",
+                      "title":"Similar Movie",
+                      "payload":"musicDirector"
+                    },
+                    {
+                      "content_type":"text",
+                      "title":"home",
+                      "payload":"home"
+                    }
+                  ]
                 }
             }
             callSendAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
@@ -491,33 +551,7 @@ function updateusercelebrity(usercelebrityName,senderID){
 
 
 
-function quickpayload(messagingEvent){
-  console.log("entered in the quickpayload function");
-  var quicktext = messagingEvent.message.quick_reply;
-  var quickpayloadtext = quicktext.payload;
-  var userid = messagingEvent.sender.id;
-  var movietext = quickpayloadtext.search("%m%");
-             if(movietext == -1)
-             {
-               console.log("Not Movie");
-               //receivedMessage(messagingEvent);
-               var actortext = quickpayloadtext.search("%a%");
-                   if(actortext == -1){
-                     receivedMessage(messagingEvent);
-                     console.log("Not actor");
-                   }else{
-                     var actorname = quickpayloadtext.replace(" %a%","");
-                     console.log("actor name", actorname);
-                     quickactor(messagingEvent, actorname);
-                   }
-             }else{
-               //console.log("Yessssssss");
-               var moviename = quickpayloadtext.replace(" %m%","");
-               console.log("Yessssssss", moviename);
-               quickmovies(messagingEvent, moviename);
-             }
 
-}
 
 
 
