@@ -322,22 +322,22 @@ pool.getConnection(function(err, connection) {
                     {
                       "content_type":"text",
                       "title":"leadActor",
-                      "payload":rows[i].leadActor
+                      "payload":rows[1].leadActor
                     },
                     {
                       "content_type":"text",
                       "title":"leadActress",
-                      "payload":rows[i].leadActress
+                      "payload":rows[1].leadActress
                     },
                     {
                       "content_type":"text",
                       "title":"director",
-                      "payload":rows[i].director
+                      "payload":rows[1].director
                     },
                     {
                       "content_type":"text",
                       "title":"musicDirector",
-                      "payload":rows[i].musicDirector
+                      "payload":rows[1].musicDirector
                     },{
                       "content_type":"text",
                       "title":"Similar Movie",
