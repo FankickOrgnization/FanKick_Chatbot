@@ -332,7 +332,7 @@ pool.getConnection(function(err, connection) {
                            },{
                                "type": "web_url",
                                "url": rows[i].trailerUrl,
-                               "title": "About"
+                               "title": "Review"
                            }
                          ]
                           };
