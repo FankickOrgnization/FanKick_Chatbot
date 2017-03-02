@@ -263,7 +263,7 @@ function receivedMessage(event) {
         });
 }
 
-actorintro(messagingEvent, moviename){
+function actorintro(messagingEvent, moviename){
   var senderID = messagingEvent.sender.id;
   //var msg = 'Amazing talent! Here is what I know about +'moviename'';
   var messageData = {
@@ -272,7 +272,7 @@ actorintro(messagingEvent, moviename){
       },
       "message":
           "text":"Here you go.."
-          }  
+      };
   callSendAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
   celebritymovies(messagingEvent, moviename);
 }
