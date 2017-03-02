@@ -280,8 +280,13 @@ function quickmovies(categoryName,event) {
                     },
                     {
                       "content_type":"text",
-                      "title":"Triller",
-                      "payload":"Triller"
+                      "title":"Thriller",
+                      "payload":"Thriller"
+                    },
+                    {
+                      "content_type":"text",
+                      "title":"Horror",
+                      "payload":"Horror"
                     },
                     {
                       "content_type":"text",
@@ -406,7 +411,7 @@ function celebritiesdetails(categoryName,event){
                     {
                         "type":"web_url",
                         "url": rows[i].facebookHandle,
-                        "title":"facebook"
+                        "title":"Facebook"
                     },
                     {
                       "type":"web_url",
@@ -425,7 +430,7 @@ function celebritiesdetails(categoryName,event){
               var moviearray = {
                  "content_type":"text",
                  "title":myarray[i],
-                 "payload":myarray[i]
+                 "payload":myarray[i]+" %m%"
                }
                quickList.push(moviearray);
             }
