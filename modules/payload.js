@@ -218,15 +218,21 @@ function quickmovies(categoryName,event) {
                   "title": rows[i].movieName,
                   "image_url": rows[i].movieImageUrl,
                   //"item_url": rows[i].movieImageUrl,
-                  "buttons": [{
-                      "type": "web_url",
-                      "url": rows[i].trailerUrl,
-                      "title": "Trailer"
-                  },{
-                      "type": "web_url",
-                      "url": rows[i].movieDescriptionUrl,
-                      "title": "Audio"
-                  }]
+                  "buttons": [
+                  //   {
+                  //     "type": "web_url",
+                  //     "url": rows[i].trailerUrl,
+                  //     "title": "Trailer"
+                  // },{
+                  //     "type": "web_url",
+                  //     "url": rows[i].movieDescriptionUrl,
+                  //     "title": "Audio"
+                  // },
+                  {
+                    "type": "postback",
+                    "title": "More Info",
+                    "payload": rows[i].id
+                    }]
               };
               contentList.push(keyMap);
           }
@@ -242,7 +248,7 @@ function quickmovies(categoryName,event) {
                       "elements": contentList
                       }
                   },
-                  "quick_replies":[                    
+                  "quick_replies":[
                     {
                       "content_type":"text",
                       "title":"Action",

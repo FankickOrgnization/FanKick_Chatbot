@@ -553,6 +553,7 @@ function quickmovies(messagingEvent, moviename) {
   });
   });
 }
+
 // end get movies from the DB **************************
 
 // get actor from the DB *******************************
