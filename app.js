@@ -335,22 +335,22 @@ pool.getConnection(function(err, connection) {
                       "quick_replies": [
                     {
                       "content_type":"text",
-                      "title":"leadActor",
+                      "title":actor,
                       "payload":actor
                     },
                     {
                       "content_type":"text",
-                      "title":"leadActress",
+                      "title":actress,
                       "payload":actress
                     },
                     {
                       "content_type":"text",
-                      "title":"director",
+                      "title":director,
                       "payload":director
                     },
                     {
                       "content_type":"text",
-                      "title":"musicDirector",
+                      "title":musicDirector,
                       "payload":musicDirector
                     },{
                       "content_type":"text",
