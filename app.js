@@ -278,11 +278,11 @@ function moviesganer(messagingEvent, quickpayloadtext){
   console.log("*********Movies Ganer***********",quickpayloadtext);
   var ganer;
   var subCategory;
-  var myarray = quickpayloadtext.split(',');
-  var ganer = myarray[0];
-  var subCategory = myarray[2];
+  var ganerarray = quickpayloadtext.split(',');
+  var ganer = ganerarray[0];
+  var subCategory = ganerarray[1];
   console.log("ganer",ganer);
-  console.log("subCategory",ganer);
+  console.log("subCategory",subCategory);
   // for(var i = 0; i < 3; i++)
   // {
   //    console.log(myarray[i]);
