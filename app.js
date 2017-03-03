@@ -280,7 +280,7 @@ function moviesganer(messagingEvent, quickpayloadtext){
   var subCategory;
   var myarray = quickpayloadtext.split(',');
   var ganer = myarray[0];
-  var subCategory = myarray[1];
+  var subCategory = myarray[2];
   console.log("ganer",ganer);
   console.log("subCategory",ganer);
   // for(var i = 0; i < 3; i++)
