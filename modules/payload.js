@@ -202,22 +202,22 @@ function quickmovies(categoryName,event) {
                     {
                       "content_type":"text",
                       "title":"Action",
-                      "payload":'Action,'+categoryName+' %action%'
+                      "payload":'Action,'+categoryName+',%action%'
                     },
                     {
                       "content_type":"text",
                       "title":"Comedy",
-                      "payload":'Comedy,'+categoryName+' %comedy%'
+                      "payload":'Comedy,'+categoryName+',%comedy%'
                     },
                     {
                       "content_type":"text",
                       "title":"Romance",
-                      "payload":'Romance,'+categoryName+'%romance%'
+                      "payload":'Romance,'+categoryName+',%romance%'
                     },
                     {
                       "content_type":"text",
                       "title":"Thriller",
-                      "payload":'Thriller,'+categoryName+'%thriller%'
+                      "payload":'Thriller,'+categoryName+',%thriller%'
                     },
                     {
                       "content_type":"text",
