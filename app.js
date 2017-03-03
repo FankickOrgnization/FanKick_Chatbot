@@ -276,6 +276,18 @@ function receivedMessage(event) {
 
 function moviesganer(messagingEvent, quickpayloadtext){
   console.log("*********Movies Ganer***********",quickpayloadtext);
+  var ganer;
+  var subCategory;
+  var myarray = quickpayloadtext.split(',');
+  for(var i = 0; i < 3; i++)
+  {
+     console.log(myarray[i]);
+     var ganer = myarray[1];
+     var subCategory = myarray[2];
+    //  var res1 = myarray[i].concat(myarray[i]);
+     console.log("ganer",ganer);
+     console.log("subCategory",ganer);
+  }
 }
 
 
