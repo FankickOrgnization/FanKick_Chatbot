@@ -775,7 +775,7 @@ function usercategory(event, categoryName){
 function wishingmessage(categoryName,event){
   var senderID = event.sender.id;
   //var msg = 'Welcome to the club! \n \nEntertainment is served here, order your preferences…';
-  var msg = "Welcome to the Pacific of entertainment! Mark your favorite spots, I'd like to take you for boating...";
+  var msg = "Welcome to the ocean of entertainment🏟🎢! Mark your favorite spots, I'd like to take you for boating...";
         console.log("--------:Response data:--------msg1 ", msg);
         var messageData = {
             "recipient": {
