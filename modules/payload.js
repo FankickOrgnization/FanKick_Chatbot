@@ -295,7 +295,7 @@ function quickmovies(categoryName,event) {
                     },
                     {
                       "content_type":"text",
-                      "title":"home",
+                      "title":"home 🏠",
                       "payload":"home"
                     }
                   ]
@@ -484,7 +484,7 @@ function celebritiesdetails(categoryName,event){
                   },
                   {
                     "content_type":"text",
-                    "title":"Home",
+                    "title":"Home 🏠",
                     "payload":"home"
                   }
                 ]
@@ -971,8 +971,7 @@ function adduserlocation(event,userloca,categoryName){
                    {
                      "content_type":"text",
                      "title":"skip",
-                     "payload":"home",
-                     "image_url":"https://fankickdev.blob.core.windows.net/images/home_logo.png"
+                     "payload":"home"
                    }
                  ]
 

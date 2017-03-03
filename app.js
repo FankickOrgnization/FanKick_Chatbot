@@ -266,7 +266,7 @@ function actorintro(messagingEvent, moviename){
           "id": senderID
       },
       "message":{
-          "text":"Here you go..	(y) Here you go..	 🎩 🙌"
+          "text":"Here you go..(y)"
           //"text":msg
         }
       };
@@ -361,7 +361,7 @@ pool.getConnection(function(err, connection) {
                     },
                     {
                       "content_type":"text",
-                      "title":"home",
+                      "title":"home 🏠",
                       "payload":"home"
                     }
                   ]
@@ -626,7 +626,7 @@ function quickmovies(messagingEvent, moviename) {
                     },
                     {
                       "content_type":"text",
-                      "title":"home",
+                      "title":"home 🏠",
                       "payload":"home"
                     }
                   ]
@@ -742,22 +742,22 @@ function sendHelpMessage(event){
                 "quick_replies":[
                     {
                       "content_type":"text",
-                      "title":"Movies",
+                      "title":"Movies 🎬",
                       "payload":"Movies"
                     },
                     {
                       "content_type":"text",
-                      "title":"Sports",
+                      "title":"Sports 🏆",
                       "payload":"Sports"
                     },
                     {
                       "content_type":"text",
-                      "title":"TV Shows",
+                      "title":"TV Shows 📺",
                       "payload":"TV Shows"
                     },
                     {
                       "content_type":"text",
-                      "title":"Music",
+                      "title":"Music 🎶",
                       "payload":"Music"
                     }
                 ]
