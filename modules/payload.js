@@ -76,109 +76,40 @@ const sendContentPacks = (categoryName,event) => {
         thread.persistentMenu(fbpage_access_token);
         fbuserdetails(event, senderID);
         console.log("categoryName", categoryName);
-    }else if (categoryName == "pawan kalyan" || categoryName == "prabhas" || categoryName == "ram charan tej" || categoryName == "allu arjun"|| categoryName == "mahesh babu") {
-    //celebritiesdetails(categoryName,event);
-      actorintro(categoryName,event)
-      //googlegraph(categoryName,event);
-    }else if (categoryName == "hi" || categoryName == "hello" || categoryName == "hey") {
-        wishingmessage(categoryName,event);
-    }else if (categoryName == "hollywood" || categoryName == "tollywood" || categoryName == "bollywood" || categoryName == "kollywood" || categoryName == "classical music" || categoryName == "western music") {
-      //subcategorydetails(categoryName,event);
-      quickmovies(categoryName,event);
-      usersubcategory(event, categoryName);
-    }else if (categoryName == "cricket" || categoryName == "soccer" || categoryName == "football" || categoryName == "tennis" || categoryName == "badminton") {
-      //celebritiesdetails(categoryName,event);
-      //googlegraph(categoryName,event);
-      usersubcategory(event, categoryName);
-      subcategorydetails(categoryName,event);
-    }else if (categoryName =="akshay kumar" || categoryName =="shah rukh khan" || categoryName =="aamir khan" || categoryName =="salman khan" || categoryName =="hrithik roshan") {
-      //googlegraph(categoryName,event);
-        actorintro(categoryName,event)
-    }else if (categoryName =="virat kohli" || categoryName =="rohit sharma" || categoryName =="yuvraj singh" || categoryName =="sachin tendulkar" || categoryName =="dhoni") {
-      googlegraph(categoryName,event);
-    }else if (categoryName =="movies" || categoryName =="sports" || categoryName =="tv shows"|| categoryName =="music" ) {
-      submenu(event, categoryName);
-      console.log("enter into the allcategory function");
-    }else if (categoryName =="home" ) {
-      allcategory(event, categoryName);
-    }else {
-      pool.getConnection(function(err, connection) {
-        connection.query('SELECT * FROM fk_content_pack where category_id = (SELECT id FROM fk_category where name = ?)', [categoryName], function(err, rows) {
-            if (err) {
-                console.log("Error While retriving content pack data from database:", err);
-            } else if (rows.length) {
-                var senderID = event.sender.id;
-                var contentList = [];
-                var datalength = rows.length;
-                if(datalength>10){
-                for (var i = 0; i < 5; i++) { //Construct request body
-                    var keyMap = {
-                        "title": rows[i].name,
-                        "image_url": rows[i].image_url,
-                        //"item_url": rows[i].image_url,
-                        "subtitle": categoryName,
-                        "buttons": [{
-                            "type": "postback",
-                            "title": "View",
-                            "payload": rows[i].id
-                        }
-
-                      //   // , {
-                      //   //     "type": "postback",
-                      //   //     "title": "Magazine",
-                      //   //     "payload": "USER_DEFINED_PAYLOAD"
-                      //   // }
-                      ]
-                    };
-                    contentList.push(keyMap);
-                }
-              }else{
-                for (var i = 0; i < datalength; i++) { //Construct request body
-                    var keyMap = {
-                        "title": rows[i].name,
-                        "image_url": rows[i].image_url,
-                        //"item_url": rows[i].image_url,
-                        "subtitle": categoryName,
-                        "buttons": [{
-                            "type": "postback",
-                            "title": "View",
-                            "payload": rows[i].id
-                        }
-                      //   // , {
-                      //   //     "type": "postback",
-                      //   //     "title": "Magazine",
-                      //   //     "payload": "USER_DEFINED_PAYLOAD"
-                      //   // }
-                      ]
-                    };
-                    contentList.push(keyMap);
-                }
-              }
-                var messageData = {
-                    "recipient": {
-                        "id": senderID
-                    },
-                    "message": {
-                        "attachment": {
-                            "type": "template",
-                            "payload": {
-                                "template_type": "generic",
-                                "elements": contentList
-                            }
-                        },
-                        "quick_replies":quickMenu
-                    }
-                }
-                callSendAPI(messageData,'https://graph.facebook.com/v2.6/592208327626213/messages');
-            } else {
-                console.log("No Data Found From Database");
-                sendHelpMessage(event);
-                //sendImageMessage(event);
-            }
-            connection.release();
-        });
-        });
-    }
+        }else if (categoryName == "pawan kalyan" || categoryName == "prabhas" || categoryName == "ram charan tej" || categoryName == "allu arjun"|| categoryName == "mahesh babu") {
+        //celebritiesdetails(categoryName,event);
+          actorintro(categoryName,event)
+          //googlegraph(categoryName,event);
+        }else if (categoryName == "hi" || categoryName == "hello" || categoryName == "hey") {
+            wishingmessage(categoryName,event);
+        }else if (categoryName =="movies" || categoryName =="sports" || categoryName =="tv shows"|| categoryName =="music" ) {
+          submenu(event, categoryName);
+          console.log("enter into the allcategory function");
+        }else if (categoryName == "indian" || categoryName == "western") {
+            wishingmessage(categoryName,event);
+        }else if (categoryName == "action" || categoryName == "comedy" || categoryName == "romance" || categoryName == "thriller"|| categoryName == "horror") {
+            wishingmessage(categoryName,event);
+        }else if (categoryName == "reality" || categoryName == "romantic comedy" || categoryName == "hrror / crime" || categoryName == "cooking"|| categoryName == "animation") {
+            wishingmessage(categoryName,event);
+        }else if (categoryName == "hollywood" || categoryName == "tollywood" || categoryName == "bollywood" || categoryName == "kollywood" || categoryName == "classical music" || categoryName == "western music") {
+          //subcategorydetails(categoryName,event);
+          quickmovies(categoryName,event);
+          usersubcategory(event, categoryName);
+        }else if (categoryName == "cricket" || categoryName == "soccer" || categoryName == "tennis" || categoryName == "badminton") {
+          //celebritiesdetails(categoryName,event);
+          //googlegraph(categoryName,event);
+          usersubcategory(event, categoryName);
+          subcategorydetails(categoryName,event);
+        }else if (categoryName =="akshay kumar" || categoryName =="shah rukh khan" || categoryName =="aamir khan" || categoryName =="salman khan" || categoryName =="hrithik roshan") {
+          //googlegraph(categoryName,event);
+            actorintro(categoryName,event)
+        }else if (categoryName =="virat kohli" || categoryName =="rohit sharma" || categoryName =="yuvraj singh" || categoryName =="sachin tendulkar" || categoryName =="dhoni") {
+          googlegraph(categoryName,event);
+        }else if (categoryName =="home" ) {
+          allcategory(event, categoryName);
+        }else {
+          sendHelpMessage(event);
+        }
 }
 
 function allcategory(event, categoryName){
