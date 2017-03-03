@@ -167,6 +167,7 @@ function quickpayload(messagingEvent){
   console.log("entered in the quickpayload function");
   var quicktext = messagingEvent.message.quick_reply;
   var quickpayloadtext = quicktext.payload;
+  var res = quicktext.payload;
   var userid = messagingEvent.sender.id;
   var movietext = quickpayloadtext.search("%m%");
              if(movietext == -1)
@@ -175,7 +176,8 @@ function quickpayload(messagingEvent){
                //receivedMessage(messagingEvent);
                var actortext = quickpayloadtext.search("%a%");
                    if(actortext == -1){
-                     receivedMessage(messagingEvent);
+                     //receivedMessage(messagingEvent);
+                     payloadText.sendContentPacks(res, messagingEvent);
                      console.log("Not actor");
                    }else{
                      var actorname = quickpayloadtext.replace(" %a%","");
