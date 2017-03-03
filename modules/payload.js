@@ -20,26 +20,26 @@ var pool = mysql.createPool({
 
 var fbpage_access_token = 'EAADV2VT6AuUBAHyUBL8zV5dYdRCBE7ZCKYQvOWCu2kkWQSV1RCllfvMymjDhXZCBQ93IkOFDpVYjN1E8jCHYpHKdH6uwNuhYAyCGdHOv6VgVZCwI6BZCc3AwAc7CW17yNTXe1YE7GkegMHHz36ax5JZC01zllTmTnAQRe0ZB0U3wZDZD';
 var quickreply = [
-    {
-      "content_type":"text",
-      "title":"Movies",
-      "payload":"Movies"
-    },
-    {
-      "content_type":"text",
-      "title":"Sports",
-      "payload":"Sports"
-    },
-    {
-      "content_type":"text",
-      "title":"TV Shows",
-      "payload":"TV Shows"
-    },
-    {
-      "content_type":"text",
-      "title":"Music",
-      "payload":"Music"
-    }
+  {
+    "content_type":"text",
+    "title":"Movies 🎬",
+    "payload":"Movies"
+  },
+  {
+    "content_type":"text",
+    "title":"Sports 🏆",
+    "payload":"Sports"
+  },
+  {
+    "content_type":"text",
+    "title":"Music 🎶",
+    "payload":"Music"
+  },
+  {
+    "content_type":"text",
+    "title":"TV Shows 📺",
+    "payload":"TV Shows"
+  }
 ];
 var quickMenu = [
   {
@@ -711,23 +711,23 @@ function fbuserdetails(event, userid) {
                 "quick_replies":[
                   {
                     "content_type":"text",
-                    "title":"Movies",
+                    "title":"Movies 🎬",
                     "payload":"Movies"
                   },
                   {
                     "content_type":"text",
-                    "title":"Music",
+                    "title":"Sports 🏆",
+                    "payload":"Sports"
+                  },
+                  {
+                    "content_type":"text",
+                    "title":"Music 🎶",
                     "payload":"Music"
                   },
                   {
                     "content_type":"text",
-                    "title":"TV Shows",
+                    "title":"TV Shows 📺",
                     "payload":"TV Shows"
-                  },
-                  {
-                    "content_type":"text",
-                    "title":"Sports",
-                    "payload":"Sports"
                   }
                   // ,
                   // {
@@ -786,23 +786,23 @@ function wishingmessage(categoryName,event){
                 "quick_replies":[
                   {
                     "content_type":"text",
-                    "title":"Movies",
+                    "title":"Movies 🎬",
                     "payload":"Movies"
                   },
                   {
                     "content_type":"text",
-                    "title":"Music",
+                    "title":"Sports 🏆",
+                    "payload":"Sports"
+                  },
+                  {
+                    "content_type":"text",
+                    "title":"Music 🎶",
                     "payload":"Music"
                   },
                   {
                     "content_type":"text",
-                    "title":"TV Shows",
+                    "title":"TV Shows 📺",
                     "payload":"TV Shows"
-                  },
-                  {
-                    "content_type":"text",
-                    "title":"Sports",
-                    "payload":"Sports"
                   }
                   // ,
                   // {

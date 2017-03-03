@@ -22,46 +22,46 @@ var pool = mysql.createPool({
 var quickMenu  = [
     {
       "content_type":"text",
-      "title":"Movies",
+      "title":"Movies 🎬",
       "payload":"Movies"
     },
     {
       "content_type":"text",
-      "title":"Sports",
+      "title":"Sports 🏆",
       "payload":"Sports"
     },
     {
       "content_type":"text",
-      "title":"TV Shows",
-      "payload":"TV Shows"
+      "title":"Music 🎶",
+      "payload":"Music"
     },
     {
       "content_type":"text",
-      "title":"Music",
-      "payload":"Music"
+      "title":"TV Shows 📺",
+      "payload":"TV Shows"
     }
 ];
 var quickreply = [
-    {
-      "content_type":"text",
-      "title":"Movies",
-      "payload":"Movies"
-    },
-    {
-      "content_type":"text",
-      "title":"Sports",
-      "payload":"Sports"
-    },
-    {
-      "content_type":"text",
-      "title":"TV Shows",
-      "payload":"TV Shows"
-    },
-    {
-      "content_type":"text",
-      "title":"Music",
-      "payload":"Music"
-    }
+  {
+    "content_type":"text",
+    "title":"Movies 🎬",
+    "payload":"Movies"
+  },
+  {
+    "content_type":"text",
+    "title":"Sports 🏆",
+    "payload":"Sports"
+  },
+  {
+    "content_type":"text",
+    "title":"Music 🎶",
+    "payload":"Music"
+  },
+  {
+    "content_type":"text",
+    "title":"TV Shows 📺",
+    "payload":"TV Shows"
+  }
 ];
 
 app.use(bodyParser.json());
@@ -742,26 +742,26 @@ function sendHelpMessage(event){
                 "text":msg,
                 //"text":"msg",
                 "quick_replies":[
-                    {
-                      "content_type":"text",
-                      "title":"Movies 🎬",
-                      "payload":"Movies"
-                    },
-                    {
-                      "content_type":"text",
-                      "title":"Sports 🏆",
-                      "payload":"Sports"
-                    },
-                    {
-                      "content_type":"text",
-                      "title":"TV Shows 📺",
-                      "payload":"TV Shows"
-                    },
-                    {
-                      "content_type":"text",
-                      "title":"Music 🎶",
-                      "payload":"Music"
-                    }
+                  {
+                    "content_type":"text",
+                    "title":"Movies 🎬",
+                    "payload":"Movies"
+                  },
+                  {
+                    "content_type":"text",
+                    "title":"Sports 🏆",
+                    "payload":"Sports"
+                  },
+                  {
+                    "content_type":"text",
+                    "title":"Music 🎶",
+                    "payload":"Music"
+                  },
+                  {
+                    "content_type":"text",
+                    "title":"TV Shows 📺",
+                    "payload":"TV Shows"
+                  }
                 ]
               }
             }
