@@ -187,11 +187,11 @@ function quickpayload(messagingEvent){
                      if(action == -1 && comedy == -1 && romance == -1 && thriller == -1 && horror == -1){
                        //receivedMessage(messagingEvent);
                        payloadText.sendContentPacks(res, messagingEvent);
-                       console.log("Not filem ganre");
+                       console.log("Not filem genre");
                      }else{
                        //var actorname = quickpayloadtext.replace(" %a%","");
-                      console.log("filem ganre", quickpayloadtext);
-                      moviesganer(messagingEvent, quickpayloadtext);
+                      console.log("filem genre", quickpayloadtext);
+                      moviesgenre(messagingEvent, quickpayloadtext);
                      }
 
                    }else{
@@ -274,18 +274,18 @@ function receivedMessage(event) {
         });
 }
 
-function moviesganer(messagingEvent, quickpayloadtext){
-  console.log("*********Movies Ganer***********",quickpayloadtext);
-  var ganer;
-  var subCategory;
-  var ganerarray = quickpayloadtext.split(',');
-  var ganer = ganerarray[0];
+function moviesgenre(messagingEvent, quickpayloadtext){
+  console.log("*********Movies Genre***********",quickpayloadtext);
+  // var genre;
+  // var subCategory;
+  var genrearray = quickpayloadtext.split(',');
+  var genre = ganerarray[0];
   var subCategory = ganerarray[1];
-  console.log("ganer",ganer);
-  console.log("subCategory",subCategory);
+  console.log("Genre",genre);
+  console.log("SubCategory",subCategory);
   pool.getConnection(function(err, connection) {
   connection.query('select * from cc_movies_preference where subCategory = (select id from cc_subcategories where subCategoryName = ?) and genre = "1"',[subCategory], function(err, rows) {
-    console.log("*************************quickmovies", rows);
+    console.log("*************************moviesgenre", rows);
       if (err) {
           console.log("Error While retriving content pack data from database:", err);
       } else if (rows.length) {
