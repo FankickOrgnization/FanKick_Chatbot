@@ -282,8 +282,8 @@ function moviesganer(messagingEvent, quickpayloadtext){
   for(var i = 0; i < 3; i++)
   {
      console.log(myarray[i]);
-     var ganer = myarray[1];
-     var subCategory = myarray[2];
+     var ganer = myarray[0];
+     var subCategory = myarray[1];
     //  var res1 = myarray[i].concat(myarray[i]);
      console.log("ganer",ganer);
      console.log("subCategory",ganer);
