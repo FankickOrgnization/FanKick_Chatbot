@@ -184,7 +184,7 @@ function quickpayload(messagingEvent){
                      var romance = quickpayloadtext.search("%romance%");
                      var thriller = quickpayloadtext.search("%thriller%");
                      var horror = quickpayloadtext.search("%horror%");
-                     if(action == -1 || comedy == -1 || romance == -1 || thriller == -1 || horror == -1){
+                     if(action == -1 && comedy == -1 && romance == -1 && thriller == -1 && horror == -1){
                        //receivedMessage(messagingEvent);
                        payloadText.sendContentPacks(res, messagingEvent);
                        console.log("Not filem ganre");
