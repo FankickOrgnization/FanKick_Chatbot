@@ -90,6 +90,7 @@ const sendContentPacks = (categoryName,event) => {
             wishingmessage(categoryName,event);
         }else if (categoryName == "action" || categoryName == "comedy" || categoryName == "romance" || categoryName == "thriller"|| categoryName == "horror") {
             wishingmessage(categoryName,event);
+            //moviegenre(categoryName,event);
         }else if (categoryName == "reality" || categoryName == "romantic comedy" || categoryName == "hrror / crime" || categoryName == "cooking"|| categoryName == "animation") {
             wishingmessage(categoryName,event);
         }else if (categoryName == "hollywood" || categoryName == "tollywood" || categoryName == "bollywood" || categoryName == "kollywood" || categoryName == "classical music" || categoryName == "western music") {
@@ -201,33 +202,33 @@ function quickmovies(categoryName,event) {
                     {
                       "content_type":"text",
                       "title":"Action",
-                      "payload":"Action"
+                      "payload":'Action,'+categoryName+' %action%'
                     },
                     {
                       "content_type":"text",
                       "title":"Comedy",
-                      "payload":"Comedy"
+                      "payload":'Comedy,'+categoryName+' %comedy%'
                     },
                     {
                       "content_type":"text",
                       "title":"Romance",
-                      "payload":"Romance"
+                      "payload":'Romance,'+categoryName+'%romance%'
                     },
                     {
                       "content_type":"text",
                       "title":"Thriller",
-                      "payload":"Thriller"
+                      "payload":'Thriller,'+categoryName+'%thriller%'
                     },
                     {
                       "content_type":"text",
                       "title":"Horror",
-                      "payload":"Horror"
+                      "payload":'Horror,'+categoryName+',%horror%'
                     },
-                    {
-                      "content_type":"text",
-                      "title":"Google Search",
-                      "payload":"Google Search"
-                    },
+                    // {
+                    //   "content_type":"text",
+                    //   "title":"Google Search",
+                    //   "payload":"Google Search"
+                    // },
                     {
                       "content_type":"text",
                       "title":"home 🏠",
