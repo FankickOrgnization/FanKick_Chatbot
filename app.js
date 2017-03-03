@@ -279,12 +279,12 @@ function moviesgenre(messagingEvent, quickpayloadtext){
   // var genre;
   // var subCategory;
   var genrearray = quickpayloadtext.split(',');
-  var genre = ganerarray[0];
-  var subCategory = ganerarray[1];
+  var genre = genrearray[0];
+  var subCategory = genrearray[1];
   console.log("Genre",genre);
   console.log("SubCategory",subCategory);
   pool.getConnection(function(err, connection) {
-  connection.query('select * from cc_movies_preference where subCategory = (select id from cc_subcategories where subCategoryName = ?) and genre = "1"',[subCategory], function(err, rows) {
+  connection.query('select * from cc_movies_preference where subCategory = (select id from cc_subcategories where subCategoryName = ?) and genre = ?',[subCategory,genre], function(err, rows) {
     console.log("*************************moviesgenre", rows);
       if (err) {
           console.log("Error While retriving content pack data from database:", err);
