@@ -177,14 +177,29 @@ function quickpayload(messagingEvent){
                var actortext = quickpayloadtext.search("%a%");
                    if(actortext == -1){
                      //receivedMessage(messagingEvent);
-                     payloadText.sendContentPacks(res, messagingEvent);
+                     //payloadText.sendContentPacks(res, messagingEvent);
                      console.log("Not actor");
+                     var action = quickpayloadtext.search("%action%");
+                     var comedy = quickpayloadtext.search("%comedy%");
+                     var romance = quickpayloadtext.search("%romance%");
+                     var thriller = quickpayloadtext.search("%thriller%");
+                     var horror = quickpayloadtext.search("%horror%");
+                     if(action == -1 || comedy == -1 || romance == -1 || thriller == -1 || horror == -1){
+                       //receivedMessage(messagingEvent);
+                       payloadText.sendContentPacks(res, messagingEvent);
+                       console.log("Not filem ganre");
+                     }else{
+                       //var actorname = quickpayloadtext.replace(" %a%","");
+                      console.log("filem ganre", quickpayloadtext);
+                      moviesganer(messagingEvent, quickpayloadtext);
+                     }
+
                    }else{
                      var actorname = quickpayloadtext.replace(" %a%","");
                      console.log("actor name", actorname);
                     filmactor(messagingEvent, actorname);
                    }
-             }else{
+                 }else{
                //console.log("Yessssssss");
                var moviename = quickpayloadtext.replace(" %m%","");
                console.log("Yessssssss", moviename);
@@ -258,6 +273,13 @@ function receivedMessage(event) {
             }
         });
 }
+
+function moviesganer(messagingEvent, quickpayloadtext){
+  console.log("*********Movies Ganer***********",quickpayloadtext);
+}
+
+
+
 
 function actorintro(messagingEvent, moviename){
   var senderID = messagingEvent.sender.id;
