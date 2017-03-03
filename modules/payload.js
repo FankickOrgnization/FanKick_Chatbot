@@ -8,6 +8,7 @@ const movie = require('../contentjson/movies.json');
 const sport = require('../contentjson/sports.json');
 const tv_show = require('../contentjson/tv shows.json');
 const musics = require('../contentjson/music.json');
+const jokes = require('../contentjson/jokes.json');
 //var app = express();
 var mysql = require('mysql');
 var pool = mysql.createPool({
@@ -102,12 +103,15 @@ const sendContentPacks = (categoryName,event) => {
           subcategorydetails(categoryName,event);
         }else if (categoryName =="akshay kumar" || categoryName =="shah rukh khan" || categoryName =="aamir khan" || categoryName =="salman khan" || categoryName =="hrithik roshan") {
           //googlegraph(categoryName,event);
-            actorintro(categoryName,event)
+          actorintro(categoryName,event)
         }else if (categoryName =="virat kohli" || categoryName =="rohit sharma" || categoryName =="yuvraj singh" || categoryName =="sachin tendulkar" || categoryName =="dhoni") {
           googlegraph(categoryName,event);
         }else if (categoryName =="home" ) {
           allcategory(event, categoryName);
-        }else {
+        }else if(categoryName=="jokes"){
+          sendJoke(event);
+        }
+        else {
           sendHelpMessage(event);
         }
 }
@@ -497,6 +501,43 @@ for (var i = 0; i < 5; i++) {
     });
 }
 // ************************** Googlegraph api End ********************************
+//Random Jokes for User
+function sendJoke(recipientId) {
+var senderID = event.sender.id;
+  var jokeString = "";
+
+  while( jokeString ===  "")
+  {
+      var random = Math.floor(Math.random() * jokes.length);
+      if(jokes[random].joke.length < 320)   // better be a least one good joke :)
+          jokeString = jokes[random].joke;
+  }
+
+  var messageData = {
+    recipient: {
+      id: senderID
+    },
+    message: {
+      text: jokeString,
+      quick_replies: [
+        {
+          "content_type":"text",
+          "title":"Another 😂",
+          "payload":"joke"
+        },
+        {
+          "content_type":"text",
+          "title":"Home",
+          "payload":"home"
+        }
+      ]
+    }
+  };
+
+  callSendAPI(messageData,'https://graph.facebook.com/v2.6/592208327626213/messages');
+}
+
+//Ramndom Jokes for User*************
 
 function sendHelpMessage(event){
   //fbuserlocation();
