@@ -268,7 +268,7 @@ function actorintro(messagingEvent, moviename){
           "id": senderID
       },
       "message":{
-          "text":"Here you go..(y)"
+          "text":"Here you go👉..."
           //"text":msg
         }
       };
