@@ -259,15 +259,15 @@ function receivedMessage(event) {
 
 function actorintro(messagingEvent, moviename){
   var senderID = messagingEvent.sender.id;
-  var img = 'https://fankickdev.blob.core.windows.net/images/home_logo.png';
-  var msg = 'Amazing talent! Here is what I know about '+img+'';
+  //var img = 'https://fankickdev.blob.core.windows.net/images/home_logo.png';
+  //var msg = 'Amazing talent! Here is what I know about '+img+'';
   var messageData = {
       "recipient": {
           "id": senderID
       },
       "message":{
-          //"text":"Here you go..	O:-)"
-          "text":msg
+          "text":"Here you go..	O:-)(y)"
+          //"text":msg
         }
       };
   callSendAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
