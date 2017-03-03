@@ -283,13 +283,91 @@ function moviesganer(messagingEvent, quickpayloadtext){
   var subCategory = ganerarray[1];
   console.log("ganer",ganer);
   console.log("subCategory",subCategory);
-  // for(var i = 0; i < 3; i++)
-  // {
-  //    console.log(myarray[i]);
-  //
-  //   //  var res1 = myarray[i].concat(myarray[i]);
-  //
-  // }
+  pool.getConnection(function(err, connection) {
+  connection.query('select * from cc_movies_preference where subCategory = (select id from cc_subcategories where subCategoryName = ?) and genre = "1"',[subCategory], function(err, rows) {
+    console.log("*************************quickmovies", rows);
+      if (err) {
+          console.log("Error While retriving content pack data from database:", err);
+      } else if (rows.length) {
+          var senderID = messagingEvent.sender.id;
+          var contentList = [];
+          for (var i = 0; i < rows.length; i++) { //Construct request body
+              var keyMap = {
+                  "title": rows[i].movieName,
+                  "image_url": rows[i].movieImageUrl,
+                  "buttons": [
+                  //   {
+                  //     "type": "web_url",
+                  //     "url": rows[i].trailerUrl,
+                  //     "title": "Trailer"
+                  // },{
+                  //     "type": "web_url",
+                  //     "url": rows[i].movieDescriptionUrl,
+                  //     "title": "Audio"
+                  // },
+                  {
+                    "type": "postback",
+                    "title": "More Info",
+                    "payload": rows[i].movieName+' %mname%'
+                    }]
+              };
+              contentList.push(keyMap);
+          }
+          var messageData = {
+              "recipient": {
+                  "id": senderID
+              },
+              "message":{
+                "attachment": {
+                  "type": "template",
+                  "payload": {
+                      "template_type": "generic",
+                      "elements": contentList
+                      }
+                  },
+                  "quick_replies":[
+                    {
+                      "content_type":"text",
+                      "title":"Action",
+                      "payload":'Action,'+categoryName+',%action%'
+                    },
+                    {
+                      "content_type":"text",
+                      "title":"Comedy",
+                      "payload":'Comedy,'+categoryName+',%comedy%'
+                    },
+                    {
+                      "content_type":"text",
+                      "title":"Romance",
+                      "payload":'Romance,'+categoryName+',%romance%'
+                    },
+                    {
+                      "content_type":"text",
+                      "title":"Thriller",
+                      "payload":'Thriller,'+categoryName+',%thriller%'
+                    },
+                    {
+                      "content_type":"text",
+                      "title":"Horror",
+                      "payload":'Horror,'+categoryName+',%horror%'
+                    },
+                    {
+                      "content_type":"text",
+                      "title":"home 🏠",
+                      "payload":"home"
+                    }
+                  ]
+                }
+          }
+         callSendAPI(messageData,'https://graph.facebook.com/v2.6/592208327626213/messages');
+      } else {
+          console.log("No Data Found From Database");
+          sendHelpMessage(event);
+      }
+      connection.release();
+  });
+  });
+
 }
 
 
