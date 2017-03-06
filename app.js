@@ -330,32 +330,32 @@ function moviesgenre(messagingEvent, quickpayloadtext){
                     {
                       "content_type":"text",
                       "title":"Action",
-                      "payload":'Action,'+categoryName+',%action%'
+                      "payload":'Action,'+subCategory+',%action%'
                     },
                     {
                       "content_type":"text",
                       "title":"Animation",
-                      "payload":'Animation,'+categoryName+',%animation%'
+                      "payload":'Animation,'+subCategory+',%animation%'
                     },
                     {
                       "content_type":"text",
                       "title":"Comedy",
-                      "payload":'Comedy,'+categoryName+',%comedy%'
+                      "payload":'Comedy,'+subCategory+',%comedy%'
                     },
                     {
                       "content_type":"text",
                       "title":"Romance",
-                      "payload":'Romance,'+categoryName+',%romance%'
+                      "payload":'Romance,'+subCategory+',%romance%'
                     },
                     {
                       "content_type":"text",
                       "title":"Thriller",
-                      "payload":'Thriller,'+categoryName+',%thriller%'
+                      "payload":'Thriller,'+subCategory+',%thriller%'
                     },
                     {
                       "content_type":"text",
                       "title":"Socio-fantasy",
-                      "payload":'Socio-fantasy,'+categoryName+',%socio-fantasy%'
+                      "payload":'Socio-fantasy,'+subCategory+',%socio-fantasy%'
                     },
                     {
                       "content_type":"text",
