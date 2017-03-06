@@ -163,7 +163,15 @@ function quickmovies(categoryName,event) {
       } else if (rows.length) {
           var senderID = event.sender.id;
           var contentList = [];
-          for (var i = 0; i < 10; i++) { //Construct request body
+          if(rows.length > 10){
+            var rowslenth = 10;
+            console.log("more than 10 Rows",rowslenth);
+          }else{
+          var rowslenth = rows.length;
+          console.log("less than 10 Rows",rowslenth);
+          }
+
+          for (var i = 0; i < rowslenth; i++) { //Construct request body
               var keyMap = {
                   "title": rows[i].movieName,
                   "image_url": rows[i].picture1,
