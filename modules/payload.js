@@ -163,7 +163,7 @@ function quickmovies(categoryName,event) {
       } else if (rows.length) {
           var senderID = event.sender.id;
           var contentList = [];
-          for (var i = 0; i < rows.length; i++) { //Construct request body
+          for (var i = 0; i < 10; i++) { //Construct request body
               var keyMap = {
                   "title": rows[i].movieName,
                   "image_url": rows[i].picture1,
@@ -391,12 +391,12 @@ function celebritiesdetails(categoryName,event){
                   {
                     "content_type":"text",
                     "title":"Pictures",
-                    "payload":"Pictures"
+                    "payload":rows[i].celebrityName+' ,%pictures%'
                   },
                   {
                     "content_type":"text",
                     "title":"Movies",
-                    "payload":"Movies"
+                    "payload":rows[i].celebrityName+' ,%movies%'
                   },
                   {
                     "content_type":"text",
@@ -406,12 +406,12 @@ function celebritiesdetails(categoryName,event){
                   {
                     "content_type":"text",
                     "title":"Net Worth",
-                    "payload":"Net Worth"
+                    "payload":rows[i].celebrityName+' ,%networth%'
                   },
                   {
                     "content_type":"text",
                     "title":"News",
-                    "payload":"News"
+                    "payload":rows[i].celebrityName+' ,%news%'
                   },
                   {
                     "content_type":"text",

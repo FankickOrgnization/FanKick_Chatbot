@@ -170,42 +170,51 @@ function quickpayload(messagingEvent){
   var res = quickpayloadtext.toLowerCase();
   var userid = messagingEvent.sender.id;
   var movietext = quickpayloadtext.search("%m%");
-             if(movietext == -1)
-             {
-               console.log("Not Movie");
-               //receivedMessage(messagingEvent);
-               var actortext = quickpayloadtext.search("%a%");
-                   if(actortext == -1){
-                     //receivedMessage(messagingEvent);
-                     //payloadText.sendContentPacks(res, messagingEvent);
-                     console.log("Not actor");
-                     var action = quickpayloadtext.search("%action%");
-                     var comedy = quickpayloadtext.search("%comedy%");
-                     var romance = quickpayloadtext.search("%romance%");
-                     var thriller = quickpayloadtext.search("%thriller%");
-                     var animation = quickpayloadtext.search("%animation%");
-                     var sociofantasy = quickpayloadtext.search("%socio-fantasy%");
-                     if(action == -1 && comedy == -1 && romance == -1 && thriller == -1 && animation == -1 && sociofantasy == -1){
-                       //receivedMessage(messagingEvent);
-                       payloadText.sendContentPacks(res, messagingEvent);
-                       console.log("Not filem genre");
-                     }else{
-                       //var actorname = quickpayloadtext.replace(" %a%","");
-                      console.log("filem genre", quickpayloadtext);
-                      moviesgenre(messagingEvent, quickpayloadtext);
-                     }
-
-                   }else{
-                     var actorname = quickpayloadtext.replace(" %a%","");
-                     console.log("actor name", actorname);
-                    filmactor(messagingEvent, actorname);
-                   }
-                 }else{
-               //console.log("Yessssssss");
-               var moviename = quickpayloadtext.replace(" %m%","");
-               console.log("Yessssssss", moviename);
-               quickmovies(messagingEvent, moviename);
+   if(movietext == -1)
+   {
+     console.log("Not Movie");
+     //receivedMessage(messagingEvent);
+     var actortext = quickpayloadtext.search("%a%");
+     if(actortext == -1){
+       //receivedMessage(messagingEvent);
+       //payloadText.sendContentPacks(res, messagingEvent);
+       console.log("Not actor");
+       var action = quickpayloadtext.search("%action%");
+       var comedy = quickpayloadtext.search("%comedy%");
+       var romance = quickpayloadtext.search("%romance%");
+       var thriller = quickpayloadtext.search("%thriller%");
+       var animation = quickpayloadtext.search("%animation%");
+       var sociofantasy = quickpayloadtext.search("%socio-fantasy%");
+         if(action == -1 && comedy == -1 && romance == -1 && thriller == -1 && animation == -1 && sociofantasy == -1){
+           //receivedMessage(messagingEvent);
+           var celpics = quickpayloadtext.search("%pictures%");
+           var celmovies = quickpayloadtext.search("%movies%");
+           var celnetworth = quickpayloadtext.search("%networth%");
+           var celnews = quickpayloadtext.search("%news%");
+             if(celpics == -1 && celmovies == -1 && celnet == -1 && celnews == -1){
+             payloadText.sendContentPacks(res, messagingEvent);
+             console.log("Not filem genre");
+             }else{
+             //var actorpics = quickpayloadtext.replace(" %a%","");
+             console.log("actor name", actorpics);
+             celebritypics(messagingEvent,quickpayloadtext)
              }
+         }else{
+           //var actorname = quickpayloadtext.replace(" %a%","");
+          console.log("filem genre", quickpayloadtext);
+          moviesgenre(messagingEvent, quickpayloadtext);
+         }
+     }else{
+       var actorname = quickpayloadtext.replace(" %a%","");
+       console.log("actor name", actorname);
+      filmactor(messagingEvent, actorname);
+     }
+    }else{
+     //console.log("Yessssssss");
+     var moviename = quickpayloadtext.replace(" %m%","");
+     console.log("Yessssssss", moviename);
+     quickmovies(messagingEvent, moviename);
+   }
 }
 // Quick_Reply payload section start *********************************
 // wit.ai function for verify the text in wit.ai
@@ -356,6 +365,11 @@ function moviesgenre(messagingEvent, quickpayloadtext){
                       "content_type":"text",
                       "title":"Socio-fantasy",
                       "payload":'Socio-fantasy,'+subCategory+',%socio-fantasy%'
+                    },
+                    {
+                      "content_type":"text",
+                      "title":"Latest News",
+                      "payload":'Latest News,'+subCategory+',%news%'
                     },
                     {
                       "content_type":"text",
