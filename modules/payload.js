@@ -224,11 +224,11 @@ function quickmovies(categoryName,event) {
                       "title":"Horror",
                       "payload":'Horror,'+categoryName+',%horror%'
                     },
-                    // {
-                    //   "content_type":"text",
-                    //   "title":"Google Search",
-                    //   "payload":"Google Search"
-                    // },
+                    {
+                      "content_type":"text",
+                      "title":"Jokes",
+                      "payload":"Jokes"
+                    },
                     {
                       "content_type":"text",
                       "title":"home 🏠",
