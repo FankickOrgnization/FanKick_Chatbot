@@ -817,9 +817,9 @@ function filmactor(messagingEvent, actorname) {
             var res3 = res2.concat(res1);
             var res5 = res3.concat(res2);
               var keyMap = {
-                  "title": rows[i].celebrityName,
+                  "title": rows[i].name,
                   "image_url": rows[i].picture1,
-                  "subtitle":rows[i].celebrityName,
+                  "subtitle":rows[i].name,
                 //  "item_url": rows[i].image_url,
                   "buttons": [
                     {
