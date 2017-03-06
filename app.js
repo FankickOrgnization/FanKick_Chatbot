@@ -183,8 +183,9 @@ function quickpayload(messagingEvent){
                      var comedy = quickpayloadtext.search("%comedy%");
                      var romance = quickpayloadtext.search("%romance%");
                      var thriller = quickpayloadtext.search("%thriller%");
-                     var horror = quickpayloadtext.search("%horror%");
-                     if(action == -1 && comedy == -1 && romance == -1 && thriller == -1 && horror == -1){
+                     var animation = quickpayloadtext.search("%animation%");
+                     var sociofantasy = quickpayloadtext.search("%socio-fantasy%");
+                     if(action == -1 && comedy == -1 && romance == -1 && thriller == -1 && animation == -1 && sociofantasy == -1){
                        //receivedMessage(messagingEvent);
                        payloadText.sendContentPacks(res, messagingEvent);
                        console.log("Not filem genre");
@@ -329,27 +330,37 @@ function moviesgenre(messagingEvent, quickpayloadtext){
                     {
                       "content_type":"text",
                       "title":"Action",
-                      "payload":'Action,'+subCategory+',%action%'
+                      "payload":'Action,'+categoryName+',%action%'
+                    },
+                    {
+                      "content_type":"text",
+                      "title":"Animation",
+                      "payload":'Animation,'+categoryName+',%animation%'
                     },
                     {
                       "content_type":"text",
                       "title":"Comedy",
-                      "payload":'Comedy,'+subCategory+',%comedy%'
+                      "payload":'Comedy,'+categoryName+',%comedy%'
                     },
                     {
                       "content_type":"text",
                       "title":"Romance",
-                      "payload":'Romance,'+subCategory+',%romance%'
+                      "payload":'Romance,'+categoryName+',%romance%'
                     },
                     {
                       "content_type":"text",
                       "title":"Thriller",
-                      "payload":'Thriller,'+subCategory+',%thriller%'
+                      "payload":'Thriller,'+categoryName+',%thriller%'
                     },
                     {
                       "content_type":"text",
-                      "title":"Horror",
-                      "payload":'Horror,'+subCategory+',%horror%'
+                      "title":"Socio-fantasy",
+                      "payload":'Socio-fantasy,'+categoryName+',%socio-fantasy%'
+                    },
+                    {
+                      "content_type":"text",
+                      "title":"Jokes",
+                      "payload":"Jokes"
                     },
                     {
                       "content_type":"text",

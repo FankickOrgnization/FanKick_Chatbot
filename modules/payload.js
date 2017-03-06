@@ -206,6 +206,11 @@ function quickmovies(categoryName,event) {
                     },
                     {
                       "content_type":"text",
+                      "title":"Animation",
+                      "payload":'Animation,'+categoryName+',%animation%'
+                    },
+                    {
+                      "content_type":"text",
                       "title":"Comedy",
                       "payload":'Comedy,'+categoryName+',%comedy%'
                     },
@@ -221,8 +226,8 @@ function quickmovies(categoryName,event) {
                     },
                     {
                       "content_type":"text",
-                      "title":"Horror",
-                      "payload":'Horror,'+categoryName+',%horror%'
+                      "title":"Socio-fantasy",
+                      "payload":'Socio-fantasy,'+categoryName+',%socio-fantasy%'
                     },
                     {
                       "content_type":"text",
