@@ -306,56 +306,59 @@ function celebritypics(messagingEvent,quickpayloadtext){
           var movieslist;
           var celebrityname;
           for (var i = 0; i < rows.length; i++) { //Construct request body
-            var res1 = rows[i].id +",";
-            var res2 = rows[i].celebrityName +",";
-            var res3 = res2.concat(res1);
-            var res5 = res3.concat(res2);
             celebrityname = rows[i].name;
               var keyMap = {
-                  "title": rows[i].name,
-                  "image_url": rows[i].picture1,
-                  //"subtitle":rows[i].name,
-                //  "item_url": rows[i].image_url,
-                  "buttons": [
-                    {
-                      "type":"web_url",
-                      "url": rows[i].picture5,
-                      "title":"More Pics"
-                  }]
-              },{
-                  "title": rows[i].name,
-                  "image_url": rows[i].picture2,
-                  //"subtitle":rows[i].name,
-                //  "item_url": rows[i].image_url,
-                  "buttons": [
-                    {
-                      "type":"web_url",
-                      "url": rows[i].picture5,
-                      "title":"More Pics"
-                  }]
-              },{
-                  "title": rows[i].name,
-                  "image_url": rows[i].picture3,
-                //  "subtitle":rows[i].name,
-                //  "item_url": rows[i].image_url,
-                  "buttons": [
-                    {
-                      "type":"web_url",
-                      "url": rows[i].picture5,
-                      "title":"More Pics"
-                  }]
-              },{
-                  "title": rows[i].name,
-                  "image_url": rows[i].picture4,
-                  //"subtitle":rows[i].name,
-                //  "item_url": rows[i].image_url,
-                  "buttons": [
-                    {
-                      "type":"web_url",
-                      "url": rows[i].picture5,
-                      "title":"More Pics"
-                  }]
-              } ;
+                    "type": "template",
+                    "payload": {
+                     "template_type": "generic",
+                      "elements": [
+                      {
+                        "title": rows[i].name,
+                        "image_url": rows[i].picture1,
+                        "buttons": [
+                        {
+            			   "type":"web_url",
+                           "url": rows[i].picture5,
+                           "title":"More Pics"
+                        }
+                        ]
+                      },
+            		        {
+                         "title": rows[i].name,
+                        "image_url": rows[i].picture2,
+                        "buttons": [
+                        {
+                          "type":"web_url",
+                          "url": rows[i].picture5,
+                          "title":"More Pics"
+                        }
+                        ]
+                      },
+                      {
+                         "title": rows[i].name,
+                        "image_url": rows[i].picture3,
+                        "buttons": [
+                        {
+            				"type":"web_url",
+                           "url": rows[i].picture5,
+                           "title":"More Pics"
+                        }
+                        ]
+                      },
+                      {
+                        "title": rows[i].name,
+                        "image_url": rows[i].picture4,
+                        "buttons": [
+                        {
+                           "type":"web_url",
+                           "url": rows[i].picture5,
+                           "title":"More Pics"
+                        }
+                        ]
+                      }
+                      ]
+                    }
+                  }
               contentList.push(keyMap);
           }
 
@@ -364,13 +367,7 @@ function celebritypics(messagingEvent,quickpayloadtext){
                   "id": senderID
               },
               "message": {
-                  "attachment": {
-                      "type": "template",
-                      "payload": {
-                          "template_type": "generic",
-                          "elements": contentList
-                      }
-                  },
+                  "attachment": keyMap,
                   "quick_replies":[
                 {
                   "content_type":"text",
@@ -411,8 +408,7 @@ function celebritypics(messagingEvent,quickpayloadtext){
                   "content_type":"text",
                   "title":"Home 🏠",
                   "payload":"home"
-                }
-              ]
+                }]
               }
           }
           callSendAPI(messageData,'https://graph.facebook.com/v2.6/592208327626213/messages');
@@ -423,7 +419,6 @@ function celebritypics(messagingEvent,quickpayloadtext){
       connection.release();
   });
   });
-
 }
 
 
