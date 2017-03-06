@@ -295,7 +295,7 @@ function moviesgenre(messagingEvent, quickpayloadtext){
           for (var i = 0; i < rows.length; i++) { //Construct request body
               var keyMap = {
                   "title": rows[i].movieName,
-                  "image_url": rows[i].movieImageUrl,
+                  "image_url": rows[i].picture1,
                   "buttons": [
                   //   {
                   //     "type": "web_url",
@@ -419,7 +419,7 @@ pool.getConnection(function(err, connection) {
               console.log('Getting the celebrity related movies from selected celebrity:', rows);
               var keyMap = {
                            "title": rows[i].movieName,
-                           "image_url": rows[i].movieImageUrl,
+                           "image_url": rows[i].picture1,
                            //"item_url": rows[i].movieImageUrl,
                            "buttons": [{
                                "type": "web_url",
@@ -428,11 +428,11 @@ pool.getConnection(function(err, connection) {
                            }
                            ,{
                                "type": "web_url",
-                               "url": rows[i].trailerUrl,
+                               "url": rows[i].songsUrl,
                                "title": "Audio"
                            },{
                                "type": "web_url",
-                               "url": rows[i].trailerUrl,
+                               "url": rows[i].reviews,
                                "title": "Review"
                            }
                          ]
@@ -704,7 +704,7 @@ function quickmovies(messagingEvent, moviename) {
           for (var i = 0; i < rows.length; i++) { //Construct request body
               var keyMap = {
                   "title": rows[i].movieName,
-                  "image_url": rows[i].movieImageUrl,
+                  "image_url": rows[i].picture1,
                   //"item_url": rows[i].movieImageUrl,
                   "buttons": [{
                       "type": "web_url",
@@ -712,8 +712,12 @@ function quickmovies(messagingEvent, moviename) {
                       "title": "Trailer"
                   },{
                       "type": "web_url",
-                      "url": rows[i].movieDescriptionUrl,
+                      "url": rows[i].songsUrl,
                       "title": "Audio"
+                  },{
+                      "type": "web_url",
+                      "url": rows[i].reviews,
+                      "title": "Review"
                   }]
               };
               contentList.push(keyMap);

@@ -166,7 +166,7 @@ function quickmovies(categoryName,event) {
           for (var i = 0; i < rows.length; i++) { //Construct request body
               var keyMap = {
                   "title": rows[i].movieName,
-                  "image_url": rows[i].movieImageUrl,
+                  "image_url": rows[i].picture1,
                   //"item_url": rows[i].movieImageUrl,
                   "buttons": [
                   //   {
