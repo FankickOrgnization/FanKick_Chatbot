@@ -110,7 +110,7 @@ const sendContentPacks = (categoryName,event) => {
         }else if (categoryName =="home" ) {
           allcategory(event, categoryName);
         }else if(categoryName=="jokes"){
-          sendJoke(event);
+          sendJoke(categoryName,event);
         }
         else {
           sendHelpMessage(event);
@@ -503,7 +503,7 @@ for (var i = 0; i < 5; i++) {
 }
 // ************************** Googlegraph api End ********************************
 //Random Jokes for User
-function sendJoke(recipientId) {
+function sendJoke(categoryName,event) {
 var senderID = event.sender.id;
   var jokeString = "";
 
