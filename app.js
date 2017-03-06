@@ -486,22 +486,22 @@ pool.getConnection(function(err, connection) {
                     {
                       "content_type":"text",
                       "title":actor,
-                      "payload":actor
+                      "payload":actor+" %a%"
                     },
                     {
                       "content_type":"text",
                       "title":actress,
-                      "payload":actress
+                      "payload":actress+" %a%"
                     },
                     {
                       "content_type":"text",
                       "title":director,
-                      "payload":director
+                      "payload":director+" %a%"
                     },
                     {
                       "content_type":"text",
                       "title":musicDirector,
-                      "payload":musicDirector
+                      "payload":musicDirector+" %a%"
                     },{
                       "content_type":"text",
                       "title":"Similar Movie",
