@@ -191,7 +191,7 @@ function quickpayload(messagingEvent){
            var celmovies = quickpayloadtext.search("%movies%");
            var celnetworth = quickpayloadtext.search("%networth%");
            var celnews = quickpayloadtext.search("%news%");
-             if(celpics == -1 && celmovies == -1 && celnet == -1 && celnews == -1){
+             if(celpics == -1 && celmovies == -1 && celnetworth == -1 && celnews == -1){
              payloadText.sendContentPacks(res, messagingEvent);
              console.log("Not filem genre");
              }else{
