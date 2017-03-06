@@ -197,7 +197,7 @@ function quickpayload(messagingEvent){
              }else{
              //var actorpics = quickpayloadtext.replace(" %a%","");
              console.log("actor name", actorpics);
-             celebritypics(messagingEvent,quickpayloadtext)
+             celebritypics(messagingEvent,quickpayloadtext);
              }
          }else{
            //var actorname = quickpayloadtext.replace(" %a%","");
@@ -283,6 +283,20 @@ function receivedMessage(event) {
             }
         });
 }
+
+
+//selected celebrity images***************************
+function celebritypics(messagingEvent,quickpayloadtext){
+  var genrearray = quickpayloadtext.split(',');
+  var genre = genrearray[0];
+  var subCategory = genrearray[1];
+  console.log("actername",genre);
+  console.log("type",subCategory);
+
+}
+
+
+
 
 function moviesgenre(messagingEvent, quickpayloadtext){
   console.log("*********Movies Genre***********",quickpayloadtext);
@@ -853,7 +867,48 @@ function filmactor(messagingEvent, actorname) {
                           "elements": contentList
                       }
                   },
-                  "quick_replies":quickreply
+                  "quick_replies":[
+                {
+                  "content_type":"text",
+                  "title":"Pictures",
+                  "payload":rows[i].name+' ,%pictures%'
+                },
+                {
+                  "content_type":"text",
+                  "title":"Movies",
+                  "payload":rows[i].name+' ,%movies%'
+                },
+                {
+                  "content_type":"text",
+                  "title":"Songs",
+                  "payload":"Songs"
+                },
+                {
+                  "content_type":"text",
+                  "title":"Net Worth",
+                  "payload":rows[i].name+' ,%networth%'
+                },
+                {
+                  "content_type":"text",
+                  "title":"News",
+                  "payload":rows[i].name+' ,%news%'
+                },
+                {
+                  "content_type":"text",
+                  "title":"Family",
+                  "payload":"Family"
+                },
+                {
+                  "content_type":"text",
+                  "title":"Personal",
+                  "payload":"Personal"
+                },
+                {
+                  "content_type":"text",
+                  "title":"Home 🏠",
+                  "payload":"home"
+                }
+              ]
               }
           }
           callSendAPI(messageData,'https://graph.facebook.com/v2.6/592208327626213/messages');
