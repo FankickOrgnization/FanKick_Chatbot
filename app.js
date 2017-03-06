@@ -825,11 +825,13 @@ function filmactor(messagingEvent, actorname) {
           var contentList = [];
           var quickList = [];
           var movieslist;
+          var celebrityname;
           for (var i = 0; i < rows.length; i++) { //Construct request body
             var res1 = rows[i].id +",";
             var res2 = rows[i].celebrityName +",";
             var res3 = res2.concat(res1);
             var res5 = res3.concat(res2);
+            celebrityname = rows[i].name;
               var keyMap = {
                   "title": rows[i].name,
                   "image_url": rows[i].picture1,
@@ -845,11 +847,6 @@ function filmactor(messagingEvent, actorname) {
                     "type":"web_url",
                     "url": rows[i].twitterHandle,
                     "title":"Twitter"
-                  },
-                  {
-                  "type": "postback",
-                  "title": "More Info",
-                  "payload": rows[i].id
                   }]
               };
               contentList.push(keyMap);
@@ -871,12 +868,12 @@ function filmactor(messagingEvent, actorname) {
                 {
                   "content_type":"text",
                   "title":"Pictures",
-                  "payload":rows[i].name+' ,%pictures%'
+                  "payload":celebrityname+' ,%pictures%'
                 },
                 {
                   "content_type":"text",
                   "title":"Movies",
-                  "payload":rows[i].name+' ,%movies%'
+                  "payload":celebrityname+' ,%movies%'
                 },
                 {
                   "content_type":"text",
@@ -886,12 +883,12 @@ function filmactor(messagingEvent, actorname) {
                 {
                   "content_type":"text",
                   "title":"Net Worth",
-                  "payload":rows[i].name+' ,%networth%'
+                  "payload":celebrityname+' ,%networth%'
                 },
                 {
                   "content_type":"text",
                   "title":"News",
-                  "payload":rows[i].name+' ,%news%'
+                  "payload":celebrityname+' ,%news%'
                 },
                 {
                   "content_type":"text",
