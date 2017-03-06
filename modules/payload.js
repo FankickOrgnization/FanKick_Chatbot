@@ -524,7 +524,7 @@ var senderID = event.sender.id;
         {
           "content_type":"text",
           "title":"Another 😂",
-          "payload":"joke"
+          "payload":"jokes"
         },
         {
           "content_type":"text",
