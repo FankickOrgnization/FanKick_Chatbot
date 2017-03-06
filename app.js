@@ -196,7 +196,7 @@ function quickpayload(messagingEvent){
              console.log("Not filem genre");
              }else{
              //var actorpics = quickpayloadtext.replace(" %a%","");
-             console.log("actor name", actorpics);
+             //console.log("actor name", actorpics);
              celebritypics(messagingEvent,quickpayloadtext);
              }
          }else{
