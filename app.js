@@ -288,10 +288,141 @@ function receivedMessage(event) {
 //selected celebrity images***************************
 function celebritypics(messagingEvent,quickpayloadtext){
   var genrearray = quickpayloadtext.split(',');
-  var genre = genrearray[0];
+  var actername = genrearray[0];
   var subCategory = genrearray[1];
-  console.log("actername",genre);
+  console.log("actername",actername);
   console.log("type",subCategory);
+  pool.getConnection(function(err, connection) {
+  connection.query('select * from cc_film_celebrity_preference where name = ?',[aname], function(err, rows) {
+    console.log("********filmactor*********", aname);
+      //console.log("*************************-after", categoryName);
+      console.log("*************************filmactor", rows);
+      if (err) {
+          console.log("Error While retriving content pack data from database:", err);
+      } else if (rows.length) {
+          var senderID = messagingEvent.sender.id;
+          var contentList = [];
+          var quickList = [];
+          var movieslist;
+          var celebrityname;
+          for (var i = 0; i < rows.length; i++) { //Construct request body
+            var res1 = rows[i].id +",";
+            var res2 = rows[i].celebrityName +",";
+            var res3 = res2.concat(res1);
+            var res5 = res3.concat(res2);
+            celebrityname = rows[i].name;
+              var keyMap = {
+                  "title": rows[i].name,
+                  "image_url": rows[i].picture1,
+                  //"subtitle":rows[i].name,
+                //  "item_url": rows[i].image_url,
+                  "buttons": [
+                    {
+                      "type":"web_url",
+                      "url": rows[i].picture5,
+                      "title":"More Pics"
+                  }]
+              },{
+                  "title": rows[i].name,
+                  "image_url": rows[i].picture2,
+                  //"subtitle":rows[i].name,
+                //  "item_url": rows[i].image_url,
+                  "buttons": [
+                    {
+                      "type":"web_url",
+                      "url": rows[i].picture5,
+                      "title":"More Pics"
+                  }]
+              },{
+                  "title": rows[i].name,
+                  "image_url": rows[i].picture3,
+                //  "subtitle":rows[i].name,
+                //  "item_url": rows[i].image_url,
+                  "buttons": [
+                    {
+                      "type":"web_url",
+                      "url": rows[i].picture5,
+                      "title":"More Pics"
+                  }]
+              },{
+                  "title": rows[i].name,
+                  "image_url": rows[i].picture4,
+                  //"subtitle":rows[i].name,
+                //  "item_url": rows[i].image_url,
+                  "buttons": [
+                    {
+                      "type":"web_url",
+                      "url": rows[i].picture5,
+                      "title":"More Pics"
+                  }]
+              } ;
+              contentList.push(keyMap);
+          }
+
+          var messageData = {
+              "recipient": {
+                  "id": senderID
+              },
+              "message": {
+                  "attachment": {
+                      "type": "template",
+                      "payload": {
+                          "template_type": "generic",
+                          "elements": contentList
+                      }
+                  },
+                  "quick_replies":[
+                {
+                  "content_type":"text",
+                  "title":"Pictures",
+                  "payload":celebrityname+' ,%pictures%'
+                },
+                {
+                  "content_type":"text",
+                  "title":"Movies",
+                  "payload":celebrityname+' ,%movies%'
+                },
+                {
+                  "content_type":"text",
+                  "title":"Songs",
+                  "payload":"Songs"
+                },
+                {
+                  "content_type":"text",
+                  "title":"Net Worth",
+                  "payload":celebrityname+' ,%networth%'
+                },
+                {
+                  "content_type":"text",
+                  "title":"News",
+                  "payload":celebrityname+' ,%news%'
+                },
+                {
+                  "content_type":"text",
+                  "title":"Family",
+                  "payload":"Family"
+                },
+                {
+                  "content_type":"text",
+                  "title":"Personal",
+                  "payload":"Personal"
+                },
+                {
+                  "content_type":"text",
+                  "title":"Home 🏠",
+                  "payload":"home"
+                }
+              ]
+              }
+          }
+          callSendAPI(messageData,'https://graph.facebook.com/v2.6/592208327626213/messages');
+      } else {
+          console.log("No Data Found From Database");
+          sendHelpMessage(messagingEvent);
+      }
+      connection.release();
+  });
+  });
 
 }
 
