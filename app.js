@@ -800,7 +800,7 @@ function filmactor(messagingEvent, actorname) {
   console.log("filmactor", actorname);
   var aname = actorname.trim();
   pool.getConnection(function(err, connection) {
-  connection.query('select * from cc_celebrity_preference where celebrityName = ?',[aname], function(err, rows) {
+  connection.query('select * from cc_film_celebrity_preference where celebrityName = ?',[aname], function(err, rows) {
     console.log("********filmactor*********", aname);
       //console.log("*************************-after", categoryName);
       console.log("*************************filmactor", rows);
