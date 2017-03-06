@@ -154,7 +154,7 @@ function quickmovies(categoryName,event) {
   //console.log("quickmovies", moviename);
   //var mname = moviename.trim();
   pool.getConnection(function(err, connection) {
-  connection.query('select * from cc_movies_preference where subCategory = (select id from cc_subcategories where subCategoryName = ?)',[categoryName], function(err, rows) {
+  connection.query('select * from cc_movies_preference where subCategory = (select id from cc_subcategories where subCategoryName = ?) order by id desc',[categoryName], function(err, rows) {
     //console.log("********quickmovies*********", mname);
       //console.log("*************************-after", categoryName);
       console.log("*************************quickmovies", rows);
