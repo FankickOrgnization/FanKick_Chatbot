@@ -308,7 +308,7 @@ function celebritypics(messagingEvent,quickpayloadtext){
           var keyMap;
           for (var i = 0; i < rows.length; i++) { //Construct request body
             celebrityname = rows[i].name;
-            if(type == "%pictures%"){
+            if(subCategory == "%pictures%"){
               keyMap = {
                     "type": "template",
                     "payload": {
@@ -341,7 +341,7 @@ function celebritypics(messagingEvent,quickpayloadtext){
                         "image_url": rows[i].picture3,
                         "buttons": [
                         {
-            				"type":"web_url",
+            				        "type":"web_url",
                            "url": rows[i].picture5,
                            "title":"More Pics"
                         }
@@ -361,11 +361,11 @@ function celebritypics(messagingEvent,quickpayloadtext){
                       ]
                     }
                   }
-                }else if (type == "%movies%") {
+                }else if (subCategory == "%movies%") {
                   console.log("celebrity Movies");
-                }else if (type == "%networth%") {
+                }else if (subCategory == "%networth%") {
                   console.log("celebrity networth");
-                }else if (type == "%news%") {
+                }else if (subCategory == "%news%") {
                   console.log("celebrity news");
                 }
               //contentList.push(keyMap);
