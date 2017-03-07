@@ -191,7 +191,7 @@ function quickpayload(messagingEvent){
            var celmovies = quickpayloadtext.search("%movies%");
            var celnetworth = quickpayloadtext.search("%networth%");
            var celnews = quickpayloadtext.search("%news%");
-           var celfamily =quickpayloadtext.search("%family%");
+           var celfamily = quickpayloadtext.search("%family%");
              if(celpics == -1 && celmovies == -1 && celnetworth == -1 && celnews == -1 && celfamily == -1){
              payloadText.sendContentPacks(res, messagingEvent);
              console.log("Not filem genre");
@@ -365,25 +365,6 @@ function celebritypics(messagingEvent,quickpayloadtext){
                 }else if (subCategory == "%movies%") {
                   console.log("celebrity Movies");
                   selectedactorfilems(messagingEvent,celebrityname);
-                  // keyMap = {
-                  //       "type": "template",
-                  //       "payload": {
-                  //        "template_type": "generic",
-                  //         "elements": [
-                  //         {
-                  //           "title": rows[i].name,
-                  //           "image_url": rows[i].picture1,
-                  //           "subtitle":rows[i].netWorth
-                  //           // "buttons": [
-                  //           // {
-                	// 		      //     "type":"web_url",
-                  //           //    "url": rows[i].picture5,
-                  //           //    "title":"More Pics"
-                  //           // }
-                  //           // ]
-                  //         }]
-                  //       }
-                  //     }
                 }else if (subCategory == "%networth%") {
                   console.log("celebrity networth");
                   keyMap = {
@@ -411,19 +392,16 @@ function celebritypics(messagingEvent,quickpayloadtext){
                         "type": "template",
                         "payload": {
                          "template_type": "generic",
-                          "elements": [
-                          {
+                          "elements": [{
                             "title": rows[i].name,
                             "image_url": rows[i].picture2,
-                            "subtitle":rows[i].name
-                            "buttons": [
-                                {
+                            "subtitle":rows[i].name,
+                            "buttons": [{
                                 "type":"web_url",
                                 "url": rows[i].newslink,
-                                "title":"Click here for News"
-                                }
-                            ]
-                          }]
+                                "title":"Click for News"
+                                }]
+                            }]
                         }
                       }
                 }else if (subCategory == "%family%") {
@@ -434,8 +412,8 @@ function celebritypics(messagingEvent,quickpayloadtext){
                          "template_type": "generic",
                           "elements": [
                           {
-                            "title": rows[i].name,
-                            "image_url": rows[i].picture2,
+                            "title":rows[i].name,
+                            "image_url":rows[i].picture2,
                             "subtitle":rows[i].family
                             // "buttons": [
                             // {
