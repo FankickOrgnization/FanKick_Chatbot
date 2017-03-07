@@ -305,9 +305,11 @@ function celebritypics(messagingEvent,quickpayloadtext){
           var quickList = [];
           var movieslist;
           var celebrityname;
+          var keyMap;
           for (var i = 0; i < rows.length; i++) { //Construct request body
             celebrityname = rows[i].name;
-              var keyMap = {
+            if(type == "%pictures%"){
+              keyMap = {
                     "type": "template",
                     "payload": {
                      "template_type": "generic",
@@ -359,7 +361,14 @@ function celebritypics(messagingEvent,quickpayloadtext){
                       ]
                     }
                   }
-              contentList.push(keyMap);
+                }else if (type == "%movies%") {
+                  console.log("celebrity Movies");
+                }else if (type == "%networth%") {
+                  console.log("celebrity networth");
+                }else if (type == "%news%") {
+                  console.log("celebrity news");
+                }
+              //contentList.push(keyMap);
           }
 
           var messageData = {
@@ -448,7 +457,7 @@ function moviesgenre(messagingEvent, quickpayloadtext){
           var rowslenth = rows.length;
           console.log("less than 10 Rows",rowslenth);
           }
-          for (var i = 0; i < rows.length; i++) { //Construct request body
+          for (var i = 0; i < rowslenth; i++) { //Construct request body
               var keyMap = {
                   "title": rows[i].movieName,
                   "image_url": rows[i].picture1,
@@ -731,7 +740,6 @@ pool.getConnection(function(err, connection) {
 
 //celebritiesdetails***************************************************
 function celebrityid(categoryName,event){
-
   pool.getConnection(function(err, connection) {
     //connection.query('select * from cc_celebrity_preference where celebrityName=?',[categoryName], function(err, rows) {
     connection.query('select * from cc_celebrity_preference where id = ?',[categoryName], function(err, rows) {
