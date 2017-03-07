@@ -367,6 +367,7 @@ function celebritypics(messagingEvent,quickpayloadtext){
                   selectedactorfilems(messagingEvent,celebrityname);
                 }else if (subCategory == "%networth%") {
                   console.log("celebrity networth");
+                  var msg = ''+rows[i].name+'has earned'+rows[i].netWorth+'so far..';
                   keyMap = {
                         "type": "template",
                         "payload": {
@@ -375,13 +376,16 @@ function celebritypics(messagingEvent,quickpayloadtext){
                           {
                             "title": rows[i].netWorth,
                             "image_url": rows[i].picture3,
-                            "subtitle":rows[i].name
+                            "subtitle":msg,
                             // "buttons": [
-                            // {
-                            //     "type":"web_url",
-                            //    "url": rows[i].picture5,
-                            //    "title":"More Pics"
-                            // }
+                            // // {
+                            // //     "type":"web_url",
+                            // //    "url": rows[i].picture5,
+                            // //    "title":"More Pics"
+                            // // }
+                            // // {
+                            // //   "type":"element_share"
+                            // // }
                             // ]
                           }]
                         }
@@ -412,9 +416,9 @@ function celebritypics(messagingEvent,quickpayloadtext){
                          "template_type": "generic",
                           "elements": [
                           {
-                            "title":rows[i].name,
-                            "image_url":rows[i].picture2,
-                            "subtitle":rows[i].family
+                            "title":rows[i].family,
+                            "image_url":rows[i].picture4,
+                            "subtitle":rows[i].name
                             // "buttons": [
                             // {
                             //     "type":"web_url",
