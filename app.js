@@ -367,7 +367,7 @@ function celebritypics(messagingEvent,quickpayloadtext){
                   selectedactorfilems(messagingEvent,celebrityname);
                 }else if (subCategory == "%networth%") {
                   console.log("celebrity networth");
-                  var msg = ''+rows[i].name+'has earned'+rows[i].netWorth+'so far..';
+                  var msg = ''+rows[i].name+' has earned '+rows[i].netWorth+' so far..';
                   keyMap = {
                         "type": "template",
                         "payload": {
