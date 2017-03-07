@@ -424,7 +424,7 @@ function celebritiesdetails(categoryName,event){
                   {
                     "content_type":"text",
                     "title":"Family",
-                    "payload":"Family"
+                    "payload":rows[i].celebrityName+' ,%family%'
                   },
                   {
                     "content_type":"text",

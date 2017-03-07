@@ -407,8 +407,46 @@ function celebritypics(messagingEvent,quickpayloadtext){
                       }
                 }else if (subCategory == "%news%") {
                   console.log("celebrity news");
+                  keyMap = {
+                        "type": "template",
+                        "payload": {
+                         "template_type": "generic",
+                          "elements": [
+                          {
+                            "title": rows[i].name,
+                            "image_url": rows[i].picture2,
+                            "subtitle":rows[i].name
+                            "buttons": [
+                                {
+                                "type":"web_url",
+                                "url": rows[i].newslink,
+                                "title":"Click here for News"
+                                }
+                            ]
+                          }]
+                        }
+                      }
                 }else if (subCategory == "%family%") {
-                  console.log("celebrity news");
+                  console.log("celebrity Family");
+                  keyMap = {
+                        "type": "template",
+                        "payload": {
+                         "template_type": "generic",
+                          "elements": [
+                          {
+                            "title": rows[i].name,
+                            "image_url": rows[i].picture2,
+                            "subtitle":rows[i].family
+                            // "buttons": [
+                            // {
+                            //     "type":"web_url",
+                            //    "url": rows[i].picture5,
+                            //    "title":"More Pics"
+                            // }
+                            // ]
+                          }]
+                        }
+                      }
                 }
               //contentList.push(keyMap);
           }
