@@ -363,8 +363,46 @@ function celebritypics(messagingEvent,quickpayloadtext){
                   }
                 }else if (subCategory == "%movies%") {
                   console.log("celebrity Movies");
+                  keyMap = {
+                        "type": "template",
+                        "payload": {
+                         "template_type": "generic",
+                          "elements": [
+                          {
+                            "title": rows[i].name,
+                            "image_url": rows[i].picture1,
+                            "subtitle":rows[i].netWorth
+                            // "buttons": [
+                            // {
+                			      //     "type":"web_url",
+                            //    "url": rows[i].picture5,
+                            //    "title":"More Pics"
+                            // }
+                            // ]
+                          }]
+                        }
+                      }
                 }else if (subCategory == "%networth%") {
                   console.log("celebrity networth");
+                  keyMap = {
+                        "type": "template",
+                        "payload": {
+                         "template_type": "generic",
+                          "elements": [
+                          {
+                            "title": rows[i].name,
+                            "image_url": rows[i].picture1,
+                            "subtitle":rows[i].netWorth
+                            // "buttons": [
+                            // {
+                            //     "type":"web_url",
+                            //    "url": rows[i].picture5,
+                            //    "title":"More Pics"
+                            // }
+                            // ]
+                          }]
+                        }
+                      }
                 }else if (subCategory == "%news%") {
                   console.log("celebrity news");
                 }
