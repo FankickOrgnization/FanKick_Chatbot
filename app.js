@@ -191,7 +191,8 @@ function quickpayload(messagingEvent){
            var celmovies = quickpayloadtext.search("%movies%");
            var celnetworth = quickpayloadtext.search("%networth%");
            var celnews = quickpayloadtext.search("%news%");
-             if(celpics == -1 && celmovies == -1 && celnetworth == -1 && celnews == -1){
+           var celfamily =quickpayloadtext.search("%family%");
+             if(celpics == -1 && celmovies == -1 && celnetworth == -1 && celnews == -1 && celfamily == -1){
              payloadText.sendContentPacks(res, messagingEvent);
              console.log("Not filem genre");
              }else{
@@ -363,25 +364,26 @@ function celebritypics(messagingEvent,quickpayloadtext){
                   }
                 }else if (subCategory == "%movies%") {
                   console.log("celebrity Movies");
-                  keyMap = {
-                        "type": "template",
-                        "payload": {
-                         "template_type": "generic",
-                          "elements": [
-                          {
-                            "title": rows[i].name,
-                            "image_url": rows[i].picture1,
-                            "subtitle":rows[i].netWorth
-                            // "buttons": [
-                            // {
-                			      //     "type":"web_url",
-                            //    "url": rows[i].picture5,
-                            //    "title":"More Pics"
-                            // }
-                            // ]
-                          }]
-                        }
-                      }
+                  selectedactorfilems(messagingEvent,celebrityname);
+                  // keyMap = {
+                  //       "type": "template",
+                  //       "payload": {
+                  //        "template_type": "generic",
+                  //         "elements": [
+                  //         {
+                  //           "title": rows[i].name,
+                  //           "image_url": rows[i].picture1,
+                  //           "subtitle":rows[i].netWorth
+                  //           // "buttons": [
+                  //           // {
+                	// 		      //     "type":"web_url",
+                  //           //    "url": rows[i].picture5,
+                  //           //    "title":"More Pics"
+                  //           // }
+                  //           // ]
+                  //         }]
+                  //       }
+                  //     }
                 }else if (subCategory == "%networth%") {
                   console.log("celebrity networth");
                   keyMap = {
@@ -390,9 +392,9 @@ function celebritypics(messagingEvent,quickpayloadtext){
                          "template_type": "generic",
                           "elements": [
                           {
-                            "title": rows[i].name,
-                            "image_url": rows[i].picture1,
-                            "subtitle":rows[i].netWorth
+                            "title": rows[i].netWorth,
+                            "image_url": rows[i].picture3,
+                            "subtitle":rows[i].name
                             // "buttons": [
                             // {
                             //     "type":"web_url",
@@ -404,6 +406,8 @@ function celebritypics(messagingEvent,quickpayloadtext){
                         }
                       }
                 }else if (subCategory == "%news%") {
+                  console.log("celebrity news");
+                }else if (subCategory == "%family%") {
                   console.log("celebrity news");
                 }
               //contentList.push(keyMap);
@@ -444,7 +448,7 @@ function celebritypics(messagingEvent,quickpayloadtext){
                 {
                   "content_type":"text",
                   "title":"Family",
-                  "payload":"Family"
+                  "payload":celebrityname+' ,%family%'
                 },
                 {
                   "content_type":"text",
@@ -469,7 +473,112 @@ function celebritypics(messagingEvent,quickpayloadtext){
 }
 
 
+//Selected actor filems from movies list
+function selectedactorfilems(messagingEvent,celebrityname){
+  console.log("*********Movies Genre***********",celebrityname);
+  pool.getConnection(function(err, connection) {
+  connection.query('select  * from cc_movies_preference where leadActor= ?',[celebrityname], function(err, rows) {
+    console.log("*************************moviesgenre", rows);
+      if (err) {
+          console.log("Error While retriving content pack data from database:", err);
+      } else if (rows.length) {
+          var senderID = messagingEvent.sender.id;
+          var contentList = [];
+          if(rows.length > 10){
+            var rowslenth = 10;
+            console.log("more than 10 Rows",rowslenth);
+          }else{
+          var rowslenth = rows.length;
+          console.log("less than 10 Rows",rowslenth);
+          }
+          for (var i = 0; i < rowslenth; i++) { //Construct request body
+              var keyMap = {
+                  "title": rows[i].movieName,
+                  "image_url": rows[i].picture1,
+                  "buttons": [
+                  //   {
+                  //     "type": "web_url",
+                  //     "url": rows[i].trailerUrl,
+                  //     "title": "Trailer"
+                  // },{
+                  //     "type": "web_url",
+                  //     "url": rows[i].movieDescriptionUrl,
+                  //     "title": "Audio"
+                  // },
+                  {
+                    "type": "postback",
+                    "title": "More Info",
+                    "payload": rows[i].movieName+' %mname%'
+                    }]
+              };
+              contentList.push(keyMap);
+          }
+          var messageData = {
+              "recipient": {
+                  "id": senderID
+              },
+              "message":{
+                "attachment": {
+                  "type": "template",
+                  "payload": {
+                      "template_type": "generic",
+                      "elements": contentList
+                      }
+                  },
+                  "quick_replies":[
+                {
+                  "content_type":"text",
+                  "title":"Pictures",
+                  "payload":celebrityname+' ,%pictures%'
+                },
+                {
+                  "content_type":"text",
+                  "title":"Movies",
+                  "payload":celebrityname+' ,%movies%'
+                },
+                {
+                  "content_type":"text",
+                  "title":"Songs",
+                  "payload":"Songs"
+                },
+                {
+                  "content_type":"text",
+                  "title":"Net Worth",
+                  "payload":celebrityname+' ,%networth%'
+                },
+                {
+                  "content_type":"text",
+                  "title":"News",
+                  "payload":celebrityname+' ,%news%'
+                },
+                {
+                  "content_type":"text",
+                  "title":"Family",
+                  "payload":celebrityname+' ,%family%'
+                },
+                {
+                  "content_type":"text",
+                  "title":"Personal",
+                  "payload":"Personal"
+                },
+                {
+                  "content_type":"text",
+                  "title":"Home 🏠",
+                  "payload":"home"
+                }
+              ]
+                }
+          }
+         callSendAPI(messageData,'https://graph.facebook.com/v2.6/592208327626213/messages');
+      } else {
+          console.log("No Data Found From Database");
+          sendHelpMessage(messagingEvent);
+      }
+      connection.release();
+  });
+  });
 
+}
 
 function moviesgenre(messagingEvent, quickpayloadtext){
   console.log("*********Movies Genre***********",quickpayloadtext);
@@ -1065,7 +1174,7 @@ function filmactor(messagingEvent, actorname) {
                 {
                   "content_type":"text",
                   "title":"Family",
-                  "payload":"Family"
+                  "payload":celebrityname+' ,%family%'
                 },
                 {
                   "content_type":"text",
