@@ -499,31 +499,31 @@ function celebritypics(messagingEvent, quickpayloadtext) {
                         "quick_replies": [
                             {
                                 "content_type": "text",
-                                "title": "Pictures",
+                                "title": celebrityname+' Pictures',
                                 "payload": celebrityname + ' ,%pictures%'
                             }, {
                                 "content_type": "text",
-                                "title": "Movies",
+                                "title": celebrityname+' Movies',
                                 "payload": celebrityname + ' ,%movies%'
                             }, {
                                 "content_type": "text",
-                                "title": "Songs",
+                                "title": celebrityname+" Songs",
                                 "payload": "Songs"
                             }, {
                                 "content_type": "text",
-                                "title": "Net Worth",
+                                "title": celebrityname+" Net Worth",
                                 "payload": celebrityname + ' ,%networth%'
                             }, {
                                 "content_type": "text",
-                                "title": "News",
+                                "title": celebrityname+" News",
                                 "payload": celebrityname + ' ,%news%'
                             }, {
                                 "content_type": "text",
-                                "title": "Family",
+                                "title": celebrityname+" Family",
                                 "payload": celebrityname + ' ,%family%'
                             }, {
                                 "content_type": "text",
-                                "title": "Personal",
+                                "title": celebrityname+" Personal",
                                 "payload": "Personal"
                             }, {
                                 "content_type": "text",
@@ -598,27 +598,27 @@ function selectedactorfilems(messagingEvent, celebrityname) {
                         "quick_replies": [
                             {
                                 "content_type": "text",
-                                "title": "Pictures",
+                                "title": celebrityname +" Pictures",
                                 "payload": celebrityname + ' ,%pictures%'
                             }, {
                                 "content_type": "text",
-                                "title": "Movies",
+                                "title": celebrityname +" Movies",
                                 "payload": celebrityname + ' ,%movies%'
                             }, {
                                 "content_type": "text",
-                                "title": "Songs",
+                                "title": celebrityname +" Songs",
                                 "payload": "Songs"
                             }, {
                                 "content_type": "text",
-                                "title": "Net Worth",
+                                "title": celebrityname +" Net Worth",
                                 "payload": celebrityname + ' ,%networth%'
                             }, {
                                 "content_type": "text",
-                                "title": "News",
+                                "title": celebrityname +" News",
                                 "payload": celebrityname + ' ,%news%'
                             }, {
                                 "content_type": "text",
-                                "title": "Family",
+                                "title": celebrityname +" Family",
                                 "payload": celebrityname + ' ,%family%'
                             }, {
                                 "content_type": "text",
@@ -1206,27 +1206,27 @@ function filmactor(messagingEvent, actorname) {
                         "quick_replies": [
                             {
                                 "content_type": "text",
-                                "title": "Pictures",
+                                "title": celebrityname +" Pictures",
                                 "payload": celebrityname + ' ,%pictures%'
                             }, {
                                 "content_type": "text",
-                                "title": "Movies",
+                                "title": celebrityname +" Movies",
                                 "payload": celebrityname + ' ,%movies%'
                             }, {
                                 "content_type": "text",
-                                "title": "Songs",
+                                "title": celebrityname +" Songs",
                                 "payload": "Songs"
                             }, {
                                 "content_type": "text",
-                                "title": "Net Worth",
+                                "title": celebrityname +" Net Worth",
                                 "payload": celebrityname + ' ,%networth%'
                             }, {
                                 "content_type": "text",
-                                "title": "News",
+                                "title": celebrityname +" News",
                                 "payload": celebrityname + ' ,%news%'
                             }, {
                                 "content_type": "text",
-                                "title": "Family",
+                                "title": celebrityname +" Family",
                                 "payload": celebrityname + ' ,%family%'
                             }, {
                                 "content_type": "text",
