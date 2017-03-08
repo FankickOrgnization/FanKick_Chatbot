@@ -239,8 +239,18 @@ function quickmovies(categoryName,event) {
                     },
                     {
                       "content_type":"text",
-                      "title":"Jokes",
-                      "payload":"Jokes"
+                      "title":"Top 5 Movies of 2016",
+                      "payload":'Top 5 Movies of 2016,'+categoryName+',%QR%'
+                    },
+                    {
+                      "content_type":"text",
+                      "title":"Top 5 Movies of 2016",
+                      "payload":'Worst Movies of 2016,'+categoryName+',%QR%'
+                    },
+                    {
+                      "content_type":"text",
+                      "title":"Top 5 Movies of 2016",
+                      "payload":'Top 10 Songs of 2016,'+categoryName+',%QR%'
                     },
                     {
                       "content_type":"text",
@@ -408,11 +418,6 @@ function celebritiesdetails(categoryName,event){
                   },
                   {
                     "content_type":"text",
-                    "title":"Songs",
-                    "payload":"Songs"
-                  },
-                  {
-                    "content_type":"text",
                     "title":"Net Worth",
                     "payload":rows[i].celebrityName+' ,%networth%'
                   },
@@ -428,8 +433,13 @@ function celebritiesdetails(categoryName,event){
                   },
                   {
                     "content_type":"text",
-                    "title":"Personal",
-                    "payload":"Personal"
+                    "title":"Jokes",
+                    "payload":"Jokes"
+                  },
+                  {
+                    "content_type":"text",
+                    "title":"Songs",
+                    "payload":"Songs"
                   },
                   {
                     "content_type":"text",
