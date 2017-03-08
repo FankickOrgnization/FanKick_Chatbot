@@ -729,9 +729,17 @@ function actorintro(messagingEvent, moviename){
       "recipient": {
           "id": senderID
       },
+      // "message":{
+      //     "text":"Here you go👉..."
+      //     //"text":msg
+      //   }
       "message":{
-          "text":"Here you go👉..."
-          //"text":msg
+      "attachment":{
+        "type":"audio",
+        "payload":{
+          "url":"https://petersapparel.com/bin/clip.mp3"
+          }
+        }
         }
       };
   callSendAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
