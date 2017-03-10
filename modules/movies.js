@@ -170,7 +170,7 @@ const subcategorymovies = (event, categoryName) => {
                 //     rowslenth = rows.length;
                 //     console.log("less than 10 Rows", rowslenth);
                 // }
-                for (var i = 0; i >= 5; i++) { //Construct request body
+                for (var i = 0; i <= 5; i++) { //Construct request body
                     var keyMap = {
                         "title": rows[i].movieName,
                         "image_url": rows[i].picture1,
@@ -266,7 +266,7 @@ const getgenremovies = (messagingEvent, quickpayloadtext) => {
                     var rowslenth = rows.length;
                     console.log("less than 10 Rows", rowslenth);
                 }
-                for (var i = 0; i >= 5; i++) { //Construct request body
+                for (var i = 0; i <= 5; i++) { //Construct request body
                     var keyMap = {
                         "title": rows[i].movieName,
                         "image_url": rows[i].picture1,
@@ -370,7 +370,7 @@ const getgenremovies = (messagingEvent, quickpayloadtext) => {
                     var rowslenth = rows.length;
                     console.log("less than 10 Rows", rowslenth);
                 }
-                for (var i = 0; i < rowslenth; i++) { //Construct request body
+                for (var i = 0; i <= 5; i++) { //Construct request body
                     var keyMap = {
                         "title": rows[i].movieName,
                         "image_url": rows[i].picture1,
