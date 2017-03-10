@@ -15,6 +15,25 @@ var mysql = require('mysql');
 var pool = mysql.createPool({connectionLimit: 1, host: 'ap-cdbr-azure-southeast-a.cloudapp.net', user: 'bb603e8108da6e', password: '3e384329', database: 'rankworlddev'});
 
 var fbpage_access_token = 'EAADV2VT6AuUBAHyUBL8zV5dYdRCBE7ZCKYQvOWCu2kkWQSV1RCllfvMymjDhXZCBQ93IkOFDpVYjN1E8jCHYpHKdH6uwNuhYAyCGdHOv6VgVZCwI6BZCc3AwAc7CW17yNTXe1YE7GkegMHHz36ax5JZC01zllTmTnAQRe0ZB0U3wZDZD';
+var quickreply = [
+    {
+        "content_type": "text",
+        "title": "Movies 🎬",
+        "payload": "Movies"
+    }, {
+        "content_type": "text",
+        "title": "Sports 🏆",
+        "payload": "Sports"
+    }, {
+        "content_type": "text",
+        "title": "Music 🎶",
+        "payload": "Music"
+    }, {
+        "content_type": "text",
+        "title": "TV Shows 📺",
+        "payload": "TV Shows"
+    }
+];
 const subcategorymovies = (event, categoryName) => {
     // var movie = moviename.replace(" %%","");
     //console.log("subcategorymovies", moviename);
@@ -38,7 +57,7 @@ const subcategorymovies = (event, categoryName) => {
                 //     console.log("less than 10 Rows", rowslenth);
                 // }
 
-                for (var i = 0; i < 5; i++) { //Construct request body
+                for (var i = 0; i >= 5; i++) { //Construct request body
                     var keyMap = {
                         "title": rows[i].movieName,
                         "image_url": rows[i].picture1,
@@ -334,74 +353,131 @@ const getgenremovies = (messagingEvent, quickpayloadtext) => {
 }
 
 
-function sendHelpMessage(event) {
-    //fbuserlocation();
-    var userid = event.sender.id;
-    var url = 'https://graph.facebook.com/v2.6/' + userid + '?fields=first_name,last_name,locale,timezone,gender&access_token=' + fbpage_access_token + '';
-    console.log("url", url);
-    request({
-        "uri": url,
-        "method": 'GET'
-
-    }, function(error, response, body) {
-        var userprofiledata = JSON.parse(response.body);
-        var username = userprofiledata.first_name;
-        // console.log("--------:Response data:-------- ", JSON.stringify(body));
-        // console.log("--------:Response data:--------first_name ", userprofiledata.first_name);
-        // console.log("--------:Response data:--------last_name ", userprofiledata.last_name);
-        // console.log("--------:Response data:--------locale ", userprofiledata.locale);
-        // console.log("--------:Response data:-------- timezone", userprofiledata.timezone);
-        // console.log("--------:Response data:--------gender ", userprofiledata.gender);
-
-        //Random messages
-
-        var errorString = "";
-
-        while (errorString === "") {
-            var random = Math.floor(Math.random() * errors.length);
-            if (errors[random].error.length < 320) // better be a least one good joke :)
-                errorString = errors[random].error;
+  const selectedactorfilems = (messagingEvent, celebrityname) => {
+    console.log("*********Movies Genre***********", celebrityname);
+    pool.getConnection(function(err, connection) {
+        connection.query('select  * from cc_movies_preference where leadActor= ?', [celebrityname], function(err, rows) {
+            console.log("*************************moviesgenre", rows);
+            if (err) {
+                console.log("Error While retriving content pack data from database:", err);
+            } else if (rows.length) {
+                var senderID = messagingEvent.sender.id;
+                var contentList = [];
+                if (rows.length > 10) {
+                    var rowslenth = 10;
+                    console.log("more than 10 Rows", rowslenth);
+                } else {
+                    var rowslenth = rows.length;
+                    console.log("less than 10 Rows", rowslenth);
+                }
+                for (var i = 0; i < rowslenth; i++) { //Construct request body
+                    var keyMap = {
+                        "title": rows[i].movieName,
+                        "image_url": rows[i].picture1,
+                        "buttons": [//   {
+                            //     "type": "web_url",
+                            //     "url": rows[i].trailerUrl,
+                            //     "title": "Trailer"
+                            // },{
+                            //     "type": "web_url",
+                            //     "url": rows[i].movieDescriptionUrl,
+                            //     "title": "Audio"
+                            // },
+                            {
+                                "type": "postback",
+                                "title": "More Info",
+                                "payload": rows[i].movieName + ' %mname%'
+                            }
+                        ]
+                    };
+                    contentList.push(keyMap);
+                }
+                var messageData = {
+                    "recipient": {
+                        "id": senderID
+                    },
+                    "message": {
+                        "attachment": {
+                            "type": "template",
+                            "payload": {
+                                "template_type": "generic",
+                                "elements": contentList
+                            }
+                        },
+                        "quick_replies": [
+                            {
+                                "content_type": "text",
+                                "title": celebrityname +" Pictures",
+                                "payload": celebrityname + ' ,%pictures%'
+                            }, {
+                                "content_type": "text",
+                                "title": celebrityname +" Movies",
+                                "payload": celebrityname + ' ,%movies%'
+                            }, {
+                                "content_type": "text",
+                                "title": celebrityname +" Songs",
+                                "payload": "Songs"
+                            }, {
+                                "content_type": "text",
+                                "title": celebrityname +" Net Worth",
+                                "payload": celebrityname + ' ,%networth%'
+                            }, {
+                                "content_type": "text",
+                                "title": celebrityname +" News",
+                                "payload": celebrityname + ' ,%news%'
+                            }, {
+                                "content_type": "text",
+                                "title": celebrityname +" Family",
+                                "payload": celebrityname + ' ,%family%'
+                            }, {
+                                "content_type": "text",
+                                "title": "Personal",
+                                "payload": "Personal"
+                            }, {
+                                "content_type": "text",
+                                "title": "Home 🏠",
+                                "payload": "home"
+                            }
+                        ]
+                    }
+                }
+                fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
+            } else {
+                console.log("No Data Found From Database");
+                sendHelpMessage(messagingEvent);
             }
-
-        //End Randum messages for Unable find the data what user types
-
-        var senderID = event.sender.id;
-        //var msg = 'I am sorry '+username+', my senses are gone wrong. Why dont you try a different command...';
-
-        //var msg = 'Hey '+username+', How are you?';
-        //console.log("--------:Response data:--------sendHelpMessage1", msg);
-        var messageData = {
-            "recipient": {
-                "id": senderID
-            },
-            "message": {
-                "text": errorString,
-                //"text":"msg",
-                "quick_replies": quickreply
-            }
-        }
-        fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
-        //sendHelpMessageSecond(event, userid);
-        if (!error && response.statusCode == 200) {
-            var recipientId = body.recipient_id;
-            var messageId = body.message_id;
-            console.log("Successfully sent generic message with id %s to recipient %s", messageId, recipientId);
-            //searchText.sendHelpMessageSecond(event, userid);
-
-        } else {
-            console.error("Unable to send message.");
-            //console.error(response);
-            console.error("Error while sending message:", error);
-        }
+            connection.release();
+        });
     });
+
 }
 
 
-
+function sendHelpMessage(event) {
+          var errorString = "";
+          while (errorString === "") {
+              var random = Math.floor(Math.random() * errors.length);
+              if (errors[random].error.length < 320) // better be a least one good joke :)
+                  errorString = errors[random].error;
+              }
+          var senderID = event.sender.id;
+          var messageData = {
+              "recipient": {
+                  "id": senderID
+              },
+              "message": {
+                  "text": errorString,
+                  //"text":"msg",
+                  "quick_replies": quickreply
+              }
+          }
+          fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
+}
 
 
 module.exports = {
     subcategorymovies: subcategorymovies,
     getmovies:getmovies,
     getgenremovies:getgenremovies,
+    selectedactorfilems:selectedactorfilems,
 };

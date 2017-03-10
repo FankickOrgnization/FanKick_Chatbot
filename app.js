@@ -9,6 +9,7 @@ const thread = require('./modules/thread.js');
 const payloadText = require('./modules/payload.js');
 const searchText = require('./modules/search.js');
 const movies = require('./modules/movies.js');
+const fbRquest = require('./modules/fbapi.js');
 var googleTrends = require('google-trends-api');
 //const bot = require('./wit.js');
 
@@ -332,7 +333,7 @@ function quick_reply_subcategory(messagingEvent, quickpayloadtext) {
                         ]
                     }
                 }
-                callSendAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
+                fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
             } else {
                 console.log("No Data Found From Database");
                 sendHelpMessage(messagingEvent);
@@ -417,7 +418,7 @@ function celebritypics(messagingEvent, quickpayloadtext) {
                         }
                     } else if (subCategory == "%movies%") {
                         console.log("celebrity Movies");
-                        selectedactorfilems(messagingEvent, celebrityname);
+                        movies.selectedactorfilems(messagingEvent, celebrityname);
                     } else if (subCategory == "%networth%") {
                         console.log("celebrity networth");
                         var msg = '' + rows[i].name + ' has earned ' + rows[i].netWorth + ' so far..';
@@ -535,7 +536,7 @@ function celebritypics(messagingEvent, quickpayloadtext) {
                         ]
                     }
                 }
-                callSendAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
+                fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
             } else {
                 console.log("No Data Found From Database");
                 sendHelpMessage(messagingEvent);
@@ -546,104 +547,7 @@ function celebritypics(messagingEvent, quickpayloadtext) {
 }
 
 //Selected actor filems from movies list
-function selectedactorfilems(messagingEvent, celebrityname) {
-    console.log("*********Movies Genre***********", celebrityname);
-    pool.getConnection(function(err, connection) {
-        connection.query('select  * from cc_movies_preference where leadActor= ?', [celebrityname], function(err, rows) {
-            console.log("*************************moviesgenre", rows);
-            if (err) {
-                console.log("Error While retriving content pack data from database:", err);
-            } else if (rows.length) {
-                var senderID = messagingEvent.sender.id;
-                var contentList = [];
-                if (rows.length > 10) {
-                    var rowslenth = 10;
-                    console.log("more than 10 Rows", rowslenth);
-                } else {
-                    var rowslenth = rows.length;
-                    console.log("less than 10 Rows", rowslenth);
-                }
-                for (var i = 0; i < 5; i++) { //Construct request body
-                    var keyMap = {
-                        "title": rows[i].movieName,
-                        "image_url": rows[i].picture1,
-                        "buttons": [//   {
-                            //     "type": "web_url",
-                            //     "url": rows[i].trailerUrl,
-                            //     "title": "Trailer"
-                            // },{
-                            //     "type": "web_url",
-                            //     "url": rows[i].movieDescriptionUrl,
-                            //     "title": "Audio"
-                            // },
-                            {
-                                "type": "postback",
-                                "title": "More Info",
-                                "payload": rows[i].movieName + ' %mname%'
-                            }
-                        ]
-                    };
-                    contentList.push(keyMap);
-                }
-                var messageData = {
-                    "recipient": {
-                        "id": senderID
-                    },
-                    "message": {
-                        "attachment": {
-                            "type": "template",
-                            "payload": {
-                                "template_type": "generic",
-                                "elements": contentList
-                            }
-                        },
-                        "quick_replies": [
-                            {
-                                "content_type": "text",
-                                "title": celebrityname +" Pictures",
-                                "payload": celebrityname + ' ,%pictures%'
-                            }, {
-                                "content_type": "text",
-                                "title": celebrityname +" Movies",
-                                "payload": celebrityname + ' ,%movies%'
-                            }, {
-                                "content_type": "text",
-                                "title": celebrityname +" Songs",
-                                "payload": "Songs"
-                            }, {
-                                "content_type": "text",
-                                "title": celebrityname +" Net Worth",
-                                "payload": celebrityname + ' ,%networth%'
-                            }, {
-                                "content_type": "text",
-                                "title": celebrityname +" News",
-                                "payload": celebrityname + ' ,%news%'
-                            }, {
-                                "content_type": "text",
-                                "title": celebrityname +" Family",
-                                "payload": celebrityname + ' ,%family%'
-                            }, {
-                                "content_type": "text",
-                                "title": "Personal",
-                                "payload": "Personal"
-                            }, {
-                                "content_type": "text",
-                                "title": "Home 🏠",
-                                "payload": "home"
-                            }
-                        ]
-                    }
-                }
-                callSendAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
-            } else {
-                console.log("No Data Found From Database");
-                sendHelpMessage(messagingEvent);
-            }
-            connection.release();
-        });
-    });
 
-}
 
 function moviesgenre(messagingEvent, quickpayloadtext) {
     console.log("*********Movies Genre***********", quickpayloadtext);
@@ -746,7 +650,7 @@ function moviesgenre(messagingEvent, quickpayloadtext) {
                         ]
                     }
                 }
-                callSendAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
+                fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
             } else {
                 console.log("No Data Found From Database");
                 sendHelpMessage(messagingEvent);
@@ -778,7 +682,7 @@ function actorintro(messagingEvent, moviename) {
             }
         }
     };
-    callSendAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
+    fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
     celebritymovies(messagingEvent, moviename);
 }
 
@@ -870,7 +774,7 @@ function celebritymovies(messagingEvent, moviename) {
                         ]
                     }
                 }
-                callSendAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
+                fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
             }
             connection.release();
         });
@@ -941,7 +845,7 @@ function sendContentPackItems(packId, event) {
                         "quick_replies": quickMenu
                     }
                 }
-                callSendAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
+                fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
             }
             connection.release();
         });
@@ -1009,7 +913,7 @@ function celebrityid(categoryName, event) {
                         "quick_replies": quickList
                     }
                 }
-                callSendAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
+                fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
 
             } else {
                 console.log("No Data Found From Database");
@@ -1147,7 +1051,7 @@ function getmovies(messagingEvent, moviename) {
                         ]
                     }
                 }
-                callSendAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
+                fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
             } else {
                 console.log("No Data Found From Database");
                 sendHelpMessage(messagingEvent);
@@ -1250,7 +1154,7 @@ function filmactor(messagingEvent, actorname) {
                         ]
                     }
                 }
-                callSendAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
+                fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
             } else {
                 console.log("No Data Found From Database");
                 sendHelpMessage(messagingEvent);
@@ -1262,90 +1166,51 @@ function filmactor(messagingEvent, actorname) {
 //End get filmactor name from the DB***************
 
 function sendHelpMessage(event) {
-    var userid = event.sender.id;
-    var url = 'https://graph.facebook.com/v2.6/' + userid + '?fields=first_name,last_name,locale,timezone,gender&access_token=' + fbpage_access_token + '';
-    console.log("url", url);
-    request({
-        "uri": url,
-        "method": 'GET'
-
-    }, function(error, response, body) {
-        var userprofiledata = JSON.parse(response.body);
-        var username = userprofiledata.first_name;
-        var senderID = event.sender.id;
-        var msg = 'Hey ' + username + ', I am expecting a lot of noise, select the domain...';
-        //var msg = 'Hey '+username+', How are you?';
-        console.log("--------:Response data:--------sendHelpMessage1", msg);
-        var messageData = {
-            "recipient": {
-                "id": senderID
-            },
-
-            "message": {
-                "text": msg,
-                //"text":"msg",
-                "quick_replies": [
-                    {
-                        "content_type": "text",
-                        "title": "Movies 🎬",
-                        "payload": "Movies"
-                    }, {
-                        "content_type": "text",
-                        "title": "Sports 🏆",
-                        "payload": "Sports"
-                    }, {
-                        "content_type": "text",
-                        "title": "Music 🎶",
-                        "payload": "Music"
-                    }, {
-                        "content_type": "text",
-                        "title": "TV Shows 📺",
-                        "payload": "TV Shows"
-                    }
-                ]
-            }
-        }
-        callSendAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
-        //sendHelpMessageSecond(event, userid);
-        if (!error && response.statusCode == 200) {
-            var recipientId = body.recipient_id;
-            var messageId = body.message_id;
-            console.log("Successfully sent generic message with id %s to recipient %s", messageId, recipientId);
-            //searchText.sendHelpMessageSecond(event, userid);
-
-        } else {
-            console.error("Unable to send message.");
-            //console.error(response);
-            console.error("Error while sending message:", error);
-        }
-    });
+          var errorString = "";
+          while (errorString === "") {
+              var random = Math.floor(Math.random() * errors.length);
+              if (errors[random].error.length < 320) // better be a least one good joke :)
+                  errorString = errors[random].error;
+              }
+          var senderID = event.sender.id;
+          var messageData = {
+              "recipient": {
+                  "id": senderID
+              },
+              "message": {
+                  "text": errorString,
+                  //"text":"msg",
+                  "quick_replies": quickreply
+              }
+          }
+          fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
 }
 
-function callSendAPI(body, url) {
-    console.log("url", url);
-    console.log("Body", body);
-    request({
-        uri: url,
-        qs: {
-            access_token: fbpage_access_token
-        },
-        method: 'POST',
-        json: body,
-        headers: {
-            "Content-Type": "application/json"
-        }
-    }, function(error, response, body) {
-        console.log("Response data: ", JSON.stringify(body));
-        if (!error && response.statusCode == 200) {
-            var recipientId = body.recipient_id;
-            var messageId = body.message_id;
-            console.log("Successfully sent generic message with id %s to recipient %s", messageId, recipientId);
-        } else {
-            console.error("Unable to send message.");
-            //console.error(response);
-            console.error("Error while sending message:", error);
-        }
-    });
-}
+// function fbRquest.callFBAPI(body, url) {
+//     console.log("url", url);
+//     console.log("Body", body);
+//     request({
+//         uri: url,
+//         qs: {
+//             access_token: fbpage_access_token
+//         },
+//         method: 'POST',
+//         json: body,
+//         headers: {
+//             "Content-Type": "application/json"
+//         }
+//     }, function(error, response, body) {
+//         console.log("Response data: ", JSON.stringify(body));
+//         if (!error && response.statusCode == 200) {
+//             var recipientId = body.recipient_id;
+//             var messageId = body.message_id;
+//             console.log("Successfully sent generic message with id %s to recipient %s", messageId, recipientId);
+//         } else {
+//             console.error("Unable to send message.");
+//             //console.error(response);
+//             console.error("Error while sending message:", error);
+//         }
+//     });
+// }
 
 app.listen(process.env.PORT);
