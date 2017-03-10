@@ -47,17 +47,17 @@ const subcategorymovies = (event, categoryName) => {
                 console.log("Error While retriving content pack data from database:", err);
             } else if (rows.length) {
                 var senderID = event.sender.id;
-                //var rowslenth;
+                var rowslenth;
                 var contentList = [];
-                // if (rows.length > 10) {
-                //     rowslenth = 10;
-                //     console.log("more than 10 Rows", rowslenth);
-                // } else {
-                //     rowslenth = rows.length;
-                //     console.log("less than 10 Rows", rowslenth);
-                // }
+                if (rows.length > 10) {
+                    rowslenth = 10;
+                    console.log("more than 10 Rows", rowslenth);
+                } else {
+                    rowslenth = rows.length;
+                    console.log("less than 10 Rows", rowslenth);
+                }
 
-                for (var i = 0; i >= 5; i++) { //Construct request body
+                for (var i = 0; i < rowslenth; i++) { //Construct request body
                     var keyMap = {
                         "title": rows[i].movieName,
                         "image_url": rows[i].picture1,
@@ -162,15 +162,15 @@ const subcategorymovies = (event, categoryName) => {
             } else if (rows.length) {
                 var senderID = messagingEvent.sender.id;
                 var contentList = [];
-                //var rowslenth;
-                // if (rows.length > 10) {
-                //     rowslenth = 10;
-                //     console.log("more than 10 Rows", rowslenth);
-                // } else {
-                //     rowslenth = rows.length;
-                //     console.log("less than 10 Rows", rowslenth);
-                // }
-                for (var i = 0; i >= 5; i++) { //Construct request body
+                var rowslenth;
+                if (rows.length > 10) {
+                    rowslenth = 10;
+                    console.log("more than 10 Rows", rowslenth);
+                } else {
+                    rowslenth = rows.length;
+                    console.log("less than 10 Rows", rowslenth);
+                }
+                for (var i = 0; i < rowslenth; i++) { //Construct request body
                     var keyMap = {
                         "title": rows[i].movieName,
                         "image_url": rows[i].picture1,
@@ -266,7 +266,7 @@ const getgenremovies = (messagingEvent, quickpayloadtext) => {
                     var rowslenth = rows.length;
                     console.log("less than 10 Rows", rowslenth);
                 }
-                for (var i = 0; i >= 5; i++) { //Construct request body
+                for (var i = 0; i < rowslenth; i++) { //Construct request body
                     var keyMap = {
                         "title": rows[i].movieName,
                         "image_url": rows[i].picture1,
