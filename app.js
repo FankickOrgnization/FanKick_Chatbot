@@ -8,6 +8,7 @@ const crypto = require('crypto');
 const thread = require('./modules/thread.js');
 const payloadText = require('./modules/payload.js');
 const searchText = require('./modules/search.js');
+const movies = require('./movies.js');
 var googleTrends = require('google-trends-api');
 //const bot = require('./wit.js');
 
@@ -150,6 +151,7 @@ function receivedpostback(messagingEvent) {
 // postback payload section end *****************************
 // Quick_Reply payload section start
 function quickpayload(messagingEvent) {
+  var event = messagingEvent
     console.log("entered in the quickpayload function");
     var quicktext = messagingEvent.message.quick_reply;
     var quickpayloadtext = quicktext.payload;
@@ -204,7 +206,7 @@ function quickpayload(messagingEvent) {
         //console.log("Yessssssss");
         var moviename = quickpayloadtext.replace(" %m%", "");
         console.log("Yessssssss", moviename);
-        quickmovies(messagingEvent, moviename);
+        quickmovies(event, moviename);
     }
 }
 // Quick_Reply payload section start *********************************

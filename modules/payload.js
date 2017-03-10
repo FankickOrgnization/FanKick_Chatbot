@@ -9,6 +9,8 @@ const sport = require('../contentjson/sports.json');
 const tv_show = require('../contentjson/tv shows.json');
 const musics = require('../contentjson/music.json');
 const jokes = require('../contentjson/jokes.json');
+const movies = require('./movies.js');
+const fbRquest = require('./fbapi.js');
 //var app = express();
 var mysql = require('mysql');
 var pool = mysql.createPool({connectionLimit: 1, host: 'ap-cdbr-azure-southeast-a.cloudapp.net', user: 'bb603e8108da6e', password: '3e384329', database: 'rankworlddev'});
@@ -84,7 +86,7 @@ const sendContentPacks = (categoryName, event) => {
         wishingmessage(categoryName, event);
     } else if (categoryName == "hollywood" || categoryName == "tollywood" || categoryName == "bollywood" || categoryName == "kollywood" || categoryName == "classical music" || categoryName == "western music") {
         //subcategorydetails(categoryName,event);
-        quickmovies(categoryName, event);
+        movies.subcategorymovies(event, categoryName);
         usersubcategory(event, categoryName);
     } else if (categoryName == "cricket" || categoryName == "soccer" || categoryName == "tennis" || categoryName == "badminton") {
         //celebritiesdetails(categoryName,event);
@@ -117,7 +119,7 @@ function allcategory(event, categoryName) {
             }
         };
         fullMessage.message = json;
-        callSendAPI(fullMessage, 'https://graph.facebook.com/v2.6/592208327626213/messages');
+        fbRquest.callFBAPI(fullMessage, 'https://graph.facebook.com/v2.6/592208327626213/messages');
     } catch (e) {
         console.log("error in sendSingleJsonMessage " + e.message + " " + categoryName + " " + fullMessage);
     }
@@ -134,123 +136,12 @@ function actorintro(categoryName, event) {
             "text": msg
         }
     };
-    callSendAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
+    fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
     //celebritymovies(messagingEvent, moviename);
     celebritiesdetails(categoryName, event);
 }
 
-function quickmovies(categoryName, event) {
-    // var movie = moviename.replace(" %%","");
-    //console.log("quickmovies", moviename);
-    //var mname = moviename.trim();
-    pool.getConnection(function(err, connection) {
-        connection.query('select * from cc_movies_preference where subCategory = (select id from cc_subcategories where subCategoryName = ?) order by id desc', [categoryName], function(err, rows) {
-            //console.log("********quickmovies*********", mname);
-            //console.log("*************************-after", categoryName);
-            console.log("*************************quickmovies", rows);
-            if (err) {
-                console.log("Error While retriving content pack data from database:", err);
-            } else if (rows.length) {
-                var senderID = event.sender.id;
-                //var rowslenth;
-                var contentList = [];
-                // if (rows.length > 10) {
-                //     rowslenth = 10;
-                //     console.log("more than 10 Rows", rowslenth);
-                // } else {
-                //     rowslenth = rows.length;
-                //     console.log("less than 10 Rows", rowslenth);
-                // }
-
-                for (var i = 0; i < 5; i++) { //Construct request body
-                    var keyMap = {
-                        "title": rows[i].movieName,
-                        "image_url": rows[i].picture1,
-                        //"item_url": rows[i].movieImageUrl,
-                        "buttons": [//   {
-                            //     "type": "web_url",
-                            //     "url": rows[i].trailerUrl,
-                            //     "title": "Trailer"
-                            // },{
-                            //     "type": "web_url",
-                            //     "url": rows[i].movieDescriptionUrl,
-                            //     "title": "Audio"
-                            // },
-                            {
-                                "type": "postback",
-                                "title": "More Info",
-                                "payload": rows[i].movieName + ' %mname%'
-                            }
-                        ]
-                    };
-                    contentList.push(keyMap);
-                }
-                var messageData = {
-                    "recipient": {
-                        "id": senderID
-                    },
-                    "message": {
-                        "attachment": {
-                            "type": "template",
-                            "payload": {
-                                "template_type": "generic",
-                                "elements": contentList
-                            }
-                        },
-                        "quick_replies": [
-                            {
-                                "content_type": "text",
-                                "title": "Action",
-                                "payload": 'Action,' + categoryName + ',%action%'
-                            }, {
-                                "content_type": "text",
-                                "title": "Animation",
-                                "payload": 'Animation,' + categoryName + ',%animation%'
-                            }, {
-                                "content_type": "text",
-                                "title": "Comedy",
-                                "payload": 'Comedy,' + categoryName + ',%comedy%'
-                            }, {
-                                "content_type": "text",
-                                "title": "Romance",
-                                "payload": 'Romance,' + categoryName + ',%romance%'
-                            }, {
-                                "content_type": "text",
-                                "title": "Thriller",
-                                "payload": 'Thriller,' + categoryName + ',%thriller%'
-                            }, {
-                                "content_type": "text",
-                                "title": "Socio-fantasy",
-                                "payload": 'Socio-fantasy,' + categoryName + ',%socio-fantasy%'
-                            }, {
-                                "content_type": "text",
-                                "title": "Top 5 Movies of 2016",
-                                "payload": 'Top 5 Movies of 2016,' + categoryName + ',%QR%'
-                            }, {
-                                "content_type": "text",
-                                "title": "Worst Movies of 2016",
-                                "payload": 'Worst Movies of 2016,' + categoryName + ',%QR%'
-                            }, {
-                                "content_type": "text",
-                                "title": "Top 10 Songs of 2016",
-                                "payload": 'Top 10 Songs of 2016,' + categoryName + ',%QR%'
-                            }, {
-                                "content_type": "text",
-                                "title": "home 🏠",
-                                "payload": "home"
-                            }
-                        ]
-                    }
-                }
-                callSendAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
-            } else {
-                console.log("No Data Found From Database");
-                sendHelpMessage(event);
-            }
-            connection.release();
-        });
-    });
-}
+//function subcategorymovies(categoryName, event)
 // end get movies from the DB **************************
 
 //subcategorydetails*************************************************************************
@@ -312,7 +203,7 @@ function subcategorydetails(categoryName, event) {
                         "quick_replies": quickreply
                     }
                 }
-                callSendAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
+                fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
             } else {
                 console.log("No Data Found From Database");
                 sendHelpMessage(event);
@@ -420,7 +311,7 @@ function celebritiesdetails(categoryName, event) {
                         ]
                     }
                 }
-                callSendAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
+                fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
             } else {
                 console.log("No Data Found From Database");
                 sendHelpMessage(event);
@@ -494,7 +385,7 @@ function googlegraph(categoryName, event) {
                 "quick_replies": quickList
             }
         }
-        callSendAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
+        fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
     });
 }
 // ************************** Googlegraph api End ********************************
@@ -537,7 +428,7 @@ function sendJoke(categoryName, event) {
         }
     };
 
-    callSendAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
+    fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
 }
 
 //Ramndom Jokes for User*************
@@ -588,7 +479,7 @@ function sendHelpMessage(event) {
                 "quick_replies": quickreply
             }
         }
-        callSendAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
+        fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
         //sendHelpMessageSecond(event, userid);
         if (!error && response.statusCode == 200) {
             var recipientId = body.recipient_id;
@@ -714,7 +605,7 @@ function fbuserdetails(event, userid) {
 
             }
         }
-        callSendAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
+        fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
         //test(senderID);
         //fbuserdetailsSecond(event, userid);
         if (!error && response.statusCode == 200) {
@@ -787,7 +678,7 @@ function wishingmessage(categoryName, event) {
 
         }
     }
-    callSendAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
+    fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
 }
 
 //Random messages for the main Categories
@@ -866,7 +757,7 @@ function submemuquickreply(event, categoryName, submenuString) {
                         "quick_replies": quickList
                     }
                 }
-                callSendAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
+                fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
             } else {
                 console.log("No Data Found From Database");
                 sendHelpMessage(event);
@@ -944,7 +835,7 @@ function adduserlocation(event, userloca, categoryName) {
 
             }
         }
-        callSendAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
+        fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
     } else {
         console.log("*********************adduserlocation***********************3", userloca);
         allcategory(event, categoryName);
@@ -971,32 +862,32 @@ function findlocation(event) {
     });
 }
 
-function callSendAPI(body, url) {
-    console.log("url", url);
-    console.log("Body", body);
-    request({
-        uri: url,
-        qs: {
-            access_token: fbpage_access_token
-        },
-        method: 'POST',
-        json: body,
-        headers: {
-            "Content-Type": "application/json"
-        }
-    }, function(error, response, body) {
-        console.log("Response data: ", JSON.stringify(body));
-        if (!error && response.statusCode == 200) {
-            var recipientId = body.recipient_id;
-            var messageId = body.message_id;
-            console.log("Successfully sent generic message with id %s to recipient %s", messageId, recipientId);
-        } else {
-            console.error("Unable to send message.");
-            //console.error(response);
-            console.error("Error while sending message:", error);
-        }
-    });
-}
+// function fbRquest.callFBAPI(body, url) {
+//     console.log("url", url);
+//     console.log("Body", body);
+//     request({
+//         uri: url,
+//         qs: {
+//             access_token: fbpage_access_token
+//         },
+//         method: 'POST',
+//         json: body,
+//         headers: {
+//             "Content-Type": "application/json"
+//         }
+//     }, function(error, response, body) {
+//         console.log("Response data: ", JSON.stringify(body));
+//         if (!error && response.statusCode == 200) {
+//             var recipientId = body.recipient_id;
+//             var messageId = body.message_id;
+//             console.log("Successfully sent generic message with id %s to recipient %s", messageId, recipientId);
+//         } else {
+//             console.error("Unable to send message.");
+//             //console.error(response);
+//             console.error("Error while sending message:", error);
+//         }
+//     });
+// }
 
 function fbuserlocation() {
     //var url = 'https://geoip-db.com/json/';
