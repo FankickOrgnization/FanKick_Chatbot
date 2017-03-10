@@ -129,6 +129,99 @@ const subcategorymovies = (event, categoryName) => {
 }
 
 
+  const getmovies = (messagingEvent, moviename) => {
+    // var movie = moviename.replace(" %%","");
+    console.log("quickmovies", moviename);
+    var mname = moviename.trim();
+    pool.getConnection(function(err, connection) {
+        connection.query('select * from cc_movies_preference where movieName= ?', [mname], function(err, rows) {
+            console.log("********quickmovies*********", mname);
+            //console.log("*************************-after", categoryName);
+            console.log("*************************quickmovies", rows);
+            if (err) {
+                console.log("Error While retriving content pack data from database:", err);
+            } else if (rows.length) {
+                var senderID = messagingEvent.sender.id;
+                var contentList = [];
+                //var rowslenth;
+                // if (rows.length > 10) {
+                //     rowslenth = 10;
+                //     console.log("more than 10 Rows", rowslenth);
+                // } else {
+                //     rowslenth = rows.length;
+                //     console.log("less than 10 Rows", rowslenth);
+                // }
+                for (var i = 0; i < 5; i++) { //Construct request body
+                    var keyMap = {
+                        "title": rows[i].movieName,
+                        "image_url": rows[i].picture1,
+                        //"item_url": rows[i].movieImageUrl,
+                        "buttons": [
+                            {
+                                "type": "web_url",
+                                "url": rows[i].trailerUrl,
+                                "title": "Trailer"
+                            }, {
+                                "type": "web_url",
+                                "url": rows[i].songsUrl,
+                                "title": "Audio"
+                            }, {
+                                "type": "web_url",
+                                "url": rows[i].reviews,
+                                "title": "Review"
+                            }
+                        ]
+                    };
+                    contentList.push(keyMap);
+                }
+                var messageData = {
+                    "recipient": {
+                        "id": senderID
+                    },
+                    "message": {
+                        "attachment": {
+                            "type": "template",
+                            "payload": {
+                                "template_type": "generic",
+                                "elements": contentList
+                            }
+                        },
+                        "quick_replies": [
+                            {
+                                "content_type": "text",
+                                "title": rows[0].leadActor,
+                                "payload": rows[0].leadActor + " %a%"
+                            }, {
+                                "content_type": "text",
+                                "title": rows[0].leadActress,
+                                "payload": rows[0].leadActress + " %a%"
+                            }, {
+                                "content_type": "text",
+                                "title": rows[0].director,
+                                "payload": rows[0].director + " %a%"
+                            }, {
+                                "content_type": "text",
+                                "title": rows[0].musicDirector,
+                                "payload": rows[0].musicDirector + " %a%"
+                            }, {
+                                "content_type": "text",
+                                "title": "home 🏠",
+                                "payload": "home"
+                            }
+                        ]
+                    }
+                }
+                callSendAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
+            } else {
+                console.log("No Data Found From Database");
+                sendHelpMessage(messagingEvent);
+            }
+            connection.release();
+        });
+    });
+}
+
+
 function sendHelpMessage(event) {
     //fbuserlocation();
     var userid = event.sender.id;

@@ -206,7 +206,7 @@ function quickpayload(messagingEvent) {
         //console.log("Yessssssss");
         var moviename = quickpayloadtext.replace(" %m%", "");
         console.log("Yessssssss", moviename);
-        quickmovies(event, moviename);
+        movies.getmovies(event, moviename);
     }
 }
 // Quick_Reply payload section start *********************************
@@ -1065,7 +1065,7 @@ function receivedtextmessage(categoryName, event) {
 // Quick_reply payload section End *****************************
 
 // get movies from the DB***********************************
-function quickmovies(messagingEvent, moviename) {
+function getmovies(messagingEvent, moviename) {
     // var movie = moviename.replace(" %%","");
     console.log("quickmovies", moviename);
     var mname = moviename.trim();
