@@ -162,7 +162,7 @@ function quickmovies(categoryName, event) {
                     console.log("less than 10 Rows", rowslenth);
                 }
 
-                for (var i = 0; i < rowslenth; i++) { //Construct request body
+                for (var i = 0; i < 9; i++) { //Construct request body
                     var keyMap = {
                         "title": rows[i].movieName,
                         "image_url": rows[i].picture1,
