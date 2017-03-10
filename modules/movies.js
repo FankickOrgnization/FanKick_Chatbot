@@ -357,7 +357,7 @@ const getgenremovies = (messagingEvent, quickpayloadtext) => {
     console.log("*********Movies Genre***********", celebrityname);
     pool.getConnection(function(err, connection) {
         connection.query('select  * from cc_movies_preference where leadActor= ? order by releaseDate desc', [celebrityname], function(err, rows) {
-            console.log("*************************moviesgenre", rows);
+            console.log("*************************selectedactorfilems", rows);
             if (err) {
                 console.log("Error While retriving content pack data from database:", err);
             } else if (rows.length) {
@@ -370,7 +370,7 @@ const getgenremovies = (messagingEvent, quickpayloadtext) => {
                     var rowslenth = rows.length;
                     console.log("less than 10 Rows", rowslenth);
                 }
-                for (var i = 0; i >= 5; i++) { //Construct request body
+                for (var i = 0; i < rowslenth; i++) { //Construct request body
                     var keyMap = {
                         "title": rows[i].movieName,
                         "image_url": rows[i].picture1,
