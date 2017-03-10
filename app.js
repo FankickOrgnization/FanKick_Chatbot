@@ -8,7 +8,7 @@ const crypto = require('crypto');
 const thread = require('./modules/thread.js');
 const payloadText = require('./modules/payload.js');
 const searchText = require('./modules/search.js');
-const movies = require('./movies.js');
+const movies = require('./modules/movies.js');
 var googleTrends = require('google-trends-api');
 //const bot = require('./wit.js');
 

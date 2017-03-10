@@ -20,7 +20,7 @@ const subcategorymovies = (event, categoryName) => {
     //console.log("subcategorymovies", moviename);
     //var mname = moviename.trim();
     pool.getConnection(function(err, connection) {
-        connection.query('select * from cc_movies_preference where subCategory = (select id from cc_subcategories where subCategoryName = ?) order by id desc', [categoryName], function(err, rows) {
+        connection.query('select * from cc_movies_preference where subCategory = (select id from cc_subcategories where subCategoryName = ?) order by releaseDate desc', [categoryName], function(err, rows) {
             //console.log("********subcategorymovies*********", mname);
             //console.log("*************************-after", categoryName);
             console.log("*************************subcategorymovies", rows);
