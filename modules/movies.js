@@ -250,7 +250,7 @@ const getgenremovies = (messagingEvent, quickpayloadtext) => {
     console.log("Genre", genre);
     console.log("SubCategory", subCategory);
     pool.getConnection(function(err, connection) {
-        connection.query('select * from cc_movies_preference where subCategory = (select id from cc_subcategories where subCategoryName = ?) and genre = ?', [
+        connection.query('select * from cc_movies_preference where subCategory = (select id from cc_subcategories where subCategoryName = ?) and genre = ? order by releaseDate desc', [
             subCategory, genre
         ], function(err, rows) {
             console.log("*************************moviesgenre", rows);
@@ -356,7 +356,7 @@ const getgenremovies = (messagingEvent, quickpayloadtext) => {
   const selectedactorfilems = (messagingEvent, celebrityname) => {
     console.log("*********Movies Genre***********", celebrityname);
     pool.getConnection(function(err, connection) {
-        connection.query('select  * from cc_movies_preference where leadActor= ?', [celebrityname], function(err, rows) {
+        connection.query('select  * from cc_movies_preference where leadActor= ? order by releaseDate desc', [celebrityname], function(err, rows) {
             console.log("*************************moviesgenre", rows);
             if (err) {
                 console.log("Error While retriving content pack data from database:", err);
