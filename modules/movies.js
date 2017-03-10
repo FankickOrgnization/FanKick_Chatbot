@@ -220,6 +220,118 @@ const subcategorymovies = (event, categoryName) => {
         });
     });
 }
+const getgenremovies = (messagingEvent, quickpayloadtext) => {
+//cont moviesgenre(messagingEvent, quickpayloadtext) {
+    console.log("*********Movies Genre***********", quickpayloadtext);
+    // var genre;
+    // var subCategory;
+    var genrearray = quickpayloadtext.split(',');
+    var genre = genrearray[0];
+    var subCategory = genrearray[1];
+    console.log("Genre", genre);
+    console.log("SubCategory", subCategory);
+    pool.getConnection(function(err, connection) {
+        connection.query('select * from cc_movies_preference where subCategory = (select id from cc_subcategories where subCategoryName = ?) and genre = ?', [
+            subCategory, genre
+        ], function(err, rows) {
+            console.log("*************************moviesgenre", rows);
+            if (err) {
+                console.log("Error While retriving content pack data from database:", err);
+            } else if (rows.length) {
+                var senderID = messagingEvent.sender.id;
+                var contentList = [];
+                if (rows.length > 10) {
+                    var rowslenth = 10;
+                    console.log("more than 10 Rows", rowslenth);
+                } else {
+                    var rowslenth = rows.length;
+                    console.log("less than 10 Rows", rowslenth);
+                }
+                for (var i = 0; i < rowslenth; i++) { //Construct request body
+                    var keyMap = {
+                        "title": rows[i].movieName,
+                        "image_url": rows[i].picture1,
+                        "buttons": [//   {
+                            //     "type": "web_url",
+                            //     "url": rows[i].trailerUrl,
+                            //     "title": "Trailer"
+                            // },{
+                            //     "type": "web_url",
+                            //     "url": rows[i].movieDescriptionUrl,
+                            //     "title": "Audio"
+                            // },
+                            {
+                                "type": "postback",
+                                "title": "More Info",
+                                "payload": rows[i].movieName + ' %mname%'
+                            }
+                        ]
+                    };
+                    contentList.push(keyMap);
+                }
+                var messageData = {
+                    "recipient": {
+                        "id": senderID
+                    },
+                    "message": {
+                        "attachment": {
+                            "type": "template",
+                            "payload": {
+                                "template_type": "generic",
+                                "elements": contentList
+                            }
+                        },
+                        "quick_replies": [
+                            {
+                                "content_type": "text",
+                                "title": "Action",
+                                "payload": 'Action,' + subCategory + ',%action%'
+                            }, {
+                                "content_type": "text",
+                                "title": "Animation",
+                                "payload": 'Animation,' + subCategory + ',%animation%'
+                            }, {
+                                "content_type": "text",
+                                "title": "Comedy",
+                                "payload": 'Comedy,' + subCategory + ',%comedy%'
+                            }, {
+                                "content_type": "text",
+                                "title": "Romance",
+                                "payload": 'Romance,' + subCategory + ',%romance%'
+                            }, {
+                                "content_type": "text",
+                                "title": "Thriller",
+                                "payload": 'Thriller,' + subCategory + ',%thriller%'
+                            }, {
+                                "content_type": "text",
+                                "title": "Socio-fantasy",
+                                "payload": 'Socio-fantasy,' + subCategory + ',%socio-fantasy%'
+                            }, {
+                                "content_type": "text",
+                                "title": "Latest News",
+                                "payload": 'Latest News,' + subCategory + ',%news%'
+                            }, {
+                                "content_type": "text",
+                                "title": "Jokes",
+                                "payload": "Jokes"
+                            }, {
+                                "content_type": "text",
+                                "title": "home 🏠",
+                                "payload": "home"
+                            }
+                        ]
+                    }
+                }
+                callSendAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
+            } else {
+                console.log("No Data Found From Database");
+                sendHelpMessage(messagingEvent);
+            }
+            connection.release();
+        });
+    });
+
+}
 
 
 function sendHelpMessage(event) {
@@ -291,4 +403,5 @@ function sendHelpMessage(event) {
 module.exports = {
     subcategorymovies: subcategorymovies,
     getmovies:getmovies,
+    getgenremovies:getgenremovies,
 };

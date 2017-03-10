@@ -195,7 +195,7 @@ function quickpayload(messagingEvent) {
             } else {
                 //var actorname = quickpayloadtext.replace(" %a%","");
                 console.log("filem genre", quickpayloadtext);
-                moviesgenre(messagingEvent, quickpayloadtext);
+                movies.getgenremovies(messagingEvent, quickpayloadtext);
             }
         } else {
             var actorname = quickpayloadtext.replace(" %a%", "");
