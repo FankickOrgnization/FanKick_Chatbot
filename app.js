@@ -1077,7 +1077,15 @@ function quickmovies(messagingEvent, moviename) {
             } else if (rows.length) {
                 var senderID = messagingEvent.sender.id;
                 var contentList = [];
-                for (var i = 0; i < rows.length; i++) { //Construct request body
+                var rowslenth;
+                if (rows.length > 10) {
+                    rowslenth = 10;
+                    console.log("more than 10 Rows", rowslenth);
+                } else {
+                    rowslenth = rows.length;
+                    console.log("less than 10 Rows", rowslenth);
+                }
+                for (var i = 0; i < rowslenth; i++) { //Construct request body
                     var keyMap = {
                         "title": rows[i].movieName,
                         "image_url": rows[i].picture1,

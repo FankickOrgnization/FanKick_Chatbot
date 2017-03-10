@@ -152,12 +152,13 @@ function quickmovies(categoryName, event) {
                 console.log("Error While retriving content pack data from database:", err);
             } else if (rows.length) {
                 var senderID = event.sender.id;
+                var rowslenth;
                 var contentList = [];
                 if (rows.length > 10) {
-                    var rowslenth = 10;
+                    rowslenth = 10;
                     console.log("more than 10 Rows", rowslenth);
                 } else {
-                    var rowslenth = rows.length;
+                    rowslenth = rows.length;
                     console.log("less than 10 Rows", rowslenth);
                 }
 
