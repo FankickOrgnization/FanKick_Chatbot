@@ -289,5 +289,6 @@ function sendHelpMessage(event) {
 
 
 module.exports = {
-    subcategorymovies: subcategorymovies
+    subcategorymovies: subcategorymovies,
+    getmovies:getmovies,
 };
