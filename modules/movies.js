@@ -230,7 +230,7 @@ const subcategorymovies = (event, categoryName) => {
                         ]
                     }
                 }
-                callSendAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
+                fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
             } else {
                 console.log("No Data Found From Database");
                 sendHelpMessage(messagingEvent);
@@ -341,7 +341,7 @@ const getgenremovies = (messagingEvent, quickpayloadtext) => {
                         ]
                     }
                 }
-                callSendAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
+                fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
             } else {
                 console.log("No Data Found From Database");
                 sendHelpMessage(messagingEvent);
