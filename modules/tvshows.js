@@ -170,6 +170,7 @@ function tvshowsmenu(messagingEvent){
 
 
 function tvshowsdetails(messagingEvent, tvshowname){
+  var tvshowname = tvshowname.trim();
   console.log("tvshowname:",tvshowname);
   pool.getConnection(function(err, connection) {
       connection.query('select  * from cc_tvshows whare name = ?',[tvshowname], function(err, rows) {
@@ -215,13 +216,13 @@ function tvshowsdetails(messagingEvent, tvshowname){
                       "quick_replies": [
                           {
                               "content_type": "text",
-                              "title": rows[i].leadActor,
-                              "payload":rows[i].leadActor
+                              "title": rows[1].leadActor,
+                              "payload":rows[1].leadActor
                           },
                           {
                               "content_type": "text",
-                              "title": rows[i].leadActress,
-                              "payload": rows[i].leadActress
+                              "title": rows[1].leadActress,
+                              "payload": rows[1].leadActress
                           },{
                               "content_type": "text",
                               "title": "Jokes",
