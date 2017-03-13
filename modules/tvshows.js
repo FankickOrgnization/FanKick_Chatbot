@@ -35,7 +35,31 @@ var quickreply = [
     }
 ];
 
-
+//function tvshowsinfo(messagingEvent, moviename)
+const tvshowinfo = (messagingEvent, tvshowname) => {
+    var senderID = messagingEvent.sender.id;
+    //var img = 'https://fankickdev.blob.core.windows.net/images/home_logo.png';
+    //var msg = 'Amazing talent! Here is what I know about '+img+'';
+    var messageData = {
+        "recipient": {
+            "id": senderID
+        },
+        "message":{
+            "text":"Here you go👉..."
+            //"text":msg
+          }
+        // "message": {
+        //     "attachment": {
+        //         "type": "audio",
+        //         "payload": {
+        //             "url": "https://petersapparel.com/bin/clip.mp3"
+        //         }
+        //     }
+        // }
+    };
+    fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
+    tvshowsdetails(messagingEvent, tvshowname);
+}
 
 const tvshowsintro = (messagingEvent, tvshowsmsg) => {
     var senderID = messagingEvent.sender.id;
@@ -145,7 +169,80 @@ function tvshowsmenu(messagingEvent){
 }
 
 
+function tvshowsdetails(messagingEvent, tvshowname){
+  pool.getConnection(function(err, connection) {
+      connection.query('select  * from cc_tvshows whare name = ?',[tvshowname], function(err, rows) {
+          console.log("*************************selectedactorfilems", rows);
+          if (err) {
+              console.log("Error While retriving content pack data from database:", err);
+          }else if (rows.length) {
+              var senderID = messagingEvent.sender.id;
+              var contentList = [];
+              if (rows.length > 10) {
+                  var rowslenth = 10;
+                  console.log("more than 10 Rows", rowslenth);
+              } else {
+                  var rowslenth = rows.length;
+                  console.log("less than 10 Rows", rowslenth);
+              }
+              for (var i = 0; i < rowslenth; i++) { //Construct request body
+                  var keyMap = {
+                      "title": rows[i].name,
+                      "image_url": rows[i].picture1,
+                      "buttons": [
+                        {
+                               "type": "web_url",
+                               "url": rows[i].clips,
+                               "title": "Clips"
+                           }
+                      ]
+                  };
+                  contentList.push(keyMap);
+              }
+              var messageData = {
+                  "recipient": {
+                      "id": senderID
+                  },
+                  "message": {
+                      "attachment": {
+                          "type": "template",
+                          "payload": {
+                              "template_type": "generic",
+                              "elements": contentList
+                          }
+                      },
+                      "quick_replies": [
+                          {
+                              "content_type": "text",
+                              "title": rows[i].leadActor,
+                              "payload":rows[i].leadActor
+                          },
+                          {
+                              "content_type": "text",
+                              "title": rows[i].leadActress,
+                              "payload": rows[i].leadActress
+                          },{
+                              "content_type": "text",
+                              "title": "Jokes",
+                              "payload": "Jokes"
+                          }, {
+                              "content_type": "text",
+                              "title": "Home 🏠",
+                              "payload": "home"
+                          }
+                      ]
+                  }
+              }
+              fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
+          }else {
+              console.log("No Data Found From Database");
+              sendHelpMessage(messagingEvent);
+          }
+          connection.release();
+      });
+  });
 
+}
 
 
 function sendHelpMessage(event) {
@@ -170,5 +267,6 @@ function sendHelpMessage(event) {
 }
 
 module.exports = {
-    tvshowsintro: tvshowsintro
+    tvshowsintro: tvshowsintro,
+    tvshowinfo:tvshowinfo
 };
