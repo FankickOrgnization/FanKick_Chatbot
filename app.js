@@ -169,57 +169,41 @@ function quickpayload(messagingEvent) {
     var res = quickpayloadtext.toLowerCase();
     var userid = messagingEvent.sender.id;
     var movietext = quickpayloadtext.search("%m%");
-    if (movietext == -1) {
-        console.log("Not Movie");
-        //receivedMessage(messagingEvent);
-        var actortext = quickpayloadtext.search("%a%");
-        if (actortext == -1) {
-            //receivedMessage(messagingEvent);
-            //payloadText.sendContentPacks(res, messagingEvent);
-            console.log("Not actor");
-            var action = quickpayloadtext.search("%action%");
-            var comedy = quickpayloadtext.search("%comedy%");
-            var romance = quickpayloadtext.search("%romance%");
-            var thriller = quickpayloadtext.search("%thriller%");
-            var animation = quickpayloadtext.search("%animation%");
-            var sociofantasy = quickpayloadtext.search("%socio-fantasy%");
-            if (action == -1 && comedy == -1 && romance == -1 && thriller == -1 && animation == -1 && sociofantasy == -1) {
-                //receivedMessage(messagingEvent);
-                var celpics = quickpayloadtext.search("%pictures%");
-                var celmovies = quickpayloadtext.search("%movies%");
-                var celnetworth = quickpayloadtext.search("%networth%");
-                var celnews = quickpayloadtext.search("%news%");
-                var celfamily = quickpayloadtext.search("%family%");
-                var celabout = quickpayloadtext.search("%about%");
-                if (celpics == -1 && celmovies == -1 && celnetworth == -1 && celnews == -1 && celfamily == -1 && celabout == -1) {
-                    var quick_reply = quickpayloadtext.search("%QR%");
-                    if (quick_reply == -1) {
-                        payloadText.sendContentPacks(res, messagingEvent);
-                        console.log("Not quick_reply");
-                    } else {
-                        quick_reply_subcategory(messagingEvent, quickpayloadtext);
-                    }
-                } else {
-                    //var actorpics = quickpayloadtext.replace(" %a%","");
-                    //console.log("actor name", actorpics);
-                    celebritypics(messagingEvent, quickpayloadtext);
-                }
-            } else {
-                //var actorname = quickpayloadtext.replace(" %a%","");
-                console.log("filem genre", quickpayloadtext);
-                movies.getgenremovies(messagingEvent, quickpayloadtext);
-            }
-        } else {
-            var actorname = quickpayloadtext.replace(" %a%", "");
-            console.log("actor name", actorname);
-            filmactor(messagingEvent, actorname);
-        }
-    } else {
-        //console.log("Yessssssss");
-        var moviename = quickpayloadtext.replace(" %m%", "");
-        console.log("Yessssssss", moviename);
-        movies.getmovies(event, moviename);
+    var actortext = quickpayloadtext.search("%a%");
+    var action = quickpayloadtext.search("%action%");
+    var comedy = quickpayloadtext.search("%comedy%");
+    var romance = quickpayloadtext.search("%romance%");
+    var thriller = quickpayloadtext.search("%thriller%");
+    var animation = quickpayloadtext.search("%animation%");
+    var celpics = quickpayloadtext.search("%pictures%");
+    var celmovies = quickpayloadtext.search("%movies%");
+    var celnetworth = quickpayloadtext.search("%networth%");
+    var celnews = quickpayloadtext.search("%news%");
+    var celfamily = quickpayloadtext.search("%family%");
+    var celabout = quickpayloadtext.search("%about%");
+    var quick_reply = quickpayloadtext.search("%QR%");
+    if(celpics != -1 || celmovies != -1 || celnetworth != -1 || celnews != -1 || celfamily != -1 || celabout != -1){
+      console.log("This is celebritypics condition");
+      celebritypics(messagingEvent, quickpayloadtext);
+    }else if (action != -1 || comedy != -1 || romance != -1 || thriller != -1 || animation != -1 || sociofantasy != -1) {
+      console.log("This is getgenremovies condition");
+     movies.getgenremovies(messagingEvent, quickpayloadtext);
+   }else if (actortext != -1) {
+     var actorname = quickpayloadtext.replace(" %a%", "");
+     console.log("actor name", actorname);
+     filmactor(messagingEvent, actorname);
+   }else if (actortext != -1){
+     var moviename = quickpayloadtext.replace(" %m%", "");
+     console.log("Yessssssss", moviename);
+      movies.getmovies(event, moviename);
+
+   }else {
+      payloadText.sendContentPacks(res, messagingEvent);
     }
+
+
+
+
 }
 // Quick_Reply payload section start *********************************
 // wit.ai function for verify the text in wit.ai
