@@ -1,7 +1,7 @@
 'use strict';
 var request = require('request');
 const searchText = require('./search.js');
-//const thread = require('./thread.js');
+const thread = require('./thread.js');
 var googleTrends = require('google-trends-api');
 const errors = require('../contentjson/errormsg.json');
 const movie = require('../contentjson/movies.json');
@@ -13,8 +13,7 @@ const fbRquest = require('./fbapi.js');
 const mysqlconfig = require('./mysqlconfig.js');
 //var app = express();
 var mysql = require('mysql');
-var pool = mysqlconfig.pool;
-//var pool = mysql.createPool({connectionLimit: 1, host: 'ap-cdbr-azure-southeast-a.cloudapp.net', user: 'bb603e8108da6e', password: '3e384329', database: 'rankworlddev'});
+var pool = mysql.createPool({connectionLimit: 1, host: 'ap-cdbr-azure-southeast-a.cloudapp.net', user: 'bb603e8108da6e', password: '3e384329', database: 'rankworlddev'});
 
 var fbpage_access_token = 'EAADV2VT6AuUBAHyUBL8zV5dYdRCBE7ZCKYQvOWCu2kkWQSV1RCllfvMymjDhXZCBQ93IkOFDpVYjN1E8jCHYpHKdH6uwNuhYAyCGdHOv6VgVZCwI6BZCc3AwAc7CW17yNTXe1YE7GkegMHHz36ax5JZC01zllTmTnAQRe0ZB0U3wZDZD';
 var quickreply = [
