@@ -171,6 +171,8 @@ function tvshowsmenu(messagingEvent){
 
 function tvshowsdetails(messagingEvent, tvshowname){
   var tvshowname = tvshowname.trim();
+  var tvshowleadActor;
+  var tvshowleadActress;
   console.log("tvshowname:",tvshowname);
   pool.getConnection(function(err, connection) {
       connection.query('select  * from cc_tvshows where name = ?',[tvshowname], function(err, rows) {
@@ -188,6 +190,8 @@ function tvshowsdetails(messagingEvent, tvshowname){
                   console.log("less than 10 Rows", rowslenth);
               }
               for (var i = 0; i < rowslenth; i++) { //Construct request body
+                tvshowleadActor = rows[i].leadActor;
+                tvshowleadActress = rows[i].leadActress;
                   var keyMap = {
                       "title": rows[i].name,
                       "image_url": rows[i].picture1,
@@ -216,13 +220,13 @@ function tvshowsdetails(messagingEvent, tvshowname){
                       "quick_replies": [
                           {
                               "content_type": "text",
-                              "title": rows[1].leadActor,
-                              "payload":rows[1].leadActor
+                              "title": tvshowleadActor,
+                              "payload":tvshowleadActor
                           },
                           {
                               "content_type": "text",
-                              "title": rows[1].leadActress,
-                              "payload": rows[1].leadActress
+                              "title": tvshowleadActress,
+                              "payload": tvshowleadActress
                           },{
                               "content_type": "text",
                               "title": "Jokes",
