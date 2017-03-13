@@ -126,9 +126,23 @@ function receivedpostback(messagingEvent) {
     // var catname = categoryName.toLowerCase();
     // console.log("catname", catname);
     console.log("???????????????????????categoryName?????????????????????", categoryName);
-    var movietext = categoryName.search("%mname%");
-    if (movietext == -1) {
-        var packId = parseInt(categoryName);
+    var movietitle = categoryName.search("%mname%");
+    var tvshowstitle = categoryName.search("%tvshows%");
+    if(movietitle != -1){
+      //console.log("Yessssssss");
+      var moviename = categoryName.replace(" %mname%", "");
+      console.log("Yes this is %movies%");
+      actorintro(messagingEvent, moviename);
+      //celebritymovies(messagingEvent, moviename);
+    }else if (tvshowstitle != -1) {
+      console.log("Yes this is %tvshows%");
+      var tvshowname = categoryName.replace(" %tvshows%", "");
+      //console.log("Yessssssss", moviename);
+      actorintro(messagingEvent, tvshowname);
+      //celebritymovies(messagingEvent, moviename);
+
+    }else {
+      var packId = parseInt(categoryName);
         if (isNaN(packId)) {
             //sendContentPacks(messageText, event);
             var res = categoryName.toLowerCase();
@@ -141,13 +155,8 @@ function receivedpostback(messagingEvent) {
             console.log("postback_sender_id:------", packId);
         }
         console.log("postback_sender_id:------", userid);
-    } else {
-        //console.log("Yessssssss");
-        var moviename = categoryName.replace(" %mname%", "");
-        //console.log("Yessssssss", moviename);
-        actorintro(messagingEvent, moviename);
-        //celebritymovies(messagingEvent, moviename);
     }
+
 }
 // postback payload section end *****************************
 // Quick_Reply payload section start
