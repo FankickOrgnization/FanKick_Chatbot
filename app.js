@@ -10,10 +10,13 @@ const payloadText = require('./modules/payload.js');
 const searchText = require('./modules/search.js');
 const movies = require('./modules/movies.js');
 const fbRquest = require('./modules/fbapi.js');
+const mysqlconfig = require('./modules/mysqlconfig.js');
 var googleTrends = require('google-trends-api');
 //const bot = require('./wit.js');
 
-var pool = mysql.createPool({connectionLimit: 1, host: 'ap-cdbr-azure-southeast-a.cloudapp.net', user: 'bb603e8108da6e', password: '3e384329', database: 'rankworlddev'});
+
+var pool = mysqlconfig.pool;
+//var pool = mysql.createPool({connectionLimit: 1, host: 'ap-cdbr-azure-southeast-a.cloudapp.net', user: 'bb603e8108da6e', password: '3e384329', database: 'rankworlddev'});
 
 var quickMenu = [
     {
@@ -257,7 +260,7 @@ function receivedMessage(event) {
             //console.log("Response from Wit************6", wit_res_data_intent.value);
             //var intentlength = wit_res_data_intent.length;
             //if (JSON.stringify(wit_res_data_ent) === '{}') { //This will check if the object is empty
-          if (JSON.stringify(wit_res_data_ent.intent) === '{}' || wit_res_data_ent.intent == undefined) {  
+          if (JSON.stringify(wit_res_data_ent.intent) === '{}' || wit_res_data_ent.intent == undefined) {
                 //sendHelpMessage(event);
                 textmessage(msgwit, event);
                 //sendContentPacks(msgwit, event)
@@ -507,33 +510,35 @@ function celebritypics(messagingEvent, quickpayloadtext) {
                         "quick_replies": [
                             {
                                 "content_type": "text",
-                                "title": celebrityname+' Pictures',
+                                "title": 'Pictures',
                                 "payload": celebrityname + ' ,%pictures%'
                             }, {
                                 "content_type": "text",
-                                "title": celebrityname+' Movies',
+                                "title": 'Movies',
                                 "payload": celebrityname + ' ,%movies%'
                             }, {
                                 "content_type": "text",
-                                "title": celebrityname+" Songs",
+                                "title": "Songs",
                                 "payload": "Songs"
                             }, {
                                 "content_type": "text",
-                                "title": celebrityname+" Net Worth",
+                                "title": "Net Worth",
                                 "payload": celebrityname + ' ,%networth%'
                             }, {
                                 "content_type": "text",
-                                "title": celebrityname+" News",
+                                "title": "News",
                                 "payload": celebrityname + ' ,%news%'
                             }, {
                                 "content_type": "text",
-                                "title": celebrityname+" Family",
+                                "title": "Family",
                                 "payload": celebrityname + ' ,%family%'
-                            }, {
-                                "content_type": "text",
-                                "title": celebrityname+" Personal",
-                                "payload": "Personal"
-                            }, {
+                            },
+                            // {
+                            //     "content_type": "text",
+                            //     "title": celebrityname+" Personal",
+                            //     "payload": "Personal"
+                            // },
+                            {
                                 "content_type": "text",
                                 "title": "Home 🏠",
                                 "payload": "home"
@@ -1125,33 +1130,35 @@ function filmactor(messagingEvent, actorname) {
                         "quick_replies": [
                             {
                                 "content_type": "text",
-                                "title": celebrityname +" Pictures",
+                                "title": "Pictures",
                                 "payload": celebrityname + ' ,%pictures%'
                             }, {
                                 "content_type": "text",
-                                "title": celebrityname +" Movies",
+                                "title": "Movies",
                                 "payload": celebrityname + ' ,%movies%'
                             }, {
                                 "content_type": "text",
-                                "title": celebrityname +" Songs",
+                                "title": "Songs",
                                 "payload": "Songs"
                             }, {
                                 "content_type": "text",
-                                "title": celebrityname +" Net Worth",
+                                "title": "Net Worth",
                                 "payload": celebrityname + ' ,%networth%'
                             }, {
                                 "content_type": "text",
-                                "title": celebrityname +" News",
+                                "title": "News",
                                 "payload": celebrityname + ' ,%news%'
                             }, {
                                 "content_type": "text",
-                                "title": celebrityname +" Family",
+                                "title": "Family",
                                 "payload": celebrityname + ' ,%family%'
-                            }, {
-                                "content_type": "text",
-                                "title": "Personal",
-                                "payload": "Personal"
-                            }, {
+                            },
+                            // {
+                            //     "content_type": "text",
+                            //     "title": "Personal",
+                            //     "payload": "Personal"
+                            // },
+                            {
                                 "content_type": "text",
                                 "title": "Home 🏠",
                                 "payload": "home"

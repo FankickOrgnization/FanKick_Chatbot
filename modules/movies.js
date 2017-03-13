@@ -10,9 +10,11 @@ const tv_show = require('../contentjson/tv shows.json');
 const musics = require('../contentjson/music.json');
 const jokes = require('../contentjson/jokes.json');
 const fbRquest = require('./fbapi.js');
+const mysqlconfig = require('./mysqlconfig.js');
 //var app = express();
 var mysql = require('mysql');
-var pool = mysql.createPool({connectionLimit: 1, host: 'ap-cdbr-azure-southeast-a.cloudapp.net', user: 'bb603e8108da6e', password: '3e384329', database: 'rankworlddev'});
+var pool = mysqlconfig.pool;
+//var pool = mysql.createPool({connectionLimit: 1, host: 'ap-cdbr-azure-southeast-a.cloudapp.net', user: 'bb603e8108da6e', password: '3e384329', database: 'rankworlddev'});
 
 var fbpage_access_token = 'EAADV2VT6AuUBAHyUBL8zV5dYdRCBE7ZCKYQvOWCu2kkWQSV1RCllfvMymjDhXZCBQ93IkOFDpVYjN1E8jCHYpHKdH6uwNuhYAyCGdHOv6VgVZCwI6BZCc3AwAc7CW17yNTXe1YE7GkegMHHz36ax5JZC01zllTmTnAQRe0ZB0U3wZDZD';
 var quickreply = [
@@ -407,33 +409,35 @@ const getgenremovies = (messagingEvent, quickpayloadtext) => {
                         "quick_replies": [
                             {
                                 "content_type": "text",
-                                "title": celebrityname +" Pictures",
+                                "title": "Pictures",
                                 "payload": celebrityname + ' ,%pictures%'
                             }, {
                                 "content_type": "text",
-                                "title": celebrityname +" Movies",
+                                "title": "Movies",
                                 "payload": celebrityname + ' ,%movies%'
                             }, {
                                 "content_type": "text",
-                                "title": celebrityname +" Songs",
+                                "title": "Songs",
                                 "payload": "Songs"
                             }, {
                                 "content_type": "text",
-                                "title": celebrityname +" Net Worth",
+                                "title": "Net Worth",
                                 "payload": celebrityname + ' ,%networth%'
                             }, {
                                 "content_type": "text",
-                                "title": celebrityname +" News",
+                                "title": "News",
                                 "payload": celebrityname + ' ,%news%'
                             }, {
                                 "content_type": "text",
-                                "title": celebrityname +" Family",
+                                "title": "Family",
                                 "payload": celebrityname + ' ,%family%'
-                            }, {
-                                "content_type": "text",
-                                "title": "Personal",
-                                "payload": "Personal"
-                            }, {
+                            },
+                            // {
+                            //     "content_type": "text",
+                            //     "title": "Personal",
+                            //     "payload": "Personal"
+                            // },
+                            {
                                 "content_type": "text",
                                 "title": "Home 🏠",
                                 "payload": "home"
