@@ -174,6 +174,7 @@ function quickpayload(messagingEvent) {
     var comedy = quickpayloadtext.search("%comedy%");
     var romance = quickpayloadtext.search("%romance%");
     var thriller = quickpayloadtext.search("%thriller%");
+    var sociofantasy = quickpayloadtext.search("%socio-fantasy%");
     var animation = quickpayloadtext.search("%animation%");
     var celpics = quickpayloadtext.search("%pictures%");
     var celmovies = quickpayloadtext.search("%movies%");
