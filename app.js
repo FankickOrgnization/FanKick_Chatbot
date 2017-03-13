@@ -243,11 +243,13 @@ function receivedMessage(event) {
             var wit_res_msg_id = wit_res_data.msg_id;
 
             console.log("Response from Wit--Res", res);
-            console.log("Response from wit_res_data", wit_res_data);
-          //  console.log("Response from wit_res_data", res_data);
+            //console.log("Response from wit_res_data", wit_res_data);
+          console.log("Response from wit_res_data", res_data);
             //console.log("Response from Wit--response", response);
             console.log("Response from Wit--msg_id", wit_res_data.msg_id);
             console.log("Response from Wit************1", wit_res_data.entities);
+
+            console.log("Response from Wit************2search_query", wit_res_data_ent.search_query);
             console.log("Response from Wit************2", wit_res_data_ent.intent);
             console.log("Response from Wit************3", wit_res_data_ent.location);
             console.log("Response from Wit************4", wit_res_data_intent);
@@ -256,7 +258,7 @@ function receivedMessage(event) {
             //var intentlength = wit_res_data_intent.length;
             if (JSON.stringify(wit_res_data_ent) === '{}') { //This will check if the object is empty
                 //sendHelpMessage(event);
-                textmessage(msgwit, event)
+                textmessage(msgwit, event);
                 //sendContentPacks(msgwit, event)
                 console.log("wit_res_data_intent.length is Zero", wit_res_data_ent);
                 console.log("wit_res_data_intent.length is Zero", event);
