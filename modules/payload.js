@@ -9,6 +9,7 @@ const sport = require('../contentjson/sports.json');
 const tv_show = require('../contentjson/tv shows.json');
 const musics = require('../contentjson/music.json');
 const jokes = require('../contentjson/jokes.json');
+const tvshows = require('./tvshows.js');
 const movies = require('./movies.js');
 const fbRquest = require('./fbapi.js');
 //var app = express();
@@ -673,7 +674,8 @@ function submenu(event, categoryName) {
                 var random = Math.floor(Math.random() * tv_show.length);
                 if (tv_show[random].tv_shows.length < 320) // better be a least one good joke :)
                     submenuString = tv_show[random].tv_shows;
-                submemuquickreply(event, categoryName, submenuString);
+                //tvshows.tvshowsmenu(event, categoryName, submenuString);
+                tvshows.tvshowsintro(event, submenuString);
             }
         }
     } //var msg = 'I am sorry '+username+', my senses are gone wrong. Why dont you try a different command...';
