@@ -173,7 +173,7 @@ function tvshowsdetails(messagingEvent, tvshowname){
   var tvshowname = tvshowname.trim();
   console.log("tvshowname:",tvshowname);
   pool.getConnection(function(err, connection) {
-      connection.query('select  * from cc_tvshows whare name = ?',[tvshowname], function(err, rows) {
+      connection.query('select  * from cc_tvshows where name = ?',[tvshowname], function(err, rows) {
           console.log("*************************tvshowsdetails", rows);
           if (err) {
               console.log("Error While retriving content pack data from database:", err);
