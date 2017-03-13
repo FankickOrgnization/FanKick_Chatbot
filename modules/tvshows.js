@@ -59,6 +59,81 @@ function tvshowsmenu(messagingEvent){
           console.log("*************************selectedactorfilems", rows);
           if (err) {
               console.log("Error While retriving content pack data from database:", err);
+          }else if (rows.length) {
+              var senderID = messagingEvent.sender.id;
+              var contentList = [];
+              if (rows.length > 10) {
+                  var rowslenth = 10;
+                  console.log("more than 10 Rows", rowslenth);
+              } else {
+                  var rowslenth = rows.length;
+                  console.log("less than 10 Rows", rowslenth);
+              }
+              for (var i = 0; i < rowslenth; i++) { //Construct request body
+                  var keyMap = {
+                      "title": rows[i].name,
+                      "image_url": rows[i].picture1,
+                      "buttons": [
+                          {
+                              "type": "postback",
+                              "title": "More Info",
+                              "payload": rows[i].name + ' %tvshows%'
+                          }
+                      ]
+                  };
+                  contentList.push(keyMap);
+              }
+              var messageData = {
+                  "recipient": {
+                      "id": senderID
+                  },
+                  "message": {
+                      "attachment": {
+                          "type": "template",
+                          "payload": {
+                              "template_type": "generic",
+                              "elements": contentList
+                          }
+                      },
+                      "quick_replies": [
+                          {
+                              "content_type": "text",
+                              "title": "Latest",
+                              "payload":"Latest",
+                          },
+                          {
+                              "content_type": "text",
+                              "title": "Animation",
+                              "payload": "Animation"
+                          }, {
+                              "content_type": "text",
+                              "title": "Romance",
+                              "payload": "Romance"
+                          }, {
+                              "content_type": "text",
+                              "title": "Comedy",
+                              "payload":"Comedy"
+                          }, {
+                              "content_type": "text",
+                              "title": "Reality",
+                              "payload": "Reality"
+                          }, {
+                              "content_type": "text",
+                              "title": "Documentary",
+                              "payload": "Documentary"
+                          }, {
+                              "content_type": "text",
+                              "title": "Google Search",
+                              "payload": "Google Search"
+                          }, {
+                              "content_type": "text",
+                              "title": "Home 🏠",
+                              "payload": "home"
+                          }
+                      ]
+                  }
+              }
+              fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
           }else {
               console.log("No Data Found From Database");
               sendHelpMessage(messagingEvent);
