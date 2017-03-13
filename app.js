@@ -505,7 +505,7 @@ function celebritypics(messagingEvent, quickpayloadtext) {
                                       {
                                           "title": "About",
                                           "image_url": rows[i].picture4,
-                                          "subtitle": rows[i].name
+                                          "subtitle": rows[i].name,
                                           "buttons": [
                                           {
                                               "type":"web_url",
