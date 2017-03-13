@@ -256,7 +256,8 @@ function receivedMessage(event) {
             console.log("Response from Wit************5", wit_res_data_location);
             //console.log("Response from Wit************6", wit_res_data_intent.value);
             //var intentlength = wit_res_data_intent.length;
-            if (JSON.stringify(wit_res_data_ent) === '{}') { //This will check if the object is empty
+            //if (JSON.stringify(wit_res_data_ent) === '{}') { //This will check if the object is empty
+          if (JSON.stringify(wit_res_data_ent.intent) === '{}') {  
                 //sendHelpMessage(event);
                 textmessage(msgwit, event);
                 //sendContentPacks(msgwit, event)
