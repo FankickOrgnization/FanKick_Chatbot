@@ -80,7 +80,7 @@ const tvshowsintro = (messagingEvent, tvshowsmsg) => {
 function tvshowsmenu(messagingEvent){
   pool.getConnection(function(err, connection) {
       connection.query('select  * from cc_tvshows', function(err, rows) {
-          console.log("*************************selectedactorfilems", rows);
+          console.log("*************************tvshowsmenu", rows);
           if (err) {
               console.log("Error While retriving content pack data from database:", err);
           }else if (rows.length) {
@@ -170,9 +170,10 @@ function tvshowsmenu(messagingEvent){
 
 
 function tvshowsdetails(messagingEvent, tvshowname){
+  console.log("tvshowname:",tvshowname);
   pool.getConnection(function(err, connection) {
       connection.query('select  * from cc_tvshows whare name = ?',[tvshowname], function(err, rows) {
-          console.log("*************************selectedactorfilems", rows);
+          console.log("*************************tvshowsdetails", rows);
           if (err) {
               console.log("Error While retriving content pack data from database:", err);
           }else if (rows.length) {
