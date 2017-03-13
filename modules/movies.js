@@ -408,6 +408,11 @@ const getgenremovies = (messagingEvent, quickpayloadtext) => {
                         "quick_replies": [
                             {
                                 "content_type": "text",
+                                "title": "About",
+                                "payload": celebrityname + ' ,%about%'
+                            },
+                            {
+                                "content_type": "text",
                                 "title": "Pictures",
                                 "payload": celebrityname + ' ,%pictures%'
                             }, {
@@ -430,13 +435,7 @@ const getgenremovies = (messagingEvent, quickpayloadtext) => {
                                 "content_type": "text",
                                 "title": "Family",
                                 "payload": celebrityname + ' ,%family%'
-                            },
-                            // {
-                            //     "content_type": "text",
-                            //     "title": "Personal",
-                            //     "payload": "Personal"
-                            // },
-                            {
+                            }, {
                                 "content_type": "text",
                                 "title": "Home 🏠",
                                 "payload": "home"

@@ -180,7 +180,8 @@ function quickpayload(messagingEvent) {
                 var celnetworth = quickpayloadtext.search("%networth%");
                 var celnews = quickpayloadtext.search("%news%");
                 var celfamily = quickpayloadtext.search("%family%");
-                if (celpics == -1 && celmovies == -1 && celnetworth == -1 && celnews == -1 && celfamily == -1) {
+                var celabout = quickpayloadtext.search("%about%");
+                if (celpics == -1 && celmovies == -1 && celnetworth == -1 && celnews == -1 && celfamily == -1 && celabout == -1) {
                     var quick_reply = quickpayloadtext.search("%QR%");
                     if (quick_reply == -1) {
                         payloadText.sendContentPacks(res, messagingEvent);
@@ -494,7 +495,29 @@ function celebritypics(messagingEvent, quickpayloadtext) {
                                 ]
                             }
                         }
-                    }
+                      } else if (subCategory == "%about%") {
+                          console.log("celebrity Family");
+                          keyMap = {
+                              "type": "template",
+                              "payload": {
+                                  "template_type": "generic",
+                                  "elements": [
+                                      {
+                                          "title": "About",
+                                          "image_url": rows[i].picture4,
+                                          "subtitle": rows[i].name
+                                          "buttons": [
+                                          {
+                                              "type":"web_url",
+                                             "url": rows[i].personalInfo,
+                                             "title":"More Info"
+                                          }
+                                          ]
+                                      }
+                                  ]
+                              }
+                          }
+                      }
                     //contentList.push(keyMap);
                 }
 
