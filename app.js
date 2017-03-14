@@ -193,6 +193,7 @@ function quickpayload(messagingEvent) {
     var celfamily = quickpayloadtext.search("%family%");
     var celabout = quickpayloadtext.search("%about%");
     var quick_reply = quickpayloadtext.search("%QR%");
+    //tv shows celebrity details
     var tvcelebrity = quickpayloadtext.search("%tvcel%");
     var tvcelpics = quickpayloadtext.search("%tvcelpics%");
     var tvcelawards = quickpayloadtext.search("%tvcelawards%");
@@ -201,6 +202,7 @@ function quickpayload(messagingEvent) {
     var tvcomedy = quickpayloadtext.search("%tvComedy%");
     var tvcrime = quickpayloadtext.search("%tvCrime%");
     var tvreality = quickpayloadtext.search("%tvReality%");
+    //sports celebrity details
     var sportsquicktitle = quickpayloadtext.search("%sportsQRtitle%");
     var sportscelebrityname = quickpayloadtext.search("%sportscel%");
     var sportscelpics = quickpayloadtext.search("%sportscelpics%");
@@ -208,7 +210,15 @@ function quickpayload(messagingEvent) {
     var sportscelawards = quickpayloadtext.search("%sportscelawards%");
     var sportscelnetworth = quickpayloadtext.search("%sportscelnetworth%");
     var sportscelcompe = quickpayloadtext.search("%sportscelcompetitors%");
+    //music celebrity details
     var musicartistname =quickpayloadtext.search("%musicartist%");
+    var musicartistpics =quickpayloadtext.search("%musiccelpics%");
+    var musicartistawards =quickpayloadtext.search("%musiccelawards%");
+    var musicartistnet =quickpayloadtext.search("%musiccelnetworth%");
+    var musicartistnews =quickpayloadtext.search("%Musiccelnews%");
+    var musicartistalbum =quickpayloadtext.search("%Musiccelalbums%");
+    var musicartistsongs =quickpayloadtext.search("%Musiccelsongs%");
+    var musicartistcomp =quickpayloadtext.search("%Musiccelcomp%");
 
     if (celpics != -1 || celmovies != -1 || celnetworth != -1 || celnews != -1 || celfamily != -1 || celabout != -1) {
         console.log("This is celebritypics condition");
@@ -249,7 +259,10 @@ function quickpayload(messagingEvent) {
         console.log("Music celebrity Name");
         var musiccelname = quickpayloadtext.replace(" %musicartist%", "");
         music.musiccelbrityintro(messagingEvent, musiccelname);
-    }else {
+    }else if (musicartistpics != -1 || musicartistawards != -1 || musicartistnet != -1 || musicartistnews != -1 || musicartistalbum != -1 || musicartistsongs != -1 || musicartistcomp != -1) {
+        console.log("This is getgenremovies condition");
+        music.musiccelebrityinfo(messagingEvent, quickpayloadtext);
+    } else {
         payloadText.sendContentPacks(res, messagingEvent);
     }
 
