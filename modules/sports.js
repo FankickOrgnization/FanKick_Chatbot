@@ -215,23 +215,23 @@ function sportsqrdetails(messagingEvent, qrtitle){
                             {
                                 "content_type": "text",
                                 "title": qr1,
-                                "payload": qr1+ ' ,%sportscel%'
+                                "payload": qr1+ ' %sportscel%'
                             }, {
                                 "content_type": "text",
                                 "title": qr2,
-                                "payload": qr2+ ' ,%sportscel%'
+                                "payload": qr2+ ' %sportscel%'
                             }, {
                                 "content_type": "text",
                                 "title": qr3,
-                                "payload": qr3+ ' ,%sportscel%'
+                                "payload": qr3+ ' %sportscel%'
                             }, {
                                 "content_type": "text",
                                 "title": qr4,
-                                "payload": qr4+ ' ,%sportscel%'
+                                "payload": qr4+ ' %sportscel%'
                             }, {
                                 "content_type": "text",
                                 "title": qr5,
-                                "payload": qr5+ ' ,%sportscel%'
+                                "payload": qr5+ ' %sportscel%'
                             }, {
                                 "content_type": "text",
                                 "title": "Jokes",
