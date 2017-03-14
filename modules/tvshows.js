@@ -336,7 +336,7 @@ function tvcelbritydetails(event, celbrityname){
                 //  movieslist = rows[i].lastFiveMovies;
                 //  console.log("%%%%%%%%%%%%movieslist%%%%%%%%%%%%%", movieslist);
               }
-              var myarray = movieslist.split(',');
+              //var myarray = movieslist.split(',');
               var messageData = {
                   "recipient": {
                       "id": senderID
