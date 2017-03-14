@@ -130,21 +130,21 @@ function receivedpostback(messagingEvent) {
     console.log("???????????????????????categoryName?????????????????????", categoryName);
     var movietitle = categoryName.search("%mname%");
     var tvshowstitle = categoryName.search("%tvshows%");
-    if(movietitle != -1){
-      //console.log("Yessssssss");
-      var moviename = categoryName.replace(" %mname%", "");
-      console.log("Yes this is %movies%");
-      actorintro(messagingEvent, moviename);
-      //celebritymovies(messagingEvent, moviename);
-    }else if (tvshowstitle != -1) {
-      console.log("Yes this is %tvshows%");
-      var tvshowname = categoryName.replace(" %tvshows%", "");
-      //console.log("Yessssssss", moviename);
-      tvshows.tvshowinfo(messagingEvent, tvshowname);
-      //celebritymovies(messagingEvent, moviename);
+    if (movietitle != -1) {
+        //console.log("Yessssssss");
+        var moviename = categoryName.replace(" %mname%", "");
+        console.log("Yes this is %movies%");
+        actorintro(messagingEvent, moviename);
+        //celebritymovies(messagingEvent, moviename);
+    } else if (tvshowstitle != -1) {
+        console.log("Yes this is %tvshows%");
+        var tvshowname = categoryName.replace(" %tvshows%", "");
+        //console.log("Yessssssss", moviename);
+        tvshows.tvshowinfo(messagingEvent, tvshowname);
+        //celebritymovies(messagingEvent, moviename);
 
-    }else {
-      var packId = parseInt(categoryName);
+    } else {
+        var packId = parseInt(categoryName);
         if (isNaN(packId)) {
             //sendContentPacks(messageText, event);
             var res = categoryName.toLowerCase();
@@ -163,7 +163,7 @@ function receivedpostback(messagingEvent) {
 // postback payload section end *****************************
 // Quick_Reply payload section start
 function quickpayload(messagingEvent) {
-  var event = messagingEvent
+    var event = messagingEvent
     console.log("entered in the quickpayload function");
     var quicktext = messagingEvent.message.quick_reply;
     var quickpayloadtext = quicktext.payload;
@@ -200,48 +200,44 @@ function quickpayload(messagingEvent) {
     var sportscelnetworth = quickpayloadtext.search("%sportscelnetworth%");
     var sportscelcompe = quickpayloadtext.search("%sportscelcompetitors%");
 
-
-    if(celpics != -1 || celmovies != -1 || celnetworth != -1 || celnews != -1 || celfamily != -1 || celabout != -1){
-      console.log("This is celebritypics condition");
-      celebritypics(messagingEvent, quickpayloadtext);
-    }else if (action != -1 || comedy != -1 || romance != -1 || thriller != -1 || animation != -1 || sociofantasy != -1) {
-      console.log("This is getgenremovies condition");
-     movies.getgenremovies(messagingEvent, quickpayloadtext);
-   }else if (actortext != -1) {
-     var actorname = quickpayloadtext.replace(" %a%", "");
-     console.log("actor name", actorname);
-     filmactor(messagingEvent, actorname);
-   }else if (actortext != -1){
-     var moviename = quickpayloadtext.replace(" %m%", "");
-     console.log("Yessssssss", moviename);
-      movies.getmovies(event, moviename);
-   }else if (tvcelebrity != -1){
-     var celbrityname = quickpayloadtext.replace(" %tvcel%", "");
-     console.log("Yessssssss", celbrityname);
-      tvshows.tvcelbrityintro(event, celbrityname);
-   }else if (tvcelpics != -1 || tvcelawards != -1 || tvcelnetworth != -1 || tvcelnews != -1) {
-     console.log("This is getgenremovies condition");
-    tvshows.tvcelebrityinfo(messagingEvent, quickpayloadtext);
-  }else if (tvcomedy != -1 || tvcrime != -1 || tvreality != -1) {
-    console.log("This is getgenremovies condition");
-   tvshows.gettvshowsgenre(messagingEvent, quickpayloadtext);
- }else if (sportsquicktitle != -1) {
-   console.log("Sport Quick_reply Title");
-  var qrtitle = quickpayloadtext.replace(" %sportsQRtitle%", "");
-  sports.sportsqrintro(messagingEvent, qrtitle);
-}else if (sportscelebrityname != -1) {
-  console.log("Sport celebrity Name");
- var sportscelname = quickpayloadtext.replace(" %sportscel%", "");
- sports.sportscelbrityintro(messagingEvent, sportscelname);
-}else if (sportscelpics != -1 || sportscelnews != -1 || sportscelawards != -1 || sportscelnetworth != -1 || sportscelcompe != -1) {
-  console.log("This is getgenremovies condition");
- sports.sportscelebrityinfo(messagingEvent, quickpayloadtext);
-}else {
-      payloadText.sendContentPacks(res, messagingEvent);
+    if (celpics != -1 || celmovies != -1 || celnetworth != -1 || celnews != -1 || celfamily != -1 || celabout != -1) {
+        console.log("This is celebritypics condition");
+        celebritypics(messagingEvent, quickpayloadtext);
+    } else if (action != -1 || comedy != -1 || romance != -1 || thriller != -1 || animation != -1 || sociofantasy != -1) {
+        console.log("This is getgenremovies condition");
+        movies.getgenremovies(messagingEvent, quickpayloadtext);
+    } else if (actortext != -1) {
+        var actorname = quickpayloadtext.replace(" %a%", "");
+        console.log("actor name", actorname);
+        filmactor(messagingEvent, actorname);
+    } else if (actortext != -1) {
+        var moviename = quickpayloadtext.replace(" %m%", "");
+        console.log("Yessssssss", moviename);
+        movies.getmovies(event, moviename);
+    } else if (tvcelebrity != -1) {
+        var celbrityname = quickpayloadtext.replace(" %tvcel%", "");
+        console.log("Yessssssss", celbrityname);
+        tvshows.tvcelbrityintro(event, celbrityname);
+    } else if (tvcelpics != -1 || tvcelawards != -1 || tvcelnetworth != -1 || tvcelnews != -1) {
+        console.log("This is getgenremovies condition");
+        tvshows.tvcelebrityinfo(messagingEvent, quickpayloadtext);
+    } else if (tvcomedy != -1 || tvcrime != -1 || tvreality != -1) {
+        console.log("This is getgenremovies condition");
+        tvshows.gettvshowsgenre(messagingEvent, quickpayloadtext);
+    } else if (sportsquicktitle != -1) {
+        console.log("Sport Quick_reply Title");
+        var qrtitle = quickpayloadtext.replace(" %sportsQRtitle%", "");
+        sports.sportsqrintro(messagingEvent, qrtitle);
+    } else if (sportscelebrityname != -1) {
+        console.log("Sport celebrity Name");
+        var sportscelname = quickpayloadtext.replace(" %sportscel%", "");
+        sports.sportscelbrityintro(messagingEvent, sportscelname);
+    } else if (sportscelpics != -1 || sportscelnews != -1 || sportscelawards != -1 || sportscelnetworth != -1 || sportscelcompe != -1) {
+        console.log("This is getgenremovies condition");
+        sports.sportscelebrityinfo(messagingEvent, quickpayloadtext);
+    } else {
+        payloadText.sendContentPacks(res, messagingEvent);
     }
-
-
-
 
 }
 // Quick_Reply payload section start *********************************
@@ -278,7 +274,7 @@ function receivedMessage(event) {
 
             console.log("Response from Wit--Res", res);
             //console.log("Response from wit_res_data", wit_res_data);
-          console.log("Response from wit_res_data", res_data);
+            console.log("Response from wit_res_data", res_data);
             //console.log("Response from Wit--response", response);
             console.log("Response from Wit--msg_id", wit_res_data.msg_id);
             console.log("Response from Wit************1", wit_res_data.entities);
@@ -291,7 +287,7 @@ function receivedMessage(event) {
             //console.log("Response from Wit************6", wit_res_data_intent.value);
             //var intentlength = wit_res_data_intent.length;
             //if (JSON.stringify(wit_res_data_ent) === '{}') { //This will check if the object is empty
-          if (JSON.stringify(wit_res_data_ent.intent) === '{}' || wit_res_data_ent.intent == undefined) {
+            if (JSON.stringify(wit_res_data_ent.intent) === '{}' || wit_res_data_ent.intent == undefined) {
                 //sendHelpMessage(event);
                 textmessage(msgwit, event);
                 //sendContentPacks(msgwit, event)
@@ -528,29 +524,29 @@ function celebritypics(messagingEvent, quickpayloadtext) {
                                 ]
                             }
                         }
-                      } else if (subCategory == "%about%") {
-                          console.log("celebrity Family");
-                          keyMap = {
-                              "type": "template",
-                              "payload": {
-                                  "template_type": "generic",
-                                  "elements": [
-                                      {
-                                          "title": "About",
-                                          "image_url": rows[i].picture4,
-                                          "subtitle": rows[i].name,
-                                          "buttons": [
-                                          {
-                                              "type":"web_url",
-                                             "url": rows[i].personalInfo,
-                                             "title":"More Info"
-                                          }
-                                          ]
-                                      }
-                                  ]
-                              }
-                          }
-                      }
+                    } else if (subCategory == "%about%") {
+                        console.log("celebrity Family");
+                        keyMap = {
+                            "type": "template",
+                            "payload": {
+                                "template_type": "generic",
+                                "elements": [
+                                    {
+                                        "title": "About",
+                                        "image_url": rows[i].picture4,
+                                        "subtitle": rows[i].name,
+                                        "buttons": [
+                                            {
+                                                "type": "web_url",
+                                                "url": rows[i].personalInfo,
+                                                "title": "More Info"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        }
+                    }
                     //contentList.push(keyMap);
                 }
 
@@ -610,7 +606,6 @@ function celebritypics(messagingEvent, quickpayloadtext) {
 }
 
 //Selected actor filems from movies list
-
 
 function moviesgenre(messagingEvent, quickpayloadtext) {
     console.log("*********Movies Genre***********", quickpayloadtext);
@@ -732,10 +727,10 @@ function actorintro(messagingEvent, moviename) {
         "recipient": {
             "id": senderID
         },
-        "message":{
-            "text":"Here you go👉..."
+        "message": {
+            "text": "Here you go👉..."
             //"text":msg
-          }
+        }
         // "message": {
         //     "attachment": {
         //         "type": "audio",
@@ -1231,24 +1226,24 @@ function filmactor(messagingEvent, actorname) {
 //End get filmactor name from the DB***************
 
 function sendHelpMessage(event) {
-          var errorString = "";
-          while (errorString === "") {
-              var random = Math.floor(Math.random() * errors.length);
-              if (errors[random].error.length < 320) // better be a least one good joke :)
-                  errorString = errors[random].error;
-              }
-          var senderID = event.sender.id;
-          var messageData = {
-              "recipient": {
-                  "id": senderID
-              },
-              "message": {
-                  "text": errorString,
-                  //"text":"msg",
-                  "quick_replies": quickreply
-              }
-          }
-          fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
+    var errorString = "";
+    while (errorString === "") {
+        var random = Math.floor(Math.random() * errors.length);
+        if (errors[random].error.length < 320) // better be a least one good joke :)
+            errorString = errors[random].error;
+        }
+    var senderID = event.sender.id;
+    var messageData = {
+        "recipient": {
+            "id": senderID
+        },
+        "message": {
+            "text": errorString,
+            //"text":"msg",
+            "quick_replies": quickreply
+        }
+    }
+    fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
 }
 
 // function fbRquest.callFBAPI(body, url) {

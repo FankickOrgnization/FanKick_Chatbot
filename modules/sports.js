@@ -540,7 +540,7 @@ const sportscelebrityinfo = (messagingEvent, quickpayloadtext) =>{
                             }, {
                                 "content_type": "text",
                                 "title": "Net Worth",
-                                "payload": name + ' ,%sportscelnetworth%'
+                                "payload": celebrityname + ' ,%sportscelnetworth%'
                             }, {
                                 "content_type": "text",
                                 "title": "News",
