@@ -353,10 +353,11 @@ const sportscelebrityinfo = (messagingEvent, quickpayloadtext) =>{
     var genrearray = quickpayloadtext.split(',');
     var actername = genrearray[0];
     var subCategory = genrearray[1];
+    var sportmanname =actername.trim();
     console.log("actername", actername);
     console.log("type", subCategory);
     pool.getConnection(function(err, connection) {
-        connection.query('select * from cc_sports_celebrity_preference where name= = ?', [actername], function(err, rows) {
+        connection.query('select * from cc_sports_celebrity_preference where name= = ?', [sportmanname], function(err, rows) {
             console.log("********filmactor*********", actername);
             //console.log("*************************-after", categoryName);
             console.log("*************************filmactor", rows);
