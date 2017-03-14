@@ -390,5 +390,6 @@ function sendHelpMessage(event) {
 
 module.exports = {
     tvshowsintro: tvshowsintro,
-    tvshowinfo:tvshowinfo
+    tvshowinfo:tvshowinfo,
+    tvcelbrityinfo:tvcelbrityinfo
 };
