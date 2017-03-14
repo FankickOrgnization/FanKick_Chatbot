@@ -245,7 +245,11 @@ function quickpayload(messagingEvent) {
     } else if (sportscelpics != -1 || sportscelnews != -1 || sportscelawards != -1 || sportscelnetworth != -1 || sportscelcompe != -1) {
         console.log("This is getgenremovies condition");
         sports.sportscelebrityinfo(messagingEvent, quickpayloadtext);
-    } else {
+    } else if (musicartistname != -1) {
+        console.log("Music celebrity Name");
+        var musiccelname = quickpayloadtext.replace(" %musicartist%", "");
+        music.musiccelbrityintro(messagingEvent, musiccelname);
+    }else {
         payloadText.sendContentPacks(res, messagingEvent);
     }
 

@@ -241,9 +241,97 @@ const musiccelbrityintro = (messagingEvent, musiccelname)=>{
 }
 
 function musiccelbritydetails(messagingEvent, sportscelname){
-
+  var event = messagingEvent;
+  var quickList = [];
+  var name;
+    pool.getConnection(function(err, connection) {
+        connection.query('select * from cc_music_celebrity_preference',function(err, rows) {
+            console.log("*************************Data For Music Celebrity", rows);
+            if (err) {
+                console.log("Error While retriving content pack data from database:", err);
+            }
+            // else if (rows.length) {
+            //     var senderID = event.sender.id;
+            //     var contentList = [];
+            //     if (rows.length > 10) {
+            //         var rowslenth = 10;
+            //         console.log("more than 10 Rows", rowslenth);
+            //     } else {
+            //         var rowslenth = rows.length;
+            //         console.log("less than 10 Rows", rowslenth);
+            //     }
+            //     for (var i = 0; i < rowslenth; i++) { //Construct request body
+            //       name = rows[i].artist;
+            //         var keyMap = {
+            //             "title": rows[i].name,
+            //             "image_url": rows[i].picture1,
+            //             "subtitle": rows[i].artist,
+            //             "buttons": [
+            //               {
+            //                   "type": "web_url",
+            //                   "url": rows[i].albumUrl,
+            //                   "title": "View Album"
+            //               },{
+            //                   "type": "web_url",
+            //                   "url": rows[i].googleSearch,
+            //                   "title": "Google Search"
+            //               },
+            //             ]
+            //         };
+            //         contentList.push(keyMap);
+            //
+            //     }
+            //     var messageData = {
+            //         "recipient": {
+            //             "id": senderID
+            //         },
+            //         "message": {
+            //             "attachment": {
+            //                 "type": "template",
+            //                 "payload": {
+            //                     "template_type": "generic",
+            //                     "elements": contentList
+            //                 }
+            //             },
+            //             "quick_replies": [
+            //               {
+            //                     "content_type": "text",
+            //                     "title": name,
+            //                     "payload": name+" %musicartist%"
+            //                 }, {
+            //                     "content_type": "text",
+            //                     "title": "Other Album 1",
+            //                     "payload": "Other Album 1"
+            //                 }, {
+            //                     "content_type": "text",
+            //                     "title": "Other Album 2",
+            //                     "payload": "Other Album 2"
+            //                 },{
+            //                     "content_type": "text",
+            //                     "title": "Release Date",
+            //                     "payload": "Release Date"
+            //                 },{
+            //                     "content_type": "text",
+            //                     "title": "Jokes",
+            //                     "payload": "Jokes"
+            //                 }, {
+            //                     "content_type": "text",
+            //                     "title": "Home 🏠",
+            //                     "payload": "home"
+            //                 }
+            //             ]
+            //         }
+            //     }
+            //     fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
+            // }
+             else {
+                console.log("No Data Found From Database");
+                sendHelpMessage(event);
+            }
+            connection.release();
+        });
+    });
 }
-
 
 function sendHelpMessage(event) {
     var errorString = "";
