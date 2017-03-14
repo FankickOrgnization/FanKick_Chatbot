@@ -162,7 +162,7 @@ const albuminfo = (messagingEvent, albumname) => {
                           {
                               "type": "web_url",
                               "url": rows[i].albumUrl,
-                              "title": "view Album"
+                              "title": "View Album"
                           },{
                               "type": "web_url",
                               "url": rows[i].googleSearch,
@@ -225,7 +225,7 @@ const albuminfo = (messagingEvent, albumname) => {
     });
 }
 
-const musiccelbrityintro(messagingEvent, musiccelname){
+const musiccelbrityintro = (messagingEvent, musiccelname)=>{
     var senderID = messagingEvent.sender.id;
     var msg = 'Amazing talent👏! Here is what I know about ' + musiccelname + '';
     var messageData = {
@@ -240,7 +240,11 @@ const musiccelbrityintro(messagingEvent, musiccelname){
     musiccelbritydetails(messagingEvent, sportscelname);
 }
 
-musiccelbritydetails(messagingEvent, sportscelname);
+function musiccelbritydetails(messagingEvent, sportscelname){
+
+}
+
+
 function sendHelpMessage(event) {
     var errorString = "";
     while (errorString === "") {
