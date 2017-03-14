@@ -294,8 +294,8 @@ const tvcelebrityinfo = (messagingEvent, quickpayloadtext) => {
 
 const gettvshowsgenre=(messagingEvent, quickpayloadtext)=>{
   var tvgenrearray = quickpayloadtext.split(',');
-  var tvgenrename = genrearray[0];
-  var subCategory = genrearray[1];
+  var tvgenrename = tvgenrearray[0];
+  var subCategory = tvgenrearray[1];
   console.log("Tvgenrename", tvgenrename);
   console.log("type", subCategory);
   pool.getConnection(function(err, connection) {
