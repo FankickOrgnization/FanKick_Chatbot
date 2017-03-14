@@ -31,31 +31,31 @@ var quickreply = [
     }
 ];
 
-// //function tvshowsinfo(messagingEvent, moviename)
-// const tvshowinfo = (messagingEvent, tvshowname) => {
-//     var senderID = messagingEvent.sender.id;
-//     //var img = 'https://fankickdev.blob.core.windows.net/images/home_logo.png';
-//     //var msg = 'Amazing talent! Here is what I know about '+img+'';
-//     var messageData = {
-//         "recipient": {
-//             "id": senderID
-//         },
-//         "message": {
-//             "text": "Here you go👉..."
-//             //"text":msg
-//         }
-//         // "message": {
-//         //     "attachment": {
-//         //         "type": "audio",
-//         //         "payload": {
-//         //             "url": "https://petersapparel.com/bin/clip.mp3"
-//         //         }
-//         //     }
-//         // }
-//     };
-//     fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
-//     tvshowsdetails(messagingEvent, tvshowname);
-// }
+//function tvshowsinfo(messagingEvent, moviename)
+const sportsqrintro = (messagingEvent, qrtitle) => {
+    var senderID = messagingEvent.sender.id;
+    //var img = 'https://fankickdev.blob.core.windows.net/images/home_logo.png';
+    //var msg = 'Amazing talent! Here is what I know about '+img+'';
+    var messageData = {
+        "recipient": {
+            "id": senderID
+        },
+        "message": {
+            "text": "Here you go👉..."
+            //"text":msg
+        }
+        // "message": {
+        //     "attachment": {
+        //         "type": "audio",
+        //         "payload": {
+        //             "url": "https://petersapparel.com/bin/clip.mp3"
+        //         }
+        //     }
+        // }
+    };
+    fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
+    sportsqrdetails(messagingEvent, qrtitle);
+}
 const sportsintro = (messagingEvent, tvshowsmsg) => {
     var senderID = messagingEvent.sender.id;
     //var img = 'https://fankickdev.blob.core.windows.net/images/home_logo.png';
@@ -109,13 +109,13 @@ function sportsmenu(messagingEvent){
                         "title": rows[i].celebrity,
                         "image_url": rows[i].imageUrl,
                         "subtitle": rows[i].title,
-                        "buttons": [
-                          {
-                              "type": "web_url",
-                              "url": rows[i].articleUrl,
-                              "title": "View Article"
-                          },
-                        ]
+                        // "buttons": [
+                        //   {
+                        //       "type": "web_url",
+                        //       "url": rows[i].articleUrl,
+                        //       "title": "View Article"
+                        //   },
+                        // ]
                     };
                     var quick_reply = {
                         "content_type": "text",
@@ -138,6 +138,107 @@ function sportsmenu(messagingEvent){
                             }
                         },
                         "quick_replies": quickList
+                    }
+                }
+                fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
+            }
+             else {
+                console.log("No Data Found From Database");
+                sendHelpMessage(messagingEvent);
+            }
+            connection.release();
+        });
+    });
+
+}
+
+
+function sportsqrdetails(messagingEvent, qrtitle){
+  //var quickList = [];
+    pool.getConnection(function(err, connection) {
+        connection.query('select * from cc_sports_preference where quickReplyTitle = ?',[qrtitle], function(err, rows) {
+            console.log("*************************sportsmenu", rows);
+            if (err) {
+                console.log("Error While retriving content pack data from database:", err);
+            }
+            else if (rows.length) {
+                var senderID = messagingEvent.sender.id;
+                var contentList = [];
+                if (rows.length > 10) {
+                    var rowslenth = 10;
+                    console.log("more than 10 Rows", rowslenth);
+                } else {
+                    var rowslenth = rows.length;
+                    console.log("less than 10 Rows", rowslenth);
+                }
+                for (var i = 0; i < rowslenth; i++) { //Construct request body
+                    var keyMap = {
+                        "title": rows[i].celebrity,
+                        "image_url": rows[i].imageUrl,
+                        "subtitle": rows[i].title,
+                        "buttons": [
+                          {
+                              "type": "web_url",
+                              "url": rows[i].articleUrl,
+                              "title": "View Article"
+                          },
+                        ]
+                    };
+                    // var quick_reply = {
+                    //     "content_type": "text",
+                    //     "title": rows[i].quickReplyTitle,
+                    //     "payload": rows[i].quickReplyTitle+ ' %sportsQRtitle%'
+                    // };
+                    contentList.push(keyMap);
+                    //quickList.push(quick_reply);
+                }
+                var messageData = {
+                    "recipient": {
+                        "id": senderID
+                    },
+                    "message": {
+                        "attachment": {
+                            "type": "template",
+                            "payload": {
+                                "template_type": "generic",
+                                "elements": contentList
+                            }
+                        },
+                        "quick_replies": [
+                            {
+                                "content_type": "text",
+                                "title": rows[1].suggestedQuickReply1,
+                                "payload": rows[1].suggestedQuickReply1 + ' ,%sportscel%'
+                            }, {
+                                "content_type": "text",
+                                "title": rows[1].suggestedQuickReply2,
+                                "payload": rows[1].suggestedQuickReply2 + ' ,%sportscel%'
+                            }, {
+                                "content_type": "text",
+                                "title": rows[1].suggestedQuickReply3,
+                                "payload": rows[1].suggestedQuickReply3 + ' ,%sportscel%'
+                            }, {
+                                "content_type": "text",
+                                "title": rows[1].suggestedQuickReply4,
+                                "payload": rows[1].suggestedQuickReply4 + ' ,%sportscel%'
+                            }, {
+                                "content_type": "text",
+                                "title": rows[1].suggestedQuickReply4,
+                                "payload": rows[1].suggestedQuickReply4 + ' ,%sportscel%'
+                            }, {
+                                "content_type": "text",
+                                "title": rows[1].suggestedQuickReply5,
+                                "payload": rows[1].suggestedQuickReply5 + ' ,%sportscel%'
+                            }, {
+                                "content_type": "text",
+                                "title": "Jokes",
+                                "payload": "Jokes"
+                            }, {
+                                "content_type": "text",
+                                "title": "Home 🏠",
+                                "payload": "home"
+                            }
+                        ]
                     }
                 }
                 fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
@@ -176,5 +277,6 @@ function sendHelpMessage(event) {
 
 module.exports = {
     sportsintro: sportsintro,
-    sportscelbrityintro: sportscelbrityintro
+    sportscelbrityintro: sportscelbrityintro,
+    sportsqrintro:sportsqrintro
 };

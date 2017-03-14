@@ -12,6 +12,7 @@ const movies = require('./modules/movies.js');
 const fbRquest = require('./modules/fbapi.js');
 var googleTrends = require('google-trends-api');
 const tvshows = require('./modules/tvshows.js');
+const sports = require('./modules/sports.js');
 //const bot = require('./wit.js');
 
 var pool = mysql.createPool({connectionLimit: 1, host: 'ap-cdbr-azure-southeast-a.cloudapp.net', user: 'bb603e8108da6e', password: '3e384329', database: 'rankworlddev'});
@@ -191,6 +192,7 @@ function quickpayload(messagingEvent) {
     var tvcomedy = quickpayloadtext.search("%tvComedy%");
     var tvcrime = quickpayloadtext.search("%tvCrime%");
     var tvreality = quickpayloadtext.search("%tvReality%");
+    var sportsquicktitle = quickpayloadtext.search("%sportsQRtitle%");
 
     if(celpics != -1 || celmovies != -1 || celnetworth != -1 || celnews != -1 || celfamily != -1 || celabout != -1){
       console.log("This is celebritypics condition");
@@ -216,7 +218,11 @@ function quickpayload(messagingEvent) {
   }else if (tvcomedy != -1 || tvcrime != -1 || tvreality != -1) {
     console.log("This is getgenremovies condition");
    tvshows.gettvshowsgenre(messagingEvent, quickpayloadtext);
- }else {
+ }else if (sportsquicktitle != -1) {
+   console.log("Sport Quick_reply Title");
+  var qrtitle = quickpayloadtext.replace(" %sportsQRtitle%", "");
+  sports.sportsqrintro(messagingEvent, qrtitle);
+}else {
       payloadText.sendContentPacks(res, messagingEvent);
     }
 
