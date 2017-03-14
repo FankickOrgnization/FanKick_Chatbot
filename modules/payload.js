@@ -12,6 +12,7 @@ const jokes = require('../contentjson/jokes.json');
 const tvshows = require('./tvshows.js');
 const sports = require('./sports.js');
 const movies = require('./movies.js');
+const music = require('./music.js');
 const fbRquest = require('./fbapi.js');
 //var app = express();
 var mysql = require('mysql');
@@ -80,7 +81,7 @@ const sendContentPacks = (categoryName, event) => {
         submenu(event, categoryName);
         console.log("enter into the allcategory function");
     } else if (categoryName == "indian" || categoryName == "western") {
-        wishingmessage(categoryName, event);
+        music.musicalbams(categoryName, event);
     } else if (categoryName == "action" || categoryName == "comedy" || categoryName == "romance" || categoryName == "thriller" || categoryName == "horror") {
         wishingmessage(categoryName, event);
         //moviegenre(categoryName,event);
