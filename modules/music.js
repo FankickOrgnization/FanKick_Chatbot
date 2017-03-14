@@ -39,80 +39,89 @@ const musicalbams = (categoryName, event) =>{
             if (err) {
                 console.log("Error While retriving content pack data from database:", err);
             }
-            // else if (rows.length) {
-            //     var senderID = messagingEvent.sender.id;
-            //     var contentList = [];
-            //     if (rows.length > 10) {
-            //         var rowslenth = 10;
-            //         console.log("more than 10 Rows", rowslenth);
-            //     } else {
-            //         var rowslenth = rows.length;
-            //         console.log("less than 10 Rows", rowslenth);
-            //     }
-            //     for (var i = 0; i < rowslenth; i++) { //Construct request body
-            //       var name = rows[i].name;
-            //         var keyMap = {
-            //             "title": rows[i].name,
-            //             "image_url": rows[i].picture1,
-            //             "subtitle": rows[i].skill+","+ rows[i].country,
-            //             "buttons": [
-            //               {
-            //                   "type": "web_url",
-            //                   "url": rows[i].personal,
-            //                   "title": "About"
-            //               },
-            //             ]
-            //         };
-            //         contentList.push(keyMap);
-            //
-            //     }
-            //     var messageData = {
-            //         "recipient": {
-            //             "id": senderID
-            //         },
-            //         "message": {
-            //             "attachment": {
-            //                 "type": "template",
-            //                 "payload": {
-            //                     "template_type": "generic",
-            //                     "elements": contentList
-            //                 }
-            //             },
-            //             "quick_replies": [
-            //                 {
-            //                     "content_type": "text",
-            //                     "title": "Pictures",
-            //                     "payload": name + ' ,%sportscelpics%'
-            //                 }, {
-            //                     "content_type": "text",
-            //                     "title": "Awards",
-            //                     "payload": name + ' ,%sportscelawards%'
-            //                 }, {
-            //                     "content_type": "text",
-            //                     "title": "Net Worth",
-            //                     "payload": name + ' ,%sportscelnetworth%'
-            //                 }, {
-            //                     "content_type": "text",
-            //                     "title": "News",
-            //                     "payload": name + ' ,%sportscelnews%'
-            //                 },{
-            //                     "content_type": "text",
-            //                     "title": "Competitors",
-            //                     "payload": name + ' ,%sportscelcompetitors%'
-            //                 }, {
-            //                     "content_type": "text",
-            //                     "title": "Jokes",
-            //                     "payload": "Jokes"
-            //                 }, {
-            //                     "content_type": "text",
-            //                     "title": "Home 🏠",
-            //                     "payload": "home"
-            //                 }
-            //             ]
-            //         }
-            //     }
-            //     fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
-            // }
+            else if (rows.length) {
+                var senderID = messagingEvent.sender.id;
+                var contentList = [];
+                if (rows.length > 10) {
+                    var rowslenth = 10;
+                    console.log("more than 10 Rows", rowslenth);
+                } else {
+                    var rowslenth = rows.length;
+                    console.log("less than 10 Rows", rowslenth);
+                }
+                for (var i = 0; i < rowslenth; i++) { //Construct request body
+                  var name = rows[i].name;
+                    var keyMap = {
+                        "title": rows[i].name,
+                        "image_url": rows[i].picture1,
+                        "subtitle": rows[i].artist,
+                        "buttons": [
+                          {
+                              "type": "postback",
+                              "title": "Read More",
+                              "payload": rows[i].name+" ,%albumname"
+                          }
+                          // {
+                          //     "type": "web_url",
+                          //     "url": rows[i].albumUrl,
+                          //     "title": "view Album"
+                          // },{
+                          //     "type": "web_url",
+                          //     "url": rows[i].googleSearch,
+                          //     "title": "Google Search"
+                          // },
+                        ]
+                    };
+                    contentList.push(keyMap);
+
+                }
+                var messageData = {
+                    "recipient": {
+                        "id": senderID
+                    },
+                    "message": {
+                        "attachment": {
+                            "type": "template",
+                            "payload": {
+                                "template_type": "generic",
+                                "elements": contentList
+                            }
+                        },
+                        "quick_replies": [
+                          {
+                                "content_type": "text",
+                                "title": "Latest Albums",
+                                "payload": "Latest Albums"
+                            }, {
+                                "content_type": "text",
+                                "title": "Pop",
+                                "payload": "Pop"
+                            }, {
+                                "content_type": "text",
+                                "title": "Rock",
+                                "payload": "Rock"
+                            },{
+                                "content_type": "text",
+                                "title": "Movie Albums",
+                                "payload": "Movie Albums"
+                            }, {
+                                "content_type": "text",
+                                "title": "Sad Songs",
+                                "payload": "Sad Songs"
+                            },{
+                                "content_type": "text",
+                                "title": "Jokes",
+                                "payload": "Jokes"
+                            }, {
+                                "content_type": "text",
+                                "title": "Home 🏠",
+                                "payload": "home"
+                            }
+                        ]
+                    }
+                }
+                fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
+            }
              else {
                 console.log("No Data Found From Database");
                 sendHelpMessage(messagingEvent);
@@ -122,6 +131,30 @@ const musicalbams = (categoryName, event) =>{
     });
 
 }
+
+
+function sendHelpMessage(event) {
+    var errorString = "";
+    while (errorString === "") {
+        var random = Math.floor(Math.random() * errors.length);
+        if (errors[random].error.length < 320) // better be a least one good joke :)
+            errorString = errors[random].error;
+        }
+    var senderID = event.sender.id;
+    var messageData = {
+        "recipient": {
+            "id": senderID
+        },
+        "message": {
+            "text": errorString,
+            //"text":"msg",
+            "quick_replies": quickreply
+        }
+    }
+    fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
+}
+
+
 module.exports = {
     musicalbams: musicalbams
 };
