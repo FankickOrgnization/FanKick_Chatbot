@@ -610,5 +610,6 @@ function sendHelpMessage(event) {
 module.exports = {
     musicalbams: musicalbams,
     albuminfo:albuminfo,
-    musiccelbrityintro:musiccelbrityintro
+    musiccelbrityintro:musiccelbrityintro,
+    musiccelebrityinfo:musiccelebrityinfo
 };
