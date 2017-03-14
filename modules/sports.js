@@ -154,7 +154,11 @@ function sportsmenu(messagingEvent){
 
 
 function sportsqrdetails(messagingEvent, qrtitle){
-  //var quickList = [];
+  var qr1;
+  var qr2;
+  var qr3;
+  var qr4;
+  var qr5;
     pool.getConnection(function(err, connection) {
         connection.query('select * from cc_sports_preference where quickReplyTitle = ?',[qrtitle], function(err, rows) {
             console.log("*************************sportsmenu", rows);
@@ -184,11 +188,11 @@ function sportsqrdetails(messagingEvent, qrtitle){
                           },
                         ]
                     };
-                    // var quick_reply = {
-                    //     "content_type": "text",
-                    //     "title": rows[i].quickReplyTitle,
-                    //     "payload": rows[i].quickReplyTitle+ ' %sportsQRtitle%'
-                    // };
+                    qr1 = rows[i].suggestedQuickReply1;
+                    qr2 = rows[i].suggestedQuickReply2;
+                    qr3 = rows[i].suggestedQuickReply3;
+                    qr4 = rows[i].suggestedQuickReply4;
+                    qr5 = rows[i].suggestedQuickReply5;
                     contentList.push(keyMap);
                     //quickList.push(quick_reply);
                 }
@@ -207,28 +211,24 @@ function sportsqrdetails(messagingEvent, qrtitle){
                         "quick_replies": [
                             {
                                 "content_type": "text",
-                                "title": rows[1].suggestedQuickReply1,
-                                "payload": rows[1].suggestedQuickReply1 + ' ,%sportscel%'
+                                "title": qr1,
+                                "payload": qr1+ ' ,%sportscel%'
                             }, {
                                 "content_type": "text",
-                                "title": rows[1].suggestedQuickReply2,
-                                "payload": rows[1].suggestedQuickReply2 + ' ,%sportscel%'
+                                "title": qr2,
+                                "payload": qr2+ ' ,%sportscel%'
                             }, {
                                 "content_type": "text",
-                                "title": rows[1].suggestedQuickReply3,
-                                "payload": rows[1].suggestedQuickReply3 + ' ,%sportscel%'
+                                "title": qr3,
+                                "payload": qr3+ ' ,%sportscel%'
                             }, {
                                 "content_type": "text",
-                                "title": rows[1].suggestedQuickReply4,
-                                "payload": rows[1].suggestedQuickReply4 + ' ,%sportscel%'
+                                "title": qr4,
+                                "payload": qr4+ ' ,%sportscel%'
                             }, {
                                 "content_type": "text",
-                                "title": rows[1].suggestedQuickReply4,
-                                "payload": rows[1].suggestedQuickReply4 + ' ,%sportscel%'
-                            }, {
-                                "content_type": "text",
-                                "title": rows[1].suggestedQuickReply5,
-                                "payload": rows[1].suggestedQuickReply5 + ' ,%sportscel%'
+                                "title": qr5,
+                                "payload": qr5+ ' ,%sportscel%'
                             }, {
                                 "content_type": "text",
                                 "title": "Jokes",
