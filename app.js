@@ -183,6 +183,7 @@ function quickpayload(messagingEvent) {
     var celfamily = quickpayloadtext.search("%family%");
     var celabout = quickpayloadtext.search("%about%");
     var quick_reply = quickpayloadtext.search("%QR%");
+    var tvcelebrity = quickpayloadtext.search("%tvcel%");
     if(celpics != -1 || celmovies != -1 || celnetworth != -1 || celnews != -1 || celfamily != -1 || celabout != -1){
       console.log("This is celebritypics condition");
       celebritypics(messagingEvent, quickpayloadtext);
@@ -197,7 +198,10 @@ function quickpayload(messagingEvent) {
      var moviename = quickpayloadtext.replace(" %m%", "");
      console.log("Yessssssss", moviename);
       movies.getmovies(event, moviename);
-
+   }else if (tvcelebrity != -1){
+     var celbrityname = quickpayloadtext.replace(" %tvcel%", "");
+     console.log("Yessssssss", celbrityname);
+      tvshows.tvcelbrityinfo(event, celbrityname);
    }else {
       payloadText.sendContentPacks(res, messagingEvent);
     }

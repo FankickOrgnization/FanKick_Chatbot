@@ -61,6 +61,23 @@ const tvshowinfo = (messagingEvent, tvshowname) => {
     tvshowsdetails(messagingEvent, tvshowname);
 }
 
+const tvcelbrityinfo = (event, celbrityname) =>{
+  var senderID = event.sender.id;
+  var msg = 'Amazing talent👏! Here is what I know about ' + celbrityname + '';
+  var messageData = {
+      "recipient": {
+          "id": senderID
+      },
+      "message": {
+          "text": msg
+      }
+  };
+  fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
+  tvcelbritydetails(event, celbrityname);
+}
+
+
+
 const tvshowsintro = (messagingEvent, tvshowsmsg) => {
     var senderID = messagingEvent.sender.id;
     //var img = 'https://fankickdev.blob.core.windows.net/images/home_logo.png';
@@ -76,6 +93,105 @@ const tvshowsintro = (messagingEvent, tvshowsmsg) => {
     fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
     tvshowsmenu(messagingEvent);
 }
+
+function tvcelbritydetails(event, celbrityname){
+  pool.getConnection(function(err, connection) {
+      //connection.query('select * from cc_celebrity_preference where celebrityName=?',[categoryName], function(err, rows) {
+      connection.query('select * from cc_tvshows_celebrity_preference where name = ?', [celbrityname], function(err, rows) {
+          if (err) {
+              console.log("Error While retriving content pack data from database:", err);
+          }
+          // else if (rows.length) {
+          //     var senderID = event.sender.id;
+          //     var contentList = [];
+          //     var quickList = [];
+          //     var movieslist;
+          //     console.log("*******cc_celebrity_preference data from database:*********", rows);
+          //
+          //     for (var i = 0; i < rows.length; i++) { //Construct request body
+          //         var keyMap = {
+          //             "title": rows[i].celebrityName,
+          //             "image_url": rows[i].celebrityImageUrl,
+          //             "subtitle": rows[i].description,
+          //             //  "item_url": rows[i].image_url,
+          //             "buttons": [
+          //                 {
+          //                     "type": "web_url",
+          //                     "url": rows[i].facebookHandle,
+          //                     "title": "Facebook"
+          //                 }, {
+          //                     "type": "web_url",
+          //                     "url": rows[i].twitterHandle,
+          //                     "title": "Twitter"
+          //                 }
+          //             ]
+          //         };
+          //         contentList.push(keyMap);
+          //         movieslist = rows[i].lastFiveMovies;
+          //         console.log("%%%%%%%%%%%%movieslist%%%%%%%%%%%%%", movieslist);
+          //     }
+          //     var myarray = movieslist.split(',');
+          //     var messageData = {
+          //         "recipient": {
+          //             "id": senderID
+          //         },
+          //         "message": {
+          //             "attachment": {
+          //                 "type": "template",
+          //                 "payload": {
+          //                     "template_type": "generic",
+          //                     "elements": contentList
+          //                 }
+          //             },
+          //             "quick_replies": [
+          //                 {
+          //                     "content_type": "text",
+          //                     "title": "Pictures",
+          //                     "payload": rows[i].celebrityName + ' ,%pictures%'
+          //                 }, {
+          //                     "content_type": "text",
+          //                     "title": "Movies",
+          //                     "payload": rows[i].celebrityName + ' ,%movies%'
+          //                 }, {
+          //                     "content_type": "text",
+          //                     "title": "Net Worth",
+          //                     "payload": rows[i].celebrityName + ' ,%networth%'
+          //                 }, {
+          //                     "content_type": "text",
+          //                     "title": "News",
+          //                     "payload": rows[i].celebrityName + ' ,%news%'
+          //                 }, {
+          //                     "content_type": "text",
+          //                     "title": "Family",
+          //                     "payload": rows[i].celebrityName + ' ,%family%'
+          //                 }, {
+          //                     "content_type": "text",
+          //                     "title": "Jokes",
+          //                     "payload": "Jokes"
+          //                 }, {
+          //                     "content_type": "text",
+          //                     "title": "Songs",
+          //                     "payload": "Songs"
+          //                 }, {
+          //                     "content_type": "text",
+          //                     "title": "Home 🏠",
+          //                     "payload": "home"
+          //                 }
+          //             ]
+          //         }
+          //     }
+          //     fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
+          // }
+          else {
+              console.log("No Data Found From Database");
+              sendHelpMessage(event);
+              //sendImageMessage(event);
+          }
+          connection.release();
+      });
+  });
+}
+
 
 function tvshowsmenu(messagingEvent){
   pool.getConnection(function(err, connection) {
@@ -221,12 +337,12 @@ function tvshowsdetails(messagingEvent, tvshowname){
                           {
                               "content_type": "text",
                               "title": tvshowleadActor,
-                              "payload":tvshowleadActor
+                              "payload":tvshowleadActor+ ' %tvcel%'
                           },
                           {
                               "content_type": "text",
                               "title": tvshowleadActress,
-                              "payload": tvshowleadActress
+                              "payload": tvshowleadActress+ ' %tvcel%'
                           },{
                               "content_type": "text",
                               "title": "Jokes",
