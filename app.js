@@ -208,6 +208,7 @@ function quickpayload(messagingEvent) {
     var sportscelawards = quickpayloadtext.search("%sportscelawards%");
     var sportscelnetworth = quickpayloadtext.search("%sportscelnetworth%");
     var sportscelcompe = quickpayloadtext.search("%sportscelcompetitors%");
+    var musicartistname =quickpayloadtext.search("%musicartist%");
 
     if (celpics != -1 || celmovies != -1 || celnetworth != -1 || celnews != -1 || celfamily != -1 || celabout != -1) {
         console.log("This is celebritypics condition");
@@ -244,6 +245,10 @@ function quickpayload(messagingEvent) {
     } else if (sportscelpics != -1 || sportscelnews != -1 || sportscelawards != -1 || sportscelnetworth != -1 || sportscelcompe != -1) {
         console.log("This is getgenremovies condition");
         sports.sportscelebrityinfo(messagingEvent, quickpayloadtext);
+    }else if (musicartistname != -1) {
+        console.log("Sport celebrity Name");
+        var musiccelname = quickpayloadtext.replace(" %musicartist%", "");
+        music.musiccelbrityintro(messagingEvent, musiccelname);
     } else {
         payloadText.sendContentPacks(res, messagingEvent);
     }
