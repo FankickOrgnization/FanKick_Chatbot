@@ -235,7 +235,7 @@ const tvcelebrityinfo = (messagingEvent, quickpayloadtext) => {
                                 ]
                             }
                         }
-                      } 
+                      }
                     //contentList.push(keyMap);
                 }
 
@@ -535,12 +535,12 @@ function tvshowsdetails(messagingEvent, tvshowname){
                           {
                               "content_type": "text",
                               "title": tvshowleadActor,
-                              "payload":tvshowleadActor+ ' %tvcel%'
+                              "payload":tvshowleadActor+ ' ,%tvcel%'
                           },
                           {
                               "content_type": "text",
                               "title": tvshowleadActress,
-                              "payload": tvshowleadActress+ ' %tvcel%'
+                              "payload": tvshowleadActress+ ' ,%tvcel%'
                           },{
                               "content_type": "text",
                               "title": "Jokes",
