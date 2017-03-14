@@ -193,6 +193,7 @@ function quickpayload(messagingEvent) {
     var tvcrime = quickpayloadtext.search("%tvCrime%");
     var tvreality = quickpayloadtext.search("%tvReality%");
     var sportsquicktitle = quickpayloadtext.search("%sportsQRtitle%");
+    var sportscelebrityname = quickpayloadtext.search("%sportscel%");
 
     if(celpics != -1 || celmovies != -1 || celnetworth != -1 || celnews != -1 || celfamily != -1 || celabout != -1){
       console.log("This is celebritypics condition");
@@ -222,6 +223,10 @@ function quickpayload(messagingEvent) {
    console.log("Sport Quick_reply Title");
   var qrtitle = quickpayloadtext.replace(" %sportsQRtitle%", "");
   sports.sportsqrintro(messagingEvent, qrtitle);
+}else if (sportscelebrityname != -1) {
+  console.log("Sport celebrity Name");
+ var sportscelname = quickpayloadtext.replace(" %sportscel%", "");
+ sports.sportscelbrityintro(messagingEvent, sportscelname);
 }else {
       payloadText.sendContentPacks(res, messagingEvent);
     }

@@ -71,9 +71,9 @@ const sportsintro = (messagingEvent, tvshowsmsg) => {
     fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
     sportsmenu(messagingEvent);
 }
-const sportscelbrityintro = (event, celbrityname) => {
-    var senderID = event.sender.id;
-    var msg = 'Amazing talent👏! Here is what I know about ' + celbrityname + '';
+const sportscelbrityintro = (messagingEvent, sportscelname) => {
+    var senderID = messagingEvent.sender.id;
+    var msg = 'Amazing talent👏! Here is what I know about ' + sportscelname + '';
     var messageData = {
         "recipient": {
             "id": senderID
@@ -83,8 +83,11 @@ const sportscelbrityintro = (event, celbrityname) => {
         }
     };
     fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
-    tvcelbritydetails(event, celbrityname);
+    sportscelbritydetails(messagingEvent, sportscelname);
 }
+
+
+
 
 function sportsmenu(messagingEvent){
   var quickList = [];
@@ -252,6 +255,74 @@ function sportsqrdetails(messagingEvent, qrtitle){
     });
 
 }
+
+function sportscelbritydetails(messagingEvent, sportscelname){
+  var quickList = [];
+    pool.getConnection(function(err, connection) {
+        connection.query('select * from cc_sports_celebrity_preference where name= ?',[sportscelname], function(err, rows) {
+            console.log("*************************sportscelebrity", rows);
+            if (err) {
+                console.log("Error While retriving content pack data from database:", err);
+            }
+            // else if (rows.length) {
+            //     var senderID = messagingEvent.sender.id;
+            //     var contentList = [];
+            //     if (rows.length > 10) {
+            //         var rowslenth = 10;
+            //         console.log("more than 10 Rows", rowslenth);
+            //     } else {
+            //         var rowslenth = rows.length;
+            //         console.log("less than 10 Rows", rowslenth);
+            //     }
+            //     for (var i = 0; i < rowslenth; i++) { //Construct request body
+            //         var keyMap = {
+            //             "title": rows[i].celebrity,
+            //             "image_url": rows[i].imageUrl,
+            //             "subtitle": rows[i].title,
+            //             // "buttons": [
+            //             //   {
+            //             //       "type": "web_url",
+            //             //       "url": rows[i].articleUrl,
+            //             //       "title": "View Article"
+            //             //   },
+            //             // ]
+            //         };
+            //         var quick_reply = {
+            //             "content_type": "text",
+            //             "title": rows[i].quickReplyTitle,
+            //             "payload": rows[i].quickReplyTitle+ ' %sportsQRtitle%'
+            //         };
+            //         contentList.push(keyMap);
+            //         quickList.push(quick_reply);
+            //     }
+            //     var messageData = {
+            //         "recipient": {
+            //             "id": senderID
+            //         },
+            //         "message": {
+            //             "attachment": {
+            //                 "type": "template",
+            //                 "payload": {
+            //                     "template_type": "generic",
+            //                     "elements": contentList
+            //                 }
+            //             },
+            //             "quick_replies": quickList
+            //         }
+            //     }
+            //     fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
+            // }
+             else {
+                console.log("No Data Found From Database");
+                sendHelpMessage(messagingEvent);
+            }
+            connection.release();
+        });
+    });
+
+}
+
+
 
 function sendHelpMessage(event) {
     var errorString = "";
