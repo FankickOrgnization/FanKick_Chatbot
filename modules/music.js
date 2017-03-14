@@ -40,7 +40,7 @@ const musicalbams = (categoryName, event) =>{
                 console.log("Error While retriving content pack data from database:", err);
             }
             else if (rows.length) {
-                var senderID = messagingEvent.sender.id;
+                var senderID = event.sender.id;
                 var contentList = [];
                 if (rows.length > 10) {
                     var rowslenth = 10;
@@ -124,7 +124,7 @@ const musicalbams = (categoryName, event) =>{
             }
              else {
                 console.log("No Data Found From Database");
-                sendHelpMessage(messagingEvent);
+                sendHelpMessage(event);
             }
             connection.release();
         });
