@@ -87,75 +87,61 @@ const sportscelbrityintro = (event, celbrityname) => {
 }
 
 function sportsmenu(messagingEvent){
+  var quickList = [];
     pool.getConnection(function(err, connection) {
         connection.query('select * from cc_sports_preference', function(err, rows) {
             console.log("*************************sportsmenu", rows);
             if (err) {
                 console.log("Error While retriving content pack data from database:", err);
             }
-            // else if (rows.length) {
-            //     var senderID = messagingEvent.sender.id;
-            //     var contentList = [];
-            //     if (rows.length > 10) {
-            //         var rowslenth = 10;
-            //         console.log("more than 10 Rows", rowslenth);
-            //     } else {
-            //         var rowslenth = rows.length;
-            //         console.log("less than 10 Rows", rowslenth);
-            //     }
-            //     for (var i = 0; i < rowslenth; i++) { //Construct request body
-            //         var keyMap = {
-            //             "title": rows[i].name,
-            //             "image_url": rows[i].picture1,
-            //             "buttons": [
-            //                 {
-            //                     "type": "postback",
-            //                     "title": "More Info",
-            //                     "payload": rows[i].name + ' %tvshows%'
-            //                 }
-            //             ]
-            //         };
-            //         contentList.push(keyMap);
-            //     }
-            //     var messageData = {
-            //         "recipient": {
-            //             "id": senderID
-            //         },
-            //         "message": {
-            //             "attachment": {
-            //                 "type": "template",
-            //                 "payload": {
-            //                     "template_type": "generic",
-            //                     "elements": contentList
-            //                 }
-            //             },
-            //             "quick_replies": [
-            //                 {
-            //                     "content_type": "text",
-            //                     "title": "Romantic Comedy",
-            //                     "payload": 'Romantic Comedy,%tvComedy%'
-            //                 }, {
-            //                     "content_type": "text",
-            //                     "title": "Reality",
-            //                     "payload": 'Reality,%tvReality%'
-            //                 }, {
-            //                     "content_type": "text",
-            //                     "title": "Horror / Crime",
-            //                     "payload": 'Horror / Crime,%tvCrime%'
-            //                 }, {
-            //                     "content_type": "text",
-            //                     "title": "Jokes",
-            //                     "payload": "Jokes"
-            //                 }, {
-            //                     "content_type": "text",
-            //                     "title": "Home 🏠",
-            //                     "payload": "home"
-            //                 }
-            //             ]
-            //         }
-            //     }
-            //     fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
-            // }
+            else if (rows.length) {
+                var senderID = messagingEvent.sender.id;
+                var contentList = [];
+                if (rows.length > 10) {
+                    var rowslenth = 10;
+                    console.log("more than 10 Rows", rowslenth);
+                } else {
+                    var rowslenth = rows.length;
+                    console.log("less than 10 Rows", rowslenth);
+                }
+                for (var i = 0; i < rowslenth; i++) { //Construct request body
+                    var keyMap = {
+                        "title": rows[i].celebrity,
+                        "image_url": rows[i].imageUrl,
+                        "subtitle": rows[i].title,
+                        "buttons": [
+                          {
+                              "type": "web_url",
+                              "url": rows[i].articleUrl,
+                              "title": "View Article"
+                          },
+                        ]
+                    };
+                    var quick_reply = {
+                        "content_type": "text",
+                        "title": rows[i].quickReplyTitle,
+                        "payload": rows[i].quickReplyTitle+ ' %sportsQRtitle%'
+                    };
+                    contentList.push(keyMap);
+                    quickList.push(quick_reply);
+                }
+                var messageData = {
+                    "recipient": {
+                        "id": senderID
+                    },
+                    "message": {
+                        "attachment": {
+                            "type": "template",
+                            "payload": {
+                                "template_type": "generic",
+                                "elements": contentList
+                            }
+                        },
+                        "quick_replies": quickList
+                    }
+                }
+                fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
+            }
              else {
                 console.log("No Data Found From Database");
                 sendHelpMessage(messagingEvent);
