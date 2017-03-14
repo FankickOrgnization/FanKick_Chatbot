@@ -98,6 +98,7 @@ function tvcelbritydetails(event, celbrityname){
   pool.getConnection(function(err, connection) {
       //connection.query('select * from cc_celebrity_preference where celebrityName=?',[categoryName], function(err, rows) {
       connection.query('select * from cc_tvshows_celebrity_preference where name = ?', [celbrityname], function(err, rows) {
+        console.log("***Tv Show celebrity details:", rows);
           if (err) {
               console.log("Error While retriving content pack data from database:", err);
           }
