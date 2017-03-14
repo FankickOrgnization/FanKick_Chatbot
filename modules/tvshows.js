@@ -44,10 +44,10 @@ const tvshowinfo = (messagingEvent, tvshowname) => {
         "recipient": {
             "id": senderID
         },
-        "message":{
-            "text":"Here you go👉..."
+        "message": {
+            "text": "Here you go👉..."
             //"text":msg
-          }
+        }
         // "message": {
         //     "attachment": {
         //         "type": "audio",
@@ -61,22 +61,20 @@ const tvshowinfo = (messagingEvent, tvshowname) => {
     tvshowsdetails(messagingEvent, tvshowname);
 }
 
-const tvcelbrityintro = (event, celbrityname) =>{
-  var senderID = event.sender.id;
-  var msg = 'Amazing talent👏! Here is what I know about ' + celbrityname + '';
-  var messageData = {
-      "recipient": {
-          "id": senderID
-      },
-      "message": {
-          "text": msg
-      }
-  };
-  fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
-  tvcelbritydetails(event, celbrityname);
+const tvcelbrityintro = (event, celbrityname) => {
+    var senderID = event.sender.id;
+    var msg = 'Amazing talent👏! Here is what I know about ' + celbrityname + '';
+    var messageData = {
+        "recipient": {
+            "id": senderID
+        },
+        "message": {
+            "text": msg
+        }
+    };
+    fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
+    tvcelbritydetails(event, celbrityname);
 }
-
-
 
 const tvshowsintro = (messagingEvent, tvshowsmsg) => {
     var senderID = messagingEvent.sender.id;
@@ -86,9 +84,9 @@ const tvshowsintro = (messagingEvent, tvshowsmsg) => {
         "recipient": {
             "id": senderID
         },
-        "message":{
+        "message": {
             "text": tvshowsmsg
-          }
+        }
     };
     fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
     tvshowsmenu(messagingEvent);
@@ -235,7 +233,7 @@ const tvcelebrityinfo = (messagingEvent, quickpayloadtext) => {
                                 ]
                             }
                         }
-                      }
+                    }
                     //contentList.push(keyMap);
                 }
 
@@ -294,110 +292,18 @@ const tvcelebrityinfo = (messagingEvent, quickpayloadtext) => {
     });
 }
 
-function tvcelbritydetails(event, celbrityname){
+const gettvshowsgenre=(messagingEvent, quickpayloadtext)=>{
+  var tvgenrearray = quickpayloadtext.split(',');
+  var tvgenrename = genrearray[0];
+  var subCategory = genrearray[1];
+  console.log("Tvgenrename", tvgenrename);
+  console.log("type", subCategory);
   pool.getConnection(function(err, connection) {
-      //connection.query('select * from cc_celebrity_preference where celebrityName=?',[categoryName], function(err, rows) {
-      connection.query('select * from cc_tvshows_celebrity_preference where name = ?', [celbrityname], function(err, rows) {
-        console.log("***Tv Show celebrity details:", rows);
-          if (err) {
-              console.log("Error While retriving content pack data from database:", err);
-          }
-          else if (rows.length) {
-              var senderID = event.sender.id;
-              var contentList = [];
-              var quickList = [];
-              var movieslist;
-              console.log("*******cc_celebrity_preference data from database:*********", rows);
-
-              for (var i = 0; i < rows.length; i++) { //Construct request body
-                var name =  rows[i].name;
-                  var keyMap = {
-                      "title": rows[i].name,
-                      "image_url": rows[i].picture1,
-                      "subtitle": rows[i].skill,
-                      //  "item_url": rows[i].image_url,
-                      "buttons": [
-                          {
-                              "type": "web_url",
-                              "url": rows[i].personalInfo,
-                              "title": "About"
-                          }, {
-                              "type": "web_url",
-                              "url": rows[i].googleSearch,
-                              "title": "Search in Google"
-                          },{
-                              "type": "web_url",
-                              "url": rows[i].news,
-                              "title": "News"
-                          }
-                      ]
-                  };
-                  contentList.push(keyMap);
-                //  movieslist = rows[i].lastFiveMovies;
-                //  console.log("%%%%%%%%%%%%movieslist%%%%%%%%%%%%%", movieslist);
-              }
-              //var myarray = movieslist.split(',');
-              var messageData = {
-                  "recipient": {
-                      "id": senderID
-                  },
-                  "message": {
-                      "attachment": {
-                          "type": "template",
-                          "payload": {
-                              "template_type": "generic",
-                              "elements": contentList
-                          }
-                      },
-                      "quick_replies": [
-                          {
-                              "content_type": "text",
-                              "title": "Pictures",
-                              "payload": name +' ,%tvcelpics%'
-                          }, {
-                              "content_type": "text",
-                              "title": "Awards",
-                              "payload": name +' ,%tvcelawards%'
-                          }, {
-                              "content_type": "text",
-                              "title": "Net Worth",
-                              "payload": name +' ,%tvcelnetworth%'
-                          }, {
-                              "content_type": "text",
-                              "title": "News",
-                              "payload": name +' ,%tvcelnews%'
-                          }, {
-                              "content_type": "text",
-                              "title": "Jokes",
-                              "payload": "Jokes"
-                          },{
-                              "content_type": "text",
-                              "title": "Home 🏠",
-                              "payload": "home"
-                          }
-                      ]
-                  }
-              }
-              fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
-          }
-          else {
-              console.log("No Data Found From Database");
-              sendHelpMessage(event);
-              //sendImageMessage(event);
-          }
-          connection.release();
-      });
-  });
-}
-
-
-function tvshowsmenu(messagingEvent){
-  pool.getConnection(function(err, connection) {
-      connection.query('select  * from cc_tvshows', function(err, rows) {
+      connection.query('select * from cc_tvshows where subCategory =(select id from cc_subcategories where subCategoryName= ?)',[tvgenrename], function(err, rows) {
           console.log("*************************tvshowsmenu", rows);
           if (err) {
               console.log("Error While retriving content pack data from database:", err);
-          }else if (rows.length) {
+          } else if (rows.length) {
               var senderID = messagingEvent.sender.id;
               var contentList = [];
               if (rows.length > 10) {
@@ -436,112 +342,17 @@ function tvshowsmenu(messagingEvent){
                       "quick_replies": [
                           {
                               "content_type": "text",
-                              "title": "Latest",
-                              "payload":"Latest",
-                          },
-                          {
-                              "content_type": "text",
-                              "title": "Animation",
-                              "payload": "Animation"
-                          }, {
-                              "content_type": "text",
-                              "title": "Romance",
-                              "payload": "Romance"
-                          }, {
-                              "content_type": "text",
-                              "title": "Comedy",
-                              "payload":"Comedy"
+                              "title": "Romantic Comedy",
+                              "payload": 'Romantic Comedy,%tvComedy%'
                           }, {
                               "content_type": "text",
                               "title": "Reality",
-                              "payload": "Reality"
+                              "payload": 'Reality,%tvReality%'
                           }, {
                               "content_type": "text",
-                              "title": "Documentary",
-                              "payload": "Documentary"
+                              "title": "Horror / Crime",
+                              "payload": 'Horror / Crime,%tvCrime%'
                           }, {
-                              "content_type": "text",
-                              "title": "Google Search",
-                              "payload": "Google Search"
-                          }, {
-                              "content_type": "text",
-                              "title": "Home 🏠",
-                              "payload": "home"
-                          }
-                      ]
-                  }
-              }
-              fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
-          }else {
-              console.log("No Data Found From Database");
-              sendHelpMessage(messagingEvent);
-          }
-          connection.release();
-      });
-  });
-
-}
-
-
-function tvshowsdetails(messagingEvent, tvshowname){
-  var tvshowname = tvshowname.trim();
-  var tvshowleadActor;
-  var tvshowleadActress;
-  console.log("tvshowname:",tvshowname);
-  pool.getConnection(function(err, connection) {
-      connection.query('select  * from cc_tvshows where name = ?',[tvshowname], function(err, rows) {
-          console.log("*************************tvshowsdetails", rows);
-          if (err) {
-              console.log("Error While retriving content pack data from database:", err);
-          }else if (rows.length) {
-              var senderID = messagingEvent.sender.id;
-              var contentList = [];
-              if (rows.length > 10) {
-                  var rowslenth = 10;
-                  console.log("more than 10 Rows", rowslenth);
-              } else {
-                  var rowslenth = rows.length;
-                  console.log("less than 10 Rows", rowslenth);
-              }
-              for (var i = 0; i < rowslenth; i++) { //Construct request body
-                tvshowleadActor = rows[i].leadActor;
-                tvshowleadActress = rows[i].leadActress;
-                  var keyMap = {
-                      "title": rows[i].name,
-                      "image_url": rows[i].picture1,
-                      "buttons": [
-                        {
-                               "type": "web_url",
-                               "url": rows[i].clips,
-                               "title": "Clips"
-                           }
-                      ]
-                  };
-                  contentList.push(keyMap);
-              }
-              var messageData = {
-                  "recipient": {
-                      "id": senderID
-                  },
-                  "message": {
-                      "attachment": {
-                          "type": "template",
-                          "payload": {
-                              "template_type": "generic",
-                              "elements": contentList
-                          }
-                      },
-                      "quick_replies": [
-                          {
-                              "content_type": "text",
-                              "title": tvshowleadActor,
-                              "payload":tvshowleadActor+ ' %tvcel%'
-                          },
-                          {
-                              "content_type": "text",
-                              "title": tvshowleadActress,
-                              "payload": tvshowleadActress+ ' %tvcel%'
-                          },{
                               "content_type": "text",
                               "title": "Jokes",
                               "payload": "Jokes"
@@ -554,7 +365,7 @@ function tvshowsdetails(messagingEvent, tvshowname){
                   }
               }
               fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
-          }else {
+          } else {
               console.log("No Data Found From Database");
               sendHelpMessage(messagingEvent);
           }
@@ -562,33 +373,292 @@ function tvshowsdetails(messagingEvent, tvshowname){
       });
   });
 
+
+}
+
+function tvcelbritydetails(event, celbrityname) {
+    pool.getConnection(function(err, connection) {
+        //connection.query('select * from cc_celebrity_preference where celebrityName=?',[categoryName], function(err, rows) {
+        connection.query('select * from cc_tvshows_celebrity_preference where name = ?', [celbrityname], function(err, rows) {
+            console.log("***Tv Show celebrity details:", rows);
+            if (err) {
+                console.log("Error While retriving content pack data from database:", err);
+            } else if (rows.length) {
+                var senderID = event.sender.id;
+                var contentList = [];
+                var quickList = [];
+                var movieslist;
+                console.log("*******cc_celebrity_preference data from database:*********", rows);
+
+                for (var i = 0; i < rows.length; i++) { //Construct request body
+                    var name = rows[i].name;
+                    var keyMap = {
+                        "title": rows[i].name,
+                        "image_url": rows[i].picture1,
+                        "subtitle": rows[i].skill,
+                        //  "item_url": rows[i].image_url,
+                        "buttons": [
+                            {
+                                "type": "web_url",
+                                "url": rows[i].personalInfo,
+                                "title": "About"
+                            }, {
+                                "type": "web_url",
+                                "url": rows[i].googleSearch,
+                                "title": "Search in Google"
+                            }, {
+                                "type": "web_url",
+                                "url": rows[i].news,
+                                "title": "News"
+                            }
+                        ]
+                    };
+                    contentList.push(keyMap);
+                    //  movieslist = rows[i].lastFiveMovies;
+                    //  console.log("%%%%%%%%%%%%movieslist%%%%%%%%%%%%%", movieslist);
+                }
+                //var myarray = movieslist.split(',');
+                var messageData = {
+                    "recipient": {
+                        "id": senderID
+                    },
+                    "message": {
+                        "attachment": {
+                            "type": "template",
+                            "payload": {
+                                "template_type": "generic",
+                                "elements": contentList
+                            }
+                        },
+                        "quick_replies": [
+                            {
+                                "content_type": "text",
+                                "title": "Pictures",
+                                "payload": name + ' ,%tvcelpics%'
+                            }, {
+                                "content_type": "text",
+                                "title": "Awards",
+                                "payload": name + ' ,%tvcelawards%'
+                            }, {
+                                "content_type": "text",
+                                "title": "Net Worth",
+                                "payload": name + ' ,%tvcelnetworth%'
+                            }, {
+                                "content_type": "text",
+                                "title": "News",
+                                "payload": name + ' ,%tvcelnews%'
+                            }, {
+                                "content_type": "text",
+                                "title": "Jokes",
+                                "payload": "Jokes"
+                            }, {
+                                "content_type": "text",
+                                "title": "Home 🏠",
+                                "payload": "home"
+                            }
+                        ]
+                    }
+                }
+                fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
+            } else {
+                console.log("No Data Found From Database");
+                sendHelpMessage(event);
+                //sendImageMessage(event);
+            }
+            connection.release();
+        });
+    });
+}
+
+function tvshowsmenu(messagingEvent) {
+    pool.getConnection(function(err, connection) {
+        connection.query('select  * from cc_tvshows', function(err, rows) {
+            console.log("*************************tvshowsmenu", rows);
+            if (err) {
+                console.log("Error While retriving content pack data from database:", err);
+            } else if (rows.length) {
+                var senderID = messagingEvent.sender.id;
+                var contentList = [];
+                if (rows.length > 10) {
+                    var rowslenth = 10;
+                    console.log("more than 10 Rows", rowslenth);
+                } else {
+                    var rowslenth = rows.length;
+                    console.log("less than 10 Rows", rowslenth);
+                }
+                for (var i = 0; i < rowslenth; i++) { //Construct request body
+                    var keyMap = {
+                        "title": rows[i].name,
+                        "image_url": rows[i].picture1,
+                        "buttons": [
+                            {
+                                "type": "postback",
+                                "title": "More Info",
+                                "payload": rows[i].name + ' %tvshows%'
+                            }
+                        ]
+                    };
+                    contentList.push(keyMap);
+                }
+                var messageData = {
+                    "recipient": {
+                        "id": senderID
+                    },
+                    "message": {
+                        "attachment": {
+                            "type": "template",
+                            "payload": {
+                                "template_type": "generic",
+                                "elements": contentList
+                            }
+                        },
+                        "quick_replies": [
+                            {
+                                "content_type": "text",
+                                "title": "Romantic Comedy",
+                                "payload": 'Romantic Comedy,%tvComedy%'
+                            }, {
+                                "content_type": "text",
+                                "title": "Reality",
+                                "payload": 'Reality,%tvReality%'
+                            }, {
+                                "content_type": "text",
+                                "title": "Horror / Crime",
+                                "payload": 'Horror / Crime,%tvCrime%'
+                            }, {
+                                "content_type": "text",
+                                "title": "Jokes",
+                                "payload": "Jokes"
+                            }, {
+                                "content_type": "text",
+                                "title": "Home 🏠",
+                                "payload": "home"
+                            }
+                        ]
+                    }
+                }
+                fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
+            } else {
+                console.log("No Data Found From Database");
+                sendHelpMessage(messagingEvent);
+            }
+            connection.release();
+        });
+    });
+
+}
+
+function tvshowsdetails(messagingEvent, tvshowname) {
+    var tvshowname = tvshowname.trim();
+    var tvshowleadActor;
+    var tvshowleadActress;
+    console.log("tvshowname:", tvshowname);
+    pool.getConnection(function(err, connection) {
+        connection.query('select  * from cc_tvshows where name = ?', [tvshowname], function(err, rows) {
+            console.log("*************************tvshowsdetails", rows);
+            if (err) {
+                console.log("Error While retriving content pack data from database:", err);
+            } else if (rows.length) {
+                var senderID = messagingEvent.sender.id;
+                var contentList = [];
+                if (rows.length > 10) {
+                    var rowslenth = 10;
+                    console.log("more than 10 Rows", rowslenth);
+                } else {
+                    var rowslenth = rows.length;
+                    console.log("less than 10 Rows", rowslenth);
+                }
+                for (var i = 0; i < rowslenth; i++) { //Construct request body
+                    tvshowleadActor = rows[i].leadActor;
+                    tvshowleadActress = rows[i].leadActress;
+                    var keyMap = {
+                        "title": rows[i].name,
+                        "image_url": rows[i].picture1,
+                        "buttons": [
+                            {
+                                "type": "web_url",
+                                "url": rows[i].clips,
+                                "title": "Clips"
+                            }, {
+                                "type": "web_url",
+                                "url": rows[i].googleSearch,
+                                "title": "About"
+                            }
+                        ]
+                    };
+                    contentList.push(keyMap);
+                }
+                var messageData = {
+                    "recipient": {
+                        "id": senderID
+                    },
+                    "message": {
+                        "attachment": {
+                            "type": "template",
+                            "payload": {
+                                "template_type": "generic",
+                                "elements": contentList
+                            }
+                        },
+                        "quick_replies": [
+                            {
+                                "content_type": "text",
+                                "title": tvshowleadActor,
+                                "payload": tvshowleadActor + ' %tvcel%'
+                            }, {
+                                "content_type": "text",
+                                "title": tvshowleadActress,
+                                "payload": tvshowleadActress + ' %tvcel%'
+                            }, {
+                                "content_type": "text",
+                                "title": "Jokes",
+                                "payload": "Jokes"
+                            }, {
+                                "content_type": "text",
+                                "title": "Home 🏠",
+                                "payload": "home"
+                            }
+                        ]
+                    }
+                }
+                fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
+            } else {
+                console.log("No Data Found From Database");
+                sendHelpMessage(messagingEvent);
+            }
+            connection.release();
+        });
+    });
+
 }
 
 
+
 function sendHelpMessage(event) {
-          var errorString = "";
-          while (errorString === "") {
-              var random = Math.floor(Math.random() * errors.length);
-              if (errors[random].error.length < 320) // better be a least one good joke :)
-                  errorString = errors[random].error;
-              }
-          var senderID = event.sender.id;
-          var messageData = {
-              "recipient": {
-                  "id": senderID
-              },
-              "message": {
-                  "text": errorString,
-                  //"text":"msg",
-                  "quick_replies": quickreply
-              }
-          }
-          fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
+    var errorString = "";
+    while (errorString === "") {
+        var random = Math.floor(Math.random() * errors.length);
+        if (errors[random].error.length < 320) // better be a least one good joke :)
+            errorString = errors[random].error;
+        }
+    var senderID = event.sender.id;
+    var messageData = {
+        "recipient": {
+            "id": senderID
+        },
+        "message": {
+            "text": errorString,
+            //"text":"msg",
+            "quick_replies": quickreply
+        }
+    }
+    fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
 }
 
 module.exports = {
     tvshowsintro: tvshowsintro,
-    tvshowinfo:tvshowinfo,
-    tvcelbrityintro:tvcelbrityintro,
-    tvcelebrityinfo:tvcelebrityinfo
+    tvshowinfo: tvshowinfo,
+    tvcelbrityintro: tvcelbrityintro,
+    tvcelebrityinfo: tvcelebrityinfo,
+    gettvshowsgenre:gettvshowsgenre
 };
