@@ -10,6 +10,7 @@ const tv_show = require('../contentjson/tv shows.json');
 const musics = require('../contentjson/music.json');
 const jokes = require('../contentjson/jokes.json');
 const tvshows = require('./tvshows.js');
+const sports = require('./sports.js');
 const movies = require('./movies.js');
 const fbRquest = require('./fbapi.js');
 //var app = express();
@@ -662,7 +663,8 @@ function submenu(event, categoryName) {
                 var random = Math.floor(Math.random() * sport.length);
                 if (sport[random].sports.length < 320) // better be a least one good joke :)
                     submenuString = sport[random].sports;
-                submemuquickreply(event, categoryName, submenuString);
+                //submemuquickreply(event, categoryName, submenuString);
+                sports.sportsintro(event, submenuString);
             } else if (subname == "music") {
                 console.log("***************subname*********************", subname);
                 var random = Math.floor(Math.random() * musics.length);
