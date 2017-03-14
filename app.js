@@ -235,7 +235,7 @@ function quickpayload(messagingEvent) {
  sports.sportscelbrityintro(messagingEvent, sportscelname);
 }else if (sportscelpics != -1 || sportscelnews != -1 || sportscelawards != -1 || sportscelnetworth != -1 || sportscelcompe != -1) {
   console.log("This is getgenremovies condition");
- tvshows.sportscelebrityinfo(messagingEvent, quickpayloadtext);
+ sports.sportscelebrityinfo(messagingEvent, quickpayloadtext);
 }else {
       payloadText.sendContentPacks(res, messagingEvent);
     }
