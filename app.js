@@ -14,6 +14,7 @@ var googleTrends = require('google-trends-api');
 const tvshows = require('./modules/tvshows.js');
 const sports = require('./modules/sports.js');
 const music = require('./modules/music.js');
+const errors = require('./contentjson/errormsg.json');
 //const bot = require('./wit.js');
 
 var pool = mysql.createPool({connectionLimit: 1, host: 'ap-cdbr-azure-southeast-a.cloudapp.net', user: 'bb603e8108da6e', password: '3e384329', database: 'rankworlddev'});
