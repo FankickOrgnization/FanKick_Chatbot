@@ -237,10 +237,10 @@ const musiccelbrityintro = (messagingEvent, musiccelname)=>{
         }
     };
     fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
-    musiccelbritydetails(messagingEvent, sportscelname);
+    musiccelbritydetails(messagingEvent, musiccelname);
 }
 
-function musiccelbritydetails(messagingEvent, sportscelname){
+function musiccelbritydetails(messagingEvent, musiccelname){
   var event = messagingEvent;
   var quickList = [];
   var name;
