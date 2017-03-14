@@ -357,7 +357,7 @@ const sportscelebrityinfo = (messagingEvent, quickpayloadtext) =>{
     console.log("actername", actername);
     console.log("type", subCategory);
     pool.getConnection(function(err, connection) {
-        connection.query('select * from cc_sports_celebrity_preference where name= = ?', [sportmanname], function(err, rows) {
+        connection.query('select * from cc_sports_celebrity_preference where name = ?',[sportmanname], function(err, rows) {
             console.log("********filmactor*********", actername);
             //console.log("*************************-after", categoryName);
             console.log("*************************filmactor", rows);
