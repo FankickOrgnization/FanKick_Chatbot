@@ -184,6 +184,11 @@ function quickpayload(messagingEvent) {
     var celabout = quickpayloadtext.search("%about%");
     var quick_reply = quickpayloadtext.search("%QR%");
     var tvcelebrity = quickpayloadtext.search("%tvcel%");
+    var tvcelpics = quickpayloadtext.search("%tvcelpics%");
+    var tvcelawards = quickpayloadtext.search("%tvcelawards%");
+    var tvcelnetworth = quickpayloadtext.search("%tvcelnetworth%");
+    var tvcelnews = quickpayloadtext.search("%tvcelnews%");
+
     if(celpics != -1 || celmovies != -1 || celnetworth != -1 || celnews != -1 || celfamily != -1 || celabout != -1){
       console.log("This is celebritypics condition");
       celebritypics(messagingEvent, quickpayloadtext);
@@ -201,8 +206,11 @@ function quickpayload(messagingEvent) {
    }else if (tvcelebrity != -1){
      var celbrityname = quickpayloadtext.replace(" %tvcel%", "");
      console.log("Yessssssss", celbrityname);
-      tvshows.tvcelbrityinfo(event, celbrityname);
-   }else {
+      tvshows.tvcelbrityintro(event, celbrityname);
+   }else if (tvcelpics != -1 || tvcelawards != -1 || tvcelnetworth != -1 || tvcelnews != -1) {
+     console.log("This is getgenremovies condition");
+    tvshows.tvcelebrityinfo(messagingEvent, quickpayloadtext);
+  }else {
       payloadText.sendContentPacks(res, messagingEvent);
     }
 

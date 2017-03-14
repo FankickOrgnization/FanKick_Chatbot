@@ -61,7 +61,7 @@ const tvshowinfo = (messagingEvent, tvshowname) => {
     tvshowsdetails(messagingEvent, tvshowname);
 }
 
-const tvcelbrityinfo = (event, celbrityname) =>{
+const tvcelbrityintro = (event, celbrityname) =>{
   var senderID = event.sender.id;
   var msg = 'Amazing talent👏! Here is what I know about ' + celbrityname + '';
   var messageData = {
@@ -93,6 +93,206 @@ const tvshowsintro = (messagingEvent, tvshowsmsg) => {
     fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
     tvshowsmenu(messagingEvent);
 }
+const tvcelebrityinfo = (messagingEvent, quickpayloadtext) => {
+    var genrearray = quickpayloadtext.split(',');
+    var actername = genrearray[0];
+    var subCategory = genrearray[1];
+    console.log("actername", actername);
+    console.log("type", subCategory);
+    pool.getConnection(function(err, connection) {
+        connection.query('select * from cc_tvshows_celebrity_preference where name = ?', [actername], function(err, rows) {
+            console.log("********filmactor*********", actername);
+            //console.log("*************************-after", categoryName);
+            console.log("*************************filmactor", rows);
+            if (err) {
+                console.log("Error While retriving content pack data from database:", err);
+            } else if (rows.length) {
+                var senderID = messagingEvent.sender.id;
+                var contentList = [];
+                var quickList = [];
+                var movieslist;
+                var celebrityname;
+                var keyMap;
+                for (var i = 0; i < rows.length; i++) { //Construct request body
+                    celebrityname = rows[i].name;
+                    if (subCategory == "%tvcelpics%") {
+                        keyMap = {
+                            "type": "template",
+                            "payload": {
+                                "template_type": "generic",
+                                "elements": [
+                                    {
+                                        "title": rows[i].name,
+                                        "image_url": rows[i].picture1,
+                                        "buttons": [
+                                            {
+                                                "type": "web_url",
+                                                "url": rows[i].picture5,
+                                                "title": "More Pics"
+                                            }
+                                        ]
+                                    }, {
+                                        "title": rows[i].name,
+                                        "image_url": rows[i].picture2,
+                                        "buttons": [
+                                            {
+                                                "type": "web_url",
+                                                "url": rows[i].picture5,
+                                                "title": "More Pics"
+                                            }
+                                        ]
+                                    }, {
+                                        "title": rows[i].name,
+                                        "image_url": rows[i].picture3,
+                                        "buttons": [
+                                            {
+                                                "type": "web_url",
+                                                "url": rows[i].picture5,
+                                                "title": "More Pics"
+                                            }
+                                        ]
+                                    }, {
+                                        "title": rows[i].name,
+                                        "image_url": rows[i].picture4,
+                                        "buttons": [
+                                            {
+                                                "type": "web_url",
+                                                "url": rows[i].picture5,
+                                                "title": "More Pics"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        }
+                    } else if (subCategory == "%tvcelnetworth%") {
+                        console.log("celebrity networth");
+                        var msg = '' + rows[i].name + ' has earned ' + rows[i].netWorth + ' so far..';
+                        keyMap = {
+                            "type": "template",
+                            "payload": {
+                                "template_type": "generic",
+                                "elements": [
+                                    {
+                                        "title": rows[i].netWorth,
+                                        "image_url": rows[i].picture3,
+                                        "subtitle": msg,
+                                        // "buttons": [
+                                        // // {
+                                        // //     "type":"web_url",
+                                        // //    "url": rows[i].picture5,
+                                        // //    "title":"More Pics"
+                                        // // }
+                                        // // {
+                                        // //   "type":"element_share"
+                                        // // }
+                                        // ]
+                                    }
+                                ]
+                            }
+                        }
+                    } else if (subCategory == "%tvcelnews%") {
+                        console.log("celebrity news");
+                        keyMap = {
+                            "type": "template",
+                            "payload": {
+                                "template_type": "generic",
+                                "elements": [
+                                    {
+                                        "title": rows[i].name,
+                                        "image_url": rows[i].picture2,
+                                        "subtitle": rows[i].name,
+                                        "buttons": [
+                                            {
+                                                "type": "web_url",
+                                                "url": rows[i].news,
+                                                "title": "Click for News"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        }
+                    } else if (subCategory == "%tvcelawards%") {
+                        console.log("celebrity Family");
+                        keyMap = {
+                            "type": "template",
+                            "payload": {
+                                "template_type": "generic",
+                                "elements": [
+                                    {
+                                        "title": rows[i].awards,
+                                        "image_url": rows[i].picture4,
+                                        "subtitle": rows[i].name
+                                        // "buttons": [
+                                        // {
+                                        //     "type":"web_url",
+                                        //    "url": rows[i].picture5,
+                                        //    "title":"More Pics"
+                                        // }
+                                        // ]
+                                    }
+                                ]
+                            }
+                        }
+                      } 
+                    //contentList.push(keyMap);
+                }
+
+                var messageData = {
+                    "recipient": {
+                        "id": senderID
+                    },
+                    "message": {
+                        "attachment": keyMap,
+                        "quick_replies": [
+                            {
+                                "content_type": "text",
+                                "title": 'Pictures',
+                                "payload": celebrityname + ' ,%pictures%'
+                            }, {
+                                "content_type": "text",
+                                "title": 'Movies',
+                                "payload": celebrityname + ' ,%movies%'
+                            }, {
+                                "content_type": "text",
+                                "title": "Songs",
+                                "payload": "Songs"
+                            }, {
+                                "content_type": "text",
+                                "title": "Net Worth",
+                                "payload": celebrityname + ' ,%networth%'
+                            }, {
+                                "content_type": "text",
+                                "title": "News",
+                                "payload": celebrityname + ' ,%news%'
+                            }, {
+                                "content_type": "text",
+                                "title": "Family",
+                                "payload": celebrityname + ' ,%family%'
+                            },
+                            // {
+                            //     "content_type": "text",
+                            //     "title": celebrityname+" Personal",
+                            //     "payload": "Personal"
+                            // },
+                            {
+                                "content_type": "text",
+                                "title": "Home 🏠",
+                                "payload": "home"
+                            }
+                        ]
+                    }
+                }
+                fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
+            } else {
+                console.log("No Data Found From Database");
+                sendHelpMessage(messagingEvent);
+            }
+            connection.release();
+        });
+    });
+}
 
 function tvcelbritydetails(event, celbrityname){
   pool.getConnection(function(err, connection) {
@@ -102,87 +302,84 @@ function tvcelbritydetails(event, celbrityname){
           if (err) {
               console.log("Error While retriving content pack data from database:", err);
           }
-          // else if (rows.length) {
-          //     var senderID = event.sender.id;
-          //     var contentList = [];
-          //     var quickList = [];
-          //     var movieslist;
-          //     console.log("*******cc_celebrity_preference data from database:*********", rows);
-          //
-          //     for (var i = 0; i < rows.length; i++) { //Construct request body
-          //         var keyMap = {
-          //             "title": rows[i].celebrityName,
-          //             "image_url": rows[i].celebrityImageUrl,
-          //             "subtitle": rows[i].description,
-          //             //  "item_url": rows[i].image_url,
-          //             "buttons": [
-          //                 {
-          //                     "type": "web_url",
-          //                     "url": rows[i].facebookHandle,
-          //                     "title": "Facebook"
-          //                 }, {
-          //                     "type": "web_url",
-          //                     "url": rows[i].twitterHandle,
-          //                     "title": "Twitter"
-          //                 }
-          //             ]
-          //         };
-          //         contentList.push(keyMap);
-          //         movieslist = rows[i].lastFiveMovies;
-          //         console.log("%%%%%%%%%%%%movieslist%%%%%%%%%%%%%", movieslist);
-          //     }
-          //     var myarray = movieslist.split(',');
-          //     var messageData = {
-          //         "recipient": {
-          //             "id": senderID
-          //         },
-          //         "message": {
-          //             "attachment": {
-          //                 "type": "template",
-          //                 "payload": {
-          //                     "template_type": "generic",
-          //                     "elements": contentList
-          //                 }
-          //             },
-          //             "quick_replies": [
-          //                 {
-          //                     "content_type": "text",
-          //                     "title": "Pictures",
-          //                     "payload": rows[i].celebrityName + ' ,%pictures%'
-          //                 }, {
-          //                     "content_type": "text",
-          //                     "title": "Movies",
-          //                     "payload": rows[i].celebrityName + ' ,%movies%'
-          //                 }, {
-          //                     "content_type": "text",
-          //                     "title": "Net Worth",
-          //                     "payload": rows[i].celebrityName + ' ,%networth%'
-          //                 }, {
-          //                     "content_type": "text",
-          //                     "title": "News",
-          //                     "payload": rows[i].celebrityName + ' ,%news%'
-          //                 }, {
-          //                     "content_type": "text",
-          //                     "title": "Family",
-          //                     "payload": rows[i].celebrityName + ' ,%family%'
-          //                 }, {
-          //                     "content_type": "text",
-          //                     "title": "Jokes",
-          //                     "payload": "Jokes"
-          //                 }, {
-          //                     "content_type": "text",
-          //                     "title": "Songs",
-          //                     "payload": "Songs"
-          //                 }, {
-          //                     "content_type": "text",
-          //                     "title": "Home 🏠",
-          //                     "payload": "home"
-          //                 }
-          //             ]
-          //         }
-          //     }
-          //     fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
-          // }
+          else if (rows.length) {
+              var senderID = event.sender.id;
+              var contentList = [];
+              var quickList = [];
+              var movieslist;
+              console.log("*******cc_celebrity_preference data from database:*********", rows);
+
+              for (var i = 0; i < rows.length; i++) { //Construct request body
+                var name =  rows[i].name;
+                  var keyMap = {
+                      "title": rows[i].name,
+                      "image_url": rows[i].picture1,
+                      "subtitle": rows[i].skill,
+                      //  "item_url": rows[i].image_url,
+                      "buttons": [
+                          {
+                              "type": "web_url",
+                              "url": rows[i].personalInfo,
+                              "title": "About"
+                          }, {
+                              "type": "web_url",
+                              "url": rows[i].googleSearch,
+                              "title": "Search in Google"
+                          },{
+                              "type": "web_url",
+                              "url": rows[i].news,
+                              "title": "News"
+                          }
+                      ]
+                  };
+                  contentList.push(keyMap);
+                //  movieslist = rows[i].lastFiveMovies;
+                //  console.log("%%%%%%%%%%%%movieslist%%%%%%%%%%%%%", movieslist);
+              }
+              var myarray = movieslist.split(',');
+              var messageData = {
+                  "recipient": {
+                      "id": senderID
+                  },
+                  "message": {
+                      "attachment": {
+                          "type": "template",
+                          "payload": {
+                              "template_type": "generic",
+                              "elements": contentList
+                          }
+                      },
+                      "quick_replies": [
+                          {
+                              "content_type": "text",
+                              "title": "Pictures",
+                              "payload": name +' ,%tvcelpics%'
+                          }, {
+                              "content_type": "text",
+                              "title": "Awards",
+                              "payload": name +' ,%tvcelawards%'
+                          }, {
+                              "content_type": "text",
+                              "title": "Net Worth",
+                              "payload": name +' ,%tvcelnetworth%'
+                          }, {
+                              "content_type": "text",
+                              "title": "News",
+                              "payload": name +' ,%tvcelnews%'
+                          }, {
+                              "content_type": "text",
+                              "title": "Jokes",
+                              "payload": "Jokes"
+                          },{
+                              "content_type": "text",
+                              "title": "Home 🏠",
+                              "payload": "home"
+                          }
+                      ]
+                  }
+              }
+              fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
+          }
           else {
               console.log("No Data Found From Database");
               sendHelpMessage(event);
@@ -392,5 +589,6 @@ function sendHelpMessage(event) {
 module.exports = {
     tvshowsintro: tvshowsintro,
     tvshowinfo:tvshowinfo,
-    tvcelbrityinfo:tvcelbrityinfo
+    tvcelbrityintro:tvcelbrityintro,
+    tvcelebrityinfo:tvcelebrityinfo
 };
