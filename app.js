@@ -13,6 +13,7 @@ const fbRquest = require('./modules/fbapi.js');
 var googleTrends = require('google-trends-api');
 const tvshows = require('./modules/tvshows.js');
 const sports = require('./modules/sports.js');
+const music = require('./modules/music.js');
 //const bot = require('./wit.js');
 
 var pool = mysql.createPool({connectionLimit: 1, host: 'ap-cdbr-azure-southeast-a.cloudapp.net', user: 'bb603e8108da6e', password: '3e384329', database: 'rankworlddev'});
@@ -130,6 +131,7 @@ function receivedpostback(messagingEvent) {
     console.log("???????????????????????categoryName?????????????????????", categoryName);
     var movietitle = categoryName.search("%mname%");
     var tvshowstitle = categoryName.search("%tvshows%");
+    var albumname = categoryName.search("%albumname%");
     if (movietitle != -1) {
         //console.log("Yessssssss");
         var moviename = categoryName.replace(" %mname%", "");
@@ -141,6 +143,13 @@ function receivedpostback(messagingEvent) {
         var tvshowname = categoryName.replace(" %tvshows%", "");
         //console.log("Yessssssss", moviename);
         tvshows.tvshowinfo(messagingEvent, tvshowname);
+        //celebritymovies(messagingEvent, moviename);
+
+    }else if (albumname != -1) {
+        console.log("Yes this is %albumname%");
+        var albumname = categoryName.replace(" %albumname%", "");
+        //console.log("Yessssssss", moviename);
+        music.albuminfo(messagingEvent, albumname);
         //celebritymovies(messagingEvent, moviename);
 
     } else {
