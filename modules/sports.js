@@ -264,54 +264,80 @@ function sportscelbritydetails(messagingEvent, sportscelname){
             if (err) {
                 console.log("Error While retriving content pack data from database:", err);
             }
-            // else if (rows.length) {
-            //     var senderID = messagingEvent.sender.id;
-            //     var contentList = [];
-            //     if (rows.length > 10) {
-            //         var rowslenth = 10;
-            //         console.log("more than 10 Rows", rowslenth);
-            //     } else {
-            //         var rowslenth = rows.length;
-            //         console.log("less than 10 Rows", rowslenth);
-            //     }
-            //     for (var i = 0; i < rowslenth; i++) { //Construct request body
-            //         var keyMap = {
-            //             "title": rows[i].celebrity,
-            //             "image_url": rows[i].imageUrl,
-            //             "subtitle": rows[i].title,
-            //             // "buttons": [
-            //             //   {
-            //             //       "type": "web_url",
-            //             //       "url": rows[i].articleUrl,
-            //             //       "title": "View Article"
-            //             //   },
-            //             // ]
-            //         };
-            //         var quick_reply = {
-            //             "content_type": "text",
-            //             "title": rows[i].quickReplyTitle,
-            //             "payload": rows[i].quickReplyTitle+ ' %sportsQRtitle%'
-            //         };
-            //         contentList.push(keyMap);
-            //         quickList.push(quick_reply);
-            //     }
-            //     var messageData = {
-            //         "recipient": {
-            //             "id": senderID
-            //         },
-            //         "message": {
-            //             "attachment": {
-            //                 "type": "template",
-            //                 "payload": {
-            //                     "template_type": "generic",
-            //                     "elements": contentList
-            //                 }
-            //             },
-            //             "quick_replies": quickList
-            //         }
-            //     }
-            //     fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
-            // }
+            else if (rows.length) {
+                var senderID = messagingEvent.sender.id;
+                var contentList = [];
+                if (rows.length > 10) {
+                    var rowslenth = 10;
+                    console.log("more than 10 Rows", rowslenth);
+                } else {
+                    var rowslenth = rows.length;
+                    console.log("less than 10 Rows", rowslenth);
+                }
+                for (var i = 0; i < rowslenth; i++) { //Construct request body
+                  var name = rows[i].name;
+                    var keyMap = {
+                        "title": rows[i].name,
+                        "image_url": rows[i].picture1,
+                        "subtitle": rows[i].skill+","+ rows[i].country,
+                        "buttons": [
+                          {
+                              "type": "web_url",
+                              "url": rows[i].personal,
+                              "title": "About"
+                          },
+                        ]
+                    };
+                    contentList.push(keyMap);
+
+                }
+                var messageData = {
+                    "recipient": {
+                        "id": senderID
+                    },
+                    "message": {
+                        "attachment": {
+                            "type": "template",
+                            "payload": {
+                                "template_type": "generic",
+                                "elements": contentList
+                            }
+                        },
+                        "quick_replies": [
+                            {
+                                "content_type": "text",
+                                "title": "Pictures",
+                                "payload": name + ' ,%sportscelpics%'
+                            }, {
+                                "content_type": "text",
+                                "title": "Awards",
+                                "payload": name + ' ,%sportscelawards%'
+                            }, {
+                                "content_type": "text",
+                                "title": "Net Worth",
+                                "payload": name + ' ,%sportscelnetworth%'
+                            }, {
+                                "content_type": "text",
+                                "title": "News",
+                                "payload": name + ' ,%sportscelnews%'
+                            },{
+                                "content_type": "text",
+                                "title": "Competitors",
+                                "payload": name + ' ,%sportscelcompetitors%'
+                            }, {
+                                "content_type": "text",
+                                "title": "Jokes",
+                                "payload": "Jokes"
+                            }, {
+                                "content_type": "text",
+                                "title": "Home 🏠",
+                                "payload": "home"
+                            }
+                        ]
+                    }
+                }
+                fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
+            }
              else {
                 console.log("No Data Found From Database");
                 sendHelpMessage(messagingEvent);
@@ -320,6 +346,228 @@ function sportscelbritydetails(messagingEvent, sportscelname){
         });
     });
 
+}
+
+
+const sportscelebrityinfo = (messagingEvent, quickpayloadtext) =>{
+    var genrearray = quickpayloadtext.split(',');
+    var actername = genrearray[0];
+    var subCategory = genrearray[1];
+    console.log("actername", actername);
+    console.log("type", subCategory);
+    pool.getConnection(function(err, connection) {
+        connection.query('select * from cc_film_celebrity_preference where name = ?', [actername], function(err, rows) {
+            console.log("********filmactor*********", actername);
+            //console.log("*************************-after", categoryName);
+            console.log("*************************filmactor", rows);
+            if (err) {
+                console.log("Error While retriving content pack data from database:", err);
+            } else if (rows.length) {
+                var senderID = messagingEvent.sender.id;
+                var contentList = [];
+                var quickList = [];
+                var movieslist;
+                var celebrityname;
+                var keyMap;
+                for (var i = 0; i < rows.length; i++) { //Construct request body
+                    celebrityname = rows[i].name;
+                    if (subCategory == "%sportscelpics%") {
+                        keyMap = {
+                            "type": "template",
+                            "payload": {
+                                "template_type": "generic",
+                                "elements": [
+                                    {
+                                        "title": rows[i].name,
+                                        "image_url": rows[i].picture1,
+                                        "subtitle": rows[i].skill+","+ rows[i].country,
+                                        "buttons": [
+                                            {
+                                                "type": "web_url",
+                                                "url": rows[i].picture5,
+                                                "title": "More Pics"
+                                            }
+                                        ]
+                                    }, {
+                                        "title": rows[i].name,
+                                        "image_url": rows[i].picture2,
+                                          "subtitle": rows[i].skill+","+ rows[i].country,
+                                        "buttons": [
+                                            {
+                                                "type": "web_url",
+                                                "url": rows[i].picture5,
+                                                "title": "More Pics"
+                                            }
+                                        ]
+                                    }, {
+                                        "title": rows[i].name,
+                                        "image_url": rows[i].picture3,
+                                          "subtitle": rows[i].skill+","+ rows[i].country,
+                                        "buttons": [
+                                            {
+                                                "type": "web_url",
+                                                "url": rows[i].picture5,
+                                                "title": "More Pics"
+                                            }
+                                        ]
+                                    }, {
+                                        "title": rows[i].name,
+                                        "image_url": rows[i].picture4,
+                                        "subtitle": rows[i].skill+","+ rows[i].country,
+                                        "buttons": [
+                                            {
+                                                "type": "web_url",
+                                                "url": rows[i].picture5,
+                                                "title": "More Pics"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        }
+                    }else if (subCategory == "%sportscelnetworth%") {
+                        console.log("celebrity networth");
+                        var msg = '' + rows[i].name + ' has earned ' + rows[i].netWorth + ' so far..';
+                        keyMap = {
+                            "type": "template",
+                            "payload": {
+                                "template_type": "generic",
+                                "elements": [
+                                    {
+                                        "title": rows[i].netWorth,
+                                        "image_url": rows[i].picture3,
+                                        "subtitle": msg,
+                                        // "buttons": [
+                                        // // {
+                                        // //     "type":"web_url",
+                                        // //    "url": rows[i].picture5,
+                                        // //    "title":"More Pics"
+                                        // // }
+                                        // // {
+                                        // //   "type":"element_share"
+                                        // // }
+                                        // ]
+                                    }
+                                ]
+                            }
+                        }
+                    } else if (subCategory == "%sportscelnews%") {
+                        console.log("celebrity news");
+                        keyMap = {
+                            "type": "template",
+                            "payload": {
+                                "template_type": "generic",
+                                "elements": [
+                                    {
+                                        "title": rows[i].name,
+                                        "image_url": rows[i].picture2,
+                                        "subtitle": rows[i].skill+","+ rows[i].country,
+                                        "buttons": [
+                                            {
+                                                "type": "web_url",
+                                                "url": rows[i].newsUrl,
+                                                "title": "Click for News"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        }
+                    } else if (subCategory == "%sportscelawards%") {
+                        console.log("celebrity Family");
+                        keyMap = {
+                            "type": "template",
+                            "payload": {
+                                "template_type": "generic",
+                                "elements": [
+                                    {
+                                        "title": rows[i].awards,
+                                        "image_url": rows[i].picture4,
+                                        "subtitle": rows[i].name
+                                        // "buttons": [
+                                        // {
+                                        //     "type":"web_url",
+                                        //    "url": rows[i].picture5,
+                                        //    "title":"More Pics"
+                                        // }
+                                        // ]
+                                    }
+                                ]
+                            }
+                        }
+                      } else if (subCategory == "%sportscelcompetitors%") {
+                          console.log("celebrity Family");
+                          keyMap = {
+                              "type": "template",
+                              "payload": {
+                                  "template_type": "generic",
+                                  "elements": [
+                                      {
+                                          "title": rows[i].competitors,
+                                          "image_url": rows[i].picture4,
+                                          "subtitle": rows[i].name,
+                                          // "buttons": [
+                                          // {
+                                          //     "type":"web_url",
+                                          //    "url": rows[i].personalInfo,
+                                          //    "title":"More Info"
+                                          // }
+                                          // ]
+                                      }
+                                  ]
+                              }
+                          }
+                      }
+                    //contentList.push(keyMap);
+                }
+
+                var messageData = {
+                    "recipient": {
+                        "id": senderID
+                    },
+                    "message": {
+                        "attachment": keyMap,
+                        "quick_replies": [
+                            {
+                                "content_type": "text",
+                                "title": "Pictures",
+                                "payload": celebrityname + ' ,%sportscelpics%'
+                            }, {
+                                "content_type": "text",
+                                "title": "Awards",
+                                "payload": celebrityname + ' ,%sportscelawards%'
+                            }, {
+                                "content_type": "text",
+                                "title": "Net Worth",
+                                "payload": name + ' ,%sportscelnetworth%'
+                            }, {
+                                "content_type": "text",
+                                "title": "News",
+                                "payload": celebrityname + ' ,%sportscelnews%'
+                            },{
+                                "content_type": "text",
+                                "title": "Competitors",
+                                "payload": celebrityname + ' ,%sportscelcompetitors%'
+                            }, {
+                                "content_type": "text",
+                                "title": "Jokes",
+                                "payload": "Jokes"
+                            }, {
+                                "content_type": "text",
+                                "title": "Home 🏠",
+                                "payload": "home"
+                            }
+                        ]
+                    }
+                }
+                fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
+            } else {
+                console.log("No Data Found From Database");
+                sendHelpMessage(messagingEvent);
+            }
+            connection.release();
+        });
+    });
 }
 
 
@@ -349,5 +597,6 @@ function sendHelpMessage(event) {
 module.exports = {
     sportsintro: sportsintro,
     sportscelbrityintro: sportscelbrityintro,
-    sportsqrintro:sportsqrintro
+    sportsqrintro:sportsqrintro,
+    sportscelebrityinfo:sportscelebrityinfo,
 };

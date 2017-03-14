@@ -194,6 +194,12 @@ function quickpayload(messagingEvent) {
     var tvreality = quickpayloadtext.search("%tvReality%");
     var sportsquicktitle = quickpayloadtext.search("%sportsQRtitle%");
     var sportscelebrityname = quickpayloadtext.search("%sportscel%");
+    var sportscelpics = quickpayloadtext.search("%sportscelpics%");
+    var sportscelnews = quickpayloadtext.search("%sportscelnews%");
+    var sportscelawards = quickpayloadtext.search("%sportscelawards%");
+    var sportscelnetworth = quickpayloadtext.search("%sportscelnetworth%");
+    var sportscelcompe = quickpayloadtext.search("%sportscelcompetitors%");
+
 
     if(celpics != -1 || celmovies != -1 || celnetworth != -1 || celnews != -1 || celfamily != -1 || celabout != -1){
       console.log("This is celebritypics condition");
@@ -227,6 +233,9 @@ function quickpayload(messagingEvent) {
   console.log("Sport celebrity Name");
  var sportscelname = quickpayloadtext.replace(" %sportscel%", "");
  sports.sportscelbrityintro(messagingEvent, sportscelname);
+}else if (sportscelpics != -1 || sportscelnews != -1 || sportscelawards != -1 || sportscelnetworth != -1 || sportscelcompe != -1) {
+  console.log("This is getgenremovies condition");
+ tvshows.sportscelebrityinfo(messagingEvent, quickpayloadtext);
 }else {
       payloadText.sendContentPacks(res, messagingEvent);
     }
