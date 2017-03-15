@@ -144,6 +144,10 @@ function sportsmenu(messagingEvent){
                                 "content_type": "text",
                                 "title": "Sports Videos",
                                 "payload": 'Sports Videos,sports,%QR%'
+                            },{
+                                "content_type": "text",
+                                "title": "Cricket Info",
+                                "payload": 'Cricket Teams,sports,%QR%'
                             }, {
                                 "content_type": "text",
                                 "title": "Cricket Teams",
