@@ -461,7 +461,7 @@ const sportscelebrityinfo = (messagingEvent, quickpayloadtext) =>{
                         }
                     }else if (subCategory == "%sportscelnetworth%") {
                         console.log("celebrity networth");
-                        var msg = '' + rows[i].name + '’s net worth is believed to be around' + rows[i].netWorth + '.';
+                        var msg = '' + rows[i].name + '’s net worth is believed to be around ' + rows[i].netWorth + '.';
                         keyMap = {
                             "type": "template",
                             "payload": {

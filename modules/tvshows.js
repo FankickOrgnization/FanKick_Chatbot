@@ -165,7 +165,7 @@ const tvcelebrityinfo = (messagingEvent, quickpayloadtext) => {
                         }
                     } else if (subCategory == "%tvcelnetworth%") {
                         console.log("celebrity networth");
-                        var msg = '' + rows[i].name + '’s net worth is believed to be around' + rows[i].netWorth + '.';
+                        var msg = '' + rows[i].name + '’s net worth is believed to be around ' + rows[i].netWorth + '.';
                         // ’s net worth is believed to be around _____
                         keyMap = {
                             "type": "template",
