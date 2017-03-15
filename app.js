@@ -133,7 +133,7 @@ function receivedpostback(messagingEvent) {
     var movietitle = categoryName.search("%mname%");
     var tvshowstitle = categoryName.search("%tvshows%");
     var albumname = categoryName.search("%albumname%");
-    var sportsquicktitle = quickpayloadtext.search("%sportsQRtitle%");
+    var sportsquicktitle = categoryName.search("%sportsQRtitle%");
     if (movietitle != -1) {
         //console.log("Yessssssss");
         var moviename = categoryName.replace(" %mname%", "");
