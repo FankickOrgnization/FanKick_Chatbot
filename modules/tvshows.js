@@ -165,16 +165,17 @@ const tvcelebrityinfo = (messagingEvent, quickpayloadtext) => {
                         }
                     } else if (subCategory == "%tvcelnetworth%") {
                         console.log("celebrity networth");
-                        var msg = '' + rows[i].name + ' has earned ' + rows[i].netWorth + ' so far..';
+                        var msg = '' + rows[i].name + '’s net worth is believed to be around' + rows[i].netWorth + '.';
+                        // ’s net worth is believed to be around _____
                         keyMap = {
                             "type": "template",
                             "payload": {
                                 "template_type": "generic",
                                 "elements": [
                                     {
-                                        "title": rows[i].netWorth,
+                                        "title": msg,
                                         "image_url": rows[i].picture3,
-                                        "subtitle": msg,
+                                        "subtitle": rows[i].name,
                                         // "buttons": [
                                         // // {
                                         // //     "type":"web_url",
@@ -352,15 +353,15 @@ const gettvshowsgenre=(messagingEvent, quickpayloadtext)=>{
                               "content_type": "text",
                               "title": "Horror / Crime",
                               "payload": 'Horror / Crime,%tvCrime%'
-                          }, {
-                              "content_type": "text",
-                              "title": "Jokes",
-                              "payload": "Jokes"
-                          }, {
+                          },{
                               "content_type": "text",
                               "title": "Watch TV Shows",
                               "payload": 'Watch TV Shows,tv shows,%QR%'
                           }, {
+                              "content_type": "text",
+                              "title": "Jokes",
+                              "payload": "Jokes"
+                          },  {
                               "content_type": "text",
                               "title": "Home 🏠",
                               "payload": "home"
@@ -529,6 +530,10 @@ function tvshowsmenu(messagingEvent) {
                                 "content_type": "text",
                                 "title": "Horror / Crime",
                                 "payload": 'Horror / Crime,%tvCrime%'
+                            },{
+                                "content_type": "text",
+                                "title": "Watch TV Shows",
+                                "payload": 'Watch TV Shows,tv shows,%QR%'
                             }, {
                                 "content_type": "text",
                                 "title": "Jokes",

@@ -579,16 +579,16 @@ function celebritypics(messagingEvent, quickpayloadtext) {
                         movies.selectedactorfilems(messagingEvent, celebrityname);
                     } else if (subCategory == "%networth%") {
                         console.log("celebrity networth");
-                        var msg = '' + rows[i].name + ' has earned ' + rows[i].netWorth + ' so far..';
+                      var msg = '' + rows[i].name + '’s net worth is believed to be around' + rows[i].netWorth + '.';
                         keyMap = {
                             "type": "template",
                             "payload": {
                                 "template_type": "generic",
                                 "elements": [
                                     {
-                                        "title": rows[i].netWorth,
+                                        "title": msg,
                                         "image_url": rows[i].picture3,
-                                        "subtitle": msg,
+                                        "subtitle": rows[i].name,
                                         // "buttons": [
                                         // // {
                                         // //     "type":"web_url",
