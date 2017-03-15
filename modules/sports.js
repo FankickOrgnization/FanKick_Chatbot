@@ -147,7 +147,7 @@ function sportsmenu(messagingEvent){
                             },{
                                 "content_type": "text",
                                 "title": "Cricket Info",
-                                "payload": 'Cricket Teams,sports,%QR%'
+                                "payload": 'Cricket Info,sports,%QR%'
                             }, {
                                 "content_type": "text",
                                 "title": "Cricket Teams",
