@@ -71,6 +71,7 @@ const sportsintro = (messagingEvent, tvshowsmsg) => {
     fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
     sportsmenu(messagingEvent);
 }
+
 const sportscelbrityintro = (messagingEvent, sportscelname) => {
     var senderID = messagingEvent.sender.id;
     var msg = 'Amazing talent👏! Here is what I know about ' + sportscelname + '';
@@ -85,8 +86,6 @@ const sportscelbrityintro = (messagingEvent, sportscelname) => {
     fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
     sportscelbritydetails(messagingEvent, sportscelname);
 }
-
-
 
 
 function sportsmenu(messagingEvent){
@@ -112,21 +111,21 @@ function sportsmenu(messagingEvent){
                         "title": rows[i].celebrity,
                         "image_url": rows[i].imageUrl,
                         "subtitle": rows[i].title,
-                        // "buttons": [
-                        //   {
-                        //       "type": "web_url",
-                        //       "url": rows[i].articleUrl,
-                        //       "title": "View Article"
-                        //   },
-                        // ]
+                        "buttons": [
+                          {
+                              "type": "postback",
+                              "title": "Read More",
+                              "payload": rows[i].quickReplyTitle+ ' %sportsQRtitle%'
+                          }
+                        ]
                     };
-                    var quick_reply = {
-                        "content_type": "text",
-                        "title": rows[i].quickReplyTitle,
-                        "payload": rows[i].quickReplyTitle+ ' %sportsQRtitle%'
-                    };
+                    // var quick_reply = {
+                    //     "content_type": "text",
+                    //     "title": rows[i].quickReplyTitle,
+                    //     "payload": rows[i].quickReplyTitle+ ' %sportsQRtitle%'
+                    // };
                     contentList.push(keyMap);
-                    quickList.push(quick_reply);
+                    //quickList.push(quick_reply);
                 }
                 var messageData = {
                     "recipient": {
@@ -140,7 +139,25 @@ function sportsmenu(messagingEvent){
                                 "elements": contentList
                             }
                         },
-                        "quick_replies": quickList
+                        "quick_replies": [
+                            {
+                                "content_type": "text",
+                                "title": "Top 5 Movies of 2016",
+                                "payload": 'Top 5 Movies of 2016,sports,%QR%'
+                            }, {
+                                "content_type": "text",
+                                "title": "Worst Movies of 2016",
+                                "payload": 'Worst Movies of 2016,sports,%QR%'
+                            }, {
+                                "content_type": "text",
+                                "title": "Top 10 Songs of 2016",
+                                "payload": 'Top 10 Songs of 2016,sports,%QR%'
+                            }, {
+                                "content_type": "text",
+                                "title": "home 🏠",
+                                "payload": "home"
+                            }
+                        ]
                     }
                 }
                 fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');

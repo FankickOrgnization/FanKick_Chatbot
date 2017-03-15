@@ -133,6 +133,7 @@ function receivedpostback(messagingEvent) {
     var movietitle = categoryName.search("%mname%");
     var tvshowstitle = categoryName.search("%tvshows%");
     var albumname = categoryName.search("%albumname%");
+    var sportsquicktitle = quickpayloadtext.search("%sportsQRtitle%");
     if (movietitle != -1) {
         //console.log("Yessssssss");
         var moviename = categoryName.replace(" %mname%", "");
@@ -145,12 +146,18 @@ function receivedpostback(messagingEvent) {
         //console.log("Yessssssss", moviename);
         tvshows.tvshowinfo(messagingEvent, tvshowname);
         //celebritymovies(messagingEvent, moviename);
-
     }else if (albumname != -1) {
         console.log("Yes this is %albumname%");
         var albumname = categoryName.replace(" %albumname%", "");
         //console.log("Yessssssss", moviename);
         music.albuminfo(messagingEvent, albumname);
+        //celebritymovies(messagingEvent, moviename);
+    }else if (sportsquicktitle != -1) {
+        console.log("Yes this is %sportsquicktitle%");
+        var qrtitle = categoryName.replace(" %sportsQRtitle%", "");
+        //console.log("Yessssssss", moviename);
+        //music.albuminfo(messagingEvent, albumname);
+        sports.sportsqrintro(messagingEvent, qrtitle);
         //celebritymovies(messagingEvent, moviename);
 
     } else {
@@ -193,7 +200,8 @@ function quickpayload(messagingEvent) {
     var celnews = quickpayloadtext.search("%news%");
     var celfamily = quickpayloadtext.search("%family%");
     var celabout = quickpayloadtext.search("%about%");
-    var quick_reply = quickpayloadtext.search("%QR%");
+    var sub_quick_reply = quickpayloadtext.search("%QRsub%");
+    var main_quick_reply = quickpayloadtext.search("%QR%");
     //tv shows celebrity details
     var tvcelebrity = quickpayloadtext.search("%tvcel%");
     var tvcelpics = quickpayloadtext.search("%tvcelpics%");
@@ -249,6 +257,14 @@ function quickpayload(messagingEvent) {
         console.log("Sport Quick_reply Title");
         var qrtitle = quickpayloadtext.replace(" %sportsQRtitle%", "");
         sports.sportsqrintro(messagingEvent, qrtitle);
+    }else if (sub_quick_reply != -1) {
+        console.log("Sport Quick_reply Title");
+        //var qrtitle = quickpayloadtext.replace(" %QR%", "");
+       quick_reply_subcategory(messagingEvent, quickpayloadtext);
+    }else if (main_quick_reply != -1) {
+        console.log("Sport Quick_reply Title");
+        //var qrtitle = quickpayloadtext.replace(" %QR%", "");
+       quick_reply_category(messagingEvent, quickpayloadtext);
     } else if (sportscelebrityname != -1) {
         console.log("Sport celebrity Name");
         var sportscelname = quickpayloadtext.replace(" %sportscel%", "");
@@ -340,7 +356,144 @@ function receivedMessage(event) {
     });
 }
 
+function quick_reply_subcategory(messagingEvent, quickpayloadtext) {
+ var genrearray = quickpayloadtext.split(',');
+    var qrname = genrearray[0];
+    var subCategory = genrearray[1];
+    console.log("actername", qrname);
+    console.log("type", subCategory);
+    pool.getConnection(function(err, connection) {
+        connection.query('select * from cc_quickreply_preference where subCategory =(select id from cc_subcategories where subCategoryName=?) and title =?', [
+            subCategory, qrname
+        ], function(err, rows) {
+            console.log("*************************quickpaly", rows);
+            if (err) {
+                console.log("Error While retriving content pack data from database:", err);
+            } else if (rows.length) {
+                var rowslenth = rows.length;
+                var senderID = messagingEvent.sender.id;
+                var contentList = [];
+                 for (var i = 0; i < rowslenth; i++) { //Construct request body
+                     var keyMap = {
+                         "title": rows[i].title,
+                         //"image_url": rows[i].picture1,
+                         "subtitle": rows[i].description,
+                         "buttons": [
+                             {
+                                 "type": "web_url",
+                                 "url": rows[i].imageUrl,
+                                 "title": "...Continue Reading"
+                             }
+                         ]
+                     };
+                     contentList.push(keyMap);
+                 }
+                 var messageData = {
+                     "recipient": {
+                         "id": senderID
+                     },
+                     "message": {
+                         "attachment": {
+                             "type": "template",
+                             "payload": {
+                                 "template_type": "generic",
+                                 "elements": contentList
+                             }
+                         },
+                         "quick_replies": [
+                             {
+                                 "content_type": "text",
+                                 "title": "Jokes",
+                                 "payload": "Jokes"
+                             }, {
+                                 "content_type": "text",
+                                 "title": "Home 🏠",
+                                 "payload": "home"
+                             }
+                         ]
+                     }
+                 }
+                 fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
+             } else {
+                 console.log("No Data Found From Database");
+                 sendHelpMessage(messagingEvent);
+             }
+             connection.release();
+         });
+     });
+ }
+ function quick_reply_category(messagingEvent, quickpayloadtext) {
+  var genrearray = quickpayloadtext.split(',');
+     var qrname = genrearray[0];
+     var subCategory = genrearray[1];
+     console.log("actername", qrname);
+     console.log("type", subCategory);
+     pool.getConnection(function(err, connection) {
+         connection.query('select * from cc_quickreply_preference where category =(select id from cc_categories where categoryName = ?) and title = ?', [
+             subCategory, qrname
+         ], function(err, rows) {
+             console.log("*************************quickpaly", rows);
+             if (err) {
+                 console.log("Error While retriving content pack data from database:", err);
+             } else if (rows.length) {
+                 var rowslenth = rows.length;
+                 var senderID = messagingEvent.sender.id;
+                 var contentList = [];
+                  for (var i = 0; i < rowslenth; i++) { //Construct request body
+                      var keyMap = {
+                          "title": rows[i].title,
+                          //"image_url": rows[i].picture1,
+                          "subtitle": rows[i].description,
+                          "buttons": [
+                              {
+                                  "type": "web_url",
+                                  "url": rows[i].imageUrl,
+                                  "title": "...Continue Reading"
+                              }
+                          ]
+                      };
+                      contentList.push(keyMap);
+                  }
+                  var messageData = {
+                      "recipient": {
+                          "id": senderID
+                      },
+                      "message": {
+                          "attachment": {
+                              "type": "template",
+                              "payload": {
+                                  "template_type": "generic",
+                                  "elements": contentList
+                              }
+                          },
+                          "quick_replies": [
+                              {
+                                  "content_type": "text",
+                                  "title": "Jokes",
+                                  "payload": "Jokes"
+                              }, {
+                                  "content_type": "text",
+                                  "title": "Home 🏠",
+                                  "payload": "home"
+                              }
+                          ]
+                      }
+                  }
+                  fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
+              } else {
+                  console.log("No Data Found From Database");
+                  sendHelpMessage(messagingEvent);
+              }
+              connection.release();
+          });
+      });
+  }
+
 //selected celebrity images***************************
+
+
+
+
 function celebritypics(messagingEvent, quickpayloadtext) {
     var genrearray = quickpayloadtext.split(',');
     var actername = genrearray[0];

@@ -121,15 +121,15 @@ const subcategorymovies = (event, categoryName) => {
                             }, {
                                 "content_type": "text",
                                 "title": "Top 5 Movies of 2016",
-                                "payload": 'Top 5 Movies of 2016,' + categoryName + ',%QR%'
+                                "payload": 'Top 5 Movies of 2016,' + categoryName + ',%QRsub%'
                             }, {
                                 "content_type": "text",
                                 "title": "Worst Movies of 2016",
-                                "payload": 'Worst Movies of 2016,' + categoryName + ',%QR%'
+                                "payload": 'Worst Movies of 2016,' + categoryName + ',%QRsub%'
                             }, {
                                 "content_type": "text",
                                 "title": "Top 10 Songs of 2016",
-                                "payload": 'Top 10 Songs of 2016,' + categoryName + ',%QR%'
+                                "payload": 'Top 10 Songs of 2016,' + categoryName + ',%QRsub%'
                             }, {
                                 "content_type": "text",
                                 "title": "home 🏠",
