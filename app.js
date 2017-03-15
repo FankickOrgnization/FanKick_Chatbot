@@ -407,6 +407,10 @@ function quick_reply_subcategory(messagingEvent, quickpayloadtext) {
                                  "payload": "Jokes"
                              }, {
                                  "content_type": "text",
+                                 "title": subCategory,
+                                 "payload": subCategory
+                             },{
+                                 "content_type": "text",
                                  "title": "Home 🏠",
                                  "payload": "home"
                              }
@@ -472,6 +476,10 @@ function quick_reply_subcategory(messagingEvent, quickpayloadtext) {
                                   "title": "Jokes",
                                   "payload": "Jokes"
                               }, {
+                                  "content_type": "text",
+                                  "title": subCategory,
+                                  "payload": subCategory
+                              },{
                                   "content_type": "text",
                                   "title": "Home 🏠",
                                   "payload": "home"
