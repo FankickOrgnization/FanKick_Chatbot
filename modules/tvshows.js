@@ -358,6 +358,10 @@ const gettvshowsgenre=(messagingEvent, quickpayloadtext)=>{
                               "payload": "Jokes"
                           }, {
                               "content_type": "text",
+                              "title": "Watch TV Shows",
+                              "payload": 'Watch TV Shows,tv shows,%QR%'
+                          }, {
+                              "content_type": "text",
                               "title": "Home 🏠",
                               "payload": "home"
                           }

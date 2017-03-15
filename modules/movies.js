@@ -100,8 +100,8 @@ const subcategorymovies = (event, categoryName) => {
                                 "payload": 'Action,' + categoryName + ',%action%'
                             }, {
                                 "content_type": "text",
-                                "title": "Animation",
-                                "payload": 'Animation,' + categoryName + ',%animation%'
+                                "title": "Drama",
+                                "payload": 'Drama,' + categoryName + ',%drama%'
                             }, {
                                 "content_type": "text",
                                 "title": "Comedy",
@@ -308,8 +308,8 @@ const getgenremovies = (messagingEvent, quickpayloadtext) => {
                                 "payload": 'Action,' + subCategory + ',%action%'
                             }, {
                                 "content_type": "text",
-                                "title": "Animation",
-                                "payload": 'Animation,' + subCategory + ',%animation%'
+                                "title": "Drama",
+                                "payload": 'Drama,' + subCategory + ',%drama%'
                             }, {
                                 "content_type": "text",
                                 "title": "Comedy",
@@ -329,7 +329,11 @@ const getgenremovies = (messagingEvent, quickpayloadtext) => {
                             }, {
                                 "content_type": "text",
                                 "title": "Latest News",
-                                "payload": 'Latest News,' + subCategory + ',%news%'
+                                "payload": 'Latest News,' + subCategory + ',%QRsub%'
+                            },{
+                                "content_type": "text",
+                                "title": "Upcoming Movies",
+                                "payload": 'Upcoming Movies,' + subCategory + ',%QRsub%'
                             }, {
                                 "content_type": "text",
                                 "title": "Jokes",

@@ -110,6 +110,14 @@ const musicalbams = (categoryName, event) =>{
                                 "payload": "Sad Songs"
                             },{
                                 "content_type": "text",
+                                "title": "Top 50 Songs",
+                                "payload": 'Top 50 Songs,' + categoryName + ',%QRsub%'
+                            },{
+                                "content_type": "text",
+                                "title": "Music Videos",
+                                "payload": 'Music Videos,' + categoryName + ',%QRsub%'
+                            },{
+                                "content_type": "text",
                                 "title": "Jokes",
                                 "payload": "Jokes"
                             }, {

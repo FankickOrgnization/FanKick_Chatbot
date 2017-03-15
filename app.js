@@ -193,7 +193,7 @@ function quickpayload(messagingEvent) {
     var romance = quickpayloadtext.search("%romance%");
     var thriller = quickpayloadtext.search("%thriller%");
     var sociofantasy = quickpayloadtext.search("%socio-fantasy%");
-    var animation = quickpayloadtext.search("%animation%");
+    var drama = quickpayloadtext.search("%drama%");
     var celpics = quickpayloadtext.search("%pictures%");
     var celmovies = quickpayloadtext.search("%movies%");
     var celnetworth = quickpayloadtext.search("%networth%");
@@ -232,7 +232,7 @@ function quickpayload(messagingEvent) {
     if (celpics != -1 || celmovies != -1 || celnetworth != -1 || celnews != -1 || celfamily != -1 || celabout != -1) {
         console.log("This is celebritypics condition");
         celebritypics(messagingEvent, quickpayloadtext);
-    } else if (action != -1 || comedy != -1 || romance != -1 || thriller != -1 || animation != -1 || sociofantasy != -1) {
+    } else if (action != -1 || comedy != -1 || romance != -1 || thriller != -1 || drama != -1 || sociofantasy != -1) {
         console.log("This is getgenremovies condition");
         movies.getgenremovies(messagingEvent, quickpayloadtext);
     } else if (actortext != -1) {
