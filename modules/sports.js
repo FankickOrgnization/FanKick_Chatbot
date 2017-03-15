@@ -142,17 +142,29 @@ function sportsmenu(messagingEvent){
                         "quick_replies": [
                             {
                                 "content_type": "text",
-                                "title": "Top 5 Movies of 2016",
-                                "payload": 'Top 5 Movies of 2016,sports,%QR%'
+                                "title": "Sports Videos",
+                                "payload": 'Sports Videos,sports,%QR%'
                             }, {
                                 "content_type": "text",
-                                "title": "Worst Movies of 2016",
-                                "payload": 'Worst Movies of 2016,sports,%QR%'
+                                "title": "Cricket Teams",
+                                "payload": 'Cricket Teams,sports,%QR%'
                             }, {
                                 "content_type": "text",
-                                "title": "Top 10 Songs of 2016",
-                                "payload": 'Top 10 Songs of 2016,sports,%QR%'
+                                "title": "Cricket Schedules",
+                                "payload": 'Cricket Schedules,sports,%QR%'
                             }, {
+                                "content_type": "text",
+                                "title": "Live Scores",
+                                "payload": 'Live Scores,sports,%QR%'
+                            }, {
+                                "content_type": "text",
+                                "title": "Cricket Results",
+                                "payload": 'Cricket Results,sports,%QR%'
+                            }, {
+                                "content_type": "text",
+                                "title": "Soccer Results",
+                                "payload": 'Soccer Results,sports,%QR%'
+                            },{
                                 "content_type": "text",
                                 "title": "home 🏠",
                                 "payload": "home"

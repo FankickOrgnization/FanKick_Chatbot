@@ -815,11 +815,11 @@ function celebritymovies(messagingEvent, moviename) {
                                 "payload": musicDirector + " %a%"
                             }, {
                                 "content_type": "text",
-                                "title": "Similar Movie",
-                                "payload": "Similar Movie"
+                                "title": "Back to Movies 🎬",
+                                "payload": "Movies"
                             }, {
                                 "content_type": "text",
-                                "title": "home 🏠",
+                                "title": "Home 🏠",
                                 "payload": "home"
                             }
                         ]

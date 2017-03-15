@@ -418,15 +418,16 @@ function sendJoke(categoryName, event) {
                     "content_type": "text",
                     "title": "Home",
                     "payload": "home"
-                }, {
-                    "content_type": "text",
-                    "title": "👍",
-                    "payload": "home"
-                }, {
-                    "content_type": "text",
-                    "title": "👎",
-                    "payload": "home"
                 }
+                // , {
+                //     "content_type": "text",
+                //     "title": "👍",
+                //     "payload": "home"
+                // }, {
+                //     "content_type": "text",
+                //     "title": "👎",
+                //     "payload": "home"
+                // }
             ]
         }
     };
