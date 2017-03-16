@@ -94,7 +94,19 @@ const subcategorymovies = (event, categoryName) => {
                             }
                         },
                         "quick_replies": [
-                            {
+                          {
+                              "content_type": "text",
+                              "title": "Top 5 Movies",
+                              "payload": 'Top 5 Movies,' + categoryName + ',%QRsub%'
+                          }, {
+                              "content_type": "text",
+                              "title": "Worst Movies",
+                              "payload": 'Worst Movies,' + categoryName + ',%QRsub%'
+                          }, {
+                              "content_type": "text",
+                              "title": "Top 10 Songs",
+                              "payload": 'Top 10 Songs,' + categoryName + ',%QRsub%'
+                          }, {
                                 "content_type": "text",
                                 "title": "Action",
                                 "payload": 'Action,' + categoryName + ',%action%'
@@ -118,18 +130,6 @@ const subcategorymovies = (event, categoryName) => {
                                 "content_type": "text",
                                 "title": "Socio-fantasy",
                                 "payload": 'Socio-fantasy,' + categoryName + ',%socio-fantasy%'
-                            }, {
-                                "content_type": "text",
-                                "title": "Top 5 Movies",
-                                "payload": 'Top 5 Movies,' + categoryName + ',%QRsub%'
-                            }, {
-                                "content_type": "text",
-                                "title": "Worst Movies",
-                                "payload": 'Worst Movies,' + categoryName + ',%QRsub%'
-                            }, {
-                                "content_type": "text",
-                                "title": "Top 10 Songs",
-                                "payload": 'Top 10 Songs,' + categoryName + ',%QRsub%'
                             }, {
                                 "content_type": "text",
                                 "title": "home 🏠",
@@ -302,7 +302,15 @@ const getgenremovies = (messagingEvent, quickpayloadtext) => {
                             }
                         },
                         "quick_replies": [
-                            {
+                          {
+                              "content_type": "text",
+                              "title": "Latest News",
+                              "payload": 'Latest News,' + subCategory + ',%QRsub%'
+                          },{
+                              "content_type": "text",
+                              "title": "Upcoming Movies",
+                              "payload": 'Upcoming Movies,' + subCategory + ',%QRsub%'
+                          },{
                                 "content_type": "text",
                                 "title": "Action",
                                 "payload": 'Action,' + subCategory + ',%action%'
@@ -326,15 +334,7 @@ const getgenremovies = (messagingEvent, quickpayloadtext) => {
                                 "content_type": "text",
                                 "title": "Socio-fantasy",
                                 "payload": 'Socio-fantasy,' + subCategory + ',%socio-fantasy%'
-                            }, {
-                                "content_type": "text",
-                                "title": "Latest News",
-                                "payload": 'Latest News,' + subCategory + ',%QRsub%'
-                            },{
-                                "content_type": "text",
-                                "title": "Upcoming Movies",
-                                "payload": 'Upcoming Movies,' + subCategory + ',%QRsub%'
-                            }, {
+                            },  {
                                 "content_type": "text",
                                 "title": "Jokes",
                                 "payload": "Jokes"
@@ -423,10 +423,6 @@ const getgenremovies = (messagingEvent, quickpayloadtext) => {
                                 "content_type": "text",
                                 "title": "Movies",
                                 "payload": celebrityname + ' ,%movies%'
-                            }, {
-                                "content_type": "text",
-                                "title": "Songs",
-                                "payload": "Songs"
                             }, {
                                 "content_type": "text",
                                 "title": "Net Worth",

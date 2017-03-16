@@ -251,14 +251,6 @@ const tvcelebrityinfo = (messagingEvent, quickpayloadtext) => {
                                 "payload": celebrityname + ' ,%pictures%'
                             }, {
                                 "content_type": "text",
-                                "title": 'Movies',
-                                "payload": celebrityname + ' ,%movies%'
-                            }, {
-                                "content_type": "text",
-                                "title": "Songs",
-                                "payload": "Songs"
-                            }, {
-                                "content_type": "text",
                                 "title": "Net Worth",
                                 "payload": celebrityname + ' ,%networth%'
                             }, {

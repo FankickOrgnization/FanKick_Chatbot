@@ -89,6 +89,14 @@ const musicalbams = (categoryName, event) =>{
                         },
                         "quick_replies": [
                           {
+                              "content_type": "text",
+                              "title": "Top 50 Songs",
+                              "payload": 'Top 50 Songs,' + categoryName + ',%QRsub%'
+                          },{
+                              "content_type": "text",
+                              "title": "Music Videos",
+                              "payload": 'Music Videos,' + categoryName + ',%QRsub%'
+                          },{
                                 "content_type": "text",
                                 "title": "Latest Albums",
                                 "payload": "Latest Albums"
@@ -108,14 +116,6 @@ const musicalbams = (categoryName, event) =>{
                                 "content_type": "text",
                                 "title": "Sad Songs",
                                 "payload": "Sad Songs"
-                            },{
-                                "content_type": "text",
-                                "title": "Top 50 Songs",
-                                "payload": 'Top 50 Songs,' + categoryName + ',%QRsub%'
-                            },{
-                                "content_type": "text",
-                                "title": "Music Videos",
-                                "payload": 'Music Videos,' + categoryName + ',%QRsub%'
                             },{
                                 "content_type": "text",
                                 "title": "Jokes",
