@@ -247,27 +247,25 @@ const tvcelebrityinfo = (messagingEvent, quickpayloadtext) => {
                         "quick_replies": [
                             {
                                 "content_type": "text",
-                                "title": 'Pictures',
-                                "payload": celebrityname + ' ,%pictures%'
+                                "title": "Pictures",
+                                "payload": celebrityname + ' ,%tvcelpics%'
+                            }, {
+                                "content_type": "text",
+                                "title": "Awards",
+                                "payload": celebrityname + ' ,%tvcelawards%'
                             }, {
                                 "content_type": "text",
                                 "title": "Net Worth",
-                                "payload": celebrityname + ' ,%networth%'
+                                "payload": celebrityname + ' ,%tvcelnetworth%'
                             }, {
                                 "content_type": "text",
                                 "title": "News",
-                                "payload": celebrityname + ' ,%news%'
+                                "payload": celebrityname + ' ,%tvcelnews%'
                             }, {
                                 "content_type": "text",
-                                "title": "Family",
-                                "payload": celebrityname + ' ,%family%'
-                            },
-                            // {
-                            //     "content_type": "text",
-                            //     "title": celebrityname+" Personal",
-                            //     "payload": "Personal"
-                            // },
-                            {
+                                "title": "Jokes",
+                                "payload": "Jokes"
+                            }, {
                                 "content_type": "text",
                                 "title": "Home 🏠",
                                 "payload": "home"

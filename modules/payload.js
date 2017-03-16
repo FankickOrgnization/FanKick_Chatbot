@@ -87,7 +87,7 @@ const sendContentPacks = (categoryName, event) => {
         //moviegenre(categoryName,event);
     } else if (categoryName == "reality" || categoryName == "romantic comedy" || categoryName == "hrror / crime" || categoryName == "cooking" || categoryName == "animation") {
         wishingmessage(categoryName, event);
-    } else if (categoryName == "hollywood" || categoryName == "tollywood" || categoryName == "bollywood" || categoryName == "kollywood" || categoryName == "classical music" || categoryName == "western music") {
+    } else if (categoryName == "hollywood" || categoryName == "tollywood" || categoryName == "bollywood" || categoryName == "kollywood" || categoryName == "Malayalam Cinema" || categoryName == "Kannada Cinema") {
         //subcategorydetails(categoryName,event);
         movies.subcategorymovies(event, categoryName);
         usersubcategory(event, categoryName);

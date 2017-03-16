@@ -304,6 +304,10 @@ const getgenremovies = (messagingEvent, quickpayloadtext) => {
                         "quick_replies": [
                           {
                               "content_type": "text",
+                              "title": "Baahubali 2 Trailer",
+                              "payload": 'Baahubali 2 Trailer,' + subCategory + ',%QRsub%'
+                          },{
+                              "content_type": "text",
                               "title": "Latest News",
                               "payload": 'Latest News,' + subCategory + ',%QRsub%'
                           },{
@@ -334,10 +338,6 @@ const getgenremovies = (messagingEvent, quickpayloadtext) => {
                                 "content_type": "text",
                                 "title": "Socio-fantasy",
                                 "payload": 'Socio-fantasy,' + subCategory + ',%socio-fantasy%'
-                            },  {
-                                "content_type": "text",
-                                "title": "Jokes",
-                                "payload": "Jokes"
                             }, {
                                 "content_type": "text",
                                 "title": "home 🏠",
