@@ -34,7 +34,7 @@ var quickreply = [
 const musicalbams = (categoryName, event) =>{
   var quickList = [];
     pool.getConnection(function(err, connection) {
-        connection.query('select * from cc_music_albums where subCategory = (select id from cc_subcategories where subCategoryName= ?)',[categoryName], function(err, rows) {
+        connection.query('select * from cc_music_albums where subCategory = (select id from cc_subcategories where subCategoryName= ?) order by id desc',[categoryName], function(err, rows) {
             console.log("*************************Data For Music Albams", rows);
             if (err) {
                 console.log("Error While retriving content pack data from database:", err);

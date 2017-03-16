@@ -290,7 +290,7 @@ const gettvshowsgenre=(messagingEvent, quickpayloadtext)=>{
   console.log("Tvgenrename", tvgenrename);
   console.log("type", subCategory);
   pool.getConnection(function(err, connection) {
-      connection.query('select * from cc_tvshows where subCategory =(select id from cc_subcategories where subCategoryName= ?)',[tvgenrename], function(err, rows) {
+      connection.query('select * from cc_tvshows where subCategory =(select id from cc_subcategories where subCategoryName= ?) order by id desc',[tvgenrename], function(err, rows) {
           console.log("*************************tvshowsmenu", rows);
           if (err) {
               console.log("Error While retriving content pack data from database:", err);
