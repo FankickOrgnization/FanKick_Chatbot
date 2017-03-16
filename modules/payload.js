@@ -68,7 +68,7 @@ const sendContentPacks = (categoryName, event) => {
     console.log("*************---categoryName----*******", categoryName);
     if (categoryName == "get started") {
         var senderID = event.sender.id;
-        thread.persistentMenu(fbpage_access_token);
+        //thread.persistentMenu(fbpage_access_token);
         fbuserdetails(event, senderID);
         console.log("categoryName", categoryName);
     } else if (categoryName == "pawan kalyan" || categoryName == "prabhas" || categoryName == "ram charan tej" || categoryName == "allu arjun" || categoryName == "mahesh babu") {

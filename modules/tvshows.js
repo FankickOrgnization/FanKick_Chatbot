@@ -1,7 +1,7 @@
 'use strict';
 var request = require('request');
 const searchText = require('./search.js');
-const thread = require('./thread.js');
+//const thread = require('./thread.js');
 var googleTrends = require('google-trends-api');
 const errors = require('../contentjson/errormsg.json');
 //const movie = require('../contentjson/movies.json');
