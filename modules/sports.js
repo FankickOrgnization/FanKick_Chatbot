@@ -91,7 +91,7 @@ const sportscelbrityintro = (messagingEvent, sportscelname) => {
 function sportsmenu(messagingEvent){
   var quickList = [];
     pool.getConnection(function(err, connection) {
-        connection.query('select * from cc_sports_preference', function(err, rows) {
+        connection.query('select * from cc_sports_preference order by desc', function(err, rows) {
             console.log("*************************sportsmenu", rows);
             if (err) {
                 console.log("Error While retriving content pack data from database:", err);
