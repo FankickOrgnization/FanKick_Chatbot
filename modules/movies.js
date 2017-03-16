@@ -96,17 +96,17 @@ const subcategorymovies = (event, categoryName) => {
                         "quick_replies": [
                           {
                               "content_type": "text",
+                              "title": "Baahubali 2 Trailer",
+                              "payload": 'Baahubali 2 Trailer,' + subCategory + ',%QRsub%'
+                          },{
+                              "content_type": "text",
                               "title": "Top 5 Movies",
                               "payload": 'Top 5 Movies,' + categoryName + ',%QRsub%'
                           }, {
                               "content_type": "text",
                               "title": "Worst Movies",
                               "payload": 'Worst Movies,' + categoryName + ',%QRsub%'
-                          }, {
-                              "content_type": "text",
-                              "title": "Top 10 Songs",
-                              "payload": 'Top 10 Songs,' + categoryName + ',%QRsub%'
-                          }, {
+                          },{
                                 "content_type": "text",
                                 "title": "Action",
                                 "payload": 'Action,' + categoryName + ',%action%'
