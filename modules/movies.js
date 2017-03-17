@@ -97,7 +97,7 @@ const subcategorymovies = (event, categoryName) => {
                           {
                               "content_type": "text",
                               "title": "Baahubali 2 Trailer",
-                              "payload": 'Baahubali 2 Trailer,' + subCategory + ',%QRsub%'
+                              "payload": 'Baahubali 2 Trailer,' + categoryName + ',%QRsub%'
                           },{
                               "content_type": "text",
                               "title": "Top 5 Movies",
