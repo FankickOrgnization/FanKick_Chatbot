@@ -9,6 +9,7 @@ const sport = require('../contentjson/sports.json');
 const tv_show = require('../contentjson/tv shows.json');
 const musics = require('../contentjson/music.json');
 const jokes = require('../contentjson/jokes.json');
+const dbpool = require('./mysqlconfig.js');
 const tvshows = require('./tvshows.js');
 const sports = require('./sports.js');
 const movies = require('./movies.js');
@@ -16,8 +17,8 @@ const music = require('./music.js');
 const fbRquest = require('./fbapi.js');
 //var app = express();
 var mysql = require('mysql');
-var pool = mysql.createPool({connectionLimit: 1, host: 'ap-cdbr-azure-southeast-a.cloudapp.net', user: 'bb603e8108da6e', password: '3e384329', database: 'rankworlddev'});
-
+//var pool = mysql.createPool({connectionLimit: 1, host: 'ap-cdbr-azure-southeast-a.cloudapp.net', user: 'bb603e8108da6e', password: '3e384329', database: 'rankworlddev'});
+var pool = dbpool.mysqlpool;
 var fbpage_access_token = 'EAADV2VT6AuUBAHyUBL8zV5dYdRCBE7ZCKYQvOWCu2kkWQSV1RCllfvMymjDhXZCBQ93IkOFDpVYjN1E8jCHYpHKdH6uwNuhYAyCGdHOv6VgVZCwI6BZCc3AwAc7CW17yNTXe1YE7GkegMHHz36ax5JZC01zllTmTnAQRe0ZB0U3wZDZD';
 var quickreply = [
     {
