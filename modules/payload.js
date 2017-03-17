@@ -533,7 +533,8 @@ function fbuserdetails(event, userid) {
         //var msg = 'Hi '+username+', A lot of exciting things are awaiting for you! Get kicking!';
         //var msg = 'Hi '+username+'! My name is Kicker.\n How may I come of any help to you today?';
         //var msg = 'Hi '+username+'! My name is Kicker.\n \nI can help you get closer to your favorite celebrity with a lot of exciting things about them.\n\n Choose what excites you more';
-        var msg = 'Welcome to the club! \n \nEntertainment is served here, order your preferences…';
+      //  var msg = 'Welcome to the club! \n \nEntertainment is served here, order your preferences…';
+        var msg = 'Happy to See you 🙂 Entertainment is the new Joy. Fix and Click on a Preference from the menu and get trippy with it.';
         console.log("--------:Response data:--------msg1 ", msg);
         var messageData = {
             "recipient": {
