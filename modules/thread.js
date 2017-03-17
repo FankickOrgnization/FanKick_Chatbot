@@ -11,12 +11,12 @@ const persistentMenu = (accessToken) => {
                 {
                   "type":"postback",
                   "title":"Help",
-                  "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_HELP"
+                  "payload":"home"
                 },
                 {
                   "type":"postback",
                   "title":"Choose Categories",
-                  "payload":"Categories"
+                  "payload":"home"
                 },
                 {
                   "type":"web_url",
