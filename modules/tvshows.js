@@ -45,10 +45,10 @@ const tvshowinfo = (messagingEvent, tvshowname) => {
         // }
         "message": {
             "attachment": {
-                "type": "audio",
-                "payload": {
-                    "url": "https://petersapparel.com/bin/clip.mp3"
-                }
+              "type":"video",
+    "payload":{
+      "url":"https://www.youtube.com/watch?v=XpAaOER_6iY"
+    }
             }
         }
     };
