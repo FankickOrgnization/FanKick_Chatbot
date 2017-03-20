@@ -532,30 +532,11 @@ const sportscelebrityinfo = (messagingEvent, quickpayloadtext) =>{
                         }
                       } else if (subCategory == "%sportscelcompetitors%") {
                         var competitor =  rows[i].competitors;
-                        var picurl = rows[i].picture4;
+                        var picurl = rows[i].picture2;
                         var name = rows[i].name;
                         competitorsofcelebrity(messagingEvent,competitor,picurl,name);
                           console.log("celebrity Family");
-                          keyMap = {
-                              "type": "template",
-                              "payload": {
-                                  "template_type": "generic",
-                                  "elements": [
-                                      {
-                                          "title": rows[i].competitors,
-                                          "image_url": rows[i].picture4,
-                                          "subtitle": rows[i].name,
-                                          // "buttons": [
-                                          // {
-                                          //     "type":"web_url",
-                                          //    "url": rows[i].personalInfo,
-                                          //    "title":"More Info"
-                                          // }
-                                          // ]
-                                      }
-                                  ]
-                              }
-                          }
+
                       }
                     //contentList.push(keyMap);
                 }
@@ -612,9 +593,50 @@ const sportscelebrityinfo = (messagingEvent, quickpayloadtext) =>{
 function competitorsofcelebrity(messagingEvent,competitor,picurl,name){
   var senderID = messagingEvent.sender.id;
   var genrearray = competitor.split(',');
-  var actername = genrearray[0];
-  var subCategory = genrearray[1];
-  console.log(senderID,actername,subCategory,picurl,name);
+  var name1 = genrearray[0];
+  var name2 = genrearray[1];
+  console.log(senderID,name1,name2,picurl,name);
+  keyMap = {
+      "type": "template",
+      "payload": {
+          "template_type": "generic",
+          "elements": [
+              {
+                  "title": rows[i].competitors,
+                  "image_url": picurl,
+                  "subtitle": "competitors of "+name,
+              }
+          ]
+      }
+  }
+  var messageData = {
+      "recipient": {
+          "id": senderID
+      },
+      "message": {
+          "attachment": keyMap,
+          "quick_replies": [
+              {
+                  "content_type": "text",
+                  "title": name1,
+                  "payload": name1+ ' %sportscel%'
+              }, {
+                  "content_type": "text",
+                  "title": name2,
+                  "payload": name2+ ' %sportscel%'
+              }, {
+                  "content_type": "text",
+                  "title": "Back To Sports",
+                  "payload": "Sports"
+              }, {
+                  "content_type": "text",
+                  "title": "Home 🏠",
+                  "payload": "home"
+              }
+          ]
+      }
+  }
+  fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
   }
 
 function sendHelpMessage(event) {
