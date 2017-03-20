@@ -531,6 +531,10 @@ const sportscelebrityinfo = (messagingEvent, quickpayloadtext) =>{
                             }
                         }
                       } else if (subCategory == "%sportscelcompetitors%") {
+                        var competitor =  rows[i].competitors;
+                        var picurl = rows[i].picture4;
+                        var name = rows[i].name;
+                        competitorsofcelebrity(messagingEvent,competitor,picurl,name);
                           console.log("celebrity Family");
                           keyMap = {
                               "type": "template",
@@ -605,7 +609,13 @@ const sportscelebrityinfo = (messagingEvent, quickpayloadtext) =>{
     });
 }
 
-
+function competitorsofcelebrity(messagingEvent,competitor,picurl,name){
+  var senderID = messagingEvent.sender.id;
+  var genrearray = competitor.split(',');
+  var actername = genrearray[0];
+  var subCategory = genrearray[1];
+  console.log(senderID,actername,subCategory,picurl,name);
+  }
 
 function sendHelpMessage(event) {
     var errorString = "";
