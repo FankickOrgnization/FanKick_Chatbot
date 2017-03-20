@@ -604,7 +604,7 @@ function competitorsofcelebrity(messagingEvent,competitor,picurl,name){
               {
                   "title": name,
                   "image_url": picurl,
-                  "subtitle": "competitors of "+name,
+                  "subtitle": "Competitors of "+name,
               }
           ]
       }

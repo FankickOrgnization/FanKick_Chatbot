@@ -999,7 +999,7 @@ function filmactor(messagingEvent, actorname) {
                     };
                     contentList.push(keyMap);
                 }
-
+                updateusercelebrity(celebrityname, senderID);
                 var messageData = {
                     "recipient": {
                         "id": senderID
