@@ -80,6 +80,7 @@ const sendContentPacks = (categoryName, event) => {
         wishingmessage(categoryName, event);
     } else if (categoryName == "movies" || categoryName == "sports" || categoryName == "tv shows" || categoryName == "music") {
         submenu(event, categoryName);
+        usercategory(event, categoryName);
         console.log("enter into the allcategory function");
     } else if (categoryName == "indian" || categoryName == "western") {
         music.musicalbams(categoryName, event);

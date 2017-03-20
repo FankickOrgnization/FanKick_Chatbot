@@ -39,18 +39,18 @@ const tvshowinfo = (messagingEvent, tvshowname) => {
         "recipient": {
             "id": senderID
         },
-        // "message": {
-        //     "text": "Here you go👉..."
-        //     //"text":msg
-        // }
         "message": {
-            "attachment": {
-              "type":"video",
-    "payload":{
-      "url":"https://www.youtube.com/watch?v=XpAaOER_6iY"
-    }
-            }
+            "text": "Here you go👉..."
+            //"text":msg
         }
+    //     "message": {
+    //         "attachment": {
+    //           "type":"video",
+    // "payload":{
+    //   "url":"https://www.youtube.com/watch?v=XpAaOER_6iY"
+    // }
+    //         }
+    //     }
     };
     fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
     tvshowsdetails(messagingEvent, tvshowname);
