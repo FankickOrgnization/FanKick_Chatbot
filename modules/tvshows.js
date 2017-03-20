@@ -329,15 +329,15 @@ const gettvshowsgenre=(messagingEvent, quickpayloadtext)=>{
                           {
                               "content_type": "text",
                               "title": "Romantic Comedy",
-                              "payload": 'Romantic Comedy,%tvComedy%'
+                              "payload": 'Romantic Comedy'
                           }, {
                               "content_type": "text",
                               "title": "Reality",
-                              "payload": 'Reality,%tvReality%'
+                              "payload": 'Reality'
                           }, {
                               "content_type": "text",
                               "title": "Horror / Crime",
-                              "payload": 'Horror / Crime,%tvCrime%'
+                              "payload": 'Horror / Crime'
                           },{
                               "content_type": "text",
                               "title": "Watch TV Shows",
@@ -506,15 +506,15 @@ function tvshowsmenu(messagingEvent) {
                             {
                                 "content_type": "text",
                                 "title": "Romantic Comedy",
-                                "payload": 'Romantic Comedy,%tvComedy%'
+                                "payload": 'Romantic Comedy'
                             }, {
                                 "content_type": "text",
                                 "title": "Reality",
-                                "payload": 'Reality,%tvReality%'
+                                "payload": 'Reality'
                             }, {
                                 "content_type": "text",
                                 "title": "Horror / Crime",
-                                "payload": 'Horror / Crime,%tvCrime%'
+                                "payload": 'Horror / Crime'
                             },{
                                 "content_type": "text",
                                 "title": "Watch TV Shows",
