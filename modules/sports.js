@@ -596,7 +596,7 @@ function competitorsofcelebrity(messagingEvent,competitor,picurl,name){
   var name1 = genrearray[0];
   var name2 = genrearray[1];
   console.log(senderID,name1,name2,picurl,name);
-  keyMap = {
+  var keyMap = {
       "type": "template",
       "payload": {
           "template_type": "generic",
@@ -626,7 +626,7 @@ function competitorsofcelebrity(messagingEvent,competitor,picurl,name){
                   "payload": name2+ ' %sportscel%'
               }, {
                   "content_type": "text",
-                  "title": "Back To Sports",
+                  "title": "Back To Sports 🏆",
                   "payload": "Sports"
               }, {
                   "content_type": "text",
