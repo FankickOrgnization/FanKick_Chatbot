@@ -75,7 +75,7 @@ const sportsintro = (messagingEvent, tvshowsmsg) => {
 
 const sportscelbrityintro = (messagingEvent, sportscelname) => {
     var senderID = messagingEvent.sender.id;
-    var msg = 'Amazing talent👏! Here is what I know about ' + sportscelname + '';
+    var msg = 'What a player! Here is what I know about ' + sportscelname + '';
     var messageData = {
         "recipient": {
             "id": senderID

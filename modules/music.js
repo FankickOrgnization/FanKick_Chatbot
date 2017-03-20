@@ -236,7 +236,7 @@ const albuminfo = (messagingEvent, albumname) => {
 
 const musiccelbrityintro = (messagingEvent, musiccelname)=>{
     var senderID = messagingEvent.sender.id;
-    var msg = 'Amazing talent👏! Here is what I know about ' + musiccelname + '';
+    var msg = 'Mind blowing talent! Here is all about ' + musiccelname + '';
     var messageData = {
         "recipient": {
             "id": senderID

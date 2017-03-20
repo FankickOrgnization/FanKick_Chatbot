@@ -65,7 +65,7 @@ const tvshowinfo = (messagingEvent, tvshowname) => {
 
 const tvcelbrityintro = (event, celbrityname) => {
     var senderID = event.sender.id;
-    var msg = 'Amazing talent👏! Here is what I know about ' + celbrityname + '';
+    var msg = 'Interesting! Here is what I know about ' + celbrityname + '';
     var messageData = {
         "recipient": {
             "id": senderID
