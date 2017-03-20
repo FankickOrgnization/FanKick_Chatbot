@@ -88,7 +88,7 @@ const sendContentPacks = (categoryName, event) => {
     } else if (categoryName == "action" || categoryName == "comedy" || categoryName == "romance" || categoryName == "thriller" || categoryName == "horror") {
         wishingmessage(categoryName, event);
         //moviegenre(categoryName,event);
-    } else if (categoryName == "reality" || categoryName == "romantic comedy" || categoryName == "hrror / crime" || categoryName == "cooking" || categoryName == "animation") {
+    } else if (categoryName == "reality" || categoryName == "romantic comedy" || categoryName == "horror / crime" || categoryName == "cooking" || categoryName == "animation") {
         //wishingmessage(categoryName, event);
         tvshows.gettvshowsgenre(event, categoryName);
         usersubcategory(event, categoryName);

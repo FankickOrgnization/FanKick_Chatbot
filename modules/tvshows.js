@@ -462,7 +462,7 @@ function tvcelbritydetails(event, celbrityname) {
 
 function tvshowsmenu(messagingEvent) {
     pool.getConnection(function(err, connection) {
-        connection.query('select  * from cc_tvshows', function(err, rows) {
+        connection.query('select  * from cc_tvshows order by id desc', function(err, rows) {
             console.log("*************************tvshowsmenu", rows);
             if (err) {
                 console.log("Error While retriving content pack data from database:", err);
