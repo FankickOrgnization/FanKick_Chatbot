@@ -33,6 +33,8 @@ var quickreply = [
 //function tvshowsinfo(messagingEvent, moviename)
 const tvshowinfo = (messagingEvent, tvshowname) => {
     var senderID = messagingEvent.sender.id;
+    //var img = 'https://fankickdev.blob.core.windows.net/images/home_logo.png';
+    //var msg = 'Amazing talent! Here is what I know about '+img+'';
     var messageData = {
         "recipient": {
             "id": senderID
@@ -41,14 +43,14 @@ const tvshowinfo = (messagingEvent, tvshowname) => {
             "text": "Here you go👉..."
             //"text":msg
         }
-        "message": {
-            "attachment": {
-                "type": "audio",
-                "payload": {
-                    "url": "https://petersapparel.com/bin/clip.mp3"
-                }
-            }
-        }
+        // "message": {
+        //     "attachment": {
+        //         "type": "audio",
+        //         "payload": {
+        //             "url": "https://petersapparel.com/bin/clip.mp3"
+        //         }
+        //     }
+        // }
     };
     fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
     tvshowsdetails(messagingEvent, tvshowname);
