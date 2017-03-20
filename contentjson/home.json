@@ -11,7 +11,7 @@
             "buttons": [
             {
               "type": "postback",
-              "title": "Movies",
+              "title": "Movies 🎬",
               "payload": "Movies"
             }
             ]
@@ -23,7 +23,7 @@
             "buttons": [
             {
               "type": "postback",
-              "title": "Sports",
+              "title": "Sports 🏆",
               "payload": "Sports"
             }
             ]
@@ -35,7 +35,7 @@
             "buttons": [
             {
               "type": "postback",
-              "title": "TV Shows",
+              "title": "TV Shows 📺",
               "payload": "TV Shows"
             }
             ]
@@ -47,7 +47,7 @@
             "buttons": [
             {
               "type": "postback",
-              "title": "Music",
+              "title": "Music 🎶",
               "payload": "Music"
             }
             ]
