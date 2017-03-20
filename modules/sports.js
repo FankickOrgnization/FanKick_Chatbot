@@ -602,7 +602,7 @@ function competitorsofcelebrity(messagingEvent,competitor,picurl,name){
           "template_type": "generic",
           "elements": [
               {
-                  "title": rows[i].competitors,
+                  "title": name,
                   "image_url": picurl,
                   "subtitle": "competitors of "+name,
               }
