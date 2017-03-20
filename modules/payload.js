@@ -90,7 +90,7 @@ const sendContentPacks = (categoryName, event) => {
         //moviegenre(categoryName,event);
     } else if (categoryName == "reality" || categoryName == "romantic comedy" || categoryName == "hrror / crime" || categoryName == "cooking" || categoryName == "animation") {
         //wishingmessage(categoryName, event);
-        tvshows.gettvshowsgenre(messagingEvent, quickpayloadtext);
+        tvshows.gettvshowsgenre(event, categoryName);
         usersubcategory(event, categoryName);
     } else if (categoryName == "hollywood" || categoryName == "tollywood" || categoryName == "bollywood" || categoryName == "kollywood" || categoryName == "malayalam cinema" || categoryName == "kannada cinema") {
         //subcategorydetails(categoryName,event);
