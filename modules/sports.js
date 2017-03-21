@@ -221,7 +221,7 @@ function sportsqrdetails(messagingEvent, qrtitle){
                           {
                               "type": "web_url",
                               "url": rows[i].articleUrl,
-                              "title": "View Article"
+                              "title": "View Article 📰"
                           },
                         ]
                     };
@@ -501,7 +501,7 @@ const sportscelebrityinfo = (messagingEvent, quickpayloadtext) =>{
                                             {
                                                 "type": "web_url",
                                                 "url": rows[i].newsUrl,
-                                                "title": "Click for News"
+                                                "title": "Click for News 📢"
                                             }
                                         ]
                                     }

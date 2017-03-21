@@ -618,7 +618,7 @@ function celebritypics(messagingEvent, quickpayloadtext) {
                                             {
                                                 "type": "web_url",
                                                 "url": rows[i].newslink,
-                                                "title": "Click for News"
+                                                "title": "Click for News 📢"
                                             }
                                         ]
                                     }

@@ -200,7 +200,7 @@ const tvcelebrityinfo = (messagingEvent, quickpayloadtext) => {
                                             {
                                                 "type": "web_url",
                                                 "url": rows[i].news,
-                                                "title": "Click for News"
+                                                "title": "Click for News 📢"
                                             }
                                         ]
                                     }
