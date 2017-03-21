@@ -58,7 +58,7 @@ const musicalbams = (categoryName, event) => {
                         "buttons": [
                             {
                                 "type": "postback",
-                                "title": "Read More 📖",
+                                "title": "View More 🔍",
                                 "payload": rows[i].name + " %albumname%"
                             }
                             // {
