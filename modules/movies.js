@@ -94,19 +94,19 @@ const subcategorymovies = (event, categoryName) => {
                             }
                         },
                         "quick_replies": [
-                          {
-                              "content_type": "text",
-                              "title": "Baahubali 2 Trailer",
-                              "payload": 'Baahubali 2 Trailer,' + categoryName + ',%QRsub%'
-                          },{
-                              "content_type": "text",
-                              "title": "Top 5 Movies",
-                              "payload": 'Top 5 Movies,' + categoryName + ',%QRsub%'
-                          }, {
-                              "content_type": "text",
-                              "title": "Worst Movies",
-                              "payload": 'Worst Movies,' + categoryName + ',%QRsub%'
-                          },{
+                            {
+                                "content_type": "text",
+                                "title": "Baahubali 2 Trailer",
+                                "payload": 'Baahubali 2 Trailer,' + categoryName + ',%QRsub%'
+                            }, {
+                                "content_type": "text",
+                                "title": "Top 5 Movies",
+                                "payload": 'Top 5 Movies,' + categoryName + ',%QRsub%'
+                            }, {
+                                "content_type": "text",
+                                "title": "Worst Movies",
+                                "payload": 'Worst Movies,' + categoryName + ',%QRsub%'
+                            }, {
                                 "content_type": "text",
                                 "title": "Action",
                                 "payload": 'Action,' + categoryName + ',%action%'
@@ -148,8 +148,7 @@ const subcategorymovies = (event, categoryName) => {
     });
 }
 
-
-  const getmovies = (messagingEvent, moviename) => {
+const getmovies = (messagingEvent, moviename) => {
     // var movie = moviename.replace(" %%","");
     console.log("quickmovies", moviename);
     var mname = moviename.trim();
@@ -241,7 +240,7 @@ const subcategorymovies = (event, categoryName) => {
     });
 }
 const getgenremovies = (messagingEvent, quickpayloadtext) => {
-//cont moviesgenre(messagingEvent, quickpayloadtext) {
+    //cont moviesgenre(messagingEvent, quickpayloadtext) {
     console.log("*********Movies Genre***********", quickpayloadtext);
     // var genre;
     // var subCategory;
@@ -302,19 +301,19 @@ const getgenremovies = (messagingEvent, quickpayloadtext) => {
                             }
                         },
                         "quick_replies": [
-                          {
-                              "content_type": "text",
-                              "title": "Baahubali 2 Trailer",
-                              "payload": 'Baahubali 2 Trailer,' + subCategory + ',%QRsub%'
-                          },{
-                              "content_type": "text",
-                              "title": "Latest News",
-                              "payload": 'Latest News,' + subCategory + ',%QRsub%'
-                          },{
-                              "content_type": "text",
-                              "title": "Upcoming Movies",
-                              "payload": 'Upcoming Movies,' + subCategory + ',%QRsub%'
-                          },{
+                            {
+                                "content_type": "text",
+                                "title": "Baahubali 2 Trailer",
+                                "payload": 'Baahubali 2 Trailer,' + subCategory + ',%QRsub%'
+                            }, {
+                                "content_type": "text",
+                                "title": "Latest News",
+                                "payload": 'Latest News,' + subCategory + ',%QRsub%'
+                            }, {
+                                "content_type": "text",
+                                "title": "Upcoming Movies",
+                                "payload": 'Upcoming Movies,' + subCategory + ',%QRsub%'
+                            }, {
                                 "content_type": "text",
                                 "title": "Action",
                                 "payload": 'Action,' + subCategory + ',%action%'
@@ -357,8 +356,7 @@ const getgenremovies = (messagingEvent, quickpayloadtext) => {
 
 }
 
-
-  const selectedactorfilems = (messagingEvent, celebrityname) => {
+const selectedactorfilems = (messagingEvent, celebrityname) => {
     console.log("*********Movies Genre***********", celebrityname);
     pool.getConnection(function(err, connection) {
         connection.query('select  * from cc_movies_preference where leadActor= ? order by releaseDate desc', [celebrityname], function(err, rows) {
@@ -414,8 +412,7 @@ const getgenremovies = (messagingEvent, quickpayloadtext) => {
                                 "content_type": "text",
                                 "title": "About",
                                 "payload": celebrityname + ' ,%about%'
-                            },
-                            {
+                            }, {
                                 "content_type": "text",
                                 "title": "Pictures",
                                 "payload": celebrityname + ' ,%pictures%'
@@ -454,32 +451,30 @@ const getgenremovies = (messagingEvent, quickpayloadtext) => {
 
 }
 
-
 function sendHelpMessage(event) {
-          var errorString = "";
-          while (errorString === "") {
-              var random = Math.floor(Math.random() * errors.length);
-              if (errors[random].error.length < 320) // better be a least one good joke :)
-                  errorString = errors[random].error;
-              }
-          var senderID = event.sender.id;
-          var messageData = {
-              "recipient": {
-                  "id": senderID
-              },
-              "message": {
-                  "text": errorString,
-                  //"text":"msg",
-                  "quick_replies": quickreply
-              }
-          }
-          fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
+    var errorString = "";
+    while (errorString === "") {
+        var random = Math.floor(Math.random() * errors.length);
+        if (errors[random].error.length < 320) // better be a least one good joke :)
+            errorString = errors[random].error;
+        }
+    var senderID = event.sender.id;
+    var messageData = {
+        "recipient": {
+            "id": senderID
+        },
+        "message": {
+            "text": errorString,
+            //"text":"msg",
+            "quick_replies": quickreply
+        }
+    }
+    fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
 }
-
 
 module.exports = {
     subcategorymovies: subcategorymovies,
-    getmovies:getmovies,
-    getgenremovies:getgenremovies,
-    selectedactorfilems:selectedactorfilems,
+    getmovies: getmovies,
+    getgenremovies: getgenremovies,
+    selectedactorfilems: selectedactorfilems
 };

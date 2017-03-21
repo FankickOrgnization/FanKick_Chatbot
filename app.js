@@ -146,13 +146,13 @@ function receivedpostback(messagingEvent) {
         //console.log("Yessssssss", moviename);
         tvshows.tvshowinfo(messagingEvent, tvshowname);
         //celebritymovies(messagingEvent, moviename);
-    }else if (albumname != -1) {
+    } else if (albumname != -1) {
         console.log("Yes this is %albumname%");
         var albumname = categoryName.replace(" %albumname%", "");
         //console.log("Yessssssss", moviename);
         music.albuminfo(messagingEvent, albumname);
         //celebritymovies(messagingEvent, moviename);
-    }else if (sportsquicktitle != -1) {
+    } else if (sportsquicktitle != -1) {
         console.log("Yes this is %sportsquicktitle%");
         var qrtitle = categoryName.replace(" %sportsQRtitle%", "");
         //console.log("Yessssssss", moviename);
@@ -220,14 +220,14 @@ function quickpayload(messagingEvent) {
     var sportscelnetworth = quickpayloadtext.search("%sportscelnetworth%");
     var sportscelcompe = quickpayloadtext.search("%sportscelcompetitors%");
     //music celebrity details
-    var musicartistname =quickpayloadtext.search("%musicartist%");
-    var musicartistpics =quickpayloadtext.search("%musiccelpics%");
-    var musicartistawards =quickpayloadtext.search("%musiccelawards%");
-    var musicartistnet =quickpayloadtext.search("%musiccelnetworth%");
-    var musicartistnews =quickpayloadtext.search("%Musiccelnews%");
-    var musicartistalbum =quickpayloadtext.search("%Musiccelalbums%");
-    var musicartistsongs =quickpayloadtext.search("%Musiccelsongs%");
-    var musicartistcomp =quickpayloadtext.search("%Musiccelcomp%");
+    var musicartistname = quickpayloadtext.search("%musicartist%");
+    var musicartistpics = quickpayloadtext.search("%musiccelpics%");
+    var musicartistawards = quickpayloadtext.search("%musiccelawards%");
+    var musicartistnet = quickpayloadtext.search("%musiccelnetworth%");
+    var musicartistnews = quickpayloadtext.search("%Musiccelnews%");
+    var musicartistalbum = quickpayloadtext.search("%Musiccelalbums%");
+    var musicartistsongs = quickpayloadtext.search("%Musiccelsongs%");
+    var musicartistcomp = quickpayloadtext.search("%Musiccelcomp%");
 
     if (celpics != -1 || celmovies != -1 || celnetworth != -1 || celnews != -1 || celfamily != -1 || celabout != -1) {
         console.log("This is celebritypics condition");
@@ -257,14 +257,14 @@ function quickpayload(messagingEvent) {
         console.log("Sport Quick_reply Title");
         var qrtitle = quickpayloadtext.replace(" %sportsQRtitle%", "");
         sports.sportsqrintro(messagingEvent, qrtitle);
-    }else if (sub_quick_reply != -1) {
+    } else if (sub_quick_reply != -1) {
         console.log("Sport Quick_reply Title");
         //var qrtitle = quickpayloadtext.replace(" %QR%", "");
-       quick_reply_subcategory(messagingEvent, quickpayloadtext);
-    }else if (main_quick_reply != -1) {
+        quick_reply_subcategory(messagingEvent, quickpayloadtext);
+    } else if (main_quick_reply != -1) {
         console.log("Sport Quick_reply Title");
         //var qrtitle = quickpayloadtext.replace(" %QR%", "");
-       quick_reply_category(messagingEvent, quickpayloadtext);
+        quick_reply_category(messagingEvent, quickpayloadtext);
     } else if (sportscelebrityname != -1) {
         console.log("Sport celebrity Name");
         var sportscelname = quickpayloadtext.replace(" %sportscel%", "");
@@ -276,7 +276,7 @@ function quickpayload(messagingEvent) {
         console.log("Music celebrity Name");
         var musiccelname = quickpayloadtext.replace(" %musicartist%", "");
         music.musiccelbrityintro(messagingEvent, musiccelname);
-    }else if (musicartistpics != -1 || musicartistawards != -1 || musicartistnet != -1 || musicartistnews != -1 || musicartistalbum != -1 || musicartistsongs != -1 || musicartistcomp != -1) {
+    } else if (musicartistpics != -1 || musicartistawards != -1 || musicartistnet != -1 || musicartistnews != -1 || musicartistalbum != -1 || musicartistsongs != -1 || musicartistcomp != -1) {
         console.log("This is getgenremovies condition");
         music.musiccelebrityinfo(messagingEvent, quickpayloadtext);
     } else {
@@ -357,7 +357,7 @@ function receivedMessage(event) {
 }
 
 function quick_reply_subcategory(messagingEvent, quickpayloadtext) {
- var genrearray = quickpayloadtext.split(',');
+    var genrearray = quickpayloadtext.split(',');
     var qrname = genrearray[0];
     var subCategory = genrearray[1];
     console.log("actername", qrname);
@@ -373,134 +373,131 @@ function quick_reply_subcategory(messagingEvent, quickpayloadtext) {
                 var rowslenth = rows.length;
                 var senderID = messagingEvent.sender.id;
                 var contentList = [];
-                 for (var i = 0; i < rowslenth; i++) { //Construct request body
-                     var keyMap = {
-                         "title": rows[i].title,
-                         //"image_url": rows[i].picture1,
-                         "subtitle": rows[i].description,
-                         "buttons": [
-                             {
-                                 "type": "web_url",
-                                 "url": rows[i].imageUrl,
-                                 "title": "...Continue Reading ▶"
-                             }
-                         ]
-                     };
-                     contentList.push(keyMap);
-                 }
-                 var messageData = {
-                     "recipient": {
-                         "id": senderID
-                     },
-                     "message": {
-                         "attachment": {
-                             "type": "template",
-                             "payload": {
-                                 "template_type": "generic",
-                                 "elements": contentList
-                             }
-                         },
-                         "quick_replies": [
-                             {
-                                 "content_type": "text",
-                                 "title": "Jokes",
-                                 "payload": "Jokes"
-                             }, {
-                                 "content_type": "text",
-                                 "title": subCategory,
-                                 "payload": subCategory
-                             },{
-                                 "content_type": "text",
-                                 "title": "Home 🏠",
-                                 "payload": "home"
-                             }
-                         ]
-                     }
-                 }
-                 fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
-             } else {
-                 console.log("No Data Found From Database");
-                 sendHelpMessage(messagingEvent);
-             }
-             connection.release();
-         });
-     });
- }
- function quick_reply_category(messagingEvent, quickpayloadtext) {
-  var genrearray = quickpayloadtext.split(',');
-     var qrname = genrearray[0];
-     var subCategory = genrearray[1];
-     console.log("actername", qrname);
-     console.log("type", subCategory);
-     pool.getConnection(function(err, connection) {
-         connection.query('select * from cc_quickreply_preference where category =(select id from cc_categories where categoryName = ?) and title = ?', [
-             subCategory, qrname
-         ], function(err, rows) {
-             console.log("*************************quickpaly", rows);
-             if (err) {
-                 console.log("Error While retriving content pack data from database:", err);
-             } else if (rows.length) {
-                 var rowslenth = rows.length;
-                 var senderID = messagingEvent.sender.id;
-                 var contentList = [];
-                  for (var i = 0; i < rowslenth; i++) { //Construct request body
-                      var keyMap = {
-                          "title": rows[i].title,
-                          //"image_url": rows[i].picture1,
-                          "subtitle": rows[i].description,
-                          "buttons": [
-                              {
-                                  "type": "web_url",
-                                  "url": rows[i].imageUrl,
-                                  "title": "...Continue Reading ▶"
-                              }
-                          ]
-                      };
-                      contentList.push(keyMap);
-                  }
-                  var messageData = {
-                      "recipient": {
-                          "id": senderID
-                      },
-                      "message": {
-                          "attachment": {
-                              "type": "template",
-                              "payload": {
-                                  "template_type": "generic",
-                                  "elements": contentList
-                              }
-                          },
-                          "quick_replies": [
-                              {
-                                  "content_type": "text",
-                                  "title": "Jokes",
-                                  "payload": "Jokes"
-                              }, {
-                                  "content_type": "text",
-                                  "title": subCategory,
-                                  "payload": subCategory
-                              },{
-                                  "content_type": "text",
-                                  "title": "Home 🏠",
-                                  "payload": "home"
-                              }
-                          ]
-                      }
-                  }
-                  fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
-              } else {
-                  console.log("No Data Found From Database");
-                  sendHelpMessage(messagingEvent);
-              }
-              connection.release();
-          });
-      });
-  }
+                for (var i = 0; i < rowslenth; i++) { //Construct request body
+                    var keyMap = {
+                        "title": rows[i].title,
+                        //"image_url": rows[i].picture1,
+                        "subtitle": rows[i].description,
+                        "buttons": [
+                            {
+                                "type": "web_url",
+                                "url": rows[i].imageUrl,
+                                "title": "...Continue Reading ▶"
+                            }
+                        ]
+                    };
+                    contentList.push(keyMap);
+                }
+                var messageData = {
+                    "recipient": {
+                        "id": senderID
+                    },
+                    "message": {
+                        "attachment": {
+                            "type": "template",
+                            "payload": {
+                                "template_type": "generic",
+                                "elements": contentList
+                            }
+                        },
+                        "quick_replies": [
+                            {
+                                "content_type": "text",
+                                "title": "Jokes",
+                                "payload": "Jokes"
+                            }, {
+                                "content_type": "text",
+                                "title": subCategory,
+                                "payload": subCategory
+                            }, {
+                                "content_type": "text",
+                                "title": "Home 🏠",
+                                "payload": "home"
+                            }
+                        ]
+                    }
+                }
+                fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
+            } else {
+                console.log("No Data Found From Database");
+                sendHelpMessage(messagingEvent);
+            }
+            connection.release();
+        });
+    });
+}
+function quick_reply_category(messagingEvent, quickpayloadtext) {
+    var genrearray = quickpayloadtext.split(',');
+    var qrname = genrearray[0];
+    var subCategory = genrearray[1];
+    console.log("actername", qrname);
+    console.log("type", subCategory);
+    pool.getConnection(function(err, connection) {
+        connection.query('select * from cc_quickreply_preference where category =(select id from cc_categories where categoryName = ?) and title = ?', [
+            subCategory, qrname
+        ], function(err, rows) {
+            console.log("*************************quickpaly", rows);
+            if (err) {
+                console.log("Error While retriving content pack data from database:", err);
+            } else if (rows.length) {
+                var rowslenth = rows.length;
+                var senderID = messagingEvent.sender.id;
+                var contentList = [];
+                for (var i = 0; i < rowslenth; i++) { //Construct request body
+                    var keyMap = {
+                        "title": rows[i].title,
+                        //"image_url": rows[i].picture1,
+                        "subtitle": rows[i].description,
+                        "buttons": [
+                            {
+                                "type": "web_url",
+                                "url": rows[i].imageUrl,
+                                "title": "...Continue Reading ▶"
+                            }
+                        ]
+                    };
+                    contentList.push(keyMap);
+                }
+                var messageData = {
+                    "recipient": {
+                        "id": senderID
+                    },
+                    "message": {
+                        "attachment": {
+                            "type": "template",
+                            "payload": {
+                                "template_type": "generic",
+                                "elements": contentList
+                            }
+                        },
+                        "quick_replies": [
+                            {
+                                "content_type": "text",
+                                "title": "Jokes",
+                                "payload": "Jokes"
+                            }, {
+                                "content_type": "text",
+                                "title": subCategory,
+                                "payload": subCategory
+                            }, {
+                                "content_type": "text",
+                                "title": "Home 🏠",
+                                "payload": "home"
+                            }
+                        ]
+                    }
+                }
+                fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
+            } else {
+                console.log("No Data Found From Database");
+                sendHelpMessage(messagingEvent);
+            }
+            connection.release();
+        });
+    });
+}
 
 //selected celebrity images***************************
-
-
-
 
 function celebritypics(messagingEvent, quickpayloadtext) {
     var genrearray = quickpayloadtext.split(',');
@@ -579,7 +576,7 @@ function celebritypics(messagingEvent, quickpayloadtext) {
                         movies.selectedactorfilems(messagingEvent, celebrityname);
                     } else if (subCategory == "%networth%") {
                         console.log("celebrity networth");
-                      var msg = '' + rows[i].name + '’s net worth is believed to be around ' + rows[i].netWorth + '.';
+                        var msg = '' + rows[i].name + '’s net worth is believed to be around ' + rows[i].netWorth + '.';
                         keyMap = {
                             "type": "template",
                             "payload": {
@@ -1037,8 +1034,7 @@ function filmactor(messagingEvent, actorname) {
                                 "content_type": "text",
                                 "title": "Family",
                                 "payload": celebrityname + ' ,%family%'
-                            },
-                            {
+                            }, {
                                 "content_type": "text",
                                 "title": "Home 🏠",
                                 "payload": "home"

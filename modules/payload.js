@@ -443,24 +443,24 @@ function sendJoke(categoryName, event) {
 //Ramndom Jokes for User*************
 
 function sendHelpMessage(event) {
-          var errorString = "";
-          while (errorString === "") {
-              var random = Math.floor(Math.random() * errors.length);
-              if (errors[random].error.length < 320) // better be a least one good joke :)
-                  errorString = errors[random].error;
-              }
-          var senderID = event.sender.id;
-          var messageData = {
-              "recipient": {
-                  "id": senderID
-              },
-              "message": {
-                  "text": errorString,
-                  //"text":"msg",
-                  "quick_replies": quickreply
-              }
-          }
-          fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
+    var errorString = "";
+    while (errorString === "") {
+        var random = Math.floor(Math.random() * errors.length);
+        if (errors[random].error.length < 320) // better be a least one good joke :)
+            errorString = errors[random].error;
+        }
+    var senderID = event.sender.id;
+    var messageData = {
+        "recipient": {
+            "id": senderID
+        },
+        "message": {
+            "text": errorString,
+            //"text":"msg",
+            "quick_replies": quickreply
+        }
+    }
+    fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
 }
 
 // const fbuserdetails = (event,userid) =>{
@@ -537,7 +537,7 @@ function fbuserdetails(event, userid) {
         //var msg = 'Hi '+username+', A lot of exciting things are awaiting for you! Get kicking!';
         //var msg = 'Hi '+username+'! My name is Kicker.\n How may I come of any help to you today?';
         //var msg = 'Hi '+username+'! My name is Kicker.\n \nI can help you get closer to your favorite celebrity with a lot of exciting things about them.\n\n Choose what excites you more';
-      //  var msg = 'Welcome to the club! \n \nEntertainment is served here, order your preferences…';
+        //  var msg = 'Welcome to the club! \n \nEntertainment is served here, order your preferences…';
         var msg = 'Happy to See you 🙂 Entertainment is the new Joy. Fix and Click on a Preference from the menu and get trippy with it.';
         console.log("--------:Response data:--------msg1 ", msg);
         var messageData = {
@@ -671,6 +671,7 @@ function submenu(event, categoryName) {
                 var random = Math.floor(Math.random() * sport.length);
                 if (sport[random].sports.length < 320) // better be a least one good joke :)
                     submenuString = sport[random].sports;
+
                 //submemuquickreply(event, categoryName, submenuString);
                 sports.sportsintro(event, submenuString);
             } else if (subname == "music") {
@@ -684,6 +685,7 @@ function submenu(event, categoryName) {
                 var random = Math.floor(Math.random() * tv_show.length);
                 if (tv_show[random].tv_shows.length < 320) // better be a least one good joke :)
                     submenuString = tv_show[random].tv_shows;
+
                 //tvshows.tvshowsmenu(event, categoryName, submenuString);
                 tvshows.tvshowsintro(event, submenuString);
             }

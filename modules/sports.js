@@ -88,16 +88,14 @@ const sportscelbrityintro = (messagingEvent, sportscelname) => {
     sportscelbritydetails(messagingEvent, sportscelname);
 }
 
-
-function sportsmenu(messagingEvent){
-  var quickList = [];
+function sportsmenu(messagingEvent) {
+    var quickList = [];
     pool.getConnection(function(err, connection) {
         connection.query('select * from cc_sports_preference order by id desc', function(err, rows) {
             console.log("*************************sportsmenu", rows);
             if (err) {
                 console.log("Error While retriving content pack data from database:", err);
-            }
-            else if (rows.length) {
+            } else if (rows.length) {
                 var senderID = messagingEvent.sender.id;
                 var contentList = [];
                 if (rows.length > 10) {
@@ -113,11 +111,11 @@ function sportsmenu(messagingEvent){
                         "image_url": rows[i].imageUrl,
                         "subtitle": rows[i].title,
                         "buttons": [
-                          {
-                              "type": "postback",
-                              "title": "Read More 📖",
-                              "payload": rows[i].quickReplyTitle+ ' %sportsQRtitle%'
-                          }
+                            {
+                                "type": "postback",
+                                "title": "Read More 📖",
+                                "payload": rows[i].quickReplyTitle + ' %sportsQRtitle%'
+                            }
                         ]
                     };
                     // var quick_reply = {
@@ -145,7 +143,7 @@ function sportsmenu(messagingEvent){
                                 "content_type": "text",
                                 "title": "Sports Videos",
                                 "payload": 'Sports Videos,sports,%QR%'
-                            },{
+                            }, {
                                 "content_type": "text",
                                 "title": "Cricket Info",
                                 "payload": 'Cricket Info,sports,%QR%'
@@ -169,7 +167,7 @@ function sportsmenu(messagingEvent){
                                 "content_type": "text",
                                 "title": "Soccer Results",
                                 "payload": 'Soccer Results,sports,%QR%'
-                            },{
+                            }, {
                                 "content_type": "text",
                                 "title": "home 🏠",
                                 "payload": "home"
@@ -178,8 +176,7 @@ function sportsmenu(messagingEvent){
                     }
                 }
                 fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
-            }
-             else {
+            } else {
                 console.log("No Data Found From Database");
                 sendHelpMessage(messagingEvent);
             }
@@ -189,20 +186,18 @@ function sportsmenu(messagingEvent){
 
 }
 
-
-function sportsqrdetails(messagingEvent, qrtitle){
-  var qr1;
-  var qr2;
-  var qr3;
-  var qr4;
-  var qr5;
+function sportsqrdetails(messagingEvent, qrtitle) {
+    var qr1;
+    var qr2;
+    var qr3;
+    var qr4;
+    var qr5;
     pool.getConnection(function(err, connection) {
-        connection.query('select * from cc_sports_preference where quickReplyTitle = ?',[qrtitle], function(err, rows) {
+        connection.query('select * from cc_sports_preference where quickReplyTitle = ?', [qrtitle], function(err, rows) {
             console.log("*************************sportsmenu", rows);
             if (err) {
                 console.log("Error While retriving content pack data from database:", err);
-            }
-            else if (rows.length) {
+            } else if (rows.length) {
                 var senderID = messagingEvent.sender.id;
                 var contentList = [];
                 if (rows.length > 10) {
@@ -218,11 +213,11 @@ function sportsqrdetails(messagingEvent, qrtitle){
                         "image_url": rows[i].imageUrl,
                         "subtitle": rows[i].title,
                         "buttons": [
-                          {
-                              "type": "web_url",
-                              "url": rows[i].articleUrl,
-                              "title": "View Article 📰"
-                          },
+                            {
+                                "type": "web_url",
+                                "url": rows[i].articleUrl,
+                                "title": "View Article 📰"
+                            }
                         ]
                     };
                     qr1 = rows[i].suggestedQuickReply1;
@@ -249,23 +244,23 @@ function sportsqrdetails(messagingEvent, qrtitle){
                             {
                                 "content_type": "text",
                                 "title": qr1,
-                                "payload": qr1+ ' %sportscel%'
+                                "payload": qr1 + ' %sportscel%'
                             }, {
                                 "content_type": "text",
                                 "title": qr2,
-                                "payload": qr2+ ' %sportscel%'
+                                "payload": qr2 + ' %sportscel%'
                             }, {
                                 "content_type": "text",
                                 "title": qr3,
-                                "payload": qr3+ ' %sportscel%'
+                                "payload": qr3 + ' %sportscel%'
                             }, {
                                 "content_type": "text",
                                 "title": qr4,
-                                "payload": qr4+ ' %sportscel%'
+                                "payload": qr4 + ' %sportscel%'
                             }, {
                                 "content_type": "text",
                                 "title": qr5,
-                                "payload": qr5+ ' %sportscel%'
+                                "payload": qr5 + ' %sportscel%'
                             }, {
                                 "content_type": "text",
                                 "title": "Jokes",
@@ -279,8 +274,7 @@ function sportsqrdetails(messagingEvent, qrtitle){
                     }
                 }
                 fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
-            }
-             else {
+            } else {
                 console.log("No Data Found From Database");
                 sendHelpMessage(messagingEvent);
             }
@@ -290,15 +284,14 @@ function sportsqrdetails(messagingEvent, qrtitle){
 
 }
 
-function sportscelbritydetails(messagingEvent, sportscelname){
-  var quickList = [];
+function sportscelbritydetails(messagingEvent, sportscelname) {
+    var quickList = [];
     pool.getConnection(function(err, connection) {
-        connection.query('select * from cc_sports_celebrity_preference where name= ?',[sportscelname], function(err, rows) {
+        connection.query('select * from cc_sports_celebrity_preference where name= ?', [sportscelname], function(err, rows) {
             console.log("*************************sportscelebrity", rows);
             if (err) {
                 console.log("Error While retriving content pack data from database:", err);
-            }
-            else if (rows.length) {
+            } else if (rows.length) {
                 var senderID = messagingEvent.sender.id;
                 var contentList = [];
                 if (rows.length > 10) {
@@ -309,17 +302,17 @@ function sportscelbritydetails(messagingEvent, sportscelname){
                     console.log("less than 10 Rows", rowslenth);
                 }
                 for (var i = 0; i < rowslenth; i++) { //Construct request body
-                  var name = rows[i].name;
+                    var name = rows[i].name;
                     var keyMap = {
                         "title": rows[i].name,
                         "image_url": rows[i].picture1,
-                        "subtitle": rows[i].skill+","+ rows[i].country,
+                        "subtitle": rows[i].skill + "," + rows[i].country,
                         "buttons": [
-                          {
-                              "type": "web_url",
-                              "url": rows[i].personal,
-                              "title": "About"
-                          },
+                            {
+                                "type": "web_url",
+                                "url": rows[i].personal,
+                                "title": "About"
+                            }
                         ]
                     };
                     contentList.push(keyMap);
@@ -354,7 +347,7 @@ function sportscelbritydetails(messagingEvent, sportscelname){
                                 "content_type": "text",
                                 "title": "News",
                                 "payload": name + ' ,%sportscelnews%'
-                            },{
+                            }, {
                                 "content_type": "text",
                                 "title": "Competitors",
                                 "payload": name + ' ,%sportscelcompetitors%'
@@ -371,8 +364,7 @@ function sportscelbritydetails(messagingEvent, sportscelname){
                     }
                 }
                 fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
-            }
-             else {
+            } else {
                 console.log("No Data Found From Database");
                 sendHelpMessage(messagingEvent);
             }
@@ -382,16 +374,15 @@ function sportscelbritydetails(messagingEvent, sportscelname){
 
 }
 
-
-const sportscelebrityinfo = (messagingEvent, quickpayloadtext) =>{
+const sportscelebrityinfo = (messagingEvent, quickpayloadtext) => {
     var genrearray = quickpayloadtext.split(',');
     var actername = genrearray[0];
     var subCategory = genrearray[1];
-    var sportmanname =actername.trim();
+    var sportmanname = actername.trim();
     console.log("actername", actername);
     console.log("type", subCategory);
     pool.getConnection(function(err, connection) {
-        connection.query('select * from cc_sports_celebrity_preference where name = ?',[sportmanname], function(err, rows) {
+        connection.query('select * from cc_sports_celebrity_preference where name = ?', [sportmanname], function(err, rows) {
             console.log("********filmactor*********", actername);
             //console.log("*************************-after", categoryName);
             console.log("*************************filmactor", rows);
@@ -415,7 +406,7 @@ const sportscelebrityinfo = (messagingEvent, quickpayloadtext) =>{
                                     {
                                         "title": rows[i].name,
                                         "image_url": rows[i].picture1,
-                                        "subtitle": rows[i].skill+","+ rows[i].country,
+                                        "subtitle": rows[i].skill + "," + rows[i].country,
                                         "buttons": [
                                             {
                                                 "type": "web_url",
@@ -426,7 +417,7 @@ const sportscelebrityinfo = (messagingEvent, quickpayloadtext) =>{
                                     }, {
                                         "title": rows[i].name,
                                         "image_url": rows[i].picture2,
-                                          "subtitle": rows[i].skill+","+ rows[i].country,
+                                        "subtitle": rows[i].skill + "," + rows[i].country,
                                         "buttons": [
                                             {
                                                 "type": "web_url",
@@ -437,7 +428,7 @@ const sportscelebrityinfo = (messagingEvent, quickpayloadtext) =>{
                                     }, {
                                         "title": rows[i].name,
                                         "image_url": rows[i].picture3,
-                                          "subtitle": rows[i].skill+","+ rows[i].country,
+                                        "subtitle": rows[i].skill + "," + rows[i].country,
                                         "buttons": [
                                             {
                                                 "type": "web_url",
@@ -448,7 +439,7 @@ const sportscelebrityinfo = (messagingEvent, quickpayloadtext) =>{
                                     }, {
                                         "title": rows[i].name,
                                         "image_url": rows[i].picture4,
-                                        "subtitle": rows[i].skill+","+ rows[i].country,
+                                        "subtitle": rows[i].skill + "," + rows[i].country,
                                         "buttons": [
                                             {
                                                 "type": "web_url",
@@ -460,7 +451,7 @@ const sportscelebrityinfo = (messagingEvent, quickpayloadtext) =>{
                                 ]
                             }
                         }
-                    }else if (subCategory == "%sportscelnetworth%") {
+                    } else if (subCategory == "%sportscelnetworth%") {
                         console.log("celebrity networth");
                         var msg = '' + rows[i].name + '’s net worth is believed to be around ' + rows[i].netWorth + '.';
                         keyMap = {
@@ -496,7 +487,7 @@ const sportscelebrityinfo = (messagingEvent, quickpayloadtext) =>{
                                     {
                                         "title": rows[i].name,
                                         "image_url": rows[i].picture2,
-                                        "subtitle": rows[i].skill+","+ rows[i].country,
+                                        "subtitle": rows[i].skill + "," + rows[i].country,
                                         "buttons": [
                                             {
                                                 "type": "web_url",
@@ -530,14 +521,14 @@ const sportscelebrityinfo = (messagingEvent, quickpayloadtext) =>{
                                 ]
                             }
                         }
-                      } else if (subCategory == "%sportscelcompetitors%") {
-                        var competitor =  rows[i].competitors;
+                    } else if (subCategory == "%sportscelcompetitors%") {
+                        var competitor = rows[i].competitors;
                         var picurl = rows[i].picture2;
                         var name = rows[i].name;
-                        competitorsofcelebrity(messagingEvent,competitor,picurl,name);
-                          console.log("celebrity Family");
+                        competitorsofcelebrity(messagingEvent, competitor, picurl, name);
+                        console.log("celebrity Family");
 
-                      }
+                    }
                     //contentList.push(keyMap);
                 }
 
@@ -564,7 +555,7 @@ const sportscelebrityinfo = (messagingEvent, quickpayloadtext) =>{
                                 "content_type": "text",
                                 "title": "News",
                                 "payload": celebrityname + ' ,%sportscelnews%'
-                            },{
+                            }, {
                                 "content_type": "text",
                                 "title": "Competitors",
                                 "payload": celebrityname + ' ,%sportscelcompetitors%'
@@ -590,54 +581,54 @@ const sportscelebrityinfo = (messagingEvent, quickpayloadtext) =>{
     });
 }
 
-function competitorsofcelebrity(messagingEvent,competitor,picurl,name){
-  var senderID = messagingEvent.sender.id;
-  var genrearray = competitor.split(',');
-  var name1 = genrearray[0];
-  var name2 = genrearray[1];
-  console.log(senderID,name1,name2,picurl,name);
-  var keyMap = {
-      "type": "template",
-      "payload": {
-          "template_type": "generic",
-          "elements": [
-              {
-                  "title": name,
-                  "image_url": picurl,
-                  "subtitle": "Competitors of "+name,
-              }
-          ]
-      }
-  }
-  var messageData = {
-      "recipient": {
-          "id": senderID
-      },
-      "message": {
-          "attachment": keyMap,
-          "quick_replies": [
-              {
-                  "content_type": "text",
-                  "title": name1,
-                  "payload": name1+ ' %sportscel%'
-              }, {
-                  "content_type": "text",
-                  "title": name2,
-                  "payload": name2+ ' %sportscel%'
-              }, {
-                  "content_type": "text",
-                  "title": "Back To Sports 🏆",
-                  "payload": "Sports"
-              }, {
-                  "content_type": "text",
-                  "title": "Home 🏠",
-                  "payload": "home"
-              }
-          ]
-      }
-  }
-  fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
-  }
+function competitorsofcelebrity(messagingEvent, competitor, picurl, name) {
+    var senderID = messagingEvent.sender.id;
+    var genrearray = competitor.split(',');
+    var name1 = genrearray[0];
+    var name2 = genrearray[1];
+    console.log(senderID, name1, name2, picurl, name);
+    var keyMap = {
+        "type": "template",
+        "payload": {
+            "template_type": "generic",
+            "elements": [
+                {
+                    "title": name,
+                    "image_url": picurl,
+                    "subtitle": "Competitors of " + name
+                }
+            ]
+        }
+    }
+    var messageData = {
+        "recipient": {
+            "id": senderID
+        },
+        "message": {
+            "attachment": keyMap,
+            "quick_replies": [
+                {
+                    "content_type": "text",
+                    "title": name1,
+                    "payload": name1 + ' %sportscel%'
+                }, {
+                    "content_type": "text",
+                    "title": name2,
+                    "payload": name2 + ' %sportscel%'
+                }, {
+                    "content_type": "text",
+                    "title": "Back To Sports 🏆",
+                    "payload": "Sports"
+                }, {
+                    "content_type": "text",
+                    "title": "Home 🏠",
+                    "payload": "home"
+                }
+            ]
+        }
+    }
+    fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
+}
 
 function sendHelpMessage(event) {
     var errorString = "";
@@ -660,10 +651,9 @@ function sendHelpMessage(event) {
     fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
 }
 
-
 module.exports = {
     sportsintro: sportsintro,
     sportscelbrityintro: sportscelbrityintro,
-    sportsqrintro:sportsqrintro,
-    sportscelebrityinfo:sportscelebrityinfo,
+    sportsqrintro: sportsqrintro,
+    sportscelebrityinfo: sportscelebrityinfo
 };
