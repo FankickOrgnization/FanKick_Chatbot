@@ -465,6 +465,7 @@ function sendHelpMessage(event) {
 
 // const fbuserdetails = (event,userid) =>{
 function fbuserdetails(event, userid) {
+    var categoryName;
     var url = 'https://graph.facebook.com/v2.6/' + userid + '?fields=first_name,last_name,locale,timezone,gender&access_token=' + fbpage_access_token + '';
     console.log("url", url);
     request({
@@ -475,6 +476,7 @@ function fbuserdetails(event, userid) {
         var userfbdata = JSON.parse(response.body);
         var userfname = userfbdata.first_name;
         var userlname = userfbdata.last_name;
+
         //var userFullName = userfname + userlname;
         var userFullName = userfname.concat(userlname);
         console.log(userFullName, "This is suser ");
@@ -537,8 +539,8 @@ function fbuserdetails(event, userid) {
         //var msg = 'Hi '+username+', A lot of exciting things are awaiting for you! Get kicking!';
         //var msg = 'Hi '+username+'! My name is Kicker.\n How may I come of any help to you today?';
         //var msg = 'Hi '+username+'! My name is Kicker.\n \nI can help you get closer to your favorite celebrity with a lot of exciting things about them.\n\n Choose what excites you more';
-        //  var msg = 'Welcome to the club! \n \nEntertainment is served here, order your preferences…';
-        var msg = 'Happy to See you 🙂 Entertainment is the new Joy. Fix and Click on a Preference from the menu and get trippy with it.';
+          var msg = 'Hey Frannd!! Glad to see you! If you want to hang out for a while... These preferences will not keep you waiting! Choose a Category and eyewitness the Entertainment Buzzer';
+        //var msg = 'Happy to See you 🙂 Entertainment is the new Joy. Fix and Click on a Preference from the menu and get trippy with it.';
         console.log("--------:Response data:--------msg1 ", msg);
         var messageData = {
             "recipient": {
@@ -546,35 +548,37 @@ function fbuserdetails(event, userid) {
             },
             "message": {
                 "text": msg,
-                "quick_replies": [
-                    {
-                        "content_type": "text",
-                        "title": "Movies 🎬",
-                        "payload": "Movies"
-                    }, {
-                        "content_type": "text",
-                        "title": "Sports 🏆",
-                        "payload": "Sports"
-                    }, {
-                        "content_type": "text",
-                        "title": "Music 🎶",
-                        "payload": "Music"
-                    }, {
-                        "content_type": "text",
-                        "title": "TV Shows 📺",
-                        "payload": "TV Shows"
-                    }
-                    // ,
-                    // {
-                    //   "content_type":"text",
-                    //   "title":"What can you do?",
-                    //   "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
-                    // }
-                ]
+                // "quick_replies": [
+                //     {
+                //         "content_type": "text",
+                //         "title": "Movies 🎬",
+                //         "payload": "Movies"
+                //     }, {
+                //         "content_type": "text",
+                //         "title": "Sports 🏆",
+                //         "payload": "Sports"
+                //     }, {
+                //         "content_type": "text",
+                //         "title": "Music 🎶",
+                //         "payload": "Music"
+                //     }, {
+                //         "content_type": "text",
+                //         "title": "TV Shows 📺",
+                //         "payload": "TV Shows"
+                //     }
+                //     // ,
+                //     // {
+                //     //   "content_type":"text",
+                //     //   "title":"What can you do?",
+                //     //   "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
+                //     // }
+                // ]
 
             }
         }
         fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
+        categoryName = "home";
+        allcategory(event, categoryName)
         //test(senderID);
         //fbuserdetailsSecond(event, userid);
         if (!error && response.statusCode == 200) {
