@@ -306,7 +306,7 @@ const gettvshowsgenre=(messagingEvent, quickpayloadtext)=>{
                       "buttons": [
                           {
                               "type": "postback",
-                              "title": "More Info",
+                              "title": "More Info ℹ",
                               "payload": rows[i].name + ' %tvshows%'
                           }
                       ]
@@ -483,7 +483,7 @@ function tvshowsmenu(messagingEvent) {
                         "buttons": [
                             {
                                 "type": "postback",
-                                "title": "More Info",
+                                "title": "More Info ℹ",
                                 "payload": rows[i].name + ' %tvshows%'
                             }
                         ]

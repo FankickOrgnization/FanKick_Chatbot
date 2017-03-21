@@ -115,7 +115,7 @@ function sportsmenu(messagingEvent){
                         "buttons": [
                           {
                               "type": "postback",
-                              "title": "Read More",
+                              "title": "Read More 📖",
                               "payload": rows[i].quickReplyTitle+ ' %sportsQRtitle%'
                           }
                         ]

@@ -74,7 +74,7 @@ const subcategorymovies = (event, categoryName) => {
                             // },
                             {
                                 "type": "postback",
-                                "title": "More Info",
+                                "title": "More Info ℹ",
                                 "payload": rows[i].movieName + ' %mname%'
                             }
                         ]
@@ -282,7 +282,7 @@ const getgenremovies = (messagingEvent, quickpayloadtext) => {
                             // },
                             {
                                 "type": "postback",
-                                "title": "More Info",
+                                "title": "More Info ℹ",
                                 "payload": rows[i].movieName + ' %mname%'
                             }
                         ]
@@ -390,7 +390,7 @@ const getgenremovies = (messagingEvent, quickpayloadtext) => {
                             // },
                             {
                                 "type": "postback",
-                                "title": "More Info",
+                                "title": "More Info ℹ",
                                 "payload": rows[i].movieName + ' %mname%'
                             }
                         ]

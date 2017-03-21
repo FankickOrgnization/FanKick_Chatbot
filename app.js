@@ -382,7 +382,7 @@ function quick_reply_subcategory(messagingEvent, quickpayloadtext) {
                              {
                                  "type": "web_url",
                                  "url": rows[i].imageUrl,
-                                 "title": "...Continue Reading"
+                                 "title": "...Continue Reading ▶"
                              }
                          ]
                      };
@@ -452,7 +452,7 @@ function quick_reply_subcategory(messagingEvent, quickpayloadtext) {
                               {
                                   "type": "web_url",
                                   "url": rows[i].imageUrl,
-                                  "title": "...Continue Reading"
+                                  "title": "...Continue Reading ▶"
                               }
                           ]
                       };
@@ -662,7 +662,7 @@ function celebritypics(messagingEvent, quickpayloadtext) {
                                             {
                                                 "type": "web_url",
                                                 "url": rows[i].personalInfo,
-                                                "title": "More Info"
+                                                "title": "More Info ℹ"
                                             }
                                         ]
                                     }

@@ -188,7 +188,7 @@ function subcategorydetails(categoryName, event) {
                                 "title": "Twitter"
                             }, {
                                 "type": "postback",
-                                "title": "More Info",
+                                "title": "More Info ℹ",
                                 "payload": rows[i].id
                             }
                         ]
@@ -363,7 +363,7 @@ function googlegraph(categoryName, event) {
                     {
                         "type": "web_url",
                         "url": rows[i].result.image.url,
-                        "title": "Read More"
+                        "title": "Read More 📖"
                     }
                 ]
             };
