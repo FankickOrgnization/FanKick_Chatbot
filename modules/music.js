@@ -169,10 +169,6 @@ const albuminfo = (messagingEvent, albumname) => {
                                 "type": "web_url",
                                 "url": rows[i].albumUrl,
                                 "title": "View Album"
-                            }, {
-                                "type": "web_url",
-                                "url": rows[i].googleSearch,
-                                "title": "Google Search"
                             }
                         ]
                     };
