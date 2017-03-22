@@ -242,17 +242,17 @@ function quickpayload(messagingEvent) {
         var actorname = quickpayloadtext.replace(" %a%", "");
         console.log("actor name", actorname);
         var type = "leadActor";
-        filmactor(messagingEvent, actorname, type);
+        filmactor(messagingEvent, actorname);
     }else if (actressname != -1) {
-        var actressname = quickpayloadtext.replace(" %a%", "");
+        var actressname = quickpayloadtext.replace(" %aa%", "");
         var type = "leadActress";
         console.log("actor name", actorname);
-        filmactor(messagingEvent, actorname, type);
+        movies.personsfilms(messagingEvent, actorname, type);
     }else if (directorname != -1) {
-        var directorname = quickpayloadtext.replace(" %a%", "");
+        var directorname = quickpayloadtext.replace(" %ad%", "");
         var type = "director";
         console.log("actor name", actorname);
-        filmactor(messagingEvent, actorname, type);
+        movies.personsfilms(messagingEvent, actorname, type);
     } else if (movietext != -1) {
         var moviename = quickpayloadtext.replace(" %m%", "");
         console.log("Yessssssss", moviename);
@@ -1029,11 +1029,11 @@ function receivedtextmessage(categoryName, event) {
 // Quick_reply payload section End *****************************
 
 // get filmactor from the DB *******************************
-function filmactor(messagingEvent, actorname, type) {
+function filmactor(messagingEvent, actorname) {
     console.log("filmactor", actorname);
-    var aname = actorname;
+    var aname = actorname.trim();
     pool.getConnection(function(err, connection) {
-        connection.query('select * from cc_film_celebrity_preference where ? = ?', [type, aname], function(err, rows) {
+        connection.query('select * from cc_film_celebrity_preference where name = ?', [aname], function(err, rows) {
             console.log("********filmactor*********", aname);
             //console.log("*************************-after", categoryName);
             console.log("*************************filmactor", rows);
