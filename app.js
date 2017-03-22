@@ -883,11 +883,11 @@ function celebritymovies(messagingEvent, moviename) {
                             }, {
                                 "content_type": "text",
                                 "title": actress,
-                                "payload": actress + " %aa%"
+                                "payload": actress + " %a%"
                             }, {
                                 "content_type": "text",
                                 "title": director,
-                                "payload": director + " %ad%"
+                                "payload": director + " %a%"
                             }, {
                                 "content_type": "text",
                                 "title": musicDirector,

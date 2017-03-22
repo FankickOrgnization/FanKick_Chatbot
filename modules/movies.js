@@ -468,7 +468,7 @@ const personsfilms = (messagingEvent, celebrityname, type) => {
     console.log(query);
     pool.getConnection(function(err, connection) {
       if(actortype = "leadActress"){}
-        connection.query(query,function(err, rows) {
+        connection.query('select * from cc_movies_preference where ? = ? order by releaseDate desc',[actortype,mname],function(err, rows) {
             console.log("*************************selectedactorfilems", rows);
             if (err) {
                 console.log("Error While retriving content pack data from database:", err);
