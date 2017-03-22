@@ -24,6 +24,7 @@
     "crypto": "0.0.3",
     "express": "^4.14.0",
     "google-trends-api": "^3.0.1",
+    "memory-cache": "^0.1.6",
     "modulus": "^6.3.1",
     "mysql": "^2.11.1",
     "node-fetch": "^1.6.3",
