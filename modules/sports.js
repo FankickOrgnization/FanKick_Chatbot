@@ -286,8 +286,9 @@ function sportsqrdetails(messagingEvent, qrtitle) {
 
 function sportscelbritydetails(messagingEvent, sportscelname) {
     var quickList = [];
+    var celname = sportscelname.trim();
     pool.getConnection(function(err, connection) {
-        connection.query('select * from cc_sports_celebrity_preference where name= ?', [sportscelname], function(err, rows) {
+        connection.query('select * from cc_sports_celebrity_preference where name= ?', [celname], function(err, rows) {
             console.log("*************************sportscelebrity", rows);
             if (err) {
                 console.log("Error While retriving content pack data from database:", err);
