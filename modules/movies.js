@@ -464,34 +464,29 @@ const personsfilms = (messagingEvent, celebrityname, type) => {
     var mname = celebrityname.trim();
     console.log(actortype);
     console.log(mname);
+    var query = 'select * from cc_movies_preference where '+actortype+' = '+mname+' order by releaseDate desc';
+    console.log(query);
     pool.getConnection(function(err, connection) {
-        connection.query('select * from cc_movies_preference where ? = ? order by releaseDate desc',[actortype,mname],function(err, rows) {
+      if(actortype = "leadActress"){}
+        connection.query(query,[actortype,mname],function(err, rows) {
             console.log("*************************selectedactorfilems", rows);
             if (err) {
                 console.log("Error While retriving content pack data from database:", err);
             } else if (rows.length) {
                 var senderID = messagingEvent.sender.id;
                 var contentList = [];
-                if (rows.length > 10) {
-                    var rowslenth = 10;
-                    console.log("more than 10 Rows", rowslenth);
-                } else {
-                    var rowslenth = rows.length;
-                    console.log("less than 10 Rows", rowslenth);
-                }
+                    if (rows.length > 10) {
+                        var rowslenth = 10;
+                        console.log("more than 10 Rows", rowslenth);
+                    } else {
+                        var rowslenth = rows.length;
+                        console.log("less than 10 Rows", rowslenth);
+                    }
                 for (var i = 0; i < rowslenth; i++) { //Construct request body
                     var keyMap = {
                         "title": rows[i].movieName,
                         "image_url": rows[i].picture1,
-                        "buttons": [//   {
-                            //     "type": "web_url",
-                            //     "url": rows[i].trailerUrl,
-                            //     "title": "Trailer"
-                            // },{
-                            //     "type": "web_url",
-                            //     "url": rows[i].movieDescriptionUrl,
-                            //     "title": "Audio"
-                            // },
+                        "buttons": [
                             {
                                 "type": "postback",
                                 "title": "More Info ℹ",
