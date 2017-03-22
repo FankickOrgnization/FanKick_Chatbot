@@ -461,7 +461,7 @@ const selectedactorfilems = (messagingEvent, celebrityname) => {
 const personsfilms = (messagingEvent, celebrityname, type) => {
     console.log("*********Movies Genre***********", celebrityname);
     var actortype = type;
-    var mname = actorname;
+    var mname = celebrityname;
     console.log(actortype);
     console.log(mname);
     pool.getConnection(function(err, connection) {
