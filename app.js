@@ -765,15 +765,15 @@ function selectedactorcomptiters(messagingEvent, competitor, picurl, name){
               {
                   "content_type": "text",
                   "title": name1,
-                  "payload": name1 + ' %sportscel%'
+                  "payload": name1 + " %a%"
               }, {
                   "content_type": "text",
                   "title": name2,
-                  "payload": name2 + ' %sportscel%'
+                  "payload": name2 + " %a%"
               }, {
                   "content_type": "text",
-                  "title": "Back To Sports 🏆",
-                  "payload": "Sports"
+                  "title": "Back To Movies 🎬",
+                  "payload": "Movies"
               }, {
                   "content_type": "text",
                   "title": "Home 🏠",
