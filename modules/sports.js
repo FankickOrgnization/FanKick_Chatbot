@@ -107,9 +107,9 @@ function sportsmenu(messagingEvent) {
                 }
                 for (var i = 0; i < rowslenth; i++) { //Construct request body
                     var keyMap = {
-                        "title": rows[i].celebrity,
+                        "title": rows[i].title,
                         "image_url": rows[i].imageUrl,
-                        "subtitle": rows[i].title,
+                        "subtitle": rows[i].celebrity,
                         "buttons": [
                             {
                                 "type": "postback",
