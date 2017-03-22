@@ -407,7 +407,8 @@ function quick_reply_subcategory(messagingEvent, quickpayloadtext) {
                                 "payload": "Jokes"
                             }, {
                                 "content_type": "text",
-                                "title": subCategory.toUpperCase(),
+                                //"title": subCategory.toUpperCase(),
+                                "title": subCategory.charAt(0).toUpperCase() + subCategory.substr(1).toLowerCase(),
                                 "payload": subCategory
                             }, {
                                 "content_type": "text",
@@ -477,7 +478,8 @@ function quick_reply_category(messagingEvent, quickpayloadtext) {
                                 "payload": "Jokes"
                             }, {
                                 "content_type": "text",
-                                "title": subCategory.toUpperCase(),
+                                //"title": subCategory.toUpperCase(),
+                                "title": subCategory.charAt(0).toUpperCase() + subCategory.substr(1).toLowerCase(),
                                 "payload": subCategory
                             }, {
                                 "content_type": "text",
