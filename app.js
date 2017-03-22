@@ -188,6 +188,8 @@ function quickpayload(messagingEvent) {
     var userid = messagingEvent.sender.id;
     var movietext = quickpayloadtext.search("%m%");
     var actortext = quickpayloadtext.search("%a%");
+    var actressname = quickpayloadtext.search("%aa%");
+    var directorname = quickpayloadtext.search("%ad%");
     var action = quickpayloadtext.search("%action%");
     var comedy = quickpayloadtext.search("%comedy%");
     var romance = quickpayloadtext.search("%romance%");
@@ -239,8 +241,19 @@ function quickpayload(messagingEvent) {
     } else if (actortext != -1) {
         var actorname = quickpayloadtext.replace(" %a%", "");
         console.log("actor name", actorname);
-        filmactor(messagingEvent, actorname);
-    } else if (actortext != -1) {
+        var type = "leadActor";
+        filmactor(messagingEvent, actorname, type);
+    }else if (actressname != -1) {
+        var actressname = quickpayloadtext.replace(" %a%", "");
+        var type = "leadActress";
+        console.log("actor name", actorname);
+        filmactor(messagingEvent, actorname, type);
+    }else if (directorname != -1) {
+        var directorname = quickpayloadtext.replace(" %a%", "");
+        var type = "director";
+        console.log("actor name", actorname);
+        filmactor(messagingEvent, actorname, type);
+    } else if (movietext != -1) {
         var moviename = quickpayloadtext.replace(" %m%", "");
         console.log("Yessssssss", moviename);
         movies.getmovies(event, moviename);
@@ -870,15 +883,15 @@ function celebritymovies(messagingEvent, moviename) {
                             }, {
                                 "content_type": "text",
                                 "title": actress,
-                                "payload": actress + " %a%"
+                                "payload": actress + " %aa%"
                             }, {
                                 "content_type": "text",
                                 "title": director,
-                                "payload": director + " %a%"
+                                "payload": director + " %ad%"
                             }, {
                                 "content_type": "text",
                                 "title": musicDirector,
-                                "payload": musicDirector + " %a%"
+                                "payload": musicDirector + " %musicartist%"
                             }, {
                                 "content_type": "text",
                                 "title": "Back to Movies 🎬",
@@ -1016,11 +1029,11 @@ function receivedtextmessage(categoryName, event) {
 // Quick_reply payload section End *****************************
 
 // get filmactor from the DB *******************************
-function filmactor(messagingEvent, actorname) {
+function filmactor(messagingEvent, actorname, type) {
     console.log("filmactor", actorname);
     var aname = actorname.trim();
     pool.getConnection(function(err, connection) {
-        connection.query('select * from cc_film_celebrity_preference where name = ?', [aname], function(err, rows) {
+        connection.query('select * from cc_film_celebrity_preference where ? = ?', [type, aname], function(err, rows) {
             console.log("********filmactor*********", aname);
             //console.log("*************************-after", categoryName);
             console.log("*************************filmactor", rows);
