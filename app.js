@@ -247,12 +247,12 @@ function quickpayload(messagingEvent) {
         var actressname = quickpayloadtext.replace(" %aa%", "");
         var type = "leadActress";
         console.log("actor name", actorname);
-        movies.personsfilms(messagingEvent, actorname, type);
+        movies.personsfilms(messagingEvent, actressname, type);
     }else if (directorname != -1) {
         var directorname = quickpayloadtext.replace(" %ad%", "");
         var type = "director";
         console.log("actor name", actorname);
-        movies.personsfilms(messagingEvent, actorname, type);
+        movies.personsfilms(messagingEvent, directorname, type);
     } else if (movietext != -1) {
         var moviename = quickpayloadtext.replace(" %m%", "");
         console.log("Yessssssss", moviename);
