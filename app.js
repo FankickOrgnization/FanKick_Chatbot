@@ -407,7 +407,7 @@ function quick_reply_subcategory(messagingEvent, quickpayloadtext) {
                                 "payload": "Jokes"
                             }, {
                                 "content_type": "text",
-                                "title": subCategory.toUpperCase(),
+                                "title": subCategory.capitalize(),
                                 "payload": subCategory
                             }, {
                                 "content_type": "text",
@@ -477,7 +477,7 @@ function quick_reply_category(messagingEvent, quickpayloadtext) {
                                 "payload": "Jokes"
                             }, {
                                 "content_type": "text",
-                                "title": subCategory.toUpperCase(),
+                                "title": subCategory.capitalize(),
                                 "payload": subCategory
                             }, {
                                 "content_type": "text",

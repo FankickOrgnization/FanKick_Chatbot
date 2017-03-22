@@ -608,11 +608,11 @@ function competitorsofcelebrity(messagingEvent, competitor, picurl, name) {
                 {
                     "content_type": "text",
                     "title": name1,
-                    "payload": name1 + ' %sportscel%'
+                    "payload": name1 + ' %musicartist%'
                 }, {
                     "content_type": "text",
                     "title": name2,
-                    "payload": name2 + ' %sportscel%'
+                    "payload": name2 + ' %musicartist%'
                 }, {
                     "content_type": "text",
                     "title": "Back To Music 🎶",
