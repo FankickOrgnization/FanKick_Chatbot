@@ -356,6 +356,12 @@ const getgenremovies = (messagingEvent, quickpayloadtext) => {
 
 }
 
+// const selectedactorcomptiters = (messagingEvent, celebrityname) => {
+//
+//
+// }
+
+
 const selectedactorfilems = (messagingEvent, celebrityname) => {
     console.log("*********Movies Genre***********", celebrityname);
     pool.getConnection(function(err, connection) {

@@ -96,27 +96,29 @@ const musicalbams = (categoryName, event) => {
                                 "content_type": "text",
                                 "title": "Music Videos",
                                 "payload": 'Music Videos,' + categoryName + ',%QRsub%'
-                            }, {
-                                "content_type": "text",
-                                "title": "Latest Albums",
-                                "payload": "Latest Albums"
-                            }, {
-                                "content_type": "text",
-                                "title": "Pop",
-                                "payload": "Pop"
-                            }, {
-                                "content_type": "text",
-                                "title": "Rock",
-                                "payload": "Rock"
-                            }, {
-                                "content_type": "text",
-                                "title": "Movie Albums",
-                                "payload": "Movie Albums"
-                            }, {
-                                "content_type": "text",
-                                "title": "Sad Songs",
-                                "payload": "Sad Songs"
-                            }, {
+                            },
+                            // {
+                            //     "content_type": "text",
+                            //     "title": "Latest Albums",
+                            //     "payload": "Latest Albums"
+                            // }, {
+                            //     "content_type": "text",
+                            //     "title": "Pop",
+                            //     "payload": "Pop"
+                            // }, {
+                            //     "content_type": "text",
+                            //     "title": "Rock",
+                            //     "payload": "Rock"
+                            // }, {
+                            //     "content_type": "text",
+                            //     "title": "Movie Albums",
+                            //     "payload": "Movie Albums"
+                            // }, {
+                            //     "content_type": "text",
+                            //     "title": "Sad Songs",
+                            //     "payload": "Sad Songs"
+                            // }, 
+                            {
                                 "content_type": "text",
                                 "title": "Jokes",
                                 "payload": "Jokes"

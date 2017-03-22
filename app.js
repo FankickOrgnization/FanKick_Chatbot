@@ -197,6 +197,7 @@ function quickpayload(messagingEvent) {
     var celpics = quickpayloadtext.search("%pictures%");
     var celmovies = quickpayloadtext.search("%movies%");
     var celnetworth = quickpayloadtext.search("%networth%");
+    var celcomp = quickpayloadtext.search("%Moviecomp%");
     var celnews = quickpayloadtext.search("%news%");
     var celfamily = quickpayloadtext.search("%family%");
     var celabout = quickpayloadtext.search("%about%");
@@ -229,7 +230,7 @@ function quickpayload(messagingEvent) {
     var musicartistsongs = quickpayloadtext.search("%Musiccelsongs%");
     var musicartistcomp = quickpayloadtext.search("%Musiccelcomp%");
 
-    if (celpics != -1 || celmovies != -1 || celnetworth != -1 || celnews != -1 || celfamily != -1 || celabout != -1) {
+    if (celpics != -1 || celmovies != -1 || celnetworth != -1 || celnews != -1 || celfamily != -1 || celabout != -1 || celcomp != -1) {
         console.log("This is celebritypics condition");
         celebritypics(messagingEvent, quickpayloadtext);
     } else if (action != -1 || comedy != -1 || romance != -1 || thriller != -1 || drama != -1 || sociofantasy != -1) {
@@ -576,6 +577,13 @@ function celebritypics(messagingEvent, quickpayloadtext) {
                     } else if (subCategory == "%movies%") {
                         console.log("celebrity Movies");
                         movies.selectedactorfilems(messagingEvent, celebrityname);
+                    }else if (subCategory == "%Moviecomp%") {
+                      var competitor = rows[i].competitors;
+                      var picurl = rows[i].picture2;
+                      var name = rows[i].name;
+                      console.log("celebrity Family");
+                      selectedactorcomptiters(messagingEvent, competitor, picurl, name);
+
                     } else if (subCategory == "%networth%") {
                         console.log("celebrity networth");
                         var msg = '' + rows[i].name + '’s net worth is believed to be around ' + rows[i].netWorth + '.';
@@ -687,14 +695,14 @@ function celebritypics(messagingEvent, quickpayloadtext) {
                                 "content_type": "text",
                                 "title": 'Movies',
                                 "payload": celebrityname + ' ,%movies%'
-                            }, {
-                                "content_type": "text",
-                                "title": "Songs",
-                                "payload": "Songs"
-                            }, {
+                            },{
                                 "content_type": "text",
                                 "title": "Net Worth",
                                 "payload": celebrityname + ' ,%networth%'
+                            }, {
+                                "content_type": "text",
+                                "title": "Competitors",
+                                "payload": celebrityname + ' ,%Moviecomp%'
                             }, {
                                 "content_type": "text",
                                 "title": "News",
@@ -726,6 +734,57 @@ function celebritypics(messagingEvent, quickpayloadtext) {
         });
     });
 }
+
+
+function selectedactorcomptiters(messagingEvent, competitor, picurl, name){
+  var senderID = messagingEvent.sender.id;
+  var genrearray = competitor.split(',');
+  var name1 = genrearray[0];
+  var name2 = genrearray[1];
+  console.log(senderID, name1, name2, picurl, name);
+  var keyMap = {
+      "type": "template",
+      "payload": {
+          "template_type": "generic",
+          "elements": [
+              {
+                  "title": name,
+                  "image_url": picurl,
+                  "subtitle": "Competitors of " + name
+              }
+          ]
+      }
+  }
+  var messageData = {
+      "recipient": {
+          "id": senderID
+      },
+      "message": {
+          "attachment": keyMap,
+          "quick_replies": [
+              {
+                  "content_type": "text",
+                  "title": name1,
+                  "payload": name1 + ' %sportscel%'
+              }, {
+                  "content_type": "text",
+                  "title": name2,
+                  "payload": name2 + ' %sportscel%'
+              }, {
+                  "content_type": "text",
+                  "title": "Back To Sports 🏆",
+                  "payload": "Sports"
+              }, {
+                  "content_type": "text",
+                  "title": "Home 🏠",
+                  "payload": "home"
+              }
+          ]
+      }
+  }
+  fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
+}
+
 
 //Selected actor filems from movies list
 function actorintro(messagingEvent, moviename) {
@@ -1020,14 +1079,14 @@ function filmactor(messagingEvent, actorname) {
                                 "content_type": "text",
                                 "title": "Movies",
                                 "payload": celebrityname + ' ,%movies%'
-                            }, {
-                                "content_type": "text",
-                                "title": "Songs",
-                                "payload": "Songs"
-                            }, {
+                            },  {
                                 "content_type": "text",
                                 "title": "Net Worth",
                                 "payload": celebrityname + ' ,%networth%'
+                            }, {
+                                "content_type": "text",
+                                "title": "Competitors",
+                                "payload": celebrityname + ' ,%Moviecomp%'
                             }, {
                                 "content_type": "text",
                                 "title": "News",
