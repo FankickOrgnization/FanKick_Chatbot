@@ -199,7 +199,7 @@ function quickpayload(messagingEvent) {
     var drama = quickpayloadtext.search("%drama%");
     var celpics = quickpayloadtext.search("%pictures%");
     var celmovies = quickpayloadtext.search("%movies%");
-    //var celmoviesid = quickpayloadtext.search("%movies%");
+    var celmoviesid = quickpayloadtext.search("%movies%");
     var celnetworth = quickpayloadtext.search("%networth%");
     var celcomp = quickpayloadtext.search("%Moviecomp%");
     var celnews = quickpayloadtext.search("%news%");
