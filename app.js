@@ -199,7 +199,7 @@ function quickpayload(messagingEvent) {
     var drama = quickpayloadtext.search("%drama%");
     var celpics = quickpayloadtext.search("%pictures%");
     var celmovies = quickpayloadtext.search("%movies%");
-    var celmoviesid = quickpayloadtext.search("%movies%");
+    var celmoviesid = quickpayloadtext.search("%moviesid%");
     var celnetworth = quickpayloadtext.search("%networth%");
     var celcomp = quickpayloadtext.search("%Moviecomp%");
     var celnews = quickpayloadtext.search("%news%");
@@ -720,7 +720,7 @@ function celebritypics(messagingEvent, quickpayloadtext) {
                             }, {
                                 "content_type": "text",
                                 "title": 'Movies',
-                                "payload": celebrityname + ' %movies%'
+                                "payload": celebrityname + ' ,%movies%'
                             },{
                                 "content_type": "text",
                                 "title": "Net Worth",
@@ -1180,7 +1180,7 @@ function filmactor(messagingEvent, actorname) {
                             }, {
                                 "content_type": "text",
                                 "title": "Movies",
-                                "payload": celebrityname + ' %movies%'
+                                "payload": celebrityname + ' ,%movies%'
                             },  {
                                 "content_type": "text",
                                 "title": "Net Worth",
