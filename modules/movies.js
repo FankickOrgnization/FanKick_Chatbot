@@ -213,15 +213,15 @@ const getmovies = (messagingEvent, moviename) => {
                             }, {
                                 "content_type": "text",
                                 "title": rows[0].leadActress,
-                                "payload": rows[0].leadActress + " %a%"
+                                "payload": rows[0].leadActress + " %aa%"
                             }, {
                                 "content_type": "text",
                                 "title": rows[0].director,
-                                "payload": rows[0].director + " %a%"
+                                "payload": rows[0].director + " %ad%"
                             }, {
                                 "content_type": "text",
                                 "title": rows[0].musicDirector,
-                                "payload": rows[0].musicDirector + " %a%"
+                                "payload": rows[0].musicDirector + ' %musicartist%'
                             }, {
                                 "content_type": "text",
                                 "title": "home 🏠",
