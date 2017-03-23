@@ -998,7 +998,7 @@ function celebrityid(categoryName, event) {
     });
 }
 //celebritiesmoviedetails ends*************************************
-function celebritymovielist(messagingEvent, celebrityname); {
+function celebritymovielist(messagingEvent, celebrityname){
   var event = messagingEvent;
     pool.getConnection(function(err, connection) {
         //connection.query('select * from cc_celebrity_preference where celebrityName=?',[categoryName], function(err, rows) {
