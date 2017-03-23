@@ -78,8 +78,8 @@ const sendContentPacks = (categoryName, event) => {
         actorintro(categoryName, event)
         //googlegraph(categoryName,event);
     } else if (categoryName == "hi" || categoryName == "hello" || categoryName == "hey") {
-      var cricketApi = cricapi.cricketScores();
-      console.log("###########cricketScores############",cricketApi);
+    //  var cricketApi = cricapi.cricketScores();
+      //console.log("###########cricketScores############",cricketApi);
         wishingmessage(categoryName, event);
     } else if (categoryName == "movies" || categoryName == "sports" || categoryName == "tv shows" || categoryName == "music") {
         submenu(event, categoryName);
