@@ -1002,7 +1002,7 @@ function celebritymovielist(messagingEvent, celebrityname){
   var event = messagingEvent;
     pool.getConnection(function(err, connection) {
         //connection.query('select * from cc_celebrity_preference where celebrityName=?',[categoryName], function(err, rows) {
-        connection.query('select * from cc_celebrity_preference where id = ?', [categoryName], function(err, rows) {
+        connection.query('select * from cc_film_celebrity_preference where name = ?', [celebrityname], function(err, rows) {
             if (err) {
                 console.log("Error While retriving content pack data from database:", err);
             } else if (rows.length) {
