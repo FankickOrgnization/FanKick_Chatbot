@@ -198,8 +198,8 @@ function quickpayload(messagingEvent) {
     var sociofantasy = quickpayloadtext.search("%socio-fantasy%");
     var drama = quickpayloadtext.search("%drama%");
     var celpics = quickpayloadtext.search("%pictures%");
-    var celmovies = quickpayloadtext.search("%moviesname%");
-    var celmoviesid = quickpayloadtext.search("%movies%");
+    var celmovies = quickpayloadtext.search("%movies%");
+    //var celmoviesid = quickpayloadtext.search("%movies%");
     var celnetworth = quickpayloadtext.search("%networth%");
     var celcomp = quickpayloadtext.search("%Moviecomp%");
     var celnews = quickpayloadtext.search("%news%");
@@ -598,10 +598,11 @@ function celebritypics(messagingEvent, quickpayloadtext) {
                             }
                         }
                     } else if (subCategory == "%moviesname%") {
-                      // var movieslist = rows[i].lastFiveMovies;
+                      //var movieslist = rows[i].lastFiveMovies;
                       // var latestmovie = rows[i].latestMovie;
                         console.log("celebrity Movies");
-                        movies.selectedactorfilems(messagingEvent, celebrityname);
+                        celebritymovielist(messagingEvent, celebrityname);
+                        //movies.selectedactorfilems(messagingEvent, celebrityname);
                     }else if (subCategory == "%Moviecomp%") {
                       var competitor = rows[i].competitors;
                       var picurl = rows[i].picture2;
@@ -719,7 +720,7 @@ function celebritypics(messagingEvent, quickpayloadtext) {
                             }, {
                                 "content_type": "text",
                                 "title": 'Movies',
-                                "payload": celebrityid + ' %movies%'
+                                "payload": celebrityname + ' %movies%'
                             },{
                                 "content_type": "text",
                                 "title": "Net Worth",
@@ -996,7 +997,80 @@ function celebrityid(categoryName, event) {
         });
     });
 }
-//celebritiesdetails ends*************************************
+//celebritiesmoviedetails ends*************************************
+function celebritymovielist(messagingEvent, celebrityname); {
+  var event = messagingEvent;
+    pool.getConnection(function(err, connection) {
+        //connection.query('select * from cc_celebrity_preference where celebrityName=?',[categoryName], function(err, rows) {
+        connection.query('select * from cc_celebrity_preference where id = ?', [categoryName], function(err, rows) {
+            if (err) {
+                console.log("Error While retriving content pack data from database:", err);
+            } else if (rows.length) {
+                var senderID = event.sender.id;
+                var contentList = [];
+                var quickList = [];
+                var movieslist;
+                console.log("*******cc_celebrity_preference data from database:*********", rows);
+                var usercelebrityName;
+                for (var i = 0; i < rows.length; i++) { //Construct request body
+                    usercelebrityName = rows[i].celebrityName;
+                    var movi = "Mov**"
+                    var readmorebtn = (usercelebrityName + ",").concat(movi);
+                    var keyMap = {
+                        "title": rows[i].celebrityName,
+                        "image_url": rows[i].celebrityImageUrl,
+                        //"subtitle":rows[i].description,
+                        //  "item_url": rows[i].image_url,
+                        // "buttons":[{
+                        //     "type": "postback",
+                        //     "title": "Read More",
+                        //     "payload": readmorebtn
+                        // }]
+                    };
+                    contentList.push(keyMap);
+                    movieslist = rows[i].lastFiveMovies;
+                    console.log("%%%%%%%%%%%%movieslist%%%%%%%%%%%%%", movieslist);
+                }
+                updateusercelebrity(usercelebrityName, senderID);
+                var myarray = movieslist.split(',');
+                for (var i = 0; i < myarray.length; i++) {
+                    console.log(myarray[i]);
+                    //  var res1 = myarray[i].concat(myarray[i]);
+                    //  console.log(res1);
+                    var moviearray = {
+                        "content_type": "text",
+                        "title": myarray[i],
+                        "payload": myarray[i] + " %m%"
+                    }
+                    quickList.push(moviearray);
+                }
+                var messageData = {
+                    "recipient": {
+                        "id": senderID
+                    },
+                    "message": {
+                        "attachment": {
+                            "type": "template",
+                            "payload": {
+                                "template_type": "generic",
+                                "elements": contentList
+                            }
+                        },
+                        "quick_replies": quickList
+                    }
+                }
+                fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
+
+            } else {
+                console.log("No Data Found From Database");
+                sendHelpMessage(event);
+                //sendImageMessage(event);
+            }
+            connection.release();
+        });
+    });
+}
+
 //updateing the celebritiesdetails in user_preforence
 function updateusercelebrity(usercelebrityName, senderID) {
     console.log("******************categoryName*************", usercelebrityName);
@@ -1106,7 +1180,7 @@ function filmactor(messagingEvent, actorname) {
                             }, {
                                 "content_type": "text",
                                 "title": "Movies",
-                                "payload": celebrityid + ' %movies%'
+                                "payload": celebrityname + ' %movies%'
                             },  {
                                 "content_type": "text",
                                 "title": "Net Worth",
