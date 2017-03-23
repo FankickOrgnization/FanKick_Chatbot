@@ -3,6 +3,7 @@ var request = require('request');
 const searchText = require('./search.js');
 const thread = require('./thread.js');
 var googleTrends = require('google-trends-api');
+var cricapi = require("node-cricapi");
 const errors = require('../contentjson/errormsg.json');
 const movie = require('../contentjson/movies.json');
 const sport = require('../contentjson/sports.json');
@@ -77,6 +78,8 @@ const sendContentPacks = (categoryName, event) => {
         actorintro(categoryName, event)
         //googlegraph(categoryName,event);
     } else if (categoryName == "hi" || categoryName == "hello" || categoryName == "hey") {
+      var cricketApi = cricapi.cricketScores();
+      console.log("###########cricketScores############",cricketApi);
         wishingmessage(categoryName, event);
     } else if (categoryName == "movies" || categoryName == "sports" || categoryName == "tv shows" || categoryName == "music") {
         submenu(event, categoryName);
