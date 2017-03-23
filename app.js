@@ -1071,19 +1071,19 @@ function celebritymovielist(messagingEvent, celebrityname){
                         "quick_replies": [
                            {
                                 "content_type": "text",
-                                "title": "Movies",
+                                "title": latestmovie,
                                 "payload": latestmovie + " %m%"
                             },  {
                                 "content_type": "text",
-                                "title": "Net Worth",
+                                "title": movie1,
                                 "payload": movie1 + " %m%"
                             }, {
                                 "content_type": "text",
-                                "title": "Competitors",
+                                "title": movie2,
                                 "payload": movie2 + " %m%"
                             }, {
                                 "content_type": "text",
-                                "title": "News",
+                                "title": movie3,
                                 "payload": movie3 + " %m%"
                             },  {
                                 "content_type": "text",
