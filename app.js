@@ -597,7 +597,7 @@ function celebritypics(messagingEvent, quickpayloadtext) {
                                 ]
                             }
                         }
-                    } else if (subCategory == "%moviesname%") {
+                    } else if (subCategory == "%movies%") {
                       //var movieslist = rows[i].lastFiveMovies;
                       // var latestmovie = rows[i].latestMovie;
                         console.log("celebrity Movies");
