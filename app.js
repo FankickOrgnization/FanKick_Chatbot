@@ -1000,6 +1000,9 @@ function celebrityid(categoryName, event) {
 //celebritiesmoviedetails ends*************************************
 function celebritymovielist(messagingEvent, celebrityname){
   var event = messagingEvent;
+  var movie1;
+  var movie2;
+  var movie3;
     pool.getConnection(function(err, connection) {
         //connection.query('select * from cc_celebrity_preference where celebrityName=?',[categoryName], function(err, rows) {
         connection.query('select * from cc_film_celebrity_preference where name = ?', [celebrityname], function(err, rows) {
@@ -1010,10 +1013,12 @@ function celebritymovielist(messagingEvent, celebrityname){
                 var contentList = [];
                 var quickList = [];
                 var movieslist;
+                var latestmovie;
                 console.log("*******cc_celebrity_preference data from database:*********", rows);
                 var usercelebrityName;
                 for (var i = 0; i < rows.length; i++) { //Construct request body
                     usercelebrityName = rows[i].name;
+                    latestmovie = rows[i].latestMovie;
                     var movi = "Mov**"
                     var readmorebtn = (usercelebrityName + ",").concat(movi);
                     var keyMap = {
@@ -1034,7 +1039,14 @@ function celebritymovielist(messagingEvent, celebrityname){
                 updateusercelebrity(usercelebrityName, senderID);
                 var myarray = movieslist.split(',');
                 for (var i = 0; i < myarray.length; i++) {
-                    console.log(myarray[i]);
+                  movie1 = myarray[1];
+                  movie2 = myarray[2];
+                  movie3 = myarray[3];
+
+                    console.log(myarray[1]);
+                    console.log(myarray[2]);
+                    console.log(myarray[3]);
+
                     //  var res1 = myarray[i].concat(myarray[i]);
                     //  console.log(res1);
                     var moviearray = {
@@ -1056,7 +1068,33 @@ function celebritymovielist(messagingEvent, celebrityname){
                                 "elements": contentList
                             }
                         },
-                        "quick_replies": quickList
+                        "quick_replies": [
+                           {
+                                "content_type": "text",
+                                "title": "Movies",
+                                "payload": latestmovie + " %m%"
+                            },  {
+                                "content_type": "text",
+                                "title": "Net Worth",
+                                "payload": movie1 + " %m%"
+                            }, {
+                                "content_type": "text",
+                                "title": "Competitors",
+                                "payload": movie2 + " %m%"
+                            }, {
+                                "content_type": "text",
+                                "title": "News",
+                                "payload": movie3 + " %m%"
+                            },  {
+                                "content_type": "text",
+                                "title": "Back To Movies 🎬",
+                                "payload": "Movies"
+                            }, {
+                                "content_type": "text",
+                                "title": "Home 🏠",
+                                "payload": "home"
+                            }
+                        ]
                     }
                 }
                 fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');

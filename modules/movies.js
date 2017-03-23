@@ -486,6 +486,7 @@ const actressfilms = (messagingEvent, celebrityname, type) => {
                     var keyMap = {
                         "title": rows[i].movieName,
                         "image_url": rows[i].picture1,
+                        "subtitle":mname,
                         "buttons": [
                             {
                                 "type": "postback",
@@ -581,6 +582,7 @@ const directorfilms = (messagingEvent, celebrityname, type) => {
                     var keyMap = {
                         "title": rows[i].movieName,
                         "image_url": rows[i].picture1,
+                        "subtitle":mname,
                         "buttons": [
                             {
                                 "type": "postback",
