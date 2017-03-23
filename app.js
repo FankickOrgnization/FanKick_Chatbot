@@ -1013,12 +1013,12 @@ function celebritymovielist(messagingEvent, celebrityname){
                 console.log("*******cc_celebrity_preference data from database:*********", rows);
                 var usercelebrityName;
                 for (var i = 0; i < rows.length; i++) { //Construct request body
-                    usercelebrityName = rows[i].celebrityName;
+                    usercelebrityName = rows[i].name;
                     var movi = "Mov**"
                     var readmorebtn = (usercelebrityName + ",").concat(movi);
                     var keyMap = {
-                        "title": rows[i].celebrityName,
-                        "image_url": rows[i].celebrityImageUrl,
+                        "title": rows[i].name,
+                        "image_url": rows[i].picture1,
                         //"subtitle":rows[i].description,
                         //  "item_url": rows[i].image_url,
                         // "buttons":[{
