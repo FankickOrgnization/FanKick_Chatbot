@@ -3,7 +3,7 @@ var app = express();
 var request = require('request');
 var bodyParser = require('body-parser');
 var mysql = require('mysql');
-var cricapi = require("node-cricapi"); 
+var cricapi = require("node-cricapi");
 const fetch = require('node-fetch');
 const crypto = require('crypto');
 //const thread = require('./modules/thread.js');
@@ -198,7 +198,8 @@ function quickpayload(messagingEvent) {
     var sociofantasy = quickpayloadtext.search("%socio-fantasy%");
     var drama = quickpayloadtext.search("%drama%");
     var celpics = quickpayloadtext.search("%pictures%");
-    var celmovies = quickpayloadtext.search("%movies%");
+    var celmovies = quickpayloadtext.search("%moviesname%");
+    var celmoviesid = quickpayloadtext.search("%movies%");
     var celnetworth = quickpayloadtext.search("%networth%");
     var celcomp = quickpayloadtext.search("%Moviecomp%");
     var celnews = quickpayloadtext.search("%news%");
@@ -236,6 +237,12 @@ function quickpayload(messagingEvent) {
     if (celpics != -1 || celmovies != -1 || celnetworth != -1 || celnews != -1 || celfamily != -1 || celabout != -1 || celcomp != -1) {
         console.log("This is celebritypics condition");
         celebritypics(messagingEvent, quickpayloadtext);
+    } else if (celmoviesid != -1) {
+        var actorname = quickpayloadtext.replace(" %movies%", "");
+        var packId = parseInt(actorname);
+        console.log("this is celebrity Id:",packId);
+        celebrityid(packId, messagingEvent);
+      //  movies.getgenremovies(messagingEvent, quickpayloadtext);
     } else if (action != -1 || comedy != -1 || romance != -1 || thriller != -1 || drama != -1 || sociofantasy != -1) {
         console.log("This is getgenremovies condition");
         movies.getgenremovies(messagingEvent, quickpayloadtext);
@@ -535,9 +542,11 @@ function celebritypics(messagingEvent, quickpayloadtext) {
                 var quickList = [];
                 var movieslist;
                 var celebrityname;
+                var celebrityid;
                 var keyMap;
                 for (var i = 0; i < rows.length; i++) { //Construct request body
                     celebrityname = rows[i].name;
+                    celebrityid = rows[i].id;
                     if (subCategory == "%pictures%") {
                         keyMap = {
                             "type": "template",
@@ -588,7 +597,9 @@ function celebritypics(messagingEvent, quickpayloadtext) {
                                 ]
                             }
                         }
-                    } else if (subCategory == "%movies%") {
+                    } else if (subCategory == "%moviesname%") {
+                      // var movieslist = rows[i].lastFiveMovies;
+                      // var latestmovie = rows[i].latestMovie;
                         console.log("celebrity Movies");
                         movies.selectedactorfilems(messagingEvent, celebrityname);
                     }else if (subCategory == "%Moviecomp%") {
@@ -708,7 +719,7 @@ function celebritypics(messagingEvent, quickpayloadtext) {
                             }, {
                                 "content_type": "text",
                                 "title": 'Movies',
-                                "payload": celebrityname + ' ,%movies%'
+                                "payload": celebrityid + ' %movies%'
                             },{
                                 "content_type": "text",
                                 "title": "Net Worth",
@@ -1046,12 +1057,15 @@ function filmactor(messagingEvent, actorname) {
                 var quickList = [];
                 var movieslist;
                 var celebrityname;
+              //  "payload": celebrityid + ' ,%movies%'
+                var celebrityid;
                 for (var i = 0; i < rows.length; i++) { //Construct request body
                     var res1 = rows[i].id + ",";
                     var res2 = rows[i].celebrityName + ",";
                     var res3 = res2.concat(res1);
                     var res5 = res3.concat(res2);
                     celebrityname = rows[i].name;
+                    celebrityid = rows[i].id;
                     var keyMap = {
                         "title": rows[i].name,
                         "image_url": rows[i].picture1,
@@ -1092,7 +1106,7 @@ function filmactor(messagingEvent, actorname) {
                             }, {
                                 "content_type": "text",
                                 "title": "Movies",
-                                "payload": celebrityname + ' ,%movies%'
+                                "payload": celebrityid + ' %movies%'
                             },  {
                                 "content_type": "text",
                                 "title": "Net Worth",

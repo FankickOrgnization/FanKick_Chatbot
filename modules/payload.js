@@ -293,7 +293,7 @@ function celebritiesdetails(categoryName, event) {
                             }, {
                                 "content_type": "text",
                                 "title": "Movies",
-                                "payload": rows[i].celebrityName + ' ,%movies%'
+                                "payload": rows[i].id + ' ,%movies%'
                             }, {
                                 "content_type": "text",
                                 "title": "Net Worth",
@@ -310,10 +310,6 @@ function celebritiesdetails(categoryName, event) {
                                 "content_type": "text",
                                 "title": "Jokes",
                                 "payload": "Jokes"
-                            }, {
-                                "content_type": "text",
-                                "title": "Songs",
-                                "payload": "Songs"
                             }, {
                                 "content_type": "text",
                                 "title": "Home 🏠",

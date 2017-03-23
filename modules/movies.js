@@ -425,7 +425,7 @@ const selectedactorfilems = (messagingEvent, celebrityname) => {
                             }, {
                                 "content_type": "text",
                                 "title": "Movies",
-                                "payload": celebrityname + ' ,%movies%'
+                                "payload": celebrityname + ' ,%moviesname%'
                             }, {
                                 "content_type": "text",
                                 "title": "Net Worth",
@@ -520,7 +520,7 @@ const actressfilms = (messagingEvent, celebrityname, type) => {
                             }, {
                                 "content_type": "text",
                                 "title": "Movies",
-                                "payload": celebrityname + ' ,%movies%'
+                                "payload": celebrityname + ' ,%moviesname%'
                             }, {
                                 "content_type": "text",
                                 "title": "Net Worth",
@@ -615,7 +615,7 @@ const directorfilms = (messagingEvent, celebrityname, type) => {
                             }, {
                                 "content_type": "text",
                                 "title": "Movies",
-                                "payload": celebrityname + ' ,%movies%'
+                                "payload": celebrityname + ' ,%moviesname%'
                             }, {
                                 "content_type": "text",
                                 "title": "Net Worth",
