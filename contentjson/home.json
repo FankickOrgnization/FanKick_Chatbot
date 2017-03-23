@@ -6,7 +6,6 @@
           "elements": [
           {
             "title": "Movies",
-            "subtitle": "Movies",
             "image_url": "https://fankickdev.blob.core.windows.net/images/movies.jpg",
             "buttons": [
             {
@@ -18,7 +17,6 @@
           },
 		        {
             "title": "Sports",
-            "subtitle": "Sports",
             "image_url": "https://fankickdev.blob.core.windows.net/images/sports.jpg",
             "buttons": [
             {
@@ -30,7 +28,6 @@
           },
           {
             "title": "TV Shows",
-            "subtitle": "TV Shows",
             "image_url": "https://fankickdev.blob.core.windows.net/images/celebrities.jpg",
             "buttons": [
             {
@@ -42,7 +39,6 @@
           },
           {
             "title": "Music",
-            "subtitle": "Music",
             "image_url": "https://fankickdev.blob.core.windows.net/images/music.jpg",
             "buttons": [
             {

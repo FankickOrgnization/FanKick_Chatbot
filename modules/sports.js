@@ -312,7 +312,7 @@ function sportscelbritydetails(messagingEvent, sportscelname) {
                             {
                                 "type": "web_url",
                                 "url": rows[i].personal,
-                                "title": "About"
+                                "title": "About 👤"
                             }
                         ]
                     };

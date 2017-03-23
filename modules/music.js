@@ -117,7 +117,7 @@ const musicalbams = (categoryName, event) => {
                             //     "content_type": "text",
                             //     "title": "Sad Songs",
                             //     "payload": "Sad Songs"
-                            // }, 
+                            // },
                             {
                                 "content_type": "text",
                                 "title": "Jokes",
@@ -264,11 +264,11 @@ function musiccelbritydetails(messagingEvent, musiccelname) {
                             {
                                 "type": "web_url",
                                 "url": rows[i].personal,
-                                "title": "About"
+                                "title": "About 👤"
                             }, {
                                 "type": "web_url",
                                 "url": rows[i].googleSearch,
-                                "title": "Google Search"
+                                "title": "Google Search 🔎"
                             }
                         ]
                     };

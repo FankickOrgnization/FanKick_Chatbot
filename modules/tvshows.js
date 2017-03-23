@@ -390,15 +390,15 @@ function tvcelbritydetails(event, celbrityname) {
                             {
                                 "type": "web_url",
                                 "url": rows[i].personalInfo,
-                                "title": "About"
+                                "title": "About 👤"
                             }, {
                                 "type": "web_url",
                                 "url": rows[i].googleSearch,
-                                "title": "Search in Google"
+                                "title": "Search in Google 🔎"
                             }, {
                                 "type": "web_url",
                                 "url": rows[i].news,
-                                "title": "News"
+                                "title": "News 📰"
                             }
                         ]
                     };
