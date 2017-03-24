@@ -428,9 +428,9 @@ function sendJoke(categoryName, event) {
 
       message:  {
     "attachment":{
-      "type":"audio",
+      "type":"video",
       "payload":{
-        "url":"http://www.stephaniequinn.com/Music/Allegro%20from%20Duet%20in%20C%20Major.mp3"
+        "url":"https://www.youtube.com/embed/GNR9El3XWYo"
       }
     }
   }
