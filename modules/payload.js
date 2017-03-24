@@ -425,14 +425,24 @@ function sendJoke(categoryName, event) {
         //         }
         //     ]
         // }
+
+        // "message":{
+        //   "attachment":{
+        //     "type":"image",
+        //     "payload":{
+        //       "url":"https://fankickdev.blob.core.windows.net/images/cricket.gif"
+        //     }
+        //   }
+        // }
         "message":{
-          "attachment":{
-            "type":"image",
-            "payload":{
-              "url":"https://fankickdev.blob.core.windows.net/images/cricket.gif"
+            "attachment":{
+              "type":"video",
+              "payload":{
+                "url":"https://www.youtube.com/watch?v=Tw8XZMe3ZLk"
+              }
             }
           }
-        }
+
     };
 
     fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
