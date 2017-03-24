@@ -428,9 +428,9 @@ function sendJoke(categoryName, event) {
 
       message:  {
     "attachment":{
-      "type":"video",
+      "type":"audio",
       "payload":{
-        "url":"http://techslides.com/demos/sample-videos/small.mp4"
+        "url":"http://www.stephaniequinn.com/Music/Allegro%20from%20Duet%20in%20C%20Major.mp3"
       }
     }
   }
