@@ -411,28 +411,27 @@ function sendJoke(categoryName, event) {
         recipient: {
             id: senderID
         },
-        message: {
-            text: jokeString,
-            quick_replies: [
-                {
-                    "content_type": "text",
-                    "title": "Another 😂",
-                    "payload": "jokes"
-                }, {
-                    "content_type": "text",
-                    "title": "Home",
-                    "payload": "home"
-                }
-                // , {
-                //     "content_type": "text",
-                //     "title": "👍",
-                //     "payload": "home"
-                // }, {
-                //     "content_type": "text",
-                //     "title": "👎",
-                //     "payload": "home"
-                // }
-            ]
+        // message: {
+        //     text: jokeString,
+        //     quick_replies: [
+        //         {
+        //             "content_type": "text",
+        //             "title": "Another 😂",
+        //             "payload": "jokes"
+        //         }, {
+        //             "content_type": "text",
+        //             "title": "Home",
+        //             "payload": "home"
+        //         }
+        //     ]
+        // }
+        "message":{
+          "attachment":{
+            "type":"image",
+            "payload":{
+              "url":"https://fankickdev.blob.core.windows.net/images/cricket.gif"
+            }
+          }
         }
     };
 
