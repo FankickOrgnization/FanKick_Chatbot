@@ -411,29 +411,20 @@ function sendJoke(categoryName, event) {
         recipient: {
             id: senderID
         },
-        // message: {
-        //     text: jokeString,
-        //     quick_replies: [
-        //         {
-        //             "content_type": "text",
-        //             "title": "Another 😂",
-        //             "payload": "jokes"
-        //         }, {
-        //             "content_type": "text",
-        //             "title": "Home",
-        //             "payload": "home"
-        //         }
-        //     ]
-        // }
-
-      message:  {
-    "attachment":{
-      "type":"video",
-      "payload":{
-        "url":"https://www.youtube.com/embed/GNR9El3XWYo"
-      }
-    }
-  }
+        message: {
+            text: jokeString,
+            quick_replies: [
+                {
+                    "content_type": "text",
+                    "title": "Another 😂",
+                    "payload": "jokes"
+                }, {
+                    "content_type": "text",
+                    "title": "Home",
+                    "payload": "home"
+                }
+            ]
+        }
     };
 
     fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
