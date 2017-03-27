@@ -2,6 +2,7 @@
 var request = require('request');
 const searchText = require('./search.js');
 //const thread = require('./thread.js');
+const imdb = require('imdb-api');
 var googleTrends = require('google-trends-api');
 var wikipedia = require("node-wikipedia");
 const errors = require('../contentjson/errormsg.json');
@@ -632,6 +633,11 @@ function competitorsofcelebrity(messagingEvent, competitor, picurl, name) {
 
 // ************************** Googlegraph api ********************************
 function googlegraph(categoryName, event) {
+  var movie;
+  imdb.getReq({ name: categoryName }, (err, things) => {
+    movie = things;
+    });
+    console.log("*************---imdb----*******", movie);
     console.log("*************---categoryName----*******", categoryName);
     var contentList = [];
     var quickList = [];
