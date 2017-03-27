@@ -244,7 +244,7 @@ function musiccelbritydetails(messagingEvent, musiccelname) {
             console.log("*************************Data For Music Celebrity", rows);
             if (err) {
                 console.log("Error While retriving content pack data from database:", err);
-            } else if (rows.length) {
+            } else if (rows.length < 0) {
                 var senderID = event.sender.id;
                 var contentList = [];
                 if (rows.length > 10) {
@@ -329,7 +329,9 @@ function musiccelbritydetails(messagingEvent, musiccelname) {
                     }
                 }
                 fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
-            } else {
+            } else if (rows.length >= 0) {
+              googlegraph(musiccelname, event);
+            }else {
                 console.log("No Data Found From Database");
                 sendHelpMessage(event);
             }
@@ -625,6 +627,75 @@ function competitorsofcelebrity(messagingEvent, competitor, picurl, name) {
     }
     fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
 }
+
+// ************************** Googlegraph api ********************************
+function googlegraph(categoryName, event) {
+    console.log("*************---categoryName----*******", categoryName);
+    var contentList = [];
+    var quickList = [];
+
+    var userid = event.sender.id;
+    var url = 'https://kgsearch.googleapis.com/v1/entities:search?query=' + categoryName + '&key=AIzaSyCavmWhCL_wMeLAKrurcVPUdP0ztgubHZc&limit=5&indent=True'
+
+    console.log("url", url);
+    request({
+        "uri": url,
+        "method": 'GET'
+    }, function(error, response, body) {
+        var userprofiledata = JSON.parse(response.body);
+        console.log("--------:Response data:--------first_name ", userprofiledata.itemListElement);
+        var rows = userprofiledata.itemListElement;
+        var rowlen = rows.length;
+        console.log("--------:Response data:--------length ", rowlen);
+        var senderID = event.sender.id;
+        var imagedata;
+        var desdata;
+        for (var i = 0; i < 1; i++) {
+            var keyMap = {
+                "title": rows[i].result.name,
+                //"image_url":rows[i].result.image.contentUrl,
+                "image_url": rows[i].result.image.contentUrl,
+                "subtitle": rows[i].result.detailedDescription.articleBody,
+                "buttons": [
+                    {
+                        "type": "web_url",
+                        "url": rows[i].result.image.url,
+                        "title": "Read More 📖"
+                    }
+                ]
+            };
+            contentList.push(keyMap);
+        }
+        for (var i = 0; i < 5; i++) {
+            var quickMap = {
+                "content_type": "text",
+                "title": rows[i].result.name,
+                "payload": rows[i].result.name
+            };
+
+            quickList.push(quickMap);
+        }
+        var messageData = {
+            "recipient": {
+                "id": senderID
+            },
+            "message": {
+                "attachment": {
+                    "type": "template",
+                    "payload": {
+                        "template_type": "generic",
+                        "elements": contentList
+                    }
+                },
+                "quick_replies": quickList
+            }
+        }
+        fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
+    });
+}
+// ************************** Googlegraph api End ********************************
+
+
 
 function sendHelpMessage(event) {
     var errorString = "";
