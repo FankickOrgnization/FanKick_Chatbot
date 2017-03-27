@@ -154,7 +154,7 @@ function videodisplay(categoryName, event){
           "attachment":{
             "type":"video",
             "payload":{
-              "url":"http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4"
+              "url":"https://www.youtube.com/watch?v=prHj7RNVTnQ"
             }
           }
         }
