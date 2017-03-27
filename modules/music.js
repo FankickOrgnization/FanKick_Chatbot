@@ -332,7 +332,7 @@ function musiccelbritydetails(messagingEvent, musiccelname) {
                 fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
             } else if (rows.length >= 0) {
               //googlegraph(musiccelname, event);
-              wikipediadetails(categoryName, event);
+              wikipediadetails(musiccelname, event);
             }else {
                 console.log("No Data Found From Database");
                 sendHelpMessage(event);
