@@ -1,6 +1,6 @@
 'use strict';
 var request = require('request');
-const searchText = require('./search.js');
+const googleSearch = require('./search.js');
 const thread = require('./thread.js');
 var googleTrends = require('google-trends-api');
 var cricapi = require("node-cricapi");
@@ -287,7 +287,7 @@ function celebritiesdetails(categoryName, event) {
         connection.query('select * from cc_celebrity_preference where celebrityName = ?', [categoryName], function(err, rows) {
             if (err) {
                 console.log("Error While retriving content pack data from database:", err);
-            } else if (rows.length) {
+            } else if (rows.length < 0 ) {
                 var senderID = event.sender.id;
                 var contentList = [];
                 var quickList = [];
@@ -373,6 +373,8 @@ function celebritiesdetails(categoryName, event) {
                     }
                 }
                 fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
+            }else if (rows.length >= 0) {
+              googleSearch.googlegraph(categoryName, event);
             } else {
                 console.log("No Data Found From Database");
                 sendHelpMessage(event);

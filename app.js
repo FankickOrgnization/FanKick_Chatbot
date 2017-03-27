@@ -8,7 +8,7 @@ const fetch = require('node-fetch');
 const crypto = require('crypto');
 //const thread = require('./modules/thread.js');
 const payloadText = require('./modules/payload.js');
-const searchText = require('./modules/search.js');
+const googleSearch = require('./modules/search.js');
 const movies = require('./modules/movies.js');
 const fbRquest = require('./modules/fbapi.js');
 var googleTrends = require('google-trends-api');
@@ -1016,7 +1016,7 @@ function celebritymovielist(messagingEvent, celebrityname){
         connection.query('select * from cc_film_celebrity_preference where name = ?', [celebrityname], function(err, rows) {
             if (err) {
                 console.log("Error While retriving content pack data from database:", err);
-            } else if (rows.length) {
+            } else if (rows.length < 0) {
                 var senderID = event.sender.id;
                 var contentList = [];
                 var quickList = [];
@@ -1107,7 +1107,9 @@ function celebritymovielist(messagingEvent, celebrityname){
                 }
                 fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
 
-            } else {
+            } else if (rows.length >= 0) {
+              googleSearch.googlegraph(celebrityname, event);
+            }else {
                 console.log("No Data Found From Database");
                 sendHelpMessage(event);
                 //sendImageMessage(event);

@@ -7,6 +7,7 @@ const errors = require('../contentjson/errormsg.json');
 const jokes = require('../contentjson/jokes.json');
 const fbRquest = require('./fbapi.js');
 const dbpool = require('./mysqlconfig.js');
+const googleSearch = require('./search.js');
 //var app = express();
 var mysql = require('mysql');
 //var pool = mysql.createPool({connectionLimit: 1, host: 'ap-cdbr-azure-southeast-a.cloudapp.net', user: 'bb603e8108da6e', password: '3e384329', database: 'rankworlddev'});
@@ -285,6 +286,7 @@ function sportsqrdetails(messagingEvent, qrtitle) {
 }
 
 function sportscelbritydetails(messagingEvent, sportscelname) {
+  var event = messagingEvent;
     var quickList = [];
     var celname = sportscelname.trim();
     pool.getConnection(function(err, connection) {
@@ -292,7 +294,7 @@ function sportscelbritydetails(messagingEvent, sportscelname) {
             console.log("*************************sportscelebrity", rows);
             if (err) {
                 console.log("Error While retriving content pack data from database:", err);
-            } else if (rows.length) {
+            } else if (rows.length < 0) {
                 var senderID = messagingEvent.sender.id;
                 var contentList = [];
                 if (rows.length > 10) {
@@ -365,6 +367,8 @@ function sportscelbritydetails(messagingEvent, sportscelname) {
                     }
                 }
                 fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
+            }else if (rows.length >= 0) {
+              googleSearch.googlegraph(sportscelname, event);
             } else {
                 console.log("No Data Found From Database");
                 sendHelpMessage(messagingEvent);
