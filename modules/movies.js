@@ -27,12 +27,12 @@ var quickreply = [
         "payload": "Sports"
     }, {
         "content_type": "text",
-        "title": "Music 🎶",
-        "payload": "Music"
-    }, {
-        "content_type": "text",
         "title": "TV Shows 📺",
         "payload": "TV Shows"
+    }, {
+        "content_type": "text",
+        "title": "Music 🎶",
+        "payload": "Music"
     }
 ];
 const subcategorymovies = (event, categoryName) => {

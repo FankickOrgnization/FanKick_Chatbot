@@ -32,12 +32,12 @@ var quickreply = [
         "payload": "Sports"
     }, {
         "content_type": "text",
-        "title": "Music 🎶",
-        "payload": "Music"
-    }, {
-        "content_type": "text",
         "title": "TV Shows 📺",
         "payload": "TV Shows"
+    }, {
+        "content_type": "text",
+        "title": "Music 🎶",
+        "payload": "Music"
     }
 ];
 var quickMenu = [
@@ -81,6 +81,10 @@ const sendContentPacks = (categoryName, event) => {
     //  var cricketApi = cricapi.cricketScores();
       //console.log("###########cricketScores############",cricketApi);
         wishingmessage(categoryName, event);
+    }else if (categoryName == "pics") {
+        imagedisplay(categoryName, event);
+    }else if (categoryName == "videos") {
+        videodisplay(categoryName, event);
     } else if (categoryName == "movies" || categoryName == "sports" || categoryName == "tv shows" || categoryName == "music") {
         submenu(event, categoryName);
         usercategory(event, categoryName);
@@ -117,6 +121,54 @@ const sendContentPacks = (categoryName, event) => {
         sendHelpMessage(event);
     }
 }
+
+function imagedisplay(categoryName, event){
+    var senderID = event.sender.id;
+    var msg = 'Amazing talent👏! Here is what I know about ' + categoryName + '';
+    var messageData = {
+        "recipient": {
+            "id": senderID
+        },
+        "message": {
+            "attachment":{
+              "type":"image",
+              "payload":{
+                "url":"https://fankickdev.blob.core.windows.net/images/yuvi.gif"
+              }
+            }
+          }
+    };
+    fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
+    //celebritymovies(messagingEvent, moviename);
+  //  celebritiesdetails(categoryName, event);
+}
+
+function videodisplay(categoryName, event){
+    var senderID = event.sender.id;
+    var msg = 'Amazing talent👏! Here is what I know about ' + categoryName + '';
+    var messageData = {
+        "recipient": {
+            "id": senderID
+        },
+        "message": {
+          "attachment":{
+            "type":"video",
+            "payload":{
+              "url":"http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4"
+            }
+          }
+        }
+    };
+    fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
+    //celebritymovies(messagingEvent, moviename);
+  //  celebritiesdetails(categoryName, event);
+}
+
+
+
+
+
+
 
 function allcategory(event, categoryName) {
     var senderID = event.sender.id;

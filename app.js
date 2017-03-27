@@ -31,12 +31,12 @@ var quickMenu = [
         "payload": "Sports"
     }, {
         "content_type": "text",
-        "title": "Music 🎶",
-        "payload": "Music"
-    }, {
-        "content_type": "text",
         "title": "TV Shows 📺",
         "payload": "TV Shows"
+    }, {
+        "content_type": "text",
+        "title": "Music 🎶",
+        "payload": "Music"
     }
 ];
 var quickreply = [
@@ -428,6 +428,14 @@ function quick_reply_subcategory(messagingEvent, quickpayloadtext) {
                                 "title": "Jokes",
                                 "payload": "Jokes"
                             }, {
+                                "content_type": "text",
+                                "title": "Pics",
+                                "payload": "pics"
+                            },{
+                                "content_type": "text",
+                                "title": "Videos",
+                                "payload": "videos"
+                            },{
                                 "content_type": "text",
                                 //"title": subCategory.toUpperCase(),
                                 "title": subCategory.charAt(0).toUpperCase() + subCategory.substr(1).toLowerCase(),
