@@ -133,7 +133,7 @@ function imagedisplay(categoryName, event){
             "attachment":{
               "type":"image",
               "payload":{
-                "url":"https://fankickdev.blob.core.windows.net/images/yuvi.gif"
+                "url":"https://33.media.tumblr.com/fe09465871326254116e18217f00e58c/tumblr_nra3xlkVYz1tq73owo1_500.gif"
               }
             },
             "quick_replies": quickreply
