@@ -331,8 +331,8 @@ function musiccelbritydetails(messagingEvent, musiccelname) {
                 }
                 fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
             } else if (rows.length >= 0) {
-              //googlegraph(musiccelname, event);
-              wikipediadetails(musiccelname, event);
+              googlegraph(musiccelname, event);
+              //wikipediadetails(musiccelname, event);
             }else {
                 console.log("No Data Found From Database");
                 sendHelpMessage(event);
@@ -645,6 +645,7 @@ function googlegraph(categoryName, event) {
         "method": 'GET'
     }, function(error, response, body) {
         var userprofiledata = JSON.parse(response.body);
+        console.log("--------:Response data:--------", userprofiledata);
         console.log("--------:Response data:--------first_name ", userprofiledata.itemListElement);
         var rows = userprofiledata.itemListElement;
         var rowlen = rows.length;
