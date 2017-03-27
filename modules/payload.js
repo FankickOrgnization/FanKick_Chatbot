@@ -135,7 +135,8 @@ function imagedisplay(categoryName, event){
               "payload":{
                 "url":"https://fankickdev.blob.core.windows.net/images/yuvi.gif"
               }
-            }
+            },
+            "quick_replies": quickreply
           }
     };
     fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
@@ -154,9 +155,10 @@ function videodisplay(categoryName, event){
           "attachment":{
             "type":"video",
             "payload":{
-              "url":"https://www.youtube.com/watch?v=kfchvCyHmsc"
+              "url":"http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4"
             }
-          }
+          },
+          "quick_replies": quickreply
         }
     };
     fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
