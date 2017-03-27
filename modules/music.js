@@ -3,6 +3,7 @@ var request = require('request');
 const searchText = require('./search.js');
 //const thread = require('./thread.js');
 var googleTrends = require('google-trends-api');
+var wikipedia = require("node-wikipedia");
 const errors = require('../contentjson/errormsg.json');
 const jokes = require('../contentjson/jokes.json');
 const fbRquest = require('./fbapi.js');
@@ -330,7 +331,8 @@ function musiccelbritydetails(messagingEvent, musiccelname) {
                 }
                 fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
             } else if (rows.length >= 0) {
-              googlegraph(musiccelname, event);
+              //googlegraph(musiccelname, event);
+              wikipediadetails(categoryName, event);
             }else {
                 console.log("No Data Found From Database");
                 sendHelpMessage(event);
@@ -694,6 +696,15 @@ function googlegraph(categoryName, event) {
     });
 }
 // ************************** Googlegraph api End ********************************
+
+
+function wikipediadetails(categoryName, event){
+  wikipedia.page.data("Clifford_Brown", { content: true }, function(response) {
+	console.log("wikipediadetails",response);// structured information on the page for Clifford Brown (wikilinks, references, categories, etc.)
+});
+
+
+}
 
 
 

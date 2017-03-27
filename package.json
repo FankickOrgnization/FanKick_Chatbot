@@ -29,6 +29,7 @@
     "mysql": "^2.11.1",
     "node-cricapi": "^1.2.5",
     "node-fetch": "^1.6.3",
+    "node-wikipedia": "0.0.2",
     "node-wit": "^4.1.0",
     "request": "^2.74.0",
     "wit-node": "0.0.5"
