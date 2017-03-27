@@ -6,7 +6,7 @@
           "elements": [
           {
             "title": "Movies",
-            "image_url": "https://33.media.tumblr.com/fe09465871326254116e18217f00e58c/tumblr_nra3xlkVYz1tq73owo1_500.gif",
+            "image_url": "https://fankickdev.blob.core.windows.net/images/movies.jpg",
             "buttons": [
             {
               "type": "postback",
@@ -17,7 +17,7 @@
           },
 		        {
             "title": "Sports",
-            "image_url": "https://fankickdev.blob.core.windows.net/images/yuvi.gif",
+            "image_url": "https://fankickdev.blob.core.windows.net/images/sports.jpg",
             "buttons": [
             {
               "type": "postback",
