@@ -699,7 +699,7 @@ function googlegraph(categoryName, event) {
 
 
 function wikipediadetails(categoryName, event){
-  wikipedia.page.data("Clifford_Brown", { content: true }, function(response) {
+  wikipedia.page.data(categoryName, { content: true }, function(response) {
 	console.log("wikipediadetails",response);// structured information on the page for Clifford Brown (wikilinks, references, categories, etc.)
 });
 
