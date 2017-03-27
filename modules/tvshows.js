@@ -371,9 +371,10 @@ function tvcelbritydetails(event, celbrityname) {
         //connection.query('select * from cc_celebrity_preference where celebrityName=?',[categoryName], function(err, rows) {
         connection.query('select * from cc_tvshows_celebrity_preference where name = ?', [celbrityname], function(err, rows) {
             console.log("***Tv Show celebrity details:", rows);
+            console.log("***Tv Show celebrity details length:", rows.length);
             if (err) {
                 console.log("Error While retriving content pack data from database:", err);
-            } else if (rows.length <= 0) {
+            } else if (rows.length < 0) {
                 var senderID = event.sender.id;
                 var contentList = [];
                 var quickList = [];

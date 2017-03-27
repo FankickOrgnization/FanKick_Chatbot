@@ -291,10 +291,11 @@ function sportscelbritydetails(messagingEvent, sportscelname) {
     var celname = sportscelname.trim();
     pool.getConnection(function(err, connection) {
         connection.query('select * from cc_sports_celebrity_preference where name= ?', [celname], function(err, rows) {
-            console.log("*************************sportscelebrity", rows, rows.length);
+            console.log("*************************sportscelebrity", rows);
+            console.log("*************************sportscelebrity length", rows.length);
             if (err) {
                 console.log("Error While retriving content pack data from database:", err);
-            } else if (rows.length <= 0) {
+            } else if (rows.length < 0) {
                 var senderID = messagingEvent.sender.id;
                 var contentList = [];
                 if (rows.length > 10) {
@@ -368,7 +369,7 @@ function sportscelbritydetails(messagingEvent, sportscelname) {
                 }
                 fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
             }else if (rows.length > 0) {
-              googleSearch.googlegraph(sportscelname, event);
+              googleSearch.googlegraph(celname, event);
             } else {
                 console.log("No Data Found From Database");
                 sendHelpMessage(messagingEvent);
