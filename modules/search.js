@@ -24,7 +24,7 @@ var quickreply = [
 
 const googlegraph = (categoryName, event) => {
     var senderID = event.sender.id;
-    var msg = "Let's see what Google Mommy says about " + categoryName +;
+    var msg = "Let's see what Google Mommy says about " + categoryName +"";
     var messageData = {
         "recipient": {
             "id": senderID
