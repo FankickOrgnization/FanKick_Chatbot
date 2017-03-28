@@ -1016,7 +1016,7 @@ function celebritymovielist(messagingEvent, celebrityname){
         connection.query('select * from cc_film_celebrity_preference where name = ?', [celebrityname], function(err, rows) {
             if (err) {
                 console.log("Error While retriving content pack data from database:", err);
-            } else if (rows.length < 0) {
+            } else if (rows.length > 0) {
                 var senderID = event.sender.id;
                 var contentList = [];
                 var quickList = [];
