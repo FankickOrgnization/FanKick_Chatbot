@@ -155,7 +155,7 @@ function videodisplay(categoryName, event){
           "attachment":{
             "type":"video",
             "payload":{
-              "url":"https://vimeo.com/210238198"
+              "url":"http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4"
             }
           },
           "quick_replies": quickreply
@@ -165,12 +165,6 @@ function videodisplay(categoryName, event){
     //celebritymovies(messagingEvent, moviename);
   //  celebritiesdetails(categoryName, event);
 }
-
-
-
-
-
-
 
 function allcategory(event, categoryName) {
     var senderID = event.sender.id;
