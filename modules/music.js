@@ -247,7 +247,7 @@ function musiccelbritydetails(messagingEvent, musiccelname) {
             console.log("*************************Data For Music Celebrity", rows);
             if (err) {
                 console.log("Error While retriving content pack data from database:", err);
-            } else if (rows.length < 0) {
+            } else if (rows.length > 0) {
                 var senderID = event.sender.id;
                 var contentList = [];
                 if (rows.length > 10) {

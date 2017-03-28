@@ -374,7 +374,7 @@ function tvcelbritydetails(event, celbrityname) {
             console.log("***Tv Show celebrity details length:", rows.length);
             if (err) {
                 console.log("Error While retriving content pack data from database:", err);
-            } else if (rows.length < 0) {
+            } else if (rows.length > 0) {
                 var senderID = event.sender.id;
                 var contentList = [];
                 var quickList = [];
