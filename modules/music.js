@@ -332,7 +332,7 @@ function musiccelbritydetails(messagingEvent, musiccelname) {
                     }
                 }
                 fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
-            } else if (rows.length >= 0) {
+            } else if (rows.length == 0) {
               googleSearch.googlegraph(musiccelname, event);
               //wikipediadetails(musiccelname, event);
             }else {

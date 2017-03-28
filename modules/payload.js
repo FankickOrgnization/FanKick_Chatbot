@@ -704,38 +704,36 @@ function wishingmessage(categoryName, event) {
 function submenu(event, categoryName) {
     var senderID = event.sender.id;
     var submenuname = categoryName.replace(" ", "_");
-    console.log("***********************", submenuname);
+    //console.log("***********************", submenuname);
     var subname = submenuname.trim();
     var quickList = [];
     var submenuString = "";
     while (submenuString === "") {
         {
             if(subname == "movies") {
-                console.log("***********************", submenuname);
+                //console.log("***********************", submenuname);
                 var random = Math.floor(Math.random() * movie.length);
                 if (movie[random].movies.length < 320)
                     submenuString = movie[random].movies;
                 submemuquickreply(event, categoryName, submenuString);
             } else if (subname == "sports") {
-                console.log("***************subname*********************", subname);
+                //console.log("***************subname*********************", subname);
                 var random = Math.floor(Math.random() * sport.length);
                 if (sport[random].sports.length < 320) // better be a least one good joke :)
                     submenuString = sport[random].sports;
-
                 //submemuquickreply(event, categoryName, submenuString);
                 sports.sportsintro(event, submenuString);
             } else if (subname == "music") {
-                console.log("***************subname*********************", subname);
+                //console.log("***************subname*********************", subname);
                 var random = Math.floor(Math.random() * musics.length);
                 if (musics[random].music.length < 320) // better be a least one good joke :)
                     submenuString = musics[random].music;
                 submemuquickreply(event, categoryName, submenuString);
             } else if (subname == "tv_shows") {
-                console.log("***************subname*********************", subname);
+                //console.log("***************subname*********************", subname);
                 var random = Math.floor(Math.random() * tv_show.length);
                 if (tv_show[random].tv_shows.length < 320) // better be a least one good joke :)
                     submenuString = tv_show[random].tv_shows;
-
                 //tvshows.tvshowsmenu(event, categoryName, submenuString);
                 tvshows.tvshowsintro(event, submenuString);
             }

@@ -368,7 +368,7 @@ function sportscelbritydetails(messagingEvent, sportscelname) {
                     }
                 }
                 fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
-            }else if (rows.length > 0) {
+            }else if (rows.length == 0) {
               googleSearch.googlegraph(celname, event);
             } else {
                 console.log("No Data Found From Database");
