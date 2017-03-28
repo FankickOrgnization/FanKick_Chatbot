@@ -1255,7 +1255,7 @@ function filmactor(messagingEvent, actorname) {
                 }
                 fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
             }else if (rows.length == 0) {
-              googleSearch.googlegraph(celbrityname, event);
+              googleSearch.googlegraph(aname, event);
             } else {
                 console.log("No Data Found From Database");
                 sendHelpMessage(messagingEvent);

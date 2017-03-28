@@ -213,11 +213,11 @@ const getmovies = (messagingEvent, moviename) => {
                             }, {
                                 "content_type": "text",
                                 "title": rows[0].leadActress,
-                                "payload": rows[0].leadActress + " %aa%"
+                                "payload": rows[0].leadActress + " %a%"
                             }, {
                                 "content_type": "text",
                                 "title": rows[0].director,
-                                "payload": rows[0].director + " %ad%"
+                                "payload": rows[0].director + " %a%"
                             }, {
                                 "content_type": "text",
                                 "title": rows[0].musicDirector,
