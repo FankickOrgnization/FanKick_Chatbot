@@ -21,8 +21,26 @@ var quickreply = [
         "payload": "Music"
     }
 ];
-// ************************** Googlegraph api ********************************
+
 const googlegraph = (categoryName, event) => {
+    var senderID = event.sender.id;
+    var msg = "Let's see what Google Mommy says about " + categoryName +;
+    var messageData = {
+        "recipient": {
+            "id": senderID
+        },
+        "message": {
+            "text": msg
+        }
+    };
+    fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
+    googlegraphdetails(categoryName, event);
+}
+
+
+// ************************** Googlegraph api ********************************
+//const googlegraph = (categoryName, event) => {
+function googlegraphdetails(categoryName, event){
     console.log("*************---categoryName----*******", categoryName);
     var contentList = [];
     var quickList = [];
@@ -47,7 +65,7 @@ const googlegraph = (categoryName, event) => {
         for (var i = 0; i < 1; i++) {
             var keyMap = {
                 "title": rows[i].result.name,
-                "image_url": rows[i].result.image.contentUrl,
+                //"image_url": rows[i].result.image.contentUrl,
                 "subtitle": rows[i].result.detailedDescription.articleBody,
                 "buttons": [
                     {
