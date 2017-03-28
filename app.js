@@ -1165,6 +1165,7 @@ function receivedtextmessage(categoryName, event) {
 // get filmactor from the DB *******************************
 function filmactor(messagingEvent, actorname) {
     console.log("filmactor", actorname);
+    var event = messagingEvent;
     var aname = actorname.trim();
     pool.getConnection(function(err, connection) {
         connection.query('select * from cc_film_celebrity_preference where name = ?', [aname], function(err, rows) {
