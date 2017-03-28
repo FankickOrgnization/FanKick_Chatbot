@@ -904,11 +904,11 @@ function celebritymovies(messagingEvent, moviename) {
                             }, {
                                 "content_type": "text",
                                 "title": actress,
-                                "payload": actress + " %aa%"
+                                "payload": actress + " %a%"
                             }, {
                                 "content_type": "text",
                                 "title": director,
-                                "payload": director + " %ad%"
+                                "payload": director + " %a%"
                             }, {
                                 "content_type": "text",
                                 "title": musicDirector,
@@ -1173,7 +1173,7 @@ function filmactor(messagingEvent, actorname) {
             console.log("*************************filmactor", rows);
             if (err) {
                 console.log("Error While retriving content pack data from database:", err);
-            } else if (rows.length) {
+            } else if (rows.length > 0) {
                 var senderID = messagingEvent.sender.id;
                 var contentList = [];
                 var quickList = [];
@@ -1254,6 +1254,8 @@ function filmactor(messagingEvent, actorname) {
                     }
                 }
                 fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
+            }else if (rows.length == 0) {
+              googleSearch.googlegraph(celbrityname, event);
             } else {
                 console.log("No Data Found From Database");
                 sendHelpMessage(messagingEvent);
