@@ -63,9 +63,13 @@ function googlegraphdetails(categoryName, event){
         var imagedata;
         var desdata;
         for (var i = 0; i < 1; i++) {
+          console.log("result.name",rows[i].result.name);
+          console.log("result.name",rows[i].result.detailedDescription.articleBody);
+          console.log("result.name",rows[i].result.image.contentUrl);
+          console.log("result.name",rows[i].result.image.url);
             var keyMap = {
                 "title": rows[i].result.name,
-                //"image_url": rows[i].result.image.contentUrl,
+                "image_url": rows[i].result.image.contentUrl,
                 "subtitle": rows[i].result.detailedDescription.articleBody,
                 "buttons": [
                     {
