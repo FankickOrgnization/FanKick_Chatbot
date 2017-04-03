@@ -20,25 +20,25 @@ const errors = require('./contentjson/errormsg.json');
 
 var pool = mysql.createPool({connectionLimit: 1, host: 'ap-cdbr-azure-southeast-a.cloudapp.net', user: 'bb603e8108da6e', password: '3e384329', database: 'rankworlddev'});
 
-var quickMenu = [
-    {
-        "content_type": "text",
-        "title": "Movies 🎬",
-        "payload": "Movies"
-    }, {
-        "content_type": "text",
-        "title": "Sports 🏆",
-        "payload": "Sports"
-    }, {
-        "content_type": "text",
-        "title": "TV Shows 📺",
-        "payload": "TV Shows"
-    }, {
-        "content_type": "text",
-        "title": "Music 🎶",
-        "payload": "Music"
-    }
-];
+// var quickMenu = [
+//     {
+//         "content_type": "text",
+//         "title": "Movies 🎬",
+//         "payload": "Movies"
+//     }, {
+//         "content_type": "text",
+//         "title": "Sports 🏆",
+//         "payload": "Sports"
+//     }, {
+//         "content_type": "text",
+//         "title": "TV Shows 📺",
+//         "payload": "TV Shows"
+//     }, {
+//         "content_type": "text",
+//         "title": "Music 🎶",
+//         "payload": "Music"
+//     }
+// ];
 var quickreply = [
     {
         "content_type": "text",
@@ -62,7 +62,7 @@ var quickreply = [
 app.use(bodyParser.json());
 var fbpage_access_token = 'EAADV2VT6AuUBAHyUBL8zV5dYdRCBE7ZCKYQvOWCu2kkWQSV1RCllfvMymjDhXZCBQ93IkOFDpVYjN1E8jCHYpHKdH6uwNuhYAyCGdHOv6VgVZCwI6BZCc3AwAc7CW17yNTXe1YE7GkegMHHz36ax5JZC01zllTmTnAQRe0ZB0U3wZDZD';
 
-var quickMenu = payloadText.quickMenu;
+//var quickMenu = payloadText.quickMenu;
 
 app.get('/webhook', function(req, res) {
     //console.log("Validating webhook", console.log(JSON.stringify(req.body)));
@@ -315,7 +315,6 @@ function receivedMessage(event) {
     var message = event.message;
     var messageId = message.mid;
     var msgwit_value;
-    // You may get a text or attachment but not both
     var messageText = message.text;
     var messageAttachments = message.attachments;
     var msgwit = messageText;
@@ -323,7 +322,6 @@ function receivedMessage(event) {
     request({
         uri: 'https://api.wit.ai/message?v=20161020&q=' + msgwit,
         headers: {
-            //"Authorization": "Bearer USTWU2HGSIYGK3JBQX6EM2UGEQOS26ZX"
             "Authorization": "Bearer LZ7DCQVUW3FWMSF4MAD35CSYUCMOW2W4"
         }
     }, function(error, response) {
@@ -337,26 +335,20 @@ function receivedMessage(event) {
             var wit_res_data_intent = wit_res_data_ent.intent;
             var wit_res_data_location = wit_res_data_ent.location;
             var wit_res_msg_id = wit_res_data.msg_id;
-
-            console.log("Response from Wit--Res", res);
-            //console.log("Response from wit_res_data", wit_res_data);
+            //console.log("Response from Wit--Res", res);
             console.log("Response from wit_res_data", res_data);
-            //console.log("Response from Wit--response", response);
             console.log("Response from Wit--msg_id", wit_res_data.msg_id);
-            console.log("Response from Wit************1", wit_res_data.entities);
-
-            console.log("Response from Wit************2search_query", wit_res_data_ent.search_query);
-            console.log("Response from Wit************2", wit_res_data_ent.intent);
-            console.log("Response from Wit************3", wit_res_data_ent.location);
-            console.log("Response from Wit************4", wit_res_data_intent);
-            console.log("Response from Wit************5", wit_res_data_location);
+            console.log("Response from Wit************entities:", wit_res_data.entities);
+            console.log("Response from Wit************search_query:", wit_res_data_ent.search_query);
+            //console.log("Response from Wit************2", wit_res_data_ent.intent);
+            //console.log("Response from Wit************3", wit_res_data_ent.location);
+            console.log("Response from Wit************intent:", wit_res_data_intent);
+            console.log("Response from Wit************location:", wit_res_data_location);
             //console.log("Response from Wit************6", wit_res_data_intent.value);
             //var intentlength = wit_res_data_intent.length;
             //if (JSON.stringify(wit_res_data_ent) === '{}') { //This will check if the object is empty
             if (JSON.stringify(wit_res_data_ent.intent) === '{}' || wit_res_data_ent.intent == undefined) {
-                //sendHelpMessage(event);
                 textmessage(msgwit, event);
-                //sendContentPacks(msgwit, event)
                 console.log("wit_res_data_intent.length is Zero", wit_res_data_ent);
                 console.log("wit_res_data_intent.length is Zero", event);
             } else {
@@ -365,14 +357,12 @@ function receivedMessage(event) {
                     var td2 = wit_res_data_intent[i]["type"];
                     var td3 = wit_res_data_intent[i]["value"];
                 }
-                console.log("confidence************5", td1);
-                console.log("type************5", td2);
-                console.log("value************5", td3);
+                console.log("intent_confidence:", td1);
+                console.log("intent_type:", td2);
+                console.log("intent_value:", td3);
                 msgwit_value = td3.toLowerCase();
                 console.log('******msgwit_value', msgwit_value);
-                //bot.getwitmsg(wit_res_msg_id,msgwit_value,msgwit);
                 receivedtextmessage(msgwit_value, event);
-                //  bot.wittest(msgwit_value);
             }
         }
     });
