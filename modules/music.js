@@ -743,5 +743,6 @@ module.exports = {
     musicalbams: musicalbams,
     albuminfo: albuminfo,
     musiccelbrityintro: musiccelbrityintro,
-    musiccelebrityinfo: musiccelebrityinfo
+    musiccelebrityinfo: musiccelebrityinfo,
+    languagealbamsinfo: languagealbamsinfo
 };
