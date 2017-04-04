@@ -100,28 +100,23 @@ const musicalbams = (categoryName, event) => {
                                 "title": "Music Videos",
                                 "payload": 'Music Videos,' + categoryName + ',%QRsub%'
                             },
-                            // {
-                            //     "content_type": "text",
-                            //     "title": "Latest Albums",
-                            //     "payload": "Latest Albums"
-                            // }, {
-                            //     "content_type": "text",
-                            //     "title": "Pop",
-                            //     "payload": "Pop"
-                            // }, {
-                            //     "content_type": "text",
-                            //     "title": "Rock",
-                            //     "payload": "Rock"
-                            // }, {
-                            //     "content_type": "text",
-                            //     "title": "Movie Albums",
-                            //     "payload": "Movie Albums"
-                            // }, {
-                            //     "content_type": "text",
-                            //     "title": "Sad Songs",
-                            //     "payload": "Sad Songs"
-                            // },
                             {
+                                "content_type": "text",
+                                "title": "Hindi Albums",
+                                "payload": "Hindi"
+                            }, {
+                                "content_type": "text",
+                                "title": "Telugu Albums",
+                                "payload": "Telugu"
+                            }, {
+                                "content_type": "text",
+                                "title": "Tamil Albums",
+                                "payload": "Tamil"
+                            }, {
+                                "content_type": "text",
+                                "title": "Kannada Albums",
+                                "payload": "Kannada"
+                            }, {
                                 "content_type": "text",
                                 "title": "Jokes",
                                 "payload": "Jokes"
@@ -222,6 +217,84 @@ const albuminfo = (messagingEvent, albumname) => {
         });
     });
 }
+
+const languagealbamsinfo = (event, categoryName) => {
+    var event = messagingEvent;
+    var quickList = [];
+    var name;
+    pool.getConnection(function(err, connection) {
+        connection.query('select * from cc_music_albums where language = ?', [categoryName], function(err, rows) {
+            console.log("*************************Data For Music Albams", rows);
+            if (err) {
+                console.log("Error While retriving content pack data from database:", err);
+            } else if (rows.length) {
+                var senderID = event.sender.id;
+                var contentList = [];
+                if (rows.length > 10) {
+                    var rowslenth = 10;
+                    console.log("more than 10 Rows", rowslenth);
+                } else {
+                    var rowslenth = rows.length;
+                    console.log("less than 10 Rows", rowslenth);
+                }
+                for (var i = 0; i < rowslenth; i++) { //Construct request body
+                    name = rows[i].artist;
+                    var keyMap = {
+                        "title": rows[i].name,
+                        "image_url": rows[i].picture1,
+                        "subtitle": rows[i].artist,
+                        "buttons": [
+                            {
+                                "type": "web_url",
+                                "url": rows[i].albumUrl,
+                                "title": "View Album"
+                            }
+                        ]
+                    };
+                    contentList.push(keyMap);
+
+                }
+                var messageData = {
+                    "recipient": {
+                        "id": senderID
+                    },
+                    "message": {
+                        "attachment": {
+                            "type": "template",
+                            "payload": {
+                                "template_type": "generic",
+                                "elements": contentList
+                            }
+                        },
+                        "quick_replies": [
+                             {
+                                "content_type": "text",
+                                "title": "Jokes",
+                                "payload": "Jokes"
+                            }, {
+                                "content_type": "text",
+                                "title": "Back To Music 🎶",
+                                "payload": "Music"
+                            }, {
+                                "content_type": "text",
+                                "title": "Home 🏠",
+                                "payload": "home"
+                            }
+                        ]
+                    }
+                }
+                fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
+            } else {
+                console.log("No Data Found From Database");
+                sendHelpMessage(event);
+            }
+            connection.release();
+        });
+    });
+}
+
+
+
 
 const musiccelbrityintro = (messagingEvent, musiccelname) => {
     var senderID = messagingEvent.sender.id;

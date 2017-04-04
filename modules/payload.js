@@ -92,7 +92,10 @@ const sendContentPacks = (categoryName, event) => {
     } else if (categoryName == "indian" || categoryName == "western") {
         music.musicalbams(categoryName, event);
         usersubcategory(event, categoryName);
-    } else if (categoryName == "action" || categoryName == "comedy" || categoryName == "romance" || categoryName == "thriller" || categoryName == "horror") {
+    } else if (categoryName == "hindi" || categoryName == "telugu" || categoryName == "tamil" || categoryName == "kannada") {
+        music.languagealbamsinfo(categoryName, event);
+        //usersubcategory(event, categoryName);
+    }else if (categoryName == "action" || categoryName == "comedy" || categoryName == "romance" || categoryName == "thriller" || categoryName == "horror") {
         wishingmessage(categoryName, event);
         //moviegenre(categoryName,event);
     } else if (categoryName == "reality" || categoryName == "romantic comedy" || categoryName == "horror / crime" || categoryName == "cooking" || categoryName == "animation") {

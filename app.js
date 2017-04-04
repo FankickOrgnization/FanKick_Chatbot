@@ -379,7 +379,7 @@ function receivedMessage(event) {
                   var td2 = wit_res_data_sportsman[i]["type"];
                   var sportsman = wit_res_data_sportsman[i]["value"];
               }
-              console.log("wit_res_data_movie:--------------", sportsman);
+              console.log("wit_res_data_sportsman:--------------", sportsman);
               sports.sportscelbrityintro(event, sportsman);
             }else {
                 for (var i = 0; i < wit_res_data_intent.length; i++) {
