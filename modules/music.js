@@ -665,7 +665,7 @@ function celebrityalbams(event, name){
     var quickList = [];
     var name;
     pool.getConnection(function(err, connection) {
-        connection.query('select * from cc_music_albums where artist = ? order by releaseDate desc', [categoryName], function(err, rows) {
+        connection.query('select * from cc_music_albums where artist = ? order by releaseDate desc', [name], function(err, rows) {
             console.log("*************************Data For Music Albams", rows);
             if (err) {
                 console.log("Error While retriving content pack data from database:", err);
