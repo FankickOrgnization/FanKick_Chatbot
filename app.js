@@ -339,6 +339,8 @@ function receivedMessage(event) {
             console.log("Response from wit_res_data", res_data);
             console.log("Response from Wit--msg_id", wit_res_data.msg_id);
             console.log("Response from Wit************entities:", wit_res_data.entities);
+            console.log("Response from Wit************actor:", wit_res_data_ent.actor);
+            console.log("Response from Wit************movie:", wit_res_data_ent.movie);
             console.log("Response from Wit************search_query:", wit_res_data_ent.search_query);
             //console.log("Response from Wit************2", wit_res_data_ent.intent);
             //console.log("Response from Wit************3", wit_res_data_ent.location);
