@@ -351,19 +351,18 @@ function receivedMessage(event) {
             //console.log("Response from Wit************6", wit_res_data_intent.value);
             //var intentlength = wit_res_data_intent.length;
             //if (JSON.stringify(wit_res_data_ent) === '{}') { //This will check if the object is empty
-            if (JSON.stringify(wit_res_data_ent.intent) === '{}' || wit_res_data_ent.intent == undefined || wit_res_data_ent.actor == undefined || wit_res_data_ent.movie == undefined) {
+            if (JSON.stringify(wit_res_data_ent.intent) === '{}' || wit_res_data_ent.intent == undefined && wit_res_data_ent.actor == undefined && wit_res_data_ent.movie == undefined) {
                 textmessage(msgwit, event);
                 console.log("wit_res_data_intent.length is Zero", wit_res_data_ent);
                 console.log("wit_res_data_intent.length is Zero", event);
-            } else if (wit_res_data_actor > 0) {
+            } else if (wit_res_data_actor != undefined) {
                 for (var i = 0; i < wit_res_data_actor.length; i++) {
                     var td1 = wit_res_data_actor[i]["confidence"];
                     var td2 = wit_res_data_actor[i]["type"];
                     var td3 = wit_res_data_actor[i]["value"];
                 }
                 console.log("wit_res_data_actor:--------------", td3);
-
-            } else if (wit_res_data_movie > 0) {
+            } else if (wit_res_data_movie != undefined) {
                 for (var i = 0; i < wit_res_data_movie.length; i++) {
                     var td1 = wit_res_data_movie[i]["confidence"];
                     var td2 = wit_res_data_movie[i]["type"];
