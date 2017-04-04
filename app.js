@@ -240,9 +240,9 @@ function quickpayload(messagingEvent) {
     } else if (celmoviesid != -1) {
         var actorname = quickpayloadtext.replace(" %movies%", "");
         var packId = parseInt(actorname);
-        console.log("this is celebrity Id:",packId);
+        console.log("this is celebrity Id:", packId);
         celebrityid(packId, messagingEvent);
-      //  movies.getgenremovies(messagingEvent, quickpayloadtext);
+        //  movies.getgenremovies(messagingEvent, quickpayloadtext);
     } else if (action != -1 || comedy != -1 || romance != -1 || thriller != -1 || drama != -1 || sociofantasy != -1) {
         console.log("This is getgenremovies condition");
         movies.getgenremovies(messagingEvent, quickpayloadtext);
@@ -251,12 +251,12 @@ function quickpayload(messagingEvent) {
         console.log("actor name", actorname);
         var type = "leadActor";
         filmactor(messagingEvent, actorname);
-    }else if (actressname != -1) {
+    } else if (actressname != -1) {
         var actressname = quickpayloadtext.replace(" %aa%", "");
         var type = "leadActress";
         console.log("actor name", actorname);
         movies.actressfilms(messagingEvent, actressname, type);
-    }else if (directorname != -1) {
+    } else if (directorname != -1) {
         var directorname = quickpayloadtext.replace(" %ad%", "");
         var type = "director";
         console.log("actor name", actorname);
@@ -334,13 +334,15 @@ function receivedMessage(event) {
             var wit_res_data_ent = wit_res_data.entities;
             var wit_res_data_intent = wit_res_data_ent.intent;
             var wit_res_data_location = wit_res_data_ent.location;
+            var wit_res_data_actor = wit_res_data_ent.actor;
+            var wit_res_data_movie = wit_res_data_ent.movie;
             var wit_res_msg_id = wit_res_data.msg_id;
             console.log("Response from Wit--Res", res);
             console.log("Response from wit_res_data", res_data);
             console.log("Response from Wit--msg_id", wit_res_data.msg_id);
             console.log("Response from Wit************entities:", wit_res_data.entities);
-            console.log("Response from Wit************actor:", wit_res_data_ent.actor);
-            console.log("Response from Wit************movie:", wit_res_data_ent.movie);
+            console.log("Response from Wit************actor:", wit_res_data_actor);
+            console.log("Response from Wit************movie:", wit_res_data_movie);
             console.log("Response from Wit************search_query:", wit_res_data_ent.search_query);
             //console.log("Response from Wit************2", wit_res_data_ent.intent);
             //console.log("Response from Wit************3", wit_res_data_ent.location);
@@ -349,10 +351,25 @@ function receivedMessage(event) {
             //console.log("Response from Wit************6", wit_res_data_intent.value);
             //var intentlength = wit_res_data_intent.length;
             //if (JSON.stringify(wit_res_data_ent) === '{}') { //This will check if the object is empty
-            if (JSON.stringify(wit_res_data_ent.intent) === '{}' || wit_res_data_ent.intent == undefined) {
+            if (JSON.stringify(wit_res_data_ent.intent) === '{}' || wit_res_data_ent.intent == undefined || wit_res_data_ent.actor == undefined || wit_res_data_ent.movie == undefined) {
                 textmessage(msgwit, event);
                 console.log("wit_res_data_intent.length is Zero", wit_res_data_ent);
                 console.log("wit_res_data_intent.length is Zero", event);
+            } else if (wit_res_data_actor > 0) {
+                for (var i = 0; i < wit_res_data_actor.length; i++) {
+                    var td1 = wit_res_data_actor[i]["confidence"];
+                    var td2 = wit_res_data_actor[i]["type"];
+                    var td3 = wit_res_data_actor[i]["value"];
+                }
+                console.log("wit_res_data_actor:--------------", td3);
+
+            } else if (wit_res_data_movie > 0) {
+                for (var i = 0; i < wit_res_data_movie.length; i++) {
+                    var td1 = wit_res_data_movie[i]["confidence"];
+                    var td2 = wit_res_data_movie[i]["type"];
+                    var td3 = wit_res_data_movie[i]["value"];
+                }
+                console.log("wit_res_data_movie:--------------", td3);
             } else {
                 for (var i = 0; i < wit_res_data_intent.length; i++) {
                     var td1 = wit_res_data_intent[i]["confidence"];
@@ -423,11 +440,11 @@ function quick_reply_subcategory(messagingEvent, quickpayloadtext) {
                                 "content_type": "text",
                                 "title": "Pics",
                                 "payload": "pics"
-                            },{
+                            }, {
                                 "content_type": "text",
                                 "title": "Videos",
                                 "payload": "videos"
-                            },{
+                            }, {
                                 "content_type": "text",
                                 //"title": subCategory.toUpperCase(),
                                 "title": subCategory.charAt(0).toUpperCase() + subCategory.substr(1).toLowerCase(),
@@ -598,17 +615,17 @@ function celebritypics(messagingEvent, quickpayloadtext) {
                             }
                         }
                     } else if (subCategory == "%movies%") {
-                      //var movieslist = rows[i].lastFiveMovies;
-                      // var latestmovie = rows[i].latestMovie;
+                        //var movieslist = rows[i].lastFiveMovies;
+                        // var latestmovie = rows[i].latestMovie;
                         console.log("celebrity Movies");
                         celebritymovielist(messagingEvent, celebrityname);
                         //movies.selectedactorfilems(messagingEvent, celebrityname);
-                    }else if (subCategory == "%Moviecomp%") {
-                      var competitor = rows[i].competitors;
-                      var picurl = rows[i].picture2;
-                      var name = rows[i].name;
-                      console.log("celebrity Family");
-                      selectedactorcomptiters(messagingEvent, competitor, picurl, name);
+                    } else if (subCategory == "%Moviecomp%") {
+                        var competitor = rows[i].competitors;
+                        var picurl = rows[i].picture2;
+                        var name = rows[i].name;
+                        console.log("celebrity Family");
+                        selectedactorcomptiters(messagingEvent, competitor, picurl, name);
 
                     } else if (subCategory == "%networth%") {
                         console.log("celebrity networth");
@@ -721,7 +738,7 @@ function celebritypics(messagingEvent, quickpayloadtext) {
                                 "content_type": "text",
                                 "title": 'Movies',
                                 "payload": celebrityname + ' ,%movies%'
-                            },{
+                            }, {
                                 "content_type": "text",
                                 "title": "Net Worth",
                                 "payload": celebrityname + ' ,%networth%'
@@ -761,56 +778,54 @@ function celebritypics(messagingEvent, quickpayloadtext) {
     });
 }
 
-
-function selectedactorcomptiters(messagingEvent, competitor, picurl, name){
-  var senderID = messagingEvent.sender.id;
-  var genrearray = competitor.split(',');
-  var name1 = genrearray[0];
-  var name2 = genrearray[1];
-  console.log(senderID, name1, name2, picurl, name);
-  var keyMap = {
-      "type": "template",
-      "payload": {
-          "template_type": "generic",
-          "elements": [
-              {
-                  "title": name,
-                  "image_url": picurl,
-                  "subtitle": "Competitors of " + name
-              }
-          ]
-      }
-  }
-  var messageData = {
-      "recipient": {
-          "id": senderID
-      },
-      "message": {
-          "attachment": keyMap,
-          "quick_replies": [
-              {
-                  "content_type": "text",
-                  "title": name1,
-                  "payload": name1 + " %a%"
-              }, {
-                  "content_type": "text",
-                  "title": name2,
-                  "payload": name2 + " %a%"
-              }, {
-                  "content_type": "text",
-                  "title": "Back To Movies 🎬",
-                  "payload": "Movies"
-              }, {
-                  "content_type": "text",
-                  "title": "Home 🏠",
-                  "payload": "home"
-              }
-          ]
-      }
-  }
-  fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
+function selectedactorcomptiters(messagingEvent, competitor, picurl, name) {
+    var senderID = messagingEvent.sender.id;
+    var genrearray = competitor.split(',');
+    var name1 = genrearray[0];
+    var name2 = genrearray[1];
+    console.log(senderID, name1, name2, picurl, name);
+    var keyMap = {
+        "type": "template",
+        "payload": {
+            "template_type": "generic",
+            "elements": [
+                {
+                    "title": name,
+                    "image_url": picurl,
+                    "subtitle": "Competitors of " + name
+                }
+            ]
+        }
+    }
+    var messageData = {
+        "recipient": {
+            "id": senderID
+        },
+        "message": {
+            "attachment": keyMap,
+            "quick_replies": [
+                {
+                    "content_type": "text",
+                    "title": name1,
+                    "payload": name1 + " %a%"
+                }, {
+                    "content_type": "text",
+                    "title": name2,
+                    "payload": name2 + " %a%"
+                }, {
+                    "content_type": "text",
+                    "title": "Back To Movies 🎬",
+                    "payload": "Movies"
+                }, {
+                    "content_type": "text",
+                    "title": "Home 🏠",
+                    "payload": "home"
+                }
+            ]
+        }
+    }
+    fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
 }
-
 
 //Selected actor filems from movies list
 function actorintro(messagingEvent, moviename) {
@@ -998,11 +1013,11 @@ function celebrityid(categoryName, event) {
     });
 }
 //celebritiesmoviedetails ends*************************************
-function celebritymovielist(messagingEvent, celebrityname){
-  var event = messagingEvent;
-  var movie1;
-  var movie2;
-  var movie3;
+function celebritymovielist(messagingEvent, celebrityname) {
+    var event = messagingEvent;
+    var movie1;
+    var movie2;
+    var movie3;
     pool.getConnection(function(err, connection) {
         //connection.query('select * from cc_celebrity_preference where celebrityName=?',[categoryName], function(err, rows) {
         connection.query('select * from cc_film_celebrity_preference where name = ?', [celebrityname], function(err, rows) {
@@ -1039,9 +1054,9 @@ function celebritymovielist(messagingEvent, celebrityname){
                 updateusercelebrity(usercelebrityName, senderID);
                 var myarray = movieslist.split(',');
                 for (var i = 0; i < myarray.length; i++) {
-                  movie1 = myarray[1];
-                  movie2 = myarray[2];
-                  movie3 = myarray[3];
+                    movie1 = myarray[1];
+                    movie2 = myarray[2];
+                    movie3 = myarray[3];
 
                     console.log(myarray[1]);
                     console.log(myarray[2]);
@@ -1069,11 +1084,11 @@ function celebritymovielist(messagingEvent, celebrityname){
                             }
                         },
                         "quick_replies": [
-                           {
+                            {
                                 "content_type": "text",
                                 "title": latestmovie,
                                 "payload": latestmovie + " %m%"
-                            },  {
+                            }, {
                                 "content_type": "text",
                                 "title": movie1,
                                 "payload": movie1 + " %m%"
@@ -1085,7 +1100,7 @@ function celebritymovielist(messagingEvent, celebrityname){
                                 "content_type": "text",
                                 "title": movie3,
                                 "payload": movie3 + " %m%"
-                            },  {
+                            }, {
                                 "content_type": "text",
                                 "title": "Back To Movies 🎬",
                                 "payload": "Movies"
@@ -1100,8 +1115,8 @@ function celebritymovielist(messagingEvent, celebrityname){
                 fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
 
             } else if (rows.length >= 0) {
-              googleSearch.googlegraph(celebrityname, event);
-            }else {
+                googleSearch.googlegraph(celebrityname, event);
+            } else {
                 console.log("No Data Found From Database");
                 sendHelpMessage(event);
                 //sendImageMessage(event);
@@ -1172,7 +1187,7 @@ function filmactor(messagingEvent, actorname) {
                 var quickList = [];
                 var movieslist;
                 var celebrityname;
-              //  "payload": celebrityid + ' ,%movies%'
+                //  "payload": celebrityid + ' ,%movies%'
                 var celebrityid;
                 for (var i = 0; i < rows.length; i++) { //Construct request body
                     var res1 = rows[i].id + ",";
@@ -1222,7 +1237,7 @@ function filmactor(messagingEvent, actorname) {
                                 "content_type": "text",
                                 "title": "Movies",
                                 "payload": celebrityname + ' ,%movies%'
-                            },  {
+                            }, {
                                 "content_type": "text",
                                 "title": "Net Worth",
                                 "payload": celebrityname + ' ,%networth%'
@@ -1247,8 +1262,8 @@ function filmactor(messagingEvent, actorname) {
                     }
                 }
                 fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
-            }else if (rows.length == 0) {
-              googleSearch.googlegraph(aname, event);
+            } else if (rows.length == 0) {
+                googleSearch.googlegraph(aname, event);
             } else {
                 console.log("No Data Found From Database");
                 sendHelpMessage(messagingEvent);
