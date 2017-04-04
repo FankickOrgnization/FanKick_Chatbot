@@ -547,20 +547,23 @@ const musiccelebrityinfo = (messagingEvent, quickpayloadtext) => {
                             }
                         }
                     } else if (subCategory == "%Musiccelalbums%") {
-                        console.log("celebrity Family");
-                        keyMap = {
-                            "type": "template",
-                            "payload": {
-                                "template_type": "generic",
-                                "elements": [
-                                    {
-                                        "title": rows[i].name,
-                                        "image_url": rows[i].picture2,
-                                        "subtitle": rows[i].popularAlbums
-                                    }
-                                ]
-                            }
-                        }
+                      var name = rows[i].name;
+                      var event = messagingEvent;
+                      celebrityalbams(event, name);
+                        // console.log("celebrity Family");
+                        // keyMap = {
+                        //     "type": "template",
+                        //     "payload": {
+                        //         "template_type": "generic",
+                        //         "elements": [
+                        //             {
+                        //                 "title": rows[i].name,
+                        //                 "image_url": rows[i].picture2,
+                        //                 "subtitle": rows[i].popularAlbums
+                        //             }
+                        //         ]
+                        //     }
+                        // }
                     } else if (subCategory == "%Musiccelsongs%") {
                         console.log("celebrity Family");
                         keyMap = {
@@ -650,6 +653,82 @@ const musiccelebrityinfo = (messagingEvent, quickpayloadtext) => {
             } else {
                 console.log("No Data Found From Database");
                 sendHelpMessage(messagingEvent);
+            }
+            connection.release();
+        });
+    });
+}
+
+
+function celebrityalbams(event, name){
+    //var event = messagingEvent;
+    var quickList = [];
+    var name;
+    pool.getConnection(function(err, connection) {
+        connection.query('select * from cc_music_albums where artist = ? order by releaseDate desc', [categoryName], function(err, rows) {
+            console.log("*************************Data For Music Albams", rows);
+            if (err) {
+                console.log("Error While retriving content pack data from database:", err);
+            } else if (rows.length) {
+                var senderID = event.sender.id;
+                var contentList = [];
+                if (rows.length > 10) {
+                    var rowslenth = 10;
+                    console.log("more than 10 Rows", rowslenth);
+                } else {
+                    var rowslenth = rows.length;
+                    console.log("less than 10 Rows", rowslenth);
+                }
+                for (var i = 0; i < rowslenth; i++) { //Construct request body
+                    name = rows[i].artist;
+                    var keyMap = {
+                        "title": rows[i].name,
+                        "image_url": rows[i].picture1,
+                        "subtitle": rows[i].artist,
+                        "buttons": [
+                            {
+                                "type": "web_url",
+                                "url": rows[i].albumUrl,
+                                "title": "View Album"
+                            }
+                        ]
+                    };
+                    contentList.push(keyMap);
+
+                }
+                var messageData = {
+                    "recipient": {
+                        "id": senderID
+                    },
+                    "message": {
+                        "attachment": {
+                            "type": "template",
+                            "payload": {
+                                "template_type": "generic",
+                                "elements": contentList
+                            }
+                        },
+                        "quick_replies": [
+                             {
+                                "content_type": "text",
+                                "title": "Jokes",
+                                "payload": "Jokes"
+                            }, {
+                                "content_type": "text",
+                                "title": "Back To Music 🎶",
+                                "payload": "Music"
+                            }, {
+                                "content_type": "text",
+                                "title": "Home 🏠",
+                                "payload": "home"
+                            }
+                        ]
+                    }
+                }
+                fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
+            } else {
+                console.log("No Data Found From Database");
+                sendHelpMessage(event);
             }
             connection.release();
         });
