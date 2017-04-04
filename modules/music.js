@@ -218,7 +218,7 @@ const albuminfo = (messagingEvent, albumname) => {
     });
 }
 
-const languagealbamsinfo = (event, categoryName) => {
+const languagealbamsinfo = (categoryName, event) => {
     //var event = messagingEvent;
     var quickList = [];
     var name;
