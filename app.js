@@ -336,6 +336,7 @@ function receivedMessage(event) {
             var wit_res_data_location = wit_res_data_ent.location;
             var wit_res_data_actor = wit_res_data_ent.actor;
             var wit_res_data_movie = wit_res_data_ent.movie;
+            var wit_res_data_sportsman = wit_res_data_ent.sportsman;
             var wit_res_msg_id = wit_res_data.msg_id;
             console.log("Response from Wit--Res", res);
             console.log("Response from wit_res_data", res_data);
@@ -343,6 +344,7 @@ function receivedMessage(event) {
             console.log("Response from Wit************entities:", wit_res_data.entities);
             console.log("Response from Wit************actor:", wit_res_data_actor);
             console.log("Response from Wit************movie:", wit_res_data_movie);
+              console.log("Response from Wit************sports:", wit_res_data_sportsman);
             console.log("Response from Wit************search_query:", wit_res_data_ent.search_query);
             //console.log("Response from Wit************2", wit_res_data_ent.intent);
             //console.log("Response from Wit************3", wit_res_data_ent.location);
@@ -351,7 +353,7 @@ function receivedMessage(event) {
             //console.log("Response from Wit************6", wit_res_data_intent.value);
             //var intentlength = wit_res_data_intent.length;
             //if (JSON.stringify(wit_res_data_ent) === '{}') { //This will check if the object is empty
-            if (JSON.stringify(wit_res_data_ent.intent) === '{}' || wit_res_data_ent.intent == undefined && wit_res_data_ent.actor == undefined && wit_res_data_ent.movie == undefined) {
+            if (JSON.stringify(wit_res_data_ent.intent) === '{}' || wit_res_data_ent.intent == undefined && wit_res_data_ent.actor == undefined && wit_res_data_ent.movie == undefined && wit_res_data_sportsman == undefined ) {
                 textmessage(msgwit, event);
                 console.log("wit_res_data_intent.length is Zero", wit_res_data_ent);
                 console.log("wit_res_data_intent.length is Zero", event);
@@ -371,7 +373,15 @@ function receivedMessage(event) {
                 }
                 console.log("wit_res_data_movie:--------------", moviename);
                 movies.getmovies(event, moviename);
-            } else {
+            } else if (wit_res_data_sportsman != undefined ) {
+              for (var i = 0; i < wit_res_data_movie.length; i++) {
+                  var td1 = wit_res_data_sportsman[i]["confidence"];
+                  var td2 = wit_res_data_sportsman[i]["type"];
+                  var sportsman = wit_res_data_sportsman[i]["value"];
+              }
+              console.log("wit_res_data_movie:--------------", sportsman);
+
+            }else {
                 for (var i = 0; i < wit_res_data_intent.length; i++) {
                     var td1 = wit_res_data_intent[i]["confidence"];
                     var td2 = wit_res_data_intent[i]["type"];
