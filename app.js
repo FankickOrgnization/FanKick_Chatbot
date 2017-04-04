@@ -374,13 +374,13 @@ function receivedMessage(event) {
                 console.log("wit_res_data_movie:--------------", moviename);
                 movies.getmovies(event, moviename);
             } else if (wit_res_data_sportsman != undefined ) {
-              for (var i = 0; i < wit_res_data_movie.length; i++) {
+              for (var i = 0; i < wit_res_data_sportsman.length; i++) {
                   var td1 = wit_res_data_sportsman[i]["confidence"];
                   var td2 = wit_res_data_sportsman[i]["type"];
                   var sportsman = wit_res_data_sportsman[i]["value"];
               }
               console.log("wit_res_data_movie:--------------", sportsman);
-
+              sports.sportscelbrityintro(event, sportsman);
             }else {
                 for (var i = 0; i < wit_res_data_intent.length; i++) {
                     var td1 = wit_res_data_intent[i]["confidence"];
