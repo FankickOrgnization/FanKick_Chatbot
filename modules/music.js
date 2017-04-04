@@ -219,7 +219,7 @@ const albuminfo = (messagingEvent, albumname) => {
 }
 
 const languagealbamsinfo = (event, categoryName) => {
-    var event = messagingEvent;
+    //var event = messagingEvent;
     var quickList = [];
     var name;
     pool.getConnection(function(err, connection) {
