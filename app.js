@@ -359,16 +359,18 @@ function receivedMessage(event) {
                 for (var i = 0; i < wit_res_data_actor.length; i++) {
                     var td1 = wit_res_data_actor[i]["confidence"];
                     var td2 = wit_res_data_actor[i]["type"];
-                    var td3 = wit_res_data_actor[i]["value"];
+                    var actorname = wit_res_data_actor[i]["value"];
                 }
-                console.log("wit_res_data_actor:--------------", td3);
+                console.log("wit_res_data_actor:--------------", actorname);
+                celebritypics(event, actorname);
             } else if (wit_res_data_movie != undefined) {
                 for (var i = 0; i < wit_res_data_movie.length; i++) {
                     var td1 = wit_res_data_movie[i]["confidence"];
                     var td2 = wit_res_data_movie[i]["type"];
-                    var td3 = wit_res_data_movie[i]["value"];
+                    var moviename = wit_res_data_movie[i]["value"];
                 }
-                console.log("wit_res_data_movie:--------------", td3);
+                console.log("wit_res_data_movie:--------------", moviename);
+                movies.getmovies(event, moviename);
             } else {
                 for (var i = 0; i < wit_res_data_intent.length; i++) {
                     var td1 = wit_res_data_intent[i]["confidence"];
