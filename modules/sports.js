@@ -140,7 +140,11 @@ function sportsmenu(messagingEvent) {
                             }
                         },
                         "quick_replies": [
-                            {
+                          {
+                              "content_type": "text",
+                              "title": "IPL 2017",
+                              "payload": 'IPL 2017'
+                          },{
                                 "content_type": "text",
                                 "title": "Sports Videos",
                                 "payload": 'Sports Videos,sports,%QR%'
@@ -636,6 +640,34 @@ function competitorsofcelebrity(messagingEvent, competitor, picurl, name) {
     fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
 }
 
+//function tvshowsinfo(messagingEvent, moviename)
+const ipl = (categoryName, event) => {
+
+    var senderID = event.sender.id;
+    //var img = 'https://fankickdev.blob.core.windows.net/images/home_logo.png';
+    //var msg = 'Amazing talent! Here is what I know about '+img+'';
+    var messageData = {
+        "recipient": {
+            "id": senderID
+        },
+        "message": {
+            "text": "Ipl information Here you go👉..."
+            //"text":msg
+        }
+        // "message": {
+        //     "attachment": {
+        //         "type": "audio",
+        //         "payload": {
+        //             "url": "https://petersapparel.com/bin/clip.mp3"
+        //         }
+        //     }
+        // }
+    };
+    fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
+    sportsqrdetails(messagingEvent, qrtitle);
+}
+
+
 function sendHelpMessage(event) {
     var errorString = "";
     while (errorString === "") {
@@ -661,5 +693,6 @@ module.exports = {
     sportsintro: sportsintro,
     sportscelbrityintro: sportscelbrityintro,
     sportsqrintro: sportsqrintro,
-    sportscelebrityinfo: sportscelebrityinfo
+    sportscelebrityinfo: sportscelebrityinfo,
+    ipl:ipl
 };

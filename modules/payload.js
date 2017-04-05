@@ -120,6 +120,8 @@ const sendContentPacks = (categoryName, event) => {
         allcategory(event, categoryName);
     } else if (categoryName == "jokes") {
         sendJoke(categoryName, event);
+    }else if (categoryName == "ipl 2017") {
+        sports.ipl(categoryName, event);
     } else {
         sendHelpMessage(event);
     }
