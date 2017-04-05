@@ -651,7 +651,7 @@ const ipl = (categoryName, event) => {
             "id": senderID
         },
         "message": {
-            "text": "Ipl information Here you go👉..."
+            "text": "Will update soon"
             //"text":msg
         }
         // "message": {
@@ -664,7 +664,7 @@ const ipl = (categoryName, event) => {
         // }
     };
     fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
-    sportsqrdetails(messagingEvent, qrtitle);
+    //sportsqrdetails(messagingEvent, qrtitle);
 }
 
 
