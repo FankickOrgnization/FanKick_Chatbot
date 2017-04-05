@@ -663,6 +663,48 @@ const ipl = (categoryName, event) => {
         //     }
         // }
     };
+
+    var messageData = {
+        "recipient": {
+            "id": senderID
+        },
+        "message": {
+            "attachment":  {
+                "title": "IPL 2017",
+                "image_url": "https://livecrickethub.com/wp-content/uploads/2017/02/Vivo-IPL-2017-Auction.png",
+                // "buttons": [
+                // {
+                //   "type": "postback",
+                //   "title": "Music 🎶",
+                //   "payload": "Music"
+                // }
+                // ]
+              },
+            "quick_replies": [
+              {
+                "content_type": "text",
+                "title": "IPL 2017 Results",
+                "payload": 'IPL 2017 Results,sports,%QR%'
+            }, {
+                "content_type": "text",
+                "title": "IPL 2017 Schedule",
+                "payload": 'IPL 2017 Schedule,sports,%QR%'
+            }, {
+                "content_type": "text",
+                "title": "IPL 2017 Squads",
+                "payload": 'IPL 2017 Squads,sports,%QR%'
+            }, {
+                "content_type": "text",
+                "title": "Back To Sports 🏆",
+                "payload": "Sports"
+            }, {
+                "content_type": "text",
+                "title": "home 🏠",
+                "payload": "home"
+            }]
+          }
+    };
+
     fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
     //sportsqrdetails(messagingEvent, qrtitle);
 }
