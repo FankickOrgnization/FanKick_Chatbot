@@ -628,7 +628,7 @@ function celebritypics(messagingEvent, quickpayloadtext) {
                         var competitor = rows[i].competitors;
                         var picurl = rows[i].picture2;
                         var name = rows[i].name;
-                        console.log("celebrity Family");
+                        console.log("celebrity competitors");
                         selectedactorcomptiters(messagingEvent, competitor, picurl, name);
 
                     } else if (subCategory == "%networth%") {
@@ -702,7 +702,7 @@ function celebritypics(messagingEvent, quickpayloadtext) {
                             }
                         }
                     } else if (subCategory == "%about%") {
-                        console.log("celebrity Family");
+                        console.log("about celebrity");
                         keyMap = {
                             "type": "template",
                             "payload": {
@@ -1132,8 +1132,8 @@ function celebritymovielist(messagingEvent, celebrityname) {
 
 //updateing the celebritiesdetails in user_preforence
 function updateusercelebrity(usercelebrityName, senderID) {
-    console.log("******************categoryName*************", usercelebrityName);
-    console.log("******************senderID*************", senderID);
+    //console.log("******************categoryName*************", usercelebrityName);
+    //console.log("******************senderID*************", senderID);
     pool.getConnection(function(err, connection) {
         connection.query('update cc_user_preference set favCelebrity= ? where facebookId=?', [
             usercelebrityName, senderID
@@ -1141,7 +1141,7 @@ function updateusercelebrity(usercelebrityName, senderID) {
             if (err) {
                 console.log("Error While retriving content pack data from database:", err);
             } else {
-                console.log("No Data Found From Database");
+                //console.log("No Data Found From Database");
                 //sendHelpMessage(event);
                 //sendImageMessage(event);
             }

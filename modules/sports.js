@@ -510,7 +510,7 @@ const sportscelebrityinfo = (messagingEvent, quickpayloadtext) => {
                             }
                         }
                     } else if (subCategory == "%sportscelawards%") {
-                        console.log("celebrity Family");
+                        console.log("celebrity awards");
                         keyMap = {
                             "type": "template",
                             "payload": {
@@ -536,7 +536,7 @@ const sportscelebrityinfo = (messagingEvent, quickpayloadtext) => {
                         var picurl = rows[i].picture2;
                         var name = rows[i].name;
                         competitorsofcelebrity(messagingEvent, competitor, picurl, name);
-                        console.log("celebrity Family");
+                        console.log("celebrity competitors");
 
                     }
                     //contentList.push(keyMap);

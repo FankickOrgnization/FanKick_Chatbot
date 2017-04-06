@@ -532,7 +532,7 @@ const musiccelebrityinfo = (messagingEvent, quickpayloadtext) => {
                             }
                         }
                     } else if (subCategory == "%musiccelawards%") {
-                        console.log("celebrity Family");
+                        console.log("celebrity awards");
                         keyMap = {
                             "type": "template",
                             "payload": {
@@ -565,7 +565,7 @@ const musiccelebrityinfo = (messagingEvent, quickpayloadtext) => {
                         //     }
                         // }
                     } else if (subCategory == "%Musiccelsongs%") {
-                        console.log("celebrity Family");
+                        console.log("celebrity songs");
                         keyMap = {
                             "type": "template",
                             "payload": {
@@ -580,7 +580,7 @@ const musiccelebrityinfo = (messagingEvent, quickpayloadtext) => {
                             }
                         }
                     } else if (subCategory == "%Musiccelcomp%") {
-                        console.log("celebrity Family");
+                        console.log("celebrity competitors");
                         var competitor = rows[i].competitors;
                         var picurl = rows[i].picture2;
                         var name = rows[i].name;

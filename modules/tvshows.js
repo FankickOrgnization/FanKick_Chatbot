@@ -209,7 +209,7 @@ const tvcelebrityinfo = (messagingEvent, quickpayloadtext) => {
                             }
                         }
                     } else if (subCategory == "%tvcelawards%") {
-                        console.log("celebrity Family");
+                        console.log("celebrity awards");
                         keyMap = {
                             "type": "template",
                             "payload": {
