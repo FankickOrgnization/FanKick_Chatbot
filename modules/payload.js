@@ -78,12 +78,12 @@ const sendContentPacks = (categoryName, event) => {
         actorintro(categoryName, event)
         //googlegraph(categoryName,event);
     } else if (categoryName == "hi" || categoryName == "hello" || categoryName == "hey") {
-    //  var cricketApi = cricapi.cricketScores();
-      //console.log("###########cricketScores############",cricketApi);
+        //  var cricketApi = cricapi.cricketScores();
+        //console.log("###########cricketScores############",cricketApi);
         wishingmessage(categoryName, event);
-    }else if (categoryName == "pics") {
+    } else if (categoryName == "pics") {
         imagedisplay(categoryName, event);
-    }else if (categoryName == "videos") {
+    } else if (categoryName == "videos") {
         videodisplay(categoryName, event);
     } else if (categoryName == "movies" || categoryName == "sports" || categoryName == "tv shows" || categoryName == "music") {
         submenu(event, categoryName);
@@ -94,8 +94,8 @@ const sendContentPacks = (categoryName, event) => {
         usersubcategory(event, categoryName);
     } else if (categoryName == "hindi" || categoryName == "telugu" || categoryName == "tamil" || categoryName == "kannada") {
         music.languagealbamsinfo(categoryName, event);
-        //usersubcategory(event, categoryName);
-    }else if (categoryName == "action" || categoryName == "comedy" || categoryName == "romance" || categoryName == "thriller" || categoryName == "horror") {
+        userpreferdlanguage(event, categoryName);
+    } else if (categoryName == "action" || categoryName == "comedy" || categoryName == "romance" || categoryName == "thriller" || categoryName == "horror") {
         wishingmessage(categoryName, event);
         //moviegenre(categoryName,event);
     } else if (categoryName == "reality" || categoryName == "romantic comedy" || categoryName == "horror / crime" || categoryName == "cooking" || categoryName == "animation") {
@@ -120,14 +120,14 @@ const sendContentPacks = (categoryName, event) => {
         allcategory(event, categoryName);
     } else if (categoryName == "jokes") {
         sendJoke(categoryName, event);
-    }else if (categoryName == "ipl 2017") {
+    } else if (categoryName == "ipl 2017") {
         sports.ipl(categoryName, event);
     } else {
         sendHelpMessage(event);
     }
 }
 
-function imagedisplay(categoryName, event){
+function imagedisplay(categoryName, event) {
     var senderID = event.sender.id;
     var msg = 'Amazing talent👏! Here is what I know about ' + categoryName + '';
     var messageData = {
@@ -135,40 +135,40 @@ function imagedisplay(categoryName, event){
             "id": senderID
         },
         "message": {
-            "attachment":{
-              "type":"image",
-              "payload":{
-                "url":"https://33.media.tumblr.com/fe09465871326254116e18217f00e58c/tumblr_nra3xlkVYz1tq73owo1_500.gif"
-              }
+            "attachment": {
+                "type": "image",
+                "payload": {
+                    "url": "https://33.media.tumblr.com/fe09465871326254116e18217f00e58c/tumblr_nra3xlkVYz1tq73owo1_500.gif"
+                }
             },
             "quick_replies": quickreply
-          }
-    };
-    fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
-    //celebritymovies(messagingEvent, moviename);
-  //  celebritiesdetails(categoryName, event);
-}
-
-function videodisplay(categoryName, event){
-    var senderID = event.sender.id;
-    var msg = 'Amazing talent👏! Here is what I know about ' + categoryName + '';
-    var messageData = {
-        "recipient": {
-            "id": senderID
-        },
-        "message": {
-          "attachment":{
-            "type":"video",
-            "payload":{
-              "url":"http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4"
-            }
-          },
-          "quick_replies": quickreply
         }
     };
     fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
     //celebritymovies(messagingEvent, moviename);
-  //  celebritiesdetails(categoryName, event);
+    //  celebritiesdetails(categoryName, event);
+}
+
+function videodisplay(categoryName, event) {
+    var senderID = event.sender.id;
+    var msg = 'Amazing talent👏! Here is what I know about ' + categoryName + '';
+    var messageData = {
+        "recipient": {
+            "id": senderID
+        },
+        "message": {
+            "attachment": {
+                "type": "video",
+                "payload": {
+                    "url": "http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4"
+                }
+            },
+            "quick_replies": quickreply
+        }
+    };
+    fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
+    //celebritymovies(messagingEvent, moviename);
+    //  celebritiesdetails(categoryName, event);
 }
 
 function allcategory(event, categoryName) {
@@ -286,7 +286,7 @@ function celebritiesdetails(categoryName, event) {
         connection.query('select * from cc_celebrity_preference where celebrityName = ?', [categoryName], function(err, rows) {
             if (err) {
                 console.log("Error While retriving content pack data from database:", err);
-            } else if (rows.length < 0 ) {
+            } else if (rows.length < 0) {
                 var senderID = event.sender.id;
                 var contentList = [];
                 var quickList = [];
@@ -372,8 +372,8 @@ function celebritiesdetails(categoryName, event) {
                     }
                 }
                 fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
-            }else if (rows.length >= 0) {
-              googleSearch.googlegraph(categoryName, event);
+            } else if (rows.length >= 0) {
+                googleSearch.googlegraph(categoryName, event);
             } else {
                 console.log("No Data Found From Database");
                 sendHelpMessage(event);
@@ -584,7 +584,7 @@ function fbuserdetails(event, userid) {
         //var msg = 'Hi '+username+', A lot of exciting things are awaiting for you! Get kicking!';
         //var msg = 'Hi '+username+'! My name is Kicker.\n How may I come of any help to you today?';
         //var msg = 'Hi '+username+'! My name is Kicker.\n \nI can help you get closer to your favorite celebrity with a lot of exciting things about them.\n\n Choose what excites you more';
-          var msg = 'Hey Frannd!! Glad to see you! If you want to hang out for a while... These preferences will not keep you waiting! Choose a Category and eyewitness the Entertainment Buzzer';
+        var msg = 'Hey Frannd!! Glad to see you! If you want to hang out for a while... These preferences will not keep you waiting! Choose a Category and eyewitness the Entertainment Buzzer';
         //var msg = 'Happy to See you 🙂 Entertainment is the new Joy. Fix and Click on a Preference from the menu and get trippy with it.';
         console.log("--------:Response data:--------msg1 ", msg);
         var messageData = {
@@ -720,6 +720,7 @@ function submenu(event, categoryName) {
                 var random = Math.floor(Math.random() * sport.length);
                 if (sport[random].sports.length < 320) // better be a least one good joke :)
                     submenuString = sport[random].sports;
+
                 //submemuquickreply(event, categoryName, submenuString);
                 sports.sportsintro(event, submenuString);
             } else if (subname == "music") {
@@ -733,6 +734,7 @@ function submenu(event, categoryName) {
                 var random = Math.floor(Math.random() * tv_show.length);
                 if (tv_show[random].tv_shows.length < 320) // better be a least one good joke :)
                     submenuString = tv_show[random].tv_shows;
+
                 //tvshows.tvshowsmenu(event, categoryName, submenuString);
                 tvshows.tvshowsintro(event, submenuString);
             }
@@ -829,6 +831,28 @@ function usersubcategory(event, categoryName) {
         });
     });
 }
+
+function userpreferdlanguage(event, categoryName) {
+    var senderID = event.sender.id;
+    pool.getConnection(function(err, connection) {
+        connection.query('update cc_user_preference set language = ? where facebookId = ?', [
+            categoryName, senderID
+        ], function(err, rows) {
+            if (err) {
+                console.log("Error While retriving content pack data from database:", err);
+            } else {
+                console.log("No Data Found From Database");
+                console.log("Updated the user language into the preferences");
+                //sendHelpMessage(event);
+                //sendImageMessage(event);
+            }
+            connection.release();
+        });
+    });
+}
+
+
+
 
 function adduserlocation(event, userloca, categoryName) {
     console.log("*********************adduserlocation***********************1", userloca);
@@ -928,5 +952,5 @@ module.exports = {
     sendContentPacks: sendContentPacks
     //fbuserdetails:fbuserdetails,
     // name:name,
-  //  quickMenu: quickMenu
+    //  quickMenu: quickMenu
 };

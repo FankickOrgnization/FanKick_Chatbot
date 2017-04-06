@@ -361,7 +361,6 @@ const getgenremovies = (messagingEvent, quickpayloadtext) => {
 //
 // }
 
-
 const selectedactorfilems = (messagingEvent, celebrityname) => {
     console.log("*********Movies Genre***********", celebrityname);
     pool.getConnection(function(err, connection) {
@@ -457,7 +456,6 @@ const selectedactorfilems = (messagingEvent, celebrityname) => {
 
 }
 
-
 const actressfilms = (messagingEvent, celebrityname, type) => {
     console.log("*********Movies Genre***********", celebrityname);
     var actortype = type;
@@ -467,26 +465,26 @@ const actressfilms = (messagingEvent, celebrityname, type) => {
     //var query = 'select * from cc_movies_preference where leadActress = ? order by releaseDate desc';
     //console.log(query);
     pool.getConnection(function(err, connection) {
-      if(actortype = "leadActress"){}
-        connection.query('select * from cc_movies_preference where leadActress = ? order by releaseDate desc',[mname],function(err, rows) {
+        if (actortype = "leadActress") {}
+        connection.query('select * from cc_movies_preference where leadActress = ? order by releaseDate desc', [mname], function(err, rows) {
             console.log("*************************selectedactorfilems", rows);
             if (err) {
                 console.log("Error While retriving content pack data from database:", err);
             } else if (rows.length) {
                 var senderID = messagingEvent.sender.id;
                 var contentList = [];
-                    if (rows.length > 10) {
-                        var rowslenth = 10;
-                        console.log("more than 10 Rows", rowslenth);
-                    } else {
-                        var rowslenth = rows.length;
-                        console.log("less than 10 Rows", rowslenth);
-                    }
+                if (rows.length > 10) {
+                    var rowslenth = 10;
+                    console.log("more than 10 Rows", rowslenth);
+                } else {
+                    var rowslenth = rows.length;
+                    console.log("less than 10 Rows", rowslenth);
+                }
                 for (var i = 0; i < rowslenth; i++) { //Construct request body
                     var keyMap = {
                         "title": rows[i].movieName,
                         "image_url": rows[i].picture1,
-                        "subtitle":mname,
+                        "subtitle": mname,
                         "buttons": [
                             {
                                 "type": "postback",
@@ -552,7 +550,6 @@ const actressfilms = (messagingEvent, celebrityname, type) => {
     });
 
 }
-
 
 const directorfilms = (messagingEvent, celebrityname, type) => {
     console.log("*********Movies Genre***********", celebrityname);
@@ -563,26 +560,26 @@ const directorfilms = (messagingEvent, celebrityname, type) => {
     //var query = 'select * from cc_movies_preference where leadActress = ? order by releaseDate desc';
     //console.log(query);
     pool.getConnection(function(err, connection) {
-      if(actortype = "leadActress"){}
-        connection.query('select * from cc_movies_preference where director = ? order by releaseDate desc',[mname],function(err, rows) {
+        if (actortype = "leadActress") {}
+        connection.query('select * from cc_movies_preference where director = ? order by releaseDate desc', [mname], function(err, rows) {
             console.log("*************************selectedactorfilems", rows);
             if (err) {
                 console.log("Error While retriving content pack data from database:", err);
             } else if (rows.length) {
                 var senderID = messagingEvent.sender.id;
                 var contentList = [];
-                    if (rows.length > 10) {
-                        var rowslenth = 10;
-                        console.log("more than 10 Rows", rowslenth);
-                    } else {
-                        var rowslenth = rows.length;
-                        console.log("less than 10 Rows", rowslenth);
-                    }
+                if (rows.length > 10) {
+                    var rowslenth = 10;
+                    console.log("more than 10 Rows", rowslenth);
+                } else {
+                    var rowslenth = rows.length;
+                    console.log("less than 10 Rows", rowslenth);
+                }
                 for (var i = 0; i < rowslenth; i++) { //Construct request body
                     var keyMap = {
                         "title": rows[i].movieName,
                         "image_url": rows[i].picture1,
-                        "subtitle":mname,
+                        "subtitle": mname,
                         "buttons": [
                             {
                                 "type": "postback",
@@ -648,9 +645,6 @@ const directorfilms = (messagingEvent, celebrityname, type) => {
     });
 
 }
-
-
-
 
 function sendHelpMessage(event) {
     var errorString = "";
@@ -678,6 +672,6 @@ module.exports = {
     getmovies: getmovies,
     getgenremovies: getgenremovies,
     selectedactorfilems: selectedactorfilems,
-    actressfilms:actressfilms,
-    directorfilms:directorfilms
+    actressfilms: actressfilms,
+    directorfilms: directorfilms
 };

@@ -140,11 +140,11 @@ function sportsmenu(messagingEvent) {
                             }
                         },
                         "quick_replies": [
-                          {
-                              "content_type": "text",
-                              "title": "IPL 2017",
-                              "payload": 'IPL 2017'
-                          },{
+                            {
+                                "content_type": "text",
+                                "title": "IPL 2017",
+                                "payload": 'IPL 2017'
+                            }, {
                                 "content_type": "text",
                                 "title": "Sports Videos",
                                 "payload": 'Sports Videos,sports,%QR%'
@@ -246,11 +246,11 @@ function sportsqrdetails(messagingEvent, qrtitle) {
                             }
                         },
                         "quick_replies": [
-                          {
-                              "content_type": "text",
-                              "title": qr1,
-                              "payload": qr1
-                          }, {
+                            {
+                                "content_type": "text",
+                                "title": qr1,
+                                "payload": qr1
+                            }, {
                                 "content_type": "text",
                                 "title": qr2,
                                 "payload": qr2 + ' %sportscel%'
@@ -266,7 +266,7 @@ function sportsqrdetails(messagingEvent, qrtitle) {
                                 "content_type": "text",
                                 "title": qr5,
                                 "payload": qr5 + ',sports,%QR%'
-                            },  {
+                            }, {
                                 "content_type": "text",
                                 "title": "Back To Sports 🏆",
                                 "payload": "Sports"
@@ -664,7 +664,6 @@ const ipl = (categoryName, event) => {
     //     // }
     // };
 
-
     var keyMap = {
         "type": "template",
         "payload": {
@@ -684,36 +683,36 @@ const ipl = (categoryName, event) => {
             "id": senderID
         },
         "message": {
-            "attachment": keyMap ,
+            "attachment": keyMap,
             "quick_replies": [
-              {
-                "content_type": "text",
-                "title": "IPL 2017 Results",
-                "payload": 'IPL 2017 Results,sports,%QR%'
-            }, {
-                "content_type": "text",
-                "title": "IPL 2017 Schedule",
-                "payload": 'IPL 2017 Schedule,sports,%QR%'
-            }, {
-                "content_type": "text",
-                "title": "IPL 2017 Squads",
-                "payload": 'IPL 2017 Squads,sports,%QR%'
-            }, {
-                "content_type": "text",
-                "title": "Back To Sports 🏆",
-                "payload": "Sports"
-            }, {
-                "content_type": "text",
-                "title": "home 🏠",
-                "payload": "home"
-            }]
-          }
+                {
+                    "content_type": "text",
+                    "title": "IPL 2017 Results",
+                    "payload": 'IPL 2017 Results,sports,%QR%'
+                }, {
+                    "content_type": "text",
+                    "title": "IPL 2017 Schedule",
+                    "payload": 'IPL 2017 Schedule,sports,%QR%'
+                }, {
+                    "content_type": "text",
+                    "title": "IPL 2017 Squads",
+                    "payload": 'IPL 2017 Squads,sports,%QR%'
+                }, {
+                    "content_type": "text",
+                    "title": "Back To Sports 🏆",
+                    "payload": "Sports"
+                }, {
+                    "content_type": "text",
+                    "title": "home 🏠",
+                    "payload": "home"
+                }
+            ]
+        }
     };
 
     fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
     //sportsqrdetails(messagingEvent, qrtitle);
 }
-
 
 function sendHelpMessage(event) {
     var errorString = "";
@@ -741,5 +740,5 @@ module.exports = {
     sportscelbrityintro: sportscelbrityintro,
     sportsqrintro: sportsqrintro,
     sportscelebrityinfo: sportscelebrityinfo,
-    ipl:ipl
+    ipl: ipl
 };

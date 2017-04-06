@@ -337,7 +337,7 @@ function receivedMessage(event) {
             //console.log("Response from Wit************6", wit_res_data_intent.value);
             //var intentlength = wit_res_data_intent.length;
             //if (JSON.stringify(wit_res_data_ent) === '{}') { //This will check if the object is empty
-            if (wit_res_data_ent.intent == undefined && wit_res_data_ent.actor == undefined && wit_res_data_ent.movie == undefined && wit_res_data_sportsman == undefined && wit_res_data_ent.music_artist == undefined ) {
+            if (wit_res_data_ent.intent == undefined && wit_res_data_ent.actor == undefined && wit_res_data_ent.movie == undefined && wit_res_data_sportsman == undefined && wit_res_data_ent.music_artist == undefined) {
                 textmessage(msgwit, event);
                 console.log("wit_res_data_intent.length is Zero", wit_res_data_ent);
                 console.log("wit_res_data_intent.length is Zero", event);
@@ -357,24 +357,24 @@ function receivedMessage(event) {
                 }
                 console.log("wit_res_data_movie:--------------", moviename);
                 movies.getmovies(event, moviename);
-            } else if (wit_res_data_sportsman != undefined ) {
-              for (var i = 0; i < wit_res_data_sportsman.length; i++) {
-                  var td1 = wit_res_data_sportsman[i]["confidence"];
-                  var td2 = wit_res_data_sportsman[i]["type"];
-                  var sportsman = wit_res_data_sportsman[i]["value"];
-              }
-              console.log("wit_res_data_sportsman:--------------", sportsman);
-              sports.sportscelbrityintro(event, sportsman);
-            }else if (wit_res_data_music_artist != undefined ) {
-              for (var i = 0; i < wit_res_data_music_artist.length; i++) {
-                  var td1 = wit_res_data_music_artist[i]["confidence"];
-                  //var td2 = wit_res_data_music_artist[i]["type"];
-                  var music_artist = wit_res_data_music_artist[i]["value"];
-              }
-              console.log("wit_res_data_sportsman:--------------", music_artist);
-              //music.music_artist(event, sportsman);
+            } else if (wit_res_data_sportsman != undefined) {
+                for (var i = 0; i < wit_res_data_sportsman.length; i++) {
+                    var td1 = wit_res_data_sportsman[i]["confidence"];
+                    var td2 = wit_res_data_sportsman[i]["type"];
+                    var sportsman = wit_res_data_sportsman[i]["value"];
+                }
+                console.log("wit_res_data_sportsman:--------------", sportsman);
+                sports.sportscelbrityintro(event, sportsman);
+            } else if (wit_res_data_music_artist != undefined) {
+                for (var i = 0; i < wit_res_data_music_artist.length; i++) {
+                    var td1 = wit_res_data_music_artist[i]["confidence"];
+                    //var td2 = wit_res_data_music_artist[i]["type"];
+                    var music_artist = wit_res_data_music_artist[i]["value"];
+                }
+                console.log("wit_res_data_sportsman:--------------", music_artist);
+                //music.music_artist(event, sportsman);
                 music.musiccelbrityintro(event, music_artist);
-            }else {
+            } else {
                 for (var i = 0; i < wit_res_data_intent.length; i++) {
                     var td1 = wit_res_data_intent[i]["confidence"];
                     var td2 = wit_res_data_intent[i]["type"];

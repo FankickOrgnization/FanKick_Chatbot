@@ -99,8 +99,7 @@ const musicalbams = (categoryName, event) => {
                                 "content_type": "text",
                                 "title": "Music Videos",
                                 "payload": 'Music Videos,' + categoryName + ',%QRsub%'
-                            },
-                            {
+                            }, {
                                 "content_type": "text",
                                 "title": "Hindi Albums",
                                 "payload": "Hindi"
@@ -267,7 +266,7 @@ const languagealbamsinfo = (categoryName, event) => {
                             }
                         },
                         "quick_replies": [
-                             {
+                            {
                                 "content_type": "text",
                                 "title": "Jokes",
                                 "payload": "Jokes"
@@ -292,9 +291,6 @@ const languagealbamsinfo = (categoryName, event) => {
         });
     });
 }
-
-
-
 
 const musiccelbrityintro = (messagingEvent, musiccelname) => {
     var senderID = messagingEvent.sender.id;
@@ -406,9 +402,9 @@ function musiccelbritydetails(messagingEvent, musiccelname) {
                 }
                 fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
             } else if (rows.length == 0) {
-              googleSearch.googlegraph(musiccelname, event);
-              //wikipediadetails(musiccelname, event);
-            }else {
+                googleSearch.googlegraph(musiccelname, event);
+                //wikipediadetails(musiccelname, event);
+            } else {
                 console.log("No Data Found From Database");
                 sendHelpMessage(event);
             }
@@ -547,9 +543,9 @@ const musiccelebrityinfo = (messagingEvent, quickpayloadtext) => {
                             }
                         }
                     } else if (subCategory == "%Musiccelalbums%") {
-                      var name = rows[i].name;
-                      var event = messagingEvent;
-                      celebrityalbams(event, name);
+                        var name = rows[i].name;
+                        var event = messagingEvent;
+                        celebrityalbams(event, name);
                         // console.log("celebrity Family");
                         // keyMap = {
                         //     "type": "template",
@@ -659,8 +655,7 @@ const musiccelebrityinfo = (messagingEvent, quickpayloadtext) => {
     });
 }
 
-
-function celebrityalbams(event, name){
+function celebrityalbams(event, name) {
     //var event = messagingEvent;
     var quickList = [];
     var name;
@@ -709,7 +704,7 @@ function celebrityalbams(event, name){
                             }
                         },
                         "quick_replies": [
-                             {
+                            {
                                 "content_type": "text",
                                 "title": "Jokes",
                                 "payload": "Jokes"
@@ -784,18 +779,14 @@ function competitorsofcelebrity(messagingEvent, competitor, picurl, name) {
     fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
 }
 
-
-
-
-function wikipediadetails(categoryName, event){
-  wikipedia.page.data(categoryName, { content: true }, function(response) {
-	console.log("wikipediadetails",response);// structured information on the page for Clifford Brown (wikilinks, references, categories, etc.)
-});
-
+function wikipediadetails(categoryName, event) {
+    wikipedia.page.data(categoryName, {
+        content: true
+    }, function(response) {
+        console.log("wikipediadetails", response); // structured information on the page for Clifford Brown (wikilinks, references, categories, etc.)
+    });
 
 }
-
-
 
 function sendHelpMessage(event) {
     var errorString = "";
