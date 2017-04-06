@@ -20,25 +20,6 @@ const errors = require('./contentjson/errormsg.json');
 
 var pool = mysql.createPool({connectionLimit: 1, host: 'ap-cdbr-azure-southeast-a.cloudapp.net', user: 'bb603e8108da6e', password: '3e384329', database: 'rankworlddev'});
 
-// var quickMenu = [
-//     {
-//         "content_type": "text",
-//         "title": "Movies 🎬",
-//         "payload": "Movies"
-//     }, {
-//         "content_type": "text",
-//         "title": "Sports 🏆",
-//         "payload": "Sports"
-//     }, {
-//         "content_type": "text",
-//         "title": "TV Shows 📺",
-//         "payload": "TV Shows"
-//     }, {
-//         "content_type": "text",
-//         "title": "Music 🎶",
-//         "payload": "Music"
-//     }
-// ];
 var quickreply = [
     {
         "content_type": "text",
@@ -346,8 +327,8 @@ function receivedMessage(event) {
             console.log("Response from Wit************entities:", wit_res_data.entities);
             console.log("Response from Wit************actor:", wit_res_data_actor);
             console.log("Response from Wit************movie:", wit_res_data_movie);
-              console.log("Response from Wit************sports:", wit_res_data_sportsman);
-              console.log("Response from Wit************music_artist:", wit_res_data_music_artist);
+            console.log("Response from Wit************sports:", wit_res_data_sportsman);
+            console.log("Response from Wit************music_artist:", wit_res_data_music_artist);
             console.log("Response from Wit************search_query:", wit_res_data_ent.search_query);
             //console.log("Response from Wit************2", wit_res_data_ent.intent);
             //console.log("Response from Wit************3", wit_res_data_ent.location);
@@ -356,7 +337,7 @@ function receivedMessage(event) {
             //console.log("Response from Wit************6", wit_res_data_intent.value);
             //var intentlength = wit_res_data_intent.length;
             //if (JSON.stringify(wit_res_data_ent) === '{}') { //This will check if the object is empty
-            if (JSON.stringify(wit_res_data_ent.intent) === '{}' || wit_res_data_ent.intent == undefined && wit_res_data_ent.actor == undefined && wit_res_data_ent.movie == undefined && wit_res_data_sportsman == undefined && wit_res_data_ent.music_artist == undefined ) {
+            if (wit_res_data_ent.intent == undefined && wit_res_data_ent.actor == undefined && wit_res_data_ent.movie == undefined && wit_res_data_sportsman == undefined && wit_res_data_ent.music_artist == undefined ) {
                 textmessage(msgwit, event);
                 console.log("wit_res_data_intent.length is Zero", wit_res_data_ent);
                 console.log("wit_res_data_intent.length is Zero", event);
