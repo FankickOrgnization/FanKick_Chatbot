@@ -644,42 +644,47 @@ function competitorsofcelebrity(messagingEvent, competitor, picurl, name) {
 const ipl = (categoryName, event) => {
 
     var senderID = event.sender.id;
-    //var img = 'https://fankickdev.blob.core.windows.net/images/home_logo.png';
-    //var msg = 'Amazing talent! Here is what I know about '+img+'';
-    var messageData = {
-        "recipient": {
-            "id": senderID
-        },
-        "message": {
-            "text": "Will update soon"
-            //"text":msg
+    // //var img = 'https://fankickdev.blob.core.windows.net/images/home_logo.png';
+    // //var msg = 'Amazing talent! Here is what I know about '+img+'';
+    // var messageData = {
+    //     "recipient": {
+    //         "id": senderID
+    //     },
+    //     "message": {
+    //         "text": "Will update soon"
+    //         //"text":msg
+    //     }
+    //     // "message": {
+    //     //     "attachment": {
+    //     //         "type": "audio",
+    //     //         "payload": {
+    //     //             "url": "https://petersapparel.com/bin/clip.mp3"
+    //     //         }
+    //     //     }
+    //     // }
+    // };
+
+
+    var keyMap = {
+        "type": "template",
+        "payload": {
+            "template_type": "generic",
+            "elements": [
+                {
+                    "title": "IPL 2017",
+                    "image_url": 'https://livecrickethub.com/wp-content/uploads/2017/02/Vivo-IPL-2017-Auction.png',
+                    "subtitle": "IPL 2017"
+                }
+            ]
         }
-        // "message": {
-        //     "attachment": {
-        //         "type": "audio",
-        //         "payload": {
-        //             "url": "https://petersapparel.com/bin/clip.mp3"
-        //         }
-        //     }
-        // }
-    };
+    }
 
     var messageData = {
         "recipient": {
             "id": senderID
         },
         "message": {
-            "attachment":  {
-                "title": "IPL 2017",
-                "image_url": "https://livecrickethub.com/wp-content/uploads/2017/02/Vivo-IPL-2017-Auction.png",
-                // "buttons": [
-                // {
-                //   "type": "postback",
-                //   "title": "Music 🎶",
-                //   "payload": "Music"
-                // }
-                // ]
-              },
+            "attachment": keyMap ,
             "quick_replies": [
               {
                 "content_type": "text",
