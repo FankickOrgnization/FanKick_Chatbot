@@ -246,11 +246,11 @@ function sportsqrdetails(messagingEvent, qrtitle) {
                             }
                         },
                         "quick_replies": [
-                            {
-                                "content_type": "text",
-                                "title": "IPL 2017",
-                                "payload":"IPL 2017"
-                            }, {
+                          {
+                              "content_type": "text",
+                              "title": qr1,
+                              "payload": qr1
+                          }, {
                                 "content_type": "text",
                                 "title": qr2,
                                 "payload": qr2 + ' %sportscel%'
