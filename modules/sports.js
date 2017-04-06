@@ -257,19 +257,23 @@ function sportsqrdetails(messagingEvent, qrtitle) {
                             }, {
                                 "content_type": "text",
                                 "title": qr3,
-                                "payload": qr3 + ' %sportscel%'
+                                "payload": qr3 + ',sports,%QR%'
                             }, {
                                 "content_type": "text",
                                 "title": qr4,
-                                "payload": qr4 + ' %sportscel%'
+                                "payload": qr4 + ',sports,%QR%'
                             }, {
                                 "content_type": "text",
                                 "title": qr5,
-                                "payload": qr5 + ' %sportscel%'
+                                "payload": qr5 + ',sports,%QR%'
                             }, {
                                 "content_type": "text",
-                                "title": "Jokes",
-                                "payload": "Jokes"
+                                "title": "IPL 2017",
+                                "payload": "IPL 2017"
+                            }, {
+                                "content_type": "text",
+                                "title": "Back To Sports 🏆",
+                                "payload": "Sports"
                             }, {
                                 "content_type": "text",
                                 "title": "Home 🏠",
