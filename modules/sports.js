@@ -248,8 +248,8 @@ function sportsqrdetails(messagingEvent, qrtitle) {
                         "quick_replies": [
                             {
                                 "content_type": "text",
-                                "title": qr1,
-                                "payload": qr1 + ' %sportscel%'
+                                "title": "IPL 2017",
+                                "payload":"IPL 2017"
                             }, {
                                 "content_type": "text",
                                 "title": qr2,
@@ -257,7 +257,7 @@ function sportsqrdetails(messagingEvent, qrtitle) {
                             }, {
                                 "content_type": "text",
                                 "title": qr3,
-                                "payload": qr3 + ',sports,%QR%'
+                                "payload": qr3 + ' %sportscel%'
                             }, {
                                 "content_type": "text",
                                 "title": qr4,
@@ -266,11 +266,7 @@ function sportsqrdetails(messagingEvent, qrtitle) {
                                 "content_type": "text",
                                 "title": qr5,
                                 "payload": qr5 + ',sports,%QR%'
-                            }, {
-                                "content_type": "text",
-                                "title": "IPL 2017",
-                                "payload": "IPL 2017"
-                            }, {
+                            },  {
                                 "content_type": "text",
                                 "title": "Back To Sports 🏆",
                                 "payload": "Sports"
