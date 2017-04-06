@@ -221,7 +221,7 @@ function sportsqrdetails(messagingEvent, qrtitle) {
                             {
                                 "type": "web_url",
                                 "url": rows[i].articleUrl,
-                                "title": "View Article 📰"
+                                "title": "Proceed 👉"
                             }
                         ]
                     };
