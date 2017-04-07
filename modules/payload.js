@@ -160,8 +160,8 @@ function videodisplay(categoryName, event) {
             "attachment": {
                 "type": "video",
                 "payload": {
-                    //"url": "http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4"
-                    "url": "http://www.hotstar.com/sports/cricket/series/m183378/match-clips/srh-begin-title-defense-with-win/2001902437"
+                    "url": "http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4"
+                    //"url": "http://www.hotstar.com/sports/cricket/series/m183378/match-clips/srh-begin-title-defense-with-win/2001902437"
                 }
             },
             "quick_replies": quickreply
