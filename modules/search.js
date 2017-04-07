@@ -23,17 +23,17 @@ var quickreply = [
 ];
 
 const googlegraph = (categoryName, event) => {
-    var senderID = event.sender.id;
-    var msg = "Let's see what Google Mommy says about " + categoryName +"";
-    var messageData = {
-        "recipient": {
-            "id": senderID
-        },
-        "message": {
-            "text": msg
-        }
-    };
-    fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
+    // var senderID = event.sender.id;
+    // var msg = "Let's see what Google Mommy says about " + categoryName +"";
+    // var messageData = {
+    //     "recipient": {
+    //         "id": senderID
+    //     },
+    //     "message": {
+    //         "text": msg
+    //     }
+    // };
+    // fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
     googlegraphdetails(categoryName, event);
 }
 
@@ -46,13 +46,14 @@ function googlegraphdetails(categoryName, event){
     var quickList = [];
 
     var userid = event.sender.id;
-    var url = 'https://kgsearch.googleapis.com/v1/entities:search?query=' + categoryName + '&key=AIzaSyCavmWhCL_wMeLAKrurcVPUdP0ztgubHZc&limit=5&indent=True'
+    var url = 'https://kgsearch.googleapis.com/v1/entities:search?query=' + categoryName + '&key=AIzaSyCavmWhCL_wMeLAKrurcVPUdP0ztgubHZc&limit=1&indent=True'
 
     console.log("url", url);
     request({
         "uri": url,
         "method": 'GET'
     }, function(error, response, body) {
+      console.log("***********error",error);
         var userprofiledata = JSON.parse(response.body);
         console.log("--------:googlegraphdetails Response data:--------", userprofiledata);
         console.log("--------:googlegraphdetails Response data:--------first_name ", userprofiledata.itemListElement);
