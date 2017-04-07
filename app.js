@@ -241,7 +241,7 @@ function quickpayload(messagingEvent) {
         var directorname = quickpayloadtext.replace(" %ad%", "");
         var type = "director";
         console.log("actor name", actorname);
-        movies.directorfilms(messagingEvent, directorname);
+        movies.directorfilms(messagingEvent, directorname, type);
     } else if (movietext != -1) {
         var moviename = quickpayloadtext.replace(" %m%", "");
         console.log("Yessssssss", moviename);
@@ -622,20 +622,8 @@ function celebritypics(messagingEvent, quickpayloadtext) {
                     } else if (subCategory == "%movies%") {
                         //var movieslist = rows[i].lastFiveMovies;
                         // var latestmovie = rows[i].latestMovie;
-                        var gender = rows[i].gender;
-                        console.log("celebrity gender:-",gender);
-
-                        if(gender == "Male" ){
-                          //celebritymovielist(messagingEvent, celebrityname);
-                          movies.selectedactorfilems(messagingEvent, celebrityname);
-                        }else if(gender=="Female"){
-                          movies.actressfilms(messagingEvent, celebrityname);
-                        }
-                        // else if (true) {
-                        //
-                        // }
                         console.log("celebrity Movies");
-                        //celebritymovielist(messagingEvent, celebrityname);
+                        celebritymovielist(messagingEvent, celebrityname);
                         //movies.selectedactorfilems(messagingEvent, celebrityname);
                     } else if (subCategory == "%Moviecomp%") {
                         var competitor = rows[i].competitors;
@@ -955,7 +943,7 @@ function celebritymovies(messagingEvent, moviename) {
                             }, {
                                 "content_type": "text",
                                 "title": director,
-                                "payload": director + " %ad%"
+                                "payload": director + " %a%"
                             }, {
                                 "content_type": "text",
                                 "title": musicDirector,
