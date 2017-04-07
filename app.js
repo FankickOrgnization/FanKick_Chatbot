@@ -836,13 +836,13 @@ function selectedactorcomptiters(messagingEvent, competitor, picurl, name) {
 function actorintro(messagingEvent, actorname) {
     var senderID = messagingEvent.sender.id;
     //var img = 'https://fankickdev.blob.core.windows.net/images/home_logo.png';
-    //var msg = 'Amazing talent! Here is what I know about '+img+'';
+    var msg = 'Here is what I know about '+actorname+'';
     var messageData = {
         "recipient": {
             "id": senderID
         },
         "message": {
-            "text": "Here you go👉..."
+            "text": msg
         }
     };
     fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
