@@ -465,7 +465,7 @@ const actressfilms = (messagingEvent, celebrityname) => {
     //var query = 'select * from cc_movies_preference where leadActress = ? order by releaseDate desc';
     //console.log(query);
     pool.getConnection(function(err, connection) {
-        if (actortype = "leadActress") {}
+        //if (actortype = "leadActress") {}
         connection.query('select * from cc_movies_preference where leadActress = ? order by releaseDate desc', [mname], function(err, rows) {
             console.log("*************************selectedactorfilems", rows);
             if (err) {
@@ -560,7 +560,7 @@ const directorfilms = (messagingEvent, celebrityname) => {
     //var query = 'select * from cc_movies_preference where leadActress = ? order by releaseDate desc';
     //console.log(query);
     pool.getConnection(function(err, connection) {
-        if (actortype = "leadActress") {}
+        //if (actortype = "leadActress") {}
         connection.query('select * from cc_movies_preference where director = ? order by releaseDate desc', [mname], function(err, rows) {
             console.log("*************************selectedactorfilems", rows);
             if (err) {
