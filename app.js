@@ -623,10 +623,12 @@ function celebritypics(messagingEvent, quickpayloadtext) {
                         //var movieslist = rows[i].lastFiveMovies;
                         // var latestmovie = rows[i].latestMovie;
                         var gender = rows[i].gender;
-                        if(gender=="male"){
+                        console.log("celebrity gender:-",gender);
+
+                        if(gender == "Male" ){
                           //celebritymovielist(messagingEvent, celebrityname);
                           movies.selectedactorfilems(messagingEvent, celebrityname);
-                        }else if(gender=="femal"){
+                        }else if(gender=="Female"){
                           movies.actressfilms(messagingEvent, celebrityname);
                         }
                         // else if (true) {
