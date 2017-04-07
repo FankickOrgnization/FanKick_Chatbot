@@ -622,8 +622,18 @@ function celebritypics(messagingEvent, quickpayloadtext) {
                     } else if (subCategory == "%movies%") {
                         //var movieslist = rows[i].lastFiveMovies;
                         // var latestmovie = rows[i].latestMovie;
+                        var gender = rows[i].gender;
+                        if(gender=="male"){
+                          //celebritymovielist(messagingEvent, celebrityname);
+                          movies.selectedactorfilems(messagingEvent, celebrityname);
+                        }else if(gender=="femal"){
+                          movies.actressfilms(messagingEvent, celebrityname);
+                        }
+                        // else if (true) {
+                        //
+                        // }
                         console.log("celebrity Movies");
-                        celebritymovielist(messagingEvent, celebrityname);
+                        //celebritymovielist(messagingEvent, celebrityname);
                         //movies.selectedactorfilems(messagingEvent, celebrityname);
                     } else if (subCategory == "%Moviecomp%") {
                         var competitor = rows[i].competitors;

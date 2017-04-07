@@ -456,7 +456,7 @@ const selectedactorfilems = (messagingEvent, celebrityname) => {
 
 }
 
-const actressfilms = (messagingEvent, celebrityname, type) => {
+const actressfilms = (messagingEvent, celebrityname) => {
     console.log("*********Movies Genre***********", celebrityname);
     var actortype = type;
     var mname = celebrityname.trim();

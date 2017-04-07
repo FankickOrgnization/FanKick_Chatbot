@@ -721,7 +721,6 @@ function submenu(event, categoryName) {
                 var random = Math.floor(Math.random() * sport.length);
                 if (sport[random].sports.length < 320) // better be a least one good joke :)
                     submenuString = sport[random].sports;
-
                 //submemuquickreply(event, categoryName, submenuString);
                 sports.sportsintro(event, submenuString);
             } else if (subname == "music") {
@@ -735,7 +734,6 @@ function submenu(event, categoryName) {
                 var random = Math.floor(Math.random() * tv_show.length);
                 if (tv_show[random].tv_shows.length < 320) // better be a least one good joke :)
                     submenuString = tv_show[random].tv_shows;
-
                 //tvshows.tvshowsmenu(event, categoryName, submenuString);
                 tvshows.tvshowsintro(event, submenuString);
             }
@@ -807,7 +805,7 @@ function userlocation(event, categoryName) {
                 //sendImageMessage(event);
             }
             connection.release();
-            console.log("*******************User location NULL****************", userloca);
+            console.log("*******************User location Null****************", userloca);
             //usercategory(event, categoryName)
             adduserlocation(event, userloca, categoryName);
         });
@@ -893,7 +891,6 @@ function findlocation(event) {
         connection.query('SELECT language from cc_user_preference where facebookId=?', [senderID], function(err, rows) {
             console.log("Result for language", rows);
             console.log("Result for language", rows[0].language);
-
             if (err) {
                 console.log("Error While retriving content pack data from database:", err);
             } else {
