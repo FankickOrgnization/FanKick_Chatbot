@@ -611,11 +611,7 @@ const directorfilms = (messagingEvent, celebrityname) => {
                                 "content_type": "text",
                                 "title": "Pictures",
                                 "payload": celebrityname + ' ,%pictures%'
-                            }, {
-                                "content_type": "text",
-                                "title": "Movies",
-                                "payload": celebrityname + ' ,%movies%'
-                            }, {
+                            },  {
                                 "content_type": "text",
                                 "title": "Net Worth",
                                 "payload": celebrityname + ' ,%networth%'
