@@ -458,9 +458,9 @@ const selectedactorfilems = (messagingEvent, celebrityname) => {
 
 const actressfilms = (messagingEvent, celebrityname) => {
     console.log("*********Movies Genre***********", celebrityname);
-    var actortype = type;
+    //var actortype = type;
     var mname = celebrityname.trim();
-    console.log(actortype);
+    //console.log(actortype);
     console.log(mname);
     //var query = 'select * from cc_movies_preference where leadActress = ? order by releaseDate desc';
     //console.log(query);
@@ -551,11 +551,11 @@ const actressfilms = (messagingEvent, celebrityname) => {
 
 }
 
-const directorfilms = (messagingEvent, celebrityname, type) => {
+const directorfilms = (messagingEvent, celebrityname) => {
     console.log("*********Movies Genre***********", celebrityname);
-    var actortype = type;
+    //var actortype = type;
     var mname = celebrityname.trim();
-    console.log(actortype);
+  //  console.log(actortype);
     console.log(mname);
     //var query = 'select * from cc_movies_preference where leadActress = ? order by releaseDate desc';
     //console.log(query);

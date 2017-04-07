@@ -241,7 +241,7 @@ function quickpayload(messagingEvent) {
         var directorname = quickpayloadtext.replace(" %ad%", "");
         var type = "director";
         console.log("actor name", actorname);
-        movies.directorfilms(messagingEvent, directorname, type);
+        movies.directorfilms(messagingEvent, directorname);
     } else if (movietext != -1) {
         var moviename = quickpayloadtext.replace(" %m%", "");
         console.log("Yessssssss", moviename);
@@ -955,7 +955,7 @@ function celebritymovies(messagingEvent, moviename) {
                             }, {
                                 "content_type": "text",
                                 "title": director,
-                                "payload": director + " %a%"
+                                "payload": director + " %ad%"
                             }, {
                                 "content_type": "text",
                                 "title": musicDirector,
