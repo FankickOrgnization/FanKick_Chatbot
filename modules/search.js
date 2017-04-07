@@ -54,8 +54,8 @@ function googlegraphdetails(categoryName, event){
         "method": 'GET'
     }, function(error, response, body) {
         var userprofiledata = JSON.parse(response.body);
-        console.log("--------:Response data:--------", userprofiledata);
-        console.log("--------:Response data:--------first_name ", userprofiledata.itemListElement);
+        console.log("--------:googlegraphdetails Response data:--------", userprofiledata);
+        console.log("--------:googlegraphdetails Response data:--------first_name ", userprofiledata.itemListElement);
         var rows = userprofiledata.itemListElement;
         var rowlen = rows.length;
         console.log("--------:Response data:--------length ", rowlen);
@@ -63,10 +63,20 @@ function googlegraphdetails(categoryName, event){
         var imagedata;
         var desdata;
         for (var i = 0; i < 1; i++) {
-          console.log("result.name",rows[i].result.name);
-          console.log("result.name",rows[i].result.detailedDescription.articleBody);
-          console.log("result.name",rows[i].result.image.contentUrl);
-          console.log("result.name",rows[i].result.image.url);
+          var name = rows[i].result.name;
+          var articleBody = rows[i].result.detailedDescription.articleBody;
+          var contentUrl = rows[i].result.image.contentUrl;
+          var url = rows[i].result.image.url;
+          console.log("googlegraphdetails.name",name);
+          console.log("googlegraphdetails.articleBody",articleBody);
+          console.log("googlegraphdetails.contentUrl",contentUrl);
+          console.log("googlegraphdetails.image.url",url);
+
+          // console.log("result.name",rows[i].result.name);
+          // console.log("result.name",rows[i].result.detailedDescription.articleBody);
+          // console.log("result.name",rows[i].result.image.contentUrl);
+          // console.log("result.name",rows[i].result.image.url);
+
             var keyMap = {
                 "title": rows[i].result.name,
               //  "image_url": rows[i].result.image.contentUrl,
