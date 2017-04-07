@@ -120,7 +120,7 @@ function receivedpostback(messagingEvent) {
         //console.log("Yessssssss");
         var moviename = categoryName.replace(" %mname%", "");
         console.log("Yes this is %movies%");
-        actorintro(messagingEvent, moviename);
+        movieintro(messagingEvent, moviename);
         //celebritymovies(messagingEvent, moviename);
     } else if (tvshowstitle != -1) {
         console.log("Yes this is %tvshows%");
@@ -348,7 +348,8 @@ function receivedMessage(event) {
                     var actorname = wit_res_data_actor[i]["value"];
                 }
                 console.log("wit_res_data_actor:--------------", actorname);
-                filmactor(event, actorname);
+                var messagingEvent = event;
+                actorintro(messagingEvent, actorname);
             } else if (wit_res_data_movie != undefined) {
                 for (var i = 0; i < wit_res_data_movie.length; i++) {
                     var td1 = wit_res_data_movie[i]["confidence"];
@@ -831,8 +832,27 @@ function selectedactorcomptiters(messagingEvent, competitor, picurl, name) {
     fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
 }
 
+
+function actorintro(messagingEvent, actorname) {
+    var senderID = messagingEvent.sender.id;
+    //var img = 'https://fankickdev.blob.core.windows.net/images/home_logo.png';
+    //var msg = 'Amazing talent! Here is what I know about '+img+'';
+    var messageData = {
+        "recipient": {
+            "id": senderID
+        },
+        "message": {
+            "text": "Here you go👉..."
+        }
+    };
+    fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
+    filmactor(messagingEvent, actorname);
+}
+
+
+
 //Selected actor filems from movies list
-function actorintro(messagingEvent, moviename) {
+function movieintro(messagingEvent, moviename) {
     var senderID = messagingEvent.sender.id;
     //var img = 'https://fankickdev.blob.core.windows.net/images/home_logo.png';
     //var msg = 'Amazing talent! Here is what I know about '+img+'';
@@ -847,6 +867,10 @@ function actorintro(messagingEvent, moviename) {
     fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
     celebritymovies(messagingEvent, moviename);
 }
+
+
+
+
 
 //Getting the celebrity related movies from selected celebrity
 function celebritymovies(messagingEvent, moviename) {

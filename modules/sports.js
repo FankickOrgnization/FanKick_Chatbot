@@ -76,7 +76,7 @@ const sportsintro = (messagingEvent, tvshowsmsg) => {
 
 const sportscelbrityintro = (messagingEvent, sportscelname) => {
     var senderID = messagingEvent.sender.id;
-    var msg = 'What a player! Here is what I know about ' + sportscelname + '';
+    var msg = 'Here is what I know about ' + sportscelname + '';
     var messageData = {
         "recipient": {
             "id": senderID
@@ -393,9 +393,9 @@ const sportscelebrityinfo = (messagingEvent, quickpayloadtext) => {
     console.log("type", subCategory);
     pool.getConnection(function(err, connection) {
         connection.query('select * from cc_sports_celebrity_preference where name = ?', [sportmanname], function(err, rows) {
-            console.log("********filmactor*********", actername);
+            console.log("********Sports person name*********", actername);
             //console.log("*************************-after", categoryName);
-            console.log("*************************filmactor", rows);
+            console.log("*************************Sports person name", rows);
             if (err) {
                 console.log("Error While retriving content pack data from database:", err);
             } else if (rows.length) {

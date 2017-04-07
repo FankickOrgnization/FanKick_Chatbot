@@ -788,7 +788,6 @@ function submemuquickreply(event, categoryName, submenuString) {
             connection.release();
         });
     });
-
 }
 
 //Ended the Random messages for the main Categories

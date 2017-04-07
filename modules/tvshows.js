@@ -626,7 +626,6 @@ function tvshowsdetails(messagingEvent, tvshowname) {
             connection.release();
         });
     });
-
 }
 
 function sendHelpMessage(event) {
