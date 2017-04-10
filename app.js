@@ -1186,6 +1186,20 @@ function textmessage(msgwit, messagingEvent) {
           var location_payload_coordinates = location_payload.coordinates;
           var location_payload_coordinates_lat = location_payload.coordinates.lat;
           var location_payload_coordinates_long = location_payload.coordinates.long;
+          var location = [location_payload_coordinates_lat, location_payload_coordinates_long];
+          panorama(location, function (err, result) {
+              if (err) throw err
+
+              // pano ID
+              console.log(result.id)
+             
+              // actual latitude, longitude
+              console.log(result.latitude)
+              console.log(result.longitude)
+
+              // other details from Google API
+              console.log(result.copyright)
+            })
 
         console.log("messaging_message location_payload:------", location_payload);
         console.log("messaging_message location_payload_coordinates:------", location_payload_coordinates);
