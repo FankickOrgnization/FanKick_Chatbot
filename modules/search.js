@@ -83,8 +83,9 @@ function googlegraphdetails(categoryName, event){
           // }
           // }
           var result = Object.keys(desdata);
-
-          console.log(result[0]);
+          for (var i = 0; result.length < 1; i++) {
+          console.log(result[i]);
+        }
 
           var name = rows[i].result.name;
           var articleBody = rows[i].result.detailedDescription.articleBody;
