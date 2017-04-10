@@ -70,8 +70,8 @@ function googlegraphdetails(categoryName, event){
 
 
         for (var i = 0; i < 1; i++) {
-          desdata = rows[i].result;
-          console.log("result_1",desdata);
+          //desdata = rows[i].result;
+        //  console.log("result_1",desdata);
           // for(var obj in desdata){
           //     if(desdata.hasOwnProperty(obj)){
           //     for(var prop in desdata[obj]){
@@ -82,10 +82,10 @@ function googlegraphdetails(categoryName, event){
           //     }
           // }
           // }
-          var result = Object.keys(desdata);
-          for (var i = 0; result.length < 1; i++) {
-          console.log(result[i]);
-        }
+        //   var result = Object.keys(desdata);
+        //   for (var i = 0; result.length < 1; i++) {
+        //   console.log(result[i]);
+        // }
 
           var name = rows[i].result.name;
           var articleBody = rows[i].result.detailedDescription.articleBody;
