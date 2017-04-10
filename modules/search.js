@@ -64,13 +64,22 @@ function googlegraphdetails(categoryName, event){
         var imagedata;
         var desdata;
 
-
+        desdata = rows[1].result;
+        for(var obj in desdata){
+            if(desdata.hasOwnProperty(obj)){
+            for(var prop in desdata[obj]){
+                if(desdata[obj].hasOwnProperty(prop)){
+             //alert(prop + ':' + jsonData[obj][prop]);
+             console.log("Json properties",prop);
+                }
+            }
+        }
+        }
 
 
 
 
         for (var i = 0; i < 1; i++) {
-          desdata = rows[i].result;
 
           var name = rows[i].result.name;
           var articleBody = rows[i].result.detailedDescription.articleBody;
@@ -101,16 +110,7 @@ function googlegraphdetails(categoryName, event){
             contentList.push(keyMap);
         }
 
-        for(var obj in desdata){
-            if(desdata.hasOwnProperty(obj)){
-            for(var prop in desdata[obj]){
-                if(desdata[obj].hasOwnProperty(prop)){
-             //alert(prop + ':' + jsonData[obj][prop]);
-             console.log("Json properties",prop);
-                }
-            }
-        }
-        }
+
 
 
         var messageData = {
