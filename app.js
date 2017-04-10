@@ -4,6 +4,7 @@ var request = require('request');
 var bodyParser = require('body-parser');
 var mysql = require('mysql');
 var cricapi = require("node-cricapi");
+var panorama = require('google-panorama-by-location')
 const fetch = require('node-fetch');
 const crypto = require('crypto');
 //const thread = require('./modules/thread.js');
@@ -1192,7 +1193,7 @@ function textmessage(msgwit, messagingEvent) {
 
               // pano ID
               console.log(result.id)
-             
+
               // actual latitude, longitude
               console.log(result.latitude)
               console.log(result.longitude)
