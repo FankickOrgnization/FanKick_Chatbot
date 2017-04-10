@@ -854,8 +854,8 @@ function userpreferdlanguage(event, categoryName) {
 
 
 
-function adduserlocation(event, userloca, categoryName) {
-    console.log("*********************adduserlocation***********************1", userloca);
+function adduserlocation(categoryName, event) {
+    console.log("*********************adduserlocation***********************1", categoryName);
     if (userloca == null) {
         var senderID = event.sender.id;
         console.log("*********************adduserlocation***********************2", senderID);
