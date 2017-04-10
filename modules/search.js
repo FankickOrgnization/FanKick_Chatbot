@@ -58,13 +58,36 @@ function googlegraphdetails(categoryName, event){
         console.log("--------:googlegraphdetails Response data:--------", userprofiledata);
         console.log("--------:googlegraphdetails Response data:--------first_name ", userprofiledata.itemListElement);
         var rows = userprofiledata.itemListElement;
+        var t =
         var rowlen = rows.length;
         console.log("--------:Response data:--------length ", rowlen);
         var senderID = event.sender.id;
         var imagedata;
         var desdata;
+
+
+
+
+
+
+
         for (var i = 0; i < 1; i++) {
+
+          for(var obj in rows[i].result){
+              if(rows[i].result.hasOwnProperty(obj)){
+              for(var prop in rows[i].result[obj]){
+                  if(rows[i].result[obj].hasOwnProperty(prop)){
+               //alert(prop + ':' + jsonData[obj][prop]);
+               console.log("Json properties",prop);
+                  }
+              }
+          }
+          }
+
+
+
           var name = rows[i].result.name;
+
           var articleBody = rows[i].result.detailedDescription.articleBody;
           //var contentUrl = rows[i].result.image.contentUrl;
           var url = rows[i].result.detailedDescription.url;

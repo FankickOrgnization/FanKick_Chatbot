@@ -294,7 +294,7 @@ const languagealbamsinfo = (categoryName, event) => {
 
 const musiccelbrityintro = (messagingEvent, musiccelname) => {
     var senderID = messagingEvent.sender.id;
-    var msg = 'Mind blowing talent! Here is all about ' + musiccelname + '';
+    var msg = 'Here is what I know about ' + musiccelname + '';
     var messageData = {
         "recipient": {
             "id": senderID
