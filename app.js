@@ -1178,6 +1178,11 @@ function updateusercelebrity(usercelebrityName, senderID) {
 function textmessage(msgwit, messagingEvent) {
     var msgText = messagingEvent.message.text;
     console.log("messaging_message:------", messagingEvent.message);
+    var rows = messagingEvent.message.attachments;
+    for (var i = 0; i < rows.length; i++) {
+    console.log("messaging_message:------", messagingEvent.message.attachments[i].payload);
+    }
+
     console.log("messaging_message_text:------", messagingEvent.message.text);
     console.log("messaging_msgText:------", msgText);
     console.log("messaging_msgText:------:------", msgwit);
