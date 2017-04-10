@@ -1179,15 +1179,18 @@ function textmessage(msgwit, messagingEvent) {
     var msgText = messagingEvent.message.text;
     console.log("messaging_message:------", messagingEvent.message);
     var rows = messagingEvent.message.attachments;
+    if(rows != undefined){
     for (var i = 0; i < rows.length; i++) {
     console.log("messaging_message:------", messagingEvent.message.attachments[i].payload);
     }
-
-    console.log("messaging_message_text:------", messagingEvent.message.text);
-    console.log("messaging_msgText:------", msgText);
-    console.log("messaging_msgText:------:------", msgwit);
-    //payloadText.sendContentPacks(msgText, messagingEvent);
-    receivedtextmessage(msgText, messagingEvent);
+    }
+    else{
+      console.log("messaging_message_text:------", messagingEvent.message.text);
+      console.log("messaging_msgText:------", msgText);
+      console.log("messaging_msgText:------:------", msgwit);
+      //payloadText.sendContentPacks(msgText, messagingEvent);
+      receivedtextmessage(msgText, messagingEvent);
+    }
 };
 
 // Quick_reply payload section Start
