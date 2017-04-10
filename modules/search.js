@@ -84,7 +84,7 @@ function googlegraphdetails(categoryName, event){
           // }
           var result = Object.keys(desdata);
 
-          alert(result[0])
+          console.log(result[0]);
 
           var name = rows[i].result.name;
           var articleBody = rows[i].result.detailedDescription.articleBody;
