@@ -85,6 +85,8 @@ const sendContentPacks = (categoryName, event) => {
         imagedisplay(categoryName, event);
     } else if (categoryName == "videos") {
         videodisplay(categoryName, event);
+    }else if (categoryName == "location") {
+        adduserlocation(categoryName, event);
     } else if (categoryName == "movies" || categoryName == "sports" || categoryName == "tv shows" || categoryName == "music") {
         submenu(event, categoryName);
         usercategory(event, categoryName);
