@@ -1180,10 +1180,19 @@ function textmessage(msgwit, messagingEvent) {
     console.log("messaging_message:------", messagingEvent.message);
     var rows = messagingEvent.message.attachments;
     if(rows != undefined){
-    for (var i = 0; i < rows.length; i++) {
-    console.log("messaging_message:------", messagingEvent.message.attachments[i].payload);
-    }
-    }
+        for (var i = 0; i < rows.length; i++) {
+          console.log("messaging_message Location:------", messagingEvent.message.attachments[i].payload);
+          var location_payload = messagingEvent.message.attachments[i].payload;
+          var location_payload_coordinates = location_payload.coordinates;
+          var location_payload_coordinates_lat = location_payload.coordinates.lat;
+          var location_payload_coordinates_long = location_payload.coordinates.long;
+
+        console.log("messaging_message location_payload:------", location_payload);
+        console.log("messaging_message location_payload_coordinates:------", location_payload_coordinates);
+        console.log("messaging_message location_payload_coordinates_lat:------", location_payload_coordinates_lat);
+        console.log("messaging_message location_payload_coordinates_long:------", location_payload_coordinates_long);
+        }
+      }
     else{
       console.log("messaging_message_text:------", messagingEvent.message.text);
       console.log("messaging_msgText:------", msgText);
