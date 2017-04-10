@@ -69,24 +69,10 @@ function googlegraphdetails(categoryName, event){
 
 
 
-
         for (var i = 0; i < 1; i++) {
-
-          for(var obj in rows[i].result){
-              if(rows[i].result.hasOwnProperty(obj)){
-              for(var prop in rows[i].result[obj]){
-                  if(rows[i].result[obj].hasOwnProperty(prop)){
-               //alert(prop + ':' + jsonData[obj][prop]);
-               console.log("Json properties",prop);
-                  }
-              }
-          }
-          }
-
-
+          desdata = rows[i].result;
 
           var name = rows[i].result.name;
-
           var articleBody = rows[i].result.detailedDescription.articleBody;
           //var contentUrl = rows[i].result.image.contentUrl;
           var url = rows[i].result.detailedDescription.url;
@@ -114,6 +100,19 @@ function googlegraphdetails(categoryName, event){
             };
             contentList.push(keyMap);
         }
+
+        for(var obj in desdata){
+            if(desdata.hasOwnProperty(obj)){
+            for(var prop in desdata[obj]){
+                if(desdata[obj].hasOwnProperty(prop)){
+             //alert(prop + ':' + jsonData[obj][prop]);
+             console.log("Json properties",prop);
+                }
+            }
+        }
+        }
+
+
         var messageData = {
             "recipient": {
                 "id": senderID
