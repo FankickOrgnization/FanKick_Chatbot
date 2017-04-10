@@ -58,7 +58,6 @@ function googlegraphdetails(categoryName, event){
         console.log("--------:googlegraphdetails Response data:--------", userprofiledata);
         console.log("--------:googlegraphdetails Response data:--------first_name ", userprofiledata.itemListElement);
         var rows = userprofiledata.itemListElement;
-        var t =
         var rowlen = rows.length;
         console.log("--------:Response data:--------length ", rowlen);
         var senderID = event.sender.id;
@@ -72,22 +71,17 @@ function googlegraphdetails(categoryName, event){
 
 
         for (var i = 0; i < 1; i++) {
-          var resultrows = rows[i].result
-          var result = Object.keys(resultrows);
 
-          //alert(result[0])
-          console.log("Json properties",result[0]);
-          // 
-          // for(var obj in rows[i].result){
-          //     if(rows[i].result.hasOwnProperty(obj)){
-          //     for(var prop in rows[i].result[obj]){
-          //         if(rows[i].result[obj].hasOwnProperty(prop)){
-          //      //alert(prop + ':' + jsonData[obj][prop]);
-          //      console.log("Json properties",prop);
-          //         }
-          //     }
-          // }
-          // }
+          for(var obj in rows[i].result){
+              if(rows[i].result.hasOwnProperty(obj)){
+              for(var prop in rows[i].result[obj]){
+                  if(rows[i].result[obj].hasOwnProperty(prop)){
+               //alert(prop + ':' + jsonData[obj][prop]);
+               console.log("Json properties",prop);
+                  }
+              }
+          }
+          }
 
 
 
