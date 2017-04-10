@@ -66,11 +66,11 @@ function googlegraphdetails(categoryName, event){
         for (var i = 0; i < 1; i++) {
           var name = rows[i].result.name;
           var articleBody = rows[i].result.detailedDescription.articleBody;
-          var contentUrl = rows[i].result.image.contentUrl;
-          var url = rows[i].result.image.url;
+          //var contentUrl = rows[i].result.image.contentUrl;
+          var url = rows[i].result.detailedDescription.url;
           console.log("googlegraphdetails.name",name);
           console.log("googlegraphdetails.articleBody",articleBody);
-          console.log("googlegraphdetails.contentUrl",contentUrl);
+        //  console.log("googlegraphdetails.contentUrl",contentUrl);
           console.log("googlegraphdetails.image.url",url);
 
           // console.log("result.name",rows[i].result.name);
@@ -85,7 +85,7 @@ function googlegraphdetails(categoryName, event){
                 "buttons": [
                     {
                         "type": "web_url",
-                        "url": rows[i].result.image.url,
+                        "url": rows[i].result.detailedDescription.url,
                         "title": "Read More"
                     }
                 ]
