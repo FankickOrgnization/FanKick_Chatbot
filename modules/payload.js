@@ -856,7 +856,7 @@ function userpreferdlanguage(event, categoryName) {
 
 function adduserlocation(categoryName, event) {
     console.log("*********************adduserlocation***********************1", categoryName);
-    if (userloca == null) {
+  
         var senderID = event.sender.id;
         console.log("*********************adduserlocation***********************2", senderID);
         var msg = 'Let us know your location, we wanna offer you the best and the most relevant!';
@@ -880,10 +880,7 @@ function adduserlocation(categoryName, event) {
             }
         }
         fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
-    } else {
-        console.log("*********************adduserlocation***********************3", userloca);
-        allcategory(event, categoryName);
-    }
+
 }
 
 function findlocation(event) {
