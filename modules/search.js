@@ -72,17 +72,22 @@ function googlegraphdetails(categoryName, event){
 
 
         for (var i = 0; i < 1; i++) {
+          var resultrows = rows[i].result
+          var result = Object.keys(resultrows);
 
-          for(var obj in rows[i].result){
-              if(rows[i].result.hasOwnProperty(obj)){
-              for(var prop in rows[i].result[obj]){
-                  if(rows[i].result[obj].hasOwnProperty(prop)){
-               //alert(prop + ':' + jsonData[obj][prop]);
-               console.log("Json properties",prop);
-                  }
-              }
-          }
-          }
+          //alert(result[0])
+          console.log("Json properties",result[0]);
+          // 
+          // for(var obj in rows[i].result){
+          //     if(rows[i].result.hasOwnProperty(obj)){
+          //     for(var prop in rows[i].result[obj]){
+          //         if(rows[i].result[obj].hasOwnProperty(prop)){
+          //      //alert(prop + ':' + jsonData[obj][prop]);
+          //      console.log("Json properties",prop);
+          //         }
+          //     }
+          // }
+          // }
 
 
 
