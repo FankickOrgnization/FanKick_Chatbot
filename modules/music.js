@@ -59,16 +59,18 @@ const musicalbams = (categoryName, event) => {
                         "image_url": rows[i].picture1,
                         "subtitle": rows[i].artist,
                         "buttons": [
+
+                            {
+                                "type": "web_url",
+                                "url": rows[i].albumUrl,
+                                "title": "view Album"
+                            },
                             {
                                 "type": "postback",
                                 "title": "View More 🔍",
                                 "payload": rows[i].name + " %albumname%"
                             }
-                            // {
-                            //     "type": "web_url",
-                            //     "url": rows[i].albumUrl,
-                            //     "title": "view Album"
-                            // },{
+                            //,{
                             //     "type": "web_url",
                             //     "url": rows[i].googleSearch,
                             //     "title": "Google Search"
