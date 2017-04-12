@@ -63,7 +63,7 @@ const musicalbams = (categoryName, event) => {
                             {
                                 "type": "web_url",
                                 "url": rows[i].albumUrl,
-                                "title": "view Album"
+                                "title": "View Album"
                             },
                             {
                                 "type": "postback",
