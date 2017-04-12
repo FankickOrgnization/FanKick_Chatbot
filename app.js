@@ -519,7 +519,7 @@ function quick_reply_category(messagingEvent, quickpayloadtext) {
                         "quick_replies": [
                             {
                                 "content_type": "text",
-                                "title": subCategory.charAt(0).toUpperCase() + subCategory.substr(1).toLowerCase()" Jokes",
+                                "title": subCategory.charAt(0).toUpperCase() + subCategory.substr(1).toLowerCase()+" Jokes",
                                 "payload": "Jokes"
                             }, {
                                 "content_type": "text",
