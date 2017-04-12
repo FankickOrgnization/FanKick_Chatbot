@@ -63,7 +63,7 @@ const musicalbams = (categoryName, event) => {
                             {
                                 "type": "web_url",
                                 "url": rows[i].albumUrl,
-                                "title": "View Album"
+                                "title": "Play Album 🎧"
                             },
                             {
                                 "type": "postback",
@@ -169,7 +169,7 @@ const albuminfo = (messagingEvent, albumname) => {
                             {
                                 "type": "web_url",
                                 "url": rows[i].albumUrl,
-                                "title": "View Album"
+                                "title": "Play Album 🎧"
                             }
                         ]
                     };
@@ -248,7 +248,7 @@ const languagealbamsinfo = (categoryName, event) => {
                             {
                                 "type": "web_url",
                                 "url": rows[i].albumUrl,
-                                "title": "View Album"
+                                "title": "Play Album 🎧"
                             }
                         ]
                     };
@@ -686,7 +686,7 @@ function celebrityalbams(event, name) {
                             {
                                 "type": "web_url",
                                 "url": rows[i].albumUrl,
-                                "title": "View Album"
+                                "title": "Play Album 🎧"
                             }
                         ]
                     };
