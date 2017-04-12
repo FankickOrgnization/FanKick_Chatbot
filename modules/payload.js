@@ -662,6 +662,8 @@ function usercategory(event, categoryName) {
 
 function wishingmessage(categoryName, event) {
     var senderID = event.sender.id;
+    var category = "home";
+
     //var msg = 'Welcome to the club! \n \nEntertainment is served here, order your preferences…';
     var msg = "Welcome to the ocean of entertainment🏟🎢! Mark your favorite spots, I'd like to take you for boating...";
     console.log("--------:Response data:--------msg1 ", msg);
@@ -671,35 +673,36 @@ function wishingmessage(categoryName, event) {
         },
         "message": {
             "text": msg,
-            "quick_replies": [
-                {
-                    "content_type": "text",
-                    "title": "Movies 🎬",
-                    "payload": "Movies"
-                }, {
-                    "content_type": "text",
-                    "title": "Sports 🏆",
-                    "payload": "Sports"
-                }, {
-                    "content_type": "text",
-                    "title": "Music 🎶",
-                    "payload": "Music"
-                }, {
-                    "content_type": "text",
-                    "title": "TV Shows 📺",
-                    "payload": "TV Shows"
-                }
-                // ,
-                // {
-                //   "content_type":"text",
-                //   "title":"What can you do?",
-                //   "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
-                // }
-            ]
+            // "quick_replies": [
+            //     {
+            //         "content_type": "text",
+            //         "title": "Movies 🎬",
+            //         "payload": "Movies"
+            //     }, {
+            //         "content_type": "text",
+            //         "title": "Sports 🏆",
+            //         "payload": "Sports"
+            //     }, {
+            //         "content_type": "text",
+            //         "title": "Music 🎶",
+            //         "payload": "Music"
+            //     }, {
+            //         "content_type": "text",
+            //         "title": "TV Shows 📺",
+            //         "payload": "TV Shows"
+            //     }
+            //     // ,
+            //     // {
+            //     //   "content_type":"text",
+            //     //   "title":"What can you do?",
+            //     //   "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
+            //     // }
+            // ]
 
         }
     }
     fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
+    allcategory(event, category);
 }
 
 //Random messages for the main Categories
@@ -856,7 +859,7 @@ function userpreferdlanguage(event, categoryName) {
 
 function adduserlocation(categoryName, event) {
     console.log("*********************adduserlocation***********************1", categoryName);
-  
+
         var senderID = event.sender.id;
         console.log("*********************adduserlocation***********************2", senderID);
         var msg = 'Let us know your location, we wanna offer you the best and the most relevant!';
