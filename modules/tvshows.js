@@ -259,7 +259,7 @@ const tvcelebrityinfo = (messagingEvent, quickpayloadtext) => {
                                 "payload": celebrityname + ' ,%tvcelnews%'
                             }, {
                                 "content_type": "text",
-                                "title": "Jokes",
+                                "title": "TV Shows Jokes",
                                 "payload": "Jokes"
                             }, {
                                 "content_type": "text",
@@ -345,7 +345,7 @@ const gettvshowsgenre = (messagingEvent, quickpayloadtext) => {
                                 "payload": 'Watch TV Shows,tv shows,%QR%'
                             }, {
                                 "content_type": "text",
-                                "title": "Jokes",
+                                "title": "TV Shows Jokes",
                                 "payload": "Jokes"
                             }, {
                                 "content_type": "text",
@@ -440,7 +440,7 @@ function tvcelbritydetails(event, celbrityname) {
                                 "payload": name + ' ,%tvcelnews%'
                             }, {
                                 "content_type": "text",
-                                "title": "Jokes",
+                                "title": "TV Shows Jokes",
                                 "payload": "Jokes"
                             }, {
                                 "content_type": "text",
@@ -524,7 +524,7 @@ function tvshowsmenu(messagingEvent) {
                                 "payload": 'Watch TV Shows,tv shows,%QR%'
                             }, {
                                 "content_type": "text",
-                                "title": "Jokes",
+                                "title": "TV Shows Jokes",
                                 "payload": "Jokes"
                             }, {
                                 "content_type": "text",
@@ -608,7 +608,7 @@ function tvshowsdetails(messagingEvent, tvshowname) {
                                 "payload": tvshowleadActress + ' %tvcel%'
                             }, {
                                 "content_type": "text",
-                                "title": "Jokes",
+                                "title": "TV Shows Jokes",
                                 "payload": "Jokes"
                             }, {
                                 "content_type": "text",

@@ -361,7 +361,7 @@ function sportscelbritydetails(messagingEvent, sportscelname) {
                                 "payload": name + ' ,%sportscelcompetitors%'
                             }, {
                                 "content_type": "text",
-                                "title": "Jokes",
+                                "title": "Sports Jokes",
                                 "payload": "Jokes"
                             }, {
                                 "content_type": "text",
@@ -571,7 +571,7 @@ const sportscelebrityinfo = (messagingEvent, quickpayloadtext) => {
                                 "payload": celebrityname + ' ,%sportscelcompetitors%'
                             }, {
                                 "content_type": "text",
-                                "title": "Jokes",
+                                "title": "Sports Jokes",
                                 "payload": "Jokes"
                             }, {
                                 "content_type": "text",

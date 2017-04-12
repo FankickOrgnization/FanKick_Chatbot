@@ -119,7 +119,7 @@ const musicalbams = (categoryName, event) => {
                                 "payload": "Kannada"
                             }, {
                                 "content_type": "text",
-                                "title": "Jokes",
+                                "title": "Music Jokes",
                                 "payload": "Jokes"
                             }, {
                                 "content_type": "text",
@@ -195,7 +195,7 @@ const albuminfo = (messagingEvent, albumname) => {
                                 "payload": name + " %musicartist%"
                             }, {
                                 "content_type": "text",
-                                "title": "Jokes",
+                                "title": "Music Jokes",
                                 "payload": "Jokes"
                             }, {
                                 "content_type": "text",
@@ -270,7 +270,7 @@ const languagealbamsinfo = (categoryName, event) => {
                         "quick_replies": [
                             {
                                 "content_type": "text",
-                                "title": "Jokes",
+                                "title": "Music Jokes",
                                 "payload": "Jokes"
                             }, {
                                 "content_type": "text",
@@ -392,7 +392,7 @@ function musiccelbritydetails(messagingEvent, musiccelname) {
                                 "payload": name + ' ,%Musiccelcomp%'
                             }, {
                                 "content_type": "text",
-                                "title": "Jokes",
+                                "title": "Music Jokes",
                                 "payload": "Jokes"
                             }, {
                                 "content_type": "text",
@@ -637,7 +637,7 @@ const musiccelebrityinfo = (messagingEvent, quickpayloadtext) => {
                                 "payload": celebrityname + ' ,%Musiccelcomp%'
                             }, {
                                 "content_type": "text",
-                                "title": "Jokes",
+                                "title": "Music Jokes",
                                 "payload": "Jokes"
                             }, {
                                 "content_type": "text",
@@ -708,7 +708,7 @@ function celebrityalbams(event, name) {
                         "quick_replies": [
                             {
                                 "content_type": "text",
-                                "title": "Jokes",
+                                "title": "Music Jokes",
                                 "payload": "Jokes"
                             }, {
                                 "content_type": "text",
