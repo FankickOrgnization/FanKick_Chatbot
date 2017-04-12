@@ -491,6 +491,7 @@ function sendJoke(categoryName, event) {
 //Ramndom Jokes for User*************
 
 function sendHelpMessage(event) {
+  var categoryName = "home";
     var errorString = "";
     while (errorString === "") {
         var random = Math.floor(Math.random() * errors.length);
@@ -505,10 +506,11 @@ function sendHelpMessage(event) {
         "message": {
             "text": errorString,
             //"text":"msg",
-            "quick_replies": quickreply
+            //"quick_replies": quickreply
         }
     }
     fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
+    allcategory(event, categoryName);
 }
 
 // const fbuserdetails = (event,userid) =>{
