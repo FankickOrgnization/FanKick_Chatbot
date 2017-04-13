@@ -116,9 +116,7 @@ const sendContentPacks = (categoryName, event) => {
     } else if (categoryName == "akshay kumar" || categoryName == "shah rukh khan" || categoryName == "aamir khan" || categoryName == "salman khan" || categoryName == "hrithik roshan") {
         //googlegraph(categoryName,event);
         actorintro(categoryName, event)
-    } else if (categoryName == "virat kohli" || categoryName == "rohit sharma" || categoryName == "yuvraj singh" || categoryName == "sachin tendulkar" || categoryName == "dhoni") {
-        googlegraph(categoryName, event);
-    } else if (categoryName == "home") {
+    }else if (categoryName == "home") {
         allcategory(event, categoryName);
     } else if (categoryName == "jokes") {
         sendJoke(categoryName, event);
