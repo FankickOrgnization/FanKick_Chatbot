@@ -554,9 +554,9 @@ function celebritypics(messagingEvent, quickpayloadtext) {
     console.log("type", subCategory);
     pool.getConnection(function(err, connection) {
         connection.query('select * from cc_film_celebrity_preference where name = ?', [actername], function(err, rows) {
-            console.log("********filmactor*********", actername);
+            //console.log("********celebrity name*********", actername);
             //console.log("*************************-after", categoryName);
-            console.log("*************************filmactor", rows);
+            console.log("*************************celebrity details", rows);
             if (err) {
                 console.log("Error While retriving content pack data from database:", err);
             } else if (rows.length) {

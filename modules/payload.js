@@ -40,31 +40,6 @@ var quickreply = [
         "payload": "Music"
     }
 ];
-// var quickMenu = [
-//     {
-//         "image_url": 'https://fankickdev.blob.core.windows.net/images/movies.jpg',
-//         "content_type": "text",
-//         "title": 'Categories O:-)',
-//         "payload": "Categories"
-//     }, {
-//         "content_type": "text",
-//         "title": 'Fan Clubs :-)',
-//         "payload": "Fan Clubs",
-//         "image_url": 'https://fankickdev.blob.core.windows.net/images/sports.jpg'
-//     }, {
-//         "content_type": "text",
-//         "title": 'Fan Magazine O:-)',
-//         "payload": "Fan Magazine",
-//         "image_url": 'https://fankickdev.blob.core.windows.net/images/celebrities.jpg'
-//     }
-// ];
-// var quickMenu = [
-//       {
-//         "content_type":"location",
-//       }
-//     ];
-//app.use(bodyParser.json());
-//console.log("------:thread:-----");
 
 const sendContentPacks = (categoryName, event) => {
     console.log("*************---categoryName----*******", categoryName);
@@ -73,20 +48,8 @@ const sendContentPacks = (categoryName, event) => {
         thread.persistentMenu(fbpage_access_token);
         fbuserdetails(event, senderID);
         console.log("categoryName", categoryName);
-    } else if (categoryName == "pawan kalyan" || categoryName == "prabhas" || categoryName == "ram charan tej" || categoryName == "allu arjun" || categoryName == "mahesh babu") {
-        //celebritiesdetails(categoryName,event);
-        actorintro(categoryName, event)
-        //googlegraph(categoryName,event);
     } else if (categoryName == "hi" || categoryName == "hello" || categoryName == "hey") {
-        //  var cricketApi = cricapi.cricketScores();
-        //console.log("###########cricketScores############",cricketApi);
         wishingmessage(categoryName, event);
-    } else if (categoryName == "pics") {
-        imagedisplay(categoryName, event);
-    } else if (categoryName == "videos") {
-        videodisplay(categoryName, event);
-    } else if (categoryName == "location") {
-        adduserlocation(categoryName, event);
     } else if (categoryName == "movies" || categoryName == "sports" || categoryName == "tv shows" || categoryName == "music") {
         submenu(event, categoryName);
         usercategory(event, categoryName);
@@ -106,8 +69,6 @@ const sendContentPacks = (categoryName, event) => {
         movies.subcategorymovies(event, categoryName);
         usersubcategory(event, categoryName);
     } else if (categoryName == "cricket" || categoryName == "soccer" || categoryName == "tennis" || categoryName == "badminton") {
-        //celebritiesdetails(categoryName,event);
-        //googlegraph(categoryName,event);
         usersubcategory(event, categoryName);
         subcategorydetails(categoryName, event);
     } else if (categoryName == "home") {
@@ -116,6 +77,12 @@ const sendContentPacks = (categoryName, event) => {
         sendJoke(categoryName, event);
     } else if (categoryName == "ipl 2017" || categoryName == "ipl") {
         sports.ipl(categoryName, event);
+    } else if (categoryName == "pics") {
+        imagedisplay(categoryName, event);
+    } else if (categoryName == "videos") {
+        videodisplay(categoryName, event);
+    } else if (categoryName == "location") {
+        adduserlocation(categoryName, event);
     } else {
         sendHelpMessage(event);
     }
@@ -184,21 +151,7 @@ function allcategory(event, categoryName) {
     }
 }
 
-function actorintro(categoryName, event) {
-    var senderID = event.sender.id;
-    var msg = 'Amazing talent👏! Here is what I know about ' + categoryName + '';
-    var messageData = {
-        "recipient": {
-            "id": senderID
-        },
-        "message": {
-            "text": msg
-        }
-    };
-    fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
-    //celebritymovies(messagingEvent, moviename);
-    celebritiesdetails(categoryName, event);
-}
+
 
 //function subcategorymovies(categoryName, event)
 // end get movies from the DB **************************
