@@ -63,12 +63,6 @@ function googlegraphdetails(categoryName, event){
         var senderID = event.sender.id;
         var imagedata;
         var desdata;
-
-
-
-
-
-
         for (var i = 0; i < 1; i++) {
           //desdata = rows[i].result;
         //  console.log("result_1",desdata);
