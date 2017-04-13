@@ -85,7 +85,7 @@ const sendContentPacks = (categoryName, event) => {
         imagedisplay(categoryName, event);
     } else if (categoryName == "videos") {
         videodisplay(categoryName, event);
-    }else if (categoryName == "location") {
+    } else if (categoryName == "location") {
         adduserlocation(categoryName, event);
     } else if (categoryName == "movies" || categoryName == "sports" || categoryName == "tv shows" || categoryName == "music") {
         submenu(event, categoryName);
@@ -97,9 +97,6 @@ const sendContentPacks = (categoryName, event) => {
     } else if (categoryName == "hindi" || categoryName == "telugu" || categoryName == "tamil" || categoryName == "kannada") {
         music.languagealbamsinfo(categoryName, event);
         userpreferdlanguage(event, categoryName);
-    } else if (categoryName == "action" || categoryName == "comedy" || categoryName == "romance" || categoryName == "thriller" || categoryName == "horror") {
-        wishingmessage(categoryName, event);
-        //moviegenre(categoryName,event);
     } else if (categoryName == "reality" || categoryName == "romantic comedy" || categoryName == "horror / crime" || categoryName == "cooking" || categoryName == "animation") {
         //wishingmessage(categoryName, event);
         tvshows.gettvshowsgenre(event, categoryName);
@@ -113,14 +110,11 @@ const sendContentPacks = (categoryName, event) => {
         //googlegraph(categoryName,event);
         usersubcategory(event, categoryName);
         subcategorydetails(categoryName, event);
-    } else if (categoryName == "akshay kumar" || categoryName == "shah rukh khan" || categoryName == "aamir khan" || categoryName == "salman khan" || categoryName == "hrithik roshan") {
-        //googlegraph(categoryName,event);
-        actorintro(categoryName, event)
-    }else if (categoryName == "home") {
+    } else if (categoryName == "home") {
         allcategory(event, categoryName);
     } else if (categoryName == "jokes") {
         sendJoke(categoryName, event);
-    } else if (categoryName == "ipl 2017" || categoryName == "ipl" ) {
+    } else if (categoryName == "ipl 2017" || categoryName == "ipl") {
         sports.ipl(categoryName, event);
     } else {
         sendHelpMessage(event);
@@ -489,7 +483,7 @@ function sendJoke(categoryName, event) {
 //Ramndom Jokes for User*************
 
 function sendHelpMessage(event) {
-  var categoryName = "home";
+    var categoryName = "home";
     var errorString = "";
     while (errorString === "") {
         var random = Math.floor(Math.random() * errors.length);
@@ -726,6 +720,7 @@ function submenu(event, categoryName) {
                 var random = Math.floor(Math.random() * sport.length);
                 if (sport[random].sports.length < 320) // better be a least one good joke :)
                     submenuString = sport[random].sports;
+
                 //submemuquickreply(event, categoryName, submenuString);
                 sports.sportsintro(event, submenuString);
             } else if (subname == "music") {
@@ -739,6 +734,7 @@ function submenu(event, categoryName) {
                 var random = Math.floor(Math.random() * tv_show.length);
                 if (tv_show[random].tv_shows.length < 320) // better be a least one good joke :)
                     submenuString = tv_show[random].tv_shows;
+
                 //tvshows.tvshowsmenu(event, categoryName, submenuString);
                 tvshows.tvshowsintro(event, submenuString);
             }
@@ -854,35 +850,32 @@ function userpreferdlanguage(event, categoryName) {
     });
 }
 
-
-
-
 function adduserlocation(categoryName, event) {
     console.log("*********************adduserlocation***********************1", categoryName);
 
-        var senderID = event.sender.id;
-        console.log("*********************adduserlocation***********************2", senderID);
-        var msg = 'Let us know your location, we wanna offer you the best and the most relevant!';
-        console.log("--------:Response data:--------msg1 ", msg);
-        var messageData = {
-            "recipient": {
-                "id": senderID
-            },
-            "message": {
-                "text": msg,
-                "quick_replies": [
-                    {
-                        "content_type": "location"
-                    }, {
-                        "content_type": "text",
-                        "title": "skip",
-                        "payload": "home"
-                    }
-                ]
+    var senderID = event.sender.id;
+    console.log("*********************adduserlocation***********************2", senderID);
+    var msg = 'Let us know your location, we wanna offer you the best and the most relevant!';
+    console.log("--------:Response data:--------msg1 ", msg);
+    var messageData = {
+        "recipient": {
+            "id": senderID
+        },
+        "message": {
+            "text": msg,
+            "quick_replies": [
+                {
+                    "content_type": "location"
+                }, {
+                    "content_type": "text",
+                    "title": "skip",
+                    "payload": "home"
+                }
+            ]
 
-            }
         }
-        fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
+    }
+    fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
 
 }
 
