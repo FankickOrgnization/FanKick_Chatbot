@@ -56,7 +56,7 @@ function googlegraphdetails(categoryName, event){
       console.log("***********error",error);
         var userprofiledata = JSON.parse(response.body);
         console.log("--------:googlegraphdetails Response data:--------", userprofiledata);
-        console.log("--------:googlegraphdetails Response data:--------first_name ", userprofiledata.itemListElement);
+        console.log("--------:googlegraphdetails Response data itemListElement:-------- ", userprofiledata.itemListElement);
         var rows = userprofiledata.itemListElement;
         var rowlen = rows.length;
         console.log("--------:Response data:--------length ", rowlen);

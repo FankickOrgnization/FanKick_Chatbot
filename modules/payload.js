@@ -83,6 +83,8 @@ const sendContentPacks = (categoryName, event) => {
         videodisplay(categoryName, event);
     } else if (categoryName == "location") {
         adduserlocation(categoryName, event);
+    } else if (categoryName == 518003 || categoryName == 500045) {
+        getuserlocation(categoryName, event);
     } else {
         sendHelpMessage(event);
     }
@@ -132,6 +134,80 @@ function videodisplay(categoryName, event) {
     //celebritymovies(messagingEvent, moviename);
     //  celebritiesdetails(categoryName, event);
 }
+
+getuserlocation(categoryName, event){
+    console.log("*************---categoryName----*******", categoryName);
+    var contentList = [];
+    var quickList = [];
+
+    var userid = event.sender.id;
+    var url = 'http://maps.googleapis.com/maps/api/geocode/json?address=' + categoryName;
+
+    console.log("url", url);
+    request({
+        "uri": url,
+        "method": 'GET'
+    }, function(error, response, body) {
+      console.log("***********error",error);
+        var locationdata = JSON.parse(response.body);
+        //console.log("--------:googlegraphdetails Response data:--------", userprofiledata);
+        //console.log("--------:googlegraphdetails Response data itemListElement:-------- ", userprofiledata.itemListElement);
+        //var rows = userprofiledata.itemListElement;
+      //  var rowlen = rows.length;
+        //console.log("--------:Response data:--------length ", rowlen);
+        //var senderID = event.sender.id;
+        //var imagedata;
+        //var desdata;
+        // for (var i = 0; i < 1; i++) {
+        //
+        //   var name = rows[i].result.name;
+        //   var articleBody = rows[i].result.detailedDescription.articleBody;
+        //   //var contentUrl = rows[i].result.image.contentUrl;
+        //   var url = rows[i].result.detailedDescription.url;
+        //   console.log("googlegraphdetails.name",name);
+        //   console.log("googlegraphdetails.articleBody",articleBody);
+        // //  console.log("googlegraphdetails.contentUrl",contentUrl);
+        //   console.log("googlegraphdetails.image.url",url);
+        //
+        //
+        //     var keyMap = {
+        //         "title": rows[i].result.name,
+        //       //  "image_url": rows[i].result.image.contentUrl,
+        //         "subtitle": rows[i].result.detailedDescription.articleBody,
+        //         "buttons": [
+        //             {
+        //                 "type": "web_url",
+        //                 "url": rows[i].result.detailedDescription.url,
+        //                 "title": "Read More"
+        //             }
+        //         ]
+        //     };
+        //     contentList.push(keyMap);
+        // }
+
+
+
+
+        // var messageData = {
+        //     "recipient": {
+        //         "id": senderID
+        //     },
+        //     "message": {
+        //         "attachment": {
+        //             "type": "template",
+        //             "payload": {
+        //                 "template_type": "generic",
+        //                 "elements": contentList
+        //             }
+        //         },
+        //         "quick_replies": quickreply
+        //     }
+        // }
+        //fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
+    });
+}
+
+
 
 function allcategory(event, categoryName) {
     var senderID = event.sender.id;
@@ -808,7 +884,7 @@ function adduserlocation(categoryName, event) {
 
     var senderID = event.sender.id;
     console.log("*********************adduserlocation***********************2", senderID);
-    var msg = 'Let us know your location, we wanna offer you the best and the most relevant!';
+    var msg = 'Let us know your zipcode, we wanna offer you the best and the most relevant!';
     console.log("--------:Response data:--------msg1 ", msg);
     var messageData = {
         "recipient": {
