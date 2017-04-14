@@ -150,7 +150,7 @@ function getuserlocation(categoryName, event){
     }, function(error, response, body) {
       console.log("***********error",error);
         var locationdata = JSON.parse(response.body);
-        //console.log("--------:googlegraphdetails Response data:--------", userprofiledata);
+        console.log("--------:googlegraphdetails Response data:--------", locationdata);
         //console.log("--------:googlegraphdetails Response data itemListElement:-------- ", userprofiledata.itemListElement);
         //var rows = userprofiledata.itemListElement;
       //  var rowlen = rows.length;
