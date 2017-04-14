@@ -150,7 +150,7 @@ function getuserlocation(categoryName, event){
     }, function(error, response, body) {
       console.log("***********error",error);
         var locationdata = JSON.parse(response.body);
-        var locationresult = userprofiledata.result
+        var locationresult = locationdata.result
         console.log("--------:googlegraphdetails Response data:--------", locationdata);
         console.log("--------:googlegraphdetails Response data itemListElement:-------- ", locationresult);
         var address = locationresult[1].address_components;
