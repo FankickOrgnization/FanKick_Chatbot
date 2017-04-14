@@ -157,9 +157,9 @@ function getuserlocation(categoryName, event){
         console.log("--------:googlegraphdetails Response data result:-------- ", locationresults);
 
 var len2 = locationresults.length;
-        var address = locationresult[1].address_components;
+        var address = locationresults[1].address_components;
       console.log("--------:googlegraphdetails Response data itemListElement:-------- ", len2);
-        console.log("--------:googlegraphdetails Response data itemListElement:-------- ", locationresult[1].address_components);
+        console.log("--------:googlegraphdetails Response data itemListElement:-------- ", locationresults[1].address_components);
         console.log("--------:googlegraphdetails Response data itemListElement:-------- ", address[1].long_name);
         console.log("--------:googlegraphdetails Response data itemListElement:-------- ", address[1].short_name);
         console.log("--------:googlegraphdetails Response data itemListElement:-------- ", address[2].long_name);
