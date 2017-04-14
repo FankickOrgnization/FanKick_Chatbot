@@ -151,14 +151,14 @@ function getuserlocation(categoryName, event){
       console.log("***********error",error);
         var locationdata = JSON.parse(response.body);
         var locationresult = locationdata.result;
-        var len = locationresult.length;
-        console.log("--------:googlegraphdetails Response data itemListElement:-------- ", len);
+        //var len = locationresult.length;
+      //  console.log("--------:googlegraphdetails Response data itemListElement:-------- ", len);
         console.log("--------:googlegraphdetails Response data:--------", locationdata);
-        console.log("--------:googlegraphdetails Response data itemListElement:-------- ", locationresult);
+        console.log("--------:googlegraphdetails Response data result:-------- ", locationresult);
 
-var len2 = locationresult.length;
+//var len2 = locationresult.length;
         //var address = locationresult[1].address_components;
-        console.log("--------:googlegraphdetails Response data itemListElement:-------- ", len2);
+  //      console.log("--------:googlegraphdetails Response data itemListElement:-------- ", len2);
         // console.log("--------:googlegraphdetails Response data itemListElement:-------- ", locationresult[1].address_components);
         // console.log("--------:googlegraphdetails Response data itemListElement:-------- ", address[1].long_name);
         // console.log("--------:googlegraphdetails Response data itemListElement:-------- ", address[1].short_name);
