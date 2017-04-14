@@ -135,7 +135,7 @@ function videodisplay(categoryName, event) {
     //  celebritiesdetails(categoryName, event);
 }
 
-getuserlocation(categoryName, event){
+function getuserlocation(categoryName, event){
     console.log("*************---categoryName----*******", categoryName);
     var contentList = [];
     var quickList = [];
