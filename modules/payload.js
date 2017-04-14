@@ -150,8 +150,18 @@ function getuserlocation(categoryName, event){
     }, function(error, response, body) {
       console.log("***********error",error);
         var locationdata = JSON.parse(response.body);
+        var locationresult = userprofiledata.result
         console.log("--------:googlegraphdetails Response data:--------", locationdata);
-        //console.log("--------:googlegraphdetails Response data itemListElement:-------- ", userprofiledata.itemListElement);
+        console.log("--------:googlegraphdetails Response data itemListElement:-------- ", locationresult);
+        var address = locationresult[1].address_components;
+        console.log("--------:googlegraphdetails Response data itemListElement:-------- ", locationresult[1].address_components);
+        console.log("--------:googlegraphdetails Response data itemListElement:-------- ", address[1].long_name);
+        console.log("--------:googlegraphdetails Response data itemListElement:-------- ", address[1].short_name);
+        console.log("--------:googlegraphdetails Response data itemListElement:-------- ", address[2].long_name);
+        console.log("--------:googlegraphdetails Response data itemListElement:-------- ", address[2].short_name);
+        console.log("--------:googlegraphdetails Response data itemListElement:-------- ", address[3].long_name);
+        console.log("--------:googlegraphdetails Response data itemListElement:-------- ", address[3].short_name);
+
         //var rows = userprofiledata.itemListElement;
       //  var rowlen = rows.length;
         //console.log("--------:Response data:--------length ", rowlen);
