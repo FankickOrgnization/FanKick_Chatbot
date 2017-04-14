@@ -160,7 +160,7 @@ function getuserlocation(categoryName, event){
         //var len2 = locationresults.length;
         var address = locationresults.length;
         console.log("--------:googlegraphdetails Response data itemListElement:-------- ", address);
-        for (var i = 0; address < 1; i++) {
+        for (var i = 0; address < i; i++) {
           console.log(locationresults[i]);
         }
         // console.log("--------:googlegraphdetails Response data itemListElement:-------- ", locationresults[1].address_components);
