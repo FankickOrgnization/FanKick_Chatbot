@@ -151,21 +151,22 @@ function getuserlocation(categoryName, event){
       console.log("***********error",error);
         var locationdata = JSON.parse(response.body);
         var locationresults = locationdata.results;
+        var locationstatus = locationdata.status;
         var len = locationresults.length;
         console.log("--------:googlegraphdetails Response data itemListElement:-------- ", len);
-        console.log("--------:googlegraphdetails Response data:--------", locationdata);
+        console.log("--------:googlegraphdetails Response data status:--------", locationstatus);
         console.log("--------:googlegraphdetails Response data result:-------- ", locationresults);
 
-var len2 = locationresults.length;
-        var address = locationresults[1].address_components;
-      console.log("--------:googlegraphdetails Response data itemListElement:-------- ", len2);
-        console.log("--------:googlegraphdetails Response data itemListElement:-------- ", locationresults[1].address_components);
-        console.log("--------:googlegraphdetails Response data itemListElement:-------- ", address[1].long_name);
-        console.log("--------:googlegraphdetails Response data itemListElement:-------- ", address[1].short_name);
-        console.log("--------:googlegraphdetails Response data itemListElement:-------- ", address[2].long_name);
-         console.log("--------:googlegraphdetails Response data itemListElement:-------- ", address[2].short_name);
-         console.log("--------:googlegraphdetails Response data itemListElement:-------- ", address[3].long_name);
-         console.log("--------:googlegraphdetails Response data itemListElement:-------- ", address[3].short_name);
+        //var len2 = locationresults.length;
+        var address = locationresults.[1].address_components;
+        console.log("--------:googlegraphdetails Response data itemListElement:-------- ", address);
+        // console.log("--------:googlegraphdetails Response data itemListElement:-------- ", locationresults[1].address_components);
+        // console.log("--------:googlegraphdetails Response data itemListElement:-------- ", address[1].long_name);
+        // console.log("--------:googlegraphdetails Response data itemListElement:-------- ", address[1].short_name);
+        // console.log("--------:googlegraphdetails Response data itemListElement:-------- ", address[2].long_name);
+        //  console.log("--------:googlegraphdetails Response data itemListElement:-------- ", address[2].short_name);
+        //  console.log("--------:googlegraphdetails Response data itemListElement:-------- ", address[3].long_name);
+        //  console.log("--------:googlegraphdetails Response data itemListElement:-------- ", address[3].short_name);
 
         //var rows = userprofiledata.itemListElement;
       //  var rowlen = rows.length;
