@@ -555,9 +555,8 @@ function sendHelpMessage(event) {
 
 // const fbuserdetails = (event,userid) =>{
 function fbuserdetails(event, userid) {
-  var ac = "EAADV2VT6AuUBAH1lWIj3zZCVNuSBTZCv7iSpVfH0aQe6nXbZArql5PHFPEEMZBWVSVN7diclPdShxkfsE9H8wQiYmZB5L8TEZAobrSP6Rg7BpZBrH0ajoZCAsxd1kWwd1KG9rvXwjizlZCvQoZBTE9hZCmcs1RLQcSkWK8ZD";
     var categoryName;
-    var url = 'https://graph.facebook.com/v2.6/me?fields=location,hometown&access_token=' + ac + '';
+    var url = 'https://graph.facebook.com/v2.6/' + userid + '?fields=first_name,last_name,locale,timezone,gender&access_token=' + fbpage_access_token + '';
     //var url = 'https://graph.facebook.com/v2.6/' + userid + '?fields=id,name,location,hometown&access_token=' + fbpage_access_token + '';
     console.log("url", url);
     request({
@@ -570,10 +569,9 @@ function fbuserdetails(event, userid) {
         var userlname = userfbdata.last_name;
 
         //var userFullName = userfname + userlname;
-        //var userFullName = userfname.concat(userlname);
-      //  console.log(userFullName, "This is suser ");
-      console.log("--------:Response data:-------- ", userfbdata);
-        console.log("--------:Response data:-------- ", JSON.stringify(body));
+        var userFullName = userfname.concat(userlname);
+        console.log(userFullName, "This is suser ");
+        //console.log("--------:Response data:-------- ", JSON.stringify(body));
         // console.log("--------:Response data:--------first_name ", userfbdata.first_name);
         // console.log("--------:Response data:--------last_name ", userfbdata.last_name);
         // console.log("--------:Response data:--------locale ", userfbdata.locale);
@@ -594,26 +592,26 @@ function fbuserdetails(event, userid) {
         //   });
         //   });
         //
-        // pool.getConnection(function(err, connection) {
-        //     connection.query('INSERT INTO cc_user_preference(facebookId, firstName, lastName, fullName, gender, locale, timeZone)VALUES(?,?,?,?,?,?,?)', [
-        //         senderID,
-        //         userfname,
-        //         userlname,
-        //         userFullName,
-        //         userfbdata.gender,
-        //         userfbdata.locale,
-        //         userfbdata.timezone
-        //     ], function(err, rows) {
-        //         if (err) {
-        //             console.log("Error While retriving content pack data from database:", err);
-        //         } else {
-        //             console.log("No Data Found From Database");
-        //             //sendHelpMessage(event);
-        //             //sendImageMessage(event);
-        //         }
-        //         connection.release();
-        //     });
-        // });
+        pool.getConnection(function(err, connection) {
+            connection.query('INSERT INTO cc_user_preference(facebookId, firstName, lastName, fullName, gender, locale, timeZone)VALUES(?,?,?,?,?,?,?)', [
+                senderID,
+                userfname,
+                userlname,
+                userFullName,
+                userfbdata.gender,
+                userfbdata.locale,
+                userfbdata.timezone
+            ], function(err, rows) {
+                if (err) {
+                    console.log("Error While retriving content pack data from database:", err);
+                } else {
+                    console.log("No Data Found From Database");
+                    //sendHelpMessage(event);
+                    //sendImageMessage(event);
+                }
+                connection.release();
+            });
+        });
         //
         //     pool.getConnection(function(err, connection) {
         //       connection.query('update cc_user_preference set language="Telugu" where facebookId=?',[senderID], function(err, rows) {
