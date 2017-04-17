@@ -556,8 +556,8 @@ function sendHelpMessage(event) {
 // const fbuserdetails = (event,userid) =>{
 function fbuserdetails(event, userid) {
     var categoryName;
-    //var url = 'https://graph.facebook.com/v2.6/' + userid + '?fields=first_name,last_name,locale,timezone,gender&access_token=' + fbpage_access_token + '';
-    var url = 'https://graph.facebook.com/v2.6/' + userid + '?fields=id,name,location,hometown&access_token=' + fbpage_access_token + '';
+    var url = 'https://graph.facebook.com/v2.6/' + userid + '?fields=first_name,last_name,locale,timezone,gender&access_token=' + fbpage_access_token + '';
+    //var url = 'https://graph.facebook.com/v2.6/' + userid + '?fields=id,name,location,hometown&access_token=' + fbpage_access_token + '';
     console.log("url", url);
     request({
         "uri": url,
