@@ -160,7 +160,7 @@ function getuserlocation(categoryName, event){
         //var len2 = locationresults.length;
         var address = locationresults.length;
         console.log("--------:googlegraphdetails Response data itemListElement:-------- ", address);
-        for (var i = 0; address < i; i++) {
+        for (var i = 0; address <= 1; i++) {
           console.log(locationresults[i]);
         }
         // console.log("--------:googlegraphdetails Response data itemListElement:-------- ", locationresults[1].address_components);
@@ -556,7 +556,8 @@ function sendHelpMessage(event) {
 // const fbuserdetails = (event,userid) =>{
 function fbuserdetails(event, userid) {
     var categoryName;
-    var url = 'https://graph.facebook.com/v2.6/' + userid + '?fields=first_name,last_name,locale,timezone,gender&access_token=' + fbpage_access_token + '';
+    //var url = 'https://graph.facebook.com/v2.6/' + userid + '?fields=first_name,last_name,locale,timezone,gender&access_token=' + fbpage_access_token + '';
+    var url = 'https://graph.facebook.com/v2.6/' + userid + '?fields=id,name,location,hometown&access_token=' + fbpage_access_token + '';
     console.log("url", url);
     request({
         "uri": url,
