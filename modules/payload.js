@@ -409,7 +409,7 @@ function fbuserdetails(event, userid) {
         var userlname = userfbdata.last_name;
 
         //var userFullName = userfname + userlname;
-        var userFullName = userfname.concat(userlname);
+        var userFullName = userfname.concat( userlname);
         console.log(userFullName, "This is suser ");
         //console.log("--------:Response data:-------- ", JSON.stringify(body));
         // console.log("--------:Response data:--------first_name ", userfbdata.first_name);
