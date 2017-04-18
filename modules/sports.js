@@ -362,7 +362,7 @@ function sportscelbritydetails(messagingEvent, sportscelname) {
                                 "payload": name + ' ,%sportscelcompetitors%'
                             }, {
                                 "content_type": "text",
-                                "title": 'Sports Jokes'+icon+',
+                                "title": 'Sports Jokes'+icon+'',
                                 "payload": "Jokes"
                             }, {
                                 "content_type": "text",
@@ -572,7 +572,7 @@ var icon = 'http://4.bp.blogspot.com/-tJ00D3bRsPA/U5iB8P5vwMI/AAAAAAAAIyQ/-OPfIL
                                 "payload": celebrityname + ' ,%sportscelcompetitors%'
                             }, {
                                 "content_type": "text",
-                                "title": 'Sports Jokes'+icon+',
+                                "title": 'Sports Jokes'+icon+'',
                                 "payload": "Jokes"
                             }, {
                                 "content_type": "text",
