@@ -518,8 +518,20 @@ function sendJoke(categoryName, event) {
                     "payload": "jokes"
                 }, {
                     "content_type": "text",
-                    "title": "Home",
-                    "payload": "home"
+                    "title": "Movies 🎬",
+                    "payload": "Movies"
+                }, {
+                    "content_type": "text",
+                    "title": "Sports 🏆",
+                    "payload": "Sports"
+                }, {
+                    "content_type": "text",
+                    "title": "TV Shows 📺",
+                    "payload": "TV Shows"
+                }, {
+                    "content_type": "text",
+                    "title": "Music 🎶",
+                    "payload": "Music"
                 }
             ]
         }
