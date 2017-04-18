@@ -110,20 +110,22 @@ function userintrestQus(event, categoryName){
               //  var movieslist;
               console.log("*******cc_celebrity_preference data from database:*********", rows);
               for(var i=0;i < rows.length;i++){
-              console.log("category:-",rows[i].category);
-              console.log("subCategory:-",rows[i].subCategory);
+                var category = rows[i].category;
+                var subCategory = rows[i].subCategory;
+                var favCelebrity = rows[i].favCelebrity;
+              console.log("category:-",category);
+              console.log("subCategory:-",subCategory);
               console.log("favCelebrity:-",rows[i].favCelebrity);
               console.log("language:-",rows[i].language);
               console.log("location:-",rows[i].location);
               }
 
-              if (rows.subCategory == null && rows.favCelebrity == null){
+              if (subCategory == null && favCelebrity == null){
                   submenu(event, categoryName);
-              } else if (rows.subCategory != null && rows.favCelebrity == null) {
-                subCategoryconversation(event, rows.subCategory);
-              }else if (rows.subCategory != null && rows.favCelebrity != null) {
-                favoriteactorconversation(event,rows.subCategory,rows.favCelebrity);
-
+              } else if (subCategory != null && favCelebrity == null) {
+                subCategoryconversation(event, subCategory);
+              }else if (subCategory != null && favCelebrity != null) {
+                favoriteactorconversation(event,subCategory,favCelebrity);
               }
               // for (var i = 0; i < rows.length; i++) { //Construct request body
               //     var res1 = rows[i].id + ",";
@@ -182,6 +184,14 @@ function userintrestQus(event, categoryName){
 
 }
 
+
+subCategoryconversation(event, subCategory){
+  console.log("subCategoryconversation:---",subCategory);
+}
+favoriteactorconversation(event,subCategory,favCelebrity){
+  console.log("favoriteactorconversation:---",subCategory);
+  console.log("favoriteactorconversation:---",favCelebrity);
+}
 
 function imagedisplay(categoryName, event) {
     var senderID = event.sender.id;
