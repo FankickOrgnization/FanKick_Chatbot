@@ -52,7 +52,7 @@ const sendContentPacks = (categoryName, event) => {
         wishingmessage(categoryName, event);
     } else if (categoryName == "movies" || categoryName == "sports" || categoryName == "tv shows" || categoryName == "music") {
         userintrestQus(event, categoryName);
-        submenu(event, categoryName);
+        //submenu(event, categoryName);
         usercategory(event, categoryName);
         console.log("enter into the allcategory function");
     } else if (categoryName == "indian" || categoryName == "western") {
@@ -109,7 +109,20 @@ function userintrestQus(event, categoryName){
               // var quickList = [];
               //  var movieslist;
               console.log("*******cc_celebrity_preference data from database:*********", rows);
+              console.log("category:-",rows.category);
+              console.log("subCategory:-",rows.subCategory);
+              console.log("favCelebrity:-",rows.favCelebrity);
+              console.log("language:-",rows.language);
+              console.log("location:-",rows.location);
 
+              if (rows.subCategory == null && rows.favCelebrity == null){
+                  submenu(event, categoryName);
+              } else if (rows.subCategory != null && (rows.favCelebrity == null || )) {
+                //subCategoryconversation(event, rows.subCategory);
+              }else if (rows.subCategory != null || rows.favCelebrity != null) {
+
+
+              }
               // for (var i = 0; i < rows.length; i++) { //Construct request body
               //     var res1 = rows[i].id + ",";
               //     var res2 = rows[i].celebrityName + ",";
