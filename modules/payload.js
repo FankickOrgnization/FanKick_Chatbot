@@ -109,11 +109,13 @@ function userintrestQus(event, categoryName){
               // var quickList = [];
               //  var movieslist;
               console.log("*******cc_celebrity_preference data from database:*********", rows);
-              console.log("category:-",rows.category);
-              console.log("subCategory:-",rows.subCategory);
-              console.log("favCelebrity:-",rows.favCelebrity);
-              console.log("language:-",rows.language);
-              console.log("location:-",rows.location);
+              for(var i=0;i < rows.length;i++){
+              console.log("category:-",rows[i].category);
+              console.log("subCategory:-",rows[i].subCategory);
+              console.log("favCelebrity:-",rows[i].favCelebrity);
+              console.log("language:-",rows[i].language);
+              console.log("location:-",rows[i].location);
+              }
 
               if (rows.subCategory == null && rows.favCelebrity == null){
                   submenu(event, categoryName);
