@@ -51,7 +51,8 @@ const sendContentPacks = (categoryName, event) => {
     } else if (categoryName == "hi" || categoryName == "hello" || categoryName == "hey") {
         wishingmessage(categoryName, event);
     } else if (categoryName == "movies" || categoryName == "sports" || categoryName == "tv shows" || categoryName == "music") {
-        submenu(event, categoryName);
+        userintrestQus(event, categoryName);
+        //submenu(event, categoryName);
         usercategory(event, categoryName);
         console.log("enter into the allcategory function");
     } else if (categoryName == "indian" || categoryName == "western") {
@@ -89,6 +90,81 @@ const sendContentPacks = (categoryName, event) => {
         sendHelpMessage(event);
     }
 }
+
+
+
+
+
+function userintrestQus(event, categoryName){
+  pool.getConnection(function(err, connection) {
+      //connection.query('select * from cc_celebrity_preference where celebrityName=?',[categoryName], function(err, rows) {
+      //connection.query('select * from cc_celebrity_preference where subCategory = ?',[categoryName],function(err, rows) {
+      connection.query('select * from cc_conversation_two where subCategory=(select id from cc_subcategories where subCategoryName= ? ) order by id desc', [categoryName], function(err, rows) {
+          if (err) {
+              console.log("Error While retriving content pack data from database:", err);
+          } else if (rows.length) {
+              // var senderID = event.sender.id;
+              // var contentList = [];
+              // var quickList = [];
+              //  var movieslist;
+              console.log("*******cc_celebrity_preference data from database:*********", rows);
+
+              // for (var i = 0; i < rows.length; i++) { //Construct request body
+              //     var res1 = rows[i].id + ",";
+              //     var res2 = rows[i].celebrityName + ",";
+              //     var res3 = res2.concat(res1);
+              //     var res5 = res3.concat(res2);
+              //     var keyMap = {
+              //         "title": rows[i].celebrityName,
+              //         "image_url": rows[i].celebrityImageUrl,
+              //         "subtitle": rows[i].description,
+              //         //  "item_url": rows[i].image_url,
+              //         "buttons": [
+              //             {
+              //                 "type": "web_url",
+              //                 "url": rows[i].facebookHandle,
+              //                 "title": "Facebook"
+              //             }, {
+              //                 "type": "web_url",
+              //                 "url": rows[i].twitterHandle,
+              //                 "title": "Twitter"
+              //             }, {
+              //                 "type": "postback",
+              //                 "title": "More Info ℹ",
+              //                 "payload": rows[i].id
+              //             }
+              //         ]
+              //     };
+              //     contentList.push(keyMap);
+              // }
+
+              // var messageData = {
+              //     "recipient": {
+              //         "id": senderID
+              //     },
+              //     "message": {
+              //         "attachment": {
+              //             "type": "template",
+              //             "payload": {
+              //                 "template_type": "generic",
+              //                 "elements": contentList
+              //             }
+              //         },
+              //         "quick_replies": quickreply
+              //     }
+              // }
+              //fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
+          } else {
+              console.log("No Data Found From Database");
+              sendHelpMessage(event);
+              //sendImageMessage(event);
+          }
+          connection.release();
+      });
+  });
+
+}
+
 
 function imagedisplay(categoryName, event) {
     var senderID = event.sender.id;
