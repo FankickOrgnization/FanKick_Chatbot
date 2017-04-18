@@ -52,7 +52,7 @@ const sendContentPacks = (categoryName, event) => {
         wishingmessage(categoryName, event);
     } else if (categoryName == "movies" || categoryName == "sports" || categoryName == "tv shows" || categoryName == "music") {
         userintrestQus(event, categoryName);
-        //submenu(event, categoryName);
+        submenu(event, categoryName);
         usercategory(event, categoryName);
         console.log("enter into the allcategory function");
     } else if (categoryName == "indian" || categoryName == "western") {
@@ -100,7 +100,7 @@ function userintrestQus(event, categoryName){
   pool.getConnection(function(err, connection) {
       //connection.query('select * from cc_celebrity_preference where celebrityName=?',[categoryName], function(err, rows) {
       //connection.query('select * from cc_celebrity_preference where subCategory = ?',[categoryName],function(err, rows) {
-      connection.query('select * from cc_user_preference where facebookId= ? order by id desc', [senderID], function(err, rows) {
+      connection.query('select * from cc_user_preference where facebookId= ?', [senderID], function(err, rows) {
           if (err) {
               console.log("Error While retriving content pack data from database:", err);
           } else if (rows.length) {
@@ -155,11 +155,12 @@ function userintrestQus(event, categoryName){
               //     }
               // }
               //fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
-          } else {
-              console.log("No Data Found From Database");
-              sendHelpMessage(event);
-              //sendImageMessage(event);
           }
+          // else {
+          //     console.log("No Data Found From Database");
+          //     sendHelpMessage(event);
+          //     //sendImageMessage(event);
+          // }
           connection.release();
       });
   });
