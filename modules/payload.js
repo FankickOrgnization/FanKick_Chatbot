@@ -117,10 +117,10 @@ function userintrestQus(event, categoryName){
 
               if (rows.subCategory == null && rows.favCelebrity == null){
                   submenu(event, categoryName);
-              } else if (rows.subCategory != null && (rows.favCelebrity == null || )) {
-                //subCategoryconversation(event, rows.subCategory);
-              }else if (rows.subCategory != null || rows.favCelebrity != null) {
-
+              } else if (rows.subCategory != null && rows.favCelebrity == null) {
+                subCategoryconversation(event, rows.subCategory);
+              }else if (rows.subCategory != null && rows.favCelebrity != null) {
+                favoriteactorconversation(event,rows.subCategory,rows.favCelebrity);
 
               }
               // for (var i = 0; i < rows.length; i++) { //Construct request body
