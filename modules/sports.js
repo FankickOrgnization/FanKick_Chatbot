@@ -326,6 +326,7 @@ function sportscelbritydetails(messagingEvent, sportscelname) {
                     contentList.push(keyMap);
 
                 }
+                var icon = 'http://4.bp.blogspot.com/-tJ00D3bRsPA/U5iB8P5vwMI/AAAAAAAAIyQ/-OPfILBWrR4/s1600/OMG-smiley.png';
                 var messageData = {
                     "recipient": {
                         "id": senderID
@@ -361,7 +362,7 @@ function sportscelbritydetails(messagingEvent, sportscelname) {
                                 "payload": name + ' ,%sportscelcompetitors%'
                             }, {
                                 "content_type": "text",
-                                "title": "Sports Jokes",
+                                "title": 'Sports Jokes'+icon+',
                                 "payload": "Jokes"
                             }, {
                                 "content_type": "text",
@@ -541,7 +542,7 @@ const sportscelebrityinfo = (messagingEvent, quickpayloadtext) => {
                     }
                     //contentList.push(keyMap);
                 }
-
+var icon = 'http://4.bp.blogspot.com/-tJ00D3bRsPA/U5iB8P5vwMI/AAAAAAAAIyQ/-OPfILBWrR4/s1600/OMG-smiley.png';
                 var messageData = {
                     "recipient": {
                         "id": senderID
@@ -571,7 +572,7 @@ const sportscelebrityinfo = (messagingEvent, quickpayloadtext) => {
                                 "payload": celebrityname + ' ,%sportscelcompetitors%'
                             }, {
                                 "content_type": "text",
-                                "title": "Sports Jokes",
+                                "title": 'Sports Jokes'+icon+',
                                 "payload": "Jokes"
                             }, {
                                 "content_type": "text",
