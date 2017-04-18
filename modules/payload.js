@@ -51,8 +51,8 @@ const sendContentPacks = (categoryName, event) => {
     } else if (categoryName == "hi" || categoryName == "hello" || categoryName == "hey") {
         wishingmessage(categoryName, event);
     } else if (categoryName == "movies" || categoryName == "sports" || categoryName == "tv shows" || categoryName == "music") {
-        userintrestQus(event, categoryName);
-        //submenu(event, categoryName);
+        //userintrestQus(event, categoryName);
+        submenu(event, categoryName);
         usercategory(event, categoryName);
         console.log("enter into the allcategory function");
     } else if (categoryName == "indian" || categoryName == "western") {
