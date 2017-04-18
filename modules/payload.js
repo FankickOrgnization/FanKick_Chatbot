@@ -96,10 +96,11 @@ const sendContentPacks = (categoryName, event) => {
 
 
 function userintrestQus(event, categoryName){
+  var senderID = event.sender.id;
   pool.getConnection(function(err, connection) {
       //connection.query('select * from cc_celebrity_preference where celebrityName=?',[categoryName], function(err, rows) {
       //connection.query('select * from cc_celebrity_preference where subCategory = ?',[categoryName],function(err, rows) {
-      connection.query('select * from cc_conversation_two where subCategory=(select id from cc_subcategories where subCategoryName= ? ) order by id desc', [categoryName], function(err, rows) {
+      connection.query('select * from cc_user_preference where facebookId= ? order by id desc', [senderID], function(err, rows) {
           if (err) {
               console.log("Error While retriving content pack data from database:", err);
           } else if (rows.length) {
