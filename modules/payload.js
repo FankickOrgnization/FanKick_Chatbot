@@ -185,10 +185,10 @@ function userintrestQus(event, categoryName){
 }
 
 
-subCategoryconversation(event, subCategory){
+function subCategoryconversation(event,subCategory){
   console.log("subCategoryconversation:---",subCategory);
 }
-favoriteactorconversation(event,subCategory,favCelebrity){
+function favoriteactorconversation(event,subCategory,favCelebrity){
   console.log("favoriteactorconversation:---",subCategory);
   console.log("favoriteactorconversation:---",favCelebrity);
 }
