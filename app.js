@@ -1160,7 +1160,7 @@ function updateusercelebrity(usercelebrityName, senderID) {
     //console.log("******************categoryName*************", usercelebrityName);
     //console.log("******************senderID*************", senderID);
     pool.getConnection(function(err, connection) {
-        connection.query('update cc_user_preference set favCelebrity= ? where facebookId=?', [
+        connection.query('update cc_user_preference set movieCelebrity= ? where facebookId=?', [
             usercelebrityName, senderID
         ], function(err, rows) {
             if (err) {

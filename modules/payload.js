@@ -51,8 +51,23 @@ const sendContentPacks = (categoryName, event) => {
     } else if (categoryName == "hi" || categoryName == "hello" || categoryName == "hey") {
         wishingmessage(categoryName, event);
         userintrestcategory(event, categoryName);
-    } else if (categoryName == "movies" || categoryName == "sports" || categoryName == "tv shows" || categoryName == "music") {
-        userintrestsubcategory(event, categoryName);
+    } else if (categoryName == "movies") {
+        userintrestmoviessubcategory(event, categoryName);
+        submenu(event, categoryName);
+        usercategory(event, categoryName);
+        console.log("enter into the allcategory function");
+    }else if (categoryName == "sports") {
+        userintrestsportssubcategory(event, categoryName);
+        submenu(event, categoryName);
+        usercategory(event, categoryName);
+        console.log("enter into the allcategory function");
+    }else if (categoryName == "tv shows") {
+        userintresttvshowssubcategory(event, categoryName);
+        submenu(event, categoryName);
+        usercategory(event, categoryName);
+        console.log("enter into the allcategory function");
+    }else if (categoryName == "music") {
+        userintrestmusicsubcategory(event, categoryName);
         submenu(event, categoryName);
         usercategory(event, categoryName);
         console.log("enter into the allcategory function");
@@ -105,7 +120,7 @@ function userintrestcategory(event, categoryName){
               for(var i=0;i < rows.length;i++){
                 var category = rows[i].category;
                 var subCategory = rows[i].subCategory;
-                var favCelebrity = rows[i].favCelebrity;
+                var movieCelebrity = rows[i].movieCelebrity;
               console.log("category:-",category);
               console.log("subCategory:-",subCategory);
               }
@@ -121,11 +136,11 @@ function userintrestcategory(event, categoryName){
   });
 }
 
-function Categoryconversation(event, subCategory){
+function Categoryconversation(event, category){
     var senderID = event.sender.id;
-  console.log("subCategoryconversation:---",subCategory);
+  console.log("subCategoryconversation:---",category);
   pool.getConnection(function(err, connection) {
-      connection.query('select * from cc_conversation_two where subCategory=(select id from cc_categories where categoryName= ? ) order by id desc', [subCategory], function(err, rows) {
+      connection.query('select * from cc_conversation_two where subCategory=(select id from cc_categories where categoryName= ? ) order by id desc', [category], function(err, rows) {
           if (err) {
               console.log("Error While retriving content pack data from database:", err);
           } else if (rows.length) {
@@ -157,16 +172,16 @@ function Categoryconversation(event, subCategory){
                               "payload": quickReply1
                           },{
                               "content_type": "text",
-                              "title": quickReply1,
-                              "payload": quickReply1
+                              "title": quickReply2,
+                              "payload": quickReply2
                           },{
                               "content_type": "text",
-                              "title": quickReply1,
-                              "payload": quickReply1
+                              "title": quickReply2,
+                              "payload": quickReply2
                           },{
                               "content_type": "text",
                               "title": "Skip",
-                              "payload": subCategory
+                              "payload": category
                           }
                       ]
 
@@ -182,7 +197,7 @@ function Categoryconversation(event, subCategory){
 
 
 
-function userintrestsubcategory(event, categoryName){
+function userintrestmoviessubcategory(event, categoryName){
   var senderID = event.sender.id;
   pool.getConnection(function(err, connection) {
       //connection.query('select * from cc_celebrity_preference where celebrityName=?',[categoryName], function(err, rows) {
@@ -199,20 +214,20 @@ function userintrestsubcategory(event, categoryName){
               for(var i=0;i < rows.length;i++){
                 var category = rows[i].category;
                 var subCategory = rows[i].subCategory;
-                var favCelebrity = rows[i].favCelebrity;
+                var movieCelebrity = rows[i].movieCelebrity;
               console.log("category:-",category);
               console.log("subCategory:-",subCategory);
-              console.log("favCelebrity:-",rows[i].favCelebrity);
+              console.log("movieCelebrity:-",rows[i].movieCelebrity);
               console.log("language:-",rows[i].language);
               console.log("location:-",rows[i].location);
               }
 
-              if (subCategory == null && favCelebrity == null){
+              if (subCategory == null && movieCelebrity == null){
                   submenu(event, categoryName);
-              } else if (subCategory != null && favCelebrity == null) {
-                subCategoryconversation(event, subCategory);
-              }else if (subCategory != null && favCelebrity != null) {
-                favoriteactorconversation(event,subCategory,favCelebrity);
+              } else if (subCategory != null && movieCelebrity == null) {
+                moviesconversation(event, subCategory);
+              }else if (subCategory != null && movieCelebrity != null) {
+                moviesactorconversation(event,subCategory,movieCelebrity);
               }
           }
           connection.release();
@@ -222,7 +237,7 @@ function userintrestsubcategory(event, categoryName){
 }
 
 
-function subCategoryconversation(event,subCategory){
+function moviesconversation(event,subCategory){
     var senderID = event.sender.id;
   console.log("subCategoryconversation:---",subCategory);
   pool.getConnection(function(err, connection) {
@@ -275,10 +290,10 @@ function subCategoryconversation(event,subCategory){
   });
 }
 
-function favoriteactorconversation(event,subCategory,favCelebrity){
+function moviesactorconversation(event,subCategory,movieCelebrity){
     var senderID = event.sender.id;
   console.log("favoriteactorconversation:---",subCategory);
-  console.log("favoriteactorconversation:---",favCelebrity);
+  console.log("favoriteactorconversation:---",movieCelebrity);
   var celebrityName;
   var description;
   var conversationQueue;
@@ -286,7 +301,7 @@ function favoriteactorconversation(event,subCategory,favCelebrity){
   var quickReply2;
   var quickReply3;
   pool.getConnection(function(err, connection) {
-      connection.query('select * from cc_conversation_two where celebrityName= ? order by id desc', [favCelebrity], function(err, rows) {
+      connection.query('select * from cc_conversation_two where celebrityName= ? order by id desc', [movieCelebrity], function(err, rows) {
           if (err) {
               console.log("Error While retriving content pack data from database:", err);
           } else if (rows.length) {
