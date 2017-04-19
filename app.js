@@ -226,7 +226,7 @@ function quickpayload(messagingEvent) {
         console.log("this is celebrity Id:", packId);
         celebrityid(packId, messagingEvent);
         //  movies.getgenremovies(messagingEvent, quickpayloadtext);
-    }else if (conversationQueuetitle != -1) {
+    } else if (conversationQueuetitle != -1) {
         var Queuetitle = quickpayloadtext.replace("%conv%", "");
         console.log("conversationQueuetitle:--------------", Queuetitle);
         Queuetitledetails(messagingEvent, Queuetitle);
@@ -399,70 +399,71 @@ function receivedMessage(event) {
     });
 }
 
-function Queuetitledetails(messagingEvent, Queuetitle){
-  var senderID = messagingEvent.sender.id;
-  console.log('Queuetitle:---------',Queuetitle);
-  pool.getConnection(function(err, connection) {
-      connection.query('select * from cc_conversation_two where conversationQueue = ?', [
-          Queuetitle
-      ], function(err, rows) {
-          console.log("*************************quickpaly", rows);
-          if (err) {
-              console.log("Error While retriving content pack data from database:", err);
-          } else if (rows.length) {
-              console.log("*******cc_celebrity_preference data from database:*********", rows);
-              for (var i = 0; i < rows.length; i++) {
-                celebrityName = rows[i].celebrityName;
-                description = rows[i].description;
-                conversationQueue = rows[i].conversationQueue;
-                quickReply1 = rows[i].quickReply1;
-                quickReply2 = rows[i].quickReply2;
-                quickReply3 = rows[i].quickReply3;
-              }
-              console.log(celebrityName);
-              console.log(description);
-              console.log(conversationQueue);
-              console.log(quickReply1);
-              console.log(quickReply2);
-              console.log(quickReply3);
-              var messageData = {
-                  "recipient": {
-                      "id": senderID
-                  },
-                  "message": {
-                      "text": description,
-                      "quick_replies": [
-                          {
-                               "content_type": "text",
-                              "title": quickReply1,
-                              "payload": quickReply1 +'%conv%'
-                          },{
-                              "content_type": "text",
-                              "title": quickReply2,
-                              "payload": quickReply2 +'%conv%'
-                          },{
-                              "content_type": "text",
-                              "title": quickReply2,
-                              "payload": quickReply2 +'%conv%'
-                          },{
-                              "content_type": "text",
-                              "title": "Skip",
-                              "payload": category
-                          }
-                      ]
+function Queuetitledetails(messagingEvent, Queuetitle) {
+    var senderID = messagingEvent.sender.id;
+    console.log('Queuetitle:---------', Queuetitle);
+    pool.getConnection(function(err, connection) {
+        connection.query('select * from cc_conversation_two where conversationQueue = ?', [Queuetitle], function(err, rows) {
+            console.log("*************************quickpaly", rows);
+            if (err) {
+                console.log("Error While retriving content pack data from database:", err);
+            } else if (rows.length) {
+                console.log("*******cc_celebrity_preference data from database:*********", rows);
+                for (var i = 0; i < rows.length; i++) {
+                    celebrityName = rows[i].celebrityName;
+                    description = rows[i].description;
+                    conversationQueue = rows[i].conversationQueue;
+                    quickReply1 = rows[i].quickReply1;
+                    quickReply2 = rows[i].quickReply2;
+                    quickReply3 = rows[i].quickReply3;
+                }
+                console.log(celebrityName);
+                console.log(description);
+                console.log(conversationQueue);
+                console.log(quickReply1);
+                console.log(quickReply2);
+                console.log(quickReply3);
+                var messageData = {
+                    "recipient": {
+                        "id": senderID
+                    },
+                    "message": {
+                        "text": description,
+                        "quick_replies": [
+                            {
+                                "content_type": "text",
+                                "title": quickReply1,
+                                "payload": quickReply1 + '%conv%'
+                            }, {
+                                "content_type": "text",
+                                "title": quickReply2,
+                                "payload": quickReply2 + '%conv%'
+                            }, {
+                                "content_type": "text",
+                                "title": quickReply2,
+                                "payload": quickReply2 + '%conv%'
+                            }, {
+                                "content_type": "text",
+                                "title": celebrityName,
+                                "payload": celebrityName
+                            }, {
+                                "content_type": "text",
+                                "title": "Home",
+                                "payload": "Home"
+                            }
+                        ]
 
-                  }
-              }
-              fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
+                    }
+                }
+                fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
             } else {
-              console.log("No Data Found From Database");
-              sendHelpMessage(messagingEvent);
-          }
-          connection.release();
-      });
-  });
+                console.log("No Data Found From Database");
+                sendHelpMessage(messagingEvent);
+            }
+            connection.release();
+        });
+    });
 }
-
 
 function quick_reply_subcategory(messagingEvent, quickpayloadtext) {
     var genrearray = quickpayloadtext.split(',');
@@ -590,7 +591,7 @@ function quick_reply_category(messagingEvent, quickpayloadtext) {
                         "quick_replies": [
                             {
                                 "content_type": "text",
-                                "title": subCategory.charAt(0).toUpperCase() + subCategory.substr(1).toLowerCase()+" Jokes",
+                                "title": subCategory.charAt(0).toUpperCase() + subCategory.substr(1).toLowerCase() + " Jokes",
                                 "payload": "Jokes"
                             }, {
                                 "content_type": "text",
@@ -904,11 +905,10 @@ function selectedactorcomptiters(messagingEvent, competitor, picurl, name) {
     fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
 }
 
-
 function actorintro(messagingEvent, actorname) {
     var senderID = messagingEvent.sender.id;
     //var img = 'https://fankickdev.blob.core.windows.net/images/home_logo.png';
-    var msg = 'Here is what I know about '+actorname+'';
+    var msg = 'Here is what I know about ' + actorname + '';
     var messageData = {
         "recipient": {
             "id": senderID
@@ -920,8 +920,6 @@ function actorintro(messagingEvent, actorname) {
     fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
     filmactor(messagingEvent, actorname);
 }
-
-
 
 //Selected actor filems from movies list
 function movieintro(messagingEvent, moviename) {
@@ -939,10 +937,6 @@ function movieintro(messagingEvent, moviename) {
     fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
     celebritymovies(messagingEvent, moviename);
 }
-
-
-
-
 
 //Getting the celebrity related movies from selected celebrity
 function celebritymovies(messagingEvent, moviename) {
@@ -1251,45 +1245,43 @@ function textmessage(msgwit, messagingEvent) {
     var msgText = messagingEvent.message.text;
     console.log("messaging_message:------", messagingEvent.message);
     var rows = messagingEvent.message.attachments;
-    if(rows != undefined){
+    if (rows != undefined) {
         for (var i = 0; i < rows.length; i++) {
-          console.log("messaging_message Location:------", messagingEvent.message.attachments[i].payload);
-          var location_payload = messagingEvent.message.attachments[i].payload;
-          var location_payload_coordinates = location_payload.coordinates;
-          var location_payload_coordinates_lat = location_payload.coordinates.lat;
-          var location_payload_coordinates_long = location_payload.coordinates.long;
-          var location = [location_payload_coordinates_lat, location_payload_coordinates_long];
-          panorama(location, function (err, result) {
-              if (err) {
-                console.log(err);
-              }else{
-                // pano ID
-                console.log(result.id);
+            console.log("messaging_message Location:------", messagingEvent.message.attachments[i].payload);
+            var location_payload = messagingEvent.message.attachments[i].payload;
+            var location_payload_coordinates = location_payload.coordinates;
+            var location_payload_coordinates_lat = location_payload.coordinates.lat;
+            var location_payload_coordinates_long = location_payload.coordinates.long;
+            var location = [location_payload_coordinates_lat, location_payload_coordinates_long];
+            panorama(location, function(err, result) {
+                if (err) {
+                    console.log(err);
+                } else {
+                    // pano ID
+                    console.log(result.id);
 
-                // actual latitude, longitude
-                console.log(result.latitude);
+                    // actual latitude, longitude
+                    console.log(result.latitude);
 
-                console.log(result.longitude);
+                    console.log(result.longitude);
 
-                // other details from Google API
-                console.log(result.copyright);
-              }
-
+                    // other details from Google API
+                    console.log(result.copyright);
+                }
 
             })
 
-        console.log("messaging_message location_payload:------", location_payload);
-        console.log("messaging_message location_payload_coordinates:------", location_payload_coordinates);
-        console.log("messaging_message location_payload_coordinates_lat:------", location_payload_coordinates_lat);
-        console.log("messaging_message location_payload_coordinates_long:------", location_payload_coordinates_long);
+            console.log("messaging_message location_payload:------", location_payload);
+            console.log("messaging_message location_payload_coordinates:------", location_payload_coordinates);
+            console.log("messaging_message location_payload_coordinates_lat:------", location_payload_coordinates_lat);
+            console.log("messaging_message location_payload_coordinates_long:------", location_payload_coordinates_long);
         }
-      }
-    else{
-      console.log("messaging_message_text:------", messagingEvent.message.text);
-      console.log("messaging_msgText:------", msgText);
-      console.log("messaging_msgText:------:------", msgwit);
-      //payloadText.sendContentPacks(msgText, messagingEvent);
-      receivedtextmessage(msgText, messagingEvent);
+    } else {
+        console.log("messaging_message_text:------", messagingEvent.message.text);
+        console.log("messaging_msgText:------", msgText);
+        console.log("messaging_msgText:------:------", msgwit);
+        //payloadText.sendContentPacks(msgText, messagingEvent);
+        receivedtextmessage(msgText, messagingEvent);
     }
 };
 

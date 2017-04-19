@@ -90,6 +90,68 @@ const sportscelbrityintro = (messagingEvent, sportscelname) => {
     user_favorite_sports_celebrity(messagingEvent, sportscelname)
 }
 
+
+const sports_celebrity_conversation = (event, category, sportsCelebrity) =>{
+    var senderID = event.sender.id;
+    console.log("favoriteactorconversation:---", subCategory);
+    console.log("favoriteactorconversation:---", movieCelebrity);
+    var celebrityName;
+    var description;
+    var conversationQueue;
+    var quickReply1;
+    var quickReply2;
+    var quickReply3;
+    pool.getConnection(function(err, connection) {
+        connection.query('select * from cc_conversation_two where celebrityName= ? order by id desc', [sportsCelebrity], function(err, rows) {
+            if (err) {
+                console.log("Error While retriving content pack data from database:", err);
+            } else if (rows.length) {
+                console.log("*******cc_celebrity_preference data from database:*********", rows);
+                for (var i = 0; i < rows.length; i++) {
+                    celebrityName = rows[i].celebrityName;
+                    description = rows[i].description;
+                    conversationQueue = rows[i].conversationQueue;
+                    quickReply1 = rows[i].quickReply1;
+                    quickReply2 = rows[i].quickReply2;
+                    quickReply3 = rows[i].quickReply3;
+                }
+                console.log(celebrityName, description, conversationQueue, quickReply1, quickReply2, quickReply3);
+                var messageData = {
+                    "recipient": {
+                        "id": senderID
+                    },
+                    "message": {
+                        "text": description,
+                        "quick_replies": [
+                            {
+                                "content_type": "text",
+                                "title": quickReply1,
+                                "payload": quickReply1 + '%conv%'
+                            }, {
+                                "content_type": "text",
+                                "title": quickReply2,
+                                "payload": quickReply2 + '%conv%'
+                            }, {
+                                "content_type": "text",
+                                "title": quickReply3,
+                                "payload": quickReply3 + '%conv%'
+                            }, {
+                                "content_type": "text",
+                                "title": "Skip",
+                                "payload": category
+                            }
+                        ]
+
+                    }
+                }
+                fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
+            }
+            connection.release();
+        });
+    });
+}
+
+
 function user_favorite_sports_celebrity(event, sportscelname) {
     var senderID = event.sender.id;
     pool.getConnection(function(err, connection) {
