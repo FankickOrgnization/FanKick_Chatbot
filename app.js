@@ -227,9 +227,8 @@ function quickpayload(messagingEvent) {
         celebrityid(packId, messagingEvent);
         //  movies.getgenremovies(messagingEvent, quickpayloadtext);
     }else if (conversationQueuetitle != -1) {
-        var Queuetitle = quickpayloadtext.replace(" %conv%", "");
-        console.log("conversationQueuetitle", Queuetitle);
-        var type = "leadActor";
+        var Queuetitle = quickpayloadtext.replace("%conv%", "");
+        console.log("conversationQueuetitle:--------------", Queuetitle);        
         Queuetitledetails(messagingEvent, Queuetitle);
         //  movies.getgenremovies(messagingEvent, quickpayloadtext);
     } else if (action != -1 || comedy != -1 || romance != -1 || thriller != -1 || drama != -1 || sociofantasy != -1) {
@@ -402,6 +401,7 @@ function receivedMessage(event) {
 
 function Queuetitledetails(messagingEvent, Queuetitle){
   //var senderID = messagingEvent.sender.id;
+  console.log('Queuetitle:---------',Queuetitle);
   pool.getConnection(function(err, connection) {
       connection.query('select * from cc_conversation_two where conversationQueue = ?', [
           Queuetitle
