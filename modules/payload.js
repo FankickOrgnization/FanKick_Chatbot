@@ -51,7 +51,7 @@ const sendContentPacks = (categoryName, event) => {
     } else if (categoryName == "hi" || categoryName == "hello" || categoryName == "hey") {
         wishingmessage(categoryName, event);
     } else if (categoryName == "movies" || categoryName == "sports" || categoryName == "tv shows" || categoryName == "music") {
-        //userintrestQus(event, categoryName);
+        userintrestQus(event, categoryName);
         submenu(event, categoryName);
         usercategory(event, categoryName);
         console.log("enter into the allcategory function");
@@ -187,10 +187,31 @@ function userintrestQus(event, categoryName){
 
 function subCategoryconversation(event,subCategory){
   console.log("subCategoryconversation:---",subCategory);
+  pool.getConnection(function(err, connection) {
+      connection.query('select * from cc_conversation_two where subCategory=(select id from cc_subcategories where subCategoryName= ? ) order by id desc', [subCategory], function(err, rows) {
+          if (err) {
+              console.log("Error While retriving content pack data from database:", err);
+          } else if (rows.length) {
+              console.log("*******cc_celebrity_preference data from database:*********", rows);
+          }
+          connection.release();
+      });
+  });
 }
+
 function favoriteactorconversation(event,subCategory,favCelebrity){
   console.log("favoriteactorconversation:---",subCategory);
   console.log("favoriteactorconversation:---",favCelebrity);
+  pool.getConnection(function(err, connection) {
+      connection.query('select * from cc_conversation_two where favCelebrity= ? order by id desc', [favCelebrity], function(err, rows) {
+          if (err) {
+              console.log("Error While retriving content pack data from database:", err);
+          } else if (rows.length) {
+              console.log("*******cc_celebrity_preference data from database:*********", rows);
+          }
+          connection.release();
+      });
+  });
 }
 
 function imagedisplay(categoryName, event) {
