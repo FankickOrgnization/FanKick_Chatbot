@@ -203,7 +203,7 @@ function favoriteactorconversation(event,subCategory,favCelebrity){
   console.log("favoriteactorconversation:---",subCategory);
   console.log("favoriteactorconversation:---",favCelebrity);
   pool.getConnection(function(err, connection) {
-      connection.query('select * from cc_conversation_two where favCelebrity= ? order by id desc', [favCelebrity], function(err, rows) {
+      connection.query('select * from cc_conversation_two where celebrityName= ? order by id desc', [favCelebrity], function(err, rows) {
           if (err) {
               console.log("Error While retriving content pack data from database:", err);
           } else if (rows.length) {
