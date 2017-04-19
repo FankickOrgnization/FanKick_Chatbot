@@ -228,7 +228,7 @@ function quickpayload(messagingEvent) {
         //  movies.getgenremovies(messagingEvent, quickpayloadtext);
     }else if (conversationQueuetitle != -1) {
         var Queuetitle = quickpayloadtext.replace("%conv%", "");
-        console.log("conversationQueuetitle:--------------", Queuetitle);        
+        console.log("conversationQueuetitle:--------------", Queuetitle);
         Queuetitledetails(messagingEvent, Queuetitle);
         //  movies.getgenremovies(messagingEvent, quickpayloadtext);
     } else if (action != -1 || comedy != -1 || romance != -1 || thriller != -1 || drama != -1 || sociofantasy != -1) {
@@ -412,12 +412,12 @@ function Queuetitledetails(messagingEvent, Queuetitle){
           } else if (rows.length) {
               console.log("*******cc_celebrity_preference data from database:*********", rows);
               for (var i = 0; i < rows.length; i++) {
-                celebrityName = rows[1].celebrityName;
-                description = rows[1].description;
-                conversationQueue = rows[1].conversationQueue;
-                quickReply1 = rows[1].quickReply1;
-                quickReply2 = rows[1].quickReply2;
-                quickReply3 = rows[1].quickReply3;
+                celebrityName = rows[i].celebrityName;
+                description = rows[i].description;
+                conversationQueue = rows[i].conversationQueue;
+                quickReply1 = rows[i].quickReply1;
+                quickReply2 = rows[i].quickReply2;
+                quickReply3 = rows[i].quickReply3;
               }
               console.log(celebrityName);
               console.log(description);

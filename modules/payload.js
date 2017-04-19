@@ -146,12 +146,12 @@ function Categoryconversation(event, category){
           } else if (rows.length) {
               console.log("*******cc_celebrity_preference data from database:*********", rows);
               for (var i = 0; i < rows.length; i++) {
-                celebrityName = rows[1].celebrityName;
-                description = rows[1].description;
-                conversationQueue = rows[1].conversationQueue;
-                quickReply1 = rows[1].quickReply1;
-                quickReply2 = rows[1].quickReply2;
-                quickReply3 = rows[1].quickReply3;
+                celebrityName = rows[i].celebrityName;
+                description = rows[i].description;
+                conversationQueue = rows[i].conversationQueue;
+                quickReply1 = rows[i].quickReply1;
+                quickReply2 = rows[i].quickReply2;
+                quickReply3 = rows[i].quickReply3;
               }
               console.log(celebrityName);
               console.log(description);
