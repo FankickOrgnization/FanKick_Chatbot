@@ -122,6 +122,7 @@ function userintrestcategory(event, categoryName){
 }
 
 function Categoryconversation(event, subCategory){
+    var senderID = event.sender.id;
   console.log("subCategoryconversation:---",subCategory);
   pool.getConnection(function(err, connection) {
       connection.query('select * from cc_conversation_two where subCategory=(select id from cc_categories where categoryName= ? ) order by id desc', [subCategory], function(err, rows) {
@@ -222,6 +223,7 @@ function userintrestsubcategory(event, categoryName){
 
 
 function subCategoryconversation(event,subCategory){
+    var senderID = event.sender.id;
   console.log("subCategoryconversation:---",subCategory);
   pool.getConnection(function(err, connection) {
       connection.query('select * from cc_conversation_two where subCategory=(select id from cc_subcategories where subCategoryName= ? ) order by id desc', [subCategory], function(err, rows) {
@@ -274,6 +276,7 @@ function subCategoryconversation(event,subCategory){
 }
 
 function favoriteactorconversation(event,subCategory,favCelebrity){
+    var senderID = event.sender.id;
   console.log("favoriteactorconversation:---",subCategory);
   console.log("favoriteactorconversation:---",favCelebrity);
   var celebrityName;
