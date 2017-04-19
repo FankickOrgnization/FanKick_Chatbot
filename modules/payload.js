@@ -230,12 +230,12 @@ function subCategoryconversation(event,subCategory){
           } else if (rows.length) {
               console.log("*******cc_celebrity_preference data from database:*********", rows);
               for (var i = 0; i < rows.length; i++) {
-                celebrityName = rows[1].celebrityName;
-                description = rows[1].description;
-                conversationQueue = rows[1].conversationQueue;
-                quickReply1 = rows[1].quickReply1;
-                quickReply2 = rows[1].quickReply2;
-                quickReply3 = rows[1].quickReply3;
+                celebrityName = rows[i].celebrityName;
+                description = rows[i].description;
+                conversationQueue = rows[i].conversationQueue;
+                quickReply1 = rows[i].quickReply1;
+                quickReply2 = rows[i].quickReply2;
+                quickReply3 = rows[i].quickReply3;
               }
               console.log(celebrityName,description,conversationQueue,quickReply1,quickReply2,quickReply3);
               var messageData = {
@@ -251,12 +251,12 @@ function subCategoryconversation(event,subCategory){
                               "payload": quickReply1
                           },{
                               "content_type": "text",
-                              "title": quickReply1,
-                              "payload": quickReply1
+                              "title": quickReply2,
+                              "payload": quickReply2
                           },{
                               "content_type": "text",
-                              "title": quickReply1,
-                              "payload": quickReply1
+                              "title": quickReply3,
+                              "payload": quickReply3
                           },{
                               "content_type": "text",
                               "title": "Skip",
@@ -276,7 +276,7 @@ function subCategoryconversation(event,subCategory){
 function favoriteactorconversation(event,subCategory,favCelebrity){
   console.log("favoriteactorconversation:---",subCategory);
   console.log("favoriteactorconversation:---",favCelebrity);
-  var celebrityName ;
+  var celebrityName;
   var description;
   var conversationQueue;
   var quickReply1;
@@ -289,12 +289,12 @@ function favoriteactorconversation(event,subCategory,favCelebrity){
           } else if (rows.length) {
               console.log("*******cc_celebrity_preference data from database:*********", rows);
               for (var i = 0; i < rows.length; i++) {
-                celebrityName = rows[1].celebrityName;
-                description = rows[1].description;
-                conversationQueue = rows[1].conversationQueue;
-                quickReply1 = rows[1].quickReply1;
-                quickReply2 = rows[1].quickReply2;
-                quickReply3 = rows[1].quickReply3;
+                celebrityName = rows[i].celebrityName;
+                description = rows[i].description;
+                conversationQueue = rows[i].conversationQueue;
+                quickReply1 = rows[i].quickReply1;
+                quickReply2 = rows[i].quickReply2;
+                quickReply3 = rows[i].quickReply3;
               }
               console.log(celebrityName,description,conversationQueue,quickReply1,quickReply2,quickReply3);
               var messageData = {
@@ -310,12 +310,12 @@ function favoriteactorconversation(event,subCategory,favCelebrity){
                               "payload": quickReply1
                           },{
                               "content_type": "text",
-                              "title": quickReply1,
-                              "payload": quickReply1
+                              "title": quickReply2,
+                              "payload": quickReply2
                           },{
                               "content_type": "text",
-                              "title": quickReply1,
-                              "payload": quickReply1
+                              "title": quickReply3,
+                              "payload": quickReply3
                           },{
                               "content_type": "text",
                               "title": "Skip",
