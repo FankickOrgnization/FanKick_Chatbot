@@ -400,7 +400,7 @@ function receivedMessage(event) {
 }
 
 function Queuetitledetails(messagingEvent, Queuetitle){
-  //var senderID = messagingEvent.sender.id;
+  var senderID = messagingEvent.sender.id;
   console.log('Queuetitle:---------',Queuetitle);
   pool.getConnection(function(err, connection) {
       connection.query('select * from cc_conversation_two where conversationQueue = ?', [

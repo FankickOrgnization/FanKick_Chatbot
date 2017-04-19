@@ -57,17 +57,17 @@ const sendContentPacks = (categoryName, event) => {
         usercategory(event, categoryName);
         console.log("enter into the allcategory function");
     }else if (categoryName == "sports") {
-        userintrestsportssubcategory(event, categoryName);
+        //userintrestsportssubcategory(event, categoryName);
         submenu(event, categoryName);
         usercategory(event, categoryName);
         console.log("enter into the allcategory function");
     }else if (categoryName == "tv shows") {
-        userintresttvshowssubcategory(event, categoryName);
+        //userintresttvshowssubcategory(event, categoryName);
         submenu(event, categoryName);
         usercategory(event, categoryName);
         console.log("enter into the allcategory function");
     }else if (categoryName == "music") {
-        userintrestmusicsubcategory(event, categoryName);
+        //userintrestmusicsubcategory(event, categoryName);
         submenu(event, categoryName);
         usercategory(event, categoryName);
         console.log("enter into the allcategory function");

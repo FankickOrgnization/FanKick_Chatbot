@@ -307,7 +307,26 @@ const musiccelbrityintro = (messagingEvent, musiccelname) => {
     };
     fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
     musiccelbritydetails(messagingEvent, musiccelname);
-}
+    user_favorite_music_celebrity(messagingEvent, musiccelname)
+  }
+
+  function user_favorite_music_celebrity(event, musiccelname) {
+    var senderID = event.sender.id;
+    pool.getConnection(function(err, connection) {
+        connection.query('update cc_user_preference set musicCelebrity = ? where facebookId = ?', [
+            sportscelname, senderID
+        ], function(err, rows) {
+            if (err) {
+                console.log("Error While retriving content pack data from database:", err);
+            } else {
+                console.log("No Data Found From Database");
+                //sendHelpMessage(event);
+                //sendImageMessage(event);
+            }
+            connection.release();
+        });
+    });
+  }
 
 function musiccelbritydetails(messagingEvent, musiccelname) {
     var event = messagingEvent;
