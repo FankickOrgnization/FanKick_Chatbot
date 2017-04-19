@@ -215,6 +215,7 @@ function quickpayload(messagingEvent) {
     var musicartistalbum = quickpayloadtext.search("%Musiccelalbums%");
     var musicartistsongs = quickpayloadtext.search("%Musiccelsongs%");
     var musicartistcomp = quickpayloadtext.search("%Musiccelcomp%");
+    var conversationQueuetitle = quickpayloadtext.search("%conv%");
 
     if (celpics != -1 || celmovies != -1 || celnetworth != -1 || celnews != -1 || celfamily != -1 || celabout != -1 || celcomp != -1) {
         console.log("This is celebritypics condition");
@@ -224,6 +225,12 @@ function quickpayload(messagingEvent) {
         var packId = parseInt(actorname);
         console.log("this is celebrity Id:", packId);
         celebrityid(packId, messagingEvent);
+        //  movies.getgenremovies(messagingEvent, quickpayloadtext);
+    }else if (conversationQueuetitle != -1) {
+        var Queuetitle = quickpayloadtext.replace(" %conv%", "");
+        console.log("conversationQueuetitle", Queuetitle);
+        var type = "leadActor";
+        Queuetitledetails(messagingEvent, Queuetitle);
         //  movies.getgenremovies(messagingEvent, quickpayloadtext);
     } else if (action != -1 || comedy != -1 || romance != -1 || thriller != -1 || drama != -1 || sociofantasy != -1) {
         console.log("This is getgenremovies condition");
@@ -392,6 +399,70 @@ function receivedMessage(event) {
         }
     });
 }
+
+function Queuetitledetails(messagingEvent, Queuetitle){
+  //var senderID = messagingEvent.sender.id;
+  pool.getConnection(function(err, connection) {
+      connection.query('select * from cc_conversation_two where conversationQueue = ?', [
+          Queuetitle
+      ], function(err, rows) {
+          console.log("*************************quickpaly", rows);
+          if (err) {
+              console.log("Error While retriving content pack data from database:", err);
+          } else if (rows.length) {
+              console.log("*******cc_celebrity_preference data from database:*********", rows);
+              for (var i = 0; i < rows.length; i++) {
+                celebrityName = rows[1].celebrityName;
+                description = rows[1].description;
+                conversationQueue = rows[1].conversationQueue;
+                quickReply1 = rows[1].quickReply1;
+                quickReply2 = rows[1].quickReply2;
+                quickReply3 = rows[1].quickReply3;
+              }
+              console.log(celebrityName);
+              console.log(description);
+              console.log(conversationQueue);
+              console.log(quickReply1);
+              console.log(quickReply2);
+              console.log(quickReply3);
+              var messageData = {
+                  "recipient": {
+                      "id": senderID
+                  },
+                  "message": {
+                      "text": description,
+                      "quick_replies": [
+                          {
+                               "content_type": "text",
+                              "title": quickReply1,
+                              "payload": quickReply1 +'%conv%'
+                          },{
+                              "content_type": "text",
+                              "title": quickReply2,
+                              "payload": quickReply2 +'%conv%'
+                          },{
+                              "content_type": "text",
+                              "title": quickReply2,
+                              "payload": quickReply2 +'%conv%'
+                          },{
+                              "content_type": "text",
+                              "title": "Skip",
+                              "payload": category
+                          }
+                      ]
+
+                  }
+              }
+              fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
+            } else {
+              console.log("No Data Found From Database");
+              sendHelpMessage(messagingEvent);
+          }
+          connection.release();
+      });
+  });
+}
+
 
 function quick_reply_subcategory(messagingEvent, quickpayloadtext) {
     var genrearray = quickpayloadtext.split(',');

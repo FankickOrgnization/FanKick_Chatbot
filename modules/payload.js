@@ -169,15 +169,15 @@ function Categoryconversation(event, category){
                           {
                                "content_type": "text",
                               "title": quickReply1,
-                              "payload": quickReply1
+                              "payload": quickReply1 +'%conv%'
                           },{
                               "content_type": "text",
                               "title": quickReply2,
-                              "payload": quickReply2
+                              "payload": quickReply2 +'%conv%'
                           },{
                               "content_type": "text",
                               "title": quickReply2,
-                              "payload": quickReply2
+                              "payload": quickReply2 +'%conv%'
                           },{
                               "content_type": "text",
                               "title": "Skip",
@@ -265,15 +265,15 @@ function moviesconversation(event,subCategory){
                           {
                                "content_type": "text",
                               "title": quickReply1,
-                              "payload": quickReply1
+                              "payload": quickReply1 +'%conv%'
                           },{
                               "content_type": "text",
                               "title": quickReply2,
-                              "payload": quickReply2
+                              "payload": quickReply2 +'%conv%'
                           },{
                               "content_type": "text",
                               "title": quickReply3,
-                              "payload": quickReply3
+                              "payload": quickReply3 +'%conv%'
                           },{
                               "content_type": "text",
                               "title": "Skip",
@@ -325,15 +325,15 @@ function moviesactorconversation(event,subCategory,movieCelebrity){
                           {
                                "content_type": "text",
                               "title": quickReply1,
-                              "payload": quickReply1
+                              "payload": quickReply1 +'%conv%'
                           },{
                               "content_type": "text",
                               "title": quickReply2,
-                              "payload": quickReply2
+                              "payload": quickReply2 +'%conv%'
                           },{
                               "content_type": "text",
                               "title": quickReply3,
-                              "payload": quickReply3
+                              "payload": quickReply3 +'%conv%'
                           },{
                               "content_type": "text",
                               "title": "Skip",
