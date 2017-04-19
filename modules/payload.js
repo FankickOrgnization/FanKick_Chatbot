@@ -50,8 +50,9 @@ const sendContentPacks = (categoryName, event) => {
         console.log("categoryName", categoryName);
     } else if (categoryName == "hi" || categoryName == "hello" || categoryName == "hey") {
         wishingmessage(categoryName, event);
+        userintrestcategory(event, categoryName);
     } else if (categoryName == "movies" || categoryName == "sports" || categoryName == "tv shows" || categoryName == "music") {
-        userintrestQus(event, categoryName);
+        userintrestsubcategory(event, categoryName);
         submenu(event, categoryName);
         usercategory(event, categoryName);
         console.log("enter into the allcategory function");
@@ -93,9 +94,94 @@ const sendContentPacks = (categoryName, event) => {
 
 
 
+function userintrestcategory(event, categoryName){
+  var senderID = event.sender.id;
+  pool.getConnection(function(err, connection) {
+    connection.query('select * from cc_user_preference where facebookId= ?', [senderID], function(err, rows) {
+          if (err) {
+              console.log("Error While retriving content pack data from database:", err);
+          } else if (rows.length) {
+              console.log("*******cc_celebrity_preference data from database:*********", rows);
+              for(var i=0;i < rows.length;i++){
+                var category = rows[i].category;
+                var subCategory = rows[i].subCategory;
+                var favCelebrity = rows[i].favCelebrity;
+              console.log("category:-",category);
+              console.log("subCategory:-",subCategory);
+              }
+
+              if (category == null){
+                  submenu(event, categoryName);
+              } else if (category != null) {
+                Categoryconversation(event, category);
+              }
+          }
+          connection.release();
+      });
+  });
+}
+
+function Categoryconversation(event, subCategory){
+  console.log("subCategoryconversation:---",subCategory);
+  pool.getConnection(function(err, connection) {
+      connection.query('select * from cc_conversation_two where subCategory=(select id from cc_categories where categoryName= ? ) order by id desc', [subCategory], function(err, rows) {
+          if (err) {
+              console.log("Error While retriving content pack data from database:", err);
+          } else if (rows.length) {
+              console.log("*******cc_celebrity_preference data from database:*********", rows);
+              for (var i = 0; i < rows.length; i++) {
+                celebrityName = rows[1].celebrityName;
+                description = rows[1].description;
+                conversationQueue = rows[1].conversationQueue;
+                quickReply1 = rows[1].quickReply1;
+                quickReply2 = rows[1].quickReply2;
+                quickReply3 = rows[1].quickReply3;
+              }
+              console.log(celebrityName);
+              console.log(description);
+              console.log(conversationQueue);
+              console.log(quickReply1);
+              console.log(quickReply2);
+              console.log(quickReply3);
+              var messageData = {
+                  "recipient": {
+                      "id": senderID
+                  },
+                  "message": {
+                      "text": description,
+                      "quick_replies": [
+                          {
+                               "content_type": "text",
+                              "title": quickReply1,
+                              "payload": quickReply1
+                          },{
+                              "content_type": "text",
+                              "title": quickReply1,
+                              "payload": quickReply1
+                          },{
+                              "content_type": "text",
+                              "title": quickReply1,
+                              "payload": quickReply1
+                          },{
+                              "content_type": "text",
+                              "title": "Skip",
+                              "payload": subCategory
+                          }
+                      ]
+
+                  }
+              }
+              fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
+            }
+          connection.release();
+      });
+  });
+}
 
 
-function userintrestQus(event, categoryName){
+
+
+function userintrestsubcategory(event, categoryName){
   var senderID = event.sender.id;
   pool.getConnection(function(err, connection) {
       //connection.query('select * from cc_celebrity_preference where celebrityName=?',[categoryName], function(err, rows) {
@@ -127,57 +213,7 @@ function userintrestQus(event, categoryName){
               }else if (subCategory != null && favCelebrity != null) {
                 favoriteactorconversation(event,subCategory,favCelebrity);
               }
-              // for (var i = 0; i < rows.length; i++) { //Construct request body
-              //     var res1 = rows[i].id + ",";
-              //     var res2 = rows[i].celebrityName + ",";
-              //     var res3 = res2.concat(res1);
-              //     var res5 = res3.concat(res2);
-              //     var keyMap = {
-              //         "title": rows[i].celebrityName,
-              //         "image_url": rows[i].celebrityImageUrl,
-              //         "subtitle": rows[i].description,
-              //         //  "item_url": rows[i].image_url,
-              //         "buttons": [
-              //             {
-              //                 "type": "web_url",
-              //                 "url": rows[i].facebookHandle,
-              //                 "title": "Facebook"
-              //             }, {
-              //                 "type": "web_url",
-              //                 "url": rows[i].twitterHandle,
-              //                 "title": "Twitter"
-              //             }, {
-              //                 "type": "postback",
-              //                 "title": "More Info ℹ",
-              //                 "payload": rows[i].id
-              //             }
-              //         ]
-              //     };
-              //     contentList.push(keyMap);
-              // }
-
-              // var messageData = {
-              //     "recipient": {
-              //         "id": senderID
-              //     },
-              //     "message": {
-              //         "attachment": {
-              //             "type": "template",
-              //             "payload": {
-              //                 "template_type": "generic",
-              //                 "elements": contentList
-              //             }
-              //         },
-              //         "quick_replies": quickreply
-              //     }
-              // }
-              //fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
           }
-          // else {
-          //     console.log("No Data Found From Database");
-          //     sendHelpMessage(event);
-          //     //sendImageMessage(event);
-          // }
           connection.release();
       });
   });
@@ -193,7 +229,45 @@ function subCategoryconversation(event,subCategory){
               console.log("Error While retriving content pack data from database:", err);
           } else if (rows.length) {
               console.log("*******cc_celebrity_preference data from database:*********", rows);
-          }
+              for (var i = 0; i < rows.length; i++) {
+                celebrityName = rows[1].celebrityName;
+                description = rows[1].description;
+                conversationQueue = rows[1].conversationQueue;
+                quickReply1 = rows[1].quickReply1;
+                quickReply2 = rows[1].quickReply2;
+                quickReply3 = rows[1].quickReply3;
+              }
+              console.log(celebrityName,description,conversationQueue,quickReply1,quickReply2,quickReply3);
+              var messageData = {
+                  "recipient": {
+                      "id": senderID
+                  },
+                  "message": {
+                      "text": description,
+                      "quick_replies": [
+                          {
+                               "content_type": "text",
+                              "title": quickReply1,
+                              "payload": quickReply1
+                          },{
+                              "content_type": "text",
+                              "title": quickReply1,
+                              "payload": quickReply1
+                          },{
+                              "content_type": "text",
+                              "title": quickReply1,
+                              "payload": quickReply1
+                          },{
+                              "content_type": "text",
+                              "title": "Skip",
+                              "payload": subCategory
+                          }
+                      ]
+
+                  }
+              }
+              fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
+            }
           connection.release();
       });
   });
@@ -202,12 +276,56 @@ function subCategoryconversation(event,subCategory){
 function favoriteactorconversation(event,subCategory,favCelebrity){
   console.log("favoriteactorconversation:---",subCategory);
   console.log("favoriteactorconversation:---",favCelebrity);
+  var celebrityName ;
+  var description;
+  var conversationQueue;
+  var quickReply1;
+  var quickReply2;
+  var quickReply3;
   pool.getConnection(function(err, connection) {
       connection.query('select * from cc_conversation_two where celebrityName= ? order by id desc', [favCelebrity], function(err, rows) {
           if (err) {
               console.log("Error While retriving content pack data from database:", err);
           } else if (rows.length) {
               console.log("*******cc_celebrity_preference data from database:*********", rows);
+              for (var i = 0; i < rows.length; i++) {
+                celebrityName = rows[1].celebrityName;
+                description = rows[1].description;
+                conversationQueue = rows[1].conversationQueue;
+                quickReply1 = rows[1].quickReply1;
+                quickReply2 = rows[1].quickReply2;
+                quickReply3 = rows[1].quickReply3;
+              }
+              console.log(celebrityName,description,conversationQueue,quickReply1,quickReply2,quickReply3);
+              var messageData = {
+                  "recipient": {
+                      "id": senderID
+                  },
+                  "message": {
+                      "text": description,
+                      "quick_replies": [
+                          {
+                               "content_type": "text",
+                              "title": quickReply1,
+                              "payload": quickReply1
+                          },{
+                              "content_type": "text",
+                              "title": quickReply1,
+                              "payload": quickReply1
+                          },{
+                              "content_type": "text",
+                              "title": quickReply1,
+                              "payload": quickReply1
+                          },{
+                              "content_type": "text",
+                              "title": "Skip",
+                              "payload": subCategory
+                          }
+                      ]
+
+                  }
+              }
+              fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
           }
           connection.release();
       });
