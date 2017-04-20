@@ -400,7 +400,7 @@ function movies_celebrity_conversation(event, subCategory, movieCelebrity) {
             } else if (rows.length > 0) {
 
                 console.log("*******cc_celebrity_preference data from database:*********", rows);
-                for (var i = 0; i < rows.length; i++) {
+                for (var i = 0; i < 1; i++) {
                     celebrityName = rows[i].celebrityName;
                     description = rows[i].description;
                     conversationQueue = rows[i].conversationQueue;
