@@ -64,8 +64,7 @@ const musicalbams = (categoryName, event) => {
                                 "type": "web_url",
                                 "url": rows[i].albumUrl,
                                 "title": "Play Album 🎧"
-                            },
-                            {
+                            }, {
                                 "type": "postback",
                                 "title": "View More 🔍",
                                 "payload": rows[i].name + " %albumname%"
@@ -220,8 +219,8 @@ const albuminfo = (messagingEvent, albumname) => {
 }
 
 const languagealbamsinfo = (categoryName, event) => {
-  language_wise_albams(categoryName, event);
-  user_preferd_language(categoryName, event);
+    language_wise_albams(categoryName, event);
+    user_preferd_language(categoryName, event);
     //var event = messagingEvent;
     // var quickList = [];
     // var name;
@@ -296,8 +295,8 @@ const languagealbamsinfo = (categoryName, event) => {
     // });
 }
 
-const language_conversation = (event, language)=>{
-  language_wise_albams(language, event);
+const language_conversation = (event, language) => {
+    language_wise_albams(language, event);
 }
 
 const musiccelbrityintro = (messagingEvent, musiccelname) => {
@@ -314,81 +313,97 @@ const musiccelbrityintro = (messagingEvent, musiccelname) => {
     fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
     music_celbrity_details(messagingEvent, musiccelname);
     user_favorite_music_celebrity(messagingEvent, musiccelname)
-  }
+}
 
-function language_wise_albams(language, event){
-  //var event = messagingEvent;
-  var quickList = [];
-  var name;
-  pool.getConnection(function(err, connection) {
-      connection.query('select * from cc_music_albums where language = ? order by releaseDate desc', [language], function(err, rows) {
-          console.log("*************************Data For Music Albams", rows);
-          if (err) {
-              console.log("Error While retriving content pack data from database:", err);
-          } else if (rows.length) {
-              var senderID = event.sender.id;
-              var contentList = [];
-              if (rows.length > 10) {
-                  var rowslenth = 10;
-                  console.log("more than 10 Rows", rowslenth);
-              } else {
-                  var rowslenth = rows.length;
-                  console.log("less than 10 Rows", rowslenth);
-              }
-              for (var i = 0; i < rowslenth; i++) { //Construct request body
-                  name = rows[i].artist;
-                  var keyMap = {
-                      "title": rows[i].name,
-                      "image_url": rows[i].picture1,
-                      "subtitle": rows[i].artist,
-                      "buttons": [
-                          {
-                              "type": "web_url",
-                              "url": rows[i].albumUrl,
-                              "title": "Play Album 🎧"
-                          }
-                      ]
-                  };
-                  contentList.push(keyMap);
+function language_wise_albams(language, event) {
+    //var event = messagingEvent;
+    var quickList = [];
+    var name;
+    pool.getConnection(function(err, connection) {
+        connection.query('select * from cc_music_albums where language = ? order by releaseDate desc', [language], function(err, rows) {
+            console.log("*************************Data For Music Albams", rows);
+            if (err) {
+                console.log("Error While retriving content pack data from database:", err);
+            } else if (rows.length) {
+                var senderID = event.sender.id;
+                var contentList = [];
+                if (rows.length > 10) {
+                    var rowslenth = 10;
+                    console.log("more than 10 Rows", rowslenth);
+                } else {
+                    var rowslenth = rows.length;
+                    console.log("less than 10 Rows", rowslenth);
+                }
+                for (var i = 0; i < rowslenth; i++) { //Construct request body
+                    name = rows[i].artist;
+                    var keyMap = {
+                        "title": rows[i].name,
+                        "image_url": rows[i].picture1,
+                        "subtitle": rows[i].artist,
+                        "buttons": [
+                            {
+                                "type": "web_url",
+                                "url": rows[i].albumUrl,
+                                "title": "Play Album 🎧"
+                            }
+                        ]
+                    };
+                    contentList.push(keyMap);
 
-              }
-              var messageData = {
-                  "recipient": {
-                      "id": senderID
-                  },
-                  "message": {
-                      "attachment": {
-                          "type": "template",
-                          "payload": {
-                              "template_type": "generic",
-                              "elements": contentList
-                          }
-                      },
-                      "quick_replies": [
-                          {
-                              "content_type": "text",
-                              "title": "Music Jokes",
-                              "payload": "Jokes"
-                          }, {
-                              "content_type": "text",
-                              "title": "Back To Music 🎶",
-                              "payload": "Music"
-                          }, {
-                              "content_type": "text",
-                              "title": "Home 🏠",
-                              "payload": "home"
-                          }
-                      ]
-                  }
-              }
-              fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
-          } else {
-              console.log("No Data Found From Database");
-              sendHelpMessage(event);
-          }
-          connection.release();
-      });
-  });
+                }
+                var messageData = {
+                    "recipient": {
+                        "id": senderID
+                    },
+                    "message": {
+                        "attachment": {
+                            "type": "template",
+                            "payload": {
+                                "template_type": "generic",
+                                "elements": contentList
+                            }
+                        },
+                        "quick_replies": [
+                            {
+                                "content_type": "text",
+                                "title": "Hindi Albums",
+                                "payload": "Hindi"
+                            }, {
+                                "content_type": "text",
+                                "title": "Telugu Albums",
+                                "payload": "Telugu"
+                            }, {
+                                "content_type": "text",
+                                "title": "Tamil Albums",
+                                "payload": "Tamil"
+                            }, {
+                                "content_type": "text",
+                                "title": "Kannada Albums",
+                                "payload": "Kannada"
+                            }, {
+                                "content_type": "text",
+                                "title": "Music Jokes",
+                                "payload": "Jokes"
+                            }, {
+                                "content_type": "text",
+                                "title": "Back To Music 🎶",
+                                "payload": "Music"
+                            }, {
+                                "content_type": "text",
+                                "title": "Home 🏠",
+                                "payload": "home"
+                            }
+                        ]
+                    }
+                }
+                fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
+            } else {
+                console.log("No Data Found From Database");
+                sendHelpMessage(event);
+            }
+            connection.release();
+        });
+    });
 }
 
 function user_preferd_language(categoryName, event) {
@@ -410,8 +425,7 @@ function user_preferd_language(categoryName, event) {
     });
 }
 
-
-  function user_favorite_music_celebrity(event, musiccelname) {
+function user_favorite_music_celebrity(event, musiccelname) {
     var senderID = event.sender.id;
     pool.getConnection(function(err, connection) {
         connection.query('update cc_user_preference set musicCelebrity = ? where facebookId = ?', [
@@ -427,7 +441,7 @@ function user_preferd_language(categoryName, event) {
             connection.release();
         });
     });
-  }
+}
 
 function music_celbrity_details(messagingEvent, musiccelname) {
     var event = messagingEvent;
@@ -937,5 +951,5 @@ module.exports = {
     musiccelbrityintro: musiccelbrityintro,
     musiccelebrityinfo: musiccelebrityinfo,
     languagealbamsinfo: languagealbamsinfo,
-    language_conversation:language_conversation
+    language_conversation: language_conversation
 };
