@@ -231,7 +231,7 @@ function quickpayload(messagingEvent) {
         console.log("conversationQueuetitle:--------------", Queuetitle);
         movies_Queue_title_details(messagingEvent, Queuetitle);
         //  movies.getgenremovies(messagingEvent, quickpayloadtext);
-    }else if (conversationQueuetitle != -1) {
+    } else if (conversationQueuetitle != -1) {
         var Queuetitle = quickpayloadtext.replace("%conv%", "");
         console.log("conversationQueuetitle:--------------", Queuetitle);
         category_Queue_title_details(messagingEvent, Queuetitle);
@@ -447,7 +447,7 @@ function movies_Queue_title_details(messagingEvent, Queuetitle) {
                                 "content_type": "text",
                                 "title": quickReply2,
                                 "payload": quickReply2 + '%movie_conv%'
-                            },,{
+                            }, {
                                 "content_type": "text",
                                 "title": celebrityName,
                                 "payload": celebrityName + " %a%"
@@ -455,23 +455,23 @@ function movies_Queue_title_details(messagingEvent, Queuetitle) {
                                 "content_type": "text",
                                 "title": "Bollywood",
                                 "payload": "Bollywood"
-                            },{
+                            }, {
                                 "content_type": "text",
                                 "title": "Tollywood",
                                 "payload": "Tollywood"
-                            },{
+                            }, {
                                 "content_type": "text",
                                 "title": "Kollywood",
                                 "payload": "Kollywood"
-                            },{
+                            }, {
                                 "content_type": "text",
                                 "title": "Malayalam Cinema",
                                 "payload": "Malayalam Cinema"
-                            },{
+                            }, {
                                 "content_type": "text",
                                 "title": "Kannada Cinema",
                                 "payload": "Kannada Cinema"
-                            },{
+                            }, {
                                 "content_type": "text",
                                 "title": "Jokes",
                                 "payload": "jokes"
