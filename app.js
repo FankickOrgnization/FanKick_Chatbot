@@ -415,7 +415,7 @@ function movies_Queue_title_details(messagingEvent, Queuetitle) {
                 console.log("Error While retriving content pack data from database:", err);
             } else if (rows.length) {
                 console.log("*******cc_celebrity_preference data from database:*********", rows);
-                for (var i = 0; i < rows.length; i++) {
+                for (var i = 0; i < 1; i++) {
                     celebrityName = rows[i].celebrityName;
                     description = rows[i].description;
                     conversationQueue = rows[i].conversationQueue;
@@ -429,7 +429,7 @@ function movies_Queue_title_details(messagingEvent, Queuetitle) {
                         "buttons": [
                             {
                                 "type": "web_url",
-                                "url": rows[i].imageUrl,
+                                "url": rows[i].storyUrl,
                                 "title": "...Continue Reading ▶"
                             }
                         ]

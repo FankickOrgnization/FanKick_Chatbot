@@ -415,7 +415,7 @@ function movies_celebrity_conversation(event, subCategory, movieCelebrity) {
                         "buttons": [
                             {
                                 "type": "web_url",
-                                "url": rows[i].imageUrl,
+                                "url": rows[i].storyUrl,
                                 "title": "...Continue Reading ▶"
                             }
                         ]
