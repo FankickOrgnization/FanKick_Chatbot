@@ -93,8 +93,8 @@ const sportscelbrityintro = (messagingEvent, sportscelname) => {
 
 const sports_celebrity_conversation = (event, category, sportsCelebrity) =>{
     var senderID = event.sender.id;
-    console.log("favoriteactorconversation:---", subCategory);
-    console.log("favoriteactorconversation:---", movieCelebrity);
+    console.log("favoriteactorconversation:---", category);
+    console.log("favoriteactorconversation:---", sportsCelebrity);
     var celebrityName;
     var description;
     var conversationQueue;
@@ -105,7 +105,7 @@ const sports_celebrity_conversation = (event, category, sportsCelebrity) =>{
         connection.query('select * from cc_conversation_two where celebrityName= ? order by id desc', [sportsCelebrity], function(err, rows) {
             if (err) {
                 console.log("Error While retriving content pack data from database:", err);
-            } else if (rows.length) {
+            } else if (rows.length > 0) {
                 console.log("*******cc_celebrity_preference data from database:*********", rows);
                 for (var i = 0; i < rows.length; i++) {
                     celebrityName = rows[i].celebrityName;
@@ -145,6 +145,8 @@ const sports_celebrity_conversation = (event, category, sportsCelebrity) =>{
                     }
                 }
                 fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
+            }else if(rows.length == 0){
+                sportsmenu(messagingEvent);
             }
             connection.release();
         });

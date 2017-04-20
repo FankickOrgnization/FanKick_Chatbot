@@ -76,7 +76,7 @@ const sendContentPacks = (categoryName, event) => {
         usersubcategory(event, categoryName);
     } else if (categoryName == "hindi" || categoryName == "telugu" || categoryName == "tamil" || categoryName == "kannada") {
         music.languagealbamsinfo(categoryName, event);
-        userpreferdlanguage(event, categoryName);
+
     } else if (categoryName == "reality" || categoryName == "romantic comedy" || categoryName == "horror / crime" || categoryName == "cooking" || categoryName == "animation") {
         //wishingmessage(categoryName, event);
         tvshows.gettvshowsgenre(event, categoryName);
@@ -1058,24 +1058,7 @@ function usersubcategory(event, categoryName) {
     });
 }
 
-function userpreferdlanguage(event, categoryName) {
-    var senderID = event.sender.id;
-    pool.getConnection(function(err, connection) {
-        connection.query('update cc_user_preference set language = ? where facebookId = ?', [
-            categoryName, senderID
-        ], function(err, rows) {
-            if (err) {
-                console.log("Error While retriving content pack data from database:", err);
-            } else {
-                console.log("No Data Found From Database");
-                console.log("Updated the user language into the preferences");
-                //sendHelpMessage(event);
-                //sendImageMessage(event);
-            }
-            connection.release();
-        });
-    });
-}
+
 
 function adduserlocation(categoryName, event) {
     console.log("*********************adduserlocation***********************1", categoryName);

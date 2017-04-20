@@ -221,6 +221,7 @@ const albuminfo = (messagingEvent, albumname) => {
 
 const languagealbamsinfo = (categoryName, event) => {
   language_wise_albams(categoryName, event);
+  user_preferd_language(categoryName, event);
     //var event = messagingEvent;
     // var quickList = [];
     // var name;
@@ -311,7 +312,7 @@ const musiccelbrityintro = (messagingEvent, musiccelname) => {
         }
     };
     fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
-    musiccelbritydetails(messagingEvent, musiccelname);
+    music_celbrity_details(messagingEvent, musiccelname);
     user_favorite_music_celebrity(messagingEvent, musiccelname)
   }
 
@@ -390,6 +391,25 @@ function language_wise_albams(language, event){
   });
 }
 
+function user_preferd_language(event, categoryName) {
+    var senderID = event.sender.id;
+    pool.getConnection(function(err, connection) {
+        connection.query('update cc_user_preference set language = ? where facebookId = ?', [
+            categoryName, senderID
+        ], function(err, rows) {
+            if (err) {
+                console.log("Error While retriving content pack data from database:", err);
+            } else {
+                console.log("No Data Found From Database");
+                console.log("Updated the user language into the preferences");
+                //sendHelpMessage(event);
+                //sendImageMessage(event);
+            }
+            connection.release();
+        });
+    });
+}
+
 
   function user_favorite_music_celebrity(event, musiccelname) {
     var senderID = event.sender.id;
@@ -409,7 +429,7 @@ function language_wise_albams(language, event){
     });
   }
 
-function musiccelbritydetails(messagingEvent, musiccelname) {
+function music_celbrity_details(messagingEvent, musiccelname) {
     var event = messagingEvent;
     var quickList = [];
     var name;
