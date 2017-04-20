@@ -261,7 +261,7 @@ function user_intrest_music_category(event, categoryName) {
                     var language = rows[i].language;
                     console.log("category:-", category);
                     console.log("subCategory:-", subCategory);
-                    console.log("movieCelebrity:-", language);
+                    console.log("language:-", language);
                     // console.log("language:-", rows[i].language);
                     // console.log("location:-", rows[i].location);
                 }
@@ -269,6 +269,7 @@ function user_intrest_music_category(event, categoryName) {
                     music.musicalbams(categoryName, event);
                 } else if (category != null && language != null) {
                     if (categoryName == "indian" || categoryName == "western") {
+                      console.log("music_____________",categoryName,language)
                         music.language_conversation(event, language);
                     } else {
                         submenu(event, categoryName);
