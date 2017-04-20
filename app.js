@@ -413,21 +413,19 @@ function movies_Queue_title_details(messagingEvent, Queuetitle) {
             console.log("*************************quickpaly", rows);
             if (err) {
                 console.log("Error While retriving content pack data from database:", err);
-            } else if (rows.length > 0) {
-
+            } else if (rows.length) {
                 console.log("*******cc_celebrity_preference data from database:*********", rows);
                 for (var i = 0; i < rows.length; i++) {
                     celebrityName = rows[i].celebrityName;
                     description = rows[i].description;
                     conversationQueue = rows[i].conversationQueue;
-
                     quickReply1 = rows[i].quickReply1;
                     quickReply2 = rows[i].quickReply2;
                     quickReply3 = rows[i].quickReply3;
                     var keyMap = {
                         "title": celebrityName,
                         //"image_url": rows[i].picture1,
-                        "subtitle":description,
+                        "subtitle": rows[i].description,
                         "buttons": [
                             {
                                 "type": "web_url",
@@ -438,13 +436,8 @@ function movies_Queue_title_details(messagingEvent, Queuetitle) {
                     };
                     contentList.push(keyMap);
                 }
-                console.log(celebrityName);
-                console.log(description);
-                console.log(conversationQueue);
-                console.log(quickReply1);
-                console.log(quickReply2);
-                console.log(quickReply3);
-                {
+
+                  var messageData = {
                     "recipient": {
                         "id": senderID
                     },

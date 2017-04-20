@@ -152,12 +152,12 @@ function Categoryconversation(event, category) {
                     quickReply2 = rows[i].quickReply2;
                     quickReply3 = rows[i].quickReply3;
                 }
-                console.log(celebrityName);
-                console.log(description);
-                console.log(conversationQueue);
-                console.log(quickReply1);
-                console.log(quickReply2);
-                console.log(quickReply3);
+                // console.log(celebrityName);
+                // console.log(description);
+                // console.log(conversationQueue);
+                // console.log(quickReply1);
+                // console.log(quickReply2);
+                // console.log(quickReply3);
                 var messageData = {
                     "recipient": {
                         "id": senderID
