@@ -384,6 +384,7 @@ function movies_categor_conversation(event, subCategory) {
 
 function movies_celebrity_conversation(event, subCategory, movieCelebrity) {
     var senderID = event.sender.id;
+    var contentList = [];
     console.log("favoriteactorconversation:---", subCategory);
     console.log("favoriteactorconversation:---", movieCelebrity);
     var celebrityName;
