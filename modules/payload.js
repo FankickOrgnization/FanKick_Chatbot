@@ -222,7 +222,9 @@ function user_intrest_movies_category(event, categoryName) {
                 if (subCategory == null && movieCelebrity == null) {
                     submenu(event, categoryName);
                 } else if (subCategory != null && movieCelebrity == null) {
-                    moviesconversation(event, subCategory);
+                    if(category == "movies"){
+                      moviesconversation(event, subCategory);
+                    }
                 } else if (subCategory != null && movieCelebrity != null) {
                     celebrity_conversation(event, subCategory, movieCelebrity);
                 }
