@@ -227,7 +227,7 @@ function user_intrest_movies_category(event, categoryName) {
                       moviesconversation(event, subCategory);
                     }
                 } else if (subCategory != null && movieCelebrity != null) {
-                    celebrity_conversation(event, subCategory, movieCelebrity);
+                    movies_celebrity_conversation(event, subCategory, movieCelebrity);
                 }
             }
             connection.release();
@@ -382,7 +382,7 @@ function moviesconversation(event, subCategory) {
     });
 }
 
-function celebrity_conversation(event, subCategory, movieCelebrity) {
+function movies_celebrity_conversation(event, subCategory, movieCelebrity) {
     var senderID = event.sender.id;
     console.log("favoriteactorconversation:---", subCategory);
     console.log("favoriteactorconversation:---", movieCelebrity);
@@ -426,10 +426,34 @@ function celebrity_conversation(event, subCategory, movieCelebrity) {
                                 "content_type": "text",
                                 "title": quickReply3,
                                 "payload": quickReply3 + '%conv%'
+                            },{
+                                "content_type": "text",
+                                "title": celebrityName,
+                                "payload": celebrityName + " %a%"
                             }, {
                                 "content_type": "text",
-                                "title": "Skip",
-                                "payload": subCategory
+                                "title": "Bollywood",
+                                "payload": "Bollywood"
+                            },{
+                                "content_type": "text",
+                                "title": "Tollywood",
+                                "payload": "Tollywood"
+                            },{
+                                "content_type": "text",
+                                "title": "Kollywood",
+                                "payload": "Kollywood"
+                            },{
+                                "content_type": "text",
+                                "title": "Malayalam Cinema",
+                                "payload": "Malayalam Cinema"
+                            },{
+                                "content_type": "text",
+                                "title": "Kannada Cinema",
+                                "payload": "Kannada Cinema"
+                            },{
+                                "content_type": "text",
+                                "title": "Jokes",
+                                "payload": "jokes"
                             }
                         ]
 
