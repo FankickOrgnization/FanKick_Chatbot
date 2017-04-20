@@ -406,21 +406,37 @@ function receivedMessage(event) {
 
 function movies_Queue_title_details(messagingEvent, Queuetitle) {
     var senderID = messagingEvent.sender.id;
+    var contentList = [];
     console.log('Queuetitle:---------', Queuetitle);
     pool.getConnection(function(err, connection) {
         connection.query('select * from cc_conversation_two where conversationQueue = ?', [Queuetitle], function(err, rows) {
             console.log("*************************quickpaly", rows);
             if (err) {
                 console.log("Error While retriving content pack data from database:", err);
-            } else if (rows.length) {
+            } else if (rows.length > 0) {
+
                 console.log("*******cc_celebrity_preference data from database:*********", rows);
                 for (var i = 0; i < rows.length; i++) {
                     celebrityName = rows[i].celebrityName;
                     description = rows[i].description;
                     conversationQueue = rows[i].conversationQueue;
+
                     quickReply1 = rows[i].quickReply1;
                     quickReply2 = rows[i].quickReply2;
                     quickReply3 = rows[i].quickReply3;
+                    var keyMap = {
+                        "title": celebrityName,
+                        //"image_url": rows[i].picture1,
+                        "subtitle":description,
+                        "buttons": [
+                            {
+                                "type": "web_url",
+                                "url": rows[i].imageUrl,
+                                "title": "...Continue Reading ▶"
+                            }
+                        ]
+                    };
+                    contentList.push(keyMap);
                 }
                 console.log(celebrityName);
                 console.log(description);
@@ -428,12 +444,18 @@ function movies_Queue_title_details(messagingEvent, Queuetitle) {
                 console.log(quickReply1);
                 console.log(quickReply2);
                 console.log(quickReply3);
-                var messageData = {
+                {
                     "recipient": {
                         "id": senderID
                     },
                     "message": {
-                        "text": description,
+                        "attachment": {
+                            "type": "template",
+                            "payload": {
+                                "template_type": "generic",
+                                "elements": contentList
+                            }
+                        },
                         "quick_replies": [
                             {
                                 "content_type": "text",

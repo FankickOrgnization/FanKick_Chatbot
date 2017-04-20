@@ -397,22 +397,48 @@ function movies_celebrity_conversation(event, subCategory, movieCelebrity) {
             if (err) {
                 console.log("Error While retriving content pack data from database:", err);
             } else if (rows.length > 0) {
+
                 console.log("*******cc_celebrity_preference data from database:*********", rows);
                 for (var i = 0; i < rows.length; i++) {
                     celebrityName = rows[i].celebrityName;
                     description = rows[i].description;
                     conversationQueue = rows[i].conversationQueue;
+
                     quickReply1 = rows[i].quickReply1;
                     quickReply2 = rows[i].quickReply2;
                     quickReply3 = rows[i].quickReply3;
+                    var keyMap = {
+                        "title": celebrityName,
+                        //"image_url": rows[i].picture1,
+                        "subtitle":description,
+                        "buttons": [
+                            {
+                                "type": "web_url",
+                                "url": rows[i].imageUrl,
+                                "title": "...Continue Reading ▶"
+                            }
+                        ]
+                    };
+                    contentList.push(keyMap);
                 }
-                console.log(celebrityName, description, conversationQueue, quickReply1, quickReply2, quickReply3);
-                var messageData = {
+                console.log(celebrityName);
+                console.log(description);
+                console.log(conversationQueue);
+                console.log(quickReply1);
+                console.log(quickReply2);
+                console.log(quickReply3);
+                {
                     "recipient": {
                         "id": senderID
                     },
                     "message": {
-                        "text": description,
+                        "attachment": {
+                            "type": "template",
+                            "payload": {
+                                "template_type": "generic",
+                                "elements": contentList
+                            }
+                        },
                         "quick_replies": [
                             {
                                 "content_type": "text",
@@ -424,9 +450,9 @@ function movies_celebrity_conversation(event, subCategory, movieCelebrity) {
                                 "payload": quickReply2 + '%movie_conv%'
                             }, {
                                 "content_type": "text",
-                                "title": quickReply3,
-                                "payload": quickReply3 + '%movie_conv%'
-                            },{
+                                "title": quickReply2,
+                                "payload": quickReply2 + '%movie_conv%'
+                            }, {
                                 "content_type": "text",
                                 "title": celebrityName,
                                 "payload": celebrityName + " %a%"
@@ -434,23 +460,23 @@ function movies_celebrity_conversation(event, subCategory, movieCelebrity) {
                                 "content_type": "text",
                                 "title": "Bollywood",
                                 "payload": "Bollywood"
-                            },{
+                            }, {
                                 "content_type": "text",
                                 "title": "Tollywood",
                                 "payload": "Tollywood"
-                            },{
+                            }, {
                                 "content_type": "text",
                                 "title": "Kollywood",
                                 "payload": "Kollywood"
-                            },{
+                            }, {
                                 "content_type": "text",
                                 "title": "Malayalam Cinema",
                                 "payload": "Malayalam Cinema"
-                            },{
+                            }, {
                                 "content_type": "text",
                                 "title": "Kannada Cinema",
                                 "payload": "Kannada Cinema"
-                            },{
+                            }, {
                                 "content_type": "text",
                                 "title": "Jokes",
                                 "payload": "jokes"
@@ -1185,7 +1211,8 @@ function fbuserlocation() {
 }
 
 module.exports = {
-    sendContentPacks: sendContentPacks
+    sendContentPacks: sendContentPacks,
+  //  movies_Queue_title_details:movies_Queue_title_details
     //fbuserdetails:fbuserdetails,
     // name:name,
     //  quickMenu: quickMenu
