@@ -916,5 +916,6 @@ module.exports = {
     albuminfo: albuminfo,
     musiccelbrityintro: musiccelbrityintro,
     musiccelebrityinfo: musiccelebrityinfo,
-    languagealbamsinfo: languagealbamsinfo
+    languagealbamsinfo: languagealbamsinfo,
+    language_conversation:language_conversation
 };

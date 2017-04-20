@@ -825,5 +825,6 @@ module.exports = {
     sportscelbrityintro: sportscelbrityintro,
     sportsqrintro: sportsqrintro,
     sportscelebrityinfo: sportscelebrityinfo,
-    ipl: ipl
+    ipl: ipl,
+    sports_celebrity_conversation:sports_celebrity_conversation
 };

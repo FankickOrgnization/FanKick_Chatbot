@@ -50,14 +50,14 @@ const sendContentPacks = (categoryName, event) => {
         console.log("categoryName", categoryName);
     } else if (categoryName == "hi" || categoryName == "hello" || categoryName == "hey") {
         wishingmessage(categoryName, event);
-        userintrestcategory(event, categoryName);
+        user_intrest_category(event, categoryName);
     } else if (categoryName == "movies") {
-        userintrestmoviessubcategory(event, categoryName);
+        user_intrest_movies_category(event, categoryName);
         submenu(event, categoryName);
         usercategory(event, categoryName);
         console.log("enter into the allcategory function");
     } else if (categoryName == "sports") {
-        userintrestsportssubcategory(event, categoryName);
+        user_intrest_sports_category(event, categoryName);
         submenu(event, categoryName);
         usercategory(event, categoryName);
         console.log("enter into the allcategory function");
@@ -67,7 +67,7 @@ const sendContentPacks = (categoryName, event) => {
         usercategory(event, categoryName);
         console.log("enter into the allcategory function");
     } else if (categoryName == "music") {
-        userintrestmusicsubcategory(event, categoryName);
+        user_intrest_music_category(event, categoryName);
         submenu(event, categoryName);
         usercategory(event, categoryName);
         console.log("enter into the allcategory function");
@@ -107,7 +107,7 @@ const sendContentPacks = (categoryName, event) => {
     }
 }
 
-function userintrestcategory(event, categoryName) {
+function user_intrest_category(event, categoryName) {
     var senderID = event.sender.id;
     pool.getConnection(function(err, connection) {
         connection.query('select * from cc_user_preference where facebookId= ?', [senderID], function(err, rows) {
@@ -194,7 +194,7 @@ function Categoryconversation(event, category) {
 
 //user_intrest_music_subcategory(event, categoryName);
 
-function userintrestmoviessubcategory(event, categoryName) {
+function user_intrest_movies_category(event, categoryName) {
     var senderID = event.sender.id;
     pool.getConnection(function(err, connection) {
         //connection.query('select * from cc_celebrity_preference where celebrityName=?',[categoryName], function(err, rows) {
@@ -233,7 +233,7 @@ function userintrestmoviessubcategory(event, categoryName) {
 }
 
 
-function userintrestmusicsubcategory(event, categoryName) {
+function user_intrest_music_category(event, categoryName) {
     var senderID = event.sender.id;
     pool.getConnection(function(err, connection) {
         //connection.query('select * from cc_celebrity_preference where celebrityName=?',[categoryName], function(err, rows) {
@@ -278,7 +278,7 @@ function userintrestmusicsubcategory(event, categoryName) {
 
 
 
-function userintrestsportssubcategory(event, categoryName) {
+function user_intrest_sports_category(event, categoryName) {
     var senderID = event.sender.id;
     pool.getConnection(function(err, connection) {
         //connection.query('select * from cc_celebrity_preference where celebrityName=?',[categoryName], function(err, rows) {
@@ -306,7 +306,7 @@ function userintrestsportssubcategory(event, categoryName) {
                     submenu(event, categoryName);
                 } else if (category != null && sportsCelebrity != null) {
                     if (category == "sports") {
-                        celebrity_conversation(event, category, sportsCelebrity);
+                        sports.sports_celebrity_conversation(event, category, sportsCelebrity);
                     } else {
                         submenu(event, categoryName);
                     }
