@@ -445,7 +445,7 @@ function Queuetitledetails(messagingEvent, Queuetitle) {
                             }, {
                                 "content_type": "text",
                                 "title": celebrityName,
-                                "payload": celebrityName
+                                "payload": celebrityName + " %a%"
                             }, {
                                 "content_type": "text",
                                 "title": "Home",
