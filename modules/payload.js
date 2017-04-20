@@ -265,11 +265,12 @@ function user_intrest_music_category(event, categoryName) {
                     // console.log("language:-", rows[i].language);
                     // console.log("location:-", rows[i].location);
                 }
-                if (category == null && language == null) {
+                if (category == null || language == null) {
+                    console.log("music_____________",category,language);
                     music.musicalbams(categoryName, event);
                 } else if (category != null && language != null) {
                     if (categoryName == "indian" || categoryName == "western") {
-                      console.log("music_____________",categoryName,language)
+                      console.log("music_____________",categoryName,language);
                         music.language_conversation(event, language);
                     } else {
                         submenu(event, categoryName);
