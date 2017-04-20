@@ -427,7 +427,7 @@ function movies_celebrity_conversation(event, subCategory, movieCelebrity) {
                 console.log(quickReply1);
                 console.log(quickReply2);
                 console.log(quickReply3);
-                {
+                var messageData = {
                     "recipient": {
                         "id": senderID
                     },
