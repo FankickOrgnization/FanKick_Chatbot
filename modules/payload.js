@@ -53,12 +53,12 @@ const sendContentPacks = (categoryName, event) => {
         user_intrest_category(event, categoryName);
     } else if (categoryName == "movies") {
         user_intrest_movies_category(event, categoryName);
-        submenu(event, categoryName);
+        //submenu(event, categoryName);
         usercategory(event, categoryName);
         console.log("enter into the allcategory function");
     } else if (categoryName == "sports") {
         user_intrest_sports_category(event, categoryName);
-        submenu(event, categoryName);
+        //submenu(event, categoryName);
         usercategory(event, categoryName);
         console.log("enter into the allcategory function");
     } else if (categoryName == "tv shows") {
@@ -224,7 +224,7 @@ function user_intrest_movies_category(event, categoryName) {
                     submenu(event, categoryName);
                 } else if (subCategory != null && movieCelebrity == null) {
                     if(category == "movies"){
-                      moviesconversation(event, subCategory);
+                      movies_categor_conversation(event, subCategory);
                     }
                 } else if (subCategory != null && movieCelebrity != null) {
                     movies_celebrity_conversation(event, subCategory, movieCelebrity);
@@ -329,7 +329,7 @@ function user_intrest_sports_category(event, categoryName) {
 
 }
 
-function moviesconversation(event, subCategory) {
+function movies_categor_conversation(event, subCategory) {
     var senderID = event.sender.id;
     console.log("subCategoryconversation:---", subCategory);
     pool.getConnection(function(err, connection) {
@@ -357,15 +357,15 @@ function moviesconversation(event, subCategory) {
                             {
                                 "content_type": "text",
                                 "title": quickReply1,
-                                "payload": quickReply1 + '%conv%'
+                                "payload": quickReply1 + '%movie_conv%'
                             }, {
                                 "content_type": "text",
                                 "title": quickReply2,
-                                "payload": quickReply2 + '%conv%'
+                                "payload": quickReply2 + '%movie_conv%'
                             }, {
                                 "content_type": "text",
                                 "title": quickReply3,
-                                "payload": quickReply3 + '%conv%'
+                                "payload": quickReply3 + '%movie_conv%'
                             }, {
                                 "content_type": "text",
                                 "title": "Skip",
@@ -417,15 +417,15 @@ function movies_celebrity_conversation(event, subCategory, movieCelebrity) {
                             {
                                 "content_type": "text",
                                 "title": quickReply1,
-                                "payload": quickReply1 + '%conv%'
+                                "payload": quickReply1 + '%movie_conv%'
                             }, {
                                 "content_type": "text",
                                 "title": quickReply2,
-                                "payload": quickReply2 + '%conv%'
+                                "payload": quickReply2 + '%movie_conv%'
                             }, {
                                 "content_type": "text",
                                 "title": quickReply3,
-                                "payload": quickReply3 + '%conv%'
+                                "payload": quickReply3 + '%movie_conv%'
                             },{
                                 "content_type": "text",
                                 "title": celebrityName,

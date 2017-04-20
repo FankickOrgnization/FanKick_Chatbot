@@ -215,7 +215,7 @@ function quickpayload(messagingEvent) {
     var musicartistalbum = quickpayloadtext.search("%Musiccelalbums%");
     var musicartistsongs = quickpayloadtext.search("%Musiccelsongs%");
     var musicartistcomp = quickpayloadtext.search("%Musiccelcomp%");
-    var conversationQueuetitle = quickpayloadtext.search("%conv%");
+    var conversationQueuetitle = quickpayloadtext.search("%movie_conv%");
 
     if (celpics != -1 || celmovies != -1 || celnetworth != -1 || celnews != -1 || celfamily != -1 || celabout != -1 || celcomp != -1) {
         console.log("This is celebritypics condition");
@@ -227,9 +227,14 @@ function quickpayload(messagingEvent) {
         celebrityid(packId, messagingEvent);
         //  movies.getgenremovies(messagingEvent, quickpayloadtext);
     } else if (conversationQueuetitle != -1) {
+        var Queuetitle = quickpayloadtext.replace("%movie_conv%", "");
+        console.log("conversationQueuetitle:--------------", Queuetitle);
+        movies_Queue_title_details(messagingEvent, Queuetitle);
+        //  movies.getgenremovies(messagingEvent, quickpayloadtext);
+    }else if (conversationQueuetitle != -1) {
         var Queuetitle = quickpayloadtext.replace("%conv%", "");
         console.log("conversationQueuetitle:--------------", Queuetitle);
-        Queuetitledetails(messagingEvent, Queuetitle);
+        category_Queue_title_details(messagingEvent, Queuetitle);
         //  movies.getgenremovies(messagingEvent, quickpayloadtext);
     } else if (action != -1 || comedy != -1 || romance != -1 || thriller != -1 || drama != -1 || sociofantasy != -1) {
         console.log("This is getgenremovies condition");
@@ -399,7 +404,7 @@ function receivedMessage(event) {
     });
 }
 
-function Queuetitledetails(messagingEvent, Queuetitle) {
+function movies_Queue_title_details(messagingEvent, Queuetitle) {
     var senderID = messagingEvent.sender.id;
     console.log('Queuetitle:---------', Queuetitle);
     pool.getConnection(function(err, connection) {
@@ -433,23 +438,43 @@ function Queuetitledetails(messagingEvent, Queuetitle) {
                             {
                                 "content_type": "text",
                                 "title": quickReply1,
-                                "payload": quickReply1 + '%conv%'
+                                "payload": quickReply1 + '%movie_conv%'
                             }, {
                                 "content_type": "text",
                                 "title": quickReply2,
-                                "payload": quickReply2 + '%conv%'
+                                "payload": quickReply2 + '%movie_conv%'
                             }, {
                                 "content_type": "text",
                                 "title": quickReply2,
-                                "payload": quickReply2 + '%conv%'
-                            }, {
+                                "payload": quickReply2 + '%movie_conv%'
+                            },,{
                                 "content_type": "text",
                                 "title": celebrityName,
                                 "payload": celebrityName + " %a%"
                             }, {
                                 "content_type": "text",
-                                "title": "Home",
-                                "payload": "Home"
+                                "title": "Bollywood",
+                                "payload": "Bollywood"
+                            },{
+                                "content_type": "text",
+                                "title": "Tollywood",
+                                "payload": "Tollywood"
+                            },{
+                                "content_type": "text",
+                                "title": "Kollywood",
+                                "payload": "Kollywood"
+                            },{
+                                "content_type": "text",
+                                "title": "Malayalam Cinema",
+                                "payload": "Malayalam Cinema"
+                            },{
+                                "content_type": "text",
+                                "title": "Kannada Cinema",
+                                "payload": "Kannada Cinema"
+                            },{
+                                "content_type": "text",
+                                "title": "Jokes",
+                                "payload": "jokes"
                             }
                         ]
 
