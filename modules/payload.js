@@ -67,12 +67,13 @@ const sendContentPacks = (categoryName, event) => {
         usercategory(event, categoryName);
         console.log("enter into the allcategory function");
     } else if (categoryName == "music") {
-        user_intrest_music_category(event, categoryName);
+        //user_intrest_music_category(event, categoryName);
         submenu(event, categoryName);
         usercategory(event, categoryName);
         console.log("enter into the allcategory function");
     } else if (categoryName == "indian" || categoryName == "western") {
-        music.musicalbams(categoryName, event);
+        user_intrest_music_category(event, categoryName);
+        //music.musicalbams(categoryName, event);
         usersubcategory(event, categoryName);
     } else if (categoryName == "hindi" || categoryName == "telugu" || categoryName == "tamil" || categoryName == "kannada") {
         music.languagealbamsinfo(categoryName, event);
@@ -238,6 +239,10 @@ function user_intrest_movies_category(event, categoryName) {
 function user_intrest_music_category(event, categoryName) {
     var senderID = event.sender.id;
     pool.getConnection(function(err, connection) {
+      var category;
+      var subCategory;
+      //var sportsCelebrity = rows[i].sportsCelebrity;
+      var language;
         //connection.query('select * from cc_celebrity_preference where celebrityName=?',[categoryName], function(err, rows) {
         //connection.query('select * from cc_celebrity_preference where subCategory = ?',[categoryName],function(err, rows) {
         connection.query('select * from cc_user_preference where facebookId= ?', [senderID], function(err, rows) {
@@ -261,10 +266,10 @@ function user_intrest_music_category(event, categoryName) {
                     // console.log("location:-", rows[i].location);
                 }
                 if (category == null && language == null) {
-                    submenu(event, categoryName);
+                    music.musicalbams(categoryName, event);
                 } else if (category != null && language != null) {
-                    if (category == "music") {
-                        music.language_conversation(event, category, language);
+                    if (categoryName == "indian" || categoryName == "western") {
+                        music.language_conversation(event, language);
                     } else {
                         submenu(event, categoryName);
                     }

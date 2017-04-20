@@ -296,7 +296,7 @@ const languagealbamsinfo = (categoryName, event) => {
     // });
 }
 
-const language_conversation = (event, category, language)=>{
+const language_conversation = (event, language)=>{
   language_wise_albams(language, event);
 }
 
