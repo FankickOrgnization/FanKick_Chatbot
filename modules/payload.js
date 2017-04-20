@@ -437,6 +437,7 @@ function celebrity_conversation(event, subCategory, movieCelebrity) {
                 }
                 fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
             }else if (rows.length == 0) {
+              var categoryName = "movies";
               submenu(event, categoryName);
             }
             connection.release();
