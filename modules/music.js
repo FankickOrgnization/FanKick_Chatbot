@@ -391,7 +391,7 @@ function language_wise_albams(language, event){
   });
 }
 
-function user_preferd_language(event, categoryName) {
+function user_preferd_language(categoryName, event) {
     var senderID = event.sender.id;
     pool.getConnection(function(err, connection) {
         connection.query('update cc_user_preference set language = ? where facebookId = ?', [
