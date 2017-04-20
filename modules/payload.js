@@ -232,6 +232,52 @@ function userintrestmoviessubcategory(event, categoryName) {
     });
 }
 
+
+function userintrestmusicsubcategory(event, categoryName) {
+    var senderID = event.sender.id;
+    pool.getConnection(function(err, connection) {
+        //connection.query('select * from cc_celebrity_preference where celebrityName=?',[categoryName], function(err, rows) {
+        //connection.query('select * from cc_celebrity_preference where subCategory = ?',[categoryName],function(err, rows) {
+        connection.query('select * from cc_user_preference where facebookId= ?', [senderID], function(err, rows) {
+            if (err) {
+                console.log("Error While retriving content pack data from database:", err);
+            } else if (rows.length > 0) {
+                // var senderID = event.sender.id;
+                // var contentList = [];
+                // var quickList = [];
+                //  var movieslist;
+                console.log("*******cc_celebrity_preference data from database:*********", rows);
+                for (var i = 0; i < rows.length; i++) {
+                    var category = rows[i].category;
+                    var subCategory = rows[i].subCategory;
+                    //var sportsCelebrity = rows[i].sportsCelebrity;
+                    var language = rows[i].language;
+                    console.log("category:-", category);
+                    console.log("subCategory:-", subCategory);
+                    console.log("movieCelebrity:-", language);
+                    // console.log("language:-", rows[i].language);
+                    // console.log("location:-", rows[i].location);
+                }
+                if (category == null && language == null) {
+                    submenu(event, categoryName);
+                } else if (category != null && language != null) {
+                    if (category == "music") {
+                        music.language_conversation(event, category, language);
+                    } else {
+                        submenu(event, categoryName);
+                    }
+                }
+            } else if (rows.length == 0) {
+              submenu(event, categoryName);
+            }
+            connection.release();
+        });
+    });
+
+}
+
+
+
 function userintrestsportssubcategory(event, categoryName) {
     var senderID = event.sender.id;
     pool.getConnection(function(err, connection) {
@@ -240,7 +286,7 @@ function userintrestsportssubcategory(event, categoryName) {
         connection.query('select * from cc_user_preference where facebookId= ?', [senderID], function(err, rows) {
             if (err) {
                 console.log("Error While retriving content pack data from database:", err);
-            } else if (rows.length) {
+            } else if (rows.length > 0) {
                 // var senderID = event.sender.id;
                 // var contentList = [];
                 // var quickList = [];
@@ -265,6 +311,8 @@ function userintrestsportssubcategory(event, categoryName) {
                         submenu(event, categoryName);
                     }
                 }
+            } else if (rows.length == 0) {
+              submenu(event, categoryName);
             }
             connection.release();
         });
@@ -339,7 +387,7 @@ function celebrity_conversation(event, subCategory, movieCelebrity) {
         connection.query('select * from cc_conversation_two where celebrityName= ? order by id desc', [movieCelebrity], function(err, rows) {
             if (err) {
                 console.log("Error While retriving content pack data from database:", err);
-            } else if (rows.length) {
+            } else if (rows.length > 0) {
                 console.log("*******cc_celebrity_preference data from database:*********", rows);
                 for (var i = 0; i < rows.length; i++) {
                     celebrityName = rows[i].celebrityName;
@@ -379,6 +427,8 @@ function celebrity_conversation(event, subCategory, movieCelebrity) {
                     }
                 }
                 fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
+            }else if (rows.length == 0) {
+              submenu(event, categoryName);
             }
             connection.release();
         });
