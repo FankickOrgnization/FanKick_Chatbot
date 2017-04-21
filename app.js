@@ -416,7 +416,7 @@ function movies_Queue_title_details(messagingEvent, quickpayloadtext) {
     console.log('celebrity:---------', celebrity);
     console.log('celebrity:---------', storyUrl);
     pool.getConnection(function(err, connection) {
-        connection.query('select * from cc_conversation_two where conversationQueue = ?', [Queuetitle], function(err, rows) {
+        connection.query('select * from cc_conversation_two where conversationQueue = ? and where celebrityName = ?', [Queuetitle, celebrity], function(err, rows) {
             console.log("*************************quickpaly", rows);
             if (err) {
                 console.log("Error While retriving content pack data from database:", err);
@@ -498,14 +498,15 @@ function movies_Queue_title_details(messagingEvent, quickpayloadtext) {
                 }
                 fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
             } else if (rows.length == 0) {
-                Queuetitle_data(messagingEvent, celebrity, Queuetitle, storyUrl,desc);
+                Queuetitle_data(messagingEvent, celebrity, Queuetitle, storyUrl, desc);
             }
             connection.release();
         });
     });
 }
 
-function Queuetitle_data(messagingEvent, celebrity, Queuetitle, storyUrl) {
+function Queuetitle_data(messagingEvent, celebrity, Queuetitle, storyUrl, desc) {
+  if(Queuetitle == "Yes! I too..." || Queuetitle == "Wow!" || Queuetitle == "Tell me more"){
     var senderID = messagingEvent.sender.id;
     console.log('---------:senderID:---------', senderID);
     console.log('---------:celebrity:---------', celebrity);
@@ -531,7 +532,7 @@ function Queuetitle_data(messagingEvent, celebrity, Queuetitle, storyUrl) {
                                 {
                                     "type": "web_url",
                                     "url": storyUrl,
-                                    "title": "...Continue Reading ▶"
+                                    "title": "Continue Reading ⏩"
                                 }
                             ]
                         }
@@ -574,6 +575,10 @@ function Queuetitle_data(messagingEvent, celebrity, Queuetitle, storyUrl) {
         }
     }
     fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
+  }else if (Queuetitle == "No stories please") {
+    var categoryName = "home";
+    payloadText.sendContentPacks(categoryName, event);
+  }
 }
 
 function quick_reply_subcategory(messagingEvent, quickpayloadtext) {
