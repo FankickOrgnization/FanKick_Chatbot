@@ -206,7 +206,7 @@ function sportsmenu(messagingEvent) {
                           "messenger_extensions": true,
                           "webview_height_ratio": "tall",
                           "fallback_url": "https://peterssendreceiveapp.ngrok.io/"
-                        }
+                        },
                         "buttons": [
                             {
                                 "type": "postback",
