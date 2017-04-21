@@ -49,7 +49,7 @@ const sendContentPacks = (categoryName, event) => {
         fbuserdetails(event, senderID);
         console.log("categoryName", categoryName);
     } else if (categoryName == "hi" || categoryName == "hello" || categoryName == "hey") {
-        //wishingmessage(categoryName, event);
+        //wishing_message(categoryName, event);
         user_intrest_category(event, categoryName);
     } else if (categoryName == "movies") {
         user_intrest_movies_category(event, categoryName);
@@ -79,7 +79,7 @@ const sendContentPacks = (categoryName, event) => {
         music.languagealbamsinfo(categoryName, event);
 
     } else if (categoryName == "reality" || categoryName == "romantic comedy" || categoryName == "horror / crime" || categoryName == "cooking" || categoryName == "animation") {
-        //wishingmessage(categoryName, event);
+        //wishing_message(categoryName, event);
         tvshows.gettvshowsgenre(event, categoryName);
         usersubcategory(event, categoryName);
     } else if (categoryName == "hollywood" || categoryName == "tollywood" || categoryName == "bollywood" || categoryName == "kollywood" || categoryName == "malayalam cinema" || categoryName == "kannada cinema") {
@@ -110,6 +110,9 @@ const sendContentPacks = (categoryName, event) => {
 
 function user_intrest_category(event, categoryName) {
     var senderID = event.sender.id;
+    var category;
+    var subCategory;
+    var movieCelebrity;
     pool.getConnection(function(err, connection) {
         connection.query('select * from cc_user_preference where facebookId= ?', [senderID], function(err, rows) {
             if (err) {
@@ -117,17 +120,17 @@ function user_intrest_category(event, categoryName) {
             } else if (rows.length) {
                 console.log("*******cc_celebrity_preference data from database:*********", rows);
                 for (var i = 0; i < rows.length; i++) {
-                    var category = rows[i].category;
-                    var subCategory = rows[i].subCategory;
-                    var movieCelebrity = rows[i].movieCelebrity;
+                    category = rows[i].category;
+                    subCategory = rows[i].subCategory;
+                    movieCelebrity = rows[i].movieCelebrity;
                     console.log("category:-", category);
                     console.log("subCategory:-", subCategory);
                 }
 
                 if (category == null) {
-                    wishingmessage(categoryName, event);
+                    wishing_message(categoryName, event);
                 } else if (category != null) {
-                    Categoryconversation(event, category);
+                    Category_conversation(event, category);
                 }
             }
             connection.release();
@@ -135,7 +138,7 @@ function user_intrest_category(event, categoryName) {
     });
 }
 
-function Categoryconversation(event, category) {
+function Category_conversation(event, category) {
     var senderID = event.sender.id;
     console.log("subCategoryconversation:---", category);
     var category;
@@ -198,7 +201,7 @@ function Categoryconversation(event, category) {
                 // }
                 // fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
             }else if (rows.length == 0) {
-              wishingmessage(categoryName, event);
+              wishing_message(categoryName, event);
             }
             connection.release();
         });
@@ -948,7 +951,7 @@ function usercategory(event, categoryName) {
     });
 }
 
-function wishingmessage(categoryName, event) {
+function wishing_message(categoryName, event) {
     var senderID = event.sender.id;
     var category = "home";
 
