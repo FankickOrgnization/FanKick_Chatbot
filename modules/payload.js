@@ -284,12 +284,12 @@ function user_intrest_music_category(event, categoryName) {
                 }
                 if (category == null || language == null) {
                     console.log("music_____________",category,language);
-                    //music.musicalbams(categoryName, event);
-                    music_conversation_intro(event, categoryName, language);
+                    music.musicalbams(categoryName, event);
+                  //  music_conversation_intro(event, categoryName, language);
                 } else if (category != null && language != null) {
                     if (categoryName == "indian" || categoryName == "western") {
                       console.log("music_____________",categoryName,language);
-                        music.language_conversation(event, language);
+                        music_conversation_intro(event, categoryName, language);
                     } else {
                         submenu(event, categoryName);
                     }
@@ -317,7 +317,8 @@ function music_conversation_intro(event, categoryName, language) {
         }
     };
     fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
-    music.musicalbams(categoryName, event);
+    //music.musicalbams(categoryName, event);
+    music.languagealbamsinfo(language, event)
 }
 
 
