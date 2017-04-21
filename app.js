@@ -409,6 +409,7 @@ function movies_Queue_title_details(messagingEvent, quickpayloadtext) {
     var Queuetitle = genrearray[0];
     var celebrity = genrearray[1];
     var storyUrl = genrearray[2];
+    var desc = genrearray[3];
     var senderID = messagingEvent.sender.id;
     var contentList = [];
     console.log('Queuetitle:---------', Queuetitle);
@@ -453,15 +454,15 @@ function movies_Queue_title_details(messagingEvent, quickpayloadtext) {
                             {
                                 "content_type": "text",
                                 "title": quickReply1,
-                                "payload": quickReply1 + ',' + celebrityName + ',' + storyUrl + ',%movie_conv%'
+                                "payload": quickReply1 +','+ celebrityName +','+storyUrl+','+description+',%movie_conv%'
                             }, {
                                 "content_type": "text",
                                 "title": quickReply2,
-                                "payload": quickReply2 + ',' + celebrityName + ',' + storyUrl + ',%movie_conv%'
+                                "payload": quickReply2 +','+ celebrityName +','+storyUrl+','+description+',%movie_conv%'
                             }, {
                                 "content_type": "text",
                                 "title": quickReply3,
-                                "payload": quickReply3 + ',' + celebrityName + ',' + storyUrl + ',%movie_conv%'
+                                "payload": quickReply3 +','+ celebrityName +','+storyUrl+','+description+',%movie_conv%'
                             }, {
                                 "content_type": "text",
                                 "title": celebrityName,
@@ -497,7 +498,7 @@ function movies_Queue_title_details(messagingEvent, quickpayloadtext) {
                 }
                 fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
             } else if (rows.length == 0) {
-                Queuetitle_data(messagingEvent, celebrity, Queuetitle, storyUrl);
+                Queuetitle_data(messagingEvent, celebrity, Queuetitle, storyUrl,desc);
             }
             connection.release();
         });
@@ -509,7 +510,8 @@ function Queuetitle_data(messagingEvent, celebrity, Queuetitle, storyUrl) {
     console.log('---------:senderID:---------', senderID);
     console.log('---------:celebrity:---------', celebrity);
     console.log('---------:Queuetitle:---------', Queuetitle);
-    console.log('---------:Queuetitle:---------', storyUrl);
+    console.log('---------:storyUrl:---------', storyUrl);
+    console.log('---------:desc:---------', desc);
 
     var description = 'Thanks, Hey you want to know about ' + celebrity + 'please select the below button';
     var messageData = {
@@ -524,7 +526,7 @@ function Queuetitle_data(messagingEvent, celebrity, Queuetitle, storyUrl) {
                     "elements": [
                         {
                             "title": celebrity,
-                            "subtitle": 'Thanks, Hey you want to know about ' + celebrity + 'please select the below button',
+                            "subtitle": desc,
                             "buttons": [
                                 {
                                     "type": "web_url",
