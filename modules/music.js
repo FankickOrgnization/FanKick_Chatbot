@@ -169,6 +169,11 @@ const albuminfo = (messagingEvent, albumname) => {
                                 "type": "web_url",
                                 "url": rows[i].albumUrl,
                                 "title": "Play Album 🎧"
+                            },
+                            {
+                                "type": "postback",
+                                "title": "View More 🔍",
+                                "payload": rows[i].name + " %albumname%"
                             }
                         ]
                     };
@@ -345,6 +350,10 @@ function language_wise_albams(language, event) {
                                 "type": "web_url",
                                 "url": rows[i].albumUrl,
                                 "title": "Play Album 🎧"
+                            },{
+                                "type": "postback",
+                                "title": "View More 🔍",
+                                "payload": rows[i].name + " %albumname%"
                             }
                         ]
                     };
@@ -821,6 +830,10 @@ function celebrityalbams(event, name) {
                                 "type": "web_url",
                                 "url": rows[i].albumUrl,
                                 "title": "Play Album 🎧"
+                            },{
+                                "type": "postback",
+                                "title": "View More 🔍",
+                                "payload": rows[i].name + " %albumname%"
                             }
                         ]
                     };
