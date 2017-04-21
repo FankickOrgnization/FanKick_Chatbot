@@ -464,7 +464,24 @@ const filmactor = (messagingEvent, actorname)=> {
     });
 }
 
-
+function updateusercelebrity(usercelebrityName, senderID) {
+    //console.log("******************categoryName*************", usercelebrityName);
+    //console.log("******************senderID*************", senderID);
+    pool.getConnection(function(err, connection) {
+        connection.query('update cc_user_preference set movieCelebrity= ? where facebookId=?', [
+            usercelebrityName, senderID
+        ], function(err, rows) {
+            if (err) {
+                console.log("Error While retriving content pack data from database:", err);
+            } else {
+                //console.log("No Data Found From Database");
+                //sendHelpMessage(event);
+                //sendImageMessage(event);
+            }
+            connection.release();
+        });
+    });
+}
 
 
 const selectedactorfilems = (messagingEvent, celebrityname) => {
