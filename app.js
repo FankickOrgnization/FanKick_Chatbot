@@ -578,6 +578,9 @@ function Queuetitle_data(messagingEvent, celebrity, Queuetitle, storyUrl, desc) 
   }else if (Queuetitle == "No stories please") {
     var categoryName = "home";
     payloadText.sendContentPacks(categoryName, messagingEvent);
+  }else {
+      console.log("No Data Found From Database");
+      sendHelpMessage(messagingEvent);
   }
 }
 
