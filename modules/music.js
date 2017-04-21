@@ -143,6 +143,7 @@ const albuminfo = (messagingEvent, albumname) => {
     var event = messagingEvent;
     var quickList = [];
     var name;
+    var lng;
     pool.getConnection(function(err, connection) {
         connection.query('select * from cc_music_albums where name = ?', [albumname], function(err, rows) {
             console.log("*************************Data For Music Albams", rows);
@@ -160,6 +161,7 @@ const albuminfo = (messagingEvent, albumname) => {
                 }
                 for (var i = 0; i < rowslenth; i++) { //Construct request body
                     name = rows[i].artist;
+                    lng = rows[i].language;
                     var keyMap = {
                         "title": rows[i].name,
                         "image_url": rows[i].picture1,
@@ -199,12 +201,20 @@ const albuminfo = (messagingEvent, albumname) => {
                                 "payload": name + " %musicartist%"
                             }, {
                                 "content_type": "text",
+                                "title": lng+" Album",
+                                "payload": lng
+                            }, {
+                                "content_type": "text",
                                 "title": "Music Jokes",
                                 "payload": "Jokes"
                             }, {
                                 "content_type": "text",
-                                "title": "Back To Music 🎶",
-                                "payload": "Music"
+                                "title": "Back To Indian Music",
+                                "payload": "Indian"
+                            },{
+                                "content_type": "text",
+                                "title": "Back To western Music",
+                                "payload": "Western"
                             }, {
                                 "content_type": "text",
                                 "title": "Home 🏠",
@@ -438,7 +448,7 @@ function user_favorite_music_celebrity(event, musiccelname) {
     var senderID = event.sender.id;
     pool.getConnection(function(err, connection) {
         connection.query('update cc_user_preference set musicCelebrity = ? where facebookId = ?', [
-            sportscelname, senderID
+            musiccelname, senderID
         ], function(err, rows) {
             if (err) {
                 console.log("Error While retriving content pack data from database:", err);

@@ -577,7 +577,7 @@ function Queuetitle_data(messagingEvent, celebrity, Queuetitle, storyUrl, desc) 
     fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
   }else if (Queuetitle == "No stories please") {
     var categoryName = "home";
-    payloadText.sendContentPacks(categoryName, event);
+    payloadText.sendContentPacks(categoryName, messagingEvent);
   }
 }
 
