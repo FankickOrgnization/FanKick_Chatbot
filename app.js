@@ -494,7 +494,7 @@ function movies_Queue_title_details(messagingEvent, quickpayloadtext) {
                     }
                 }
                 fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
-            } else if (rows.length > 0) {
+            } else if (rows.length == 0) {
               Queuetitle_data( messagingEvent,celebrity,Queuetitle);
             }
             connection.release();
@@ -509,7 +509,48 @@ function Queuetitle_data( messagingEvent,celebrity,Queuetitle){
   console.log('---------:senderID:---------', senderID);
   console.log('---------:celebrity:---------', celebrity);
   console.log('---------:Queuetitle:---------', Queuetitle);
+  var description = 'Thanks, Hey you want to know about '+celebrity+'please select the below button';
+  var messageData = {
+      "recipient": {
+          "id": senderID
+      },
+      "message": {
+          "text": description,
+          "quick_replies": [
+              {
+                  "content_type": "text",
+                  "title": celebrityName,
+                  "payload": celebrityName + " %a%"
+              }, {
+                  "content_type": "text",
+                  "title": "Bollywood",
+                  "payload": "Bollywood"
+              }, {
+                  "content_type": "text",
+                  "title": "Tollywood",
+                  "payload": "Tollywood"
+              }, {
+                  "content_type": "text",
+                  "title": "Kollywood",
+                  "payload": "Kollywood"
+              }, {
+                  "content_type": "text",
+                  "title": "Malayalam Cinema",
+                  "payload": "Malayalam Cinema"
+              }, {
+                  "content_type": "text",
+                  "title": "Kannada Cinema",
+                  "payload": "Kannada Cinema"
+              }, {
+                  "content_type": "text",
+                  "title": "Jokes",
+                  "payload": "jokes"
+              }
+          ]
 
+      }
+  }
+  fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
 }
 
 
