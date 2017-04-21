@@ -154,20 +154,12 @@ function userintrest_intro_message(category, event){
             "quick_replies": [
                 {
                     "content_type": "text",
-                    "title": "Movies 🎬",
-                    "payload": "Movies"
+                    "title": "Yes 🙂",
+                    "payload": category
                 }, {
                     "content_type": "text",
-                    "title": "Sports 🏆",
-                    "payload": "Sports"
-                }, {
-                    "content_type": "text",
-                    "title": "Music 🎶",
-                    "payload": "Music"
-                }, {
-                    "content_type": "text",
-                    "title": "TV Shows 📺",
-                    "payload": "TV Shows"
+                    "title": "No 😗",
+                    "payload": "Home"
                 }
             ]
 
