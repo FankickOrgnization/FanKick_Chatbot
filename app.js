@@ -229,7 +229,7 @@ function quickpayload(messagingEvent) {
     } else if (conversationQueuetitle != -1) {
         var Queuetitle = quickpayloadtext.replace("%movie_conv%", "");
         console.log("conversationQueuetitle:--------------", Queuetitle);
-        movies_Queue_title_details(messagingEvent, Queuetitle);
+        movies_Queue_title_details(messagingEvent, quickpayloadtext);
         //  movies.getgenremovies(messagingEvent, quickpayloadtext);
     } else if (conversationQueuetitle != -1) {
         var Queuetitle = quickpayloadtext.replace("%conv%", "");
@@ -404,16 +404,20 @@ function receivedMessage(event) {
     });
 }
 
-function movies_Queue_title_details(messagingEvent, Queuetitle) {
+function movies_Queue_title_details(messagingEvent, quickpayloadtext) {
+  var genrearray = quickpayloadtext.split(',');
+  var Queuetitle = genrearray[0];
+  var celebrity = genrearray[1];
     var senderID = messagingEvent.sender.id;
     var contentList = [];
     console.log('Queuetitle:---------', Queuetitle);
+    console.log('celebrity:---------', celebrity);
     pool.getConnection(function(err, connection) {
         connection.query('select * from cc_conversation_two where conversationQueue = ?', [Queuetitle], function(err, rows) {
             console.log("*************************quickpaly", rows);
             if (err) {
                 console.log("Error While retriving content pack data from database:", err);
-            } else if (rows.length) {
+            } else if (rows.length > 0) {
                 console.log("*******cc_celebrity_preference data from database:*********", rows);
                 for (var i = 0; i < 1; i++) {
                     celebrityName = rows[i].celebrityName;
@@ -447,15 +451,15 @@ function movies_Queue_title_details(messagingEvent, Queuetitle) {
                             {
                                 "content_type": "text",
                                 "title": quickReply1,
-                                "payload": quickReply1 + '%movie_conv%'
+                                "payload": quickReply1 +","+ celebrityName ',%movie_conv%'
                             }, {
                                 "content_type": "text",
                                 "title": quickReply2,
-                                "payload": quickReply2 + '%movie_conv%'
+                                "payload": quickReply2 +","+ celebrityName ',%movie_conv%'
                             }, {
                                 "content_type": "text",
                                 "title": quickReply3,
-                                "payload": quickReply3 + '%movie_conv%'
+                                "payload": quickReply3 +","+ celebrityName ',%movie_conv%'
                             }, {
                                 "content_type": "text",
                                 "title": celebrityName,
@@ -490,14 +494,25 @@ function movies_Queue_title_details(messagingEvent, Queuetitle) {
                     }
                 }
                 fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
-            } else {
-                console.log("No Data Found From Database");
-                sendHelpMessage(messagingEvent);
+            } else if (rows.length > 0) {
+              Queuetitle_data( messagingEvent,celebrity,Queuetitle);
             }
             connection.release();
         });
     });
 }
+
+
+
+function Queuetitle_data( messagingEvent,celebrity,Queuetitle){
+  var senderID = messagingEvent.sender.id;
+  console.log('---------:senderID:---------', senderID);
+  console.log('---------:celebrity:---------', celebrity);
+  console.log('---------:Queuetitle:---------', Queuetitle);
+
+}
+
+
 
 function quick_reply_subcategory(messagingEvent, quickpayloadtext) {
     var genrearray = quickpayloadtext.split(',');
