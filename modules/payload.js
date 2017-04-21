@@ -456,15 +456,15 @@ function movies_celebrity_conversation(event, subCategory, movieCelebrity) {
                             {
                                 "content_type": "text",
                                 "title": quickReply1,
-                                "payload": quickReply1  +","+ celebrityName +","+storyUrl+',%movie_conv%'
+                                "payload": quickReply1 +','+ celebrityName +','+storyUrl+',%movie_conv%'
                             }, {
                                 "content_type": "text",
                                 "title": quickReply2,
-                                "payload": quickReply2  +","+ celebrityName +","+storyUrl+',%movie_conv%'
+                                "payload": quickReply2 +','+ celebrityName +','+storyUrl+',%movie_conv%'
                             }, {
                                 "content_type": "text",
                                 "title": quickReply3,
-                                "payload": quickReply3  +","+ celebrityName +","+storyUrl+',%movie_conv%'
+                                "payload": quickReply3 +','+ celebrityName +','+storyUrl+',%movie_conv%'
                             }, {
                                 "content_type": "text",
                                 "title": celebrityName,

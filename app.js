@@ -405,10 +405,10 @@ function receivedMessage(event) {
 }
 
 function movies_Queue_title_details(messagingEvent, quickpayloadtext) {
-  var genrearray = quickpayloadtext.split(',');
-  var Queuetitle = genrearray[0];
-  var celebrity = genrearray[1];
-  var storyUrl = genrearray[2];
+    var genrearray = quickpayloadtext.split(',');
+    var Queuetitle = genrearray[0];
+    var celebrity = genrearray[1];
+    var storyUrl = genrearray[2];
     var senderID = messagingEvent.sender.id;
     var contentList = [];
     console.log('Queuetitle:---------', Queuetitle);
@@ -453,15 +453,15 @@ function movies_Queue_title_details(messagingEvent, quickpayloadtext) {
                             {
                                 "content_type": "text",
                                 "title": quickReply1,
-                                "payload": quickReply1 +","+ celebrityName +","+storyUrl+',%movie_conv%'
+                                "payload": quickReply1 + ',' + celebrityName + ',' + storyUrl + ',%movie_conv%'
                             }, {
                                 "content_type": "text",
                                 "title": quickReply2,
-                                "payload": quickReply2 +","+ celebrityName +","+storyUrl+',%movie_conv%'
+                                "payload": quickReply2 + ',' + celebrityName + ',' + storyUrl + ',%movie_conv%'
                             }, {
                                 "content_type": "text",
                                 "title": quickReply3,
-                                "payload": quickReply3 +","+ celebrityName +","+storyUrl+',%movie_conv%'
+                                "payload": quickReply3 + ',' + celebrityName + ',' + storyUrl + ',%movie_conv%'
                             }, {
                                 "content_type": "text",
                                 "title": celebrityName,
@@ -497,85 +497,82 @@ function movies_Queue_title_details(messagingEvent, quickpayloadtext) {
                 }
                 fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
             } else if (rows.length == 0) {
-              Queuetitle_data( messagingEvent,celebrity,Queuetitle,storyUrl);
+                Queuetitle_data(messagingEvent, celebrity, Queuetitle, storyUrl);
             }
             connection.release();
         });
     });
 }
 
+function Queuetitle_data(messagingEvent, celebrity, Queuetitle, storyUrl) {
+    var senderID = messagingEvent.sender.id;
+    console.log('---------:senderID:---------', senderID);
+    console.log('---------:celebrity:---------', celebrity);
+    console.log('---------:Queuetitle:---------', Queuetitle);
+    console.log('---------:Queuetitle:---------', storyUrl);
 
+    var description = 'Thanks, Hey you want to know about ' + celebrity + 'please select the below button';
+    var messageData = {
+        "recipient": {
+            "id": senderID
+        },
+        "message": {
+            "attachment": {
+                "type": "template",
+                "payload": {
+                    "template_type": "generic",
+                    "elements": [
+                        {
+                            "title": celebrity,
+                            "subtitle": 'Thanks, Hey you want to know about ' + celebrity + 'please select the below button',
+                            "buttons": [
+                                {
+                                    "type": "web_url",
+                                    "url": storyUrl,
+                                    "title": "...Continue Reading ▶"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            },
+            //  "text": description,
+            "quick_replies": [
+                {
+                    "content_type": "text",
+                    "title": celebrity,
+                    "payload": celebrity + " %a%"
+                }, {
+                    "content_type": "text",
+                    "title": "Bollywood",
+                    "payload": "Bollywood"
+                }, {
+                    "content_type": "text",
+                    "title": "Tollywood",
+                    "payload": "Tollywood"
+                }, {
+                    "content_type": "text",
+                    "title": "Kollywood",
+                    "payload": "Kollywood"
+                }, {
+                    "content_type": "text",
+                    "title": "Malayalam Cinema",
+                    "payload": "Malayalam Cinema"
+                }, {
+                    "content_type": "text",
+                    "title": "Kannada Cinema",
+                    "payload": "Kannada Cinema"
+                }, {
+                    "content_type": "text",
+                    "title": "Jokes",
+                    "payload": "jokes"
+                }
+            ]
 
-function Queuetitle_data( messagingEvent,celebrity,Queuetitle,storyUrl){
-  var senderID = messagingEvent.sender.id;
-  console.log('---------:senderID:---------', senderID);
-  console.log('---------:celebrity:---------', celebrity);
-  console.log('---------:Queuetitle:---------', Queuetitle);
-  console.log('---------:Queuetitle:---------', storyUrl);
-
-  var description = 'Thanks, Hey you want to know about '+celebrity+'please select the below button';
-  var messageData = {
-      "recipient": {
-          "id": senderID
-      },
-      "message": {
-        "attachment": {
-            "type": "template",
-            "payload": {
-                "template_type": "generic",
-                "elements": [{
-                        "title": celebrity,
-                        "subtitle":'Thanks, Hey you want to know about '+celebrity+'please select the below button',
-                        "buttons": [  {
-                              "type": "web_url",
-                              "url": storyUrl,
-                              "title": "...Continue Reading ▶"
-                          }]
-                    }
-
-
-                ]
-            }
         }
-        //  "text": description,
-          "quick_replies": [
-              {
-                  "content_type": "text",
-                  "title": celebrity,
-                  "payload": celebrity + " %a%"
-              }, {
-                  "content_type": "text",
-                  "title": "Bollywood",
-                  "payload": "Bollywood"
-              }, {
-                  "content_type": "text",
-                  "title": "Tollywood",
-                  "payload": "Tollywood"
-              }, {
-                  "content_type": "text",
-                  "title": "Kollywood",
-                  "payload": "Kollywood"
-              }, {
-                  "content_type": "text",
-                  "title": "Malayalam Cinema",
-                  "payload": "Malayalam Cinema"
-              }, {
-                  "content_type": "text",
-                  "title": "Kannada Cinema",
-                  "payload": "Kannada Cinema"
-              }, {
-                  "content_type": "text",
-                  "title": "Jokes",
-                  "payload": "jokes"
-              }
-          ]
-
-      }
-  }
-  fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
+    }
+    fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
 }
-
-
 
 function quick_reply_subcategory(messagingEvent, quickpayloadtext) {
     var genrearray = quickpayloadtext.split(',');
