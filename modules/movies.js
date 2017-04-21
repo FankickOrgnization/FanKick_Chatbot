@@ -657,6 +657,19 @@ const actressfilms = (messagingEvent, celebrityname) => {
                                 "payload": celebrityname + ' ,%family%'
                             }, {
                                 "content_type": "text",
+                                "title": "Tollywood",
+                                "payload": "Tollywood"
+                            },
+                            {
+                                "content_type": "text",
+                                "title": "Bollywood",
+                                "payload": "Bollywood"
+                            },{
+                                "content_type": "text",
+                                "title": "Kollywood",
+                                "payload": "kollywood"
+                            },{
+                                "content_type": "text",
                                 "title": "Home 🏠",
                                 "payload": "home"
                             }

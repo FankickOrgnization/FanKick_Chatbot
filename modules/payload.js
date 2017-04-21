@@ -307,7 +307,7 @@ function user_intrest_music_category(event, categoryName) {
 function music_conversation_intro(event, categoryName, language) {
     var senderID = event.sender.id;
     //var img = 'https://fankickdev.blob.core.windows.net/images/home_logo.png';
-    var msg = 'Here is what I know about ' + language + '';
+    var msg = 'Hey, as far as my memory goes, you were browsing' + language + 'albums. Wanna continue? Or else would you like to taste something else?';
     var messageData = {
         "recipient": {
             "id": senderID
@@ -531,7 +531,7 @@ function movies_celebrity_conversation(event, subCategory, movieCelebrity) {
 function moviecelebrity_conversation_intro(messagingEvent, actorname) {
     var senderID = messagingEvent.sender.id;
     //var img = 'https://fankickdev.blob.core.windows.net/images/home_logo.png';
-    var msg = 'Here is what I know about ' + actorname + '';
+    var msg = 'I am trying to guess the name of your favorite star, 🤔 mmmm.... it is ' + actorname + '. Am I right? If you are looking for someone else, pls lemme know...';
     var messageData = {
         "recipient": {
             "id": senderID
