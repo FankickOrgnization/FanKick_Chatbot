@@ -411,7 +411,7 @@ function movies_celebrity_conversation(event, subCategory, movieCelebrity) {
     var quickReply2;
     var quickReply3;
     pool.getConnection(function(err, connection) {
-        connection.query('select * from cc_conversation_two where celebrityName= ? order by id desc', [movieCelebrity], function(err, rows) {
+        connection.query('select * from cc_conversation_two where celebrityName= ? order by id', [movieCelebrity], function(err, rows) {
             if (err) {
                 console.log("Error While retriving content pack data from database:", err);
             } else if (rows.length > 0) {
