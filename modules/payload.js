@@ -131,12 +131,50 @@ function user_intrest_category(event, categoryName) {
                     wishing_message(categoryName, event);
                 } else if (category != null) {
                     //Category_conversation(event, category);
-                    submenu(event, category);
+                    //submenu(event, category);
+                    userintrest_intro_message(category, event);
                 }
             }
             connection.release();
         });
     });
+}
+
+function userintrest_intro_message(category, event){
+    var senderID = event.sender.id;
+    //var category = "home";
+    var msg = 'Hello dear, last time when you came, you were browsing '+ category +'. You like to continue? Shall I serve something else?';
+    console.log("--------:Response data:--------msg1 ", msg);
+    var messageData = {
+        "recipient": {
+            "id": senderID
+        },
+        "message": {
+            "text": msg,
+            "quick_replies": [
+                {
+                    "content_type": "text",
+                    "title": "Movies 🎬",
+                    "payload": "Movies"
+                }, {
+                    "content_type": "text",
+                    "title": "Sports 🏆",
+                    "payload": "Sports"
+                }, {
+                    "content_type": "text",
+                    "title": "Music 🎶",
+                    "payload": "Music"
+                }, {
+                    "content_type": "text",
+                    "title": "TV Shows 📺",
+                    "payload": "TV Shows"
+                }
+            ]
+
+        }
+    }
+    fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
+    //allcategory(event, category);
 }
 
 function Category_conversation(event, category) {
