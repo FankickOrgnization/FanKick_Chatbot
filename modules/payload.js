@@ -410,6 +410,7 @@ function movies_celebrity_conversation(event, subCategory, movieCelebrity) {
     var quickReply1;
     var quickReply2;
     var quickReply3;
+    var storyUrl;
     pool.getConnection(function(err, connection) {
         connection.query('select * from cc_conversation_two where celebrityName= ? order by id', [movieCelebrity], function(err, rows) {
             if (err) {
@@ -421,7 +422,7 @@ function movies_celebrity_conversation(event, subCategory, movieCelebrity) {
                     celebrityName = rows[i].celebrityName;
                     description = rows[i].description;
                     conversationQueue = rows[i].conversationQueue;
-
+                    storyUrl = rows[i].storyUrl;
                     quickReply1 = rows[i].quickReply1;
                     quickReply2 = rows[i].quickReply2;
                     quickReply3 = rows[i].quickReply3;
@@ -455,15 +456,15 @@ function movies_celebrity_conversation(event, subCategory, movieCelebrity) {
                             {
                                 "content_type": "text",
                                 "title": quickReply1,
-                                "payload": quickReply1  +","+ celebrityName +',%movie_conv%'
+                                "payload": quickReply1  +","+ celebrityName +","+storyUrl+',%movie_conv%'
                             }, {
                                 "content_type": "text",
                                 "title": quickReply2,
-                                "payload": quickReply2  +","+ celebrityName +',%movie_conv%'
+                                "payload": quickReply2  +","+ celebrityName +","+storyUrl+',%movie_conv%'
                             }, {
                                 "content_type": "text",
                                 "title": quickReply3,
-                                "payload": quickReply3  +","+ celebrityName +',%movie_conv%'
+                                "payload": quickReply3  +","+ celebrityName +","+storyUrl+',%movie_conv%'
                             }, {
                                 "content_type": "text",
                                 "title": celebrityName,
