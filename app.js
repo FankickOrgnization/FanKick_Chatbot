@@ -243,7 +243,7 @@ function quickpayload(messagingEvent) {
         var actorname = quickpayloadtext.replace(" %a%", "");
         console.log("actor name", actorname);
         var type = "leadActor";
-        filmactor(messagingEvent, actorname);
+        movies.filmactor(messagingEvent, actorname);
     } else if (actressname != -1) {
         var actressname = quickpayloadtext.replace(" %aa%", "");
         var type = "leadActress";
@@ -1034,7 +1034,7 @@ function actorintro(messagingEvent, actorname) {
         }
     };
     fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
-    filmactor(messagingEvent, actorname);
+    movies.filmactor(messagingEvent, actorname);
 }
 
 //Selected actor filems from movies list

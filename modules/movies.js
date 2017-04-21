@@ -361,6 +361,112 @@ const getgenremovies = (messagingEvent, quickpayloadtext) => {
 //
 // }
 
+const filmactor = (messagingEvent, actorname)=> {
+    console.log("filmactor", actorname);
+    var event = messagingEvent;
+    var aname = actorname.trim();
+    pool.getConnection(function(err, connection) {
+        connection.query('select * from cc_film_celebrity_preference where name = ?', [aname], function(err, rows) {
+            console.log("********filmactor*********", aname);
+            //console.log("*************************-after", categoryName);
+            console.log("*************************filmactor", rows);
+            if (err) {
+                console.log("Error While retriving content pack data from database:", err);
+            } else if (rows.length > 0) {
+                var senderID = messagingEvent.sender.id;
+                var contentList = [];
+                var quickList = [];
+                var movieslist;
+                var celebrityname;
+                //  "payload": celebrityid + ' ,%movies%'
+                var celebrityid;
+                for (var i = 0; i < rows.length; i++) { //Construct request body
+                    var res1 = rows[i].id + ",";
+                    var res2 = rows[i].celebrityName + ",";
+                    var res3 = res2.concat(res1);
+                    var res5 = res3.concat(res2);
+                    celebrityname = rows[i].name;
+                    celebrityid = rows[i].id;
+                    var keyMap = {
+                        "title": rows[i].name,
+                        "image_url": rows[i].picture1,
+                        "subtitle": rows[i].name,
+                        //  "item_url": rows[i].image_url,
+                        "buttons": [
+                            {
+                                "type": "web_url",
+                                "url": rows[i].facebookHandle,
+                                "title": "Facebook"
+                            }, {
+                                "type": "web_url",
+                                "url": rows[i].twitterHandle,
+                                "title": "Twitter"
+                            }
+                        ]
+                    };
+                    contentList.push(keyMap);
+                }
+                updateusercelebrity(celebrityname, senderID);
+                var messageData = {
+                    "recipient": {
+                        "id": senderID
+                    },
+                    "message": {
+                        "attachment": {
+                            "type": "template",
+                            "payload": {
+                                "template_type": "generic",
+                                "elements": contentList
+                            }
+                        },
+                        "quick_replies": [
+                            {
+                                "content_type": "text",
+                                "title": "Pictures",
+                                "payload": celebrityname + ' ,%pictures%'
+                            }, {
+                                "content_type": "text",
+                                "title": "Movies",
+                                "payload": celebrityname + ' ,%movies%'
+                            }, {
+                                "content_type": "text",
+                                "title": "Net Worth",
+                                "payload": celebrityname + ' ,%networth%'
+                            }, {
+                                "content_type": "text",
+                                "title": "Competitors",
+                                "payload": celebrityname + ' ,%Moviecomp%'
+                            }, {
+                                "content_type": "text",
+                                "title": "News",
+                                "payload": celebrityname + ' ,%news%'
+                            }, {
+                                "content_type": "text",
+                                "title": "Family",
+                                "payload": celebrityname + ' ,%family%'
+                            }, {
+                                "content_type": "text",
+                                "title": "Home 🏠",
+                                "payload": "home"
+                            }
+                        ]
+                    }
+                }
+                fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
+            } else if (rows.length == 0) {
+                googleSearch.googlegraph(aname, event);
+            } else {
+                console.log("No Data Found From Database");
+                sendHelpMessage(messagingEvent);
+            }
+            connection.release();
+        });
+    });
+}
+
+
+
+
 const selectedactorfilems = (messagingEvent, celebrityname) => {
     console.log("*********Movies Genre***********", celebrityname);
     pool.getConnection(function(err, connection) {
@@ -673,5 +779,6 @@ module.exports = {
     getgenremovies: getgenremovies,
     selectedactorfilems: selectedactorfilems,
     actressfilms: actressfilms,
-    directorfilms: directorfilms
+    directorfilms: directorfilms,
+    filmactor:filmactor
 };

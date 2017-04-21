@@ -284,7 +284,8 @@ function user_intrest_music_category(event, categoryName) {
                 }
                 if (category == null || language == null) {
                     console.log("music_____________",category,language);
-                    music.musicalbams(categoryName, event);
+                    //music.musicalbams(categoryName, event);
+                    music_conversation_intro(event, categoryName, language);
                 } else if (category != null && language != null) {
                     if (categoryName == "indian" || categoryName == "western") {
                       console.log("music_____________",categoryName,language);
@@ -295,11 +296,28 @@ function user_intrest_music_category(event, categoryName) {
                 }
             } else if (rows.length == 0) {
               submenu(event, categoryName);
+
             }
             connection.release();
         });
     });
 
+}
+
+function music_conversation_intro(event, categoryName, language) {
+    var senderID = event.sender.id;
+    //var img = 'https://fankickdev.blob.core.windows.net/images/home_logo.png';
+    var msg = 'Here is what I know about ' + language + '';
+    var messageData = {
+        "recipient": {
+            "id": senderID
+        },
+        "message": {
+            "text": msg
+        }
+    };
+    fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
+    music.musicalbams(categoryName, event);
 }
 
 
@@ -501,11 +519,28 @@ function movies_celebrity_conversation(event, subCategory, movieCelebrity) {
                 fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
             }else if (rows.length == 0) {
               var categoryName = "movies";
-              submenu(event, categoryName);
+              //submenu(event, categoryName);
+              moviecelebrity_conversation_intro(messagingEvent, movieCelebrity);
             }
             connection.release();
         });
     });
+}
+
+function moviecelebrity_conversation_intro(messagingEvent, actorname) {
+    var senderID = messagingEvent.sender.id;
+    //var img = 'https://fankickdev.blob.core.windows.net/images/home_logo.png';
+    var msg = 'Here is what I know about ' + actorname + '';
+    var messageData = {
+        "recipient": {
+            "id": senderID
+        },
+        "message": {
+            "text": msg
+        }
+    };
+    fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
+    movies.filmactor(messagingEvent, actorname);
 }
 
 function imagedisplay(categoryName, event) {
