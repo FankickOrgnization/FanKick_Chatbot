@@ -414,9 +414,9 @@ function movies_Queue_title_details(messagingEvent, quickpayloadtext) {
     var contentList = [];
     console.log('Queuetitle:---------', Queuetitle);
     console.log('celebrity:---------', celebrity);
-    console.log('celebrity:---------', storyUrl);
+    console.log('storyUrl:---------', storyUrl);
     pool.getConnection(function(err, connection) {
-        connection.query('select * from cc_conversation_two where conversationQueue = ? and where celebrityName = ?', [Queuetitle, celebrity], function(err, rows) {
+        connection.query('select * from cc_conversation_two where conversationQueue = ? and celebrityName = ?', [Queuetitle, celebrity], function(err, rows) {
             console.log("*************************quickpaly", rows);
             if (err) {
                 console.log("Error While retriving content pack data from database:", err);
