@@ -454,8 +454,8 @@ function movies_Queue_title_details(messagingEvent, Queuetitle) {
                                 "payload": quickReply2 + '%movie_conv%'
                             }, {
                                 "content_type": "text",
-                                "title": quickReply2,
-                                "payload": quickReply2 + '%movie_conv%'
+                                "title": quickReply3,
+                                "payload": quickReply3 + '%movie_conv%'
                             }, {
                                 "content_type": "text",
                                 "title": celebrityName,
