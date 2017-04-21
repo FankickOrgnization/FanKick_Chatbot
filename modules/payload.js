@@ -130,7 +130,8 @@ function user_intrest_category(event, categoryName) {
                 if (category == null) {
                     wishing_message(categoryName, event);
                 } else if (category != null) {
-                    Category_conversation(event, category);
+                    //Category_conversation(event, category);
+                    submenu(event, category);
                 }
             }
             connection.release();
@@ -150,19 +151,20 @@ function Category_conversation(event, category) {
                 console.log("*******cc_celebrity_preference data from database:*********", rows);
                 for (var i = 0; i < 1; i++) {
                     category = rows[i].category;
+                    console.log("Categoryconversation number:---", category);
                 }
-                var categoryName;
+
                 if(category == 1){
-                    categoryName = "sports";
+                var categoryName = "sports";
                   submenu(event, categoryName);
                 }else if (category == 2) {
-                  categoryName = "movies";
+                  var categoryName = "movies";
                 submenu(event, categoryName);
               }else if (category == 3) {
-                  categoryName = "music";
+                  var categoryName = "music";
                 submenu(event, categoryName);
               }else if (category == 4) {
-                    categoryName = "tv shows";
+                  var categoryName = "tv shows";
                   submenu(event, categoryName);
                   }
                 // console.log(celebrityName);
