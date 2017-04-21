@@ -451,15 +451,15 @@ function movies_Queue_title_details(messagingEvent, quickpayloadtext) {
                             {
                                 "content_type": "text",
                                 "title": quickReply1,
-                                "payload": quickReply1 +","+ celebrityName ',%movie_conv%'
+                                "payload": quickReply1 +","+ celebrityName +',%movie_conv%'
                             }, {
                                 "content_type": "text",
                                 "title": quickReply2,
-                                "payload": quickReply2 +","+ celebrityName ',%movie_conv%'
+                                "payload": quickReply2 +","+ celebrityName +',%movie_conv%'
                             }, {
                                 "content_type": "text",
                                 "title": quickReply3,
-                                "payload": quickReply3 +","+ celebrityName ',%movie_conv%'
+                                "payload": quickReply3 +","+ celebrityName +',%movie_conv%'
                             }, {
                                 "content_type": "text",
                                 "title": celebrityName,
