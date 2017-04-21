@@ -422,33 +422,27 @@ function movies_Queue_title_details(messagingEvent, Queuetitle) {
                     quickReply1 = rows[i].quickReply1;
                     quickReply2 = rows[i].quickReply2;
                     quickReply3 = rows[i].quickReply3;
-                    var keyMap = {
-                        "title": celebrityName,
-                        //"image_url": rows[i].picture1,
-                        "subtitle": rows[i].description,
-                        "buttons": [
-                            {
-                                "type": "web_url",
-                                "url": rows[i].storyUrl,
-                                "title": "...Continue Reading ▶"
-                            }
-                        ]
-                    };
-                    contentList.push(keyMap);
+                    // var keyMap = {
+                    //     "title": celebrityName,
+                    //     //"image_url": rows[i].picture1,
+                    //     "subtitle": rows[i].description,
+                    //     "buttons": [
+                    //         {
+                    //             "type": "web_url",
+                    //             "url": rows[i].storyUrl,
+                    //             "title": "...Continue Reading ▶"
+                    //         }
+                    //     ]
+                    // };
+                    // contentList.push(keyMap);
                 }
 
-                  var messageData = {
+                var messageData = {
                     "recipient": {
                         "id": senderID
                     },
                     "message": {
-                        "attachment": {
-                            "type": "template",
-                            "payload": {
-                                "template_type": "generic",
-                                "elements": contentList
-                            }
-                        },
+                        "text": description,
                         "quick_replies": [
                             {
                                 "content_type": "text",

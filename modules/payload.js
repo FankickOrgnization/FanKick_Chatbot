@@ -49,7 +49,7 @@ const sendContentPacks = (categoryName, event) => {
         fbuserdetails(event, senderID);
         console.log("categoryName", categoryName);
     } else if (categoryName == "hi" || categoryName == "hello" || categoryName == "hey") {
-        wishingmessage(categoryName, event);
+        //wishingmessage(categoryName, event);
         user_intrest_category(event, categoryName);
     } else if (categoryName == "movies") {
         user_intrest_movies_category(event, categoryName);
@@ -125,7 +125,7 @@ function user_intrest_category(event, categoryName) {
                 }
 
                 if (category == null) {
-                    submenu(event, categoryName);
+                    wishingmessage(categoryName, event);
                 } else if (category != null) {
                     Categoryconversation(event, category);
                 }
@@ -138,55 +138,67 @@ function user_intrest_category(event, categoryName) {
 function Categoryconversation(event, category) {
     var senderID = event.sender.id;
     console.log("subCategoryconversation:---", category);
+    var category;
     pool.getConnection(function(err, connection) {
         connection.query('select * from cc_conversation_two where subCategory=(select id from cc_categories where categoryName= ? ) order by id desc', [category], function(err, rows) {
             if (err) {
                 console.log("Error While retriving content pack data from database:", err);
-            } else if (rows.length) {
+            } else if (rows.length > 0) {
                 console.log("*******cc_celebrity_preference data from database:*********", rows);
-                for (var i = 0; i < rows.length; i++) {
-                    celebrityName = rows[i].celebrityName;
-                    description = rows[i].description;
-                    conversationQueue = rows[i].conversationQueue;
-                    quickReply1 = rows[i].quickReply1;
-                    quickReply2 = rows[i].quickReply2;
-                    quickReply3 = rows[i].quickReply3;
+                for (var i = 0; i < 1; i++) {
+                    category = rows[i].category;
                 }
+                var categoryName;
+                if(category == 1){
+                    categoryName = "sports";
+                  submenu(event, categoryName);
+                }else if (category == 2) {
+                  categoryName = "movies";
+                submenu(event, categoryName);
+              }else if (category == 3) {
+                  categoryName = "music";
+                submenu(event, categoryName);
+              }else if (category == 4) {
+                    categoryName = "tv shows";
+                  submenu(event, categoryName);
+                  }
                 // console.log(celebrityName);
                 // console.log(description);
                 // console.log(conversationQueue);
                 // console.log(quickReply1);
                 // console.log(quickReply2);
                 // console.log(quickReply3);
-                var messageData = {
-                    "recipient": {
-                        "id": senderID
-                    },
-                    "message": {
-                        "text": description,
-                        "quick_replies": [
-                            {
-                                "content_type": "text",
-                                "title": quickReply1,
-                                "payload": quickReply1 + '%conv%'
-                            }, {
-                                "content_type": "text",
-                                "title": quickReply2,
-                                "payload": quickReply2 + '%conv%'
-                            }, {
-                                "content_type": "text",
-                                "title": quickReply2,
-                                "payload": quickReply2 + '%conv%'
-                            }, {
-                                "content_type": "text",
-                                "title": "Skip",
-                                "payload": category
-                            }
-                        ]
-
-                    }
-                }
-                fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
+                // var messageData = {
+                //     "recipient": {
+                //         "id": senderID
+                //     },
+                //     "message": {
+                //         "text": description,
+                //         "quick_replies": [
+                //             {
+                //                 "content_type": "text",
+                //                 "title": quickReply1,
+                //                 "payload": quickReply1 + '%conv%'
+                //             }, {
+                //                 "content_type": "text",
+                //                 "title": quickReply2,
+                //                 "payload": quickReply2 + '%conv%'
+                //             }, {
+                //                 "content_type": "text",
+                //                 "title": quickReply2,
+                //                 "payload": quickReply2 + '%conv%'
+                //             }, {
+                //                 "content_type": "text",
+                //                 "title": "Skip",
+                //                 "payload": category
+                //             }
+                //         ]
+                //
+                //     }
+                // }
+                // fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
+            }else if (rows.length == 0) {
+              wishingmessage(categoryName, event);
             }
             connection.release();
         });
@@ -408,19 +420,19 @@ function movies_celebrity_conversation(event, subCategory, movieCelebrity) {
                     quickReply1 = rows[i].quickReply1;
                     quickReply2 = rows[i].quickReply2;
                     quickReply3 = rows[i].quickReply3;
-                    var keyMap = {
-                        "title": celebrityName,
-                        //"image_url": rows[i].picture1,
-                        "subtitle":description,
-                        "buttons": [
-                            {
-                                "type": "web_url",
-                                "url": rows[i].storyUrl,
-                                "title": "...Continue Reading ▶"
-                            }
-                        ]
-                    };
-                    contentList.push(keyMap);
+                    // var keyMap = {
+                    //     "title": celebrityName,
+                    //     //"image_url": rows[i].picture1,
+                    //     "subtitle":description,
+                    //     "buttons": [
+                    //         {
+                    //             "type": "web_url",
+                    //             "url": rows[i].storyUrl,
+                    //             "title": " Continue Reading ⏩"
+                    //         }
+                    //     ]
+                    // };
+                    // contentList.push(keyMap);
                 }
                 console.log(celebrityName);
                 console.log(description);
@@ -433,13 +445,7 @@ function movies_celebrity_conversation(event, subCategory, movieCelebrity) {
                         "id": senderID
                     },
                     "message": {
-                        "attachment": {
-                            "type": "template",
-                            "payload": {
-                                "template_type": "generic",
-                                "elements": contentList
-                            }
-                        },
+                        "text": description,
                         "quick_replies": [
                             {
                                 "content_type": "text",
@@ -451,8 +457,8 @@ function movies_celebrity_conversation(event, subCategory, movieCelebrity) {
                                 "payload": quickReply2 + '%movie_conv%'
                             }, {
                                 "content_type": "text",
-                                "title": quickReply2,
-                                "payload": quickReply2 + '%movie_conv%'
+                                "title": quickReply3,
+                                "payload": quickReply3 + '%movie_conv%'
                             }, {
                                 "content_type": "text",
                                 "title": celebrityName,
