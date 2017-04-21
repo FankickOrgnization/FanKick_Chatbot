@@ -520,7 +520,7 @@ function movies_celebrity_conversation(event, subCategory, movieCelebrity) {
             }else if (rows.length == 0) {
               var categoryName = "movies";
               //submenu(event, categoryName);
-              moviecelebrity_conversation_intro(messagingEvent, movieCelebrity);
+              moviecelebrity_conversation_intro(event, movieCelebrity);
             }
             connection.release();
         });
