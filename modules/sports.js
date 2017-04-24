@@ -202,10 +202,10 @@ function sportsmenu(messagingEvent) {
                         "subtitle":rows[i].celebrity,
                         "default_action": {
                           "type": "web_url",
-             "url": "https://peterssendreceiveapp.ngrok.io/view?item=103",
+             "url": "https://www.google.co.in/?gfe_rd=cr&ei=xNL9WPCwKJOGuwT1_oDoCg",
              "messenger_extensions": true,
              "webview_height_ratio": "tall",
-             "fallback_url": "https://peterssendreceiveapp.ngrok.io/"
+             "fallback_url": "https://www.google.co.in/?gfe_rd=cr&ei=xNL9WPCwKJOGuwT1_oDoCg#q=sports"
                         },
                         "buttons": [
                             {
