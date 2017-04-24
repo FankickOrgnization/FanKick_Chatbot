@@ -194,19 +194,19 @@ function sportsmenu(messagingEvent) {
                 }
                 for (var i = 0; i < rowslenth; i++) { //Construct request body
                     var keyMap = {
-                        // "title": rows[i].title,
-                        // "image_url": rows[i].imageUrl,
-                        // "subtitle": rows[i].celebrity,
-                        "title":rows[i].title,
-                        "image_url":rows[i].imageUrl,
-                        "subtitle":rows[i].celebrity,
-                        "default_action": {
-                          "type": "web_url",
-             "url": "https://www.google.co.in/?gfe_rd=cr&ei=xNL9WPCwKJOGuwT1_oDoCg",
-             "messenger_extensions": true,
-             "webview_height_ratio": "tall",
-             "fallback_url": "https://www.google.co.in/?gfe_rd=cr&ei=xNL9WPCwKJOGuwT1_oDoCg#q=sports"
-                        },
+                        "title": rows[i].title,
+                        "image_url": rows[i].imageUrl,
+                        "subtitle": rows[i].celebrity,
+                        // "title":rows[i].title,
+                        // "image_url":rows[i].imageUrl,
+                        // "subtitle":rows[i].celebrity,
+                        // "default_action": {
+                        //   "type": "web_url",
+                        //   "url": rows[i].imageUrl,
+                        //   "messenger_extensions": true,
+                        //   "webview_height_ratio": "tall",
+                        //   "fallback_url": rows[i].imageUrl
+                        // },
                         "buttons": [
                             {
                                 "type": "postback",
