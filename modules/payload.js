@@ -140,10 +140,10 @@ function user_intrest_category(event, categoryName) {
     });
 }
 
-function userintrest_intro_message(category, event){
+function userintrest_intro_message(category, event) {
     var senderID = event.sender.id;
     //var category = "home";
-    var msg = 'Hello dear, last time when you came, you were browsing '+ category +'. You like to continue? Shall I serve something else?';
+    var msg = 'Hello dear, last time when you came, you were browsing ' + category + '. You like to continue? Shall I serve something else?';
     console.log("--------:Response data:--------msg1 ", msg);
     var messageData = {
         "recipient": {
@@ -184,19 +184,19 @@ function Category_conversation(event, category) {
                     console.log("Categoryconversation number:---", category);
                 }
 
-                if(category == 1){
-                var categoryName = "sports";
-                  submenu(event, categoryName);
-                }else if (category == 2) {
-                  var categoryName = "movies";
-                submenu(event, categoryName);
-              }else if (category == 3) {
-                  var categoryName = "music";
-                submenu(event, categoryName);
-              }else if (category == 4) {
-                  var categoryName = "tv shows";
-                  submenu(event, categoryName);
-                  }
+                if (category == 1) {
+                    var categoryName = "sports";
+                    submenu(event, categoryName);
+                } else if (category == 2) {
+                    var categoryName = "movies";
+                    submenu(event, categoryName);
+                } else if (category == 3) {
+                    var categoryName = "music";
+                    submenu(event, categoryName);
+                } else if (category == 4) {
+                    var categoryName = "tv shows";
+                    submenu(event, categoryName);
+                }
                 // console.log(celebrityName);
                 // console.log(description);
                 // console.log(conversationQueue);
@@ -232,8 +232,8 @@ function Category_conversation(event, category) {
                 //     }
                 // }
                 // fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
-            }else if (rows.length == 0) {
-              wishing_message(categoryName, event);
+            } else if (rows.length == 0) {
+                wishing_message(categoryName, event);
             }
             connection.release();
         });
@@ -267,29 +267,31 @@ function user_intrest_movies_category(event, categoryName) {
                     console.log("location:-", rows[i].location);
                 }
 
-                if (subCategory == null && movieCelebrity == null) {
-                    submenu(event, categoryName);
-                } else if (subCategory != null && movieCelebrity == null) {
-                    if(category == "movies"){
-                      movies_categor_conversation(event, subCategory);
+                if (category = "movies") {
+                    // if (subCategory != null && movieCelebrity == null) {
+                    //       movies_categor_conversation(event, subCategory);
+                    //     }else
+                    if (movieCelebrity != null) {
+                        movies_celebrity_conversation(event, subCategory, movieCelebrity);
+                    } else if (movieCelebrity == null) {
+                        submenu(event, categoryName);
                     }
-                } else if (subCategory != null && movieCelebrity != null) {
-                    movies_celebrity_conversation(event, subCategory, movieCelebrity);
+
                 }
+
             }
             connection.release();
         });
     });
 }
 
-
 function user_intrest_music_category(event, categoryName) {
     var senderID = event.sender.id;
     pool.getConnection(function(err, connection) {
-      var category;
-      var subCategory;
-      //var sportsCelebrity = rows[i].sportsCelebrity;
-      var language;
+        var category;
+        var subCategory;
+        //var sportsCelebrity = rows[i].sportsCelebrity;
+        var language;
         //connection.query('select * from cc_celebrity_preference where celebrityName=?',[categoryName], function(err, rows) {
         //connection.query('select * from cc_celebrity_preference where subCategory = ?',[categoryName],function(err, rows) {
         connection.query('select * from cc_user_preference where facebookId= ?', [senderID], function(err, rows) {
@@ -313,19 +315,19 @@ function user_intrest_music_category(event, categoryName) {
                     // console.log("location:-", rows[i].location);
                 }
                 if (category == null || language == null) {
-                    console.log("music_____________",category,language);
+                    console.log("music_____________", category, language);
                     music.musicalbams(categoryName, event);
-                  //  music_conversation_intro(event, categoryName, language);
+                    //  music_conversation_intro(event, categoryName, language);
                 } else if (category != null && language != null) {
                     if (categoryName == "indian" || categoryName == "western") {
-                      console.log("music_____________",categoryName,language);
+                        console.log("music_____________", categoryName, language);
                         music_conversation_intro(event, categoryName, language);
                     } else {
                         submenu(event, categoryName);
                     }
                 }
             } else if (rows.length == 0) {
-              submenu(event, categoryName);
+                submenu(event, categoryName);
 
             }
             connection.release();
@@ -350,8 +352,6 @@ function music_conversation_intro(event, categoryName, language) {
     //music.musicalbams(categoryName, event);
     music.languagealbamsinfo(language, event)
 }
-
-
 
 function user_intrest_sports_category(event, categoryName) {
     var senderID = event.sender.id;
@@ -387,7 +387,7 @@ function user_intrest_sports_category(event, categoryName) {
                     }
                 }
             } else if (rows.length == 0) {
-              submenu(event, categoryName);
+                submenu(event, categoryName);
             }
             connection.release();
         });
@@ -402,7 +402,7 @@ function movies_categor_conversation(event, subCategory) {
         connection.query('select * from cc_conversation_two where subCategory=(select id from cc_subcategories where subCategoryName= ? ) order by id desc', [subCategory], function(err, rows) {
             if (err) {
                 console.log("Error While retriving content pack data from database:", err);
-            } else if (rows.length) {
+            } else if (rows.length > 0) {
                 console.log("*******cc_celebrity_preference data from database:*********", rows);
                 for (var i = 0; i < rows.length; i++) {
                     celebrityName = rows[i].celebrityName;
@@ -442,7 +442,7 @@ function movies_categor_conversation(event, subCategory) {
                     }
                 }
                 fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
-            }
+            } else if (rows.length == 0) {}
             connection.release();
         });
     });
@@ -505,15 +505,15 @@ function movies_celebrity_conversation(event, subCategory, movieCelebrity) {
                             {
                                 "content_type": "text",
                                 "title": quickReply1,
-                                "payload": quickReply1 +','+ celebrityName +','+storyUrl+','+description+',%movie_conv%'
+                                "payload": quickReply1 + ',' + celebrityName + ',' + storyUrl + ',' + description + ',%movie_conv%'
                             }, {
                                 "content_type": "text",
                                 "title": quickReply2,
-                                "payload": quickReply2 +','+ celebrityName +','+storyUrl+','+description+',%movie_conv%'
+                                "payload": quickReply2 + ',' + celebrityName + ',' + storyUrl + ',' + description + ',%movie_conv%'
                             }, {
                                 "content_type": "text",
                                 "title": quickReply3,
-                                "payload": quickReply3 +','+ celebrityName +','+storyUrl+','+description+',%movie_conv%'
+                                "payload": quickReply3 + ',' + celebrityName + ',' + storyUrl + ',' + description + ',%movie_conv%'
                             }, {
                                 "content_type": "text",
                                 "title": celebrityName,
@@ -548,10 +548,10 @@ function movies_celebrity_conversation(event, subCategory, movieCelebrity) {
                     }
                 }
                 fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
-            }else if (rows.length == 0) {
-              var categoryName = "movies";
-              //submenu(event, categoryName);
-              moviecelebrity_conversation_intro(event, movieCelebrity);
+            } else if (rows.length == 0) {
+                var categoryName = "movies";
+                //submenu(event, categoryName);
+                moviecelebrity_conversation_intro(event, movieCelebrity);
             }
             connection.release();
         });
@@ -1197,8 +1197,6 @@ function usersubcategory(event, categoryName) {
     });
 }
 
-
-
 function adduserlocation(categoryName, event) {
     console.log("*********************adduserlocation***********************1", categoryName);
 
@@ -1291,7 +1289,7 @@ function fbuserlocation() {
 
 module.exports = {
     sendContentPacks: sendContentPacks,
-  //  movies_Queue_title_details:movies_Queue_title_details
+    //  movies_Queue_title_details:movies_Queue_title_details
     //fbuserdetails:fbuserdetails,
     // name:name,
     //  quickMenu: quickMenu
