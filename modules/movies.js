@@ -465,6 +465,154 @@ const filmactor = (messagingEvent, actorname)=> {
     });
 }
 
+
+const conversation_filmactor = (messagingEvent, actorname)=> {
+    console.log("conversation_filmactor", actorname);
+    var event = messagingEvent;
+    var aname = actorname.trim();
+    pool.getConnection(function(err, connection) {
+        connection.query('select * from cc_film_celebrity_preference where name = ?', [aname], function(err, rows) {
+            console.log("********conversation_filmactor*********", aname);
+            //console.log("*************************-after", categoryName);
+            console.log("*************************conversation_filmactor", rows);
+            if (err) {
+                console.log("Error While retriving content pack data from database:", err);
+            } else if (rows.length > 0) {
+                var senderID = messagingEvent.sender.id;
+                var contentList = [];
+                var quickList = [];
+                var movieslist;
+                var celebrityname;
+                var competitors;
+                //  "payload": celebrityid + ' ,%movies%'
+                var celebrityid;
+                for (var i = 0; i < rows.length; i++) { //Construct request body
+                    var res1 = rows[i].id + ",";
+                    var res2 = rows[i].celebrityName + ",";
+                    var res3 = res2.concat(res1);
+                    var res5 = res3.concat(res2);
+                    competitors = rows[i].competitors;
+                    celebrityname = rows[i].name;
+                    celebrityid = rows[i].id;
+                    var keyMap = {
+                        "title": rows[i].name,
+                        "image_url": rows[i].picture1,
+                        "subtitle": rows[i].name,
+                        //  "item_url": rows[i].image_url,
+                        "buttons": [
+                          {
+                              "type": "postback",
+                              "title": celebrityname,
+                              "payload": celebrityname + " %a%"
+                          }
+                            // {
+                            //     "type": "web_url",
+                            //     "url": rows[i].facebookHandle,
+                            //     "title": "Facebook"
+                            // }, {
+                            //     "type": "web_url",
+                            //     "url": rows[i].twitterHandle,
+                            //     "title": "Twitter"
+                            // }
+                        ]
+                    };
+                    contentList.push(keyMap);
+                }
+              //  updateusercelebrity(celebrityname, senderID);
+              update_conversation_usercelebrity(messagingEvent);
+                var genrearray = competitor.split(',');
+                var name1 = genrearray[0];
+                var name2 = genrearray[1];
+                var messageData = {
+                    "recipient": {
+                        "id": senderID
+                    },
+                    "message": {
+                        "attachment": {
+                            "type": "template",
+                            "payload": {
+                                "template_type": "generic",
+                                "elements": contentList
+                            }
+                        },
+                        "quick_replies": [
+                          {
+                              "content_type": "text",
+                              "title": name1,
+                              "payload": name1 + " %a%"
+                          },{
+                              "content_type": "text",
+                              "title": name2,
+                              "payload": name2 + " %a%"
+                          }, {
+                              "content_type": "text",
+                              "title": "Bollywood",
+                              "payload": "Bollywood"
+                          }, {
+                              "content_type": "text",
+                              "title": "Tollywood",
+                              "payload": "Tollywood"
+                          }, {
+                              "content_type": "text",
+                              "title": "Kollywood",
+                              "payload": "Kollywood"
+                          }, {
+                              "content_type": "text",
+                              "title": "Malayalam Cinema",
+                              "payload": "Malayalam Cinema"
+                          }, {
+                              "content_type": "text",
+                              "title": "Kannada Cinema",
+                              "payload": "Kannada Cinema"
+                          }, {
+                              "content_type": "text",
+                              "title": "Jokes",
+                              "payload": "jokes"
+                          },{
+                                "content_type": "text",
+                                "title": "Home 🏠",
+                                "payload": "home"
+                            }
+                        ]
+                    }
+                }
+                fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
+            } else if (rows.length == 0) {
+                googleSearch.googlegraph(aname, event);
+            } else {
+                console.log("No Data Found From Database");
+                sendHelpMessage(messagingEvent);
+            }
+            connection.release();
+        });
+    });
+}
+
+function update_conversation_usercelebrity(messagingEvent) {
+  var senderID = messagingEvent.sender.id;
+    //console.log("******************categoryName*************", usercelebrityName);
+    //console.log("******************senderID*************", senderID);
+    pool.getConnection(function(err, connection) {
+        connection.query('update cc_user_preference set movieCelebrity = null where facebookId = ?', [
+            senderID
+        ], function(err, rows) {
+            if (err) {
+                console.log("Error While retriving content pack data from database:", err);
+            } else {
+                //console.log("No Data Found From Database");
+                //sendHelpMessage(event);
+                //sendImageMessage(event);
+            }
+            connection.release();
+        });
+    });
+}
+
+
+
+
+
+
 function updateusercelebrity(usercelebrityName, senderID) {
     //console.log("******************categoryName*************", usercelebrityName);
     //console.log("******************senderID*************", senderID);
@@ -811,5 +959,6 @@ module.exports = {
     selectedactorfilems: selectedactorfilems,
     actressfilms: actressfilms,
     directorfilms: directorfilms,
-    filmactor:filmactor
+    filmactor:filmactor,
+    conversation_filmactor:conversation_filmactor
 };

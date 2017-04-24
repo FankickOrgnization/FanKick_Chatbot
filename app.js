@@ -129,7 +129,12 @@ function receivedpostback(messagingEvent) {
         //console.log("Yessssssss", moviename);
         tvshows.tvshowinfo(messagingEvent, tvshowname);
         //celebritymovies(messagingEvent, moviename);
-    } else if (albumname != -1) {
+    } else if (actortext != -1) {
+        var actorname = quickpayloadtext.replace(" %a%", "");
+        console.log("actor name", actorname);
+        var type = "leadActor";
+        movies.filmactor(messagingEvent, actorname);
+    }else if (albumname != -1) {
         console.log("Yes this is %albumname%");
         var albumname = categoryName.replace(" %albumname%", "");
         //console.log("Yessssssss", moviename);

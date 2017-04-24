@@ -571,7 +571,7 @@ function moviecelebrity_conversation_intro(messagingEvent, actorname) {
         }
     };
     fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
-    movies.filmactor(messagingEvent, actorname);
+    movies.conversation_filmactor(messagingEvent, actorname);
 }
 
 function imagedisplay(categoryName, event) {
