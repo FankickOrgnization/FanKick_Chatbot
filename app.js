@@ -576,13 +576,38 @@ function Queuetitle_data(messagingEvent, celebrity, Queuetitle, storyUrl, desc) 
     }
     fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
   }else if (Queuetitle == "No stories please") {
-    var categoryName = "home";
-    payloadText.sendContentPacks(categoryName, messagingEvent);
+    update_conversation_usercelebrity(usercelebrityName, messagingEvent)
+    // var categoryName = "movies";
+    // payloadText.sendContentPacks(categoryName, messagingEvent);
   }else {
       console.log("No Data Found From Database");
       sendHelpMessage(messagingEvent);
   }
 }
+
+function update_conversation_usercelebrity(usercelebrityName, messagingEvent) {
+  var senderID = messagingEvent.sender.id;
+    //console.log("******************categoryName*************", usercelebrityName);
+    //console.log("******************senderID*************", senderID);
+    pool.getConnection(function(err, connection) {
+        connection.query('update cc_user_preference set movieCelebrity = null where facebookId = ?', [
+            senderID
+        ], function(err, rows) {
+            if (err) {
+                console.log("Error While retriving content pack data from database:", err);
+            } else {
+                //console.log("No Data Found From Database");
+                //sendHelpMessage(event);
+                //sendImageMessage(event);
+            }
+            connection.release();
+        });
+    });
+    var categoryName = "movies";
+    payloadText.sendContentPacks(categoryName, messagingEvent);
+}
+
+
 
 function quick_reply_subcategory(messagingEvent, quickpayloadtext) {
     var genrearray = quickpayloadtext.split(',');
