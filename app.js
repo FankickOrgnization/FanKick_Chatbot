@@ -576,7 +576,7 @@ function Queuetitle_data(messagingEvent, celebrity, Queuetitle, storyUrl, desc) 
     }
     fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
   }else if (Queuetitle == "No stories please") {
-    update_conversation_usercelebrity(usercelebrityName, messagingEvent)
+    update_conversation_usercelebrity(messagingEvent)
     // var categoryName = "movies";
     // payloadText.sendContentPacks(categoryName, messagingEvent);
   }else {
@@ -585,7 +585,7 @@ function Queuetitle_data(messagingEvent, celebrity, Queuetitle, storyUrl, desc) 
   }
 }
 
-function update_conversation_usercelebrity(usercelebrityName, messagingEvent) {
+function update_conversation_usercelebrity(messagingEvent) {
   var senderID = messagingEvent.sender.id;
     //console.log("******************categoryName*************", usercelebrityName);
     //console.log("******************senderID*************", senderID);
