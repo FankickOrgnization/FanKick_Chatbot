@@ -483,7 +483,7 @@ const conversation_filmactor = (messagingEvent, actorname)=> {
                 var quickList = [];
                 var movieslist;
                 var celebrityname;
-                var competitors;
+                var competitor;
                 //  "payload": celebrityid + ' ,%movies%'
                 var celebrityid;
                 for (var i = 0; i < rows.length; i++) { //Construct request body
@@ -491,7 +491,7 @@ const conversation_filmactor = (messagingEvent, actorname)=> {
                     var res2 = rows[i].celebrityName + ",";
                     var res3 = res2.concat(res1);
                     var res5 = res3.concat(res2);
-                    competitors = rows[i].competitors;
+                    competitor = rows[i].competitors;
                     celebrityname = rows[i].name;
                     celebrityid = rows[i].id;
                     var keyMap = {
