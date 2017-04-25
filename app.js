@@ -1397,10 +1397,10 @@ function textmessage(msgwit, messagingEvent) {
         for (var i = 0; i < rows.length; i++) {
             console.log("messaging_message Location:------", messagingEvent.message.attachments[i].payload);
             var location_payload = messagingEvent.message.attachments[i].payload;
-            var location_payload_coordinates = location_payload.coordinates;
-            var location_payload_coordinates_lat = location_payload.coordinates.lat;
-            var location_payload_coordinates_long = location_payload.coordinates.long;
-            var location = [location_payload_coordinates_lat, location_payload_coordinates_long];
+          //  var location_payload_coordinates = location_payload.coordinates;
+            //var location_payload_coordinates_lat = location_payload.coordinates.lat;
+            //var location_payload_coordinates_long = location_payload.coordinates.long;
+          //  var location = [location_payload_coordinates_lat, location_payload_coordinates_long];
             panorama(location, function(err, result) {
                 if (err) {
                     console.log(err);
@@ -1419,10 +1419,10 @@ function textmessage(msgwit, messagingEvent) {
 
             })
 
-            console.log("messaging_message location_payload:------", location_payload);
-            console.log("messaging_message location_payload_coordinates:------", location_payload_coordinates);
-            console.log("messaging_message location_payload_coordinates_lat:------", location_payload_coordinates_lat);
-            console.log("messaging_message location_payload_coordinates_long:------", location_payload_coordinates_long);
+          //  console.log("messaging_message location_payload:------", location_payload);
+          //  console.log("messaging_message location_payload_coordinates:------", location_payload_coordinates);
+            //console.log("messaging_message location_payload_coordinates_lat:------", location_payload_coordinates_lat);
+            //console.log("messaging_message location_payload_coordinates_long:------", location_payload_coordinates_long);
         }
     } else {
         console.log("messaging_message_text:------", messagingEvent.message.text);
