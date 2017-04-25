@@ -90,8 +90,7 @@ const sportscelbrityintro = (messagingEvent, sportscelname) => {
     user_favorite_sports_celebrity(messagingEvent, sportscelname)
 }
 
-
-const sports_celebrity_conversation = (event, category, sportsCelebrity) =>{
+const sports_celebrity_conversation = (event, category, sportsCelebrity) => {
     var senderID = event.sender.id;
     console.log("favoriteactorconversation:---", category);
     console.log("favoriteactorconversation:---", sportsCelebrity);
@@ -145,14 +144,13 @@ const sports_celebrity_conversation = (event, category, sportsCelebrity) =>{
                     }
                 }
                 fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
-            }else if(rows.length == 0){
+            } else if (rows.length == 0) {
                 sportsmenu(event);
             }
             connection.release();
         });
     });
 }
-
 
 function user_favorite_sports_celebrity(event, sportscelname) {
     var senderID = event.sender.id;
@@ -171,9 +169,6 @@ function user_favorite_sports_celebrity(event, sportscelname) {
         });
     });
 }
-
-
-
 
 function sportsmenu(messagingEvent) {
     var quickList = [];
@@ -638,7 +633,7 @@ const sportscelebrityinfo = (messagingEvent, quickpayloadtext) => {
                     }
                     //contentList.push(keyMap);
                 }
-var icon = 'http://4.bp.blogspot.com/-tJ00D3bRsPA/U5iB8P5vwMI/AAAAAAAAIyQ/-OPfILBWrR4/s1600/OMG-smiley.png';
+                var icon = 'http://4.bp.blogspot.com/-tJ00D3bRsPA/U5iB8P5vwMI/AAAAAAAAIyQ/-OPfILBWrR4/s1600/OMG-smiley.png';
                 var messageData = {
                     "recipient": {
                         "id": senderID
@@ -838,5 +833,5 @@ module.exports = {
     sportsqrintro: sportsqrintro,
     sportscelebrityinfo: sportscelebrityinfo,
     ipl: ipl,
-    sports_celebrity_conversation:sports_celebrity_conversation
+    sports_celebrity_conversation: sports_celebrity_conversation
 };

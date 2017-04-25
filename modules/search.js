@@ -37,10 +37,9 @@ const googlegraph = (categoryName, event) => {
     googlegraphdetails(categoryName, event);
 }
 
-
 // ************************** Googlegraph api ********************************
 //const googlegraph = (categoryName, event) => {
-function googlegraphdetails(categoryName, event){
+function googlegraphdetails(categoryName, event) {
     console.log("*************---categoryName----*******", categoryName);
     var contentList = [];
     var quickList = [];
@@ -53,7 +52,7 @@ function googlegraphdetails(categoryName, event){
         "uri": url,
         "method": 'GET'
     }, function(error, response, body) {
-      console.log("***********error",error);
+        console.log("***********error", error);
         var userprofiledata = JSON.parse(response.body);
         console.log("--------:googlegraphdetails Response data:--------", userprofiledata);
         console.log("--------:googlegraphdetails Response data itemListElement:-------- ", userprofiledata.itemListElement);
@@ -64,40 +63,40 @@ function googlegraphdetails(categoryName, event){
         var imagedata;
         var desdata;
         for (var i = 0; i < 1; i++) {
-          //desdata = rows[i].result;
-        //  console.log("result_1",desdata);
-          // for(var obj in desdata){
-          //     if(desdata.hasOwnProperty(obj)){
-          //     for(var prop in desdata[obj]){
-          //         if(desdata[obj].hasOwnProperty(prop)){
-          //      //alert(prop + ':' + jsonData[obj][prop]);
-          //      console.log("Json properties",prop);
-          //         }
-          //     }
-          // }
-          // }
-        //   var result = Object.keys(desdata);
-        //   for (var i = 0; result.length < 1; i++) {
-        //   console.log(result[i]);
-        // }
+            //desdata = rows[i].result;
+            //  console.log("result_1",desdata);
+            // for(var obj in desdata){
+            //     if(desdata.hasOwnProperty(obj)){
+            //     for(var prop in desdata[obj]){
+            //         if(desdata[obj].hasOwnProperty(prop)){
+            //      //alert(prop + ':' + jsonData[obj][prop]);
+            //      console.log("Json properties",prop);
+            //         }
+            //     }
+            // }
+            // }
+            //   var result = Object.keys(desdata);
+            //   for (var i = 0; result.length < 1; i++) {
+            //   console.log(result[i]);
+            // }
 
-          var name = rows[i].result.name;
-          var articleBody = rows[i].result.detailedDescription.articleBody;
-          //var contentUrl = rows[i].result.image.contentUrl;
-          var url = rows[i].result.detailedDescription.url;
-          console.log("googlegraphdetails.name",name);
-          console.log("googlegraphdetails.articleBody",articleBody);
-        //  console.log("googlegraphdetails.contentUrl",contentUrl);
-          console.log("googlegraphdetails.image.url",url);
+            var name = rows[i].result.name;
+            var articleBody = rows[i].result.detailedDescription.articleBody;
+            //var contentUrl = rows[i].result.image.contentUrl;
+            var url = rows[i].result.detailedDescription.url;
+            console.log("googlegraphdetails.name", name);
+            console.log("googlegraphdetails.articleBody", articleBody);
+            //  console.log("googlegraphdetails.contentUrl",contentUrl);
+            console.log("googlegraphdetails.image.url", url);
 
-          // console.log("result.name",rows[i].result.name);
-          // console.log("result.name",rows[i].result.detailedDescription.articleBody);
-          // console.log("result.name",rows[i].result.image.contentUrl);
-          // console.log("result.name",rows[i].result.image.url);
+            // console.log("result.name",rows[i].result.name);
+            // console.log("result.name",rows[i].result.detailedDescription.articleBody);
+            // console.log("result.name",rows[i].result.image.contentUrl);
+            // console.log("result.name",rows[i].result.image.url);
 
             var keyMap = {
                 "title": rows[i].result.name,
-              //  "image_url": rows[i].result.image.contentUrl,
+                //  "image_url": rows[i].result.image.contentUrl,
                 "subtitle": rows[i].result.detailedDescription.articleBody,
                 "buttons": [
                     {
@@ -109,9 +108,6 @@ function googlegraphdetails(categoryName, event){
             };
             contentList.push(keyMap);
         }
-
-
-
 
         var messageData = {
             "recipient": {
@@ -133,9 +129,6 @@ function googlegraphdetails(categoryName, event){
 }
 // ************************** Googlegraph api End ********************************
 
-
-
-
 module.exports = {
-  googlegraph: googlegraph
+    googlegraph: googlegraph
 };

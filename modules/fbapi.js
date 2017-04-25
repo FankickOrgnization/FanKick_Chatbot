@@ -39,6 +39,5 @@ const callFBAPI = (body, url) => {
 }
 
 module.exports = {
-    callFBAPI: callFBAPI,
-
+    callFBAPI: callFBAPI
 };

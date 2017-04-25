@@ -171,8 +171,7 @@ const albuminfo = (messagingEvent, albumname) => {
                                 "type": "web_url",
                                 "url": rows[i].albumUrl,
                                 "title": "Play Album 🎧"
-                            },
-                            {
+                            }, {
                                 "type": "postback",
                                 "title": "View More 🔍",
                                 "payload": rows[i].name + " %albumname%"
@@ -201,7 +200,7 @@ const albuminfo = (messagingEvent, albumname) => {
                                 "payload": name + " %musicartist%"
                             }, {
                                 "content_type": "text",
-                                "title": lng+" Album",
+                                "title": lng + " Album",
                                 "payload": lng
                             }, {
                                 "content_type": "text",
@@ -211,7 +210,7 @@ const albuminfo = (messagingEvent, albumname) => {
                                 "content_type": "text",
                                 "title": "Back To Indian Music",
                                 "payload": "Indian"
-                            },{
+                            }, {
                                 "content_type": "text",
                                 "title": "Back To western Music",
                                 "payload": "Western"
@@ -360,7 +359,7 @@ function language_wise_albams(language, event) {
                                 "type": "web_url",
                                 "url": rows[i].albumUrl,
                                 "title": "Play Album 🎧"
-                            },{
+                            }, {
                                 "type": "postback",
                                 "title": "View More 🔍",
                                 "payload": rows[i].name + " %albumname%"
@@ -840,7 +839,7 @@ function celebrityalbams(event, name) {
                                 "type": "web_url",
                                 "url": rows[i].albumUrl,
                                 "title": "Play Album 🎧"
-                            },{
+                            }, {
                                 "type": "postback",
                                 "title": "View More 🔍",
                                 "payload": rows[i].name + " %albumname%"

@@ -362,7 +362,7 @@ const getgenremovies = (messagingEvent, quickpayloadtext) => {
 //
 // }
 
-const filmactor = (messagingEvent, actorname)=> {
+const filmactor = (messagingEvent, actorname) => {
     console.log("filmactor", actorname);
     var event = messagingEvent;
     var aname = actorname.trim();
@@ -465,8 +465,7 @@ const filmactor = (messagingEvent, actorname)=> {
     });
 }
 
-
-const conversation_filmactor = (messagingEvent, actorname)=> {
+const conversation_filmactor = (messagingEvent, actorname) => {
     console.log("conversation_filmactor", actorname);
     var event = messagingEvent;
     var aname = actorname.trim();
@@ -500,11 +499,11 @@ const conversation_filmactor = (messagingEvent, actorname)=> {
                         "subtitle": rows[i].name,
                         //  "item_url": rows[i].image_url,
                         "buttons": [
-                          {
-                              "type": "postback",
-                              "title": celebrityname,
-                              "payload": celebrityname + " %a%"
-                          }
+                            {
+                                "type": "postback",
+                                "title": celebrityname,
+                                "payload": celebrityname + " %a%"
+                            }
                             // {
                             //     "type": "web_url",
                             //     "url": rows[i].facebookHandle,
@@ -518,8 +517,8 @@ const conversation_filmactor = (messagingEvent, actorname)=> {
                     };
                     contentList.push(keyMap);
                 }
-              //  updateusercelebrity(celebrityname, senderID);
-              update_conversation_usercelebrity(messagingEvent);
+                //  updateusercelebrity(celebrityname, senderID);
+                update_conversation_usercelebrity(messagingEvent);
                 var genrearray = competitor.split(',');
                 var name1 = genrearray[0];
                 var name2 = genrearray[1];
@@ -536,39 +535,39 @@ const conversation_filmactor = (messagingEvent, actorname)=> {
                             }
                         },
                         "quick_replies": [
-                          {
-                              "content_type": "text",
-                              "title": name1,
-                              "payload": name1 + " %a%"
-                          },{
-                              "content_type": "text",
-                              "title": name2,
-                              "payload": name2 + " %a%"
-                          }, {
-                              "content_type": "text",
-                              "title": "Bollywood",
-                              "payload": "Bollywood"
-                          }, {
-                              "content_type": "text",
-                              "title": "Tollywood",
-                              "payload": "Tollywood"
-                          }, {
-                              "content_type": "text",
-                              "title": "Kollywood",
-                              "payload": "Kollywood"
-                          }, {
-                              "content_type": "text",
-                              "title": "Malayalam Cinema",
-                              "payload": "Malayalam Cinema"
-                          }, {
-                              "content_type": "text",
-                              "title": "Kannada Cinema",
-                              "payload": "Kannada Cinema"
-                          }, {
-                              "content_type": "text",
-                              "title": "Jokes",
-                              "payload": "jokes"
-                          },{
+                            {
+                                "content_type": "text",
+                                "title": name1,
+                                "payload": name1 + " %a%"
+                            }, {
+                                "content_type": "text",
+                                "title": name2,
+                                "payload": name2 + " %a%"
+                            }, {
+                                "content_type": "text",
+                                "title": "Bollywood",
+                                "payload": "Bollywood"
+                            }, {
+                                "content_type": "text",
+                                "title": "Tollywood",
+                                "payload": "Tollywood"
+                            }, {
+                                "content_type": "text",
+                                "title": "Kollywood",
+                                "payload": "Kollywood"
+                            }, {
+                                "content_type": "text",
+                                "title": "Malayalam Cinema",
+                                "payload": "Malayalam Cinema"
+                            }, {
+                                "content_type": "text",
+                                "title": "Kannada Cinema",
+                                "payload": "Kannada Cinema"
+                            }, {
+                                "content_type": "text",
+                                "title": "Jokes",
+                                "payload": "jokes"
+                            }, {
                                 "content_type": "text",
                                 "title": "Home 🏠",
                                 "payload": "home"
@@ -589,13 +588,11 @@ const conversation_filmactor = (messagingEvent, actorname)=> {
 }
 
 function update_conversation_usercelebrity(messagingEvent) {
-  var senderID = messagingEvent.sender.id;
+    var senderID = messagingEvent.sender.id;
     //console.log("******************categoryName*************", usercelebrityName);
     //console.log("******************senderID*************", senderID);
     pool.getConnection(function(err, connection) {
-        connection.query('update cc_user_preference set movieCelebrity = null where facebookId = ?', [
-            senderID
-        ], function(err, rows) {
+        connection.query('update cc_user_preference set movieCelebrity = null where facebookId = ?', [senderID], function(err, rows) {
             if (err) {
                 console.log("Error While retriving content pack data from database:", err);
             } else {
@@ -607,11 +604,6 @@ function update_conversation_usercelebrity(messagingEvent) {
         });
     });
 }
-
-
-
-
-
 
 function updateusercelebrity(usercelebrityName, senderID) {
     //console.log("******************categoryName*************", usercelebrityName);
@@ -631,7 +623,6 @@ function updateusercelebrity(usercelebrityName, senderID) {
         });
     });
 }
-
 
 const selectedactorfilems = (messagingEvent, celebrityname) => {
     console.log("*********Movies Genre***********", celebrityname);
@@ -808,16 +799,15 @@ const actressfilms = (messagingEvent, celebrityname) => {
                                 "content_type": "text",
                                 "title": "Tollywood",
                                 "payload": "Tollywood"
-                            },
-                            {
+                            }, {
                                 "content_type": "text",
                                 "title": "Bollywood",
                                 "payload": "Bollywood"
-                            },{
+                            }, {
                                 "content_type": "text",
                                 "title": "Kollywood",
                                 "payload": "kollywood"
-                            },{
+                            }, {
                                 "content_type": "text",
                                 "title": "Home 🏠",
                                 "payload": "home"
@@ -840,7 +830,7 @@ const directorfilms = (messagingEvent, celebrityname) => {
     console.log("*********Movies Genre***********", celebrityname);
     //var actortype = type;
     var mname = celebrityname.trim();
-  //  console.log(actortype);
+    //  console.log(actortype);
     console.log(mname);
     //var query = 'select * from cc_movies_preference where leadActress = ? order by releaseDate desc';
     //console.log(query);
@@ -959,6 +949,6 @@ module.exports = {
     selectedactorfilems: selectedactorfilems,
     actressfilms: actressfilms,
     directorfilms: directorfilms,
-    filmactor:filmactor,
-    conversation_filmactor:conversation_filmactor
+    filmactor: filmactor,
+    conversation_filmactor: conversation_filmactor
 };

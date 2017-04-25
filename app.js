@@ -135,7 +135,7 @@ function receivedpostback(messagingEvent) {
         console.log("actor name", actorname);
         var type = "leadActor";
         movies.filmactor(messagingEvent, actorname);
-    }else if (albumname != -1) {
+    } else if (albumname != -1) {
         console.log("Yes this is %albumname%");
         var albumname = categoryName.replace(" %albumname%", "");
         //console.log("Yessssssss", moviename);
@@ -422,7 +422,9 @@ function movies_Queue_title_details(messagingEvent, quickpayloadtext) {
     console.log('celebrity:---------', celebrity);
     console.log('storyUrl:---------', storyUrl);
     pool.getConnection(function(err, connection) {
-        connection.query('select * from cc_conversation_two where conversationQueue = ? and celebrityName = ?', [Queuetitle, celebrity], function(err, rows) {
+        connection.query('select * from cc_conversation_two where conversationQueue = ? and celebrityName = ?', [
+            Queuetitle, celebrity
+        ], function(err, rows) {
             console.log("*************************quickpaly", rows);
             if (err) {
                 console.log("Error While retriving content pack data from database:", err);
@@ -460,15 +462,15 @@ function movies_Queue_title_details(messagingEvent, quickpayloadtext) {
                             {
                                 "content_type": "text",
                                 "title": quickReply1,
-                                "payload": quickReply1 +','+ celebrityName +','+storyUrl+','+description+',%movie_conv%'
+                                "payload": quickReply1 + ',' + celebrityName + ',' + storyUrl + ',' + description + ',%movie_conv%'
                             }, {
                                 "content_type": "text",
                                 "title": quickReply2,
-                                "payload": quickReply2 +','+ celebrityName +','+storyUrl+','+description+',%movie_conv%'
+                                "payload": quickReply2 + ',' + celebrityName + ',' + storyUrl + ',' + description + ',%movie_conv%'
                             }, {
                                 "content_type": "text",
                                 "title": quickReply3,
-                                "payload": quickReply3 +','+ celebrityName +','+storyUrl+','+description+',%movie_conv%'
+                                "payload": quickReply3 + ',' + celebrityName + ',' + storyUrl + ',' + description + ',%movie_conv%'
                             }, {
                                 "content_type": "text",
                                 "title": celebrityName,
@@ -512,93 +514,91 @@ function movies_Queue_title_details(messagingEvent, quickpayloadtext) {
 }
 
 function Queuetitle_data(messagingEvent, celebrity, Queuetitle, storyUrl, desc) {
-  if(Queuetitle == "Yes! I too..." || Queuetitle == "Wow!" || Queuetitle == "Tell me more"){
-    var senderID = messagingEvent.sender.id;
-    console.log('---------:senderID:---------', senderID);
-    console.log('---------:celebrity:---------', celebrity);
-    console.log('---------:Queuetitle:---------', Queuetitle);
-    console.log('---------:storyUrl:---------', storyUrl);
-    console.log('---------:desc:---------', desc);
+    if (Queuetitle == "Yes! I too..." || Queuetitle == "Wow!" || Queuetitle == "Tell me more") {
+        var senderID = messagingEvent.sender.id;
+        console.log('---------:senderID:---------', senderID);
+        console.log('---------:celebrity:---------', celebrity);
+        console.log('---------:Queuetitle:---------', Queuetitle);
+        console.log('---------:storyUrl:---------', storyUrl);
+        console.log('---------:desc:---------', desc);
 
-    var description = 'Thanks, Hey you want to know about ' + celebrity + 'please select the below button';
-    var messageData = {
-        "recipient": {
-            "id": senderID
-        },
-        "message": {
-            "attachment": {
-                "type": "template",
-                "payload": {
-                    "template_type": "generic",
-                    "elements": [
-                        {
-                            "title": celebrity,
-                            "subtitle": desc,
-                            "buttons": [
-                                {
-                                    "type": "web_url",
-                                    "url": storyUrl,
-                                    "title": "Continue Reading ⏩"
-                                }
-                            ]
-                        }
-                    ]
-                }
+        var description = 'Thanks, Hey you want to know about ' + celebrity + 'please select the below button';
+        var messageData = {
+            "recipient": {
+                "id": senderID
             },
-            //  "text": description,
-            "quick_replies": [
-                {
-                    "content_type": "text",
-                    "title": celebrity,
-                    "payload": celebrity + " %a%"
-                }, {
-                    "content_type": "text",
-                    "title": "Bollywood",
-                    "payload": "Bollywood"
-                }, {
-                    "content_type": "text",
-                    "title": "Tollywood",
-                    "payload": "Tollywood"
-                }, {
-                    "content_type": "text",
-                    "title": "Kollywood",
-                    "payload": "Kollywood"
-                }, {
-                    "content_type": "text",
-                    "title": "Malayalam Cinema",
-                    "payload": "Malayalam Cinema"
-                }, {
-                    "content_type": "text",
-                    "title": "Kannada Cinema",
-                    "payload": "Kannada Cinema"
-                }, {
-                    "content_type": "text",
-                    "title": "Jokes",
-                    "payload": "jokes"
-                }
-            ]
+            "message": {
+                "attachment": {
+                    "type": "template",
+                    "payload": {
+                        "template_type": "generic",
+                        "elements": [
+                            {
+                                "title": celebrity,
+                                "subtitle": desc,
+                                "buttons": [
+                                    {
+                                        "type": "web_url",
+                                        "url": storyUrl,
+                                        "title": "Continue Reading ⏩"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                },
+                //  "text": description,
+                "quick_replies": [
+                    {
+                        "content_type": "text",
+                        "title": celebrity,
+                        "payload": celebrity + " %a%"
+                    }, {
+                        "content_type": "text",
+                        "title": "Bollywood",
+                        "payload": "Bollywood"
+                    }, {
+                        "content_type": "text",
+                        "title": "Tollywood",
+                        "payload": "Tollywood"
+                    }, {
+                        "content_type": "text",
+                        "title": "Kollywood",
+                        "payload": "Kollywood"
+                    }, {
+                        "content_type": "text",
+                        "title": "Malayalam Cinema",
+                        "payload": "Malayalam Cinema"
+                    }, {
+                        "content_type": "text",
+                        "title": "Kannada Cinema",
+                        "payload": "Kannada Cinema"
+                    }, {
+                        "content_type": "text",
+                        "title": "Jokes",
+                        "payload": "jokes"
+                    }
+                ]
 
+            }
         }
+        fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
+    } else if (Queuetitle == "No stories please") {
+        update_conversation_usercelebrity(messagingEvent)
+        // var categoryName = "movies";
+        // payloadText.sendContentPacks(categoryName, messagingEvent);
+    } else {
+        console.log("No Data Found From Database");
+        sendHelpMessage(messagingEvent);
     }
-    fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
-  }else if (Queuetitle == "No stories please") {
-    update_conversation_usercelebrity(messagingEvent)
-    // var categoryName = "movies";
-    // payloadText.sendContentPacks(categoryName, messagingEvent);
-  }else {
-      console.log("No Data Found From Database");
-      sendHelpMessage(messagingEvent);
-  }
 }
 
 function update_conversation_usercelebrity(messagingEvent) {
-  var senderID = messagingEvent.sender.id;
+    var senderID = messagingEvent.sender.id;
     //console.log("******************categoryName*************", usercelebrityName);
     //console.log("******************senderID*************", senderID);
     pool.getConnection(function(err, connection) {
-        connection.query('update cc_user_preference set movieCelebrity = null where facebookId = ?', [
-            senderID
-        ], function(err, rows) {
+        connection.query('update cc_user_preference set movieCelebrity = null where facebookId = ?', [senderID], function(err, rows) {
             if (err) {
                 console.log("Error While retriving content pack data from database:", err);
             } else {
@@ -612,8 +612,6 @@ function update_conversation_usercelebrity(messagingEvent) {
     var categoryName = "movies";
     payloadText.sendContentPacks(categoryName, messagingEvent);
 }
-
-
 
 function quick_reply_subcategory(messagingEvent, quickpayloadtext) {
     var genrearray = quickpayloadtext.split(',');
@@ -1531,20 +1529,19 @@ function filmactor(messagingEvent, actorname) {
                                 "content_type": "text",
                                 "title": "Family",
                                 "payload": celebrityname + ' ,%family%'
-                            },{
+                            }, {
                                 "content_type": "text",
                                 "title": "Tollywood",
                                 "payload": "Tollywood"
-                            },
-                            {
+                            }, {
                                 "content_type": "text",
                                 "title": "Bollywood",
                                 "payload": "Bollywood"
-                            },{
+                            }, {
                                 "content_type": "text",
                                 "title": "Kollywood",
                                 "payload": "kollywood"
-                            },{
+                            }, {
                                 "content_type": "text",
                                 "title": "Home 🏠",
                                 "payload": "home"
