@@ -77,7 +77,7 @@ const persistentMenu = (accessToken) => {
             {
               "type":"web_url",
               "title":"Latest News",
-              "url":"http://petershats.parseapp.com/hat-news",
+              "url":"https://www.google.co.in",
               "webview_height_ratio":"full"
             }
           ]
