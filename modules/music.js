@@ -68,11 +68,8 @@ const musicalbams = (categoryName, event) => {
                                 "type": "postback",
                                 "title": "View More 🔍",
                                 "payload": rows[i].name + " %albumname%"
-                            } ,{
-                                "type": "web_url",
-                                "url": "https://messenger-taskbot.herokuapp.com/lists/3392",
-                                "title": "extenction"
-                            },
+                            }
+
                         ]
                     };
                     contentList.push(keyMap);
@@ -362,6 +359,10 @@ function language_wise_albams(language, event) {
                                 "type": "postback",
                                 "title": "View More 🔍",
                                 "payload": rows[i].name + " %albumname%"
+                            },{
+                                "type": "web_url",
+                                "url": "https://messenger-taskbot.herokuapp.com/lists/3392",
+                                "title": "extenction"
                             }
                         ]
                     };
