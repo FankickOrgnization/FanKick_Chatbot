@@ -101,7 +101,7 @@ const sendContentPacks = (categoryName, event) => {
         videodisplay(categoryName, event);
     } else if (categoryName == "location") {
         adduserlocation(categoryName, event);
-    }else if (categoryName == "list view") {
+    }else if (categoryName == "list") {
         list_view(categoryName, event);
     } else if (categoryName == 518003 || categoryName == 500045) {
         getuserlocation(categoryName, event);
@@ -685,8 +685,8 @@ function videodisplay(categoryName, event) {
             "attachment": {
                 "type": "video",
                 "payload": {
-                  //  "url": "http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4"
-                    "url": "https://www.facebook.com/cnn/videos/vl.1074656819284548/10156412943866509/?type=1"
+                    "url": "http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4"
+                    //"url": "https://www.facebook.com/cnn/videos/vl.1074656819284548/10156412943866509/?type=1"
                 }
             },
             "quick_replies": quickreply
