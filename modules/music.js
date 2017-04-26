@@ -361,8 +361,8 @@ function language_wise_albams(language, event) {
                                 "payload": rows[i].name + " %albumname%"
                             },{
                                 "type": "web_url",
-                                "url": "https://messenger-taskbot.herokuapp.com/lists/3392",
-                                "title": "extenction"
+                                "url": "http://rankworldlive.azurewebsites.net/shareToSocial?ranklistid=3111",
+                                "title": "Web View"
                             }
                         ]
                     };
