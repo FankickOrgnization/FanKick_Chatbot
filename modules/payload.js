@@ -686,7 +686,7 @@ function videodisplay(categoryName, event) {
                 "type": "video",
                 "payload": {
                   //  "url": "http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4"
-                    "url": "https://www.facebook.com/cnn/videos/10156497269641509/"
+                    "url": "https://www.facebook.com/cnn/videos/vl.1074656819284548/10156412943866509/?type=1"
                 }
             },
             "quick_replies": quickreply
