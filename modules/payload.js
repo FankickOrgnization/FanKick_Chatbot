@@ -137,7 +137,7 @@ var messageData = {
                         {
                             "title": "View",
                             "type": "web_url",
-                            "url": "http://static.dnaindia.com/sites/default/files/2016/05/24/463733-chiranjeevi.jpg",
+                            "url": "https://fankickdev.blob.core.windows.net/images/movies.jpg",
                             "messenger_extensions": true,
                             "webview_height_ratio": "tall",
                             "fallback_url": "https://fankickdev.blob.core.windows.net/images/movies.jpg"
@@ -146,23 +146,23 @@ var messageData = {
                 },
                 {
                     "title": "Classic White T-Shirt",
-                    "image_url": "http://www.cinejosh.com/newsimg/newsmainimg/chiranjeevi-remuneration-for-bruce-lee_b_0909151136.jpg",
+                    "image_url": "https://fankickdev.blob.core.windows.net/images/movies.jpg",
                     "subtitle": "100% Cotton, 200% Comfortable",
                     "default_action": {
                         "type": "web_url",
-                        "url": "https://en.wikipedia.org/wiki/Chiranjeevi",
+                        "url": "https://fankickdev.blob.core.windows.net/images/movies.jpg",
                         "messenger_extensions": true,
                         "webview_height_ratio": "tall",
-                        "fallback_url": "https://www.google.co.in/search?noj=1&biw=1280&bih=662&q=chiranjeevi&oq=chiranjeevi&gs_l=serp.3...83"
+                        "fallback_url": "https://fankickdev.blob.core.windows.net/images/movies.jpg"
                     },
                     "buttons": [
                         {
                             "title": "Shop Now",
                             "type": "web_url",
-                            "url": "https://en.wikipedia.org/wiki/Chiranjeevi",
+                            "url": "https://fankickdev.blob.core.windows.net/images/movies.jpg",
                             "messenger_extensions": true,
                             "webview_height_ratio": "tall",
-                            "fallback_url": "https://www.google.co.in/search?noj=1&biw=1280&bih=662&q=chiranjeevi&oq=chiranjeevi&gs_l=serp.3...83"
+                            "fallback_url": "https://fankickdev.blob.core.windows.net/images/movies.jpg"
                         }
                     ]
                 }
