@@ -68,12 +68,11 @@ const musicalbams = (categoryName, event) => {
                                 "type": "postback",
                                 "title": "View More 🔍",
                                 "payload": rows[i].name + " %albumname%"
-                            }
-                            //,{
-                            //     "type": "web_url",
-                            //     "url": rows[i].googleSearch,
-                            //     "title": "Google Search"
-                            // },
+                            } ,{
+                                "type": "web_url",
+                                "url": "https://messenger-taskbot.herokuapp.com/lists/3392",
+                                "title": "extenction"
+                            },
                         ]
                     };
                     contentList.push(keyMap);
