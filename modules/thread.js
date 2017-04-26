@@ -55,7 +55,7 @@ const persistentMenu = (accessToken) => {
         {
           "type":"web_url",
           "title":"Latest News",
-          "url":"http://petershats.parseapp.com/hat-news",
+          "url":"http://rankworldlive.azurewebsites.net/shareToSocial?ranklistid=3111",
           "webview_height_ratio":"full"
         }
       ]
