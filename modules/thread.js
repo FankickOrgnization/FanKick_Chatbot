@@ -77,7 +77,7 @@ const persistentMenu = (accessToken) => {
             {
               "type":"web_url",
               "title":"Latest News",
-              "url":"https://www.google.co.in",
+              "url":"http://rankworldlive.azurewebsites.net/shareToSocial?ranklistid=3111",
               "webview_height_ratio":"full"
             }
           ]
