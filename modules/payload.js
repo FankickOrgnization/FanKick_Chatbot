@@ -124,89 +124,45 @@ var messageData = {
             "elements": [
                 {
                     "title": "Classic T-Shirt Collection",
-                    "image_url": "https://peterssendreceiveapp.ngrok.io/img/collection.png",
+                    "image_url": "https://fankickdev.blob.core.windows.net/images/movies.jpg",
                     "subtitle": "See all our colors",
                     "default_action": {
                         "type": "web_url",
-                        "url": "https://peterssendreceiveapp.ngrok.io/shop_collection",
+                        "url": "https://fankickdev.blob.core.windows.net/images/movies.jpg",
                         "messenger_extensions": true,
                         "webview_height_ratio": "tall",
-                        "fallback_url": "https://peterssendreceiveapp.ngrok.io/"
+                        "fallback_url": "https://fankickdev.blob.core.windows.net/images/movies.jpg"
                     },
                     "buttons": [
                         {
                             "title": "View",
                             "type": "web_url",
-                            "url": "https://peterssendreceiveapp.ngrok.io/collection",
+                            "url": "http://static.dnaindia.com/sites/default/files/2016/05/24/463733-chiranjeevi.jpg",
                             "messenger_extensions": true,
                             "webview_height_ratio": "tall",
-                            "fallback_url": "https://peterssendreceiveapp.ngrok.io/"
+                            "fallback_url": "https://fankickdev.blob.core.windows.net/images/movies.jpg"
                         }
                     ]
                 },
                 {
                     "title": "Classic White T-Shirt",
-                    "image_url": "https://peterssendreceiveapp.ngrok.io/img/white-t-shirt.png",
+                    "image_url": "http://www.cinejosh.com/newsimg/newsmainimg/chiranjeevi-remuneration-for-bruce-lee_b_0909151136.jpg",
                     "subtitle": "100% Cotton, 200% Comfortable",
                     "default_action": {
                         "type": "web_url",
-                        "url": "https://peterssendreceiveapp.ngrok.io/view?item=100",
+                        "url": "https://en.wikipedia.org/wiki/Chiranjeevi",
                         "messenger_extensions": true,
                         "webview_height_ratio": "tall",
-                        "fallback_url": "https://peterssendreceiveapp.ngrok.io/"
+                        "fallback_url": "https://www.google.co.in/search?noj=1&biw=1280&bih=662&q=chiranjeevi&oq=chiranjeevi&gs_l=serp.3...83"
                     },
                     "buttons": [
                         {
                             "title": "Shop Now",
                             "type": "web_url",
-                            "url": "https://peterssendreceiveapp.ngrok.io/shop?item=100",
+                            "url": "https://en.wikipedia.org/wiki/Chiranjeevi",
                             "messenger_extensions": true,
                             "webview_height_ratio": "tall",
-                            "fallback_url": "https://peterssendreceiveapp.ngrok.io/"
-                        }
-                    ]
-                },
-                {
-                    "title": "Classic Blue T-Shirt",
-                    "image_url": "https://peterssendreceiveapp.ngrok.io/img/blue-t-shirt.png",
-                    "subtitle": "100% Cotton, 200% Comfortable",
-                    "default_action": {
-                        "type": "web_url",
-                        "url": "https://peterssendreceiveapp.ngrok.io/view?item=101",
-                        "messenger_extensions": true,
-                        "webview_height_ratio": "tall",
-                        "fallback_url": "https://peterssendreceiveapp.ngrok.io/"
-                    },
-                    "buttons": [
-                        {
-                            "title": "Shop Now",
-                            "type": "web_url",
-                            "url": "https://peterssendreceiveapp.ngrok.io/shop?item=101",
-                            "messenger_extensions": true,
-                            "webview_height_ratio": "tall",
-                            "fallback_url": "https://peterssendreceiveapp.ngrok.io/"
-                        }
-                    ]
-                },
-                {
-                    "title": "Classic Black T-Shirt",
-                    "image_url": "https://peterssendreceiveapp.ngrok.io/img/black-t-shirt.png",
-                    "subtitle": "100% Cotton, 200% Comfortable",
-                    "default_action": {
-                        "type": "web_url",
-                        "url": "https://peterssendreceiveapp.ngrok.io/view?item=102",
-                        "messenger_extensions": true,
-                        "webview_height_ratio": "tall",
-                        "fallback_url": "https://peterssendreceiveapp.ngrok.io/"
-                    },
-                    "buttons": [
-                        {
-                            "title": "Shop Now",
-                            "type": "web_url",
-                            "url": "https://peterssendreceiveapp.ngrok.io/shop?item=102",
-                            "messenger_extensions": true,
-                            "webview_height_ratio": "tall",
-                            "fallback_url": "https://peterssendreceiveapp.ngrok.io/"
+                            "fallback_url": "https://www.google.co.in/search?noj=1&biw=1280&bih=662&q=chiranjeevi&oq=chiranjeevi&gs_l=serp.3...83"
                         }
                     ]
                 }
