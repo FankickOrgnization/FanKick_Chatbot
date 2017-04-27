@@ -49,10 +49,28 @@ const persistentMenu = (accessToken) => {
                                 "payload": "CONTACT_INFO_PAYLOAD"
                             }
                         ]
+                    },{
+                        "title": "My Account",
+                        "type": "nested",
+                        "call_to_actions": [
+                            {
+                                "title": "Pay Bill",
+                                "type": "postback",
+                                "payload": "PAYBILL_PAYLOAD"
+                            }, {
+                                "title": "History",
+                                "type": "postback",
+                                "payload": "HISTORY_PAYLOAD"
+                            }, {
+                                "title": "Contact Info",
+                                "type": "postback",
+                                "payload": "CONTACT_INFO_PAYLOAD"
+                            }
+                        ]
                     }, {
                         "type": "web_url",
                         "title": "Latest News",
-                        "url": "http://rankworldlive.azurewebsites.net/shareToSocial?ranklistid=3111",
+                        "url": 'http://rankworldlive.azurewebsites.net/shareToSocial?ranklistid=3111',
                         "webview_height_ratio": "tall"
                     }
                 ]
@@ -60,7 +78,7 @@ const persistentMenu = (accessToken) => {
         ]
     };
     request({
-        uri: 'https://graph.facebook.com/v2.8/me/thread_settings?access_token=' + accessToken,
+        uri: 'https://graph.facebook.com/v2.8/592208327626213/thread_settings?access_token=' + accessToken,
         headers: {
             "Content-Type": "application/json"
         },
