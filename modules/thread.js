@@ -56,7 +56,7 @@ const persistentMenu = (accessToken) => {
           "type":"web_url",
           "title":"Latest News",
           "url":"http://rankworldlive.azurewebsites.net/shareToSocial?ranklistid=3111",
-          "webview_height_ratio":"full"
+          "webview_height_ratio":"tall"
         }
       ]
     },
