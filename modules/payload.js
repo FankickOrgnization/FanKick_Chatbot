@@ -685,7 +685,8 @@ function videodisplay(categoryName, event) {
             "attachment": {
                 "type": "video",
                 "payload": {
-                    "url": "http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4"
+                  "url":"http://rankworld.io/MySample_Video.mp4"
+                    //"url": "http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4"
                     //"url": "https://www.facebook.com/cnn/videos/vl.1074656819284548/10156412943866509/?type=1"
                 }
             },
