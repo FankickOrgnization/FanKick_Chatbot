@@ -116,67 +116,40 @@ var senderID = event.sender.id;
 var messageData = {
   "recipient":{
     "id": senderID
-  }, "message": {
+  }, "message":{
     "attachment": {
-        "type": "template",
-        "payload": {
-            "template_type": "list",
-            "elements": [
-                {
-                    "title": "Classic T-Shirt Collection",
-                    "image_url": "https://fankickdev.blob.core.windows.net/images/movies.jpg",
-                    "subtitle": "See all our colors",
-                    "default_action": {
-                        "type": "web_url",
-                        "url": "https://fankickdev.blob.core.windows.net/images/movies.jpg",
-                        "messenger_extensions": true,
-                        "webview_height_ratio": "tall",
-                        "fallback_url": "https://fankickdev.blob.core.windows.net/images/movies.jpg"
-                    },
-                    "buttons": [
-                        {
-                            "title": "View",
-                            "type": "web_url",
-                            "url": "https://fankickdev.blob.core.windows.net/images/movies.jpg",
-                            "messenger_extensions": true,
-                            "webview_height_ratio": "tall",
-                            "fallback_url": "https://fankickdev.blob.core.windows.net/images/movies.jpg"
-                        }
-                    ]
-                },
-                {
-                    "title": "Classic White T-Shirt",
-                    "image_url": "https://fankickdev.blob.core.windows.net/images/movies.jpg",
-                    "subtitle": "100% Cotton, 200% Comfortable",
-                    "default_action": {
-                        "type": "web_url",
-                        "url": "https://fankickdev.blob.core.windows.net/images/movies.jpg",
-                        "messenger_extensions": true,
-                        "webview_height_ratio": "tall",
-                        "fallback_url": "https://fankickdev.blob.core.windows.net/images/movies.jpg"
-                    },
-                    "buttons": [
-                        {
-                            "title": "Shop Now",
-                            "type": "web_url",
-                            "url": "https://fankickdev.blob.core.windows.net/images/movies.jpg",
-                            "messenger_extensions": true,
-                            "webview_height_ratio": "tall",
-                            "fallback_url": "https://fankickdev.blob.core.windows.net/images/movies.jpg"
-                        }
-                    ]
-                }
-            ],
-             "buttons": [
-                {
-                    "title": "View More",
-                    "type": "postback",
-                    "payload": "payload"
-                }
-            ]
-        }
+      "type": "template",
+      "payload": {
+        "template_type": "airline_checkin",
+        "intro_message": "Check-in is available now.",
+        "locale": "en_US",
+        "pnr_number": "ABCDEF",
+        "flight_info": [
+          {
+            "flight_number": "f001",
+            "departure_airport": {
+              "airport_code": "SFO",
+              "city": "San Francisco",
+              "terminal": "T4",
+              "gate": "G8"
+            },
+            "arrival_airport": {
+              "airport_code": "SEA",
+              "city": "Seattle",
+              "terminal": "T4",
+              "gate": "G8"
+            },
+            "flight_schedule": {
+              "boarding_time": "2016-01-05T15:05",
+              "departure_time": "2016-01-05T15:45",
+              "arrival_time": "2016-01-05T17:30"
+            }
+          }
+        ],
+        "checkin_url": "https:\/\/www.airline.com\/check-in"
+      }
     }
-}
+  }
 
 }
 
