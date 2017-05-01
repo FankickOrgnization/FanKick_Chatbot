@@ -359,11 +359,12 @@ function language_wise_albams(language, event) {
                                 "type": "postback",
                                 "title": "View More 🔍",
                                 "payload": rows[i].name + " %albumname%"
-                            },{
-                                "type": "web_url",
-                                "url": "http://rankworldlive.azurewebsites.net/shareToSocial?ranklistid=3111",
-                                "title": "Web View"
                             }
+                            // ,{
+                            //     "type": "web_url",
+                            //     "url": "http://rankworldlive.azurewebsites.net/shareToSocial?ranklistid=3111",
+                            //     "title": "Web View"
+                            // }
                         ]
                     };
                     contentList.push(keyMap);
