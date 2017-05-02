@@ -929,6 +929,10 @@ const celebrity_Queue_blockone_details = (messagingEvent, quickpayloadtext) => {
     var celebrityName = queuearray[1];
     var blockno = queuearray[2];
     var description;
+    var   quickReply1;
+    var   quickReply2;
+    var   quickReply3;
+    var senderID = messagingEvent.sender.id;
     console.log("queue", queue);
     console.log("celebrityName", celebrityName);
     console.log("blockno", blockno);
