@@ -940,7 +940,7 @@ const celebrity_Queue_blockone_details = (messagingEvent, quickpayloadtext) => {
                 console.log("*******cc_celebrity_preference data from database:*********", rows);
                 for (var i = 0; i < 1; i++) {
                     celebrityName = rows[i].celebrityName;
-                    description = rows[i].description;
+                    description = rows[i].blockOneDescription;
                     quickReply1 = rows[i].blockOneName;
                     quickReply2 = rows[i].blockTwoName;
                     quickReply3 = rows[i].blockThreeName;
