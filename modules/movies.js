@@ -920,6 +920,104 @@ const directorfilms = (messagingEvent, celebrityname) => {
     });
 
 }
+const celebrity_Queue_blockone_details = (messagingEvent, quickpayloadtext) => {
+    console.log("*********Movies Genre***********", quickpayloadtext);
+    // var genre;
+    // var subCategory;
+    var queuearray = quickpayloadtext.split(',');
+    var queue = queuearray[0];
+    var celebrityName = queuearray[1];
+    var blockno = queuearray[2];
+    console.log("queue", queue);
+    console.log("celebrityName", celebrityName);
+    console.log("blockno", blockno);
+    pool.getConnection(function(err, connection) {
+        //connection.query('select * from cc_conversation_two where celebrityName= ? order by id', [movieCelebrity], function(err, rows) {
+        connection.query('select * from cc_conversation_three where celebrityName= ? order by id', [celebrityName], function(err, rows) {
+            if (err) {
+                console.log("Error While retriving content pack data from database:", err);
+            } else if (rows.length > 0) {
+                console.log("*******cc_celebrity_preference data from database:*********", rows);
+                for (var i = 0; i < 1; i++) {
+                    celebrityName = rows[i].celebrityName;
+                    description = rows[i].description;
+                    quickReply1 = rows[i].blockOneName;
+                    quickReply2 = rows[i].blockTwoName;
+                    quickReply3 = rows[i].blockThreeName;
+                }
+                console.log(celebrityName);
+                console.log(description);
+                //console.log(conversationQueue);
+                console.log(quickReply1);
+                console.log(quickReply2);
+                console.log(quickReply3);
+                var messageData = {
+                    "recipient": {
+                        "id": senderID
+                    },
+                    "message": {
+                        "text": description,
+                        "quick_replies": [
+                          {
+                              "content_type": "text",
+                              "title": "Wow!",
+                              "payload": "Wow!"
+                          },{
+                              "content_type": "text",
+                              "title": "Really?",
+                              "payload": "Really?"
+                          },{
+                                "content_type": "text",
+                                "title": quickReply2,
+                                "payload": quickReply2 + ',' + celebrityName + ',' + "blockTwoName ,%celebrity_conv2%"
+                            }, {
+                                "content_type": "text",
+                                "title": quickReply3,
+                                "payload": quickReply3 + ',' + celebrityName + ',' + "blockThreeName ,%celebrity_conv3%"
+                            },  {
+                                "content_type": "text",
+                                "title": "Wow!",
+                                "payload": "Wow!"
+                            }, {
+                                "content_type": "text",
+                                "title": celebrityName,
+                                "payload": celebrityName + " %a%"
+                            },{
+                                "content_type": "text",
+                                "title": "Tollywood",
+                                "payload": "Tollywood"
+                            }, {
+                                "content_type": "text",
+                                "title": "Kollywood",
+                                "payload": "Kollywood"
+                            }, {
+                                "content_type": "text",
+                                "title": "Malayalam Cinema",
+                                "payload": "Malayalam Cinema"
+                            }, {
+                                "content_type": "text",
+                                "title": "Kannada Cinema",
+                                "payload": "Kannada Cinema"
+                            }, {
+                                "content_type": "text",
+                                "title": "Jokes",
+                                "payload": "jokes"
+                            }
+                        ]
+
+                    }
+                }
+                fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
+            } else if (rows.length == 0) {
+                var categoryName = "movies";
+                //submenu(event, categoryName);
+                moviecelebrity_conversation_intro(event, movieCelebrity);
+            }
+            connection.release();
+        });
+    });
+
+}
 
 function sendHelpMessage(event) {
     var errorString = "";
@@ -950,5 +1048,6 @@ module.exports = {
     actressfilms: actressfilms,
     directorfilms: directorfilms,
     filmactor: filmactor,
-    conversation_filmactor: conversation_filmactor
+    conversation_filmactor: conversation_filmactor,
+    celebrity_Queue_blockone_details:celebrity_Queue_blockone_details
 };

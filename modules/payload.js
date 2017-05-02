@@ -585,15 +585,15 @@ function movies_celebrity_conversation(event, subCategory, movieCelebrity) {
                             {
                                 "content_type": "text",
                                 "title": quickReply1,
-                                "payload": quickReply1 + ',' + celebrityName + ',' + "blockOneName" + ',' + description + ',%celebrity_conv1%'
+                                "payload": quickReply1 + ',' + celebrityName + ',' + "blockOneName ,%celebrity_conv1%"
                             }, {
                                 "content_type": "text",
                                 "title": quickReply2,
-                                "payload": quickReply2 + ',' + celebrityName + ',' + "blockTwoName" + ',' + description + ',%celebrity_conv2%'
+                                "payload": quickReply2 + ',' + celebrityName + ',' + "blockTwoName ,%celebrity_conv2%"
                             }, {
                                 "content_type": "text",
                                 "title": quickReply3,
-                                "payload": quickReply3 + ',' + celebrityName + ',' + "blockThreeName" + ',' + description + ',%celebrity_conv3%'
+                                "payload": quickReply3 + ',' + celebrityName + ',' + "blockThreeName ,%celebrity_conv3%"
                             }, {
                                 "content_type": "text",
                                 "title": celebrityName,
