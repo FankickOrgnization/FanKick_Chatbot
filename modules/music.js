@@ -434,7 +434,7 @@ function user_preferd_language(categoryName, event) {
             if (err) {
                 console.log("Error While retriving content pack data from database:", err);
             } else {
-                console.log("No Data Found From Database");
+                //console.log("No Data Found From Database");
                 console.log("Updated the user language into the preferences");
                 //sendHelpMessage(event);
                 //sendImageMessage(event);
@@ -453,7 +453,7 @@ function user_favorite_music_celebrity(event, musiccelname) {
             if (err) {
                 console.log("Error While retriving content pack data from database:", err);
             } else {
-                console.log("No Data Found From Database");
+                console.log("Updated the music celebrity name in Database");
                 //sendHelpMessage(event);
                 //sendImageMessage(event);
             }

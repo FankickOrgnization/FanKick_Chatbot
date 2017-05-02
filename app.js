@@ -602,7 +602,7 @@ function update_conversation_usercelebrity(messagingEvent) {
             if (err) {
                 console.log("Error While retriving content pack data from database:", err);
             } else {
-                //console.log("No Data Found From Database");
+                console.log("update the movieCelebrity name into null ");
                 //sendHelpMessage(event);
                 //sendImageMessage(event);
             }
@@ -1379,7 +1379,7 @@ function updateusercelebrity(usercelebrityName, senderID) {
             if (err) {
                 console.log("Error While retriving content pack data from database:", err);
             } else {
-                //console.log("No Data Found From Database");
+                console.log("Updated the movie celebrity name in the DB");
                 //sendHelpMessage(event);
                 //sendImageMessage(event);
             }

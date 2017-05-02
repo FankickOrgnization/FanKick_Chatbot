@@ -615,7 +615,7 @@ function updateusercelebrity(usercelebrityName, senderID) {
             if (err) {
                 console.log("Error While retriving content pack data from database:", err);
             } else {
-                //console.log("No Data Found From Database");
+                console.log("Updated the user favorite movieCelebrity in Database");
                 //sendHelpMessage(event);
                 //sendImageMessage(event);
             }

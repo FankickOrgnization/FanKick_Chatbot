@@ -540,7 +540,8 @@ function movies_celebrity_conversation(event, subCategory, movieCelebrity) {
     var quickReply3;
     var storyUrl;
     pool.getConnection(function(err, connection) {
-        connection.query('select * from cc_conversation_two where celebrityName= ? order by id', [movieCelebrity], function(err, rows) {
+        //connection.query('select * from cc_conversation_two where celebrityName= ? order by id', [movieCelebrity], function(err, rows) {
+        connection.query('select * from cc_conversation_three where celebrityName= ? order by id', [movieCelebrity], function(err, rows) {
             if (err) {
                 console.log("Error While retriving content pack data from database:", err);
             } else if (rows.length > 0) {
@@ -549,11 +550,11 @@ function movies_celebrity_conversation(event, subCategory, movieCelebrity) {
                 for (var i = 0; i < 1; i++) {
                     celebrityName = rows[i].celebrityName;
                     description = rows[i].description;
-                    conversationQueue = rows[i].conversationQueue;
-                    storyUrl = rows[i].storyUrl;
-                    quickReply1 = rows[i].quickReply1;
-                    quickReply2 = rows[i].quickReply2;
-                    quickReply3 = rows[i].quickReply3;
+                    //conversationQueue = rows[i].conversationQueue;
+                    //storyUrl = rows[i].storyUrl;
+                    quickReply1 = rows[i].blockOneName;
+                    quickReply2 = rows[i].blockTwoName;
+                    quickReply3 = rows[i].blockThreeName;
                     // var keyMap = {
                     //     "title": celebrityName,
                     //     //"image_url": rows[i].picture1,
@@ -570,7 +571,7 @@ function movies_celebrity_conversation(event, subCategory, movieCelebrity) {
                 }
                 console.log(celebrityName);
                 console.log(description);
-                console.log(conversationQueue);
+                //console.log(conversationQueue);
                 console.log(quickReply1);
                 console.log(quickReply2);
                 console.log(quickReply3);
@@ -584,15 +585,15 @@ function movies_celebrity_conversation(event, subCategory, movieCelebrity) {
                             {
                                 "content_type": "text",
                                 "title": quickReply1,
-                                "payload": quickReply1 + ',' + celebrityName + ',' + storyUrl + ',' + description + ',%movie_conv%'
+                                "payload": quickReply1 + ',' + celebrityName + ',' + "blockOneName" + ',' + description + ',%celebrity_conv1%'
                             }, {
                                 "content_type": "text",
                                 "title": quickReply2,
-                                "payload": quickReply2 + ',' + celebrityName + ',' + storyUrl + ',' + description + ',%movie_conv%'
+                                "payload": quickReply2 + ',' + celebrityName + ',' + "blockTwoName" + ',' + description + ',%celebrity_conv2%'
                             }, {
                                 "content_type": "text",
                                 "title": quickReply3,
-                                "payload": quickReply3 + ',' + celebrityName + ',' + storyUrl + ',' + description + ',%movie_conv%'
+                                "payload": quickReply3 + ',' + celebrityName + ',' + "blockThreeName" + ',' + description + ',%celebrity_conv3%'
                             }, {
                                 "content_type": "text",
                                 "title": celebrityName,
@@ -1002,7 +1003,7 @@ function fbuserdetails(event, userid) {
                 if (err) {
                     console.log("Error While retriving content pack data from database:", err);
                 } else {
-                    console.log("No Data Found From Database");
+                    console.log("Added the user Data in Database");
                     //sendHelpMessage(event);
                     //sendImageMessage(event);
                 }
@@ -1091,7 +1092,7 @@ function usercategory(event, categoryName) {
             if (err) {
                 console.log("Error While retriving content pack data from database:", err);
             } else {
-                console.log("No Data Found From Database");
+                console.log("Added the user Data in Database");
                 //sendHelpMessage(event);
                 //sendImageMessage(event);
             }

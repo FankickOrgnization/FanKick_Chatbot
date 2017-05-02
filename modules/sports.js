@@ -161,7 +161,7 @@ function user_favorite_sports_celebrity(event, sportscelname) {
             if (err) {
                 console.log("Error While retriving content pack data from database:", err);
             } else {
-                console.log("No Data Found From Database");
+                console.log("Update the user favorite sports celebrity name database");
                 //sendHelpMessage(event);
                 //sendImageMessage(event);
             }
