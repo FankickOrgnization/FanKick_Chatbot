@@ -928,6 +928,7 @@ const celebrity_Queue_blockone_details = (messagingEvent, quickpayloadtext) => {
     var queue = queuearray[0];
     var celebrityName = queuearray[1];
     var blockno = queuearray[2];
+    var description;
     console.log("queue", queue);
     console.log("celebrityName", celebrityName);
     console.log("blockno", blockno);
@@ -960,12 +961,12 @@ const celebrity_Queue_blockone_details = (messagingEvent, quickpayloadtext) => {
                         "quick_replies": [
                           {
                               "content_type": "text",
-                              "title": "Wow!",
-                              "payload": "Wow!"
+                              "title": "Fantastic!",
+                              "payload": "Fantastic!"
                           },{
                               "content_type": "text",
-                              "title": "Really?",
-                              "payload": "Really?"
+                              "title": "Is it?",
+                              "payload": "Is it?"
                           },{
                                 "content_type": "text",
                                 "title": quickReply2,
@@ -976,8 +977,8 @@ const celebrity_Queue_blockone_details = (messagingEvent, quickpayloadtext) => {
                                 "payload": quickReply3 + ',' + celebrityName + ',' + "blockThreeName ,%celebrity_conv3%"
                             },  {
                                 "content_type": "text",
-                                "title": "Wow!",
-                                "payload": "Wow!"
+                                "title": "Enough!",
+                                "payload": "Enough!"
                             }, {
                                 "content_type": "text",
                                 "title": celebrityName,
@@ -1009,9 +1010,9 @@ const celebrity_Queue_blockone_details = (messagingEvent, quickpayloadtext) => {
                 }
                 fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
             } else if (rows.length == 0) {
-                var categoryName = "movies";
+                //var categoryName = "movies";
                 //submenu(event, categoryName);
-                moviecelebrity_conversation_intro(event, movieCelebrity);
+                moviecelebrity_conversation_intro(event, celebrityName);
             }
             connection.release();
         });
