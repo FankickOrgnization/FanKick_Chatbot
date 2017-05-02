@@ -920,7 +920,7 @@ const directorfilms = (messagingEvent, celebrityname) => {
     });
 
 }
-const celebrity_Queue_blockone_details = (messagingEvent, quickpayloadtext) => {
+const celebrity_Queue_block1_details = (messagingEvent, quickpayloadtext) => {
     console.log("*********Movies Genre***********", quickpayloadtext);
     // var genre;
     // var subCategory;
@@ -932,6 +932,7 @@ const celebrity_Queue_blockone_details = (messagingEvent, quickpayloadtext) => {
     var   quickReply1;
     var   quickReply2;
     var   quickReply3;
+    var blockOneUrl;
     var senderID = messagingEvent.sender.id;
     console.log("queue", queue);
     console.log("celebrityName", celebrityName);
@@ -949,6 +950,7 @@ const celebrity_Queue_blockone_details = (messagingEvent, quickpayloadtext) => {
                     quickReply1 = rows[i].blockOneName;
                     quickReply2 = rows[i].blockTwoName;
                     quickReply3 = rows[i].blockThreeName;
+                    blockOneUrl = rows[i].blockOneUrl;
                 }
                 console.log(celebrityName);
                 console.log(description);
@@ -965,24 +967,24 @@ const celebrity_Queue_blockone_details = (messagingEvent, quickpayloadtext) => {
                         "quick_replies": [
                           {
                               "content_type": "text",
-                              "title": "Fantastic!",
-                              "payload": "Fantastic!"
+                              "title": "Fantastic!👌",
+                              "payload": "Fantastic!," + celebrityName + "," + blockOneUrl +","+ quickReply2 +","+ quickReply3 +","+ description +",%Fantastic!%"
                           },{
                               "content_type": "text",
-                              "title": "Is it?",
-                              "payload": "Is it?"
+                              "title": "Is it? ",
+                              "payload": "Is it?,"+ celebrityName + "," + blockOneUrl +","+ quickReply2 +","+ quickReply3 +","+ description +",%Is it?%"
                           },{
                                 "content_type": "text",
                                 "title": quickReply2,
-                                "payload": quickReply2 + ',' + celebrityName + ',' + "blockTwoName ,%celebrity_conv2%"
+                                "payload": quickReply2 + "," + celebrityName + "," + "blockTwoName ,%celebrity_conv2%"
                             }, {
                                 "content_type": "text",
                                 "title": quickReply3,
-                                "payload": quickReply3 + ',' + celebrityName + ',' + "blockThreeName ,%celebrity_conv3%"
+                                "payload": quickReply3 + "," + celebrityName + "," + "blockThreeName ,%celebrity_conv3%"
                             },  {
                                 "content_type": "text",
                                 "title": "Enough!",
-                                "payload": "Enough!"
+                                "payload": "%Enough!%"
                             }, {
                                 "content_type": "text",
                                 "title": celebrityName,
@@ -1021,7 +1023,233 @@ const celebrity_Queue_blockone_details = (messagingEvent, quickpayloadtext) => {
             connection.release();
         });
     });
+}
 
+
+const celebrity_Queue_block2_details = (messagingEvent, quickpayloadtext) => {
+    console.log("*********Movies Genre***********", quickpayloadtext);
+    // var genre;
+    // var subCategory;
+    var queuearray = quickpayloadtext.split(',');
+    var queue = queuearray[0];
+    var celebrityName = queuearray[1];
+    var blockno = queuearray[2];
+    var description;
+    var quickReply1;
+    var quickReply2;
+    var quickReply3;
+    var blockTwoUrl;
+    var senderID = messagingEvent.sender.id;
+    console.log("queue", queue);
+    console.log("celebrityName", celebrityName);
+    console.log("blockno", blockno);
+    pool.getConnection(function(err, connection) {
+        //connection.query('select * from cc_conversation_two where celebrityName= ? order by id', [movieCelebrity], function(err, rows) {
+        connection.query('select * from cc_conversation_three where celebrityName= ? order by id', [celebrityName], function(err, rows) {
+            if (err) {
+                console.log("Error While retriving content pack data from database:", err);
+            } else if (rows.length > 0) {
+                console.log("*******cc_celebrity_preference data from database:*********", rows);
+                for (var i = 0; i < 1; i++) {
+                    celebrityName = rows[i].celebrityName;
+                    description = rows[i].blockTwoDescription;
+                    quickReply1 = rows[i].blockOneName;
+                    quickReply2 = rows[i].blockTwoName;
+                    quickReply3 = rows[i].blockThreeName;
+                    blockTwoUrl = rows[i].blockTwoUrl;
+                }
+                console.log(celebrityName);
+                console.log(description);
+                //console.log(conversationQueue);
+                console.log(quickReply1);
+                console.log(quickReply2);
+                console.log(quickReply3);
+                var messageData = {
+                    "recipient": {
+                        "id": senderID
+                    },
+                    "message": {
+                        "text": description,
+                        "quick_replies": [
+                          {
+                              "content_type": "text",
+                              "title": "Fantastic!👌",
+                              "payload": "Fantastic!,"+ celebrityName + "," + blockTwoUrl +","+ quickReply1 +","+ quickReply3 +","+ description +",%Fantastic!%"
+                          },{
+                              "content_type": "text",
+                              "title": "Is it? ",
+                              "payload": "Is it?,"+ celebrityName + "," + blockTwoUrl +","+ quickReply1 +","+ quickReply3 +","+ description +",%Is it?%"
+                          },{
+                                "content_type": "text",
+                                "title": quickReply1,
+                                "payload": quickReply1 + ',' + celebrityName + ',' + ",%celebrity_conv1%"
+                            }, {
+                                "content_type": "text",
+                                "title": quickReply3,
+                                "payload": quickReply3 + ',' + celebrityName + ',' + ",%celebrity_conv3%"
+                            },  {
+                                "content_type": "text",
+                                "title": "Enough!✋",
+                                  "payload": "%Enough!%"
+                            }, {
+                                "content_type": "text",
+                                "title": celebrityName,
+                                "payload": celebrityName + " %a%"
+                            },{
+                                "content_type": "text",
+                                "title": "Tollywood",
+                                "payload": "Tollywood"
+                            }, {
+                                "content_type": "text",
+                                "title": "Kollywood",
+                                "payload": "Kollywood"
+                            }, {
+                                "content_type": "text",
+                                "title": "Malayalam Cinema",
+                                "payload": "Malayalam Cinema"
+                            }, {
+                                "content_type": "text",
+                                "title": "Kannada Cinema",
+                                "payload": "Kannada Cinema"
+                            }, {
+                                "content_type": "text",
+                                "title": "Jokes",
+                                "payload": "jokes"
+                            }
+                        ]
+
+                    }
+                }
+                fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
+            } else if (rows.length == 0) {
+                //var categoryName = "movies";
+                //submenu(event, categoryName);
+                moviecelebrity_conversation_intro(event, celebrityName);
+            }
+            connection.release();
+        });
+    });
+}
+
+const celebrity_Queue_block3_details = (messagingEvent, quickpayloadtext) => {
+    console.log("*********Movies Genre***********", quickpayloadtext);
+    // var genre;
+    // var subCategory;
+    var queuearray = quickpayloadtext.split(',');
+    var queue = queuearray[0];
+    var celebrityName = queuearray[1];
+    var blockno = queuearray[2];
+    var description;
+    var   quickReply1;
+    var   quickReply2;
+    var   quickReply3;
+    var blockThreeUrl;
+    var senderID = messagingEvent.sender.id;
+    console.log("queue", queue);
+    console.log("celebrityName", celebrityName);
+    console.log("blockno", blockno);
+    pool.getConnection(function(err, connection) {
+        //connection.query('select * from cc_conversation_two where celebrityName= ? order by id', [movieCelebrity], function(err, rows) {
+        connection.query('select * from cc_conversation_three where celebrityName= ? order by id', [celebrityName], function(err, rows) {
+            if (err) {
+                console.log("Error While retriving content pack data from database:", err);
+            } else if (rows.length > 0) {
+                console.log("*******cc_celebrity_preference data from database:*********", rows);
+                for (var i = 0; i < 1; i++) {
+                    celebrityName = rows[i].celebrityName;
+                    description = rows[i].blockThreeDescription;
+                    quickReply1 = rows[i].blockOneName;
+                    quickReply2 = rows[i].blockTwoName;
+                    quickReply3 = rows[i].blockThreeName;
+                    blockThreeUrl = rows[i].blockThreeUrl;
+                }
+                console.log(celebrityName);
+                console.log(description);
+                //console.log(conversationQueue);
+                console.log(quickReply1);
+                console.log(quickReply2);
+                console.log(quickReply3);
+                var messageData = {
+                    "recipient": {
+                        "id": senderID
+                    },
+                    "message": {
+                        "text": description,
+                        "quick_replies": [
+                          {
+                              "content_type": "text",
+                              "title": "Fantastic!👌",
+                              "payload": "Fantastic!,"+ celebrityName + "," + blockThreeUrl +","+ quickReply1 +","+ quickReply2 +","+ description +",%Fantastic!%"
+                          },{
+                              "content_type": "text",
+                              "title": "Is it? ",
+                              "payload": "Is it?,"+ celebrityName + "," + blockThreeUrl +","+ quickReply1 +","+ quickReply2 +","+ description +",%Is it?%"
+                          },,{
+                                "content_type": "text",
+                                "title": quickReply1,
+                                "payload": quickReply1 + ',' + celebrityName + ',' + "blockOneName ,%celebrity_conv1%"
+                            }, {
+                                "content_type": "text",
+                                "title": quickReply2,
+                                "payload": quickReply2 + ',' + celebrityName + ',' + "blockTwoName ,%celebrity_conv2%"
+                            },  {
+                                "content_type": "text",
+                                "title": "Enough!",
+                                "payload": "%Enough!%"
+                            }, {
+                                "content_type": "text",
+                                "title": celebrityName,
+                                "payload": celebrityName + " %a%"
+                            },{
+                                "content_type": "text",
+                                "title": "Tollywood",
+                                "payload": "Tollywood"
+                            }, {
+                                "content_type": "text",
+                                "title": "Kollywood",
+                                "payload": "Kollywood"
+                            }, {
+                                "content_type": "text",
+                                "title": "Malayalam Cinema",
+                                "payload": "Malayalam Cinema"
+                            }, {
+                                "content_type": "text",
+                                "title": "Kannada Cinema",
+                                "payload": "Kannada Cinema"
+                            }, {
+                                "content_type": "text",
+                                "title": "Jokes",
+                                "payload": "jokes"
+                            }
+                        ]
+
+                    }
+                }
+                fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
+            } else if (rows.length == 0) {
+                //var categoryName = "movies";
+                //submenu(event, categoryName);
+                moviecelebrity_conversation_intro(event, celebrityName);
+            }
+            connection.release();
+        });
+    });
+}
+
+const celbrity_Fantastic = (messagingEvent, quickpayloadtext) => {
+  var queuearray = quickpayloadtext.split(',');
+  var text = queuearray[0];
+  var celName = queuearray[1];
+  var url = queuearray[2];
+  var qr1 = queuearray[3];
+  var qr2 = queuearray[4];
+  var dec = queuearray[5];
+  var blockno = queuearray[6];
+  console.log(celName);
+    console.log(url);
+      console.log(qr1);
+        console.log(qr2);
+          console.log(dec);
 }
 
 function sendHelpMessage(event) {
@@ -1054,5 +1282,8 @@ module.exports = {
     directorfilms: directorfilms,
     filmactor: filmactor,
     conversation_filmactor: conversation_filmactor,
-    celebrity_Queue_blockone_details:celebrity_Queue_blockone_details
+    //celebrity_Queue_blockone_details:celebrity_Queue_blockone_details,
+    celebrity_Queue_block1_details:celebrity_Queue_block1_details,
+    celebrity_Queue_block2_details:celebrity_Queue_block2_details,
+    celebrity_Queue_block3_details:celebrity_Queue_block3_details
 };

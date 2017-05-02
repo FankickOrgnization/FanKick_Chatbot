@@ -223,6 +223,10 @@ function quickpayload(messagingEvent) {
     var musicartistcomp = quickpayloadtext.search("%Musiccelcomp%");
     var conversationQueuetitle = quickpayloadtext.search("%movie_conv%");
     var moviecelbrity_conv1 = quickpayloadtext.search("%celebrity_conv1%");
+    var moviecelbrity_conv2 = quickpayloadtext.search("%celebrity_conv2%");
+    var moviecelbrity_conv3 = quickpayloadtext.search("%celebrity_conv3%");
+    var moviecelbrity_Fantastic = quickpayloadtext.search("%Fantastic!%");
+    var moviecelbrity_isit = quickpayloadtext.search("%Is it?%");
 
     if (celpics != -1 || celmovies != -1 || celnetworth != -1 || celnews != -1 || celfamily != -1 || celabout != -1 || celcomp != -1) {
         console.log("This is celebritypics condition");
@@ -236,7 +240,17 @@ function quickpayload(messagingEvent) {
     } else if (moviecelbrity_conv1 != -1) {
         var celebrityQueuetitle = quickpayloadtext.replace("%celebrity_conv1%", "");
         console.log("conversationQueuetitle:--------------", celebrityQueuetitle);
-        movies.celebrity_Queue_blockone_details(messagingEvent, quickpayloadtext);
+        movies.celebrity_Queue_block1_details(messagingEvent, quickpayloadtext);
+        //  movies.getgenremovies(messagingEvent, quickpayloadtext);
+    }else if (moviecelbrity_conv2 != -1) {
+        var celebrityQueuetitle = quickpayloadtext.replace("%celebrity_conv2%", "");
+        console.log("conversationQueuetitle:--------------", celebrityQueuetitle);
+        movies.celebrity_Queue_block2_details(messagingEvent, quickpayloadtext);
+        //  movies.getgenremovies(messagingEvent, quickpayloadtext);
+    }else if (moviecelbrity_conv3 != -1) {
+        var celebrityQueuetitle = quickpayloadtext.replace("%celebrity_conv3%", "");
+        console.log("conversationQueuetitle:--------------", celebrityQueuetitle);
+        movies.celebrity_Queue_block3_details(messagingEvent, quickpayloadtext);
         //  movies.getgenremovies(messagingEvent, quickpayloadtext);
     }else if (conversationQueuetitle != -1) {
         var Queuetitle = quickpayloadtext.replace("%movie_conv%", "");
@@ -248,6 +262,9 @@ function quickpayload(messagingEvent) {
         console.log("conversationQueuetitle:--------------", Queuetitle);
         category_Queue_title_details(messagingEvent, Queuetitle);
         //  movies.getgenremovies(messagingEvent, quickpayloadtext);
+    }else if (moviecelbrity_Fantastic != -1 || moviecelbrity_isit != -1) {
+        console.log("This is getgenremovies condition");
+        movies.celbrity_Fantastic(messagingEvent, quickpayloadtext);
     } else if (action != -1 || comedy != -1 || romance != -1 || thriller != -1 || drama != -1 || sociofantasy != -1) {
         console.log("This is getgenremovies condition");
         movies.getgenremovies(messagingEvent, quickpayloadtext);
