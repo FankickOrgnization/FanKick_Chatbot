@@ -1147,7 +1147,7 @@ module.exports = {
     getgenremovies: getgenremovies,
     selectedactorfilems: selectedactorfilems,
     //actressfilms: actressfilms,
-    directorfilms: directorfilms,
+    //directorfilms: directorfilms,
     filmactor: filmactor,
     conversation_filmactor: conversation_filmactor,
     //celebrity_Queue_blockone_details:celebrity_Queue_blockone_details,
