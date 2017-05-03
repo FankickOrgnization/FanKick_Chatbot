@@ -421,7 +421,7 @@ const filmactor = (messagingEvent, actorname) => {
                             }
                         },
                         "quick_replies": [
-                           {
+                            {
                                 "content_type": "text",
                                 "title": "Pictures",
                                 "payload": celebrityname + ' ,%pictures%'
@@ -432,11 +432,11 @@ const filmactor = (messagingEvent, actorname) => {
                             },{
                                 "content_type": "text",
                                 "title": "Search in google",
-                                "payload": celebrityname + ' ,%networth%'
+                                "payload": celebrityname + ' ,%googlesearch%'
                             }, {
                                 "content_type": "text",
                                 "title": "Personal Info",
-                                "payload": celebrityname + ' ,%Moviecomp%'
+                                "payload": celebrityname + ' ,%wikisearch%'
                             },{
                                 "content_type": "text",
                                 "title": "News",
@@ -692,7 +692,7 @@ const selectedactorfilems = (messagingEvent, celebrityname) => {
                             // {
                             //     "content_type": "text",
                             //     "title": "Net Worth",
-                            //     "payload": celebrityname + ' ,%networth%'
+                            //     "payload": celebrityname + ' ,%googlesearch%'
                             // }, {
                             //     "content_type": "text",
                             //     "title": "News",

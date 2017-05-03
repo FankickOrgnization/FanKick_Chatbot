@@ -188,8 +188,8 @@ function quickpayload(messagingEvent) {
     var celpics = quickpayloadtext.search("%pictures%");
     var celmovies = quickpayloadtext.search("%movies%");
     var celmoviesid = quickpayloadtext.search("%moviesid%");
-    var celnetworth = quickpayloadtext.search("%networth%");
-    var celcomp = quickpayloadtext.search("%Moviecomp%");
+    var celnetworth = quickpayloadtext.search("%googlesearch%");
+    var celcomp = quickpayloadtext.search("%wikisearch%");
     var celnews = quickpayloadtext.search("%news%");
     var celfamily = quickpayloadtext.search("%family%");
     var celabout = quickpayloadtext.search("%about%");
@@ -870,7 +870,7 @@ function celebritypics(messagingEvent, quickpayloadtext) {
                         console.log("celebrity Movies");
                         celebritymovielist(messagingEvent, celebrityname);
                         //movies.selectedactorfilems(messagingEvent, celebrityname);
-                    } else if (subCategory == "%Moviecomp%") {
+                    } else if (subCategory == "%wikisearch%") {
                         console.log("celebrity networth");
                         var msg = '' + rows[i].name + '’s net worth is believed to be around ' + rows[i].netWorth + '.';
                         keyMap = {
@@ -881,11 +881,11 @@ function celebritypics(messagingEvent, quickpayloadtext) {
                                   {
                                       "title": rows[i].name,
                                       "image_url": rows[i].picture3,
-                                      "subtitle": 'Lets see what Google knows about' + rows[i].name + '.',
+                                      "subtitle": 'Lets get into more personals',
                                       "buttons": [
                                       {
                                           "type":"web_url",
-                                          "url": rows[i].googleSearch,
+                                          "url": rows[i].personalInfo,
                                           "title":"Proceed 👉"
                                       }
                                       ]
@@ -893,7 +893,7 @@ function celebritypics(messagingEvent, quickpayloadtext) {
                                 ]
                             }
                         }
-                    } else if (subCategory == "%networth%") {
+                    } else if (subCategory == "%googlesearch%") {
                         console.log("celebrity networth");
                         var msg = '' + rows[i].name + '’s net worth is believed to be around ' + rows[i].netWorth + '.';
                         keyMap = {
@@ -901,14 +901,15 @@ function celebritypics(messagingEvent, quickpayloadtext) {
                             "payload": {
                                 "template_type": "generic",
                                 "elements": [
+
                                     {
                                         "title": rows[i].name,
                                         "image_url": rows[i].picture3,
-                                        "subtitle": 'Lets get into more personals',
+                                        "subtitle": 'Lets see what Google knows about' + rows[i].name + '.',
                                         "buttons": [
                                         {
                                             "type":"web_url",
-                                            "url": rows[i].personalInfo,
+                                            "url": rows[i].googleSearch,
                                             "title":"Proceed 👉"
                                         }
                                         ]
@@ -1005,11 +1006,11 @@ function celebritypics(messagingEvent, quickpayloadtext) {
                             {
                                 "content_type": "text",
                                 "title": "Search in google",
-                                "payload": celebrityname + ' ,%networth%'
+                                "payload": celebrityname + ' ,%googlesearch%'
                             }, {
                                 "content_type": "text",
                                 "title": "Personal Info",
-                                "payload": celebrityname + ' ,%Moviecomp%'
+                                "payload": celebrityname + ' ,%wikisearch%'
                             },
                             {
                                 "content_type": "text",
@@ -1556,11 +1557,11 @@ function filmactor(messagingEvent, actorname) {
                             {
                                 "content_type": "text",
                                 "title": "Search in google",
-                                "payload": celebrityname + ' ,%networth%'
+                                "payload": celebrityname + ' ,%googlesearch%'
                             }, {
                                 "content_type": "text",
                                 "title": "Personal Info",
-                                "payload": celebrityname + ' ,%Moviecomp%'
+                                "payload": celebrityname + ' ,%wikisearch%'
                             },
                             {
                                 "content_type": "text",
