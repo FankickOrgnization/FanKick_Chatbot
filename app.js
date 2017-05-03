@@ -663,7 +663,7 @@ function quick_reply_subcategory(messagingEvent, quickpayloadtext) {
                             {
                                 "type": "web_url",
                                 "url": rows[i].imageUrl,
-                                "title": "Continue Reading ⏩"
+                                "title": "Proceed 👉"
                             }
                         ]
                     };

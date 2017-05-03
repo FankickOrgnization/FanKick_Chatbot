@@ -210,8 +210,8 @@ function user_intrest_category(event, categoryName) {
                     wishing_message(categoryName, event);
                 } else if (category != null) {
                     //Category_conversation(event, category);
-                    //submenu(event, category);
-                    userintrest_intro_message(category, event);
+                    submenu(event, category);
+                    //userintrest_intro_message(category, event);
                 }
             }
             connection.release();
