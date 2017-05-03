@@ -886,7 +886,7 @@ function celebritypics(messagingEvent, quickpayloadtext) {
                                       {
                                           "type":"web_url",
                                           "url": rows[i].personalInfo,
-                                          "title":"Proceed ☞"
+                                          "title":"Proceed 👉"
                                       }
                                       ]
                                   }
