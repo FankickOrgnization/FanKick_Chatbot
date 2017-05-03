@@ -871,12 +871,28 @@ function celebritypics(messagingEvent, quickpayloadtext) {
                         celebritymovielist(messagingEvent, celebrityname);
                         //movies.selectedactorfilems(messagingEvent, celebrityname);
                     } else if (subCategory == "%Moviecomp%") {
-                        var competitor = rows[i].competitors;
-                        var picurl = rows[i].picture2;
-                        var name = rows[i].name;
-                        console.log("celebrity competitors");
-                        selectedactorcomptiters(messagingEvent, competitor, picurl, name);
-
+                        console.log("celebrity networth");
+                        var msg = '' + rows[i].name + '’s net worth is believed to be around ' + rows[i].netWorth + '.';
+                        keyMap = {
+                            "type": "template",
+                            "payload": {
+                                "template_type": "generic",
+                                "elements": [
+                                    {
+                                        "title": rows[i].name,
+                                        "image_url": rows[i].picture3,
+                                        "subtitle": "rows[i].name",
+                                        "buttons": [
+                                        {
+                                            "type":"web_url",
+                                            "url": rows[i].personalInfo,
+                                            "title":"More Pics"
+                                        }
+                                        ]
+                                    }
+                                ]
+                            }
+                        }
                     } else if (subCategory == "%networth%") {
                         console.log("celebrity networth");
                         var msg = '' + rows[i].name + '’s net worth is believed to be around ' + rows[i].netWorth + '.';
@@ -886,19 +902,16 @@ function celebritypics(messagingEvent, quickpayloadtext) {
                                 "template_type": "generic",
                                 "elements": [
                                     {
-                                        "title": msg,
+                                        "title": rows[i].name,
                                         "image_url": rows[i].picture3,
-                                        "subtitle": rows[i].name,
-                                        // "buttons": [
-                                        // // {
-                                        // //     "type":"web_url",
-                                        // //    "url": rows[i].picture5,
-                                        // //    "title":"More Pics"
-                                        // // }
-                                        // // {
-                                        // //   "type":"element_share"
-                                        // // }
-                                        // ]
+                                        "subtitle": "rows[i].name",
+                                        "buttons": [
+                                        {
+                                            "type":"web_url",
+                                            "url": rows[i].googleSearch,
+                                            "title":"More Pics"
+                                        }
+                                        ]
                                     }
                                 ]
                             }
@@ -989,15 +1002,15 @@ function celebritypics(messagingEvent, quickpayloadtext) {
                                 "title": 'Movies',
                                 "payload": celebrityname + ' ,%movies%'
                             },
-                            // {
-                            //     "content_type": "text",
-                            //     "title": "Net Worth",
-                            //     "payload": celebrityname + ' ,%networth%'
-                            // }, {
-                            //     "content_type": "text",
-                            //     "title": "Competitors",
-                            //     "payload": celebrityname + ' ,%Moviecomp%'
-                            // },
+                            {
+                                "content_type": "text",
+                                "title": "Search in google",
+                                "payload": celebrityname + ' ,%networth%'
+                            }, {
+                                "content_type": "text",
+                                "title": "Personal Info",
+                                "payload": celebrityname + ' ,%Moviecomp%'
+                            },
                             {
                                 "content_type": "text",
                                 "title": "News",
@@ -1540,15 +1553,15 @@ function filmactor(messagingEvent, actorname) {
                                 "title": "Movies",
                                 "payload": celebrityname + ' ,%movies%'
                             },
-                            // {
-                            //     "content_type": "text",
-                            //     "title": "Net Worth",
-                            //     "payload": celebrityname + ' ,%networth%'
-                            // }, {
-                            //     "content_type": "text",
-                            //     "title": "Competitors",
-                            //     "payload": celebrityname + ' ,%Moviecomp%'
-                            // },
+                            {
+                                "content_type": "text",
+                                "title": "Search in google",
+                                "payload": celebrityname + ' ,%networth%'
+                            }, {
+                                "content_type": "text",
+                                "title": "Personal Info",
+                                "payload": celebrityname + ' ,%Moviecomp%'
+                            },
                             {
                                 "content_type": "text",
                                 "title": "News",
