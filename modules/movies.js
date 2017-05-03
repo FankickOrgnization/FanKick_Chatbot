@@ -431,7 +431,7 @@ const filmactor = (messagingEvent, actorname) => {
                                 "payload": celebrityname + ' ,%movies%'
                             },{
                                 "content_type": "text",
-                                "title": "Search in google Ⓖ",
+                                "title": "Search in google Ｇ",
                                 "payload": celebrityname + ' ,%googlesearch%'
                             }, {
                                 "content_type": "text",
