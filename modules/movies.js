@@ -1236,7 +1236,7 @@ const celebrity_Queue_block3_details = (messagingEvent, quickpayloadtext) => {
     });
 }
 
-const celbrity_Fantastic = (messagingEvent, quickpayloadtext) => {
+const celbrity_Fantastic_wow = (messagingEvent, quickpayloadtext) => {
   var queuearray = quickpayloadtext.split(',');
   var text = queuearray[0];
   var celName = queuearray[1];
@@ -1285,5 +1285,6 @@ module.exports = {
     //celebrity_Queue_blockone_details:celebrity_Queue_blockone_details,
     celebrity_Queue_block1_details:celebrity_Queue_block1_details,
     celebrity_Queue_block2_details:celebrity_Queue_block2_details,
-    celebrity_Queue_block3_details:celebrity_Queue_block3_details
+    celebrity_Queue_block3_details:celebrity_Queue_block3_details,
+    celbrity_Fantastic_wow:celbrity_Fantastic_wow
 };
