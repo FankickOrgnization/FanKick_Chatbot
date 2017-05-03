@@ -210,8 +210,8 @@ function user_intrest_category(event, categoryName) {
                     wishing_message(categoryName, event);
                 } else if (category != null) {
                     //Category_conversation(event, category);
-                    submenu(event, category);
-                    //userintrest_intro_message(category, event);
+                    //submenu(event, category);
+                    userintrest_intro_message(category, event);
                 }
             }
             connection.release();
@@ -222,7 +222,8 @@ function user_intrest_category(event, categoryName) {
 function userintrest_intro_message(category, event) {
     var senderID = event.sender.id;
     //var category = "home";
-    var msg = 'Hello dear, last time when you came, you were browsing ' + category + '. You like to continue? Shall I serve something else?';
+    //var msg = 'Hello dear, last time when you came, you were browsing ' + category + '. You like to continue? Shall I serve something else?';
+    var msg ="Hello..\nWant to know what's trending in sports?\nHere you go.."
     console.log("--------:Response data:--------msg1 ", msg);
     var messageData = {
         "recipient": {
@@ -230,22 +231,10 @@ function userintrest_intro_message(category, event) {
         },
         "message": {
             "text": msg,
-            "quick_replies": [
-                {
-                    "content_type": "text",
-                    "title": "Yes 🙂",
-                    "payload": category
-                }, {
-                    "content_type": "text",
-                    "title": "No 😗",
-                    "payload": "Home"
-                }
-            ]
-
         }
     }
     fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
-    //allcategory(event, category);
+    submenu(event, category);
 }
 
 function Category_conversation(event, category) {
