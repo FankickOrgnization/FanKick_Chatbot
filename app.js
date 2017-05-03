@@ -242,17 +242,17 @@ function quickpayload(messagingEvent) {
         console.log("conversationQueuetitle:--------------", celebrityQueuetitle);
         movies.celebrity_Queue_block1_details(messagingEvent, quickpayloadtext);
         //  movies.getgenremovies(messagingEvent, quickpayloadtext);
-    }else if (moviecelbrity_conv2 != -1) {
+    } else if (moviecelbrity_conv2 != -1) {
         var celebrityQueuetitle = quickpayloadtext.replace("%celebrity_conv2%", "");
         console.log("conversationQueuetitle:--------------", celebrityQueuetitle);
         movies.celebrity_Queue_block2_details(messagingEvent, quickpayloadtext);
         //  movies.getgenremovies(messagingEvent, quickpayloadtext);
-    }else if (moviecelbrity_conv3 != -1) {
+    } else if (moviecelbrity_conv3 != -1) {
         var celebrityQueuetitle = quickpayloadtext.replace("%celebrity_conv3%", "");
         console.log("conversationQueuetitle:--------------", celebrityQueuetitle);
         movies.celebrity_Queue_block3_details(messagingEvent, quickpayloadtext);
         //  movies.getgenremovies(messagingEvent, quickpayloadtext);
-    }else if (conversationQueuetitle != -1) {
+    } else if (conversationQueuetitle != -1) {
         var Queuetitle = quickpayloadtext.replace("%movie_conv%", "");
         console.log("conversationQueuetitle:--------------", Queuetitle);
         movies_Queue_title_details(messagingEvent, quickpayloadtext);
@@ -262,7 +262,7 @@ function quickpayload(messagingEvent) {
         console.log("conversationQueuetitle:--------------", Queuetitle);
         category_Queue_title_details(messagingEvent, Queuetitle);
         //  movies.getgenremovies(messagingEvent, quickpayloadtext);
-    }else if (moviecelbrity_Fantastic != -1 || moviecelbrity_isit != -1) {
+    } else if (moviecelbrity_Fantastic != -1 || moviecelbrity_isit != -1) {
         console.log("This is getgenremovies condition");
         var type = "Fantastic";
         movies.celbrity_Fantastic_wow(messagingEvent, quickpayloadtext, type);
@@ -988,15 +988,17 @@ function celebritypics(messagingEvent, quickpayloadtext) {
                                 "content_type": "text",
                                 "title": 'Movies',
                                 "payload": celebrityname + ' ,%movies%'
-                            }, {
-                                "content_type": "text",
-                                "title": "Net Worth",
-                                "payload": celebrityname + ' ,%networth%'
-                            }, {
-                                "content_type": "text",
-                                "title": "Competitors",
-                                "payload": celebrityname + ' ,%Moviecomp%'
-                            }, {
+                            },
+                            // {
+                            //     "content_type": "text",
+                            //     "title": "Net Worth",
+                            //     "payload": celebrityname + ' ,%networth%'
+                            // }, {
+                            //     "content_type": "text",
+                            //     "title": "Competitors",
+                            //     "payload": celebrityname + ' ,%Moviecomp%'
+                            // },
+                            {
                                 "content_type": "text",
                                 "title": "News",
                                 "payload": celebrityname + ' ,%news%'
@@ -1421,10 +1423,10 @@ function textmessage(msgwit, messagingEvent) {
         for (var i = 0; i < rows.length; i++) {
             console.log("messaging_message Location:------", messagingEvent.message.attachments[i].payload);
             var location_payload = messagingEvent.message.attachments[i].payload;
-          //  var location_payload_coordinates = location_payload.coordinates;
+            //  var location_payload_coordinates = location_payload.coordinates;
             //var location_payload_coordinates_lat = location_payload.coordinates.lat;
             //var location_payload_coordinates_long = location_payload.coordinates.long;
-          //  var location = [location_payload_coordinates_lat, location_payload_coordinates_long];
+            //  var location = [location_payload_coordinates_lat, location_payload_coordinates_long];
             // panorama(location, function(err, result) {
             //     if (err) {
             //         console.log(err);
@@ -1443,8 +1445,8 @@ function textmessage(msgwit, messagingEvent) {
             //
             // })
 
-          //  console.log("messaging_message location_payload:------", location_payload);
-          //  console.log("messaging_message location_payload_coordinates:------", location_payload_coordinates);
+            //  console.log("messaging_message location_payload:------", location_payload);
+            //  console.log("messaging_message location_payload_coordinates:------", location_payload_coordinates);
             //console.log("messaging_message location_payload_coordinates_lat:------", location_payload_coordinates_lat);
             //console.log("messaging_message location_payload_coordinates_long:------", location_payload_coordinates_long);
         }
@@ -1537,15 +1539,17 @@ function filmactor(messagingEvent, actorname) {
                                 "content_type": "text",
                                 "title": "Movies",
                                 "payload": celebrityname + ' ,%movies%'
-                            }, {
-                                "content_type": "text",
-                                "title": "Net Worth",
-                                "payload": celebrityname + ' ,%networth%'
-                            }, {
-                                "content_type": "text",
-                                "title": "Competitors",
-                                "payload": celebrityname + ' ,%Moviecomp%'
-                            }, {
+                            },
+                            // {
+                            //     "content_type": "text",
+                            //     "title": "Net Worth",
+                            //     "payload": celebrityname + ' ,%networth%'
+                            // }, {
+                            //     "content_type": "text",
+                            //     "title": "Competitors",
+                            //     "payload": celebrityname + ' ,%Moviecomp%'
+                            // },
+                            {
                                 "content_type": "text",
                                 "title": "News",
                                 "payload": celebrityname + ' ,%news%'

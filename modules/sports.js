@@ -447,11 +447,13 @@ function sportscelbritydetails(messagingEvent, sportscelname) {
                                 "content_type": "text",
                                 "title": "News",
                                 "payload": name + ' ,%sportscelnews%'
-                            }, {
-                                "content_type": "text",
-                                "title": "Competitors",
-                                "payload": name + ' ,%sportscelcompetitors%'
-                            }, {
+                            },
+                            // {
+                            //     "content_type": "text",
+                            //     "title": "Competitors",
+                            //     "payload": name + ' ,%sportscelcompetitors%'
+                            // },
+                            {
                                 "content_type": "text",
                                 "title": 'Sports Jokes',
                                 "payload": "Jokes"
@@ -657,11 +659,13 @@ const sportscelebrityinfo = (messagingEvent, quickpayloadtext) => {
                                 "content_type": "text",
                                 "title": "News",
                                 "payload": celebrityname + ' ,%sportscelnews%'
-                            }, {
-                                "content_type": "text",
-                                "title": "Competitors",
-                                "payload": celebrityname + ' ,%sportscelcompetitors%'
-                            }, {
+                            },
+                            // {
+                            //     "content_type": "text",
+                            //     "title": "Competitors",
+                            //     "payload": celebrityname + ' ,%sportscelcompetitors%'
+                            // },
+                            {
                                 "content_type": "text",
                                 "title": 'Sports Jokes',
                                 "payload": "Jokes"

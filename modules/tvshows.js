@@ -249,11 +249,13 @@ const tvcelebrityinfo = (messagingEvent, quickpayloadtext) => {
                                 "content_type": "text",
                                 "title": "Awards",
                                 "payload": celebrityname + ' ,%tvcelawards%'
-                            }, {
-                                "content_type": "text",
-                                "title": "Net Worth",
-                                "payload": celebrityname + ' ,%tvcelnetworth%'
-                            }, {
+                            },
+                            // {
+                            //     "content_type": "text",
+                            //     "title": "Net Worth",
+                            //     "payload": celebrityname + ' ,%tvcelnetworth%'
+                            // },
+                            {
                                 "content_type": "text",
                                 "title": "News",
                                 "payload": celebrityname + ' ,%tvcelnews%'
@@ -430,11 +432,13 @@ function tvcelbritydetails(event, celbrityname) {
                                 "content_type": "text",
                                 "title": "Awards",
                                 "payload": name + ' ,%tvcelawards%'
-                            }, {
-                                "content_type": "text",
-                                "title": "Net Worth",
-                                "payload": name + ' ,%tvcelnetworth%'
-                            }, {
+                            },
+                            // {
+                            //     "content_type": "text",
+                            //     "title": "Net Worth",
+                            //     "payload": name + ' ,%tvcelnetworth%'
+                            // },
+                            {
                                 "content_type": "text",
                                 "title": "News",
                                 "payload": name + ' ,%tvcelnews%'

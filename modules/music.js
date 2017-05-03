@@ -383,7 +383,15 @@ function language_wise_albams(language, event) {
                             }
                         },
                         "quick_replies": [
-                            {
+                          {
+                                "content_type": "text",
+                                "title": "Top 50 Songs",
+                                "payload": 'Top 50 Songs,' + categoryName + ',%QRsub%'
+                            }, {
+                                "content_type": "text",
+                                "title": "Music Videos",
+                                "payload": 'Music Videos,' + categoryName + ',%QRsub%'
+                            },{
                                 "content_type": "text",
                                 "title": "Hindi Albums",
                                 "payload": "Hindi"
@@ -523,11 +531,13 @@ function music_celbrity_details(messagingEvent, musiccelname) {
                                 "content_type": "text",
                                 "title": "Awards",
                                 "payload": name + ' ,%musiccelawards%'
-                            }, {
-                                "content_type": "text",
-                                "title": "Net Worth",
-                                "payload": name + ' ,%musiccelnetworth%'
-                            }, {
+                            },
+                            // {
+                            //     "content_type": "text",
+                            //     "title": "Net Worth",
+                            //     "payload": name + ' ,%musiccelnetworth%'
+                            // },
+                            {
                                 "content_type": "text",
                                 "title": "News",
                                 "payload": name + ' ,%Musiccelnews%'
@@ -768,11 +778,13 @@ const musiccelebrityinfo = (messagingEvent, quickpayloadtext) => {
                                 "content_type": "text",
                                 "title": "Awards",
                                 "payload": celebrityname + ' ,%musiccelawards%'
-                            }, {
-                                "content_type": "text",
-                                "title": "Net Worth",
-                                "payload": celebrityname + ' ,%musiccelnetworth%'
-                            }, {
+                            },
+                            // {
+                            //     "content_type": "text",
+                            //     "title": "Net Worth",
+                            //     "payload": celebrityname + ' ,%musiccelnetworth%'
+                            // },
+                            {
                                 "content_type": "text",
                                 "title": "News",
                                 "payload": celebrityname + ' ,%Musiccelnews%'
