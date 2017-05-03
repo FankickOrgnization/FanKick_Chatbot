@@ -329,6 +329,7 @@ function language_wise_albams(language, event) {
     //var event = messagingEvent;
     var quickList = [];
     var name;
+    var categoryName = "indian"
     pool.getConnection(function(err, connection) {
         connection.query('select * from cc_music_albums where language = ? order by releaseDate desc', [language], function(err, rows) {
             console.log("*************************Data For Music Albams", rows);
