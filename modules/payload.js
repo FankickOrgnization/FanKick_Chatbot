@@ -223,7 +223,7 @@ function userintrest_intro_message(category, event) {
     var senderID = event.sender.id;
     //var category = "home";
     //var msg = 'Hello dear, last time when you came, you were browsing ' + category + '. You like to continue? Shall I serve something else?';
-    var msg ="Hello..\nWant to know what's trending in sports?\nHere you go.."
+    var msg ='Hello..\nWant to know whats trending in ' + category + '?\nHere you go..';
     console.log("--------:Response data:--------msg1 ", msg);
     var messageData = {
         "recipient": {
