@@ -264,7 +264,8 @@ function quickpayload(messagingEvent) {
         //  movies.getgenremovies(messagingEvent, quickpayloadtext);
     }else if (moviecelbrity_Fantastic != -1 || moviecelbrity_isit != -1) {
         console.log("This is getgenremovies condition");
-        movies.celbrity_Fantastic_wow(messagingEvent, quickpayloadtext);
+        var type = Fantastic;
+        movies.celbrity_Fantastic_wow(messagingEvent, quickpayloadtext, type);
     } else if (action != -1 || comedy != -1 || romance != -1 || thriller != -1 || drama != -1 || sociofantasy != -1) {
         console.log("This is getgenremovies condition");
         movies.getgenremovies(messagingEvent, quickpayloadtext);

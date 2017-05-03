@@ -1184,7 +1184,7 @@ const celebrity_Queue_block3_details = (messagingEvent, quickpayloadtext) => {
                               "content_type": "text",
                               "title": "Is it? ",
                               "payload": "Is it?,"+ celebrityName + "," + blockThreeUrl +","+ quickReply1 +","+ quickReply2 +","+ description +",%Is it?%"
-                          },,{
+                          },{
                                 "content_type": "text",
                                 "title": quickReply1,
                                 "payload": quickReply1 + ',' + celebrityName + ',' + "blockOneName ,%celebrity_conv1%"
@@ -1236,7 +1236,7 @@ const celebrity_Queue_block3_details = (messagingEvent, quickpayloadtext) => {
     });
 }
 
-const celbrity_Fantastic_wow = (messagingEvent, quickpayloadtext) => {
+const celbrity_Fantastic_wow = (messagingEvent, quickpayloadtext, type) => {
   var queuearray = quickpayloadtext.split(',');
   var text = queuearray[0];
   var celName = queuearray[1];
@@ -1250,6 +1250,74 @@ const celbrity_Fantastic_wow = (messagingEvent, quickpayloadtext) => {
       console.log(qr1);
         console.log(qr2);
           console.log(dec);
+    if (type == "Fantastic") {
+        var senderID = messagingEvent.sender.id;
+        //var description = 'Thanks, Hey you want to know about ' + celName + 'please select the below button';
+        var messageData = {
+            "recipient": {
+                "id": senderID
+            },
+            "message": {
+                "attachment": {
+                    "type": "template",
+                    "payload": {
+                        "template_type": "generic",
+                        "elements": [
+                            {
+                                "title": celName,
+                                "subtitle": dec,
+                                "buttons": [
+                                    {
+                                        "type": "web_url",
+                                        "url": url,
+                                        "title": "Continue Reading ⏩"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                },
+                //  "text": description,
+                "quick_replies": [
+                    {
+                        "content_type": "text",
+                        "title": celName,
+                        "payload": celName + " %a%"
+                    }, {
+                        "content_type": "text",
+                        "title": "Bollywood",
+                        "payload": "Bollywood"
+                    }, {
+                        "content_type": "text",
+                        "title": "Tollywood",
+                        "payload": "Tollywood"
+                    }, {
+                        "content_type": "text",
+                        "title": "Kollywood",
+                        "payload": "Kollywood"
+                    }, {
+                        "content_type": "text",
+                        "title": "Malayalam Cinema",
+                        "payload": "Malayalam Cinema"
+                    }, {
+                        "content_type": "text",
+                        "title": "Kannada Cinema",
+                        "payload": "Kannada Cinema"
+                    }, {
+                        "content_type": "text",
+                        "title": "Jokes",
+                        "payload": "jokes"
+                    }
+                ]
+
+            }
+        }
+        fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
+        update_conversation_usercelebrity(messagingEvent);
+    }else {
+        console.log("No Data Found From Database");
+        sendHelpMessage(messagingEvent);
+    }
 }
 
 function sendHelpMessage(event) {
