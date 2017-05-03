@@ -89,7 +89,7 @@ const sendContentPacks = (categoryName, event) => {
     } else if (categoryName == "cricket" || categoryName == "soccer" || categoryName == "tennis" || categoryName == "badminton") {
         usersubcategory(event, categoryName);
         subcategorydetails(categoryName, event);
-    } else if (categoryName == "home") {
+    } else if (categoryName == "home" || categoryName == "%Enough!%" ) {
         allcategory(event, categoryName);
     } else if (categoryName == "jokes") {
         sendJoke(categoryName, event);
