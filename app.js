@@ -878,18 +878,18 @@ function celebritypics(messagingEvent, quickpayloadtext) {
                             "payload": {
                                 "template_type": "generic",
                                 "elements": [
-                                    {
-                                        "title": rows[i].name,
-                                        "image_url": rows[i].picture3,
-                                        "subtitle": "rows[i].name",
-                                        "buttons": [
-                                        {
-                                            "type":"web_url",
-                                            "url": rows[i].personalInfo,
-                                            "title":"More Pics"
-                                        }
-                                        ]
-                                    }
+                                  {
+                                      "title": rows[i].name,
+                                      "image_url": rows[i].picture3,
+                                      "subtitle": 'Lets see what Google knows about' + rows[i].name + '.',
+                                      "buttons": [
+                                      {
+                                          "type":"web_url",
+                                          "url": rows[i].googleSearch,
+                                          "title":"Proceed 👉"
+                                      }
+                                      ]
+                                  }
                                 ]
                             }
                         }
@@ -904,12 +904,12 @@ function celebritypics(messagingEvent, quickpayloadtext) {
                                     {
                                         "title": rows[i].name,
                                         "image_url": rows[i].picture3,
-                                        "subtitle": "rows[i].name",
+                                        "subtitle": 'Lets get into more personals',
                                         "buttons": [
                                         {
                                             "type":"web_url",
-                                            "url": rows[i].googleSearch,
-                                            "title":"More Pics"
+                                            "url": rows[i].personalInfo,
+                                            "title":"Proceed 👉"
                                         }
                                         ]
                                     }
