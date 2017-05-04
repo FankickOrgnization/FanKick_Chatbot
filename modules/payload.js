@@ -131,9 +131,9 @@ function hiemoation(event, categoryName) {
                         "template_type": "generic",
                         "elements": [
                             {
-                                "title": "Classic T-Shirt Collection",
+                                "title": "",
                                 "image_url": "https://www.smileysapp.com/emojis/hi-smiley.png",
-                                "subtitle": "See all our colors"
+                                "subtitle": ""
                             }
                         ]
                     }
