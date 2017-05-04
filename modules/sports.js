@@ -439,12 +439,9 @@ function sportscelbritydetails(messagingEvent, sportscelname) {
                             }, {
                                 "content_type": "text",
                                 "title": "Awards",
-                                "payload": name + ' ,%sportscelawards%'
-                            }, {
-                                "content_type": "text",
-                                "title": "Net Worth",
-                                "payload": name + ' ,%sportscelnetworth%'
-                            }, {
+                                "payload": name + ' ,%sportscelawards%',
+                                "image_url":"http://amreli.atulmotors.com/images/trophy.png"
+                            },  {
                                 "content_type": "text",
                                 "title": "News",
                                 "payload": name + ' ,%sportscelnews%',
@@ -653,11 +650,8 @@ const sportscelebrityinfo = (messagingEvent, quickpayloadtext) => {
                             }, {
                                 "content_type": "text",
                                 "title": "Awards",
-                                "payload": celebrityname + ' ,%sportscelawards%'
-                            }, {
-                                "content_type": "text",
-                                "title": "Net Worth",
-                                "payload": celebrityname + ' ,%sportscelnetworth%'
+                                "payload": celebrityname + ' ,%sportscelawards%',
+                                "image_url":"http://amreli.atulmotors.com/images/trophy.png"
                             }, {
                                 "content_type": "text",
                                 "title": "News",

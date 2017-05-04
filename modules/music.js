@@ -532,7 +532,8 @@ function music_celbrity_details(messagingEvent, musiccelname) {
                             }, {
                                 "content_type": "text",
                                 "title": "Awards",
-                                "payload": name + ' ,%musiccelawards%'
+                                "payload": name + ' ,%musiccelawards%',
+                                "image_url":"http://amreli.atulmotors.com/images/trophy.png"
                             },
                             // {
                             //     "content_type": "text",
@@ -547,15 +548,18 @@ function music_celbrity_details(messagingEvent, musiccelname) {
                             }, {
                                 "content_type": "text",
                                 "title": "Popular Albums",
-                                "payload": name + ' ,%Musiccelalbums%'
+                                "payload": name + ' ,%Musiccelalbums%',
+                                "image_url":"http://cdn.appstorm.net/web.appstorm.net/files/2010/03/FolderMusic200x200.jpg"
                             }, {
                                 "content_type": "text",
                                 "title": "Popular Songs",
-                                "payload": name + ' ,%Musiccelsongs%'
+                                "payload": name + ' ,%Musiccelsongs%',
+                                "image_url":"http://ellenjmchenry.com/store/wp-content/uploads/2012/11/music_icon.jpg"
                             }, {
                                 "content_type": "text",
                                 "title": "Competitors",
-                                "payload": name + ' ,%Musiccelcomp%'
+                                "payload": name + ' ,%Musiccelcomp%',
+                                "image_url":"http://icons.iconarchive.com/icons/iconshock/real-vista-business/256/competitors-icon.png"
                             }, {
                                 "content_type": "text",
                                 "title": "Music Jokes",
@@ -781,7 +785,8 @@ const musiccelebrityinfo = (messagingEvent, quickpayloadtext) => {
                             }, {
                                 "content_type": "text",
                                 "title": "Awards",
-                                "payload": celebrityname + ' ,%musiccelawards%'
+                                "payload": celebrityname + ' ,%musiccelawards%',
+                                "image_url":"http://amreli.atulmotors.com/images/trophy.png"
                             },
                             // {
                             //     "content_type": "text",
@@ -796,15 +801,18 @@ const musiccelebrityinfo = (messagingEvent, quickpayloadtext) => {
                             }, {
                                 "content_type": "text",
                                 "title": "Popular Albums",
-                                "payload": celebrityname + ' ,%Musiccelalbums%'
+                                "payload": celebrityname + ' ,%Musiccelalbums%',
+                                "image_url":"http://cdn.appstorm.net/web.appstorm.net/files/2010/03/FolderMusic200x200.jpg"
                             }, {
                                 "content_type": "text",
                                 "title": "Popular Songs",
-                                "payload": celebrityname + ' ,%Musiccelsongs%'
+                                "payload": celebrityname + ' ,%Musiccelsongs%',
+                                "image_url":"http://ellenjmchenry.com/store/wp-content/uploads/2012/11/music_icon.jpg"
                             }, {
                                 "content_type": "text",
                                 "title": "Competitors",
-                                "payload": celebrityname + ' ,%Musiccelcomp%'
+                                "payload": celebrityname + ' ,%Musiccelcomp%',
+                                "image_url":"http://icons.iconarchive.com/icons/iconshock/real-vista-business/256/competitors-icon.png"
                             }, {
                                 "content_type": "text",
                                 "title": "Music Jokes",

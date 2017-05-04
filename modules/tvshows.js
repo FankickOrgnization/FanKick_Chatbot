@@ -249,7 +249,8 @@ const tvcelebrityinfo = (messagingEvent, quickpayloadtext) => {
                             }, {
                                 "content_type": "text",
                                 "title": "Awards",
-                                "payload": celebrityname + ' ,%tvcelawards%'
+                                "payload": celebrityname + ' ,%tvcelawards%',
+                                "image_url":"http://amreli.atulmotors.com/images/trophy.png"
                             },
                             // {
                             //     "content_type": "text",
@@ -434,7 +435,8 @@ function tvcelbritydetails(event, celbrityname) {
                             }, {
                                 "content_type": "text",
                                 "title": "Awards",
-                                "payload": name + ' ,%tvcelawards%'
+                                "payload": name + ' ,%tvcelawards%',
+                                  "image_url":"http://amreli.atulmotors.com/images/trophy.png"
                             },
                             // {
                             //     "content_type": "text",

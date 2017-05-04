@@ -430,7 +430,8 @@ const filmactor = (messagingEvent, actorname) => {
                                 "content_type": "text",
                                 "title": "Movies",
                                 "payload": celebrityname + ' ,%movies%',
-                                "image_url":"http://iosicongallery.com/img/512/itunes-movie-trailers-2011.png"
+                                "image_url":"http://www.hooverlibrary.org/sites/default/files/icons/icon_monday_movies2.jpg"
+
                             },{
                                 "content_type": "text",
                                 "title": "Search in google",
@@ -440,7 +441,7 @@ const filmactor = (messagingEvent, actorname) => {
                                 "content_type": "text",
                                 "title": "Personal Info",
                                 "payload": celebrityname + ' ,%wikisearch%',
-                              "image_url":"http://www.userlogos.org/files/logos/Ti%20Khal/wp2.png"
+                              "image_url":"https://cdn3.iconfinder.com/data/icons/inficons-round-brand-set-2/512/wikipedia-512.png"
                             },{
                                 "content_type": "text",
                                 "title": "News",
@@ -695,7 +696,7 @@ const selectedactorfilems = (messagingEvent, celebrityname) => {
                                 "content_type": "text",
                                 "title": "Movies",
                                 "payload": celebrityname + ' ,%movies%',
-                                "image_url":"http://iosicongallery.com/img/512/itunes-movie-trailers-2011.png"
+                                "image_url":"http://www.hooverlibrary.org/sites/default/files/icons/icon_monday_movies2.jpg"
                             },
                             // {
                             //     "content_type": "text",
