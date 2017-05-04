@@ -1045,13 +1045,32 @@ const celbrity_Fantastic_wow = (messagingEvent, quickpayloadtext, type) => {
     var qr2 = queuearray[4];
     var dec = queuearray[5];
     var blockno = queuearray[6];
+    var bno1;
+    var bno2;
     console.log(celName);
     console.log(url);
     console.log(qr1);
     console.log(qr2);
     console.log(dec);
     console.log(blockno);
+
     if (type == "Fantastic") {
+      if(blockno == 1){
+        bno1 = 2;
+        bno1 = 3;
+        console.log("bno1",bno1);
+        console.log("bno1",bno2);
+      }else if (blockno == 2) {
+        bno1 = 1;
+        bno1 = 3;
+        console.log("bno1",bno1);
+        console.log("bno1",bno2);
+      }else if (blockno == 3) {
+        bno1 = 1;
+        bno1 = 2;
+        console.log("bno1",bno1);
+        console.log("bno1",bno2);
+      }
         var senderID = messagingEvent.sender.id;
         //var description = 'Thanks, Hey you want to know about ' + celName + 'please select the below button';
         var messageData = {
@@ -1080,7 +1099,15 @@ const celbrity_Fantastic_wow = (messagingEvent, quickpayloadtext, type) => {
                 },
                 //  "text": description,
                 "quick_replies": [
-                    {
+                  {
+                      "content_type": "text",
+                      "title": qr1,
+                      "payload": qr1 + ',' + celName + ',' + 'blockOneName ,%celebrity_conv'+bno1+'%'
+                  },{
+                      "content_type": "text",
+                      "title": qr2,
+                      "payload": qr2 + ',' + celName + ',' + 'blockOneName ,%celebrity_conv'+bno2+'%'
+                  },{
                         "content_type": "text",
                         "title": celName,
                         "payload": celName + " %a%"
@@ -1108,6 +1135,10 @@ const celbrity_Fantastic_wow = (messagingEvent, quickpayloadtext, type) => {
                         "content_type": "text",
                         "title": "Jokes",
                         "payload": "jokes"
+                    }, {
+                        "content_type": "text",
+                        "title": "home 🏠",
+                        "payload": "home"
                     }
                 ]
 
