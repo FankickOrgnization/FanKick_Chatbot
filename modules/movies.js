@@ -425,33 +425,33 @@ const filmactor = (messagingEvent, actorname) => {
                                 "content_type": "text",
                                 "title": "Pictures",
                                 "payload": celebrityname + ' ,%pictures%',
-                                "image_url":"http://icons.iconarchive.com/icons/harwen/simple/256/My-Pictures-icon.png"
+                                "image_url": "http://icons.iconarchive.com/icons/harwen/simple/256/My-Pictures-icon.png"
                             }, {
                                 "content_type": "text",
                                 "title": "Movies",
                                 "payload": celebrityname + ' ,%movies%',
-                                "image_url":"http://www.hooverlibrary.org/sites/default/files/icons/icon_monday_movies2.jpg"
+                                "image_url": "http://www.hooverlibrary.org/sites/default/files/icons/icon_monday_movies2.jpg"
 
-                            },{
+                            }, {
                                 "content_type": "text",
                                 "title": "Search in google",
                                 "payload": celebrityname + ' ,%googlesearch%',
-                                "image_url":"https://fankickdev.blob.core.windows.net/images/google.png"
+                                "image_url": "https://fankickdev.blob.core.windows.net/images/google.png"
                             }, {
                                 "content_type": "text",
                                 "title": "Personal Info",
                                 "payload": celebrityname + ' ,%wikisearch%',
-                              "image_url":"https://cdn3.iconfinder.com/data/icons/inficons-round-brand-set-2/512/wikipedia-512.png"
-                            },{
+                                "image_url": "https://cdn3.iconfinder.com/data/icons/inficons-round-brand-set-2/512/wikipedia-512.png"
+                            }, {
                                 "content_type": "text",
                                 "title": "News",
                                 "payload": celebrityname + ' ,%news%',
-                                "image_url":"https://thumbs.dreamstime.com/x/news-icon-11187212.jpg"
+                                "image_url": "https://thumbs.dreamstime.com/x/news-icon-11187212.jpg"
                             }, {
                                 "content_type": "text",
                                 "title": "Family",
                                 "payload": celebrityname + ' ,%family%',
-                                "image_url":"http://tukanglastangerangselatan.com/assets/images/slider/fm1.png"
+                                "image_url": "http://tukanglastangerangselatan.com/assets/images/slider/fm1.png"
                             }, {
                                 "content_type": "text",
                                 "title": "Home 🏠",
@@ -629,106 +629,6 @@ function updateusercelebrity(usercelebrityName, senderID) {
             connection.release();
         });
     });
-}
-
-const selectedactorfilems = (messagingEvent, celebrityname) => {
-    console.log("*********Movies Genre***********", celebrityname);
-    pool.getConnection(function(err, connection) {
-        connection.query('select  * from cc_movies_preference where leadActor= ? order by releaseDate desc', [celebrityname], function(err, rows) {
-            console.log("*************************selectedactorfilems", rows);
-            if (err) {
-                console.log("Error While retriving content pack data from database:", err);
-            } else if (rows.length) {
-                var senderID = messagingEvent.sender.id;
-                var contentList = [];
-                if (rows.length > 10) {
-                    var rowslenth = 10;
-                    console.log("more than 10 Rows", rowslenth);
-                } else {
-                    var rowslenth = rows.length;
-                    console.log("less than 10 Rows", rowslenth);
-                }
-                for (var i = 0; i < rowslenth; i++) { //Construct request body
-                    var keyMap = {
-                        "title": rows[i].movieName,
-                        "image_url": rows[i].picture1,
-                        "buttons": [//   {
-                            //     "type": "web_url",
-                            //     "url": rows[i].trailerUrl,
-                            //     "title": "Trailer"
-                            // },{
-                            //     "type": "web_url",
-                            //     "url": rows[i].movieDescriptionUrl,
-                            //     "title": "Audio"
-                            // },
-                            {
-                                "type": "postback",
-                                "title": "More Info ℹ",
-                                "payload": rows[i].movieName + ' %mname%'
-                            }
-                        ]
-                    };
-                    contentList.push(keyMap);
-                }
-                var messageData = {
-                    "recipient": {
-                        "id": senderID
-                    },
-                    "message": {
-                        "attachment": {
-                            "type": "template",
-                            "payload": {
-                                "template_type": "generic",
-                                "elements": contentList
-                            }
-                        },
-                        "quick_replies": [
-                            {
-                                "content_type": "text",
-                                "title": "About",
-                                "payload": celebrityname + ' ,%about%'
-                            }, {
-                                "content_type": "text",
-                                "title": "Pictures",
-                                "payload": celebrityname + ' ,%pictures%',
-                                "image_url":"http://icons.iconarchive.com/icons/harwen/simple/256/My-Pictures-icon.png"
-                            }, {
-                                "content_type": "text",
-                                "title": "Movies",
-                                "payload": celebrityname + ' ,%movies%',
-                                "image_url":"http://www.hooverlibrary.org/sites/default/files/icons/icon_monday_movies2.jpg"
-                            },
-                            // {
-                            //     "content_type": "text",
-                            //     "title": "Net Worth",
-                            //     "payload": celebrityname + ' ,%googlesearch%'
-                            // }, {
-                            //     "content_type": "text",
-                            //     "title": "News",
-                            //     "payload": celebrityname + ' ,%news%'
-                            // },
-                            {
-                                "content_type": "text",
-                                "title": "Family",
-                                "payload": celebrityname + ' ,%family%',
-                                "image_url":"http://tukanglastangerangselatan.com/assets/images/slider/fm1.png"
-                            }, {
-                                "content_type": "text",
-                                "title": "Home 🏠",
-                                "payload": "home"
-                            }
-                        ]
-                    }
-                }
-                fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
-            } else {
-                console.log("No Data Found From Database");
-                sendHelpMessage(messagingEvent);
-            }
-            connection.release();
-        });
-    });
-
 }
 
 const celebrity_Queue_block1_details = (messagingEvent, quickpayloadtext) => {
@@ -1065,22 +965,22 @@ const celbrity_Fantastic_wow = (messagingEvent, quickpayloadtext, type) => {
     console.log(blockno);
 
     if (type == "Fantastic") {
-      if(blockno == 1){
-        bno1 = 2;
-        bno2 = 3;
-        console.log("bno1",bno1);
-        console.log("bno1",bno2);
-      }else if (blockno == 2) {
-        bno1 = 1;
-        bno2 = 3;
-        console.log("bno1",bno1);
-        console.log("bno1",bno2);
-      }else if (blockno == 3) {
-        bno1 = 1;
-        bno2 = 2;
-        console.log("bno1",bno1);
-        console.log("bno1",bno2);
-      }
+        if (blockno == 1) {
+            bno1 = 2;
+            bno2 = 3;
+            console.log("bno1", bno1);
+            console.log("bno1", bno2);
+        } else if (blockno == 2) {
+            bno1 = 1;
+            bno2 = 3;
+            console.log("bno1", bno1);
+            console.log("bno1", bno2);
+        } else if (blockno == 3) {
+            bno1 = 1;
+            bno2 = 2;
+            console.log("bno1", bno1);
+            console.log("bno1", bno2);
+        }
         var senderID = messagingEvent.sender.id;
         //var description = 'Thanks, Hey you want to know about ' + celName + 'please select the below button';
         var messageData = {
@@ -1109,15 +1009,15 @@ const celbrity_Fantastic_wow = (messagingEvent, quickpayloadtext, type) => {
                 },
                 //  "text": description,
                 "quick_replies": [
-                  {
-                      "content_type": "text",
-                      "title": qr1,
-                      "payload": qr1 + ',' + celName + ',' + 'blockOneName ,%celebrity_conv'+bno1+'%'
-                  },{
-                      "content_type": "text",
-                      "title": qr2,
-                      "payload": qr2 + ',' + celName + ',' + 'blockOneName ,%celebrity_conv'+bno2+'%'
-                  },{
+                    {
+                        "content_type": "text",
+                        "title": qr1,
+                        "payload": qr1 + ',' + celName + ',' + 'blockOneName ,%celebrity_conv' + bno1 + '%'
+                    }, {
+                        "content_type": "text",
+                        "title": qr2,
+                        "payload": qr2 + ',' + celName + ',' + 'blockOneName ,%celebrity_conv' + bno2 + '%'
+                    }, {
                         "content_type": "text",
                         "title": celName,
                         "payload": celName + " %a%"
@@ -1187,7 +1087,7 @@ module.exports = {
     subcategorymovies: subcategorymovies,
     getmovies: getmovies,
     getgenremovies: getgenremovies,
-    selectedactorfilems: selectedactorfilems,
+    //  selectedactorfilems: selectedactorfilems,
     //actressfilms: actressfilms,
     //directorfilms: directorfilms,
     filmactor: filmactor,

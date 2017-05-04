@@ -90,6 +90,7 @@ const sendContentPacks = (categoryName, event) => {
         usersubcategory(event, categoryName);
         subcategorydetails(categoryName, event);
     } else if (categoryName == "home" || categoryName == "%Enough!%" ) {
+        categoryName == "home";
         allcategory(event, categoryName);
     } else if (categoryName == "jokes") {
         sendJoke(categoryName, event);
