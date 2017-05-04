@@ -1050,6 +1050,7 @@ const celbrity_Fantastic_wow = (messagingEvent, quickpayloadtext, type) => {
     console.log(qr1);
     console.log(qr2);
     console.log(dec);
+    console.log(blockno);
     if (type == "Fantastic") {
         var senderID = messagingEvent.sender.id;
         //var description = 'Thanks, Hey you want to know about ' + celName + 'please select the below button';
