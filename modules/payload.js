@@ -132,7 +132,7 @@ function hiemoation(event, categoryName) {
                         "elements": [
                             {
                                 "title": "",
-                                "image_url": "https://www.smileysapp.com/emojis/hi-smiley.png",
+                                "image_url": 'https://www.smileysapp.com/emojis/hi-smiley.png',
                                 "subtitle": ""
                             }
                         ]
@@ -140,7 +140,7 @@ function hiemoation(event, categoryName) {
                 }
             }
 
-        }
+        };
         fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
     }
     user_intrest_category(event, categoryName);
