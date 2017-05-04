@@ -89,10 +89,13 @@ const sendContentPacks = (categoryName, event) => {
     } else if (categoryName == "cricket" || categoryName == "soccer" || categoryName == "tennis" || categoryName == "badminton") {
         usersubcategory(event, categoryName);
         subcategorydetails(categoryName, event);
-    } else if (categoryName == "home" || categoryName == "%Enough!%" ) {
+    } else if (categoryName == "home"  ) {
         categoryName = "home";
         allcategory(event, categoryName);
-    } else if (categoryName == "jokes") {
+    }else if (categoryName == "%Enough!%" ) {
+      //  categoryName = "home";
+        wishing_message(categoryName, event);
+    }else if (categoryName == "jokes") {
         sendJoke(categoryName, event);
     } else if (categoryName == "ipl 2017" || categoryName == "ipl") {
         sports.ipl(categoryName, event);

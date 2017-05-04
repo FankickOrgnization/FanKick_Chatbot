@@ -904,7 +904,7 @@ const celebrity_Queue_block3_details = (messagingEvent, quickpayloadtext) => {
                                 "payload": quickReply2 + ',' + celebrityName + ',' + "blockTwoName ,%celebrity_conv2%"
                             }, {
                                 "content_type": "text",
-                                "title": "Enough!",
+                                "title": "Enough!✋",
                                 "payload": "%Enough!%"
                             }, {
                                 "content_type": "text",
