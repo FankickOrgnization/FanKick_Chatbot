@@ -92,7 +92,7 @@ const sendContentPacks = (categoryName, event) => {
     } else if (categoryName == "home"  ) {
         categoryName = "home";
         allcategory(event, categoryName);
-    }else if (categoryName == "%Enough!%" ) {
+    }else if (categoryName == "%enough!%" ) {
       //  categoryName = "home";
         wishing_message(categoryName, event);
     }else if (categoryName == "jokes") {
