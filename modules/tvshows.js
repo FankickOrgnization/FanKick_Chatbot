@@ -289,29 +289,27 @@ const tvcelebrityinfo = (messagingEvent, quickpayloadtext) => {
                                 "content_type": "text",
                                 "title": "Pictures",
                                 "payload": celebrityname + ' ,%tvcelpics%',
-                                "image_url":"http://icons.iconarchive.com/icons/harwen/simple/256/My-Pictures-icon.png"
+                                "image_url": "http://icons.iconarchive.com/icons/harwen/simple/256/My-Pictures-icon.png"
                             }, {
                                 "content_type": "text",
                                 "title": "Awards",
                                 "payload": celebrityname + ' ,%tvcelawards%',
-                                "image_url":"http://amreli.atulmotors.com/images/trophy.png"
-                            },
-                            {
-                               "content_type": "text",
-                               "title": "Search in google",
-                               "payload": celebrityname + ' ,%tvcelgoogle%',
-                               "image_url": "https://fankickdev.blob.core.windows.net/images/google.png"
-                           }, {
-                               "content_type": "text",
-                               "title": "Personal Info",
-                               "payload": celebrityname + ' ,%tvcelwiki%',
-                               "image_url": "https://cdn3.iconfinder.com/data/icons/inficons-round-brand-set-2/512/wikipedia-512.png"
-                           },
-                            {
+                                "image_url": "http://amreli.atulmotors.com/images/trophy.png"
+                            }, {
+                                "content_type": "text",
+                                "title": "Search in google",
+                                "payload": celebrityname + ' ,%tvcelgoogle%',
+                                "image_url": "https://fankickdev.blob.core.windows.net/images/google.png"
+                            }, {
+                                "content_type": "text",
+                                "title": "Personal Info",
+                                "payload": celebrityname + ' ,%tvcelwiki%',
+                                "image_url": "https://cdn3.iconfinder.com/data/icons/inficons-round-brand-set-2/512/wikipedia-512.png"
+                            }, {
                                 "content_type": "text",
                                 "title": "News",
                                 "payload": celebrityname + ' ,%tvcelnews%',
-                                "image_url":"https://thumbs.dreamstime.com/x/news-icon-11187212.jpg"
+                                "image_url": "https://thumbs.dreamstime.com/x/news-icon-11187212.jpg"
                             }, {
                                 "content_type": "text",
                                 "title": "TV Shows Jokes",
@@ -481,29 +479,27 @@ function tvcelbritydetails(event, celbrityname) {
                                 "content_type": "text",
                                 "title": "Pictures",
                                 "payload": name + ' ,%tvcelpics%',
-                                "image_url":"http://icons.iconarchive.com/icons/harwen/simple/256/My-Pictures-icon.png"
+                                "image_url": "http://icons.iconarchive.com/icons/harwen/simple/256/My-Pictures-icon.png"
                             }, {
                                 "content_type": "text",
                                 "title": "Awards",
                                 "payload": name + ' ,%tvcelawards%',
-                                  "image_url":"http://amreli.atulmotors.com/images/trophy.png"
-                            },
-                            {
-                               "content_type": "text",
-                               "title": "Search in google",
-                               "payload": name + ' ,%tvcelgoogle%',
-                               "image_url": "https://fankickdev.blob.core.windows.net/images/google.png"
-                           }, {
-                               "content_type": "text",
-                               "title": "Personal Info",
-                               "payload": name + ' ,%tvcelwiki%',
-                               "image_url": "https://cdn3.iconfinder.com/data/icons/inficons-round-brand-set-2/512/wikipedia-512.png"
-                           },
-                            {
+                                "image_url": "http://amreli.atulmotors.com/images/trophy.png"
+                            }, {
+                                "content_type": "text",
+                                "title": "Search in google",
+                                "payload": name + ' ,%tvcelgoogle%',
+                                "image_url": "https://fankickdev.blob.core.windows.net/images/google.png"
+                            }, {
+                                "content_type": "text",
+                                "title": "Personal Info",
+                                "payload": name + ' ,%tvcelwiki%',
+                                "image_url": "https://cdn3.iconfinder.com/data/icons/inficons-round-brand-set-2/512/wikipedia-512.png"
+                            }, {
                                 "content_type": "text",
                                 "title": "News",
                                 "payload": name + ' ,%tvcelnews%',
-                                "image_url":"https://thumbs.dreamstime.com/x/news-icon-11187212.jpg"
+                                "image_url": "https://thumbs.dreamstime.com/x/news-icon-11187212.jpg"
                             }, {
                                 "content_type": "text",
                                 "title": "TV Shows Jokes",

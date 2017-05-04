@@ -435,19 +435,18 @@ function sportscelbritydetails(messagingEvent, sportscelname) {
                                 "content_type": "text",
                                 "title": "Pictures",
                                 "payload": name + ' ,%sportscelpics%',
-                                "image_url":"http://icons.iconarchive.com/icons/harwen/simple/256/My-Pictures-icon.png"
+                                "image_url": "http://icons.iconarchive.com/icons/harwen/simple/256/My-Pictures-icon.png"
                             }, {
                                 "content_type": "text",
                                 "title": "Awards",
                                 "payload": name + ' ,%sportscelawards%',
-                                "image_url":"http://amreli.atulmotors.com/images/trophy.png"
-                            },  {
+                                "image_url": "http://amreli.atulmotors.com/images/trophy.png"
+                            }, {
                                 "content_type": "text",
                                 "title": "News",
                                 "payload": name + ' ,%sportscelnews%',
-                                "image_url":"https://thumbs.dreamstime.com/x/news-icon-11187212.jpg"
-                            },
-                            {
+                                "image_url": "https://thumbs.dreamstime.com/x/news-icon-11187212.jpg"
+                            }, {
                                 "content_type": "text",
                                 "title": "Search in google",
                                 "payload": name + ' ,%sportscelgoogle%',
@@ -457,8 +456,7 @@ function sportscelbritydetails(messagingEvent, sportscelname) {
                                 "title": "Personal Info",
                                 "payload": name + ' ,%sportscelwiki%',
                                 "image_url": "https://cdn3.iconfinder.com/data/icons/inficons-round-brand-set-2/512/wikipedia-512.png"
-                            },
-                            {
+                            }, {
                                 "content_type": "text",
                                 "title": 'Sports Jokes',
                                 "payload": "Jokes"
@@ -608,7 +606,7 @@ const sportscelebrityinfo = (messagingEvent, quickpayloadtext) => {
                                 ]
                             }
                         }
-                    }else if (subCategory == "%sportscelgoogle%") {
+                    } else if (subCategory == "%sportscelgoogle%") {
                         console.log("celebrity news");
                         keyMap = {
                             "type": "template",
@@ -630,7 +628,7 @@ const sportscelebrityinfo = (messagingEvent, quickpayloadtext) => {
                                 ]
                             }
                         }
-                    }else if (subCategory == "%sportscelwiki%") {
+                    } else if (subCategory == "%sportscelwiki%") {
                         console.log("celebrity news");
                         keyMap = {
                             "type": "template",
@@ -696,19 +694,18 @@ const sportscelebrityinfo = (messagingEvent, quickpayloadtext) => {
                                 "content_type": "text",
                                 "title": "Pictures",
                                 "payload": celebrityname + ' ,%sportscelpics%',
-                                "image_url":"http://icons.iconarchive.com/icons/harwen/simple/256/My-Pictures-icon.png"
+                                "image_url": "http://icons.iconarchive.com/icons/harwen/simple/256/My-Pictures-icon.png"
                             }, {
                                 "content_type": "text",
                                 "title": "Awards",
                                 "payload": celebrityname + ' ,%sportscelawards%',
-                                "image_url":"http://amreli.atulmotors.com/images/trophy.png"
+                                "image_url": "http://amreli.atulmotors.com/images/trophy.png"
                             }, {
                                 "content_type": "text",
                                 "title": "News",
                                 "payload": celebrityname + ' ,%sportscelnews%',
-                                "image_url":"https://thumbs.dreamstime.com/x/news-icon-11187212.jpg"
-                            },
-                            {
+                                "image_url": "https://thumbs.dreamstime.com/x/news-icon-11187212.jpg"
+                            }, {
                                 "content_type": "text",
                                 "title": "Search in google",
                                 "payload": celebrityname + ' ,%sportscelgoogle%',
@@ -718,8 +715,7 @@ const sportscelebrityinfo = (messagingEvent, quickpayloadtext) => {
                                 "title": "Personal Info",
                                 "payload": celebrityname + ' ,%sportscelwiki%',
                                 "image_url": "https://cdn3.iconfinder.com/data/icons/inficons-round-brand-set-2/512/wikipedia-512.png"
-                            },
-                            {
+                            }, {
                                 "content_type": "text",
                                 "title": 'Sports Jokes',
                                 "payload": "Jokes"

@@ -384,7 +384,7 @@ function language_wise_albams(language, event) {
                             }
                         },
                         "quick_replies": [
-                          {
+                            {
                                 "content_type": "text",
                                 "title": "Top 50 Songs",
                                 "payload": 'Top 50 Songs,' + categoryName + ',%QRsub%'
@@ -392,7 +392,7 @@ function language_wise_albams(language, event) {
                                 "content_type": "text",
                                 "title": "Music Videos",
                                 "payload": 'Music Videos,' + categoryName + ',%QRsub%'
-                            },{
+                            }, {
                                 "content_type": "text",
                                 "title": "Hindi Albums",
                                 "payload": "Hindi"
@@ -528,45 +528,42 @@ function music_celbrity_details(messagingEvent, musiccelname) {
                                 "content_type": "text",
                                 "title": "Pictures",
                                 "payload": name + ' ,%musiccelpics%',
-                                "image_url":"http://icons.iconarchive.com/icons/harwen/simple/256/My-Pictures-icon.png"
+                                "image_url": "http://icons.iconarchive.com/icons/harwen/simple/256/My-Pictures-icon.png"
                             }, {
                                 "content_type": "text",
                                 "title": "Awards",
                                 "payload": name + ' ,%musiccelawards%',
-                                "image_url":"http://amreli.atulmotors.com/images/trophy.png"
-                            },
-                            {
+                                "image_url": "http://amreli.atulmotors.com/images/trophy.png"
+                            }, {
                                 "content_type": "text",
                                 "title": "Personal Info",
                                 "payload": name + ' ,%musiccelwiki%',
                                 "image_url": "https://cdn3.iconfinder.com/data/icons/inficons-round-brand-set-2/512/wikipedia-512.png"
-                            },
-                            {
-                               "content_type": "text",
-                               "title": "Search in google",
-                               "payload": name + ' ,%musiccelgoogle%',
-                               "image_url": "https://fankickdev.blob.core.windows.net/images/google.png"
-                           },
-                            {
+                            }, {
+                                "content_type": "text",
+                                "title": "Search in google",
+                                "payload": name + ' ,%musiccelgoogle%',
+                                "image_url": "https://fankickdev.blob.core.windows.net/images/google.png"
+                            }, {
                                 "content_type": "text",
                                 "title": "News",
                                 "payload": name + ' ,%Musiccelnews%',
-                                "image_url":"https://thumbs.dreamstime.com/x/news-icon-11187212.jpg"
+                                "image_url": "https://thumbs.dreamstime.com/x/news-icon-11187212.jpg"
                             }, {
                                 "content_type": "text",
                                 "title": "Popular Albums",
                                 "payload": name + ' ,%Musiccelalbums%',
-                                "image_url":"http://cdn.appstorm.net/web.appstorm.net/files/2010/03/FolderMusic200x200.jpg"
+                                "image_url": "http://cdn.appstorm.net/web.appstorm.net/files/2010/03/FolderMusic200x200.jpg"
                             }, {
                                 "content_type": "text",
                                 "title": "Popular Songs",
                                 "payload": name + ' ,%Musiccelsongs%',
-                                "image_url":"http://ellenjmchenry.com/store/wp-content/uploads/2012/11/music_icon.jpg"
+                                "image_url": "http://ellenjmchenry.com/store/wp-content/uploads/2012/11/music_icon.jpg"
                             }, {
                                 "content_type": "text",
                                 "title": "Competitors",
                                 "payload": name + ' ,%Musiccelcomp%',
-                                "image_url":"http://icons.iconarchive.com/icons/iconshock/real-vista-business/256/competitors-icon.png"
+                                "image_url": "http://icons.iconarchive.com/icons/iconshock/real-vista-business/256/competitors-icon.png"
                             }, {
                                 "content_type": "text",
                                 "title": "Music Jokes",
@@ -832,44 +829,42 @@ const musiccelebrityinfo = (messagingEvent, quickpayloadtext) => {
                                 "content_type": "text",
                                 "title": "Pictures",
                                 "payload": celebrityname + ' ,%musiccelpics%',
-                                "image_url":"http://icons.iconarchive.com/icons/harwen/simple/256/My-Pictures-icon.png"
+                                "image_url": "http://icons.iconarchive.com/icons/harwen/simple/256/My-Pictures-icon.png"
                             }, {
                                 "content_type": "text",
                                 "title": "Awards",
                                 "payload": celebrityname + ' ,%musiccelawards%',
-                                "image_url":"http://amreli.atulmotors.com/images/trophy.png"
-                            },
-                            {
-                               "content_type": "text",
-                               "title": "Search in google",
-                               "payload": celebrityname + ' ,%musiccelgoogle%',
-                               "image_url": "https://fankickdev.blob.core.windows.net/images/google.png"
-                           }, {
-                               "content_type": "text",
-                               "title": "Personal Info",
-                               "payload": celebrityname + ' ,%musiccelwiki%',
-                               "image_url": "https://cdn3.iconfinder.com/data/icons/inficons-round-brand-set-2/512/wikipedia-512.png"
-                           },
-                            {
+                                "image_url": "http://amreli.atulmotors.com/images/trophy.png"
+                            }, {
+                                "content_type": "text",
+                                "title": "Search in google",
+                                "payload": celebrityname + ' ,%musiccelgoogle%',
+                                "image_url": "https://fankickdev.blob.core.windows.net/images/google.png"
+                            }, {
+                                "content_type": "text",
+                                "title": "Personal Info",
+                                "payload": celebrityname + ' ,%musiccelwiki%',
+                                "image_url": "https://cdn3.iconfinder.com/data/icons/inficons-round-brand-set-2/512/wikipedia-512.png"
+                            }, {
                                 "content_type": "text",
                                 "title": "News",
                                 "payload": celebrityname + ' ,%Musiccelnews%',
-                                "image_url":"https://thumbs.dreamstime.com/x/news-icon-11187212.jpg"
+                                "image_url": "https://thumbs.dreamstime.com/x/news-icon-11187212.jpg"
                             }, {
                                 "content_type": "text",
                                 "title": "Popular Albums",
                                 "payload": celebrityname + ' ,%Musiccelalbums%',
-                                "image_url":"http://cdn.appstorm.net/web.appstorm.net/files/2010/03/FolderMusic200x200.jpg"
+                                "image_url": "http://cdn.appstorm.net/web.appstorm.net/files/2010/03/FolderMusic200x200.jpg"
                             }, {
                                 "content_type": "text",
                                 "title": "Popular Songs",
                                 "payload": celebrityname + ' ,%Musiccelsongs%',
-                                "image_url":"http://ellenjmchenry.com/store/wp-content/uploads/2012/11/music_icon.jpg"
+                                "image_url": "http://ellenjmchenry.com/store/wp-content/uploads/2012/11/music_icon.jpg"
                             }, {
                                 "content_type": "text",
                                 "title": "Competitors",
                                 "payload": celebrityname + ' ,%Musiccelcomp%',
-                                "image_url":"http://icons.iconarchive.com/icons/iconshock/real-vista-business/256/competitors-icon.png"
+                                "image_url": "http://icons.iconarchive.com/icons/iconshock/real-vista-business/256/competitors-icon.png"
                             }, {
                                 "content_type": "text",
                                 "title": "Music Jokes",

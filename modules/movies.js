@@ -678,12 +678,14 @@ const celebrity_Queue_block1_details = (messagingEvent, quickpayloadtext) => {
                         "quick_replies": [
                             {
                                 "content_type": "text",
-                                "title": "Fantastic!👌",
-                                "payload": "Fantastic!," + celebrityName + "," + blockOneUrl + "," + quickReply2 + "," + quickReply3 + "," + description + ",1,%Fantastic!%"
+                                "title": "Fantastic!",
+                                "payload": "Fantastic!," + celebrityName + "," + blockOneUrl + "," + quickReply2 + "," + quickReply3 + "," + description + ",1,%Fantastic!%",
+                                "image_url": "https://www.smileysapp.com/emojis/ok-smiley.png"
                             }, {
                                 "content_type": "text",
                                 "title": "Is it? ",
-                                "payload": "Is it?," + celebrityName + "," + blockOneUrl + "," + quickReply2 + "," + quickReply3 + "," + description + ",1,%Fantastic!%"
+                                "payload": "Is it?," + celebrityName + "," + blockOneUrl + "," + quickReply2 + "," + quickReply3 + "," + description + ",1,%Fantastic!%",
+                                "image_url": "https://www.smileysapp.com/emojis/inspecting-smiley.png"
                             }, {
                                 "content_type": "text",
                                 "title": quickReply2,
@@ -783,12 +785,14 @@ const celebrity_Queue_block2_details = (messagingEvent, quickpayloadtext) => {
                         "quick_replies": [
                             {
                                 "content_type": "text",
-                                "title": "Fantastic!👌",
-                                "payload": "Fantastic!," + celebrityName + "," + blockTwoUrl + "," + quickReply1 + "," + quickReply3 + "," + description + ",2,%Fantastic!%"
+                                "title": "Fantastic!",
+                                "payload": "Fantastic!," + celebrityName + "," + blockTwoUrl + "," + quickReply1 + "," + quickReply3 + "," + description + ",2,%Fantastic!%",
+                                "image_url": "https://www.smileysapp.com/emojis/ok-smiley.png"
                             }, {
                                 "content_type": "text",
                                 "title": "Is it? ",
-                                "payload": "Is it?," + celebrityName + "," + blockTwoUrl + "," + quickReply1 + "," + quickReply3 + "," + description + ",2,%Fantastic!%"
+                                "payload": "Is it?," + celebrityName + "," + blockTwoUrl + "," + quickReply1 + "," + quickReply3 + "," + description + ",2,%Fantastic!%",
+                                "image_url": "https://www.smileysapp.com/emojis/inspecting-smiley.png"
                             }, {
                                 "content_type": "text",
                                 "title": quickReply1,
@@ -799,8 +803,9 @@ const celebrity_Queue_block2_details = (messagingEvent, quickpayloadtext) => {
                                 "payload": quickReply3 + ',' + celebrityName + ',' + ",%celebrity_conv3%"
                             }, {
                                 "content_type": "text",
-                                "title": "Enough!✋",
-                                "payload": "%Enough!%"
+                                "title": "Enough!",
+                                "payload": "%Enough!%",
+                                "image_url": "https://www.smileysapp.com/emojis/not-listening.png"
                             }, {
                                 "content_type": "text",
                                 "title": celebrityName,
@@ -888,12 +893,14 @@ const celebrity_Queue_block3_details = (messagingEvent, quickpayloadtext) => {
                         "quick_replies": [
                             {
                                 "content_type": "text",
-                                "title": "Fantastic!👌",
-                                "payload": "Fantastic!," + celebrityName + "," + blockThreeUrl + "," + quickReply1 + "," + quickReply2 + "," + description + ",3,%Fantastic!%"
+                                "title": "Fantastic!",
+                                "payload": "Fantastic!," + celebrityName + "," + blockThreeUrl + "," + quickReply1 + "," + quickReply2 + "," + description + ",3,%Fantastic!%",
+                                "image_url": "https://www.smileysapp.com/emojis/ok-smiley.png"
                             }, {
                                 "content_type": "text",
                                 "title": "Is it? ",
-                                "payload": "Is it?," + celebrityName + "," + blockThreeUrl + "," + quickReply1 + "," + quickReply2 + "," + description + ",3,%Fantastic!%"
+                                "payload": "Is it?," + celebrityName + "," + blockThreeUrl + "," + quickReply1 + "," + quickReply2 + "," + description + ",3,%Fantastic!%",
+                                "image_url": "https://www.smileysapp.com/emojis/inspecting-smiley.png"
                             }, {
                                 "content_type": "text",
                                 "title": quickReply1,
@@ -904,8 +911,9 @@ const celebrity_Queue_block3_details = (messagingEvent, quickpayloadtext) => {
                                 "payload": quickReply2 + ',' + celebrityName + ',' + "blockTwoName ,%celebrity_conv2%"
                             }, {
                                 "content_type": "text",
-                                "title": "Enough!✋",
-                                "payload": "%Enough!%"
+                                "title": "Enough!",
+                                "payload": "%Enough!%",
+                                "image_url": "https://www.smileysapp.com/emojis/not-listening.png"
                             }, {
                                 "content_type": "text",
                                 "title": celebrityName,

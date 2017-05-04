@@ -89,13 +89,13 @@ const sendContentPacks = (categoryName, event) => {
     } else if (categoryName == "cricket" || categoryName == "soccer" || categoryName == "tennis" || categoryName == "badminton") {
         usersubcategory(event, categoryName);
         subcategorydetails(categoryName, event);
-    } else if (categoryName == "home"  ) {
+    } else if (categoryName == "home") {
         categoryName = "home";
         allcategory(event, categoryName);
-    }else if (categoryName == "%enough!%" ) {
-      //  categoryName = "home";
+    } else if (categoryName == "%enough!%") {
+        //  categoryName = "home";
         wishing_message(categoryName, event);
-    }else if (categoryName == "jokes") {
+    } else if (categoryName == "jokes") {
         sendJoke(categoryName, event);
     } else if (categoryName == "ipl 2017" || categoryName == "ipl") {
         sports.ipl(categoryName, event);
@@ -105,7 +105,7 @@ const sendContentPacks = (categoryName, event) => {
         videodisplay(categoryName, event);
     } else if (categoryName == "location") {
         adduserlocation(categoryName, event);
-    }else if (categoryName == "list") {
+    } else if (categoryName == "list") {
         list_view(categoryName, event);
     } else if (categoryName == 518003 || categoryName == 500045) {
         getuserlocation(categoryName, event);
@@ -114,82 +114,78 @@ const sendContentPacks = (categoryName, event) => {
     }
 }
 
-
-function list_view(categoryName, event){
-var senderID = event.sender.id;
-var messageData = {
-  "recipient":{
-    "id": senderID
-  }, "message":
-  {
-    "attachment": {
-        "type": "template",
-        "payload": {
-            "template_type": "list",
-            "elements": [
-                {
-                    "title": "Classic T-Shirt Collection",
-                    "image_url": "https://fankickdev.blob.core.windows.net/images/movies.jpg",
-                    "subtitle": "See all our colors",
-                    "default_action": {
-                        "type": "web_url",
-                        "url": "https://fankickdev.blob.core.windows.net/images/movies.jpg",
-                        "messenger_extensions": true,
-                        "webview_height_ratio": "tall",
-                        "fallback_url": "https://fankickdev.blob.core.windows.net/images/movies.jpg"
-                    },
-                    "buttons": [
+function list_view(categoryName, event) {
+    var senderID = event.sender.id;
+    var messageData = {
+        "recipient": {
+            "id": senderID
+        },
+        "message": {
+            "attachment": {
+                "type": "template",
+                "payload": {
+                    "template_type": "list",
+                    "elements": [
                         {
-                            "title": "View",
-                            "type": "web_url",
-                            "url": "https://fankickdev.blob.core.windows.net/images/movies.jpg",
-                            "messenger_extensions": true,
-                            "webview_height_ratio": "tall",
-                            "fallback_url": "https://fankickdev.blob.core.windows.net/images/movies.jpg"
+                            "title": "Classic T-Shirt Collection",
+                            "image_url": "https://fankickdev.blob.core.windows.net/images/movies.jpg",
+                            "subtitle": "See all our colors",
+                            "default_action": {
+                                "type": "web_url",
+                                "url": "https://fankickdev.blob.core.windows.net/images/movies.jpg",
+                                "messenger_extensions": true,
+                                "webview_height_ratio": "tall",
+                                "fallback_url": "https://fankickdev.blob.core.windows.net/images/movies.jpg"
+                            },
+                            "buttons": [
+                                {
+                                    "title": "View",
+                                    "type": "web_url",
+                                    "url": "https://fankickdev.blob.core.windows.net/images/movies.jpg",
+                                    "messenger_extensions": true,
+                                    "webview_height_ratio": "tall",
+                                    "fallback_url": "https://fankickdev.blob.core.windows.net/images/movies.jpg"
+                                }
+                            ]
+                        }, {
+                            "title": "Classic White T-Shirt",
+                            "image_url": "https://fankickdev.blob.core.windows.net/images/movies.jpg",
+                            "subtitle": "100% Cotton, 200% Comfortable",
+                            "default_action": {
+                                "type": "web_url",
+                                "url": "https://fankickdev.blob.core.windows.net/images/movies.jpg",
+                                "messenger_extensions": true,
+                                "webview_height_ratio": "tall",
+                                "fallback_url": "https://fankickdev.blob.core.windows.net/images/movies.jpg"
+                            },
+                            "buttons": [
+                                {
+                                    "title": "Shop Now",
+                                    "type": "web_url",
+                                    "url": "https://fankickdev.blob.core.windows.net/images/movies.jpg",
+                                    "messenger_extensions": true,
+                                    "webview_height_ratio": "tall",
+                                    "fallback_url": "https://fankickdev.blob.core.windows.net/images/movies.jpg"
+                                }
+                            ]
                         }
-                    ]
-                },
-                {
-                    "title": "Classic White T-Shirt",
-                    "image_url": "https://fankickdev.blob.core.windows.net/images/movies.jpg",
-                    "subtitle": "100% Cotton, 200% Comfortable",
-                    "default_action": {
-                        "type": "web_url",
-                        "url": "https://fankickdev.blob.core.windows.net/images/movies.jpg",
-                        "messenger_extensions": true,
-                        "webview_height_ratio": "tall",
-                        "fallback_url": "https://fankickdev.blob.core.windows.net/images/movies.jpg"
-                    },
+                    ],
                     "buttons": [
                         {
-                            "title": "Shop Now",
-                            "type": "web_url",
-                            "url": "https://fankickdev.blob.core.windows.net/images/movies.jpg",
-                            "messenger_extensions": true,
-                            "webview_height_ratio": "tall",
-                            "fallback_url": "https://fankickdev.blob.core.windows.net/images/movies.jpg"
+                            "title": "View More",
+                            "type": "postback",
+                            "payload": "payload"
                         }
                     ]
                 }
-            ],
-             "buttons": [
-                {
-                    "title": "View More",
-                    "type": "postback",
-                    "payload": "payload"
-                }
-            ]
+            }
         }
+
     }
-}
+
+    fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
 
 }
-
-fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
-
-}
-
-
 
 function user_intrest_category(event, categoryName) {
     var senderID = event.sender.id;
@@ -227,14 +223,14 @@ function userintrest_intro_message(category, event) {
     var senderID = event.sender.id;
     //var category = "home";
     //var msg = 'Hello dear, last time when you came, you were browsing ' + category + '. You like to continue? Shall I serve something else?';
-    var msg ='Hello..\nWant to know whats trending in ' + category + '?\nHere you go..';
+    var msg = 'Hello..\nWant to know whats trending in ' + category + '?\nHere you go..';
     console.log("--------:Response data:--------msg1 ", msg);
     var messageData = {
         "recipient": {
             "id": senderID
         },
         "message": {
-            "text": msg,
+            "text": msg
         }
     }
     fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
@@ -680,7 +676,7 @@ function videodisplay(categoryName, event) {
             "attachment": {
                 "type": "video",
                 "payload": {
-                  "url":"http://rankworld.io/MySample_Video.mp4"
+                    "url": "http://rankworld.io/MySample_Video.mp4"
                     //"url": "http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4"
                     //"url": "https://www.facebook.com/cnn/videos/vl.1074656819284548/10156412943866509/?type=1"
                 }
@@ -960,7 +956,7 @@ function fbuserdetails(event, userid) {
         var userlname = userfbdata.last_name;
 
         //var userFullName = userfname + userlname;
-        var userFullName = userfname.concat( userlname);
+        var userFullName = userfname.concat(userlname);
         console.log(userFullName, "This is suser ");
         //console.log("--------:Response data:-------- ", JSON.stringify(body));
         // console.log("--------:Response data:--------first_name ", userfbdata.first_name);

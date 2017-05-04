@@ -320,7 +320,7 @@ function quickpayload(messagingEvent) {
         console.log("Sport celebrity Name");
         var sportscelname = quickpayloadtext.replace(" %sportscel%", "");
         sports.sportscelbrityintro(messagingEvent, sportscelname);
-    } else if (sportscelpics != -1 || sportscelnews != -1 || sportscelawards != -1 || sportscelnetworth != -1 || sportscelcompe != -1 ||sportscelgoogle != -1 ||sportscelwiki != -1) {
+    } else if (sportscelpics != -1 || sportscelnews != -1 || sportscelawards != -1 || sportscelnetworth != -1 || sportscelcompe != -1 || sportscelgoogle != -1 || sportscelwiki != -1) {
         console.log("This is getgenremovies condition");
         sports.sportscelebrityinfo(messagingEvent, quickpayloadtext);
     } else if (musicartistname != -1) {
@@ -884,18 +884,18 @@ function celebritypics(messagingEvent, quickpayloadtext) {
                             "payload": {
                                 "template_type": "generic",
                                 "elements": [
-                                  {
-                                      "title": rows[i].name,
-                                      "image_url": rows[i].picture3,
-                                      "subtitle": 'Lets get into more personals',
-                                      "buttons": [
-                                      {
-                                          "type":"web_url",
-                                          "url": rows[i].personalInfo,
-                                          "title":"Proceed 👉"
-                                      }
-                                      ]
-                                  }
+                                    {
+                                        "title": rows[i].name,
+                                        "image_url": rows[i].picture3,
+                                        "subtitle": 'Lets get into more personals',
+                                        "buttons": [
+                                            {
+                                                "type": "web_url",
+                                                "url": rows[i].personalInfo,
+                                                "title": "Proceed 👉"
+                                            }
+                                        ]
+                                    }
                                 ]
                             }
                         }
@@ -913,11 +913,11 @@ function celebritypics(messagingEvent, quickpayloadtext) {
                                         "image_url": rows[i].picture3,
                                         "subtitle": 'Lets see what Google knows about' + rows[i].name + '.',
                                         "buttons": [
-                                        {
-                                            "type":"web_url",
-                                            "url": rows[i].googleSearch,
-                                            "title":"Proceed 👉"
-                                        }
+                                            {
+                                                "type": "web_url",
+                                                "url": rows[i].googleSearch,
+                                                "title": "Proceed 👉"
+                                            }
                                         ]
                                     }
                                 ]
@@ -1004,34 +1004,32 @@ function celebritypics(messagingEvent, quickpayloadtext) {
                                 "content_type": "text",
                                 "title": 'Pictures',
                                 "payload": celebrityname + ' ,%pictures%',
-                                "image_url":"http://icons.iconarchive.com/icons/harwen/simple/256/My-Pictures-icon.png"
+                                "image_url": "http://icons.iconarchive.com/icons/harwen/simple/256/My-Pictures-icon.png"
                             }, {
                                 "content_type": "text",
                                 "title": 'Movies',
                                 "payload": celebrityname + ' ,%movies%',
-                                "image_url":"http://www.hooverlibrary.org/sites/default/files/icons/icon_monday_movies2.jpg"
-                            },
-                            {
+                                "image_url": "http://www.hooverlibrary.org/sites/default/files/icons/icon_monday_movies2.jpg"
+                            }, {
                                 "content_type": "text",
                                 "title": "Search in google",
                                 "payload": celebrityname + ' ,%googlesearch%',
-                                "image_url":"https://fankickdev.blob.core.windows.net/images/google.png"
+                                "image_url": "https://fankickdev.blob.core.windows.net/images/google.png"
                             }, {
                                 "content_type": "text",
                                 "title": "Personal Info",
                                 "payload": celebrityname + ' ,%wikisearch%',
-                                "image_url":"https://cdn3.iconfinder.com/data/icons/inficons-round-brand-set-2/512/wikipedia-512.png"
-                            },
-                            {
+                                "image_url": "https://cdn3.iconfinder.com/data/icons/inficons-round-brand-set-2/512/wikipedia-512.png"
+                            }, {
                                 "content_type": "text",
                                 "title": "News",
                                 "payload": celebrityname + ' ,%news%',
-                                "image_url":"https://thumbs.dreamstime.com/x/news-icon-11187212.jpg"
+                                "image_url": "https://thumbs.dreamstime.com/x/news-icon-11187212.jpg"
                             }, {
                                 "content_type": "text",
                                 "title": "Family",
                                 "payload": celebrityname + ' ,%family%',
-                                "image_url":"http://tukanglastangerangselatan.com/assets/images/slider/fm1.png"
+                                "image_url": "http://tukanglastangerangselatan.com/assets/images/slider/fm1.png"
                             },
                             // {
                             //     "content_type": "text",
@@ -1561,34 +1559,32 @@ function filmactor(messagingEvent, actorname) {
                                 "content_type": "text",
                                 "title": "Pictures",
                                 "payload": celebrityname + ' ,%pictures%',
-                                "image_url":"http://icons.iconarchive.com/icons/harwen/simple/256/My-Pictures-icon.png"
+                                "image_url": "http://icons.iconarchive.com/icons/harwen/simple/256/My-Pictures-icon.png"
                             }, {
                                 "content_type": "text",
                                 "title": "Movies",
                                 "payload": celebrityname + ' ,%movies%',
-                                "image_url":"http://www.hooverlibrary.org/sites/default/files/icons/icon_monday_movies2.jpg"
-                            },
-                            {
+                                "image_url": "http://www.hooverlibrary.org/sites/default/files/icons/icon_monday_movies2.jpg"
+                            }, {
                                 "content_type": "text",
                                 "title": "Search in google",
                                 "payload": celebrityname + ' ,%googlesearch%',
-                                "image_url":"https://fankickdev.blob.core.windows.net/images/google.png"
+                                "image_url": "https://fankickdev.blob.core.windows.net/images/google.png"
                             }, {
                                 "content_type": "text",
                                 "title": "Personal Info",
                                 "payload": celebrityname + ' ,%wikisearch%',
-                                "image_url":"https://cdn3.iconfinder.com/data/icons/inficons-round-brand-set-2/512/wikipedia-512.png"
-                            },
-                            {
+                                "image_url": "https://cdn3.iconfinder.com/data/icons/inficons-round-brand-set-2/512/wikipedia-512.png"
+                            }, {
                                 "content_type": "text",
                                 "title": "News",
                                 "payload": celebrityname + ' ,%news%',
-                                "image_url":"https://thumbs.dreamstime.com/x/news-icon-11187212.jpg"
+                                "image_url": "https://thumbs.dreamstime.com/x/news-icon-11187212.jpg"
                             }, {
                                 "content_type": "text",
                                 "title": "Family",
                                 "payload": celebrityname + ' ,%family%',
-                                "image_url":"http://tukanglastangerangselatan.com/assets/images/slider/fm1.png"
+                                "image_url": "http://tukanglastangerangselatan.com/assets/images/slider/fm1.png"
                             }, {
                                 "content_type": "text",
                                 "title": "Tollywood",
