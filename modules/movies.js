@@ -431,12 +431,14 @@ const filmactor = (messagingEvent, actorname) => {
                                 "payload": celebrityname + ' ,%movies%'
                             },{
                                 "content_type": "text",
-                                "title": "Search in google Ⓖ",
-                                "payload": celebrityname + ' ,%googlesearch%'
+                                "title": "Search in google",
+                                "payload": celebrityname + ' ,%googlesearch%',
+                                "image_url":"https://fankickdev.blob.core.windows.net/images/google.png"
                             }, {
                                 "content_type": "text",
                                 "title": "Personal Info",
-                                "payload": celebrityname + ' ,%wikisearch%'
+                                "payload": celebrityname + ' ,%wikisearch%',
+                              "image_url":"http://vignette4.wikia.nocookie.net/quantumleap/images/f/f3/Wikipedia_logo_165x125.png/revision/latest?cb=20140905185242"
                             },{
                                 "content_type": "text",
                                 "title": "News",
