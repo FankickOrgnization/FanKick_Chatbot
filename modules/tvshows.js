@@ -457,7 +457,7 @@ function tvcelbritydetails(event, celbrityname) {
                         //         "url": rows[i].news,
                         //         "title": "News 📰"
                         //     }
-                        ]
+                        //]
                     };
                     contentList.push(keyMap);
                     //  movieslist = rows[i].lastFiveMovies;
