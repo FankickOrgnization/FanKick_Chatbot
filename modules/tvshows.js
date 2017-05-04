@@ -244,7 +244,8 @@ const tvcelebrityinfo = (messagingEvent, quickpayloadtext) => {
                             {
                                 "content_type": "text",
                                 "title": "Pictures",
-                                "payload": celebrityname + ' ,%tvcelpics%'
+                                "payload": celebrityname + ' ,%tvcelpics%',
+                                "image_url":"http://icons.iconarchive.com/icons/harwen/simple/256/My-Pictures-icon.png"
                             }, {
                                 "content_type": "text",
                                 "title": "Awards",
@@ -258,7 +259,8 @@ const tvcelebrityinfo = (messagingEvent, quickpayloadtext) => {
                             {
                                 "content_type": "text",
                                 "title": "News",
-                                "payload": celebrityname + ' ,%tvcelnews%'
+                                "payload": celebrityname + ' ,%tvcelnews%',
+                                "image_url":"https://thumbs.dreamstime.com/x/news-icon-11187212.jpg"
                             }, {
                                 "content_type": "text",
                                 "title": "TV Shows Jokes",
@@ -427,7 +429,8 @@ function tvcelbritydetails(event, celbrityname) {
                             {
                                 "content_type": "text",
                                 "title": "Pictures",
-                                "payload": name + ' ,%tvcelpics%'
+                                "payload": name + ' ,%tvcelpics%',
+                                "image_url":"http://icons.iconarchive.com/icons/harwen/simple/256/My-Pictures-icon.png"
                             }, {
                                 "content_type": "text",
                                 "title": "Awards",
@@ -441,7 +444,8 @@ function tvcelbritydetails(event, celbrityname) {
                             {
                                 "content_type": "text",
                                 "title": "News",
-                                "payload": name + ' ,%tvcelnews%'
+                                "payload": name + ' ,%tvcelnews%',
+                                "image_url":"https://thumbs.dreamstime.com/x/news-icon-11187212.jpg"
                             }, {
                                 "content_type": "text",
                                 "title": "TV Shows Jokes",

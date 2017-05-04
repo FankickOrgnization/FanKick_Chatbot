@@ -527,7 +527,8 @@ function music_celbrity_details(messagingEvent, musiccelname) {
                             {
                                 "content_type": "text",
                                 "title": "Pictures",
-                                "payload": name + ' ,%musiccelpics%'
+                                "payload": name + ' ,%musiccelpics%',
+                                "image_url":"http://icons.iconarchive.com/icons/harwen/simple/256/My-Pictures-icon.png"
                             }, {
                                 "content_type": "text",
                                 "title": "Awards",
@@ -541,7 +542,8 @@ function music_celbrity_details(messagingEvent, musiccelname) {
                             {
                                 "content_type": "text",
                                 "title": "News",
-                                "payload": name + ' ,%Musiccelnews%'
+                                "payload": name + ' ,%Musiccelnews%',
+                                "image_url":"https://thumbs.dreamstime.com/x/news-icon-11187212.jpg"
                             }, {
                                 "content_type": "text",
                                 "title": "Popular Albums",
@@ -774,7 +776,8 @@ const musiccelebrityinfo = (messagingEvent, quickpayloadtext) => {
                             {
                                 "content_type": "text",
                                 "title": "Pictures",
-                                "payload": celebrityname + ' ,%musiccelpics%'
+                                "payload": celebrityname + ' ,%musiccelpics%',
+                                "image_url":"http://icons.iconarchive.com/icons/harwen/simple/256/My-Pictures-icon.png"
                             }, {
                                 "content_type": "text",
                                 "title": "Awards",
@@ -788,7 +791,8 @@ const musiccelebrityinfo = (messagingEvent, quickpayloadtext) => {
                             {
                                 "content_type": "text",
                                 "title": "News",
-                                "payload": celebrityname + ' ,%Musiccelnews%'
+                                "payload": celebrityname + ' ,%Musiccelnews%',
+                                "image_url":"https://thumbs.dreamstime.com/x/news-icon-11187212.jpg"
                             }, {
                                 "content_type": "text",
                                 "title": "Popular Albums",

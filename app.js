@@ -1015,11 +1015,13 @@ function celebritypics(messagingEvent, quickpayloadtext) {
                             {
                                 "content_type": "text",
                                 "title": "News",
-                                "payload": celebrityname + ' ,%news%'
+                                "payload": celebrityname + ' ,%news%',
+                                "image_url":"https://thumbs.dreamstime.com/x/news-icon-11187212.jpg"
                             }, {
                                 "content_type": "text",
                                 "title": "Family",
-                                "payload": celebrityname + ' ,%family%'
+                                "payload": celebrityname + ' ,%family%',
+                                "image_url":"http://tukanglastangerangselatan.com/assets/images/slider/fm1.png"
                             },
                             // {
                             //     "content_type": "text",
@@ -1548,7 +1550,8 @@ function filmactor(messagingEvent, actorname) {
                             {
                                 "content_type": "text",
                                 "title": "Pictures",
-                                "payload": celebrityname + ' ,%pictures%'
+                                "payload": celebrityname + ' ,%pictures%',
+                                "image_url":"http://icons.iconarchive.com/icons/harwen/simple/256/My-Pictures-icon.png"
                             }, {
                                 "content_type": "text",
                                 "title": "Movies",
@@ -1566,11 +1569,13 @@ function filmactor(messagingEvent, actorname) {
                             {
                                 "content_type": "text",
                                 "title": "News",
-                                "payload": celebrityname + ' ,%news%'
+                                "payload": celebrityname + ' ,%news%',
+                                "image_url":"https://thumbs.dreamstime.com/x/news-icon-11187212.jpg"
                             }, {
                                 "content_type": "text",
                                 "title": "Family",
-                                "payload": celebrityname + ' ,%family%'
+                                "payload": celebrityname + ' ,%family%',
+                                "image_url":"http://tukanglastangerangselatan.com/assets/images/slider/fm1.png"
                             }, {
                                 "content_type": "text",
                                 "title": "Tollywood",

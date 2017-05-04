@@ -424,11 +424,13 @@ const filmactor = (messagingEvent, actorname) => {
                             {
                                 "content_type": "text",
                                 "title": "Pictures",
-                                "payload": celebrityname + ' ,%pictures%'
+                                "payload": celebrityname + ' ,%pictures%',
+                                "image_url":"http://icons.iconarchive.com/icons/harwen/simple/256/My-Pictures-icon.png"
                             }, {
                                 "content_type": "text",
                                 "title": "Movies",
-                                "payload": celebrityname + ' ,%movies%'
+                                "payload": celebrityname + ' ,%movies%',
+                                "image_url":"http://iosicongallery.com/img/512/itunes-movie-trailers-2011.png"
                             },{
                                 "content_type": "text",
                                 "title": "Search in google",
@@ -438,15 +440,17 @@ const filmactor = (messagingEvent, actorname) => {
                                 "content_type": "text",
                                 "title": "Personal Info",
                                 "payload": celebrityname + ' ,%wikisearch%',
-                              "image_url":"http://vignette4.wikia.nocookie.net/quantumleap/images/f/f3/Wikipedia_logo_165x125.png/revision/latest?cb=20140905185242"
+                              "image_url":"http://www.userlogos.org/files/logos/Ti%20Khal/wp2.png"
                             },{
                                 "content_type": "text",
                                 "title": "News",
-                                "payload": celebrityname + ' ,%news%'
+                                "payload": celebrityname + ' ,%news%',
+                                "image_url":"https://thumbs.dreamstime.com/x/news-icon-11187212.jpg"
                             }, {
                                 "content_type": "text",
                                 "title": "Family",
-                                "payload": celebrityname + ' ,%family%'
+                                "payload": celebrityname + ' ,%family%',
+                                "image_url":"http://tukanglastangerangselatan.com/assets/images/slider/fm1.png"
                             }, {
                                 "content_type": "text",
                                 "title": "Home 🏠",
@@ -685,11 +689,13 @@ const selectedactorfilems = (messagingEvent, celebrityname) => {
                             }, {
                                 "content_type": "text",
                                 "title": "Pictures",
-                                "payload": celebrityname + ' ,%pictures%'
+                                "payload": celebrityname + ' ,%pictures%',
+                                "image_url":"http://icons.iconarchive.com/icons/harwen/simple/256/My-Pictures-icon.png"
                             }, {
                                 "content_type": "text",
                                 "title": "Movies",
-                                "payload": celebrityname + ' ,%movies%'
+                                "payload": celebrityname + ' ,%movies%',
+                                "image_url":"http://iosicongallery.com/img/512/itunes-movie-trailers-2011.png"
                             },
                             // {
                             //     "content_type": "text",
@@ -703,7 +709,8 @@ const selectedactorfilems = (messagingEvent, celebrityname) => {
                             {
                                 "content_type": "text",
                                 "title": "Family",
-                                "payload": celebrityname + ' ,%family%'
+                                "payload": celebrityname + ' ,%family%',
+                                "image_url":"http://tukanglastangerangselatan.com/assets/images/slider/fm1.png"
                             }, {
                                 "content_type": "text",
                                 "title": "Home 🏠",

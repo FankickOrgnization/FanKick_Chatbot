@@ -434,7 +434,8 @@ function sportscelbritydetails(messagingEvent, sportscelname) {
                             {
                                 "content_type": "text",
                                 "title": "Pictures",
-                                "payload": name + ' ,%sportscelpics%'
+                                "payload": name + ' ,%sportscelpics%',
+                                "image_url":"http://icons.iconarchive.com/icons/harwen/simple/256/My-Pictures-icon.png"
                             }, {
                                 "content_type": "text",
                                 "title": "Awards",
@@ -446,7 +447,8 @@ function sportscelbritydetails(messagingEvent, sportscelname) {
                             }, {
                                 "content_type": "text",
                                 "title": "News",
-                                "payload": name + ' ,%sportscelnews%'
+                                "payload": name + ' ,%sportscelnews%',
+                                "image_url":"https://thumbs.dreamstime.com/x/news-icon-11187212.jpg"
                             },
                             // {
                             //     "content_type": "text",
@@ -646,7 +648,8 @@ const sportscelebrityinfo = (messagingEvent, quickpayloadtext) => {
                             {
                                 "content_type": "text",
                                 "title": "Pictures",
-                                "payload": celebrityname + ' ,%sportscelpics%'
+                                "payload": celebrityname + ' ,%sportscelpics%',
+                                "image_url":"http://icons.iconarchive.com/icons/harwen/simple/256/My-Pictures-icon.png"
                             }, {
                                 "content_type": "text",
                                 "title": "Awards",
@@ -658,7 +661,8 @@ const sportscelebrityinfo = (messagingEvent, quickpayloadtext) => {
                             }, {
                                 "content_type": "text",
                                 "title": "News",
-                                "payload": celebrityname + ' ,%sportscelnews%'
+                                "payload": celebrityname + ' ,%sportscelnews%',
+                                "image_url":"https://thumbs.dreamstime.com/x/news-icon-11187212.jpg"
                             },
                             // {
                             //     "content_type": "text",
