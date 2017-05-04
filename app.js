@@ -204,6 +204,8 @@ function quickpayload(messagingEvent) {
     var tvcomedy = quickpayloadtext.search("%tvComedy%");
     var tvcrime = quickpayloadtext.search("%tvCrime%");
     var tvreality = quickpayloadtext.search("%tvReality%");
+    var tvcelgoogle = quickpayloadtext.search("%tvcelgoogle%");
+    var tvcelwiki = quickpayloadtext.search("%tvcelwiki%");
     //sports celebrity details
     var sportsquicktitle = quickpayloadtext.search("%sportsQRtitle%");
     var sportscelebrityname = quickpayloadtext.search("%sportscel%");
