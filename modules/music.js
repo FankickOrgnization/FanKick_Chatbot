@@ -496,17 +496,17 @@ function music_celbrity_details(messagingEvent, musiccelname) {
                         "title": rows[i].name,
                         "image_url": rows[i].picture1,
                         "subtitle": rows[i].skill,
-                        "buttons": [
-                            {
-                                "type": "web_url",
-                                "url": rows[i].personal,
-                                "title": "About 👤"
-                            }, {
-                                "type": "web_url",
-                                "url": rows[i].googleSearch,
-                                "title": "Google Search 🔎"
-                            }
-                        ]
+                        // "buttons": [
+                        //     {
+                        //         "type": "web_url",
+                        //         "url": rows[i].personal,
+                        //         "title": "About 👤"
+                        //     }, {
+                        //         "type": "web_url",
+                        //         "url": rows[i].googleSearch,
+                        //         "title": "Google Search 🔎"
+                        //     }
+                        // ]
                     };
                     contentList.push(keyMap);
 
