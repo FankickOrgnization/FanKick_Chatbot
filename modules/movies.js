@@ -697,7 +697,8 @@ const celebrity_Queue_block1_details = (messagingEvent, quickpayloadtext) => {
                             }, {
                                 "content_type": "text",
                                 "title": "Enough!",
-                                "payload": "%Enough!%"
+                                "payload": "%Enough!%",
+                                  "image_url": "https://www.smileysapp.com/emojis/not-listening.png"
                             }, {
                                 "content_type": "text",
                                 "title": celebrityName,

@@ -406,13 +406,13 @@ function sportscelbritydetails(messagingEvent, sportscelname) {
                         "title": rows[i].name,
                         "image_url": rows[i].picture1,
                         "subtitle": rows[i].skill + "," + rows[i].country,
-                        "buttons": [
-                            {
-                                "type": "web_url",
-                                "url": rows[i].personal,
-                                "title": "About 👤"
-                            }
-                        ]
+                        // "buttons": [
+                        //     {
+                        //         "type": "web_url",
+                        //         "url": rows[i].personal,
+                        //         "title": "About 👤"
+                        //     }
+                        // ]
                     };
                     contentList.push(keyMap);
 

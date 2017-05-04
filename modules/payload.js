@@ -889,8 +889,9 @@ function sendJoke(categoryName, event) {
             quick_replies: [
                 {
                     "content_type": "text",
-                    "title": "Another 😂",
-                    "payload": "jokes"
+                    "title": "Play One More",
+                    "payload": "jokes",
+                    "image_url": "https://www.smileysapp.com/emojis/thumbs-up-smiley.png"
                 }, {
                     "content_type": "text",
                     "title": "Movies 🎬",
