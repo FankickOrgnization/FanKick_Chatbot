@@ -997,20 +997,24 @@ function celebritypics(messagingEvent, quickpayloadtext) {
                             {
                                 "content_type": "text",
                                 "title": 'Pictures',
-                                "payload": celebrityname + ' ,%pictures%'
+                                "payload": celebrityname + ' ,%pictures%',
+                                "image_url":"http://icons.iconarchive.com/icons/harwen/simple/256/My-Pictures-icon.png"
                             }, {
                                 "content_type": "text",
                                 "title": 'Movies',
-                                "payload": celebrityname + ' ,%movies%'
+                                "payload": celebrityname + ' ,%movies%',
+                                "image_url":"http://www.hooverlibrary.org/sites/default/files/icons/icon_monday_movies2.jpg"
                             },
                             {
                                 "content_type": "text",
                                 "title": "Search in google",
-                                "payload": celebrityname + ' ,%googlesearch%'
+                                "payload": celebrityname + ' ,%googlesearch%',
+                                "image_url":"https://fankickdev.blob.core.windows.net/images/google.png"
                             }, {
                                 "content_type": "text",
                                 "title": "Personal Info",
-                                "payload": celebrityname + ' ,%wikisearch%'
+                                "payload": celebrityname + ' ,%wikisearch%',
+                                "image_url":"https://cdn3.iconfinder.com/data/icons/inficons-round-brand-set-2/512/wikipedia-512.png"
                             },
                             {
                                 "content_type": "text",
@@ -1555,16 +1559,19 @@ function filmactor(messagingEvent, actorname) {
                             }, {
                                 "content_type": "text",
                                 "title": "Movies",
-                                "payload": celebrityname + ' ,%movies%'
+                                "payload": celebrityname + ' ,%movies%',
+                                "image_url":"http://www.hooverlibrary.org/sites/default/files/icons/icon_monday_movies2.jpg"
                             },
                             {
                                 "content_type": "text",
                                 "title": "Search in google",
-                                "payload": celebrityname + ' ,%googlesearch%'
+                                "payload": celebrityname + ' ,%googlesearch%',
+                                "image_url":"https://fankickdev.blob.core.windows.net/images/google.png"
                             }, {
                                 "content_type": "text",
                                 "title": "Personal Info",
-                                "payload": celebrityname + ' ,%wikisearch%'
+                                "payload": celebrityname + ' ,%wikisearch%',
+                                "image_url":"https://cdn3.iconfinder.com/data/icons/inficons-round-brand-set-2/512/wikipedia-512.png"
                             },
                             {
                                 "content_type": "text",
