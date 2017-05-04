@@ -443,20 +443,20 @@ function tvcelbritydetails(event, celbrityname) {
                         "image_url": rows[i].picture1,
                         "subtitle": rows[i].skill,
                         //  "item_url": rows[i].image_url,
-                        "buttons": [
-                            {
-                                "type": "web_url",
-                                "url": rows[i].personalInfo,
-                                "title": "About 👤"
-                            }, {
-                                "type": "web_url",
-                                "url": rows[i].googleSearch,
-                                "title": "Search in Google 🔎"
-                            }, {
-                                "type": "web_url",
-                                "url": rows[i].news,
-                                "title": "News 📰"
-                            }
+                        // "buttons": [
+                        //     {
+                        //         "type": "web_url",
+                        //         "url": rows[i].personalInfo,
+                        //         "title": "About 👤"
+                        //     }, {
+                        //         "type": "web_url",
+                        //         "url": rows[i].googleSearch,
+                        //         "title": "Search in Google 🔎"
+                        //     }, {
+                        //         "type": "web_url",
+                        //         "url": rows[i].news,
+                        //         "title": "News 📰"
+                        //     }
                         ]
                     };
                     contentList.push(keyMap);
