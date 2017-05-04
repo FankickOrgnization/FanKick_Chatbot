@@ -769,11 +769,11 @@ const celebrity_Queue_block1_details = (messagingEvent, quickpayloadtext) => {
                             {
                                 "content_type": "text",
                                 "title": "Fantastic!👌",
-                                "payload": "Fantastic!," + celebrityName + "," + blockOneUrl + "," + quickReply2 + "," + quickReply3 + "," + description + ",%Fantastic!%"
+                                "payload": "Fantastic!," + celebrityName + "," + blockOneUrl + "," + quickReply2 + "," + quickReply3 + "," + description + ",1,%Fantastic!%"
                             }, {
                                 "content_type": "text",
                                 "title": "Is it? ",
-                                "payload": "Is it?," + celebrityName + "," + blockOneUrl + "," + quickReply2 + "," + quickReply3 + "," + description + ",%Fantastic!%"
+                                "payload": "Is it?," + celebrityName + "," + blockOneUrl + "," + quickReply2 + "," + quickReply3 + "," + description + ",1,%Fantastic!%"
                             }, {
                                 "content_type": "text",
                                 "title": quickReply2,
@@ -874,11 +874,11 @@ const celebrity_Queue_block2_details = (messagingEvent, quickpayloadtext) => {
                             {
                                 "content_type": "text",
                                 "title": "Fantastic!👌",
-                                "payload": "Fantastic!," + celebrityName + "," + blockTwoUrl + "," + quickReply1 + "," + quickReply3 + "," + description + ",%Fantastic!%"
+                                "payload": "Fantastic!," + celebrityName + "," + blockTwoUrl + "," + quickReply1 + "," + quickReply3 + "," + description + ",2,%Fantastic!%"
                             }, {
                                 "content_type": "text",
                                 "title": "Is it? ",
-                                "payload": "Is it?," + celebrityName + "," + blockTwoUrl + "," + quickReply1 + "," + quickReply3 + "," + description + ",%Fantastic!%"
+                                "payload": "Is it?," + celebrityName + "," + blockTwoUrl + "," + quickReply1 + "," + quickReply3 + "," + description + ",2,%Fantastic!%"
                             }, {
                                 "content_type": "text",
                                 "title": quickReply1,
@@ -979,11 +979,11 @@ const celebrity_Queue_block3_details = (messagingEvent, quickpayloadtext) => {
                             {
                                 "content_type": "text",
                                 "title": "Fantastic!👌",
-                                "payload": "Fantastic!," + celebrityName + "," + blockThreeUrl + "," + quickReply1 + "," + quickReply2 + "," + description + ",%Fantastic!%"
+                                "payload": "Fantastic!," + celebrityName + "," + blockThreeUrl + "," + quickReply1 + "," + quickReply2 + "," + description + ",3,%Fantastic!%"
                             }, {
                                 "content_type": "text",
                                 "title": "Is it? ",
-                                "payload": "Is it?," + celebrityName + "," + blockThreeUrl + "," + quickReply1 + "," + quickReply2 + "," + description + ",%Fantastic!%"
+                                "payload": "Is it?," + celebrityName + "," + blockThreeUrl + "," + quickReply1 + "," + quickReply2 + "," + description + ",3,%Fantastic!%"
                             }, {
                                 "content_type": "text",
                                 "title": quickReply1,
