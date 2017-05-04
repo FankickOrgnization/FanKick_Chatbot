@@ -50,7 +50,8 @@ const sendContentPacks = (categoryName, event) => {
         console.log("categoryName", categoryName);
     } else if (categoryName == "hi" || categoryName == "hello" || categoryName == "hey") {
         //wishing_message(categoryName, event);
-        user_intrest_category(event, categoryName);
+        //user_intrest_category(event, categoryName);
+        hiemoation(event, categoryName);
     } else if (categoryName == "movies") {
         user_intrest_movies_category(event, categoryName);
         //submenu(event, categoryName);
@@ -112,6 +113,38 @@ const sendContentPacks = (categoryName, event) => {
     } else {
         sendHelpMessage(event);
     }
+}
+
+function hiemoation(event, categoryName) {
+    {
+        //var rowslenth = rows.length;
+        var senderID = event.sender.id;
+
+        var messageData = {
+            "recipient": {
+                "id": senderID
+            },
+            "message": {
+                "attachment": {
+                    "type": "template",
+                    "payload": {
+                        "template_type": "generic",
+                        "elements": [
+                            {
+                                "title": "Classic T-Shirt Collection",
+                                "image_url": "https://www.smileysapp.com/emojis/hi-smiley.png",
+                                "subtitle": "See all our colors"
+                            }
+                        ]
+                    }
+                }
+            }
+
+        }
+        fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
+    }
+    user_intrest_category(event, categoryName);
+
 }
 
 function list_view(categoryName, event) {
