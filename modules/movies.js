@@ -1057,17 +1057,17 @@ const celbrity_Fantastic_wow = (messagingEvent, quickpayloadtext, type) => {
     if (type == "Fantastic") {
       if(blockno == 1){
         bno1 = 2;
-        bno1 = 3;
+        bno2 = 3;
         console.log("bno1",bno1);
         console.log("bno1",bno2);
       }else if (blockno == 2) {
         bno1 = 1;
-        bno1 = 3;
+        bno2 = 3;
         console.log("bno1",bno1);
         console.log("bno1",bno2);
       }else if (blockno == 3) {
         bno1 = 1;
-        bno1 = 2;
+        bno2 = 2;
         console.log("bno1",bno1);
         console.log("bno1",bno2);
       }
