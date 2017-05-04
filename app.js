@@ -210,6 +210,7 @@ function quickpayload(messagingEvent) {
     var sportscelpics = quickpayloadtext.search("%sportscelpics%");
     var sportscelnews = quickpayloadtext.search("%sportscelnews%");
     var sportscelgoogle = quickpayloadtext.search("%sportscelgoogle%");
+    var sportscelwiki = quickpayloadtext.search("%sportscelwiki%");
     var sportscelawards = quickpayloadtext.search("%sportscelawards%");
     var sportscelnetworth = quickpayloadtext.search("%sportscelnetworth%");
     var sportscelcompe = quickpayloadtext.search("%sportscelcompetitors%");
@@ -222,6 +223,8 @@ function quickpayload(messagingEvent) {
     var musicartistalbum = quickpayloadtext.search("%Musiccelalbums%");
     var musicartistsongs = quickpayloadtext.search("%Musiccelsongs%");
     var musicartistcomp = quickpayloadtext.search("%Musiccelcomp%");
+    var musicartistwiki = quickpayloadtext.search("%musiccelwiki%");
+    var musicartistgoogle = quickpayloadtext.search("%musiccelgoogle%");
     var conversationQueuetitle = quickpayloadtext.search("%movie_conv%");
     var moviecelbrity_conv1 = quickpayloadtext.search("%celebrity_conv1%");
     var moviecelbrity_conv2 = quickpayloadtext.search("%celebrity_conv2%");
@@ -293,7 +296,7 @@ function quickpayload(messagingEvent) {
         var celbrityname = quickpayloadtext.replace(" %tvcel%", "");
         console.log("Yessssssss", celbrityname);
         tvshows.tvcelbrityintro(event, celbrityname);
-    } else if (tvcelpics != -1 || tvcelawards != -1 || tvcelnetworth != -1 || tvcelnews != -1) {
+    } else if (tvcelgoogle != -1 || tvcelwiki != -1 || tvcelpics != -1 || tvcelawards != -1 || tvcelnetworth != -1 || tvcelnews != -1) {
         console.log("This is getgenremovies condition");
         tvshows.tvcelebrityinfo(messagingEvent, quickpayloadtext);
     } else if (tvcomedy != -1 || tvcrime != -1 || tvreality != -1) {
@@ -315,14 +318,14 @@ function quickpayload(messagingEvent) {
         console.log("Sport celebrity Name");
         var sportscelname = quickpayloadtext.replace(" %sportscel%", "");
         sports.sportscelbrityintro(messagingEvent, sportscelname);
-    } else if (sportscelpics != -1 || sportscelnews != -1 || sportscelawards != -1 || sportscelnetworth != -1 || sportscelcompe != -1 ||sportscelgoogle != -1) {
+    } else if (sportscelpics != -1 || sportscelnews != -1 || sportscelawards != -1 || sportscelnetworth != -1 || sportscelcompe != -1 ||sportscelgoogle != -1 ||sportscelwiki != -1) {
         console.log("This is getgenremovies condition");
         sports.sportscelebrityinfo(messagingEvent, quickpayloadtext);
     } else if (musicartistname != -1) {
         console.log("Music celebrity Name");
         var musiccelname = quickpayloadtext.replace(" %musicartist%", "");
         music.musiccelbrityintro(messagingEvent, musiccelname);
-    } else if (musicartistpics != -1 || musicartistawards != -1 || musicartistnet != -1 || musicartistnews != -1 || musicartistalbum != -1 || musicartistsongs != -1 || musicartistcomp != -1) {
+    } else if (musicartistwiki != -1 || musicartistgoogle != -1 || musicartistpics != -1 || musicartistawards != -1 || musicartistnet != -1 || musicartistnews != -1 || musicartistalbum != -1 || musicartistsongs != -1 || musicartistcomp != -1) {
         console.log("This is getgenremovies condition");
         music.musiccelebrityinfo(messagingEvent, quickpayloadtext);
     } else {

@@ -535,11 +535,18 @@ function music_celbrity_details(messagingEvent, musiccelname) {
                                 "payload": name + ' ,%musiccelawards%',
                                 "image_url":"http://amreli.atulmotors.com/images/trophy.png"
                             },
-                            // {
-                            //     "content_type": "text",
-                            //     "title": "Net Worth",
-                            //     "payload": name + ' ,%musiccelnetworth%'
-                            // },
+                            {
+                                "content_type": "text",
+                                "title": "Personal Info",
+                                "payload": name + ' ,%musiccelwiki%',
+                                "image_url": "https://cdn3.iconfinder.com/data/icons/inficons-round-brand-set-2/512/wikipedia-512.png"
+                            },
+                            {
+                               "content_type": "text",
+                               "title": "Search in google",
+                               "payload": name + ' ,%musiccelgoogle%',
+                               "image_url": "https://fankickdev.blob.core.windows.net/images/google.png"
+                           },
                             {
                                 "content_type": "text",
                                 "title": "News",
@@ -699,6 +706,50 @@ const musiccelebrityinfo = (messagingEvent, quickpayloadtext) => {
                                 ]
                             }
                         }
+                    } else if (subCategory == "%musiccelgoogle%") {
+                        console.log("celebrity news");
+                        keyMap = {
+                            "type": "template",
+                            "payload": {
+                                "template_type": "generic",
+                                "elements": [
+                                    {
+                                        "title": rows[i].name,
+                                        "image_url": rows[i].picture2,
+                                        "subtitle": rows[i].skill,
+                                        "buttons": [
+                                            {
+                                                "type": "web_url",
+                                                "url": rows[i].googleSearch,
+                                                "title": "Click Here"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        }
+                    } else if (subCategory == "%musiccelwiki%") {
+                        console.log("celebrity news");
+                        keyMap = {
+                            "type": "template",
+                            "payload": {
+                                "template_type": "generic",
+                                "elements": [
+                                    {
+                                        "title": rows[i].name,
+                                        "image_url": rows[i].picture2,
+                                        "subtitle": rows[i].skill,
+                                        "buttons": [
+                                            {
+                                                "type": "web_url",
+                                                "url": rows[i].personal,
+                                                "title": "Click Here"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        }
                     } else if (subCategory == "%musiccelawards%") {
                         console.log("celebrity awards");
                         keyMap = {
@@ -788,11 +839,17 @@ const musiccelebrityinfo = (messagingEvent, quickpayloadtext) => {
                                 "payload": celebrityname + ' ,%musiccelawards%',
                                 "image_url":"http://amreli.atulmotors.com/images/trophy.png"
                             },
-                            // {
-                            //     "content_type": "text",
-                            //     "title": "Net Worth",
-                            //     "payload": celebrityname + ' ,%musiccelnetworth%'
-                            // },
+                            {
+                               "content_type": "text",
+                               "title": "Search in google",
+                               "payload": celebrityname + ' ,%musiccelgoogle%',
+                               "image_url": "https://fankickdev.blob.core.windows.net/images/google.png"
+                           }, {
+                               "content_type": "text",
+                               "title": "Personal Info",
+                               "payload": celebrityname + ' ,%musiccelwiki%',
+                               "image_url": "https://cdn3.iconfinder.com/data/icons/inficons-round-brand-set-2/512/wikipedia-512.png"
+                           },
                             {
                                 "content_type": "text",
                                 "title": "News",

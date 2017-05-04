@@ -447,11 +447,17 @@ function sportscelbritydetails(messagingEvent, sportscelname) {
                                 "payload": name + ' ,%sportscelnews%',
                                 "image_url":"https://thumbs.dreamstime.com/x/news-icon-11187212.jpg"
                             },
-                            // {
-                            //     "content_type": "text",
-                            //     "title": "Competitors",
-                            //     "payload": name + ' ,%sportscelcompetitors%'
-                            // },
+                            {
+                                "content_type": "text",
+                                "title": "Search in google",
+                                "payload": name + ' ,%sportscelgoogle%',
+                                "image_url": "https://fankickdev.blob.core.windows.net/images/google.png"
+                            }, {
+                                "content_type": "text",
+                                "title": "Personal Info",
+                                "payload": name + ' ,%sportscelwiki%',
+                                "image_url": "https://cdn3.iconfinder.com/data/icons/inficons-round-brand-set-2/512/wikipedia-512.png"
+                            },
                             {
                                 "content_type": "text",
                                 "title": 'Sports Jokes',
@@ -602,6 +608,50 @@ const sportscelebrityinfo = (messagingEvent, quickpayloadtext) => {
                                 ]
                             }
                         }
+                    }else if (subCategory == "%sportscelgoogle%") {
+                        console.log("celebrity news");
+                        keyMap = {
+                            "type": "template",
+                            "payload": {
+                                "template_type": "generic",
+                                "elements": [
+                                    {
+                                        "title": rows[i].name,
+                                        "image_url": rows[i].picture2,
+                                        "subtitle": rows[i].skill + "," + rows[i].country,
+                                        "buttons": [
+                                            {
+                                                "type": "web_url",
+                                                "url": rows[i].googleSearch,
+                                                "title": "Click Here"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        }
+                    }else if (subCategory == "%sportscelwiki%") {
+                        console.log("celebrity news");
+                        keyMap = {
+                            "type": "template",
+                            "payload": {
+                                "template_type": "generic",
+                                "elements": [
+                                    {
+                                        "title": rows[i].name,
+                                        "image_url": rows[i].picture2,
+                                        "subtitle": rows[i].skill + "," + rows[i].country,
+                                        "buttons": [
+                                            {
+                                                "type": "web_url",
+                                                "url": rows[i].personal,
+                                                "title": "Click Here"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        }
                     } else if (subCategory == "%sportscelawards%") {
                         console.log("celebrity awards");
                         keyMap = {
@@ -658,11 +708,17 @@ const sportscelebrityinfo = (messagingEvent, quickpayloadtext) => {
                                 "payload": celebrityname + ' ,%sportscelnews%',
                                 "image_url":"https://thumbs.dreamstime.com/x/news-icon-11187212.jpg"
                             },
-                            // {
-                            //     "content_type": "text",
-                            //     "title": "Competitors",
-                            //     "payload": celebrityname + ' ,%sportscelcompetitors%'
-                            // },
+                            {
+                                "content_type": "text",
+                                "title": "Search in google",
+                                "payload": celebrityname + ' ,%sportscelgoogle%',
+                                "image_url": "https://fankickdev.blob.core.windows.net/images/google.png"
+                            }, {
+                                "content_type": "text",
+                                "title": "Personal Info",
+                                "payload": celebrityname + ' ,%sportscelwiki%',
+                                "image_url": "https://cdn3.iconfinder.com/data/icons/inficons-round-brand-set-2/512/wikipedia-512.png"
+                            },
                             {
                                 "content_type": "text",
                                 "title": 'Sports Jokes',

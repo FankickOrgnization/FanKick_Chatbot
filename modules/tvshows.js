@@ -208,6 +208,50 @@ const tvcelebrityinfo = (messagingEvent, quickpayloadtext) => {
                                 ]
                             }
                         }
+                    } else if (subCategory == "%tvcelgoogle%") {
+                        console.log("celebrity news");
+                        keyMap = {
+                            "type": "template",
+                            "payload": {
+                                "template_type": "generic",
+                                "elements": [
+                                    {
+                                        "title": rows[i].name,
+                                        "image_url": rows[i].picture2,
+                                        "subtitle": rows[i].name,
+                                        "buttons": [
+                                            {
+                                                "type": "web_url",
+                                                "url": rows[i].googleSearch,
+                                                "title": "Click Here"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        }
+                    } else if (subCategory == "%tvcelwiki%") {
+                        console.log("celebrity news");
+                        keyMap = {
+                            "type": "template",
+                            "payload": {
+                                "template_type": "generic",
+                                "elements": [
+                                    {
+                                        "title": rows[i].name,
+                                        "image_url": rows[i].picture2,
+                                        "subtitle": rows[i].name,
+                                        "buttons": [
+                                            {
+                                                "type": "web_url",
+                                                "url": rows[i].personalInfo,
+                                                "title": "Click Here"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        }
                     } else if (subCategory == "%tvcelawards%") {
                         console.log("celebrity awards");
                         keyMap = {
@@ -252,11 +296,17 @@ const tvcelebrityinfo = (messagingEvent, quickpayloadtext) => {
                                 "payload": celebrityname + ' ,%tvcelawards%',
                                 "image_url":"http://amreli.atulmotors.com/images/trophy.png"
                             },
-                            // {
-                            //     "content_type": "text",
-                            //     "title": "Net Worth",
-                            //     "payload": celebrityname + ' ,%tvcelnetworth%'
-                            // },
+                            {
+                               "content_type": "text",
+                               "title": "Search in google",
+                               "payload": celebrityname + ' ,%tvcelgoogle%',
+                               "image_url": "https://fankickdev.blob.core.windows.net/images/google.png"
+                           }, {
+                               "content_type": "text",
+                               "title": "Personal Info",
+                               "payload": celebrityname + ' ,%tvcelwiki%',
+                               "image_url": "https://cdn3.iconfinder.com/data/icons/inficons-round-brand-set-2/512/wikipedia-512.png"
+                           },
                             {
                                 "content_type": "text",
                                 "title": "News",
@@ -438,11 +488,17 @@ function tvcelbritydetails(event, celbrityname) {
                                 "payload": name + ' ,%tvcelawards%',
                                   "image_url":"http://amreli.atulmotors.com/images/trophy.png"
                             },
-                            // {
-                            //     "content_type": "text",
-                            //     "title": "Net Worth",
-                            //     "payload": name + ' ,%tvcelnetworth%'
-                            // },
+                            {
+                               "content_type": "text",
+                               "title": "Search in google",
+                               "payload": name + ' ,%tvcelgoogle%',
+                               "image_url": "https://fankickdev.blob.core.windows.net/images/google.png"
+                           }, {
+                               "content_type": "text",
+                               "title": "Personal Info",
+                               "payload": name + ' ,%tvcelwiki%',
+                               "image_url": "https://cdn3.iconfinder.com/data/icons/inficons-round-brand-set-2/512/wikipedia-512.png"
+                           },
                             {
                                 "content_type": "text",
                                 "title": "News",
