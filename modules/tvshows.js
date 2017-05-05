@@ -608,6 +608,7 @@ function tvshowsmenu(messagingEvent) {
 }
 
 function tvshowsdetails(messagingEvent, tvshowname) {
+  user_favorite_tvshow(messagingEvent, tvshowname);
     var tvshowname = tvshowname.trim();
     var tvshowleadActor;
     var tvshowleadActress;
@@ -690,6 +691,89 @@ function tvshowsdetails(messagingEvent, tvshowname) {
     });
 }
 
+
+function user_favorite_tvshow(messagingEvent, tvshowname) {
+    var senderID = messagingEvent.sender.id;
+    pool.getConnection(function(err, connection) {
+        connection.query('update cc_user_preference set fevTvShows = ? where facebookId = ?', [
+            tvshowname, senderID
+        ], function(err, rows) {
+            if (err) {
+                console.log("Error While retriving content pack data from database:", err);
+            } else {
+                console.log("Update the user favorite tv shows name database");
+                //sendHelpMessage(event);
+                //sendImageMessage(event);
+            }
+            connection.release();
+        });
+    });
+}
+
+const tvShows_conversation = (event, category, favtvshows) => {
+    var senderID = event.sender.id;
+    console.log("favoriteactorconversation:---", category);
+    console.log("favoriteactorconversation:---", favtvshows);
+    var celebrityName;
+    var description;
+    var conversationQueue;
+    var quickReply1;
+    var quickReply2;
+    var quickReply3;
+    pool.getConnection(function(err, connection) {
+        connection.query('select * from cc_conversation_three where celebrityName= ? order by id desc', [category], function(err, rows) {
+            if (err) {
+                console.log("Error While retriving content pack data from database:", err);
+            } else if (rows.length > 0) {
+                console.log("*******cc_celebrity_preference data from database:*********", rows);
+                for (var i = 0; i < rows.length; i++) {
+                    celebrityName = rows[i].celebrityName;
+                    description = rows[i].description;
+                    conversationQueue = rows[i].conversationQueue;
+                    quickReply1 = rows[i].quickReply1;
+                    quickReply2 = rows[i].quickReply2;
+                    quickReply3 = rows[i].quickReply3;
+                }
+                console.log(celebrityName, description, conversationQueue, quickReply1, quickReply2, quickReply3);
+                var messageData = {
+                    "recipient": {
+                        "id": senderID
+                    },
+                    "message": {
+                        "text": description,
+                        "quick_replies": [
+                            {
+                                "content_type": "text",
+                                "title": quickReply1,
+                                "payload": quickReply1 + '%conv%'
+                            }, {
+                                "content_type": "text",
+                                "title": quickReply2,
+                                "payload": quickReply2 + '%conv%'
+                            }, {
+                                "content_type": "text",
+                                "title": quickReply3,
+                                "payload": quickReply3 + '%conv%'
+                            }, {
+                                "content_type": "text",
+                                "title": "Skip",
+                                "payload": category
+                            }
+                        ]
+
+                    }
+                }
+                fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
+            } else if (rows.length == 0) {
+                //sportsmenu(event);
+                sportscelbritydetails(event, sportsCelebrity);
+            }
+            connection.release();
+        });
+    });
+}
+
+
 function sendHelpMessage(event) {
     var errorString = "";
     while (errorString === "") {
@@ -716,5 +800,6 @@ module.exports = {
     tvshowinfo: tvshowinfo,
     tvcelbrityintro: tvcelbrityintro,
     tvcelebrityinfo: tvcelebrityinfo,
-    gettvshowsgenre: gettvshowsgenre
+    gettvshowsgenre: gettvshowsgenre,
+    tvShows_conversation:tvShows_conversation
 };

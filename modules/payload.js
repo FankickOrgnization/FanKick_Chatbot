@@ -441,11 +441,14 @@ function user_intrest_sports_category(event, categoryName) {
                 }
                 if (category == null && sportsCelebrity == null) {
                     submenu(event, categoryName);
-                } else if (category == "sports" && sportsCelebrity == null) {
+                } else if (category == "sports") {
                     submenu(event, categoryName);
-                } else if (category == "sports" && sportsCelebrity != null) {
-                    sports.sports_celebrity_conversation(event, category, sportsCelebrity);
-                } else if (category != "sports") {
+                    sports.sports_category_conversation(event, category, sportsCelebrity);
+                }
+                // else if (category == "sports" && sportsCelebrity != null) {
+                //     sports.sports_category_conversation(event, category, sportsCelebrity);
+                // }
+                else if (category != "sports") {
                     submenu(event, categoryName);
                 }
             } else if (rows.length == 0) {
@@ -478,10 +481,12 @@ function user_intrest_tvshows_category(event, categoryName) {
                 if (category == null && favtvshows == null) {
                     submenu(event, categoryName);
                 } else if (category == "tv shows" && favtvshows == null) {
-                    submenu(event, categoryName);
-                } else if (category == "tv shows" && favtvshows != null) {
-                    tvshows.tv_shows_conversation(event, category, favtvshows);
-                } else if (category != "tv shows") {
+                    submenu(event, category);
+                }
+                // else if (category == "tv shows" && favtvshows != null) {
+                //     tvshows.tvShows_conversation(event, category, favtvshows);
+                // }
+                else if (category != "tv shows") {
                     submenu(event, categoryName);
                 }
             } else if (rows.length == 0) {
@@ -490,7 +495,6 @@ function user_intrest_tvshows_category(event, categoryName) {
             connection.release();
         });
     });
-
 }
 
 function movies_categor_conversation(event, subCategory) {

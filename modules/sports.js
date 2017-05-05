@@ -90,7 +90,7 @@ const sportscelbrityintro = (messagingEvent, sportscelname) => {
     user_favorite_sports_celebrity(messagingEvent, sportscelname)
 }
 
-const sports_celebrity_conversation = (event, category, sportsCelebrity) => {
+const sports_category_conversation = (event, category, sportsCelebrity) => {
     var senderID = event.sender.id;
     console.log("favoriteactorconversation:---", category);
     console.log("favoriteactorconversation:---", sportsCelebrity);
@@ -100,19 +100,20 @@ const sports_celebrity_conversation = (event, category, sportsCelebrity) => {
     var quickReply1;
     var quickReply2;
     var quickReply3;
+   var  blockOneUrl
     pool.getConnection(function(err, connection) {
-        connection.query('select * from cc_conversation_two where celebrityName= ? order by id desc', [sportsCelebrity], function(err, rows) {
+        connection.query('select * from cc_conversation_three where category = (select id from cc_categories where categoryName = ?) order by id desc', [category], function(err, rows) {
             if (err) {
                 console.log("Error While retriving content pack data from database:", err);
             } else if (rows.length > 0) {
                 console.log("*******cc_celebrity_preference data from database:*********", rows);
-                for (var i = 0; i < rows.length; i++) {
-                    celebrityName = rows[i].celebrityName;
-                    description = rows[i].description;
-                    conversationQueue = rows[i].conversationQueue;
-                    quickReply1 = rows[i].quickReply1;
-                    quickReply2 = rows[i].quickReply2;
-                    quickReply3 = rows[i].quickReply3;
+                for (var i = 0; i < 1; i++) {
+                  celebrityName = rows[i].celebrityName;
+                  description = rows[i].blockOneDescription;
+                  quickReply1 = rows[i].blockOneName;
+                  quickReply2 = rows[i].blockTwoName;
+                  quickReply3 = rows[i].blockThreeName;
+                  blockOneUrl = rows[i].blockOneUrl;
                 }
                 console.log(celebrityName, description, conversationQueue, quickReply1, quickReply2, quickReply3);
                 var messageData = {
@@ -124,20 +125,35 @@ const sports_celebrity_conversation = (event, category, sportsCelebrity) => {
                         "quick_replies": [
                             {
                                 "content_type": "text",
-                                "title": quickReply1,
-                                "payload": quickReply1 + '%conv%'
+                                "title": "Fantastic!",
+                                "payload": "Fantastic!," + celebrityName + "," + blockOneUrl + "," + quickReply2 + "," + quickReply3 + "," + description + ",1,%Fantastic!%",
+                                "image_url": "https://www.smileysapp.com/emojis/ok-smiley.png"
+                            }, {
+                                "content_type": "text",
+                                "title": "Is it? ",
+                                "payload": "Is it?," + celebrityName + "," + blockOneUrl + "," + quickReply2 + "," + quickReply3 + "," + description + ",1,%Fantastic!%",
+                                "image_url": "https://www.smileysapp.com/emojis/inspecting-smiley.png"
                             }, {
                                 "content_type": "text",
                                 "title": quickReply2,
-                                "payload": quickReply2 + '%conv%'
+                                "payload": quickReply2 + "," + celebrityName + "," + "blockTwoName ,%celebrity_conv2%"
                             }, {
                                 "content_type": "text",
                                 "title": quickReply3,
-                                "payload": quickReply3 + '%conv%'
+                                "payload": quickReply3 + "," + celebrityName + "," + "blockThreeName ,%celebrity_conv3%"
                             }, {
                                 "content_type": "text",
-                                "title": "Skip",
-                                "payload": category
+                                "title": "Enough!",
+                                "payload": "%Enough!%",
+                                  "image_url": "https://www.smileysapp.com/emojis/not-listening.png"
+                            }, {
+                                "content_type": "text",
+                                "title": celebrityName,
+                                "payload": celebrityName +' %sportscel%'
+                            },  {
+                                "content_type": "text",
+                                "title": "Jokes",
+                                "payload": "jokes"
                             }
                         ]
 
@@ -888,5 +904,5 @@ module.exports = {
     sportsqrintro: sportsqrintro,
     sportscelebrityinfo: sportscelebrityinfo,
     ipl: ipl,
-    sports_celebrity_conversation: sports_celebrity_conversation
+    sports_category_conversation: sports_category_conversation
 };
