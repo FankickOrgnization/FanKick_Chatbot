@@ -62,8 +62,8 @@ const sendContentPacks = (categoryName, event) => {
         usercategory(event, categoryName);
         console.log("enter into the allcategory function");
     } else if (categoryName == "tv shows") {
-        //userintresttvshowssubcategory(event, categoryName);
-        submenu(event, categoryName);
+        user_intrest_tvshows_category(event, categoryName);
+        //submenu(event, categoryName);
         usercategory(event, categoryName);
         console.log("enter into the allcategory function");
     } else if (categoryName == "music") {
@@ -442,11 +442,47 @@ function user_intrest_sports_category(event, categoryName) {
                 if (category == null && sportsCelebrity == null) {
                     submenu(event, categoryName);
                 } else if (category == "sports" && sportsCelebrity == null) {
-                  submenu(event, categoryName);
-                }else if (category == "sports" && sportsCelebrity != null) {
-                  sports.sports_celebrity_conversation(event, category, sportsCelebrity);
-                }else if (category != "sports") {
-                  submenu(event, categoryName);
+                    submenu(event, categoryName);
+                } else if (category == "sports" && sportsCelebrity != null) {
+                    sports.sports_celebrity_conversation(event, category, sportsCelebrity);
+                } else if (category != "sports") {
+                    submenu(event, categoryName);
+                }
+            } else if (rows.length == 0) {
+                submenu(event, categoryName);
+            }
+            connection.release();
+        });
+    });
+
+}
+
+function user_intrest_tvshows_category(event, categoryName) {
+    var senderID = event.sender.id;
+    pool.getConnection(function(err, connection) {
+        //connection.query('select * from cc_celebrity_preference where celebrityName=?',[categoryName], function(err, rows) {
+        //connection.query('select * from cc_celebrity_preference where subCategory = ?',[categoryName],function(err, rows) {
+        connection.query('select * from cc_user_preference where facebookId= ?', [senderID], function(err, rows) {
+            if (err) {
+                console.log("Error While retriving content pack data from database:", err);
+            } else if (rows.length > 0) {
+                console.log("*******cc_celebrity_preference data from database:*********", rows);
+                for (var i = 0; i < rows.length; i++) {
+                    var category = rows[i].category;
+                    var subCategory = rows[i].subCategory;
+                    var favtvshows = rows[i].favTvShows;
+                    console.log("category:-", category);
+                    console.log("subCategory:-", subCategory);
+                    console.log("movieCelebrity:-", favtvshows);
+                }
+                if (category == null && favtvshows == null) {
+                    submenu(event, categoryName);
+                } else if (category == "tv shows" && favtvshows == null) {
+                    submenu(event, categoryName);
+                } else if (category == "tv shows" && favtvshows != null) {
+                    tvshows.tv_shows_conversation(event, category, favtvshows);
+                } else if (category != "tv shows") {
+                    submenu(event, categoryName);
                 }
             } else if (rows.length == 0) {
                 submenu(event, categoryName);
