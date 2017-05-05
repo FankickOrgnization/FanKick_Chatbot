@@ -264,35 +264,43 @@ function sportsmenu(messagingEvent) {
                             {
                                 "content_type": "text",
                                 "title": "IPL 2017",
-                                "payload": 'IPL 2017'
+                                "payload": 'IPL 2017',
+                                "image_url": "http://www.userlogos.org/files/logos/jumpordie/ipl-iphone.png"
                             }, {
                                 "content_type": "text",
                                 "title": "Sports Videos",
-                                "payload": 'Sports Videos,sports,%QR%'
+                                "payload": 'Sports Videos,sports,%QR%',
+                                "image_url": "https://fankickdev.blob.core.windows.net/images/sports.jpg"
                             }, {
                                 "content_type": "text",
                                 "title": "Cricket Info",
-                                "payload": 'Cricket Info,sports,%QR%'
+                                "payload": 'Cricket Info,sports,%QR%',
+                                "image_url": "https://lh4.ggpht.com/BIZV9ymUYC1m1j9aNSBFlT9AmQRrjyRMuxOYF6AbX2OgZLd3RbaiKiEriO_ORHJ7kBs=w300"
                             }, {
                                 "content_type": "text",
                                 "title": "Cricket Teams",
-                                "payload": 'Cricket Teams,sports,%QR%'
+                                "payload": 'Cricket Teams,sports,%QR%',
+                                "image_url": "https://lh4.ggpht.com/BIZV9ymUYC1m1j9aNSBFlT9AmQRrjyRMuxOYF6AbX2OgZLd3RbaiKiEriO_ORHJ7kBs=w300"
                             }, {
                                 "content_type": "text",
                                 "title": "Cricket Schedules",
-                                "payload": 'Cricket Schedules,sports,%QR%'
+                                "payload": 'Cricket Schedules,sports,%QR%',
+                                "image_url": "https://lh4.ggpht.com/BIZV9ymUYC1m1j9aNSBFlT9AmQRrjyRMuxOYF6AbX2OgZLd3RbaiKiEriO_ORHJ7kBs=w300"
                             }, {
                                 "content_type": "text",
                                 "title": "Live Scores",
-                                "payload": 'Live Scores,sports,%QR%'
+                                "payload": 'Live Scores,sports,%QR%',
+                                "image_url": "https://lh4.ggpht.com/BIZV9ymUYC1m1j9aNSBFlT9AmQRrjyRMuxOYF6AbX2OgZLd3RbaiKiEriO_ORHJ7kBs=w300"
                             }, {
                                 "content_type": "text",
                                 "title": "Cricket Results",
-                                "payload": 'Cricket Results,sports,%QR%'
+                                "payload": 'Cricket Results,sports,%QR%',
+                                "image_url": "https://lh4.ggpht.com/BIZV9ymUYC1m1j9aNSBFlT9AmQRrjyRMuxOYF6AbX2OgZLd3RbaiKiEriO_ORHJ7kBs=w300"
                             }, {
                                 "content_type": "text",
                                 "title": "Soccer Results",
-                                "payload": 'Soccer Results,sports,%QR%'
+                                "payload": 'Soccer Results,sports,%QR%',
+                                "image_url": "https://fankickdev.blob.core.windows.net/images/sports.jpg"
                             }, {
                                 "content_type": "text",
                                 "title": "home 🏠",
