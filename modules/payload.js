@@ -445,6 +445,8 @@ function user_intrest_sports_category(event, categoryName) {
                   submenu(event, categoryName);
                 }else if (category == "sports" && sportsCelebrity != null) {
                   sports.sports_celebrity_conversation(event, category, sportsCelebrity);
+                }else if (category != "sports") {
+                  submenu(event, categoryName);
                 }
             } else if (rows.length == 0) {
                 submenu(event, categoryName);
