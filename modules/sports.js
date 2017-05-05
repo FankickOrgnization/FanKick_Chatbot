@@ -126,12 +126,12 @@ const sports_category_conversation = (event, category, sportsCelebrity) => {
                             {
                                 "content_type": "text",
                                 "title": "Fantastic!",
-                                "payload": "Fantastic!," + celebrityName + "," + blockOneUrl + "," + quickReply2 + "," + quickReply3 + "," + description + ",1,%Fantastic!%",
+                                "payload": "Fantastic!," + celebrityName + "," + blockOneUrl + "," + quickReply2 + "," + quickReply3 + "," + description + ",1,%Fantastic!sports%",
                                 "image_url": "https://www.smileysapp.com/emojis/ok-smiley.png"
                             }, {
                                 "content_type": "text",
                                 "title": "Is it? ",
-                                "payload": "Is it?," + celebrityName + "," + blockOneUrl + "," + quickReply2 + "," + quickReply3 + "," + description + ",1,%Fantastic!%",
+                                "payload": "Is it?," + celebrityName + "," + blockOneUrl + "," + quickReply2 + "," + quickReply3 + "," + description + ",1,%Fantastic!sports%",
                                 "image_url": "https://www.smileysapp.com/emojis/inspecting-smiley.png"
                             }, {
                                 "content_type": "text",
@@ -148,8 +148,8 @@ const sports_category_conversation = (event, category, sportsCelebrity) => {
                                   "image_url": "https://www.smileysapp.com/emojis/not-listening.png"
                             }, {
                                 "content_type": "text",
-                                "title": celebrityName,
-                                "payload": celebrityName +' %sportscel%'
+                                "title": "Latest in Sports",
+                                "payload": "Sports List %Latest in Sports%"
                             },  {
                                 "content_type": "text",
                                 "title": "Jokes",
@@ -878,6 +878,112 @@ const ipl = (categoryName, event) => {
     //sportsqrdetails(messagingEvent, qrtitle);
 }
 
+
+const sports_Fantastic_wow = (messagingEvent, quickpayloadtext, type) => {
+    var queuearray = quickpayloadtext.split(',');
+    var text = queuearray[0];
+    var celName = queuearray[1];
+    var url = queuearray[2];
+    var qr1 = queuearray[3];
+    var qr2 = queuearray[4];
+    var dec = queuearray[5];
+    var blockno = queuearray[6];
+    var bno1;
+    var bno2;
+    console.log(celName);
+    console.log(url);
+    console.log(qr1);
+    console.log(qr2);
+    console.log(dec);
+    console.log(blockno);
+
+    if (type == "Fantastic") {
+        if (blockno == 1) {
+            bno1 = 2;
+            bno2 = 3;
+            console.log("bno1", bno1);
+            console.log("bno1", bno2);
+        } else if (blockno == 2) {
+            bno1 = 1;
+            bno2 = 3;
+            console.log("bno1", bno1);
+            console.log("bno1", bno2);
+        } else if (blockno == 3) {
+            bno1 = 1;
+            bno2 = 2;
+            console.log("bno1", bno1);
+            console.log("bno1", bno2);
+        }
+        var senderID = messagingEvent.sender.id;
+        //var description = 'Thanks, Hey you want to know about ' + celName + 'please select the below button';
+        var messageData = {
+            "recipient": {
+                "id": senderID
+            },
+            "message": {
+                "attachment": {
+                    "type": "template",
+                    "payload": {
+                        "template_type": "generic",
+                        "elements": [
+                            {
+                                "title": celName,
+                                "subtitle": dec,
+                                "buttons": [
+                                    {
+                                        "type": "web_url",
+                                        "url": url,
+                                        "title": "Proceed 👉"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                },
+                //  "text": description,
+                "quick_replies": [
+                    {
+                        "content_type": "text",
+                        "title": qr1,
+                        "payload": qr1 + ',' + celName + ',' + 'blockOneName ,%celebrity_conv' + bno1 + '%'
+                    }, {
+                        "content_type": "text",
+                        "title": qr2,
+                        "payload": qr2 + ',' + celName + ',' + 'blockOneName ,%celebrity_conv' + bno2 + '%'
+                    }, {
+                        "content_type": "text",
+                        "title": "Latest in Movies",
+                        "payload": "movies"
+                    }, {
+                        "content_type": "text",
+                        "title": "Latest in Sports",
+                        "payload": "sports"
+                    }, {
+                        "content_type": "text",
+                        "title": "Latest in Music",
+                        "payload": "music"
+                    },{
+                        "content_type": "text",
+                        "title": "Latest in Tv Shows",
+                        "payload": "tv shows"
+                    }, {
+                        "content_type": "text",
+                        "title": "Jokes",
+                        "payload": "jokes"
+                    }
+                ]
+
+            }
+        }
+        fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
+        //update_conversation_usercelebrity(messagingEvent);
+    } else {
+        console.log("No Data Found From Database");
+        sendHelpMessage(messagingEvent);
+    }
+}
+
+
 function sendHelpMessage(event) {
     var errorString = "";
     while (errorString === "") {
@@ -905,5 +1011,6 @@ module.exports = {
     sportsqrintro: sportsqrintro,
     sportscelebrityinfo: sportscelebrityinfo,
     ipl: ipl,
-    sports_category_conversation: sports_category_conversation
+    sports_category_conversation: sports_category_conversation,
+    sports_Fantastic_wow:sports_Fantastic_wow
 };

@@ -701,24 +701,20 @@ const celebrity_Queue_block1_details = (messagingEvent, quickpayloadtext) => {
                                   "image_url": "https://www.smileysapp.com/emojis/not-listening.png"
                             }, {
                                 "content_type": "text",
-                                "title": celebrityName,
-                                "payload": celebrityName + " %a%"
+                                "title": "Latest in Movies",
+                                "payload": "movies"
                             }, {
                                 "content_type": "text",
-                                "title": "Tollywood",
-                                "payload": "Tollywood"
+                                "title": "Latest in Sports",
+                                "payload": "sports"
                             }, {
                                 "content_type": "text",
-                                "title": "Kollywood",
-                                "payload": "Kollywood"
-                            }, {
+                                "title": "Latest in Music",
+                                "payload": "music"
+                            },{
                                 "content_type": "text",
-                                "title": "Malayalam Cinema",
-                                "payload": "Malayalam Cinema"
-                            }, {
-                                "content_type": "text",
-                                "title": "Kannada Cinema",
-                                "payload": "Kannada Cinema"
+                                "title": "Latest in Tv Shows",
+                                "payload": "tv shows"
                             }, {
                                 "content_type": "text",
                                 "title": "Jokes",
@@ -809,24 +805,20 @@ const celebrity_Queue_block2_details = (messagingEvent, quickpayloadtext) => {
                                 "image_url": "https://www.smileysapp.com/emojis/not-listening.png"
                             }, {
                                 "content_type": "text",
-                                "title": celebrityName,
-                                "payload": celebrityName + " %a%"
+                                "title": "Latest in Movies",
+                                "payload": "movies"
                             }, {
                                 "content_type": "text",
-                                "title": "Tollywood",
-                                "payload": "Tollywood"
+                                "title": "Latest in Sports",
+                                "payload": "sports"
                             }, {
                                 "content_type": "text",
-                                "title": "Kollywood",
-                                "payload": "Kollywood"
-                            }, {
+                                "title": "Latest in Music",
+                                "payload": "music"
+                            },{
                                 "content_type": "text",
-                                "title": "Malayalam Cinema",
-                                "payload": "Malayalam Cinema"
-                            }, {
-                                "content_type": "text",
-                                "title": "Kannada Cinema",
-                                "payload": "Kannada Cinema"
+                                "title": "Latest in Tv Shows",
+                                "payload": "tv shows"
                             }, {
                                 "content_type": "text",
                                 "title": "Jokes",
@@ -915,26 +907,22 @@ const celebrity_Queue_block3_details = (messagingEvent, quickpayloadtext) => {
                                 "title": "Enough!",
                                 "payload": "%Enough!%",
                                 "image_url": "https://www.smileysapp.com/emojis/not-listening.png"
+                            },  {
+                                "content_type": "text",
+                                "title": "Latest in Movies",
+                                "payload": "movies"
                             }, {
                                 "content_type": "text",
-                                "title": celebrityName,
-                                "payload": celebrityName + " %a%"
+                                "title": "Latest in Sports",
+                                "payload": "sports"
                             }, {
                                 "content_type": "text",
-                                "title": "Tollywood",
-                                "payload": "Tollywood"
-                            }, {
+                                "title": "Latest in Music",
+                                "payload": "music"
+                            },{
                                 "content_type": "text",
-                                "title": "Kollywood",
-                                "payload": "Kollywood"
-                            }, {
-                                "content_type": "text",
-                                "title": "Malayalam Cinema",
-                                "payload": "Malayalam Cinema"
-                            }, {
-                                "content_type": "text",
-                                "title": "Kannada Cinema",
-                                "payload": "Kannada Cinema"
+                                "title": "Latest in Tv Shows",
+                                "payload": "tv shows"
                             }, {
                                 "content_type": "text",
                                 "title": "Jokes",
@@ -1030,41 +1018,33 @@ const celbrity_Fantastic_wow = (messagingEvent, quickpayloadtext, type) => {
                         "content_type": "text",
                         "title": celName,
                         "payload": celName + " %a%"
+                    },  {
+                        "content_type": "text",
+                        "title": "Latest in Movies",
+                        "payload": "movies"
                     }, {
                         "content_type": "text",
-                        "title": "Bollywood",
-                        "payload": "Bollywood"
+                        "title": "Latest in Sports",
+                        "payload": "sports"
                     }, {
                         "content_type": "text",
-                        "title": "Tollywood",
-                        "payload": "Tollywood"
-                    }, {
+                        "title": "Latest in Music",
+                        "payload": "music"
+                    },{
                         "content_type": "text",
-                        "title": "Kollywood",
-                        "payload": "Kollywood"
-                    }, {
-                        "content_type": "text",
-                        "title": "Malayalam Cinema",
-                        "payload": "Malayalam Cinema"
-                    }, {
-                        "content_type": "text",
-                        "title": "Kannada Cinema",
-                        "payload": "Kannada Cinema"
+                        "title": "Latest in Tv Shows",
+                        "payload": "tv shows"
                     }, {
                         "content_type": "text",
                         "title": "Jokes",
                         "payload": "jokes"
-                    }, {
-                        "content_type": "text",
-                        "title": "home 🏠",
-                        "payload": "home"
                     }
                 ]
 
             }
         }
         fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
-        update_conversation_usercelebrity(messagingEvent);
+        //update_conversation_usercelebrity(messagingEvent);
     } else {
         console.log("No Data Found From Database");
         sendHelpMessage(messagingEvent);

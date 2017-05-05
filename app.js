@@ -258,6 +258,21 @@ function quickpayload(messagingEvent) {
         console.log("conversationQueuetitle:--------------", celebrityQueuetitle);
         movies.celebrity_Queue_block3_details(messagingEvent, quickpayloadtext);
         //  movies.getgenremovies(messagingEvent, quickpayloadtext);
+    }else if (sports_conv1 != -1) {
+        var celebrityQueuetitle = quickpayloadtext.replace("%sports_conv1%", "");
+        console.log("conversationQueuetitle:--------------", celebrityQueuetitle);
+        sports.celebrity_Queue_block1_details(messagingEvent, quickpayloadtext);
+        //  movies.getgenremovies(messagingEvent, quickpayloadtext);
+    } else if (sports_conv2 != -1) {
+        var celebrityQueuetitle = quickpayloadtext.replace("%sports_conv2%", "");
+        console.log("conversationQueuetitle:--------------", celebrityQueuetitle);
+        sports.celebrity_Queue_block2_details(messagingEvent, quickpayloadtext);
+        //  movies.getgenremovies(messagingEvent, quickpayloadtext);
+    } else if (sports_conv3 != -1) {
+        var celebrityQueuetitle = quickpayloadtext.replace("%sports_conv3%", "");
+        console.log("conversationQueuetitle:--------------", celebrityQueuetitle);
+        sports.celebrity_Queue_block3_details(messagingEvent, quickpayloadtext);
+        //  movies.getgenremovies(messagingEvent, quickpayloadtext);
     } else if (conversationQueuetitle != -1) {
         var Queuetitle = quickpayloadtext.replace("%movie_conv%", "");
         console.log("conversationQueuetitle:--------------", Queuetitle);
