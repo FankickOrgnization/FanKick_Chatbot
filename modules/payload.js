@@ -74,21 +74,20 @@ const sendContentPacks = (categoryName, event) => {
     } else if (categoryName == "indian" || categoryName == "western") {
         user_intrest_music_category(event, categoryName);
         //music.musicalbams(categoryName, event);
-        usersubcategory(event, categoryName);
+        added_user_subcategory(event, categoryName);
     } else if (categoryName == "hindi" || categoryName == "telugu" || categoryName == "tamil" || categoryName == "kannada") {
         music.languagealbamsinfo(categoryName, event);
-
     } else if (categoryName == "reality" || categoryName == "romantic comedy" || categoryName == "horror / crime" || categoryName == "cooking" || categoryName == "animation") {
         //wishing_message(categoryName, event);
         tvshows.gettvshowsgenre(event, categoryName);
-        usersubcategory(event, categoryName);
+        added_user_subcategory(event, categoryName);
     } else if (categoryName == "hollywood" || categoryName == "tollywood" || categoryName == "bollywood" || categoryName == "kollywood" || categoryName == "malayalam cinema" || categoryName == "kannada cinema") {
-        //subcategorydetails(categoryName,event);
         movies.subcategorymovies(event, categoryName);
-        usersubcategory(event, categoryName);
+        added_user_subcategory(event, categoryName);
     } else if (categoryName == "cricket" || categoryName == "soccer" || categoryName == "tennis" || categoryName == "badminton") {
-        usersubcategory(event, categoryName);
-        subcategorydetails(categoryName, event);
+        var category = "sports";
+        added_user_subcategory(event, categoryName);
+        submenu(event, category);
     } else if (categoryName == "home") {
         categoryName = "home";
         allcategory(event, categoryName);
@@ -107,9 +106,7 @@ const sendContentPacks = (categoryName, event) => {
         adduserlocation(categoryName, event);
     } else if (categoryName == "list") {
         list_view(categoryName, event);
-    } else if (categoryName == 518003 || categoryName == 500045) {
-        getuserlocation(categoryName, event);
-    } else {
+    }  else {
         sendHelpMessage(event);
     }
 }
@@ -265,41 +262,7 @@ function Category_conversation(event, category) {
                     var categoryName = "tv shows";
                     submenu(event, categoryName);
                 }
-                // console.log(celebrityName);
-                // console.log(description);
-                // console.log(conversationQueue);
-                // console.log(quickReply1);
-                // console.log(quickReply2);
-                // console.log(quickReply3);
-                // var messageData = {
-                //     "recipient": {
-                //         "id": senderID
-                //     },
-                //     "message": {
-                //         "text": description,
-                //         "quick_replies": [
-                //             {
-                //                 "content_type": "text",
-                //                 "title": quickReply1,
-                //                 "payload": quickReply1 + '%conv%'
-                //             }, {
-                //                 "content_type": "text",
-                //                 "title": quickReply2,
-                //                 "payload": quickReply2 + '%conv%'
-                //             }, {
-                //                 "content_type": "text",
-                //                 "title": quickReply2,
-                //                 "payload": quickReply2 + '%conv%'
-                //             }, {
-                //                 "content_type": "text",
-                //                 "title": "Skip",
-                //                 "payload": category
-                //             }
-                //         ]
-                //
-                //     }
-                // }
-                // fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
+
             } else if (rows.length == 0) {
                 wishing_message(categoryName, event);
             }
@@ -724,93 +687,6 @@ function videodisplay(categoryName, event) {
     //  celebritiesdetails(categoryName, event);
 }
 
-function getuserlocation(categoryName, event) {
-    console.log("*************---categoryName----*******", categoryName);
-    var contentList = [];
-    var quickList = [];
-
-    var userid = event.sender.id;
-    var url = 'http://maps.googleapis.com/maps/api/geocode/json?address=' + categoryName;
-
-    console.log("url", url);
-    request({
-        "uri": url,
-        "method": 'GET'
-    }, function(error, response, body) {
-        console.log("***********error", error);
-        var locationdata = JSON.parse(response.body);
-        var locationresults = locationdata.results;
-        var locationstatus = locationdata.status;
-        var len = locationresults.length;
-        console.log("--------:googlegraphdetails Response data itemListElement:-------- ", len);
-        console.log("--------:googlegraphdetails Response data status:--------", locationstatus);
-        console.log("--------:googlegraphdetails Response data result:-------- ", locationresults);
-
-        //var len2 = locationresults.length;
-        var address = locationresults.length;
-        console.log("--------:googlegraphdetails Response data itemListElement:-------- ", address);
-        for (var i = 0; address <= 1; i++) {
-            console.log(locationresults[i]);
-        }
-        // console.log("--------:googlegraphdetails Response data itemListElement:-------- ", locationresults[1].address_components);
-        // console.log("--------:googlegraphdetails Response data itemListElement:-------- ", address[1].long_name);
-        // console.log("--------:googlegraphdetails Response data itemListElement:-------- ", address[1].short_name);
-        // console.log("--------:googlegraphdetails Response data itemListElement:-------- ", address[2].long_name);
-        //  console.log("--------:googlegraphdetails Response data itemListElement:-------- ", address[2].short_name);
-        //  console.log("--------:googlegraphdetails Response data itemListElement:-------- ", address[3].long_name);
-        //  console.log("--------:googlegraphdetails Response data itemListElement:-------- ", address[3].short_name);
-
-        //var rows = userprofiledata.itemListElement;
-        //  var rowlen = rows.length;
-        //console.log("--------:Response data:--------length ", rowlen);
-        //var senderID = event.sender.id;
-        //var imagedata;
-        //var desdata;
-        // for (var i = 0; i < 1; i++) {
-        //
-        //   var name = rows[i].result.name;
-        //   var articleBody = rows[i].result.detailedDescription.articleBody;
-        //   //var contentUrl = rows[i].result.image.contentUrl;
-        //   var url = rows[i].result.detailedDescription.url;
-        //   console.log("googlegraphdetails.name",name);
-        //   console.log("googlegraphdetails.articleBody",articleBody);
-        // //  console.log("googlegraphdetails.contentUrl",contentUrl);
-        //   console.log("googlegraphdetails.image.url",url);
-        //
-        //
-        //     var keyMap = {
-        //         "title": rows[i].result.name,
-        //       //  "image_url": rows[i].result.image.contentUrl,
-        //         "subtitle": rows[i].result.detailedDescription.articleBody,
-        //         "buttons": [
-        //             {
-        //                 "type": "web_url",
-        //                 "url": rows[i].result.detailedDescription.url,
-        //                 "title": "Read More"
-        //             }
-        //         ]
-        //     };
-        //     contentList.push(keyMap);
-        // }
-
-        // var messageData = {
-        //     "recipient": {
-        //         "id": senderID
-        //     },
-        //     "message": {
-        //         "attachment": {
-        //             "type": "template",
-        //             "payload": {
-        //                 "template_type": "generic",
-        //                 "elements": contentList
-        //             }
-        //         },
-        //         "quick_replies": quickreply
-        //     }
-        // }
-        //fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
-    });
-}
 
 function allcategory(event, categoryName) {
     var senderID = event.sender.id;
@@ -832,78 +708,6 @@ function allcategory(event, categoryName) {
 
 //function subcategorymovies(categoryName, event)
 // end get movies from the DB **************************
-
-//subcategorydetails*************************************************************************
-function subcategorydetails(categoryName, event) {
-    pool.getConnection(function(err, connection) {
-        //connection.query('select * from cc_celebrity_preference where celebrityName=?',[categoryName], function(err, rows) {
-        //connection.query('select * from cc_celebrity_preference where subCategory = ?',[categoryName],function(err, rows) {
-        connection.query('select * from cc_celebrity_preference where subCategory=(select id from cc_subcategories where subCategoryName= ? ) order by id desc', [categoryName], function(err, rows) {
-            if (err) {
-                console.log("Error While retriving content pack data from database:", err);
-            } else if (rows.length) {
-                var senderID = event.sender.id;
-                var contentList = [];
-                var quickList = [];
-                //  var movieslist;
-                console.log("*******cc_celebrity_preference data from database:*********", rows);
-
-                for (var i = 0; i < rows.length; i++) { //Construct request body
-                    var res1 = rows[i].id + ",";
-                    var res2 = rows[i].celebrityName + ",";
-                    var res3 = res2.concat(res1);
-                    var res5 = res3.concat(res2);
-                    var keyMap = {
-                        "title": rows[i].celebrityName,
-                        "image_url": rows[i].celebrityImageUrl,
-                        "subtitle": rows[i].description,
-                        //  "item_url": rows[i].image_url,
-                        "buttons": [
-                            {
-                                "type": "web_url",
-                                "url": rows[i].facebookHandle,
-                                "title": "Facebook"
-                            }, {
-                                "type": "web_url",
-                                "url": rows[i].twitterHandle,
-                                "title": "Twitter"
-                            }, {
-                                "type": "postback",
-                                "title": "More Info ℹ",
-                                "payload": rows[i].id
-                            }
-                        ]
-                    };
-                    contentList.push(keyMap);
-                }
-
-                var messageData = {
-                    "recipient": {
-                        "id": senderID
-                    },
-                    "message": {
-                        "attachment": {
-                            "type": "template",
-                            "payload": {
-                                "template_type": "generic",
-                                "elements": contentList
-                            }
-                        },
-                        "quick_replies": quickreply
-                    }
-                }
-                fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
-            } else {
-                console.log("No Data Found From Database");
-                sendHelpMessage(event);
-                //sendImageMessage(event);
-            }
-            connection.release();
-        });
-    });
-}
-
-//subcategorydetails end *********************************************
 //Random Jokes for User
 function sendJoke(categoryName, event) {
     var senderID = event.sender.id;
@@ -929,20 +733,24 @@ function sendJoke(categoryName, event) {
                     "image_url": "https://www.smileysapp.com/emojis/thumbs-up-smiley.png"
                 }, {
                     "content_type": "text",
-                    "title": "Movies 🎬",
-                    "payload": "Movies"
+                    "title": "Movies",
+                    "payload": "Movies",
+                    "image_url": "https://fankickdev.blob.core.windows.net/images/movies.jpg"
                 }, {
                     "content_type": "text",
-                    "title": "Sports 🏆",
-                    "payload": "Sports"
+                    "title": "Sports",
+                    "payload": "Sports",
+                    "image_url": "https://fankickdev.blob.core.windows.net/images/sports.jpg"
                 }, {
                     "content_type": "text",
-                    "title": "TV Shows 📺",
-                    "payload": "TV Shows"
+                    "title": "TV Shows",
+                    "payload": "TV Shows",
+                    "image_url": "https://fankickdev.blob.core.windows.net/images/celebrities.jpg"
                 }, {
                     "content_type": "text",
-                    "title": "Music 🎶",
-                    "payload": "Music"
+                    "title": "Music",
+                    "payload": "Music",
+                    "image_url": "https://fankickdev.blob.core.windows.net/images/music.jpg"
                 }
             ]
         }
@@ -1294,7 +1102,7 @@ function userlocation(event, categoryName) {
     });
 }
 
-function usersubcategory(event, categoryName) {
+function added_user_subcategory(event, categoryName) {
     var senderID = event.sender.id;
     pool.getConnection(function(err, connection) {
         connection.query('update cc_user_preference set subcategory = ? where facebookId = ?', [
@@ -1341,51 +1149,6 @@ function adduserlocation(categoryName, event) {
 
 }
 
-function findlocation(event) {
-    console.log("findlocation");
-    var senderID = event.sender.id;
-    pool.getConnection(function(err, connection) {
-        connection.query('SELECT language from cc_user_preference where facebookId=?', [senderID], function(err, rows) {
-            console.log("Result for language", rows);
-            console.log("Result for language", rows[0].language);
-            if (err) {
-                console.log("Error While retriving content pack data from database:", err);
-            } else {
-                console.log("No Data Found From Database");
-                //  sendHelpMessage(event);
-                //sendImageMessage(event);
-            }
-            connection.release();
-        });
-    });
-}
-
-// function fbRquest.callFBAPI(body, url) {
-//     console.log("url", url);
-//     console.log("Body", body);
-//     request({
-//         uri: url,
-//         qs: {
-//             access_token: fbpage_access_token
-//         },
-//         method: 'POST',
-//         json: body,
-//         headers: {
-//             "Content-Type": "application/json"
-//         }
-//     }, function(error, response, body) {
-//         console.log("Response data: ", JSON.stringify(body));
-//         if (!error && response.statusCode == 200) {
-//             var recipientId = body.recipient_id;
-//             var messageId = body.message_id;
-//             console.log("Successfully sent generic message with id %s to recipient %s", messageId, recipientId);
-//         } else {
-//             console.error("Unable to send message.");
-//             //console.error(response);
-//             console.error("Error while sending message:", error);
-//         }
-//     });
-// }
 
 function fbuserlocation() {
     //var url = 'https://geoip-db.com/json/';
