@@ -442,7 +442,7 @@ function user_intrest_sports_category(event, categoryName) {
                 if (category == null && sportsCelebrity == null) {
                     submenu(event, categoryName);
                 } else if (category == "sports") {
-                    submenu(event, categoryName);
+                    //submenu(event, categoryName);
                     sports.sports_category_conversation(event, category, sportsCelebrity);
                 }
                 // else if (category == "sports" && sportsCelebrity != null) {

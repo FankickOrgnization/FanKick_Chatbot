@@ -162,7 +162,8 @@ const sports_category_conversation = (event, category, sportsCelebrity) => {
                 fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
             } else if (rows.length == 0) {
                 //sportsmenu(event);
-                sportscelbritydetails(event, sportsCelebrity);
+                //sportscelbritydetails(event, sportsCelebrity);
+                sportsmenu(event);
             }
             connection.release();
         });
