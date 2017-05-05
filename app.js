@@ -701,15 +701,17 @@ function quick_reply_subcategory(messagingEvent, quickpayloadtext) {
                                 "content_type": "text",
                                 "title": "Jokes",
                                 "payload": "Jokes"
-                            }, {
-                                "content_type": "text",
-                                "title": "Pics",
-                                "payload": "pics"
-                            }, {
-                                "content_type": "text",
-                                "title": "Videos",
-                                "payload": "videos"
-                            }, {
+                            },
+                            // {
+                            //     "content_type": "text",
+                            //     "title": "Pics",
+                            //     "payload": "pics"
+                            // }, {
+                            //     "content_type": "text",
+                            //     "title": "Videos",
+                            //     "payload": "videos"
+                            // }, 
+                            {
                                 "content_type": "text",
                                 //"title": subCategory.toUpperCase(),
                                 "title": subCategory.charAt(0).toUpperCase() + subCategory.substr(1).toLowerCase(),

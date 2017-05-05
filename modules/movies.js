@@ -95,18 +95,19 @@ const subcategorymovies = (event, categoryName) => {
                             }
                         },
                         "quick_replies": [
+
                             {
                                 "content_type": "text",
-                                "title": "Baahubali 2 Trailer",
-                                "payload": 'Baahubali 2 Trailer,' + categoryName + ',%QRsub%'
+                                "title": "Latest News",
+                                "payload": 'Latest News,' + categoryName + ',%QRsub%'
                             }, {
                                 "content_type": "text",
                                 "title": "Top 5 Movies",
                                 "payload": 'Top 5 Movies,' + categoryName + ',%QRsub%'
                             }, {
                                 "content_type": "text",
-                                "title": "Worst Movies",
-                                "payload": 'Worst Movies,' + categoryName + ',%QRsub%'
+                                "title": "Upcoming Movies",
+                                "payload": 'Upcoming Movies,' + categoryName + ',%QRsub%'
                             }, {
                                 "content_type": "text",
                                 "title": "Action",
@@ -698,7 +699,7 @@ const celebrity_Queue_block1_details = (messagingEvent, quickpayloadtext) => {
                                 "content_type": "text",
                                 "title": "Enough!",
                                 "payload": "%Enough!%",
-                                  "image_url": "https://www.smileysapp.com/emojis/not-listening.png"
+                                "image_url": "https://www.smileysapp.com/emojis/not-listening.png"
                             }, {
                                 "content_type": "text",
                                 "title": "Latest in Movies",
@@ -711,7 +712,7 @@ const celebrity_Queue_block1_details = (messagingEvent, quickpayloadtext) => {
                                 "content_type": "text",
                                 "title": "Latest in Music",
                                 "payload": "music%%list%%"
-                            },{
+                            }, {
                                 "content_type": "text",
                                 "title": "Latest in Tv Shows",
                                 "payload": "tv shows%%list%%"
@@ -815,7 +816,7 @@ const celebrity_Queue_block2_details = (messagingEvent, quickpayloadtext) => {
                                 "content_type": "text",
                                 "title": "Latest in Music",
                                 "payload": "music%%list%%"
-                            },{
+                            }, {
                                 "content_type": "text",
                                 "title": "Latest in Tv Shows",
                                 "payload": "tv shows%%list%%"
@@ -919,7 +920,7 @@ const celebrity_Queue_block3_details = (messagingEvent, quickpayloadtext) => {
                                 "content_type": "text",
                                 "title": "Latest in Music",
                                 "payload": "music%%list%%"
-                            },{
+                            }, {
                                 "content_type": "text",
                                 "title": "Latest in Tv Shows",
                                 "payload": "tv shows%%list%%"
@@ -1018,7 +1019,7 @@ const celbrity_Fantastic_wow = (messagingEvent, quickpayloadtext, type) => {
                         "content_type": "text",
                         "title": celName,
                         "payload": celName + " %a%"
-                    },  {
+                    }, {
                         "content_type": "text",
                         "title": "Latest in Movies",
                         "payload": "movies%%list%%"
@@ -1030,7 +1031,7 @@ const celbrity_Fantastic_wow = (messagingEvent, quickpayloadtext, type) => {
                         "content_type": "text",
                         "title": "Latest in Music",
                         "payload": "music%%list%%"
-                    },{
+                    }, {
                         "content_type": "text",
                         "title": "Latest in Tv Shows",
                         "payload": "tv shows%%list%%"
