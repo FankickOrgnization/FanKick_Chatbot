@@ -430,10 +430,6 @@ function user_intrest_sports_category(event, categoryName) {
             if (err) {
                 console.log("Error While retriving content pack data from database:", err);
             } else if (rows.length > 0) {
-                // var senderID = event.sender.id;
-                // var contentList = [];
-                // var quickList = [];
-                //  var movieslist;
                 console.log("*******cc_celebrity_preference data from database:*********", rows);
                 for (var i = 0; i < rows.length; i++) {
                     var category = rows[i].category;
@@ -442,18 +438,13 @@ function user_intrest_sports_category(event, categoryName) {
                     console.log("category:-", category);
                     console.log("subCategory:-", subCategory);
                     console.log("movieCelebrity:-", sportsCelebrity);
-                    // console.log("language:-", rows[i].language);
-                    // console.log("location:-", rows[i].location);
                 }
                 if (category == null && sportsCelebrity == null) {
                     submenu(event, categoryName);
-                } else if (category != null) {
+                } else if (category == "sports" && sportsCelebrity == null) {
                   submenu(event, categoryName);
-                    // if (category == "sports") {
-                    //     sports.sports_celebrity_conversation(event, category, sportsCelebrity);
-                    // } else {
-                    //     submenu(event, categoryName);
-                    // }
+                }else if (category == "sports" && sportsCelebrity != null) {
+                  sports.sports_celebrity_conversation(event, category, sportsCelebrity);
                 }
             } else if (rows.length == 0) {
                 submenu(event, categoryName);
