@@ -1095,101 +1095,7 @@ function movieintro(messagingEvent, moviename) {
     //celebritymovies(messagingEvent, moviename);
 }
 
-//Getting the celebrity related movies from selected celebrity
-function celebritymovies(messagingEvent, moviename) {
-    console.log("*************Celebritymovies name************", moviename);
-    var Actor;
-    var Actress;
-    var director;
-    var musicDirector;
-    pool.getConnection(function(err, connection) {
-        connection.query('select  * from cc_movies_preference where movieName= ?', [moviename], function(error, rows) {
-            if (error) {
-                console.log('error while retriving content pack items from database', error);
-            } else if (rows.length > 0) {
-                var senderID = messagingEvent.sender.id;
-                var contentList = [];
-                for (var i = 0; i < rows.length; i++) { //Construct request body
-                    console.log('Getting the celebrity related movies from selected celebrity:', rows);
-                    var keyMap = {
-                        "title": rows[i].movieName,
-                        "image_url": rows[i].picture1,
-                        //"item_url": rows[i].movieImageUrl,
-                        "buttons": [
-                            {
-                                "type": "web_url",
-                                "url": rows[i].trailerUrl,
-                                "title": "Trailer"
-                            }, {
-                                "type": "web_url",
-                                "url": rows[i].songsUrl,
-                                "title": "Audio"
-                            }, {
-                                "type": "web_url",
-                                "url": rows[i].reviews,
-                                "title": "Review"
-                            }
-                        ]
-                    };
-                    contentList.push(keyMap);
-                    actor = rows[i].leadActor;
-                    actress = rows[i].leadActress;
-                    director = rows[i].director;
-                    musicDirector = rows[i].musicDirector;
-                    console.log("actor", actor);
-                    console.log("actor", actress);
-                    console.log("actor", director);
-                    console.log("actor", musicDirector);
-                }
 
-                var messageData = {
-                    "recipient": {
-                        "id": senderID
-                    },
-                    "message": {
-                        "attachment": {
-                            "type": "template",
-                            "payload": {
-                                "template_type": "generic",
-                                "elements": contentList
-                            }
-                        },
-                        "quick_replies": [
-                            {
-                                "content_type": "text",
-                                "title": actor,
-                                "payload": actor + " %a%"
-                            }, {
-                                "content_type": "text",
-                                "title": actress,
-                                "payload": actress + " %a%"
-                            }, {
-                                "content_type": "text",
-                                "title": director,
-                                "payload": director + " %a%"
-                            }, {
-                                "content_type": "text",
-                                "title": musicDirector,
-                                "payload": musicDirector + " %musicartist%"
-                            }, {
-                                "content_type": "text",
-                                "title": "Back to Movies 🎬",
-                                "payload": "Movies"
-                            }, {
-                                "content_type": "text",
-                                "title": "Home 🏠",
-                                "payload": "home"
-                            }
-                        ]
-                    }
-                }
-                fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
-            }
-            connection.release();
-        });
-    });
-}
-//Getting the celebrity related movies from selected celebrity**************
 
 //celebritiesdetails***************************************************
 function celebrityid(categoryName, event) {
@@ -1354,7 +1260,7 @@ function celebritymovielist(messagingEvent, celebrityname) {
                             }, {
                                 "content_type": "text",
                                 "title": "Back To Movies 🎬",
-                                "payload": "Movies"
+                                "payload": "movies%%list%%"
                             }, {
                                 "content_type": "text",
                                 "title": "Home 🏠",

@@ -5,35 +5,28 @@ var fbpage_access_token = 'EAAXcJew5yNkBAAvFD3wX3RZACdvA4lZB6XStBzliKI9y4m7I1taA
 var quickreply = [
     {
         "content_type": "text",
-        "title": "Movies 🎬",
-        "payload": "Movies"
+        "title": "Movies",
+        "payload": "Movies",
+        "image_url": "https://fankickdev.blob.core.windows.net/images/movies.jpg"
     }, {
         "content_type": "text",
-        "title": "Sports 🏆",
-        "payload": "Sports"
+        "title": "Sports",
+        "payload": "Sports",
+        "image_url": "https://fankickdev.blob.core.windows.net/images/sports.jpg"
     }, {
         "content_type": "text",
-        "title": "TV Shows 📺",
-        "payload": "TV Shows"
+        "title": "TV Shows",
+        "payload": "TV Shows",
+        "image_url": "https://fankickdev.blob.core.windows.net/images/celebrities.jpg"
     }, {
         "content_type": "text",
-        "title": "Music 🎶",
-        "payload": "Music"
+        "title": "Music",
+        "payload": "Music",
+        "image_url": "https://fankickdev.blob.core.windows.net/images/music.jpg"
     }
 ];
 
-const googlegraph = (categoryName, event) => {
-    // var senderID = event.sender.id;
-    // var msg = "Let's see what Google Mommy says about " + categoryName +"";
-    // var messageData = {
-    //     "recipient": {
-    //         "id": senderID
-    //     },
-    //     "message": {
-    //         "text": msg
-    //     }
-    // };
-    // fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
+const googlegraph = (categoryName, event) => {    
     googlegraphdetails(categoryName, event);
 }
 

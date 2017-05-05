@@ -20,20 +20,24 @@ var fbpage_access_token = 'EAADV2VT6AuUBAHyUBL8zV5dYdRCBE7ZCKYQvOWCu2kkWQSV1RCll
 var quickreply = [
     {
         "content_type": "text",
-        "title": "Movies 🎬",
-        "payload": "Movies"
+        "title": "Movies",
+        "payload": "Movies",
+        "image_url": "https://fankickdev.blob.core.windows.net/images/movies.jpg"
     }, {
         "content_type": "text",
-        "title": "Sports 🏆",
-        "payload": "Sports"
+        "title": "Sports",
+        "payload": "Sports",
+        "image_url": "https://fankickdev.blob.core.windows.net/images/sports.jpg"
     }, {
         "content_type": "text",
-        "title": "TV Shows 📺",
-        "payload": "TV Shows"
+        "title": "TV Shows",
+        "payload": "TV Shows",
+        "image_url": "https://fankickdev.blob.core.windows.net/images/celebrities.jpg"
     }, {
         "content_type": "text",
-        "title": "Music 🎶",
-        "payload": "Music"
+        "title": "Music",
+        "payload": "Music",
+        "image_url": "https://fankickdev.blob.core.windows.net/images/music.jpg"
     }
 ];
 const subcategorymovies = (event, categoryName) => {
