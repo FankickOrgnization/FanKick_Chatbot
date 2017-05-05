@@ -447,12 +447,13 @@ function user_intrest_sports_category(event, categoryName) {
                 }
                 if (category == null && sportsCelebrity == null) {
                     submenu(event, categoryName);
-                } else if (category != null && sportsCelebrity != null) {
-                    if (category == "sports") {
-                        sports.sports_celebrity_conversation(event, category, sportsCelebrity);
-                    } else {
-                        submenu(event, categoryName);
-                    }
+                } else if (category != null) {
+                  submenu(event, categoryName);
+                    // if (category == "sports") {
+                    //     sports.sports_celebrity_conversation(event, category, sportsCelebrity);
+                    // } else {
+                    //     submenu(event, categoryName);
+                    // }
                 }
             } else if (rows.length == 0) {
                 submenu(event, categoryName);
