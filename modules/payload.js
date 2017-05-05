@@ -1170,6 +1170,11 @@ function wishing_message(categoryName, event) {
     allcategory(event, category);
 }
 
+
+
+
+
+
 //Random messages for the main Categories
 function submenu(event, categoryName) {
     var senderID = event.sender.id;
@@ -1260,8 +1265,12 @@ function submemuquickreply(event, categoryName, submenuString) {
         });
     });
 }
-
 //Ended the Random messages for the main Categories
+const categorylist = (messagingEvent,listname) => {
+submenu(messagingEvent, listname);
+}
+
+
 function userlocation(event, categoryName) {
     var senderID = event.sender.id;
     var userloca;
@@ -1394,6 +1403,7 @@ function fbuserlocation() {
 
 module.exports = {
     sendContentPacks: sendContentPacks,
+    categorylist:categorylist
     //  movies_Queue_title_details:movies_Queue_title_details
     //fbuserdetails:fbuserdetails,
     // name:name,

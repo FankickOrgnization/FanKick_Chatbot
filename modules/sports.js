@@ -126,12 +126,12 @@ const sports_category_conversation = (event, category, sportsCelebrity) => {
                             {
                                 "content_type": "text",
                                 "title": "Fantastic!",
-                                "payload": "Fantastic!," + celebrityName + "," + blockOneUrl + "," + quickReply2 + "," + quickReply3 + "," + description + ",1,%Fantastic!sports%",
+                                "payload": "Fantastic!," + celebrityName + "," + blockOneUrl + "," + quickReply2 + "," + quickReply3 + "," + description + ",1,%Fantastic!%",
                                 "image_url": "https://www.smileysapp.com/emojis/ok-smiley.png"
                             }, {
                                 "content_type": "text",
                                 "title": "Is it? ",
-                                "payload": "Is it?," + celebrityName + "," + blockOneUrl + "," + quickReply2 + "," + quickReply3 + "," + description + ",1,%Fantastic!sports%",
+                                "payload": "Is it?," + celebrityName + "," + blockOneUrl + "," + quickReply2 + "," + quickReply3 + "," + description + ",1,%Fantastic!%",
                                 "image_url": "https://www.smileysapp.com/emojis/inspecting-smiley.png"
                             }, {
                                 "content_type": "text",
@@ -148,9 +148,21 @@ const sports_category_conversation = (event, category, sportsCelebrity) => {
                                   "image_url": "https://www.smileysapp.com/emojis/not-listening.png"
                             }, {
                                 "content_type": "text",
+                                "title": "Latest in Movies",
+                                "payload": "movies%%list%%"
+                            }, {
+                                "content_type": "text",
                                 "title": "Latest in Sports",
-                                "payload": "Sports List %Latest in Sports%"
-                            },  {
+                                "payload": "sports%%list%%"
+                            }, {
+                                "content_type": "text",
+                                "title": "Latest in Music",
+                                "payload": "music%%list%%"
+                            },{
+                                "content_type": "text",
+                                "title": "Latest in Tv Shows",
+                                "payload": "tv shows%%list%%"
+                            }, {
                                 "content_type": "text",
                                 "title": "Jokes",
                                 "payload": "jokes"
@@ -953,19 +965,19 @@ const sports_Fantastic_wow = (messagingEvent, quickpayloadtext, type) => {
                     }, {
                         "content_type": "text",
                         "title": "Latest in Movies",
-                        "payload": "movies"
+                        "payload": "movies%%list%%"
                     }, {
                         "content_type": "text",
                         "title": "Latest in Sports",
-                        "payload": "sports"
+                        "payload": "sports%%list%%"
                     }, {
                         "content_type": "text",
                         "title": "Latest in Music",
-                        "payload": "music"
+                        "payload": "music%%list%%"
                     },{
                         "content_type": "text",
                         "title": "Latest in Tv Shows",
-                        "payload": "tv shows"
+                        "payload": "tv shows%%list%%"
                     }, {
                         "content_type": "text",
                         "title": "Jokes",

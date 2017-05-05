@@ -702,19 +702,19 @@ const celebrity_Queue_block1_details = (messagingEvent, quickpayloadtext) => {
                             }, {
                                 "content_type": "text",
                                 "title": "Latest in Movies",
-                                "payload": "movies"
+                                "payload": "movies%%list%%"
                             }, {
                                 "content_type": "text",
                                 "title": "Latest in Sports",
-                                "payload": "sports"
+                                "payload": "sports%%list%%"
                             }, {
                                 "content_type": "text",
                                 "title": "Latest in Music",
-                                "payload": "music"
+                                "payload": "music%%list%%"
                             },{
                                 "content_type": "text",
                                 "title": "Latest in Tv Shows",
-                                "payload": "tv shows"
+                                "payload": "tv shows%%list%%"
                             }, {
                                 "content_type": "text",
                                 "title": "Jokes",
@@ -806,19 +806,19 @@ const celebrity_Queue_block2_details = (messagingEvent, quickpayloadtext) => {
                             }, {
                                 "content_type": "text",
                                 "title": "Latest in Movies",
-                                "payload": "movies"
+                                "payload": "movies%%list%%"
                             }, {
                                 "content_type": "text",
                                 "title": "Latest in Sports",
-                                "payload": "sports"
+                                "payload": "sports%%list%%"
                             }, {
                                 "content_type": "text",
                                 "title": "Latest in Music",
-                                "payload": "music"
+                                "payload": "music%%list%%"
                             },{
                                 "content_type": "text",
                                 "title": "Latest in Tv Shows",
-                                "payload": "tv shows"
+                                "payload": "tv shows%%list%%"
                             }, {
                                 "content_type": "text",
                                 "title": "Jokes",
@@ -907,22 +907,22 @@ const celebrity_Queue_block3_details = (messagingEvent, quickpayloadtext) => {
                                 "title": "Enough!",
                                 "payload": "%Enough!%",
                                 "image_url": "https://www.smileysapp.com/emojis/not-listening.png"
-                            },  {
+                            }, {
                                 "content_type": "text",
                                 "title": "Latest in Movies",
-                                "payload": "movies"
+                                "payload": "movies%%list%%"
                             }, {
                                 "content_type": "text",
                                 "title": "Latest in Sports",
-                                "payload": "sports"
+                                "payload": "sports%%list%%"
                             }, {
                                 "content_type": "text",
                                 "title": "Latest in Music",
-                                "payload": "music"
+                                "payload": "music%%list%%"
                             },{
                                 "content_type": "text",
                                 "title": "Latest in Tv Shows",
-                                "payload": "tv shows"
+                                "payload": "tv shows%%list%%"
                             }, {
                                 "content_type": "text",
                                 "title": "Jokes",
@@ -1021,19 +1021,19 @@ const celbrity_Fantastic_wow = (messagingEvent, quickpayloadtext, type) => {
                     },  {
                         "content_type": "text",
                         "title": "Latest in Movies",
-                        "payload": "movies"
+                        "payload": "movies%%list%%"
                     }, {
                         "content_type": "text",
                         "title": "Latest in Sports",
-                        "payload": "sports"
+                        "payload": "sports%%list%%"
                     }, {
                         "content_type": "text",
                         "title": "Latest in Music",
-                        "payload": "music"
+                        "payload": "music%%list%%"
                     },{
                         "content_type": "text",
                         "title": "Latest in Tv Shows",
-                        "payload": "tv shows"
+                        "payload": "tv shows%%list%%"
                     }, {
                         "content_type": "text",
                         "title": "Jokes",

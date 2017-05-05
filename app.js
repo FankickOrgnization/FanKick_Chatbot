@@ -233,11 +233,20 @@ function quickpayload(messagingEvent) {
     var moviecelbrity_conv3 = quickpayloadtext.search("%celebrity_conv3%");
     var moviecelbrity_Fantastic = quickpayloadtext.search("%Fantastic!%");
     var moviecelbrity_isit = quickpayloadtext.search("%Is it?%");
+    var mlist =  quickpayloadtext.search("movies%%list%%");
+    var slist =  quickpayloadtext.search("sports%%list%%");
+    var mulist =  quickpayloadtext.search("music%%list%%");
+    var tlist =  quickpayloadtext.search("tv shows%%list%%");
 
     if (celpics != -1 || celmovies != -1 || celnetworth != -1 || celnews != -1 || celfamily != -1 || celabout != -1 || celcomp != -1) {
         console.log("This is celebritypics condition");
         celebritypics(messagingEvent, quickpayloadtext);
-    } else if (celmoviesid != -1) {
+    } else if (mlist != -1 || slist != -1 || mulist != -1 || tlist != -1) {
+        var listname = quickpayloadtext.replace("%%list%%", "");
+        console.log("this is celebrity Id:", packId);
+        payloadText.categorylist(messagingEvent,listname);
+        //  movies.getgenremovies(messagingEvent, quickpayloadtext);
+    }else if (celmoviesid != -1) {
         var actorname = quickpayloadtext.replace(" %movies%", "");
         var packId = parseInt(actorname);
         console.log("this is celebrity Id:", packId);
