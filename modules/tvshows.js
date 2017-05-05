@@ -419,6 +419,100 @@ const gettvshowsgenre = (messagingEvent, quickpayloadtext) => {
 
 }
 
+
+const tvShows_conversation = (event, category, favtvshows) => {
+    var senderID = event.sender.id;
+    console.log("favoriteactorconversation:---", category);
+    console.log("favoriteactorconversation:---", favtvshows);
+    var celebrityName;
+    var description;
+    var conversationQueue;
+    var quickReply1;
+    var quickReply2;
+    var quickReply3;
+   var  blockOneUrl
+    pool.getConnection(function(err, connection) {
+        connection.query('select * from cc_conversation_three where category = (select id from cc_categories where categoryName = ?) order by id desc', [category], function(err, rows) {
+            if (err) {
+                console.log("Error While retriving content pack data from database:", err);
+            } else if (rows.length > 0) {
+                console.log("*******cc_celebrity_preference data from database:*********", rows);
+                for (var i = 0; i < 1; i++) {
+                  celebrityName = rows[i].celebrityName;
+                  description = rows[i].blockOneDescription;
+                  quickReply1 = rows[i].blockOneName;
+                  quickReply2 = rows[i].blockTwoName;
+                  quickReply3 = rows[i].blockThreeName;
+                  blockOneUrl = rows[i].blockOneUrl;
+                }
+                console.log(celebrityName, description, conversationQueue, quickReply1, quickReply2, quickReply3);
+                var messageData = {
+                    "recipient": {
+                        "id": senderID
+                    },
+                    "message": {
+                        "text": description,
+                        "quick_replies": [
+                            {
+                                "content_type": "text",
+                                "title": "Fantastic!",
+                                "payload": "Fantastic!," + celebrityName + "," + blockOneUrl + "," + quickReply2 + "," + quickReply3 + "," + description + ",1,%Fantastic!%",
+                                "image_url": "https://www.smileysapp.com/emojis/ok-smiley.png"
+                            }, {
+                                "content_type": "text",
+                                "title": "Is it? ",
+                                "payload": "Is it?," + celebrityName + "," + blockOneUrl + "," + quickReply2 + "," + quickReply3 + "," + description + ",1,%Fantastic!%",
+                                "image_url": "https://www.smileysapp.com/emojis/inspecting-smiley.png"
+                            }, {
+                                "content_type": "text",
+                                "title": quickReply2,
+                                "payload": quickReply2 + "," + celebrityName + "," + "blockTwoName ,%celebrity_conv2%"
+                            }, {
+                                "content_type": "text",
+                                "title": quickReply3,
+                                "payload": quickReply3 + "," + celebrityName + "," + "blockThreeName ,%celebrity_conv3%"
+                            }, {
+                                "content_type": "text",
+                                "title": "Enough!",
+                                "payload": "%Enough!%",
+                                  "image_url": "https://www.smileysapp.com/emojis/not-listening.png"
+                            }, {
+                                "content_type": "text",
+                                "title": "Latest in Movies",
+                                "payload": "movies%%list%%"
+                            }, {
+                                "content_type": "text",
+                                "title": "Latest in Sports",
+                                "payload": "sports%%list%%"
+                            }, {
+                                "content_type": "text",
+                                "title": "Latest in Music",
+                                "payload": "music%%list%%"
+                            },{
+                                "content_type": "text",
+                                "title": "Latest in Tv Shows",
+                                "payload": "tv shows%%list%%"
+                            }, {
+                                "content_type": "text",
+                                "title": "Jokes",
+                                "payload": "jokes"
+                            }
+                        ]
+
+                    }
+                }
+                fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
+            } else if (rows.length == 0) {
+                //sportsmenu(event);
+                //sportscelbritydetails(event, sportsCelebrity);
+                tvshowsmenu(event);
+            }
+            connection.release();
+        });
+    });
+}
+
+
 function tvcelbritydetails(event, celbrityname) {
     pool.getConnection(function(err, connection) {
         //connection.query('select * from cc_celebrity_preference where celebrityName=?',[categoryName], function(err, rows) {
@@ -704,69 +798,6 @@ function user_favorite_tvshow(messagingEvent, tvshowname) {
                 console.log("Update the user favorite tv shows name database");
                 //sendHelpMessage(event);
                 //sendImageMessage(event);
-            }
-            connection.release();
-        });
-    });
-}
-
-const tvShows_conversation = (event, category, favtvshows) => {
-    var senderID = event.sender.id;
-    console.log("favoriteactorconversation:---", category);
-    console.log("favoriteactorconversation:---", favtvshows);
-    var celebrityName;
-    var description;
-    var conversationQueue;
-    var quickReply1;
-    var quickReply2;
-    var quickReply3;
-    pool.getConnection(function(err, connection) {
-        connection.query('select * from cc_conversation_three where celebrityName= ? order by id desc', [category], function(err, rows) {
-            if (err) {
-                console.log("Error While retriving content pack data from database:", err);
-            } else if (rows.length > 0) {
-                console.log("*******cc_celebrity_preference data from database:*********", rows);
-                for (var i = 0; i < rows.length; i++) {
-                    celebrityName = rows[i].celebrityName;
-                    description = rows[i].description;
-                    conversationQueue = rows[i].conversationQueue;
-                    quickReply1 = rows[i].quickReply1;
-                    quickReply2 = rows[i].quickReply2;
-                    quickReply3 = rows[i].quickReply3;
-                }
-                console.log(celebrityName, description, conversationQueue, quickReply1, quickReply2, quickReply3);
-                var messageData = {
-                    "recipient": {
-                        "id": senderID
-                    },
-                    "message": {
-                        "text": description,
-                        "quick_replies": [
-                            {
-                                "content_type": "text",
-                                "title": quickReply1,
-                                "payload": quickReply1 + '%conv%'
-                            }, {
-                                "content_type": "text",
-                                "title": quickReply2,
-                                "payload": quickReply2 + '%conv%'
-                            }, {
-                                "content_type": "text",
-                                "title": quickReply3,
-                                "payload": quickReply3 + '%conv%'
-                            }, {
-                                "content_type": "text",
-                                "title": "Skip",
-                                "payload": category
-                            }
-                        ]
-
-                    }
-                }
-                fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
-            } else if (rows.length == 0) {
-                //sportsmenu(event);
-                sportscelbritydetails(event, sportsCelebrity);
             }
             connection.release();
         });

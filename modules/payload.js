@@ -481,7 +481,8 @@ function user_intrest_tvshows_category(event, categoryName) {
                 if (category == null && favtvshows == null) {
                     submenu(event, categoryName);
                 } else if (category == "tv shows" && favtvshows == null) {
-                    submenu(event, category);
+                    //submenu(event, category);
+                    tvshows.tvShows_conversation(event, category, favtvshows);
                 }
                 // else if (category == "tv shows" && favtvshows != null) {
                 //     tvshows.tvShows_conversation(event, category, favtvshows);
