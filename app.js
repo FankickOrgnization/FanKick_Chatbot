@@ -24,20 +24,24 @@ var pool = mysql.createPool({connectionLimit: 1, host: 'ap-cdbr-azure-southeast-
 var quickreply = [
     {
         "content_type": "text",
-        "title": "Movies 🎬",
-        "payload": "Movies"
+        "title": "Movies",
+        "payload": "Movies",
+        "image_url": "https://fankickdev.blob.core.windows.net/images/movies.jpg"
     }, {
         "content_type": "text",
-        "title": "Sports 🏆",
-        "payload": "Sports"
+        "title": "Sports",
+        "payload": "Sports",
+        "image_url": "https://fankickdev.blob.core.windows.net/images/sports.jpg"
     }, {
         "content_type": "text",
-        "title": "Music 🎶",
-        "payload": "Music"
+        "title": "TV Shows",
+        "payload": "TV Shows",
+        "image_url": "https://fankickdev.blob.core.windows.net/images/celebrities.jpg"
     }, {
         "content_type": "text",
-        "title": "TV Shows 📺",
-        "payload": "TV Shows"
+        "title": "Music",
+        "payload": "Music",
+        "image_url": "https://fankickdev.blob.core.windows.net/images/music.jpg"
     }
 ];
 
@@ -289,17 +293,7 @@ function quickpayload(messagingEvent) {
         console.log("actor name", actorname);
         var type = "leadActor";
         movies.filmactor(messagingEvent, actorname);
-    } else if (actressname != -1) {
-        var actressname = quickpayloadtext.replace(" %aa%", "");
-        var type = "leadActress";
-        console.log("actor name", actorname);
-        movies.actressfilms(messagingEvent, actressname, type);
-    } else if (directorname != -1) {
-        var directorname = quickpayloadtext.replace(" %ad%", "");
-        var type = "director";
-        console.log("actor name", actorname);
-        movies.directorfilms(messagingEvent, directorname, type);
-    } else if (movietext != -1) {
+    }  else if (movietext != -1) {
         var moviename = quickpayloadtext.replace(" %m%", "");
         console.log("Yessssssss", moviename);
         movies.getmovies(event, moviename);
@@ -710,7 +704,7 @@ function quick_reply_subcategory(messagingEvent, quickpayloadtext) {
                             //     "content_type": "text",
                             //     "title": "Videos",
                             //     "payload": "videos"
-                            // }, 
+                            // },
                             {
                                 "content_type": "text",
                                 //"title": subCategory.toUpperCase(),
@@ -1065,54 +1059,7 @@ function celebritypics(messagingEvent, quickpayloadtext) {
     });
 }
 
-function selectedactorcomptiters(messagingEvent, competitor, picurl, name) {
-    var senderID = messagingEvent.sender.id;
-    var genrearray = competitor.split(',');
-    var name1 = genrearray[0];
-    var name2 = genrearray[1];
-    console.log(senderID, name1, name2, picurl, name);
-    var keyMap = {
-        "type": "template",
-        "payload": {
-            "template_type": "generic",
-            "elements": [
-                {
-                    "title": name,
-                    "image_url": picurl,
-                    "subtitle": "Competitors of " + name
-                }
-            ]
-        }
-    }
-    var messageData = {
-        "recipient": {
-            "id": senderID
-        },
-        "message": {
-            "attachment": keyMap,
-            "quick_replies": [
-                {
-                    "content_type": "text",
-                    "title": name1,
-                    "payload": name1 + " %a%"
-                }, {
-                    "content_type": "text",
-                    "title": name2,
-                    "payload": name2 + " %a%"
-                }, {
-                    "content_type": "text",
-                    "title": "Back To Movies 🎬",
-                    "payload": "Movies"
-                }, {
-                    "content_type": "text",
-                    "title": "Home 🏠",
-                    "payload": "home"
-                }
-            ]
-        }
-    }
-    fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
-}
+
 
 function actorintro(messagingEvent, actorname) {
     var senderID = messagingEvent.sender.id;
@@ -1144,7 +1091,8 @@ function movieintro(messagingEvent, moviename) {
         }
     };
     fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
-    celebritymovies(messagingEvent, moviename);
+    movies.getmovies(messagingEvent, moviename);
+    //celebritymovies(messagingEvent, moviename);
 }
 
 //Getting the celebrity related movies from selected celebrity

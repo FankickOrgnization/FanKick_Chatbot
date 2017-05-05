@@ -24,20 +24,24 @@ var fbpage_access_token = 'EAADV2VT6AuUBAHyUBL8zV5dYdRCBE7ZCKYQvOWCu2kkWQSV1RCll
 var quickreply = [
     {
         "content_type": "text",
-        "title": "Movies 🎬",
-        "payload": "Movies"
+        "title": "Movies",
+        "payload": "Movies",
+        "image_url": "https://fankickdev.blob.core.windows.net/images/movies.jpg"
     }, {
         "content_type": "text",
-        "title": "Sports 🏆",
-        "payload": "Sports"
+        "title": "Sports",
+        "payload": "Sports",
+        "image_url": "https://fankickdev.blob.core.windows.net/images/sports.jpg"
     }, {
         "content_type": "text",
-        "title": "TV Shows 📺",
-        "payload": "TV Shows"
+        "title": "TV Shows",
+        "payload": "TV Shows",
+        "image_url": "https://fankickdev.blob.core.windows.net/images/celebrities.jpg"
     }, {
         "content_type": "text",
-        "title": "Music 🎶",
-        "payload": "Music"
+        "title": "Music",
+        "payload": "Music",
+        "image_url": "https://fankickdev.blob.core.windows.net/images/music.jpg"
     }
 ];
 
@@ -106,7 +110,7 @@ const sendContentPacks = (categoryName, event) => {
         adduserlocation(categoryName, event);
     } else if (categoryName == "list") {
         list_view(categoryName, event);
-    }  else {
+    } else {
         sendHelpMessage(event);
     }
 }
@@ -407,11 +411,10 @@ function user_intrest_sports_category(event, categoryName) {
                 } else if (category == "sports") {
                     //submenu(event, categoryName);
                     sports.sports_category_conversation(event, category, sportsCelebrity);
-                }
-                // else if (category == "sports" && sportsCelebrity != null) {
-                //     sports.sports_category_conversation(event, category, sportsCelebrity);
-                // }
-                else if (category != "sports") {
+                    // else if (category == "sports" && sportsCelebrity != null) {
+                    //     sports.sports_category_conversation(event, category, sportsCelebrity);
+                    // }
+                } else if (category != "sports") {
                     submenu(event, categoryName);
                 }
             } else if (rows.length == 0) {
@@ -446,11 +449,10 @@ function user_intrest_tvshows_category(event, categoryName) {
                 } else if (category == "tv shows") {
                     submenu(event, category);
                     //tvshows.tvShows_conversation(event, category, favtvshows);
-                }
-                // else if (category == "tv shows" && favtvshows != null) {
-                //     tvshows.tvShows_conversation(event, category, favtvshows);
-                // }
-                else if (category != "tv shows") {
+                    // else if (category == "tv shows" && favtvshows != null) {
+                    //     tvshows.tvShows_conversation(event, category, favtvshows);
+                    // }
+                } else if (category != "tv shows") {
                     submenu(event, categoryName);
                 }
             } else if (rows.length == 0) {
@@ -686,7 +688,6 @@ function videodisplay(categoryName, event) {
     //celebritymovies(messagingEvent, moviename);
     //  celebritiesdetails(categoryName, event);
 }
-
 
 function allcategory(event, categoryName) {
     var senderID = event.sender.id;
@@ -979,11 +980,6 @@ function wishing_message(categoryName, event) {
     allcategory(event, category);
 }
 
-
-
-
-
-
 //Random messages for the main Categories
 function submenu(event, categoryName) {
     var senderID = event.sender.id;
@@ -1075,10 +1071,9 @@ function submemuquickreply(event, categoryName, submenuString) {
     });
 }
 //Ended the Random messages for the main Categories
-const categorylist = (messagingEvent,listname) => {
-submenu(messagingEvent, listname);
+const categorylist = (messagingEvent, listname) => {
+    submenu(messagingEvent, listname);
 }
-
 
 function userlocation(event, categoryName) {
     var senderID = event.sender.id;
@@ -1149,7 +1144,6 @@ function adduserlocation(categoryName, event) {
 
 }
 
-
 function fbuserlocation() {
     //var url = 'https://geoip-db.com/json/';
     var url = 'http://ipinfo.io';
@@ -1167,7 +1161,7 @@ function fbuserlocation() {
 
 module.exports = {
     sendContentPacks: sendContentPacks,
-    categorylist:categorylist
+    categorylist: categorylist
     //  movies_Queue_title_details:movies_Queue_title_details
     //fbuserdetails:fbuserdetails,
     // name:name,
