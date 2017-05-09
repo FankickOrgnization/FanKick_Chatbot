@@ -135,7 +135,7 @@ function receivedpostback(messagingEvent) {
         tvshows.tvshowinfo(messagingEvent, tvshowname);
         //celebritymovies(messagingEvent, moviename);
     } else if (actortext != -1) {
-        var actorname = quickpayloadtext.replace(" %a%", "");
+        var actorname = categoryName.replace(" %a%", "");
         console.log("actor name", actorname);
         var type = "leadActor";
         movies.filmactor(messagingEvent, actorname);
