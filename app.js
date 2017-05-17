@@ -1093,7 +1093,7 @@ function actorintro(messagingEvent, actorname) {
                 fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
                 //setInterval(nextlevel (messagingEvent, sportscelname,description2, description3), 5000);
                 moviecelbrityintro_level1 (messagingEvent, actorname,description2, description3)
-                user_favorite_sports_celebrity(messagingEvent, sportscelname)
+                //user_favorite_sports_celebrity(messagingEvent, sportscelname)
             } else if (rows.length == 0) {
                 //sportsmenu(event);
                 //sportscelbritydetails(event, sportsCelebrity);
