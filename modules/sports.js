@@ -135,7 +135,7 @@ function nextlevel (messagingEvent, sportscelname, description2, description3){
             "id": senderID
         },
         "message": {
-            "text": msg
+            "text": description2
         }
     };
     fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
@@ -157,7 +157,7 @@ function nextlevel2 (messagingEvent, sportscelname, description3){
             "id": senderID
         },
         "message": {
-            "text": msg
+            "text": description3
         }
     };
     fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
