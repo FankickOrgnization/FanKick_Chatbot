@@ -76,8 +76,8 @@ const sendContentPacks = (categoryName, event) => {
         usercategory(event, categoryName);
         console.log("enter into the allcategory function");
     } else if (categoryName == "indian" || categoryName == "western") {
-        user_intrest_music_category(event, categoryName);
-        //music.musicalbams(categoryName, event);
+        //user_intrest_music_category(event, categoryName);
+        music.musicalbams(categoryName, event);
         added_user_subcategory(event, categoryName);
     } else if (categoryName == "hindi" || categoryName == "telugu" || categoryName == "tamil" || categoryName == "kannada") {
         music.languagealbamsinfo(categoryName, event);
