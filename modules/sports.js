@@ -101,7 +101,7 @@ const sportscelbrityintro = (messagingEvent, sportscelname) => {
     //setTimeout(sportscelbritydetails(messagingEvent, sportscelname), 60000);
     //sportscelbritydetails(messagingEvent, sportscelname);
     //nextlevel (messagingEvent, sportscelname);
-    setInterval(nextlevel (messagingEvent, sportscelname), 10000);
+    setInterval(nextlevel (messagingEvent, sportscelname), 50000);
     user_favorite_sports_celebrity(messagingEvent, sportscelname)
 }
 
@@ -118,7 +118,7 @@ function nextlevel (messagingEvent, sportscelname){
     };
     fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
     console.log('###############@@@@@@@@@@@@@Execute result in 4 sec%%%%%%%%%%%%%%%%%%%%%%$$$$$$$$$$$$$');
-    setInterval(sportscelbritydetails(messagingEvent, sportscelname), 10000);
+    setInterval(sportscelbritydetails(messagingEvent, sportscelname), 50000);
     //sportscelbritydetails(messagingEvent, sportscelname);
     //user_favorite_sports_celebrity(messagingEvent, sportscelname)
 }
