@@ -60,10 +60,13 @@ const sportsqrintro = (messagingEvent, qrtitle) => {
         // }
     };
     fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
-    sportsqrdetails(messagingEvent, qrtitle);
+    //sportsqrdetails(messagingEvent, qrtitle);
 //     setInterval(sportsqrdetails(messagingEvent, qrtitle){
 //   console.log('Execute result in 3 sec');
 // }, 3000);
+
+
+setInterval(sportsqrdetails(messagingEvent, qrtitle), 3000);
 }
 const sportsintro = (messagingEvent, tvshowsmsg) => {
     var senderID = messagingEvent.sender.id;
