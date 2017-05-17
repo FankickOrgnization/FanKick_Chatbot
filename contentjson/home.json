@@ -3,65 +3,67 @@
         "type": "template",
         "payload": {
             "template_type": "generic",
-            "elements": [ {
-            "title":"Welcome to Peters Hats",
-            "image_url":"https://fankickdev.blob.core.windows.net/images/movies.jpg",
-            "subtitle":"Weve got the right hat for everyone.",
-            "default_action": {
-              "type": "web_url",
-              "url": "https://fankickdev.blob.core.windows.net/images/movies.jpg",
-              "messenger_extensions": true,
-              "webview_height_ratio": "tall",
-              "fallback_url": "https://fankickdev.blob.core.windows.net/images/movies.jpg"
-            },
-            "buttons":[
-              {
-                "type":"web_url",
-                "url":"https://petersfancybrownhats.com",
-                "title":"View Website"
-              },{
-                "type":"postback",
-                "title":"Start Chatting",
-                "payload":"DEVELOPER_DEFINED_PAYLOAD"
-              }
-            ]
-          },{
-                    "title": "Movies",
-                    "image_url": "https://fankickdev.blob.core.windows.net/images/movies.jpg",
-                    "buttons": [{
-                        "type": "postback",
-                        "title": "Movies 🎬",
-                        "payload": "Movies"
-                    }]
+            "elements": [{
+                "title": "Movies 🎬",
+                "image_url": "https://fankickdev.blob.core.windows.net/images/movies.jpg",
+                "default_action": {
+                    "type": "web_url",
+                    "url": "https://fankickdev.blob.core.windows.net/images/movies.jpg",
+                    "messenger_extensions": true,
+                    "webview_height_ratio": "tall",
+                    "fallback_url": "https://fankickdev.blob.core.windows.net/images/movies.jpg"
                 },
-                {
-                    "title": "Sports",
-                    "image_url": "https://fankickdev.blob.core.windows.net/images/sports.jpg",
-                    "buttons": [{
-                        "type": "postback",
-                        "title": "Sports 🏆",
-                        "payload": "Sports"
-                    }]
+                "buttons": [{
+                    "type": "postback",
+                    "title": "Movies 🎬",
+                    "payload": "Movies"
+                }]
+            }, {
+                "title": "Sports 🏆",
+                "image_url": "https://fankickdev.blob.core.windows.net/images/sports.jpg",
+                "default_action": {
+                    "type": "web_url",
+                    "url": "https://fankickdev.blob.core.windows.net/images/sports.jpg",
+                    "messenger_extensions": true,
+                    "webview_height_ratio": "tall",
+                    "fallback_url": "https://fankickdev.blob.core.windows.net/images/sports.jpg"
                 },
-                {
-                    "title": "TV Shows",
-                    "image_url": "https://fankickdev.blob.core.windows.net/images/celebrities.jpg",
-                    "buttons": [{
-                        "type": "postback",
-                        "title": "TV Shows 📺",
-                        "payload": "TV Shows"
-                    }]
+                "buttons": [{
+                    "type": "postback",
+                    "title": "Sports 🏆",
+                    "payload": "Sports"
+                }]
+            }, {
+                "title": "TV Shows 📺",
+                "image_url": "https://fankickdev.blob.core.windows.net/images/celebrities.jpg",
+                "default_action": {
+                    "type": "web_url",
+                    "url": "https://fankickdev.blob.core.windows.net/images/celebrities.jpg",
+                    "messenger_extensions": true,
+                    "webview_height_ratio": "tall",
+                    "fallback_url": "https://fankickdev.blob.core.windows.net/images/celebrities.jpg"
                 },
-                {
-                    "title": "Music",
-                    "image_url": "https://fankickdev.blob.core.windows.net/images/music.jpg",
-                    "buttons": [{
-                        "type": "postback",
-                        "title": "Music 🎶",
-                        "payload": "Music"
-                    }]
-                }
-            ]
+                "buttons": [{
+                    "type": "postback",
+                    "title": "TV Shows 📺",
+                    "payload": "TV Shows"
+                }]
+            }, {
+                "title": "Music 🎶",
+                "image_url": "https://fankickdev.blob.core.windows.net/images/music.jpg",
+                "default_action": {
+                    "type": "web_url",
+                    "url": "https://fankickdev.blob.core.windows.net/images/music.jpg",
+                    "messenger_extensions": true,
+                    "webview_height_ratio": "tall",
+                    "fallback_url": "https://fankickdev.blob.core.windows.net/images/music.jpg"
+                },
+                "buttons": [{
+                    "type": "postback",
+                    "title": "Music 🎶",
+                    "payload": "Music"
+                }]
+            }]
         }
     }
 }
