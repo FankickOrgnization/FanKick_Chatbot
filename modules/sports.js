@@ -99,9 +99,9 @@ const sportscelbrityintro = (messagingEvent, sportscelname) => {
                 console.log("*******cc_celebrity_preference data from database:*********", rows);
                 for (var i = 0; i < 1; i++) {
                   celebrityName = rows[i].celebrityName;
-                  description1 = rows[i].description;
+                  description1 = rows[i].conversationQueue;
                   description2 = rows[i].storyUrl;
-                  description3 = rows[i].conversationQueue;
+                  description3 = rows[i].description;
 
                 }
                 console.log(celebrityName, description1, description2, description3);
@@ -114,12 +114,12 @@ const sportscelbrityintro = (messagingEvent, sportscelname) => {
                                          }
                 }
                 fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
-                setInterval(nextlevel (messagingEvent, sportscelname), 5000);
+                setInterval(nextlevel (messagingEvent, sportscelname,description2, description3), 5000);
                 user_favorite_sports_celebrity(messagingEvent, sportscelname)
             } else if (rows.length == 0) {
                 //sportsmenu(event);
                 //sportscelbritydetails(event, sportsCelebrity);
-                sportsmenu(event);
+                sportsmenu(messagingEvent);
             }
             connection.release();
         });
@@ -127,7 +127,7 @@ const sportscelbrityintro = (messagingEvent, sportscelname) => {
 
 }
 
-function nextlevel (messagingEvent, sportscelname){
+function nextlevel (messagingEvent, sportscelname, description2, description3){
     var senderID = messagingEvent.sender.id;
     var msg = 'Here is what I know about ' + sportscelname + '';
     var messageData = {
@@ -146,10 +146,10 @@ function nextlevel (messagingEvent, sportscelname){
     //setInterval(sportscelbritydetails(messagingEvent, sportscelname), 5000);
     //sportscelbritydetails(messagingEvent, sportscelname);
     //user_favorite_sports_celebrity(messagingEvent, sportscelname)
-    setInterval(nextlevel2 (messagingEvent, sportscelname), 5000);
+    setInterval(nextlevel2 (messagingEvent, sportscelname, description3), 5000);
 }
 
-function nextlevel2 (messagingEvent, sportscelname){
+function nextlevel2 (messagingEvent, sportscelname, description3){
     var senderID = messagingEvent.sender.id;
     var msg = 'Here is what I know about ' + sportscelname + '';
     var messageData = {
