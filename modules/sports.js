@@ -114,12 +114,14 @@ const sportscelbrityintro = (messagingEvent, sportscelname) => {
                                          }
                 }
                 fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
-                setInterval(nextlevel (messagingEvent, sportscelname,description2, description3), 5000);
+                //setInterval(nextlevel (messagingEvent, sportscelname,description2, description3), 5000);
+                sportscelbrityintro_level1 (messagingEvent, sportscelname,description2, description3)
                 user_favorite_sports_celebrity(messagingEvent, sportscelname)
             } else if (rows.length == 0) {
                 //sportsmenu(event);
                 //sportscelbritydetails(event, sportsCelebrity);
-                sportsmenu(messagingEvent);
+                //sportsmenu(messagingEvent);
+                sportscelbritydetails(messagingEvent, sportscelname);
             }
             connection.release();
         });
@@ -127,7 +129,7 @@ const sportscelbrityintro = (messagingEvent, sportscelname) => {
 
 }
 
-function nextlevel (messagingEvent, sportscelname, description2, description3){
+function sportscelbrityintro_level1 (messagingEvent, sportscelname, description2, description3){
     var senderID = messagingEvent.sender.id;
     var msg = 'Here is what I know about ' + sportscelname + '';
     var messageData = {
@@ -146,10 +148,11 @@ function nextlevel (messagingEvent, sportscelname, description2, description3){
     //setInterval(sportscelbritydetails(messagingEvent, sportscelname), 5000);
     //sportscelbritydetails(messagingEvent, sportscelname);
     //user_favorite_sports_celebrity(messagingEvent, sportscelname)
-    setInterval(nextlevel2 (messagingEvent, sportscelname, description3), 5000);
+    //setInterval(nextlevel2 (messagingEvent, sportscelname, description3), 5000);
+    sportscelbrityintro_level2 (messagingEvent, sportscelname, description3);
 }
 
-function nextlevel2 (messagingEvent, sportscelname, description3){
+function sportscelbrityintro_level2 (messagingEvent, sportscelname, description3){
     var senderID = messagingEvent.sender.id;
     var msg = 'Here is what I know about ' + sportscelname + '';
     var messageData = {
@@ -163,7 +166,8 @@ function nextlevel2 (messagingEvent, sportscelname, description3){
     fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
     console.log('###############@@@@@@@@@@@@@Execute result in 4 sec%%%%%%%%%%%%%%%%%%%%%%$$$$$$$$$$$$$');
 
-    setTimeout(sportscelbritydetails(messagingEvent, sportscelname), 5000);
+    //setTimeout(sportscelbritydetails(messagingEvent, sportscelname), 5000);
+    sportscelbritydetails(messagingEvent, sportscelname)
     console.log("Set Time Out Function activated");
     //setInterval(sportscelbritydetails(messagingEvent, sportscelname), 5000);
     //sportscelbritydetails(messagingEvent, sportscelname);

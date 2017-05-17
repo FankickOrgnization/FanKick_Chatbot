@@ -1064,18 +1064,107 @@ function celebritypics(messagingEvent, quickpayloadtext) {
 function actorintro(messagingEvent, actorname) {
     var senderID = messagingEvent.sender.id;
     //var img = 'https://fankickdev.blob.core.windows.net/images/home_logo.png';
+    var celebrityName;
+    var description1;
+    var description2;
+    var description3;
+    pool.getConnection(function(err, connection) {
+        connection.query('select * from cc_conversation_two where celebrityName=?', [actorname], function(err, rows) {
+            if (err) {
+                console.log("Error While retriving content pack data from database:", err);
+            } else if (rows.length > 0) {
+                console.log("*******cc_celebrity_preference data from database:*********", rows);
+                for (var i = 0; i < 1; i++) {
+                  celebrityName = rows[i].celebrityName;
+                  description1 = rows[i].conversationQueue;
+                  description2 = rows[i].storyUrl;
+                  description3 = rows[i].description;
+
+                }
+                console.log(celebrityName, description1, description2, description3);
+                var messageData = {
+                    "recipient": {
+                        "id": senderID
+                    },
+                    "message": {
+                        "text": description1,
+                                         }
+                }
+                fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
+                //setInterval(nextlevel (messagingEvent, sportscelname,description2, description3), 5000);
+                moviecelbrityintro_level1 (messagingEvent, actorname,description2, description3)
+                user_favorite_sports_celebrity(messagingEvent, sportscelname)
+            } else if (rows.length == 0) {
+                //sportsmenu(event);
+                //sportscelbritydetails(event, sportsCelebrity);
+                //sportsmenu(messagingEvent);
+                movies.filmactor(messagingEvent, actorname);
+            }
+            connection.release();
+        });
+    });
+
+
+
+
+    // var msg = 'Here is what I know about ' + actorname + '';
+    // var messageData = {
+    //     "recipient": {
+    //         "id": senderID
+    //     },
+    //     "message": {
+    //         "text": msg
+    //     }
+    // };
+    // fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
+    // movies.filmactor(messagingEvent, actorname);
+}
+
+function moviecelbrityintro_level1 (messagingEvent, actorname, description2, description3){
+    var senderID = messagingEvent.sender.id;
     var msg = 'Here is what I know about ' + actorname + '';
     var messageData = {
         "recipient": {
             "id": senderID
         },
         "message": {
-            "text": msg
+            "text": description2
         }
     };
     fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
-    movies.filmactor(messagingEvent, actorname);
+    console.log('###############@@@@@@@@@@@@@Execute result in 4 sec%%%%%%%%%%%%%%%%%%%%%%$$$$$$$$$$$$$');
+
+    //setTimeout(sportscelbritydetails(messagingEvent, sportscelname), 5000);
+    console.log("Set Time Out Function activated");
+    //setInterval(sportscelbritydetails(messagingEvent, sportscelname), 5000);
+    //sportscelbritydetails(messagingEvent, sportscelname);
+    //user_favorite_sports_celebrity(messagingEvent, sportscelname)
+    //setInterval(nextlevel2 (messagingEvent, sportscelname, description3), 5000);
+    moviecelbrityintro_level2 (messagingEvent, actorname, description3);
 }
+
+function moviecelbrityintro_level2 (messagingEvent, actorname, description3){
+    var senderID = messagingEvent.sender.id;
+    var msg = 'Here is what I know about ' + actorname + '';
+    var messageData = {
+        "recipient": {
+            "id": senderID
+        },
+        "message": {
+            "text": description3
+        }
+    };
+    fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
+    console.log('###############@@@@@@@@@@@@@Execute result in 4 sec%%%%%%%%%%%%%%%%%%%%%%$$$$$$$$$$$$$');
+
+    //setTimeout(sportscelbritydetails(messagingEvent, sportscelname), 5000);
+    movies.filmactor(messagingEvent, actorname);
+    //console.log("Set Time Out Function activated");
+    //setInterval(sportscelbritydetails(messagingEvent, sportscelname), 5000);
+    //sportscelbritydetails(messagingEvent, sportscelname);
+    //user_favorite_sports_celebrity(messagingEvent, sportscelname)
+}
+
 
 //Selected actor filems from movies list
 function movieintro(messagingEvent, moviename) {
