@@ -1158,12 +1158,145 @@ function moviecelbrityintro_level2 (messagingEvent, actorname, description3){
     console.log('###############@@@@@@@@@@@@@Execute result in 4 sec%%%%%%%%%%%%%%%%%%%%%%$$$$$$$$$$$$$');
 
     //setTimeout(sportscelbritydetails(messagingEvent, sportscelname), 5000);
-    movies.filmactor(messagingEvent, actorname);
+    //movies.filmactor(messagingEvent, actorname);
     //console.log("Set Time Out Function activated");
     //setInterval(sportscelbritydetails(messagingEvent, sportscelname), 5000);
     //sportscelbritydetails(messagingEvent, sportscelname);
     //user_favorite_sports_celebrity(messagingEvent, sportscelname)
+ var subCategory = "movies";
+    movies_celebrity_conversation(event, subCategory, movieCelebrity)
 }
+
+
+function movies_celebrity_conversation(event, subCategory, movieCelebrity) {
+    var senderID = event.sender.id;
+    var contentList = [];
+    console.log("favoriteactorconversation:---", subCategory);
+    console.log("favoriteactorconversation:---", movieCelebrity);
+    var celebrityName;
+    var description;
+    var conversationQueue;
+    var quickReply1;
+    var quickReply2;
+    var quickReply3;
+    var storyUrl;
+    pool.getConnection(function(err, connection) {
+        //connection.query('select * from cc_conversation_two where celebrityName= ? order by id', [movieCelebrity], function(err, rows) {
+        connection.query('select * from cc_conversation_three where celebrityName= ? order by id', [movieCelebrity], function(err, rows) {
+            if (err) {
+                console.log("Error While retriving content pack data from database:", err);
+            } else if (rows.length > 0) {
+
+                console.log("*******cc_celebrity_preference data from database:*********", rows);
+                for (var i = 0; i < 1; i++) {
+                    celebrityName = rows[i].celebrityName;
+                    description = rows[i].description;
+                    //conversationQueue = rows[i].conversationQueue;
+                    //storyUrl = rows[i].storyUrl;
+                    quickReply1 = rows[i].blockOneName;
+                    quickReply2 = rows[i].blockTwoName;
+                    quickReply3 = rows[i].blockThreeName;
+                    // var keyMap = {
+                    //     "title": celebrityName,
+                    //     //"image_url": rows[i].picture1,
+                    //     "subtitle":description,
+                    //     "buttons": [
+                    //         {
+                    //             "type": "web_url",
+                    //             "url": rows[i].storyUrl,
+                    //             "title": " Continue Reading ⏩"
+                    //         }
+                    //     ]
+                    // };
+                    // contentList.push(keyMap);
+                }
+                console.log(celebrityName);
+                console.log(description);
+                //console.log(conversationQueue);
+                console.log(quickReply1);
+                console.log(quickReply2);
+                console.log(quickReply3);
+                var messageData = {
+                    "recipient": {
+                        "id": senderID
+                    },
+                    "message": {
+                        "text": description,
+                        "quick_replies": [
+                            {
+                                "content_type": "text",
+                                "title": quickReply1,
+                                "payload": quickReply1 + ',' + celebrityName + ',' + "blockOneName ,%celebrity_conv1%"
+                            }, {
+                                "content_type": "text",
+                                "title": quickReply2,
+                                "payload": quickReply2 + ',' + celebrityName + ',' + "blockTwoName ,%celebrity_conv2%"
+                            }, {
+                                "content_type": "text",
+                                "title": quickReply3,
+                                "payload": quickReply3 + ',' + celebrityName + ',' + "blockThreeName ,%celebrity_conv3%"
+                            }, {
+                                "content_type": "text",
+                                "title": celebrityName,
+                                "payload": celebrityName + " %a%"
+                            }, {
+                                "content_type": "text",
+                                "title": "Bollywood",
+                                "payload": "Bollywood"
+                            }, {
+                                "content_type": "text",
+                                "title": "Tollywood",
+                                "payload": "Tollywood"
+                            }, {
+                                "content_type": "text",
+                                "title": "Kollywood",
+                                "payload": "Kollywood"
+                            }, {
+                                "content_type": "text",
+                                "title": "Malayalam Cinema",
+                                "payload": "Malayalam Cinema"
+                            }, {
+                                "content_type": "text",
+                                "title": "Kannada Cinema",
+                                "payload": "Kannada Cinema"
+                            }, {
+                                "content_type": "text",
+                                "title": "Jokes",
+                                "payload": "jokes"
+                            }
+                        ]
+
+                    }
+                }
+                fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
+            } else if (rows.length == 0) {
+                var categoryName = "movies";
+                //submenu(event, categoryName);
+                moviecelebrity_conversation_intro(event, movieCelebrity);
+            }
+            connection.release();
+        });
+    });
+}
+
+function moviecelebrity_conversation_intro(messagingEvent, actorname) {
+    var senderID = messagingEvent.sender.id;
+    //var img = 'https://fankickdev.blob.core.windows.net/images/home_logo.png';
+    var msg = 'I am trying to guess the name of your favorite star, 🤔 mmmm.... it is ' + actorname + '. Am I right? If you are looking for someone else, pls key in your favorite actor...';
+    var messageData = {
+        "recipient": {
+            "id": senderID
+        },
+        "message": {
+            "text": msg
+        }
+    };
+    fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
+    movies.conversation_filmactor(messagingEvent, actorname);
+}
+
+
+
 
 
 //Selected actor filems from movies list
