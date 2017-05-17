@@ -56,18 +56,18 @@ const sendContentPacks = (categoryName, event) => {
         //wishing_message(categoryName, event);
         user_intrest_category(event, categoryName);
     } else if (categoryName == "movies") {
-        user_intrest_movies_category(event, categoryName);
-        //submenu(event, categoryName);
+        //user_intrest_movies_category(event, categoryName);
+        submenu(event, categoryName);
         usercategory(event, categoryName);
         console.log("enter into the allcategory function");
     } else if (categoryName == "sports") {
-        user_intrest_sports_category(event, categoryName);
-        //submenu(event, categoryName);
+        //user_intrest_sports_category(event, categoryName);
+        submenu(event, categoryName);
         usercategory(event, categoryName);
         console.log("enter into the allcategory function");
     } else if (categoryName == "tv shows") {
-        user_intrest_tvshows_category(event, categoryName);
-        //submenu(event, categoryName);
+        //user_intrest_tvshows_category(event, categoryName);
+        submenu(event, categoryName);
         usercategory(event, categoryName);
         console.log("enter into the allcategory function");
     } else if (categoryName == "music") {
