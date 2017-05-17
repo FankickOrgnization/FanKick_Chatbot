@@ -119,12 +119,35 @@ function nextlevel (messagingEvent, sportscelname){
     fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
     console.log('###############@@@@@@@@@@@@@Execute result in 4 sec%%%%%%%%%%%%%%%%%%%%%%$$$$$$$$$$$$$');
 
+    //setTimeout(sportscelbritydetails(messagingEvent, sportscelname), 5000);
+    console.log("Set Time Out Function activated");
+    //setInterval(sportscelbritydetails(messagingEvent, sportscelname), 5000);
+    //sportscelbritydetails(messagingEvent, sportscelname);
+    //user_favorite_sports_celebrity(messagingEvent, sportscelname)
+    setInterval(nextlevel2 (messagingEvent, sportscelname), 5000);
+}
+
+function nextlevel2 (messagingEvent, sportscelname){
+    var senderID = messagingEvent.sender.id;
+    var msg = 'Here is what I know about ' + sportscelname + '';
+    var messageData = {
+        "recipient": {
+            "id": senderID
+        },
+        "message": {
+            "text": msg
+        }
+    };
+    fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
+    console.log('###############@@@@@@@@@@@@@Execute result in 4 sec%%%%%%%%%%%%%%%%%%%%%%$$$$$$$$$$$$$');
+
     setTimeout(sportscelbritydetails(messagingEvent, sportscelname), 5000);
     console.log("Set Time Out Function activated");
     //setInterval(sportscelbritydetails(messagingEvent, sportscelname), 5000);
     //sportscelbritydetails(messagingEvent, sportscelname);
     //user_favorite_sports_celebrity(messagingEvent, sportscelname)
 }
+
 
 const sports_category_conversation = (event, category, sportsCelebrity) => {
     var senderID = event.sender.id;
