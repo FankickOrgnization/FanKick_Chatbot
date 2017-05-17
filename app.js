@@ -1164,7 +1164,7 @@ function moviecelbrityintro_level2 (messagingEvent, actorname, description3){
     //sportscelbritydetails(messagingEvent, sportscelname);
     //user_favorite_sports_celebrity(messagingEvent, sportscelname)
  var subCategory = "movies";
-    movies_celebrity_conversation(messagingEvent, subCategory, movieCelebrity)
+    movies_celebrity_conversation(messagingEvent, subCategory, actorname)
 }
 
 
