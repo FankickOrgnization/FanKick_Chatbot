@@ -65,8 +65,8 @@ const sportsqrintro = (messagingEvent, qrtitle) => {
 //   console.log('Execute result in 3 sec');
 // }, 3000);
 
-
-setInterval(sportsqrdetails(messagingEvent, qrtitle), 3000);
+console.log('###############@@@@@@@@@@@@@Execute result in 3 sec%%%%%%%%%%%%%%%%%%%%%%$$$$$$$$$$$$$');
+setInterval(sportsqrdetails(messagingEvent, qrtitle), 13000);
 }
 const sportsintro = (messagingEvent, tvshowsmsg) => {
     var senderID = messagingEvent.sender.id;
