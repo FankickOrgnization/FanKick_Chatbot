@@ -86,7 +86,8 @@ const sportsintro = (messagingEvent, tvshowsmsg) => {
 
 const sportscelbrityintro = (messagingEvent, sportscelname) => {
     var senderID = messagingEvent.sender.id;
-    var msg = 'Here is what I know about ' + sportscelname + '';
+    //var msg = 'Here is what I know about ' + sportscelname + '';
+    var msg = 'fdash fajsdhfjkhdsa fjdasfhjkasdh fdsahfjkasdhfjk jfhasdjkfhjksda Here is what I know about ' + sportscelname + '';
     var messageData = {
         "recipient": {
             "id": senderID
@@ -97,9 +98,29 @@ const sportscelbrityintro = (messagingEvent, sportscelname) => {
     };
     fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
     console.log('###############@@@@@@@@@@@@@Execute result in 3 sec%%%%%%%%%%%%%%%%%%%%%%$$$$$$$$$$$$$');
+    //setTimeout(sportscelbritydetails(messagingEvent, sportscelname), 60000);
+    //sportscelbritydetails(messagingEvent, sportscelname);
+    //nextlevel (messagingEvent, sportscelname);
+    setTimeout(nextlevel (messagingEvent, sportscelname), 60000);
+    user_favorite_sports_celebrity(messagingEvent, sportscelname)
+}
+
+function nextlevel (messagingEvent, sportscelname){
+    var senderID = messagingEvent.sender.id;
+    var msg = 'Here is what I know about ' + sportscelname + '';
+    var messageData = {
+        "recipient": {
+            "id": senderID
+        },
+        "message": {
+            "text": msg
+        }
+    };
+    fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
+    console.log('###############@@@@@@@@@@@@@Execute result in 4 sec%%%%%%%%%%%%%%%%%%%%%%$$$$$$$$$$$$$');
     setTimeout(sportscelbritydetails(messagingEvent, sportscelname), 60000);
     //sportscelbritydetails(messagingEvent, sportscelname);
-    user_favorite_sports_celebrity(messagingEvent, sportscelname)
+    //user_favorite_sports_celebrity(messagingEvent, sportscelname)
 }
 
 const sports_category_conversation = (event, category, sportsCelebrity) => {
