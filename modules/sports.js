@@ -87,22 +87,44 @@ const sportsintro = (messagingEvent, tvshowsmsg) => {
 const sportscelbrityintro = (messagingEvent, sportscelname) => {
     var senderID = messagingEvent.sender.id;
     //var msg = 'Here is what I know about ' + sportscelname + '';
-    var msg = 'fdash fajsdhfjkhdsa fjdasfhjkasdh fdsahfjkasdhfjk jfhasdjkfhjksda Here is what I know about ' + sportscelname + '';
-    var messageData = {
-        "recipient": {
-            "id": senderID
-        },
-        "message": {
-            "text": msg
-        }
-    };
-    fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
-    console.log('###############@@@@@@@@@@@@@Execute result in 3 sec%%%%%%%%%%%%%%%%%%%%%%$$$$$$$$$$$$$');
-    //setTimeout(sportscelbritydetails(messagingEvent, sportscelname), 60000);
-    //sportscelbritydetails(messagingEvent, sportscelname);
-    //nextlevel (messagingEvent, sportscelname);
-    setInterval(nextlevel (messagingEvent, sportscelname), 5000);
-    user_favorite_sports_celebrity(messagingEvent, sportscelname)
+    var celebrityName;
+    var description1;
+    var description2;
+    var description3;
+    pool.getConnection(function(err, connection) {
+        connection.query('select * from cc_conversation_two where celebrityName=?', [sportscelname], function(err, rows) {
+            if (err) {
+                console.log("Error While retriving content pack data from database:", err);
+            } else if (rows.length > 0) {
+                console.log("*******cc_celebrity_preference data from database:*********", rows);
+                for (var i = 0; i < 1; i++) {
+                  celebrityName = rows[i].celebrityName;
+                  description1 = rows[i].description;
+                  description2 = rows[i].storyUrl;
+                  description3 = rows[i].conversationQueue;
+
+                }
+                console.log(celebrityName, description1, description2, description3);
+                var messageData = {
+                    "recipient": {
+                        "id": senderID
+                    },
+                    "message": {
+                        "text": description1,
+                                         }
+                }
+                fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
+                setInterval(nextlevel (messagingEvent, sportscelname), 5000);
+                user_favorite_sports_celebrity(messagingEvent, sportscelname)
+            } else if (rows.length == 0) {
+                //sportsmenu(event);
+                //sportscelbritydetails(event, sportsCelebrity);
+                sportsmenu(event);
+            }
+            connection.release();
+        });
+    });
+
 }
 
 function nextlevel (messagingEvent, sportscelname){
