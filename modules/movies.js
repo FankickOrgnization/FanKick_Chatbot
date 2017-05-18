@@ -368,7 +368,166 @@ const getgenremovies = (messagingEvent, quickpayloadtext) => {
 // }
 
 const filmactor = (messagingEvent, actorname) => {
-    console.log("filmactor", actorname);
+  var senderID = messagingEvent.sender.id;
+var contentList = [];
+//console.log("favoriteactorconversation:---", subCategory);
+console.log("favoriteactorconversation:---", actorname);
+var celebrityName;
+var quickReply1;
+var quickReply2;
+var quickReply3;
+pool.getConnection(function(err, connection) {
+    connection.query('select * from cc_conversation_three where celebrityName= ? order by id', [actorname], function(err, rows) {
+        if (err) {
+            console.log("Error While retriving content pack data from database:", err);
+        } else if (rows.length > 0) {
+            console.log("*******cc_celebrity_preference data from database:*********", rows);
+            for (var i = 0; i < 1; i++) {
+                celebrityName = rows[i].celebrityName;
+                quickReply1 = rows[i].blockOneName;
+                quickReply2 = rows[i].blockTwoName;
+                quickReply3 = rows[i].blockThreeName;
+            }
+            console.log(quickReply1);
+            console.log(quickReply2);
+            console.log(quickReply3);
+            film_celebrity_conv_1(messagingEvent, actorname, quickReply1, quickReply2, quickReply3);
+        } else if (rows.length == 0) {
+            film_celebrity_conv_2(messagingEvent, actorname);
+        }
+        connection.release();
+    });
+});
+
+}
+
+
+function   film_celebrity_conv_1(messagingEvent, actorname, quickReply1, quickReply2, quickReply3) {
+  console.log("filmactor", actorname);
+    //var event = messagingEvent;
+    var aname = actorname.trim();
+    pool.getConnection(function(err, connection) {
+        connection.query('select * from cc_film_celebrity_preference where name = ?', [aname], function(err, rows) {
+            console.log("********filmactor*********", aname);
+            //console.log("*************************-after", categoryName);
+            console.log("*************************filmactor", rows);
+            if (err) {
+                console.log("Error While retriving content pack data from database:", err);
+            } else if (rows.length > 0) {
+                var senderID = messagingEvent.sender.id;
+                var contentList = [];
+                var quickList = [];
+                var movieslist;
+                var celebrityname;
+                //  "payload": celebrityid + ' ,%movies%'
+                var celebrityid;
+                for (var i = 0; i < rows.length; i++) { //Construct request body
+                    var res1 = rows[i].id + ",";
+                    var res2 = rows[i].celebrityName + ",";
+                    var res3 = res2.concat(res1);
+                    var res5 = res3.concat(res2);
+                    celebrityname = rows[i].name;
+                    celebrityid = rows[i].id;
+                    var keyMap = {
+                        "title": rows[i].name,
+                        "image_url": rows[i].picture1,
+                        "subtitle": rows[i].name,
+                        //  "item_url": rows[i].image_url,
+                        "buttons": [
+                            {
+                                "type": "web_url",
+                                "url": rows[i].facebookHandle,
+                                "title": "Facebook"
+                            }, {
+                                "type": "web_url",
+                                "url": rows[i].twitterHandle,
+                                "title": "Twitter"
+                            }
+                        ]
+                    };
+                    contentList.push(keyMap);
+                }
+                updateusercelebrity(celebrityname, senderID);
+                var messageData = {
+                    "recipient": {
+                        "id": senderID
+                    },
+                    "message": {
+                        "attachment": {
+                            "type": "template",
+                            "payload": {
+                                "template_type": "generic",
+                                "elements": contentList
+                            }
+                        },
+                        "quick_replies": [
+                          {
+                             "content_type": "text",
+                             "title": quickReply1,
+                             "payload": quickReply1 + ',' + celebrityname + ',' + "blockOneName ,%celebrity_conv1%"
+                         }, {
+                             "content_type": "text",
+                             "title": quickReply2,
+                             "payload": quickReply2 + ',' + celebrityname + ',' + "blockTwoName ,%celebrity_conv2%"
+                         }, {
+                             "content_type": "text",
+                             "title": quickReply3,
+                             "payload": quickReply3 + ',' + celebrityname + ',' + "blockThreeName ,%celebrity_conv3%"
+                         },{
+                                "content_type": "text",
+                                "title": "Pictures",
+                                "payload": celebrityname + ' ,%pictures%',
+                                "image_url": "http://icons.iconarchive.com/icons/harwen/simple/256/My-Pictures-icon.png"
+                            }, {
+                                "content_type": "text",
+                                "title": "Movies",
+                                "payload": celebrityname + ' ,%movies%',
+                                "image_url": "http://www.hooverlibrary.org/sites/default/files/icons/icon_monday_movies2.jpg"
+
+                            }, {
+                                "content_type": "text",
+                                "title": "Search in google",
+                                "payload": celebrityname + ' ,%googlesearch%',
+                                "image_url": "https://fankickdev.blob.core.windows.net/images/google.png"
+                            }, {
+                                "content_type": "text",
+                                "title": "Personal Info",
+                                "payload": celebrityname + ' ,%wikisearch%',
+                                "image_url": "https://cdn3.iconfinder.com/data/icons/inficons-round-brand-set-2/512/wikipedia-512.png"
+                            }, {
+                                "content_type": "text",
+                                "title": "News",
+                                "payload": celebrityname + ' ,%news%',
+                                "image_url": "https://thumbs.dreamstime.com/x/news-icon-11187212.jpg"
+                            }, {
+                                "content_type": "text",
+                                "title": "Family",
+                                "payload": celebrityname + ' ,%family%',
+                                "image_url": "http://tukanglastangerangselatan.com/assets/images/slider/fm1.png"
+                            }, {
+                                "content_type": "text",
+                                "title": "Home 🏠",
+                                "payload": "home"
+                            }
+                        ]
+                    }
+                }
+                fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
+            } else if (rows.length == 0) {
+                googleSearch.googlegraph(aname, messagingEvent);
+            } else {
+                console.log("No Data Found From Database");
+                sendHelpMessage(messagingEvent);
+            }
+            connection.release();
+        });
+    });
+
+}
+
+
+function film_celebrity_conv_2(messagingEvent, actorname) {
+  console.log("filmactor", actorname);
     var event = messagingEvent;
     var aname = actorname.trim();
     pool.getConnection(function(err, connection) {
@@ -475,7 +634,9 @@ const filmactor = (messagingEvent, actorname) => {
             connection.release();
         });
     });
+
 }
+
 
 const conversation_filmactor = (messagingEvent, actorname) => {
     console.log("conversation_filmactor", actorname);
