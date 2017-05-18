@@ -231,26 +231,33 @@ const sports_category_conversation = (event, category, sportsCelebrity) => {
                                 "title": "Enough!",
                                 "payload": "%Enough!%",
                                   "image_url": "https://www.smileysapp.com/emojis/not-listening.png"
-                            }, {
-                                "content_type": "text",
-                                "title": "Latest in Movies",
-                                "payload": "movies%%list%%"
-                            }, {
-                                "content_type": "text",
-                                "title": "Latest in Sports",
-                                "payload": "sports%%list%%"
-                            }, {
-                                "content_type": "text",
-                                "title": "Latest in Music",
-                                "payload": "music%%list%%"
-                            },{
-                                "content_type": "text",
-                                "title": "Latest in Tv Shows",
-                                "payload": "tv shows%%list%%"
-                            }, {
+                            },
+                            // {
+                            //     "content_type": "text",
+                            //     "title": "Latest in Movies",
+                            //     "payload": "movies%%list%%"
+                            // }, {
+                            //     "content_type": "text",
+                            //     "title": "Latest in Sports",
+                            //     "payload": "sports%%list%%"
+                            // }, {
+                            //     "content_type": "text",
+                            //     "title": "Latest in Music",
+                            //     "payload": "music%%list%%"
+                            // },{
+                            //     "content_type": "text",
+                            //     "title": "Latest in Tv Shows",
+                            //     "payload": "tv shows%%list%%"
+                            // }, 
+                            {
                                 "content_type": "text",
                                 "title": "Jokes",
                                 "payload": "jokes"
+                            },
+                            {
+                                "content_type": "text",
+                                "title": "home 🏠",
+                                "payload": "home"
                             }
                         ]
 
@@ -1055,26 +1062,33 @@ const sports_Fantastic_wow = (messagingEvent, quickpayloadtext, type) => {
                         "content_type": "text",
                         "title": qr2,
                         "payload": qr2 + ',' + celName + ',' + 'blockOneName ,%celebrity_conv' + bno2 + '%'
-                    }, {
+                    },
+                    // {
+                    //     "content_type": "text",
+                    //     "title": "Latest in Movies",
+                    //     "payload": "movies%%list%%"
+                    // }, {
+                    //     "content_type": "text",
+                    //     "title": "Latest in Sports",
+                    //     "payload": "sports%%list%%"
+                    // }, {
+                    //     "content_type": "text",
+                    //     "title": "Latest in Music",
+                    //     "payload": "music%%list%%"
+                    // },{
+                    //     "content_type": "text",
+                    //     "title": "Latest in Tv Shows",
+                    //     "payload": "tv shows%%list%%"
+                    // },
+                    // {
+                    //     "content_type": "text",
+                    //     "title": "Jokes",
+                    //     "payload": "jokes"
+                    // },
+                    {
                         "content_type": "text",
-                        "title": "Latest in Movies",
-                        "payload": "movies%%list%%"
-                    }, {
-                        "content_type": "text",
-                        "title": "Latest in Sports",
-                        "payload": "sports%%list%%"
-                    }, {
-                        "content_type": "text",
-                        "title": "Latest in Music",
-                        "payload": "music%%list%%"
-                    },{
-                        "content_type": "text",
-                        "title": "Latest in Tv Shows",
-                        "payload": "tv shows%%list%%"
-                    }, {
-                        "content_type": "text",
-                        "title": "Jokes",
-                        "payload": "jokes"
+                        "title": "home 🏠",
+                        "payload": "home"
                     }
                 ]
 

@@ -865,26 +865,33 @@ const celebrity_Queue_block1_details = (messagingEvent, quickpayloadtext) => {
                                 "title": "Enough!",
                                 "payload": "%Enough!%",
                                 "image_url": "https://www.smileysapp.com/emojis/not-listening.png"
-                            }, {
-                                "content_type": "text",
-                                "title": "Latest in Movies",
-                                "payload": "movies%%list%%"
-                            }, {
-                                "content_type": "text",
-                                "title": "Latest in Sports",
-                                "payload": "sports%%list%%"
-                            }, {
-                                "content_type": "text",
-                                "title": "Latest in Music",
-                                "payload": "music%%list%%"
-                            }, {
-                                "content_type": "text",
-                                "title": "Latest in Tv Shows",
-                                "payload": "tv shows%%list%%"
-                            }, {
+                            },
+                            // {
+                            //     "content_type": "text",
+                            //     "title": "Latest in Movies",
+                            //     "payload": "movies%%list%%"
+                            // }, {
+                            //     "content_type": "text",
+                            //     "title": "Latest in Sports",
+                            //     "payload": "sports%%list%%"
+                            // }, {
+                            //     "content_type": "text",
+                            //     "title": "Latest in Music",
+                            //     "payload": "music%%list%%"
+                            // }, {
+                            //     "content_type": "text",
+                            //     "title": "Latest in Tv Shows",
+                            //     "payload": "tv shows%%list%%"
+                            // },
+                            {
                                 "content_type": "text",
                                 "title": "Jokes",
                                 "payload": "jokes"
+                            },
+                            {
+                                "content_type": "text",
+                                "title": "home 🏠",
+                                "payload": "home"
                             }
                         ]
 
@@ -969,26 +976,33 @@ const celebrity_Queue_block2_details = (messagingEvent, quickpayloadtext) => {
                                 "title": "Enough!",
                                 "payload": "%Enough!%",
                                 "image_url": "https://www.smileysapp.com/emojis/not-listening.png"
-                            }, {
-                                "content_type": "text",
-                                "title": "Latest in Movies",
-                                "payload": "movies%%list%%"
-                            }, {
-                                "content_type": "text",
-                                "title": "Latest in Sports",
-                                "payload": "sports%%list%%"
-                            }, {
-                                "content_type": "text",
-                                "title": "Latest in Music",
-                                "payload": "music%%list%%"
-                            }, {
-                                "content_type": "text",
-                                "title": "Latest in Tv Shows",
-                                "payload": "tv shows%%list%%"
-                            }, {
+                            },
+                            // {
+                            //     "content_type": "text",
+                            //     "title": "Latest in Movies",
+                            //     "payload": "movies%%list%%"
+                            // }, {
+                            //     "content_type": "text",
+                            //     "title": "Latest in Sports",
+                            //     "payload": "sports%%list%%"
+                            // }, {
+                            //     "content_type": "text",
+                            //     "title": "Latest in Music",
+                            //     "payload": "music%%list%%"
+                            // }, {
+                            //     "content_type": "text",
+                            //     "title": "Latest in Tv Shows",
+                            //     "payload": "tv shows%%list%%"
+                            // },
+                            {
                                 "content_type": "text",
                                 "title": "Jokes",
                                 "payload": "jokes"
+                            },
+                            {
+                                "content_type": "text",
+                                "title": "home 🏠",
+                                "payload": "home"
                             }
                         ]
 
@@ -1073,26 +1087,33 @@ const celebrity_Queue_block3_details = (messagingEvent, quickpayloadtext) => {
                                 "title": "Enough!",
                                 "payload": "%Enough!%",
                                 "image_url": "https://www.smileysapp.com/emojis/not-listening.png"
-                            }, {
-                                "content_type": "text",
-                                "title": "Latest in Movies",
-                                "payload": "movies%%list%%"
-                            }, {
-                                "content_type": "text",
-                                "title": "Latest in Sports",
-                                "payload": "sports%%list%%"
-                            }, {
-                                "content_type": "text",
-                                "title": "Latest in Music",
-                                "payload": "music%%list%%"
-                            }, {
-                                "content_type": "text",
-                                "title": "Latest in Tv Shows",
-                                "payload": "tv shows%%list%%"
-                            }, {
+                            },
+                            // {
+                            //     "content_type": "text",
+                            //     "title": "Latest in Movies",
+                            //     "payload": "movies%%list%%"
+                            // }, {
+                            //     "content_type": "text",
+                            //     "title": "Latest in Sports",
+                            //     "payload": "sports%%list%%"
+                            // }, {
+                            //     "content_type": "text",
+                            //     "title": "Latest in Music",
+                            //     "payload": "music%%list%%"
+                            // }, {
+                            //     "content_type": "text",
+                            //     "title": "Latest in Tv Shows",
+                            //     "payload": "tv shows%%list%%"
+                            // },
+                            {
                                 "content_type": "text",
                                 "title": "Jokes",
                                 "payload": "jokes"
+                            },
+                            {
+                                "content_type": "text",
+                                "title": "home 🏠",
+                                "payload": "home"
                             }
                         ]
 
@@ -1184,26 +1205,33 @@ const celbrity_Fantastic_wow = (messagingEvent, quickpayloadtext, type) => {
                         "content_type": "text",
                         "title": celName,
                         "payload": celName + " %a%"
-                    }, {
-                        "content_type": "text",
-                        "title": "Latest in Movies",
-                        "payload": "movies%%list%%"
-                    }, {
-                        "content_type": "text",
-                        "title": "Latest in Sports",
-                        "payload": "sports%%list%%"
-                    }, {
-                        "content_type": "text",
-                        "title": "Latest in Music",
-                        "payload": "music%%list%%"
-                    }, {
-                        "content_type": "text",
-                        "title": "Latest in Tv Shows",
-                        "payload": "tv shows%%list%%"
-                    }, {
+                    },
+                    // {
+                    //     "content_type": "text",
+                    //     "title": "Latest in Movies",
+                    //     "payload": "movies%%list%%"
+                    // }, {
+                    //     "content_type": "text",
+                    //     "title": "Latest in Sports",
+                    //     "payload": "sports%%list%%"
+                    // }, {
+                    //     "content_type": "text",
+                    //     "title": "Latest in Music",
+                    //     "payload": "music%%list%%"
+                    // }, {
+                    //     "content_type": "text",
+                    //     "title": "Latest in Tv Shows",
+                    //     "payload": "tv shows%%list%%"
+                    // },
+                    {
                         "content_type": "text",
                         "title": "Jokes",
                         "payload": "jokes"
+                    },
+                    {
+                        "content_type": "text",
+                        "title": "home 🏠",
+                        "payload": "home"
                     }
                 ]
 
