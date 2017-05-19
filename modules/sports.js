@@ -248,7 +248,7 @@ const sports_category_conversation = (event, category, sportsCelebrity) => {
                             //     "content_type": "text",
                             //     "title": "Latest in Tv Shows",
                             //     "payload": "tv shows%%list%%"
-                            // }, 
+                            // },
                             {
                                 "content_type": "text",
                                 "title": "Jokes",

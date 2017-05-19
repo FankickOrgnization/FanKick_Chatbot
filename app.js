@@ -949,7 +949,7 @@ function celebritypics(messagingEvent, quickpayloadtext) {
                                     {
                                         "title": rows[i].family,
                                         "image_url": rows[i].picture4,
-                                        "subtitle": rows[i].name                                      
+                                        "subtitle": rows[i].name
                                     }
                                 ]
                             }
@@ -1081,6 +1081,8 @@ function actorintro(messagingEvent, actorname) {
     });
 }
 
+var myVar2 = setInterval(moviecelbrityintro_level1, 3000);
+
 function moviecelbrityintro_level1 (messagingEvent, actorname, description2, description3){
     var senderID = messagingEvent.sender.id;
     var msg = 'Here is what I know about ' + actorname + '';
@@ -1103,6 +1105,8 @@ function moviecelbrityintro_level1 (messagingEvent, actorname, description2, des
     //setInterval(nextlevel2 (messagingEvent, sportscelname, description3), 5000);
     moviecelbrityintro_level2 (messagingEvent, actorname, description3);
 }
+
+var myVar = setInterval(moviecelbrityintro_level2, 3000);
 
 function moviecelbrityintro_level2 (messagingEvent, actorname, description3){
     var senderID = messagingEvent.sender.id;
