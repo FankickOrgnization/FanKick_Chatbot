@@ -1081,7 +1081,7 @@ function actorintro(messagingEvent, actorname) {
     });
 }
 
-var myVar2 = setInterval(moviecelbrityintro_level1, 3000);
+//var myVar2 = setInterval(moviecelbrityintro_level1, 3000);
 
 function moviecelbrityintro_level1 (messagingEvent, actorname, description2, description3){
     var senderID = messagingEvent.sender.id;
@@ -1106,7 +1106,7 @@ function moviecelbrityintro_level1 (messagingEvent, actorname, description2, des
     moviecelbrityintro_level2 (messagingEvent, actorname, description3);
 }
 
-var myVar = setInterval(moviecelbrityintro_level2, 3000);
+//var myVar = setInterval(moviecelbrityintro_level2, 3000);
 
 function moviecelbrityintro_level2 (messagingEvent, actorname, description3){
     var senderID = messagingEvent.sender.id;
