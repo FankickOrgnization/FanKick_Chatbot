@@ -46,7 +46,7 @@ var quickreply = [
 ];
 
 app.use(bodyParser.json());
-var fbpage_access_token = 'EAADV2VT6AuUBAHyUBL8zV5dYdRCBE7ZCKYQvOWCu2kkWQSV1RCllfvMymjDhXZCBQ93IkOFDpVYjN1E8jCHYpHKdH6uwNuhYAyCGdHOv6VgVZCwI6BZCc3AwAc7CW17yNTXe1YE7GkegMHHz36ax5JZC01zllTmTnAQRe0ZB0U3wZDZD';
+var fbpage_access_token = 'EAADV2VT6AuUBAEyLexJIvZAd2uG9Dj0TOZB9PZCEUvto2smS0uozXjw4ZByZBJEJL3MZCBiiKvZA3afyWlr7y9N6YtZAd3a7nRY1RyglZAN7zoe6rHMJQQc9igjIu4nfaqm15MTwNuUMI9ZAAgukxwMBPe8scyAM3FjtJZAo7mDl9OdnwZDZD';
 
 //var quickMenu = payloadText.quickMenu;
 
