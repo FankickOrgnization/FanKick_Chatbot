@@ -9,7 +9,7 @@ const sport = require('../contentjson/sports.json');
 const tv_show = require('../contentjson/tv shows.json');
 const musics = require('../contentjson/music.json');
 const jokes = require('../contentjson/jokes.json');
-var fbpage_access_token = 'EAADV2VT6AuUBAEyLexJIvZAd2uG9Dj0TOZB9PZCEUvto2smS0uozXjw4ZByZBJEJL3MZCBiiKvZA3afyWlr7y9N6YtZAd3a7nRY1RyglZAN7zoe6rHMJQQc9igjIu4nfaqm15MTwNuUMI9ZAAgukxwMBPe8scyAM3FjtJZAo7mDl9OdnwZDZD';
+var fbpage_access_token = process.env.FK_ACCESS_TOKEN;
 
 const callFBAPI = (body, url) => {
     console.log("url", url);

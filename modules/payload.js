@@ -20,7 +20,7 @@ const fbRquest = require('./fbapi.js');
 var mysql = require('mysql');
 //var pool = mysql.createPool({connectionLimit: 1, host: 'ap-cdbr-azure-southeast-a.cloudapp.net', user: 'bb603e8108da6e', password: '3e384329', database: 'rankworlddev'});
 var pool = dbpool.mysqlpool;
-var fbpage_access_token = 'EAADV2VT6AuUBAEyLexJIvZAd2uG9Dj0TOZB9PZCEUvto2smS0uozXjw4ZByZBJEJL3MZCBiiKvZA3afyWlr7y9N6YtZAd3a7nRY1RyglZAN7zoe6rHMJQQc9igjIu4nfaqm15MTwNuUMI9ZAAgukxwMBPe8scyAM3FjtJZAo7mDl9OdnwZDZD';
+var fbpage_access_token = process.env.FK_ACCESS_TOKEN;
 var quickreply = [
     {
         "content_type": "text",
@@ -53,8 +53,9 @@ const sendContentPacks = (categoryName, event) => {
         fbuserdetails(event, senderID);
         console.log("categoryName", categoryName);
     } else if (categoryName == "hi" || categoryName == "hello" || categoryName == "hey") {
-        //wishing_message(categoryName, event);
+      console.log("the access token value is ", fbpage_access_token);
         user_intrest_category(event, categoryName);
+        //wishing_message(categoryName, event);
     } else if (categoryName == "movies") {
         //user_intrest_movies_category(event, categoryName);
         submenu(event, categoryName);
