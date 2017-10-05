@@ -10,7 +10,7 @@ const tv_show = require('../contentjson/tv shows.json');
 const musics = require('../contentjson/music.json');
 const jokes = require('../contentjson/jokes.json');
 var mysql = require('mysql');
-var mysqlpool = mysql.createPool({connectionLimit: 4, host: 'ap-cdbr-azure-southeast-a.cloudapp.net', user: 'bb603e8108da6e', password: '3e384329', database: 'rankworlddev'});
+var mysqlpool = mysql.createPool({connectionLimit: 4, host: 'ap-cdbr-azure-east-a.cloudapp.net', user: 'baf93eb18b41b5', password: '2a7d14a8', database: 'myshoptv'});
 
 module.exports = {
     mysqlpool: mysqlpool

@@ -28,6 +28,7 @@
     "imdb-api": "^2.2.1",
     "memory-cache": "^0.1.6",
     "modulus": "^6.3.1",
+    "mongoose": "^4.12.0",
     "mysql": "^2.11.1",
     "node-cricapi": "^1.2.5",
     "node-fetch": "^1.6.3",

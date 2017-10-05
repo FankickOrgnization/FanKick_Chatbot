@@ -182,12 +182,9 @@ function list_view(categoryName, event) {
                 }
             }
         }
-
     }
-
     fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
-
-}
+  }
 
 function user_intrest_category(event, categoryName) {
     var senderID = event.sender.id;
