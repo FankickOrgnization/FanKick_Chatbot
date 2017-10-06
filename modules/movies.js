@@ -12,11 +12,20 @@ const jokes = require('../contentjson/jokes.json');
 const fbRquest = require('./fbapi.js');
 const dbpool = require('./mysqlconfig.js');
 const googleSearch = require('./search.js');
+
+var logger = require('../logger');
 //var app = express();
 var mysql = require('mysql');
 //var pool = mysql.createPool({connectionLimit: 1, host: 'ap-cdbr-azure-southeast-a.cloudapp.net', user: 'bb603e8108da6e', password: '3e384329', database: 'rankworlddev'});
 var pool = dbpool.mysqlpool;
 var fbpage_access_token = process.env.FK_ACCESS_TOKEN;
+
+//mongo db schema
+// var CelebrityMovies = require('../../mongodb/schemas/Celebrities/CelebrityMovies');
+var CelebrityMovies = require('../mongodb/schemas/Celebrities/CelebrityMovies');
+
+//
+
 var quickreply = [
     {
         "content_type": "text",
@@ -406,6 +415,20 @@ function   film_celebrity_conv_1(messagingEvent, actorname, quickReply1, quickRe
   console.log("filmactor", actorname);
     //var event = messagingEvent;
     var aname = actorname.trim();
+
+CelebrityMovies.find({name:aname}, (err, data) => {
+        if (err) { console.log('Error occured'); }
+        else if (!data) { 
+        console.log('No data found')
+        }
+        else {
+            res.json({ statusCode: 1, statusMessage: "Success", data: data })
+            console.log('data obtained ', data);
+            logger.debug('data obtained ', data);
+        }
+    })
+    
+
     pool.getConnection(function(err, connection) {
         connection.query('select * from cc_film_celebrity_preference where name = ?', [aname], function(err, rows) {
             console.log("********filmactor*********", aname);

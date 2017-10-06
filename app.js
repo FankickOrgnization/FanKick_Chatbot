@@ -5,8 +5,6 @@ var bodyParser = require('body-parser');
 var mysql = require('mysql');
 var cricapi = require("node-cricapi");
 var panorama = require('google-panorama-by-location');
-const fetch = require('node-fetch');
-const crypto = require('crypto');
 //const thread = require('./modules/thread.js');
 const payloadText = require('./modules/payload.js');
 const googleSearch = require('./modules/search.js');
@@ -18,6 +16,12 @@ const sports = require('./modules/sports.js');
 const music = require('./modules/music.js');
 const errors = require('./contentjson/errormsg.json');
 //const bot = require('./wit.js');
+
+//mongodb configuration
+var db = require('./mongodb/mongoconfig');
+
+//
+
 
 var pool = mysql.createPool({connectionLimit: 1, host: 'ap-cdbr-azure-southeast-a.cloudapp.net', user: 'bb603e8108da6e', password: '3e384329', database: 'rankworlddev'});
 
@@ -1690,4 +1694,4 @@ function sendHelpMessage(event) {
     }
     fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
 }
-app.listen(process.env.PORT);
+app.listen(process.env.PORT || 8080);
