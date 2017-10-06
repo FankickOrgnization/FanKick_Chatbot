@@ -422,7 +422,6 @@ CelebrityMovies.find({name:aname}, (err, data) => {
         console.log('No data found')
         }
         else {
-            res.json({ statusCode: 1, statusMessage: "Success", data: data })
             console.log('data obtained ', data);
             logger.debug('data obtained ', data);
         }
