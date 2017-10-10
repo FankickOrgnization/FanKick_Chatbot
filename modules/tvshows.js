@@ -710,7 +710,7 @@ function tvshowsmenu(messagingEvent) {
                 } else if (data.length) {
                     var senderID = messagingEvent.sender.id;
                     var contentList = [];
-                    if (rows.length > 10) {
+                    if (data.length > 10) {
                         var rowslenth = 10;
                         console.log("more than 10 Rows", rowslenth);
                     } else {
