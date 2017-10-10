@@ -8,7 +8,6 @@ const fbRquest = require('./fbapi.js');
 const dbpool = require('./mysqlconfig.js');
 const googleSearch = require('./search.js');
 var mysql = require('mysql');
-var logger = require('../logger');
 //var pool = mysql.createPool({connectionLimit: 1, host: 'ap-cdbr-azure-southeast-a.cloudapp.net', user: 'bb603e8108da6e', password: '3e384329', database: 'rankworlddev'});
 var pool = dbpool.mysqlpool;
 var fbpage_access_token = process.env.FK_ACCESS_TOKEN;
@@ -626,97 +625,9 @@ function tvcelbritydetails(event, celbrityname) {
 }
 
 function tvshowsmenu(messagingEvent) {
-    pool.getConnection(function(err, connection) {
-        connection.query('select  * from cc_tvshows order by id desc', function(err, rows) {
-            console.log("*************************tvshowsmenu", rows);
-            if (err) {
-                console.log("Error While retriving content pack data from database:", err);
-            } else if (rows.length) {
-                var senderID = messagingEvent.sender.id;
-                var contentList = [];
-                if (rows.length > 10) {
-                    var rowslenth = 10;
-                    console.log("more than 10 Rows", rowslenth);
-                } else {
-                    var rowslenth = rows.length;
-                    console.log("less than 10 Rows", rowslenth);
-                }
-                for (var i = 0; i < rowslenth; i++) { //Construct request body
-                    var keyMap = {
-                        "title": rows[i].name,
-                        "image_url": rows[i].picture1,
-                        "buttons": [
-                            {
-                                "type": "postback",
-                                "title": "More Info ℹ",
-                                "payload": rows[i].name + ' %tvshows%'
-                            }
-                        ]
-                    };
-                    contentList.push(keyMap);
-                }
-                var messageData = {
-                    "recipient": {
-                        "id": senderID
-                    },
-                    "message": {
-                        "attachment": {
-                            "type": "template",
-                            "payload": {
-                                "template_type": "generic",
-                                "elements": contentList
-                            }
-                        },
-                        "quick_replies": [
-                            {
-                                "content_type": "text",
-                                "title": "Romantic Comedy",
-                                "payload": 'Romantic Comedy'
-                            }, {
-                                "content_type": "text",
-                                "title": "Reality",
-                                "payload": 'Reality'
-                            }, {
-                                "content_type": "text",
-                                "title": "Horror / Crime",
-                                "payload": 'Horror / Crime'
-                            }, {
-                                "content_type": "text",
-                                "title": "Watch TV Shows",
-                                "payload": 'Watch TV Shows,tv shows,%QR%'
-                            }, {
-                                "content_type": "text",
-                                "title": "TV Shows Jokes",
-                                "payload": "Jokes"
-                            }, {
-                                "content_type": "text",
-                                "title": "Home 🏠",
-                                "payload": "home"
-                            }
-                        ]
-                    }
-                }
-                fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
-            } else {
-                console.log("No Data Found From Database");
-                sendHelpMessage(messagingEvent);
-            }
-            connection.release();
-        });
-    });
-
-}
-
-function tvshowsdetails(messagingEvent, tvshowname) {
-  user_favorite_tvshow(messagingEvent, tvshowname);
-    var tvshowname = tvshowname.trim();
-    var tvshowleadActor;
-    var tvshowleadActress;
-    console.log("tvshowname:", tvshowname);
-
     // pool.getConnection(function(err, connection) {
-    //     connection.query('select  * from cc_tvshows where name = ?', [tvshowname], function(err, rows) {
-    //         console.log("*************************tvshowsdetails", rows);
+    //     connection.query('select  * from cc_tvshows order by id desc', function(err, rows) {
+    //         console.log("*************************tvshowsmenu", rows);
     //         if (err) {
     //             console.log("Error While retriving content pack data from database:", err);
     //         } else if (rows.length) {
@@ -730,20 +641,14 @@ function tvshowsdetails(messagingEvent, tvshowname) {
     //                 console.log("less than 10 Rows", rowslenth);
     //             }
     //             for (var i = 0; i < rowslenth; i++) { //Construct request body
-    //                 tvshowleadActor = rows[i].leadActor;
-    //                 tvshowleadActress = rows[i].leadActress;
     //                 var keyMap = {
     //                     "title": rows[i].name,
     //                     "image_url": rows[i].picture1,
     //                     "buttons": [
     //                         {
-    //                             "type": "web_url",
-    //                             "url": rows[i].clips,
-    //                             "title": "Clips"
-    //                         }, {
-    //                             "type": "web_url",
-    //                             "url": rows[i].googleSearch,
-    //                             "title": "About"
+    //                             "type": "postback",
+    //                             "title": "More Info ℹ",
+    //                             "payload": rows[i].name + ' %tvshows%'
     //                         }
     //                     ]
     //                 };
@@ -764,12 +669,20 @@ function tvshowsdetails(messagingEvent, tvshowname) {
     //                     "quick_replies": [
     //                         {
     //                             "content_type": "text",
-    //                             "title": tvshowleadActor,
-    //                             "payload": tvshowleadActor + ' %tvcel%'
+    //                             "title": "Romantic Comedy",
+    //                             "payload": 'Romantic Comedy'
     //                         }, {
     //                             "content_type": "text",
-    //                             "title": tvshowleadActress,
-    //                             "payload": tvshowleadActress + ' %tvcel%'
+    //                             "title": "Reality",
+    //                             "payload": 'Reality'
+    //                         }, {
+    //                             "content_type": "text",
+    //                             "title": "Horror / Crime",
+    //                             "payload": 'Horror / Crime'
+    //                         }, {
+    //                             "content_type": "text",
+    //                             "title": "Watch TV Shows",
+    //                             "payload": 'Watch TV Shows,tv shows,%QR%'
     //                         }, {
     //                             "content_type": "text",
     //                             "title": "TV Shows Jokes",
@@ -790,35 +703,122 @@ function tvshowsdetails(messagingEvent, tvshowname) {
     //         connection.release();
     //     });
     // });
+      EntertainmentTvShows.find({}, function (err, data) {
+                console.log("*************************tvshowsmenu", data);
+                if (err) {
+                    console.log("Error While retriving content pack data from database:", err);
+                } else if (data.length) {
+                    var senderID = messagingEvent.sender.id;
+                    var contentList = [];
+                    if (rows.length > 10) {
+                        var rowslenth = 10;
+                        console.log("more than 10 Rows", rowslenth);
+                    } else {
+                        var rowslenth = data.length;
+                        console.log("less than 10 Rows", rowslenth);
+                    }
+                    for (var i = 0; i < rowslenth; i++) { //Construct request body
+                        var keyMap = {
+                            "title": data[i].showName,
+                            "image_url": data[i].tvShowsImageUrl1,
+                            "buttons": [
+                                {
+                                    "type": "postback",
+                                    "title": "More Info ℹ",
+                                    "payload": data[i].showName + ' %tvshows%'
+                                }
+                            ]
+                        };
+                        contentList.push(keyMap);
+                    }
+                    var messageData = {
+                        "recipient": {
+                            "id": senderID
+                        },
+                        "message": {
+                            "attachment": {
+                                "type": "template",
+                                "payload": {
+                                    "template_type": "generic",
+                                    "elements": contentList
+                                }
+                            },
+                            "quick_replies": [
+                                {
+                                    "content_type": "text",
+                                    "title": "Romantic Comedy",
+                                    "payload": 'Romantic Comedy'
+                                }, {
+                                    "content_type": "text",
+                                    "title": "Reality",
+                                    "payload": 'Reality'
+                                }, {
+                                    "content_type": "text",
+                                    "title": "Horror / Crime",
+                                    "payload": 'Horror / Crime'
+                                }, {
+                                    "content_type": "text",
+                                    "title": "Watch TV Shows",
+                                    "payload": 'Watch TV Shows,tv shows,%QR%'
+                                }, {
+                                    "content_type": "text",
+                                    "title": "TV Shows Jokes",
+                                    "payload": "Jokes"
+                                }, {
+                                    "content_type": "text",
+                                    "title": "Home 🏠",
+                                    "payload": "home"
+                                }
+                            ]
+                        }
+                    }
+                    fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
+                } else {
+                    console.log("No Data Found From Database");
+                    sendHelpMessage(messagingEvent);
+                }
+                connection.release();
+            });
 
-    EntertainmentTvShows.find({}, function (err, data) {
-            console.log("*************************tvshowsdetails", data);
+
+}
+
+function tvshowsdetails(messagingEvent, tvshowname) {
+  user_favorite_tvshow(messagingEvent, tvshowname);
+    var tvshowname = tvshowname.trim();
+    var tvshowleadActor;
+    var tvshowleadActress;
+    console.log("tvshowname:", tvshowname);
+
+    pool.getConnection(function(err, connection) {
+        connection.query('select  * from cc_tvshows where name = ?', [tvshowname], function(err, rows) {
+            console.log("*************************tvshowsdetails", rows);
             if (err) {
                 console.log("Error While retriving content pack data from database:", err);
-            } else if (data.length) {
+            } else if (rows.length) {
                 var senderID = messagingEvent.sender.id;
                 var contentList = [];
-                if (data.length > 10) {
+                if (rows.length > 10) {
                     var rowslenth = 10;
                     console.log("more than 10 Rows", rowslenth);
                 } else {
-                    var rowslenth = data.length;
+                    var rowslenth = rows.length;
                     console.log("less than 10 Rows", rowslenth);
                 }
                 for (var i = 0; i < rowslenth; i++) { //Construct request body
-                    tvshowleadActor = data[i].leadActor;
-                    tvshowleadActress = data[i].leadActress;
+                    tvshowleadActor = rows[i].leadActor;
+                    tvshowleadActress = rows[i].leadActress;
                     var keyMap = {
-                        "title": data[i].showName,
-                        "image_url": data[i].tvShowsImageUrl1,
+                        "title": rows[i].name,
+                        "image_url": rows[i].picture1,
                         "buttons": [
                             {
                                 "type": "web_url",
-                                "url": data[i].clips,
+                                "url": rows[i].clips,
                                 "title": "Clips"
                             }, {
                                 "type": "web_url",
-                                "url": data[i].googleSearch,
+                                "url": rows[i].googleSearch,
                                 "title": "About"
                             }
                         ]
@@ -865,10 +865,7 @@ function tvshowsdetails(messagingEvent, tvshowname) {
             }
             connection.release();
         });
-
-
-
-
+    });
 }
 
 
