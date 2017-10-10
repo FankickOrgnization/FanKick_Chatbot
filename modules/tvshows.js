@@ -777,7 +777,7 @@ function tvshowsmenu(messagingEvent) {
                     console.log("No Data Found From Database");
                     sendHelpMessage(messagingEvent);
                 }
-                connection.release();
+                
             });
 
 
