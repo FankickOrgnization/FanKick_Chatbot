@@ -12,7 +12,7 @@ var logger = require('../logger');
 //var pool = mysql.createPool({connectionLimit: 1, host: 'ap-cdbr-azure-southeast-a.cloudapp.net', user: 'bb603e8108da6e', password: '3e384329', database: 'rankworlddev'});
 var pool = dbpool.mysqlpool;
 var fbpage_access_token = process.env.FK_ACCESS_TOKEN;
-var EntertainmentTvShows = require('../mongodb/schema/Entertainment/EntertainmentTvShows');
+var EntertainmentTvShows = require('../mongodb/schemas/Entertainment/EntertainmentTvShows');
 var quickreply = [
     {
         "content_type": "text",
