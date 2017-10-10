@@ -21,7 +21,6 @@ var pool = dbpool.mysqlpool;
 var fbpage_access_token = process.env.FK_ACCESS_TOKEN;
 
 //mongo db schema
-// var CelebrityMovies = require('../../mongodb/schemas/Celebrities/CelebrityMovies');
 var CelebrityMovies = require('../mongodb/schemas/Celebrities/CelebrityMovies');
 
 //
@@ -53,8 +52,8 @@ const subcategorymovies = (event, categoryName) => {
     // var movie = moviename.replace(" %%","");
     //console.log("subcategorymovies", moviename);
     //var mname = moviename.trim();
-    pool.getConnection(function(err, connection) {
-        connection.query('select * from cc_movies_preference where subCategory = (select id from cc_subcategories where subCategoryName = ?) order by releaseDate desc', [categoryName], function(err, rows) {
+    pool.getConnection(function (err, connection) {
+        connection.query('select * from cc_movies_preference where subCategory = (select id from cc_subcategories where subCategoryName = ?) order by releaseDate desc', [categoryName], function (err, rows) {
             //console.log("********subcategorymovies*********", mname);
             //console.log("*************************-after", categoryName);
             console.log("*************************subcategorymovies", rows);
@@ -167,8 +166,8 @@ const getmovies = (messagingEvent, moviename) => {
     // var movie = moviename.replace(" %%","");
     console.log("quickmovies", moviename);
     var mname = moviename.trim();
-    pool.getConnection(function(err, connection) {
-        connection.query('select * from cc_movies_preference where movieName= ?', [mname], function(err, rows) {
+    pool.getConnection(function (err, connection) {
+        connection.query('select * from cc_movies_preference where movieName= ?', [mname], function (err, rows) {
             console.log("********quickmovies*********", mname);
             //console.log("*************************-after", categoryName);
             console.log("*************************quickmovies", rows);
@@ -264,10 +263,10 @@ const getgenremovies = (messagingEvent, quickpayloadtext) => {
     var subCategory = genrearray[1];
     console.log("Genre", genre);
     console.log("SubCategory", subCategory);
-    pool.getConnection(function(err, connection) {
+    pool.getConnection(function (err, connection) {
         connection.query('select * from cc_movies_preference where subCategory = (select id from cc_subcategories where subCategoryName = ?) and genre = ? order by releaseDate desc', [
             subCategory, genre
-        ], function(err, rows) {
+        ], function (err, rows) {
             console.log("*************************moviesgenre", rows);
             if (err) {
                 console.log("Error While retriving content pack data from database:", err);
@@ -377,283 +376,163 @@ const getgenremovies = (messagingEvent, quickpayloadtext) => {
 // }
 
 const filmactor = (messagingEvent, actorname) => {
-  var senderID = messagingEvent.sender.id;
-var contentList = [];
-//console.log("favoriteactorconversation:---", subCategory);
-console.log("favoriteactorconversation:---", actorname);
-var celebrityName;
-var quickReply1;
-var quickReply2;
-var quickReply3;
-pool.getConnection(function(err, connection) {
-    connection.query('select * from cc_conversation_three where celebrityName= ? order by id', [actorname], function(err, rows) {
-        if (err) {
-            console.log("Error While retriving content pack data from database:", err);
-        } else if (rows.length > 0) {
-            console.log("*******cc_celebrity_preference data from database:*********", rows);
-            for (var i = 0; i < 1; i++) {
-                celebrityName = rows[i].celebrityName;
-                quickReply1 = rows[i].blockOneName;
-                quickReply2 = rows[i].blockTwoName;
-                quickReply3 = rows[i].blockThreeName;
+    var senderID = messagingEvent.sender.id;
+    var contentList = [];
+    //console.log("favoriteactorconversation:---", subCategory);
+    console.log("favoriteactorconversation:---", actorname);
+    var celebrityName;
+    var quickReply1;
+    var quickReply2;
+    var quickReply3;
+    pool.getConnection(function (err, connection) {
+        connection.query('select * from cc_conversation_three where celebrityName= ? order by id', [actorname], function (err, rows) {
+            if (err) {
+                console.log("Error While retriving content pack data from database:", err);
+            } else if (rows.length > 0) {
+                console.log("*******cc_celebrity_preference data from database:*********", rows);
+                for (var i = 0; i < 1; i++) {
+                    celebrityName = rows[i].celebrityName;
+                    quickReply1 = rows[i].blockOneName;
+                    quickReply2 = rows[i].blockTwoName;
+                    quickReply3 = rows[i].blockThreeName;
+                }
+                console.log(quickReply1);
+                console.log(quickReply2);
+                console.log(quickReply3);
+                film_celebrity_conv_1(messagingEvent, actorname, quickReply1, quickReply2, quickReply3);
+            } else if (rows.length == 0) {
+                film_celebrity_conv_2(messagingEvent, actorname);
             }
-            console.log(quickReply1);
-            console.log(quickReply2);
-            console.log(quickReply3);
-            film_celebrity_conv_1(messagingEvent, actorname, quickReply1, quickReply2, quickReply3);
-        } else if (rows.length == 0) {
-            film_celebrity_conv_2(messagingEvent, actorname);
-        }
-        connection.release();
+            connection.release();
+        });
     });
-});
 
 }
 
 
-function   film_celebrity_conv_1(messagingEvent, actorname, quickReply1, quickReply2, quickReply3) {
-  console.log("filmactor", actorname);
+function film_celebrity_conv_1(messagingEvent, actorname, quickReply1, quickReply2, quickReply3) {
+    console.log("filmactor", actorname);
     //var event = messagingEvent;
     var aname = actorname.trim();
-
-CelebrityMovies.find({name : aname}, (err, data) => {
+    CelebrityMovies.find({ name: aname }, (err, data) => {
         if (err) {
-             console.log("Error While retriving content pack data from database:", err);
-             }
-        else if (!data) { 
-        googleSearch.googlegraph(aname, messagingEvent);
+            console.log("Error While retriving content pack data from database:", err);
+        }
+        else if (!data) {
+            googleSearch.googlegraph(aname, messagingEvent);
         }
         else {
             logger.debug('data obtained ', data);
             var senderID = messagingEvent.sender.id;
-                var contentList = [];
-                var quickList = [];
-                var movieslist;
-                var celebrityname;
-                //  "payload": celebrityid + ' ,%movies%'
-                var celebrityid;
-                for (var i = 0; i < data.length; i++) { //Construct request body
-                    var res1 = data[i].id + ",";
-                    var res2 = data[i].celebrityName + ",";
-                    var res3 = res2.concat(res1);
-                    var res5 = res3.concat(res2);
-                    celebrityname = data[i].name;
-                    celebrityid = data[i]._id;
-                    var keyMap = {
-                        "title": data[i].name,
-                        "image_url": data[i].movieImageUrl1,
-                        "subtitle": data[i].name,
-                        //  "item_url": rows[i].image_url,
-                        "buttons": [
-                            {
-                                "type": "web_url",
-                                "url": data[i].faceBookHandle,
-                                "title": "Facebook"
-                            }, {
-                                "type": "web_url",
-                                "url": data[i].twitterHandle,
-                                "title": "Twitter"
-                            }
-                        ]
-                    };
-                    contentList.push(keyMap);
-                }
-                updateusercelebrity(celebrityname, senderID);
-                var messageData = {
-                    "recipient": {
-                        "id": senderID
+            var contentList = [];
+            var quickList = [];
+            var movieslist;
+            var celebrityname;
+            //  "payload": celebrityid + ' ,%movies%'
+            var celebrityid;
+            for (var i = 0; i < data.length; i++) { //Construct request body
+                var res1 = data[i].id + ",";
+                var res2 = data[i].celebrityName + ",";
+                var res3 = res2.concat(res1);
+                var res5 = res3.concat(res2);
+                celebrityname = data[i].name;
+                celebrityid = data[i]._id;
+                var keyMap = {
+                    "title": data[i].name,
+                    "image_url": data[i].movieImageUrl1,
+                    "subtitle": data[i].name,
+                    //  "item_url": rows[i].image_url,
+                    "buttons": [
+                        {
+                            "type": "web_url",
+                            "url": data[i].faceBookHandle,
+                            "title": "Facebook"
+                        }, {
+                            "type": "web_url",
+                            "url": data[i].twitterHandle,
+                            "title": "Twitter"
+                        }
+                    ]
+                };
+                contentList.push(keyMap);
+            }
+            updateusercelebrity(celebrityname, senderID);
+            var messageData = {
+                "recipient": {
+                    "id": senderID
+                },
+                "message": {
+                    "attachment": {
+                        "type": "template",
+                        "payload": {
+                            "template_type": "generic",
+                            "elements": contentList
+                        }
                     },
-                    "message": {
-                        "attachment": {
-                            "type": "template",
-                            "payload": {
-                                "template_type": "generic",
-                                "elements": contentList
-                            }
-                        },
-                        "quick_replies": [
-                          {
-                             "content_type": "text",
-                             "title": quickReply1,
-                             "payload": quickReply1 + ',' + celebrityname + ',' + "blockOneName ,%celebrity_conv1%"
-                         }, {
-                             "content_type": "text",
-                             "title": quickReply2,
-                             "payload": quickReply2 + ',' + celebrityname + ',' + "blockTwoName ,%celebrity_conv2%"
-                         }, {
-                             "content_type": "text",
-                             "title": quickReply3,
-                             "payload": quickReply3 + ',' + celebrityname + ',' + "blockThreeName ,%celebrity_conv3%"
-                         },{
-                                "content_type": "text",
-                                "title": "Pictures",
-                                "payload": celebrityname + ' ,%pictures%',
-                                "image_url": "http://icons.iconarchive.com/icons/harwen/simple/256/My-Pictures-icon.png"
-                            }, {
-                                "content_type": "text",
-                                "title": "Movies",
-                                "payload": celebrityname + ' ,%movies%',
-                                "image_url": "http://www.hooverlibrary.org/sites/default/files/icons/icon_monday_movies2.jpg"
+                    "quick_replies": [
+                        {
+                            "content_type": "text",
+                            "title": quickReply1,
+                            "payload": quickReply1 + ',' + celebrityname + ',' + "blockOneName ,%celebrity_conv1%"
+                        }, {
+                            "content_type": "text",
+                            "title": quickReply2,
+                            "payload": quickReply2 + ',' + celebrityname + ',' + "blockTwoName ,%celebrity_conv2%"
+                        }, {
+                            "content_type": "text",
+                            "title": quickReply3,
+                            "payload": quickReply3 + ',' + celebrityname + ',' + "blockThreeName ,%celebrity_conv3%"
+                        }, {
+                            "content_type": "text",
+                            "title": "Pictures",
+                            "payload": celebrityname + ' ,%pictures%',
+                            "image_url": "http://icons.iconarchive.com/icons/harwen/simple/256/My-Pictures-icon.png"
+                        }, {
+                            "content_type": "text",
+                            "title": "Movies",
+                            "payload": celebrityname + ' ,%movies%',
+                            "image_url": "http://www.hooverlibrary.org/sites/default/files/icons/icon_monday_movies2.jpg"
 
-                            }, {
-                                "content_type": "text",
-                                "title": "Search in google",
-                                "payload": celebrityname + ' ,%googlesearch%',
-                                "image_url": "https://fankickdev.blob.core.windows.net/images/google.png"
-                            }, {
-                                "content_type": "text",
-                                "title": "Personal Info",
-                                "payload": celebrityname + ' ,%wikisearch%',
-                                "image_url": "https://cdn3.iconfinder.com/data/icons/inficons-round-brand-set-2/512/wikipedia-512.png"
-                            }, {
-                                "content_type": "text",
-                                "title": "News",
-                                "payload": celebrityname + ' ,%news%',
-                                "image_url": "https://thumbs.dreamstime.com/x/news-icon-11187212.jpg"
-                            }, {
-                                "content_type": "text",
-                                "title": "Family",
-                                "payload": celebrityname + ' ,%family%',
-                                "image_url": "http://tukanglastangerangselatan.com/assets/images/slider/fm1.png"
-                            }, {
-                                "content_type": "text",
-                                "title": "Home 🏠",
-                                "payload": "home"
-                            }
-                        ]
-                    }
+                        }, {
+                            "content_type": "text",
+                            "title": "Search in google",
+                            "payload": celebrityname + ' ,%googlesearch%',
+                            "image_url": "https://fankickdev.blob.core.windows.net/images/google.png"
+                        }, {
+                            "content_type": "text",
+                            "title": "Personal Info",
+                            "payload": celebrityname + ' ,%wikisearch%',
+                            "image_url": "https://cdn3.iconfinder.com/data/icons/inficons-round-brand-set-2/512/wikipedia-512.png"
+                        }, {
+                            "content_type": "text",
+                            "title": "News",
+                            "payload": celebrityname + ' ,%news%',
+                            "image_url": "https://thumbs.dreamstime.com/x/news-icon-11187212.jpg"
+                        }, {
+                            "content_type": "text",
+                            "title": "Family",
+                            "payload": celebrityname + ' ,%family%',
+                            "image_url": "http://tukanglastangerangselatan.com/assets/images/slider/fm1.png"
+                        }, {
+                            "content_type": "text",
+                            "title": "Home 🏠",
+                            "payload": "home"
+                        }
+                    ]
                 }
-                fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
+            }
+            fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
         }
     })
-    
-
-    // pool.getConnection(function(err, connection) {
-    //     connection.query('select * from cc_film_celebrity_preference where name = ?', [aname], function(err, rows) {
-    //         console.log("********filmactor*********", aname);
-    //         //console.log("*************************-after", categoryName);
-    //         console.log("*************************filmactor", rows);
-    //         if (err) {
-    //             console.log("Error While retriving content pack data from database:", err);
-    //         } else if (rows.length > 0) {
-    //             var senderID = messagingEvent.sender.id;
-    //             var contentList = [];
-    //             var quickList = [];
-    //             var movieslist;
-    //             var celebrityname;
-    //             //  "payload": celebrityid + ' ,%movies%'
-    //             var celebrityid;
-    //             for (var i = 0; i < rows.length; i++) { //Construct request body
-    //                 var res1 = rows[i].id + ",";
-    //                 var res2 = rows[i].celebrityName + ",";
-    //                 var res3 = res2.concat(res1);
-    //                 var res5 = res3.concat(res2);
-    //                 celebrityname = rows[i].name;
-    //                 celebrityid = rows[i].id;
-    //                 var keyMap = {
-    //                     "title": rows[i].name,
-    //                     "image_url": rows[i].picture1,
-    //                     "subtitle": rows[i].name,
-    //                     //  "item_url": rows[i].image_url,
-    //                     "buttons": [
-    //                         {
-    //                             "type": "web_url",
-    //                             "url": rows[i].facebookHandle,
-    //                             "title": "Facebook"
-    //                         }, {
-    //                             "type": "web_url",
-    //                             "url": rows[i].twitterHandle,
-    //                             "title": "Twitter"
-    //                         }
-    //                     ]
-    //                 };
-    //                 contentList.push(keyMap);
-    //             }
-    //             updateusercelebrity(celebrityname, senderID);
-    //             var messageData = {
-    //                 "recipient": {
-    //                     "id": senderID
-    //                 },
-    //                 "message": {
-    //                     "attachment": {
-    //                         "type": "template",
-    //                         "payload": {
-    //                             "template_type": "generic",
-    //                             "elements": contentList
-    //                         }
-    //                     },
-    //                     "quick_replies": [
-    //                       {
-    //                          "content_type": "text",
-    //                          "title": quickReply1,
-    //                          "payload": quickReply1 + ',' + celebrityname + ',' + "blockOneName ,%celebrity_conv1%"
-    //                      }, {
-    //                          "content_type": "text",
-    //                          "title": quickReply2,
-    //                          "payload": quickReply2 + ',' + celebrityname + ',' + "blockTwoName ,%celebrity_conv2%"
-    //                      }, {
-    //                          "content_type": "text",
-    //                          "title": quickReply3,
-    //                          "payload": quickReply3 + ',' + celebrityname + ',' + "blockThreeName ,%celebrity_conv3%"
-    //                      },{
-    //                             "content_type": "text",
-    //                             "title": "Pictures",
-    //                             "payload": celebrityname + ' ,%pictures%',
-    //                             "image_url": "http://icons.iconarchive.com/icons/harwen/simple/256/My-Pictures-icon.png"
-    //                         }, {
-    //                             "content_type": "text",
-    //                             "title": "Movies",
-    //                             "payload": celebrityname + ' ,%movies%',
-    //                             "image_url": "http://www.hooverlibrary.org/sites/default/files/icons/icon_monday_movies2.jpg"
-
-    //                         }, {
-    //                             "content_type": "text",
-    //                             "title": "Search in google",
-    //                             "payload": celebrityname + ' ,%googlesearch%',
-    //                             "image_url": "https://fankickdev.blob.core.windows.net/images/google.png"
-    //                         }, {
-    //                             "content_type": "text",
-    //                             "title": "Personal Info",
-    //                             "payload": celebrityname + ' ,%wikisearch%',
-    //                             "image_url": "https://cdn3.iconfinder.com/data/icons/inficons-round-brand-set-2/512/wikipedia-512.png"
-    //                         }, {
-    //                             "content_type": "text",
-    //                             "title": "News",
-    //                             "payload": celebrityname + ' ,%news%',
-    //                             "image_url": "https://thumbs.dreamstime.com/x/news-icon-11187212.jpg"
-    //                         }, {
-    //                             "content_type": "text",
-    //                             "title": "Family",
-    //                             "payload": celebrityname + ' ,%family%',
-    //                             "image_url": "http://tukanglastangerangselatan.com/assets/images/slider/fm1.png"
-    //                         }, {
-    //                             "content_type": "text",
-    //                             "title": "Home 🏠",
-    //                             "payload": "home"
-    //                         }
-    //                     ]
-    //                 }
-    //             }
-    //             fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
-    //         } else if (rows.length == 0) {
-    //             googleSearch.googlegraph(aname, messagingEvent);
-    //         } else {
-    //             console.log("No Data Found From Database");
-    //             sendHelpMessage(messagingEvent);
-    //         }
-    //         connection.release();
-    //     });
-    // });
-
 }
 
 
 function film_celebrity_conv_2(messagingEvent, actorname) {
-  console.log("filmactor", actorname);
+    console.log("filmactor", actorname);
     var event = messagingEvent;
     var aname = actorname.trim();
-    pool.getConnection(function(err, connection) {
-        connection.query('select * from cc_film_celebrity_preference where name = ?', [aname], function(err, rows) {
+    pool.getConnection(function (err, connection) {
+        connection.query('select * from cc_film_celebrity_preference where name = ?', [aname], function (err, rows) {
             console.log("********filmactor*********", aname);
             //console.log("*************************-after", categoryName);
             console.log("*************************filmactor", rows);
@@ -764,8 +643,8 @@ const conversation_filmactor = (messagingEvent, actorname) => {
     console.log("conversation_filmactor", actorname);
     var event = messagingEvent;
     var aname = actorname.trim();
-    pool.getConnection(function(err, connection) {
-        connection.query('select * from cc_film_celebrity_preference where name = ?', [aname], function(err, rows) {
+    pool.getConnection(function (err, connection) {
+        connection.query('select * from cc_film_celebrity_preference where name = ?', [aname], function (err, rows) {
             console.log("********conversation_filmactor*********", aname);
             //console.log("*************************-after", categoryName);
             console.log("*************************conversation_filmactor", rows);
@@ -886,8 +765,8 @@ function update_conversation_usercelebrity(messagingEvent) {
     var senderID = messagingEvent.sender.id;
     //console.log("******************categoryName*************", usercelebrityName);
     //console.log("******************senderID*************", senderID);
-    pool.getConnection(function(err, connection) {
-        connection.query('update cc_user_preference set movieCelebrity = null where facebookId = ?', [senderID], function(err, rows) {
+    pool.getConnection(function (err, connection) {
+        connection.query('update cc_user_preference set movieCelebrity = null where facebookId = ?', [senderID], function (err, rows) {
             if (err) {
                 console.log("Error While retriving content pack data from database:", err);
             } else {
@@ -903,10 +782,10 @@ function update_conversation_usercelebrity(messagingEvent) {
 function updateusercelebrity(usercelebrityName, senderID) {
     //console.log("******************categoryName*************", usercelebrityName);
     //console.log("******************senderID*************", senderID);
-    pool.getConnection(function(err, connection) {
+    pool.getConnection(function (err, connection) {
         connection.query('update cc_user_preference set movieCelebrity= ? where facebookId=?', [
             usercelebrityName, senderID
-        ], function(err, rows) {
+        ], function (err, rows) {
             if (err) {
                 console.log("Error While retriving content pack data from database:", err);
             } else {
@@ -936,9 +815,9 @@ const celebrity_Queue_block1_details = (messagingEvent, quickpayloadtext) => {
     console.log("queue", queue);
     console.log("celebrityName", celebrityName);
     console.log("blockno", blockno);
-    pool.getConnection(function(err, connection) {
+    pool.getConnection(function (err, connection) {
         //connection.query('select * from cc_conversation_two where celebrityName= ? order by id', [movieCelebrity], function(err, rows) {
-        connection.query('select * from cc_conversation_three where celebrityName= ? order by id', [celebrityName], function(err, rows) {
+        connection.query('select * from cc_conversation_three where celebrityName= ? order by id', [celebrityName], function (err, rows) {
             if (err) {
                 console.log("Error While retriving content pack data from database:", err);
             } else if (rows.length > 0) {
@@ -1047,9 +926,9 @@ const celebrity_Queue_block2_details = (messagingEvent, quickpayloadtext) => {
     console.log("queue", queue);
     console.log("celebrityName", celebrityName);
     console.log("blockno", blockno);
-    pool.getConnection(function(err, connection) {
+    pool.getConnection(function (err, connection) {
         //connection.query('select * from cc_conversation_two where celebrityName= ? order by id', [movieCelebrity], function(err, rows) {
-        connection.query('select * from cc_conversation_three where celebrityName= ? order by id', [celebrityName], function(err, rows) {
+        connection.query('select * from cc_conversation_three where celebrityName= ? order by id', [celebrityName], function (err, rows) {
             if (err) {
                 console.log("Error While retriving content pack data from database:", err);
             } else if (rows.length > 0) {
@@ -1158,9 +1037,9 @@ const celebrity_Queue_block3_details = (messagingEvent, quickpayloadtext) => {
     console.log("queue", queue);
     console.log("celebrityName", celebrityName);
     console.log("blockno", blockno);
-    pool.getConnection(function(err, connection) {
+    pool.getConnection(function (err, connection) {
         //connection.query('select * from cc_conversation_two where celebrityName= ? order by id', [movieCelebrity], function(err, rows) {
-        connection.query('select * from cc_conversation_three where celebrityName= ? order by id', [celebrityName], function(err, rows) {
+        connection.query('select * from cc_conversation_three where celebrityName= ? order by id', [celebrityName], function (err, rows) {
             if (err) {
                 console.log("Error While retriving content pack data from database:", err);
             } else if (rows.length > 0) {
@@ -1373,7 +1252,7 @@ function sendHelpMessage(event) {
         var random = Math.floor(Math.random() * errors.length);
         if (errors[random].error.length < 320) // better be a least one good joke :)
             errorString = errors[random].error;
-        }
+    }
     var senderID = event.sender.id;
     var messageData = {
         "recipient": {

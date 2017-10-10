@@ -8,9 +8,11 @@ const fbRquest = require('./fbapi.js');
 const dbpool = require('./mysqlconfig.js');
 const googleSearch = require('./search.js');
 var mysql = require('mysql');
+var logger = require('../logger');
 //var pool = mysql.createPool({connectionLimit: 1, host: 'ap-cdbr-azure-southeast-a.cloudapp.net', user: 'bb603e8108da6e', password: '3e384329', database: 'rankworlddev'});
 var pool = dbpool.mysqlpool;
 var fbpage_access_token = process.env.FK_ACCESS_TOKEN;
+var EntertainmentTvShows = require('../mongodb/schema/Entertainment/EntertainmentTvShows');
 var quickreply = [
     {
         "content_type": "text",
@@ -711,35 +713,112 @@ function tvshowsdetails(messagingEvent, tvshowname) {
     var tvshowleadActor;
     var tvshowleadActress;
     console.log("tvshowname:", tvshowname);
-    pool.getConnection(function(err, connection) {
-        connection.query('select  * from cc_tvshows where name = ?', [tvshowname], function(err, rows) {
-            console.log("*************************tvshowsdetails", rows);
+
+    // pool.getConnection(function(err, connection) {
+    //     connection.query('select  * from cc_tvshows where name = ?', [tvshowname], function(err, rows) {
+    //         console.log("*************************tvshowsdetails", rows);
+    //         if (err) {
+    //             console.log("Error While retriving content pack data from database:", err);
+    //         } else if (rows.length) {
+    //             var senderID = messagingEvent.sender.id;
+    //             var contentList = [];
+    //             if (rows.length > 10) {
+    //                 var rowslenth = 10;
+    //                 console.log("more than 10 Rows", rowslenth);
+    //             } else {
+    //                 var rowslenth = rows.length;
+    //                 console.log("less than 10 Rows", rowslenth);
+    //             }
+    //             for (var i = 0; i < rowslenth; i++) { //Construct request body
+    //                 tvshowleadActor = rows[i].leadActor;
+    //                 tvshowleadActress = rows[i].leadActress;
+    //                 var keyMap = {
+    //                     "title": rows[i].name,
+    //                     "image_url": rows[i].picture1,
+    //                     "buttons": [
+    //                         {
+    //                             "type": "web_url",
+    //                             "url": rows[i].clips,
+    //                             "title": "Clips"
+    //                         }, {
+    //                             "type": "web_url",
+    //                             "url": rows[i].googleSearch,
+    //                             "title": "About"
+    //                         }
+    //                     ]
+    //                 };
+    //                 contentList.push(keyMap);
+    //             }
+    //             var messageData = {
+    //                 "recipient": {
+    //                     "id": senderID
+    //                 },
+    //                 "message": {
+    //                     "attachment": {
+    //                         "type": "template",
+    //                         "payload": {
+    //                             "template_type": "generic",
+    //                             "elements": contentList
+    //                         }
+    //                     },
+    //                     "quick_replies": [
+    //                         {
+    //                             "content_type": "text",
+    //                             "title": tvshowleadActor,
+    //                             "payload": tvshowleadActor + ' %tvcel%'
+    //                         }, {
+    //                             "content_type": "text",
+    //                             "title": tvshowleadActress,
+    //                             "payload": tvshowleadActress + ' %tvcel%'
+    //                         }, {
+    //                             "content_type": "text",
+    //                             "title": "TV Shows Jokes",
+    //                             "payload": "Jokes"
+    //                         }, {
+    //                             "content_type": "text",
+    //                             "title": "Home 🏠",
+    //                             "payload": "home"
+    //                         }
+    //                     ]
+    //                 }
+    //             }
+    //             fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
+    //         } else {
+    //             console.log("No Data Found From Database");
+    //             sendHelpMessage(messagingEvent);
+    //         }
+    //         connection.release();
+    //     });
+    // });
+
+    EntertainmentTvShows.find({}, function (err, data) {
+            console.log("*************************tvshowsdetails", data);
             if (err) {
                 console.log("Error While retriving content pack data from database:", err);
-            } else if (rows.length) {
+            } else if (data.length) {
                 var senderID = messagingEvent.sender.id;
                 var contentList = [];
-                if (rows.length > 10) {
+                if (data.length > 10) {
                     var rowslenth = 10;
                     console.log("more than 10 Rows", rowslenth);
                 } else {
-                    var rowslenth = rows.length;
+                    var rowslenth = data.length;
                     console.log("less than 10 Rows", rowslenth);
                 }
                 for (var i = 0; i < rowslenth; i++) { //Construct request body
-                    tvshowleadActor = rows[i].leadActor;
-                    tvshowleadActress = rows[i].leadActress;
+                    tvshowleadActor = data[i].leadActor;
+                    tvshowleadActress = data[i].leadActress;
                     var keyMap = {
-                        "title": rows[i].name,
-                        "image_url": rows[i].picture1,
+                        "title": data[i].showName,
+                        "image_url": data[i].tvShowsImageUrl1,
                         "buttons": [
                             {
                                 "type": "web_url",
-                                "url": rows[i].clips,
+                                "url": data[i].clips,
                                 "title": "Clips"
                             }, {
                                 "type": "web_url",
-                                "url": rows[i].googleSearch,
+                                "url": data[i].googleSearch,
                                 "title": "About"
                             }
                         ]
@@ -786,7 +865,10 @@ function tvshowsdetails(messagingEvent, tvshowname) {
             }
             connection.release();
         });
-    });
+
+
+
+
 }
 
 
