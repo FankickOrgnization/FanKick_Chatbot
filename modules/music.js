@@ -42,7 +42,9 @@ var quickreply = [
 
 const musicalbams = (categoryName, event) => {
     var quickList = [];
-     EntertainmentMusicAlbums.find({}, function (err, data) {
+    console.log('categoryName---------:',categoryName);
+     //EntertainmentMusicAlbums.find({'subCategoryName': categoryName}, function (err, data) {
+       EntertainmentMusicAlbums.find({}, function (err, data) {
        console.log("*************************Data For Music Albams", data);
                if (err) {
                    console.log("Error While retriving content pack data from database:", err);
@@ -53,7 +55,7 @@ const musicalbams = (categoryName, event) => {
                        var rowslenth = 10;
                        console.log("more than 10 Rows", rowslenth);
                    } else {
-                       var rowslenth = rows.length;
+                       var rowslenth = data.length;
                        console.log("less than 10 Rows", rowslenth);
                    }
                    for (var i = 0; i < rowslenth; i++) { //Construct request body
