@@ -15,6 +15,7 @@ var mysql = require('mysql');
 //var pool = mysql.createPool({connectionLimit: 1, host: 'ap-cdbr-azure-southeast-a.cloudapp.net', user: 'bb603e8108da6e', password: '3e384329', database: 'rankworlddev'});
 var pool = dbpool.mysqlpool;
 var fbpage_access_token = process.env.FK_ACCESS_TOKEN;
+var EntertainmentMusicAlbums = require('../mongodb/schemas/Entertainment/EntertainmentMusicAlbums');
 var quickreply = [
     {
         "content_type": "text",
@@ -41,101 +42,194 @@ var quickreply = [
 
 const musicalbams = (categoryName, event) => {
     var quickList = [];
-    pool.getConnection(function(err, connection) {
-        connection.query('select * from cc_music_albums where subCategory = (select id from cc_subcategories where subCategoryName= ?) order by releaseDate desc', [categoryName], function(err, rows) {
-            console.log("*************************Data For Music Albams", rows);
-            if (err) {
-                console.log("Error While retriving content pack data from database:", err);
-            } else if (rows.length) {
-                var senderID = event.sender.id;
-                var contentList = [];
-                if (rows.length > 10) {
-                    var rowslenth = 10;
-                    console.log("more than 10 Rows", rowslenth);
-                } else {
-                    var rowslenth = rows.length;
-                    console.log("less than 10 Rows", rowslenth);
-                }
-                for (var i = 0; i < rowslenth; i++) { //Construct request body
-                    var name = rows[i].name;
-                    var keyMap = {
-                        "title": rows[i].name,
-                        "image_url": rows[i].picture1,
-                        "subtitle": rows[i].artist,
-                        "buttons": [
+     EntertainmentMusicAlbums.find({}, function (err, data) {
+       console.log("*************************Data For Music Albams", data);
+               if (err) {
+                   console.log("Error While retriving content pack data from database:", err);
+               } else if (data.length) {
+                   var senderID = event.sender.id;
+                   var contentList = [];
+                   if (data.length > 10) {
+                       var rowslenth = 10;
+                       console.log("more than 10 Rows", rowslenth);
+                   } else {
+                       var rowslenth = rows.length;
+                       console.log("less than 10 Rows", rowslenth);
+                   }
+                   for (var i = 0; i < rowslenth; i++) { //Construct request body
+                       var name = data[i].albumName;
+                       var keyMap = {
+                           "title": data[i].albumName,
+                           "image_url": data[i].musicImageUrl1,
+                           "subtitle": data[i].artistName,
+                           "buttons": [
 
-                            {
-                                "type": "web_url",
-                                "url": rows[i].albumUrl,
-                                "title": "Play Album 🎧"
-                            }, {
-                                "type": "postback",
-                                "title": "View More 🔍",
-                                "payload": rows[i].name + " %albumname%"
-                            }
+                               {
+                                   "type": "web_url",
+                                   "url": data[i].musicAlbumUrl,
+                                   "title": "Play Album 🎧"
+                               }, {
+                                   "type": "postback",
+                                   "title": "View More 🔍",
+                                   "payload": data[i].albumName + " %albumname%"
+                               }
 
-                        ]
-                    };
-                    contentList.push(keyMap);
+                           ]
+                       };
+                       contentList.push(keyMap);
 
-                }
-                var messageData = {
-                    "recipient": {
-                        "id": senderID
-                    },
-                    "message": {
-                        "attachment": {
-                            "type": "template",
-                            "payload": {
-                                "template_type": "generic",
-                                "elements": contentList
-                            }
-                        },
-                        "quick_replies": [
-                            {
-                                "content_type": "text",
-                                "title": "Top 50 Songs",
-                                "payload": 'Top 50 Songs,' + categoryName + ',%QRsub%'
-                            }, {
-                                "content_type": "text",
-                                "title": "Music Videos",
-                                "payload": 'Music Videos,' + categoryName + ',%QRsub%'
-                            }, {
-                                "content_type": "text",
-                                "title": "Hindi Albums",
-                                "payload": "Hindi"
-                            }, {
-                                "content_type": "text",
-                                "title": "Telugu Albums",
-                                "payload": "Telugu"
-                            }, {
-                                "content_type": "text",
-                                "title": "Tamil Albums",
-                                "payload": "Tamil"
-                            }, {
-                                "content_type": "text",
-                                "title": "Kannada Albums",
-                                "payload": "Kannada"
-                            }, {
-                                "content_type": "text",
-                                "title": "Music Jokes",
-                                "payload": "Jokes"
-                            }, {
-                                "content_type": "text",
-                                "title": "Home 🏠",
-                                "payload": "home"
-                            }
-                        ]
-                    }
-                }
-                fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
-            } else {
-                console.log("No Data Found From Database");
-                sendHelpMessage(event);
-            }
-            connection.release();
-        });
-    });
+                   }
+                   var messageData = {
+                       "recipient": {
+                           "id": senderID
+                       },
+                       "message": {
+                           "attachment": {
+                               "type": "template",
+                               "payload": {
+                                   "template_type": "generic",
+                                   "elements": contentList
+                               }
+                           },
+                           "quick_replies": [
+                               {
+                                   "content_type": "text",
+                                   "title": "Top 50 Songs",
+                                   "payload": 'Top 50 Songs,' + categoryName + ',%QRsub%'
+                               }, {
+                                   "content_type": "text",
+                                   "title": "Music Videos",
+                                   "payload": 'Music Videos,' + categoryName + ',%QRsub%'
+                               }, {
+                                   "content_type": "text",
+                                   "title": "Hindi Albums",
+                                   "payload": "Hindi"
+                               }, {
+                                   "content_type": "text",
+                                   "title": "Telugu Albums",
+                                   "payload": "Telugu"
+                               }, {
+                                   "content_type": "text",
+                                   "title": "Tamil Albums",
+                                   "payload": "Tamil"
+                               }, {
+                                   "content_type": "text",
+                                   "title": "Kannada Albums",
+                                   "payload": "Kannada"
+                               }, {
+                                   "content_type": "text",
+                                   "title": "Music Jokes",
+                                   "payload": "Jokes"
+                               }, {
+                                   "content_type": "text",
+                                   "title": "Home 🏠",
+                                   "payload": "home"
+                               }
+                           ]
+                       }
+                   }
+                   fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
+               } else {
+                   console.log("No Data Found From Database");
+                   sendHelpMessage(event);
+               }
+           });
+
+    // pool.getConnection(function(err, connection) {
+    //     connection.query('select * from cc_music_albums where subCategory = (select id from cc_subcategories where subCategoryName= ?) order by releaseDate desc', [categoryName], function(err, rows) {
+    //         console.log("*************************Data For Music Albams", rows);
+    //         if (err) {
+    //             console.log("Error While retriving content pack data from database:", err);
+    //         } else if (rows.length) {
+    //             var senderID = event.sender.id;
+    //             var contentList = [];
+    //             if (rows.length > 10) {
+    //                 var rowslenth = 10;
+    //                 console.log("more than 10 Rows", rowslenth);
+    //             } else {
+    //                 var rowslenth = rows.length;
+    //                 console.log("less than 10 Rows", rowslenth);
+    //             }
+    //             for (var i = 0; i < rowslenth; i++) { //Construct request body
+    //                 var name = rows[i].name;
+    //                 var keyMap = {
+    //                     "title": rows[i].name,
+    //                     "image_url": rows[i].picture1,
+    //                     "subtitle": rows[i].artist,
+    //                     "buttons": [
+    //
+    //                         {
+    //                             "type": "web_url",
+    //                             "url": rows[i].albumUrl,
+    //                             "title": "Play Album 🎧"
+    //                         }, {
+    //                             "type": "postback",
+    //                             "title": "View More 🔍",
+    //                             "payload": rows[i].name + " %albumname%"
+    //                         }
+    //
+    //                     ]
+    //                 };
+    //                 contentList.push(keyMap);
+    //
+    //             }
+    //             var messageData = {
+    //                 "recipient": {
+    //                     "id": senderID
+    //                 },
+    //                 "message": {
+    //                     "attachment": {
+    //                         "type": "template",
+    //                         "payload": {
+    //                             "template_type": "generic",
+    //                             "elements": contentList
+    //                         }
+    //                     },
+    //                     "quick_replies": [
+    //                         {
+    //                             "content_type": "text",
+    //                             "title": "Top 50 Songs",
+    //                             "payload": 'Top 50 Songs,' + categoryName + ',%QRsub%'
+    //                         }, {
+    //                             "content_type": "text",
+    //                             "title": "Music Videos",
+    //                             "payload": 'Music Videos,' + categoryName + ',%QRsub%'
+    //                         }, {
+    //                             "content_type": "text",
+    //                             "title": "Hindi Albums",
+    //                             "payload": "Hindi"
+    //                         }, {
+    //                             "content_type": "text",
+    //                             "title": "Telugu Albums",
+    //                             "payload": "Telugu"
+    //                         }, {
+    //                             "content_type": "text",
+    //                             "title": "Tamil Albums",
+    //                             "payload": "Tamil"
+    //                         }, {
+    //                             "content_type": "text",
+    //                             "title": "Kannada Albums",
+    //                             "payload": "Kannada"
+    //                         }, {
+    //                             "content_type": "text",
+    //                             "title": "Music Jokes",
+    //                             "payload": "Jokes"
+    //                         }, {
+    //                             "content_type": "text",
+    //                             "title": "Home 🏠",
+    //                             "payload": "home"
+    //                         }
+    //                     ]
+    //                 }
+    //             }
+    //             fbRquest.callFBAPI(messageData, 'https://graph.facebook.com/v2.6/592208327626213/messages');
+    //         } else {
+    //             console.log("No Data Found From Database");
+    //             sendHelpMessage(event);
+    //         }
+    //         connection.release();
+    //     });
+    // });
 
 }
 
